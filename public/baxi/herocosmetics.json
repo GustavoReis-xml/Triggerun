@@ -1,0 +1,2075 @@
+{
+  "1003": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "dianna_1",
+        "skinname": "jvjishou_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Sniper Elite) Skin&lt;/size&gt;",
+        "iconname": "dianna_2",
+        "skinname": "jjs_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(诡术大师) Skin",
+        "iconname": "dianna_3",
+        "skinname": "jjs_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(末日特工) Skin",
+        "iconname": "dianna_4",
+        "skinname": "jjs_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "dianna_5",
+        "skinname": "jjs_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "dianna_6",
+        "skinname": "jjs_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "dianna_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "dianna_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "dianna_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "dianna_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Fingir de morto) Emoji",
+        "animparm": 50,
+        "iconname": "dianna_50"
+      },
+      {
+        "id": 2,
+        "name": "(Em guarda) Emoji",
+        "animparm": 200,
+        "iconname": "dianna_200"
+      },
+      {
+        "id": 3,
+        "name": "(Ataque físico) Emoji",
+        "animparm": 51,
+        "iconname": "dianna_51"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "dianna_201"
+      },
+      {
+        "id": 5,
+        "name": "(Elegante) Emoji",
+        "animparm": 52,
+        "iconname": "dianna_52"
+      }
+    ]
+  },
+  "1005": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "leizhenzi_1",
+        "skinname": "leizhenzi_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Precious Pilot) Skin&lt;/size&gt;",
+        "iconname": "leizhenzi_2",
+        "skinname": "leizhenzi_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(追风少年) Skin",
+        "iconname": "leizhenzi_3",
+        "skinname": "leizhenzi_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "leizhenzi_4",
+        "skinname": "leizhenzi_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "leizhenzi_5",
+        "skinname": "leizhenzi_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "leizhenzi_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "leizhenzi_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "leizhenzi_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "leizhenzi_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Hmm? Oh!) Emoji",
+        "animparm": 50,
+        "iconname": "leizhenzi_50"
+      },
+      {
+        "id": 2,
+        "name": "(Relax) Emoji",
+        "animparm": 200,
+        "iconname": "leizhenzi_200"
+      },
+      {
+        "id": 3,
+        "name": "(Ginasta) Emoji",
+        "animparm": 51,
+        "iconname": "leizhenzi_51"
+      },
+      {
+        "id": 4,
+        "name": "(Sempre alerta) Emoji",
+        "animparm": 52,
+        "iconname": "leizhenzi_52"
+      },
+      {
+        "id": 5,
+        "name": "(Salute) Emoji",
+        "animparm": 53,
+        "iconname": "leizhenzi_53"
+      }
+    ]
+  },
+  "1006": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "xingtian_1",
+        "skinname": "xt_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Regenerated Soldier) Skin&lt;/size&gt;",
+        "iconname": "xingtian_2",
+        "skinname": "xingtian_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(金甲卫士) Skin",
+        "iconname": "xingtian_3",
+        "skinname": "xingtian_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "xingtian_4",
+        "skinname": "xt_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "xingtian_5",
+        "skinname": "xt_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "xingtian_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "xingtian_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "xingtian_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "xingtian_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Forte) Emoji",
+        "animparm": 50,
+        "iconname": "xingtian_50"
+      },
+      {
+        "id": 2,
+        "name": "(Tá favorável) Emoji",
+        "animparm": 51,
+        "iconname": "xingtian_51"
+      },
+      {
+        "id": 3,
+        "name": "(Descansar) Emoji",
+        "animparm": 200,
+        "iconname": "xingtian_200"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "xingtian_201"
+      },
+      {
+        "id": 5,
+        "name": "(Só love) Emoji",
+        "animparm": 52,
+        "iconname": "xingtian_52"
+      }
+    ]
+  },
+  "1015": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "zhongjiezhe_1",
+        "skinname": "76_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Hawaii) Skin&lt;/size&gt;",
+        "iconname": "zhongjiezhe_2",
+        "skinname": "zhongjiezhe_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Special Ops) Skin",
+        "iconname": "zhongjiezhe_3",
+        "skinname": "zhongjiezhe_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Elvis) Skin",
+        "iconname": "zhongjiezhe_4",
+        "skinname": "zhongjiezhe_tps_sz4"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "zhongjiezhe_5",
+        "skinname": "76_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "zhongjiezhe_6",
+        "skinname": "76_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "zhongjiezhe_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "zhongjiezhe_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "zhongjiezhe_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "zhongjiezhe_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(De olho em você) Emoji",
+        "animparm": 50,
+        "iconname": "zhongjiezhe_50"
+      },
+      {
+        "id": 2,
+        "name": "(Sim, senhor) Emoji",
+        "animparm": 200,
+        "iconname": "zhongjiezhe_200"
+      },
+      {
+        "id": 3,
+        "name": "(Relax) Emoji",
+        "animparm": 51,
+        "iconname": "zhongjiezhe_51"
+      },
+      {
+        "id": 4,
+        "name": "(Touro mecânico) Emoji",
+        "animparm": 201,
+        "iconname": "zhongjiezhe_201"
+      },
+      {
+        "id": 5,
+        "name": "(Perdeu boy) Emoji",
+        "animparm": 52,
+        "iconname": "zhongjiezhe_52"
+      },
+      {
+        "id": 6,
+        "name": "(Thomas convolution) Emoji",
+        "animparm": 53,
+        "iconname": "zhongjiezhe_53"
+      }
+    ]
+  },
+  "1016": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "waerjili_1",
+        "skinname": "waerjili_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Batter) Skin&lt;/size&gt;",
+        "iconname": "waerjili_2",
+        "skinname": "waerjili_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(皇家护卫) Skin",
+        "iconname": "waerjili_3",
+        "skinname": "waerjili_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "waerjili_4",
+        "skinname": "waerjili_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "waerjili_5",
+        "skinname": "waerjili_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "waerjili_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "waerjili_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "waerjili_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "waerjili_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Onde vai) Emoji",
+        "animparm": 50,
+        "iconname": "waerjili_50"
+      },
+      {
+        "id": 2,
+        "name": "(Em guarda) Emoji",
+        "animparm": 200,
+        "iconname": "waerjili_200"
+      },
+      {
+        "id": 3,
+        "name": "(Checa lá) Emoji",
+        "animparm": 51,
+        "iconname": "waerjili_51"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "waerjili_201"
+      },
+      {
+        "id": 5,
+        "name": "(Strikeball) Emoji",
+        "animparm": 52,
+        "iconname": "waerjili_52"
+      }
+    ]
+  },
+  "1017": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "mulan_1",
+        "skinname": "xingjilieren_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(High-school Girl) Skin&lt;/size&gt;",
+        "iconname": "mulan_2",
+        "skinname": "mulan_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(兔耳女仆) Skin",
+        "iconname": "mulan_3",
+        "skinname": "mulan_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "mulan_4",
+        "skinname": "mulan_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "mulan_5",
+        "skinname": "mulan_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "mulan_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "mulan_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "mulan_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "mulan_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Leisure) Emoji",
+        "animparm": 50,
+        "iconname": "mulan_50"
+      },
+      {
+        "id": 2,
+        "name": "&lt;size=20&gt;(Fiquem em casa crianças) Emoji&lt;/size&gt;",
+        "animparm": 51,
+        "iconname": "mulan_51"
+      },
+      {
+        "id": 3,
+        "name": "(Descansar) Emoji",
+        "animparm": 200,
+        "iconname": "mulan_200"
+      },
+      {
+        "id": 4,
+        "name": "(Rumba) Emoji",
+        "animparm": 201,
+        "iconname": "mulan_201"
+      },
+      {
+        "id": 5,
+        "name": "(Bastao Invisível) Emoji",
+        "animparm": 52,
+        "iconname": "mulan_52"
+      }
+    ]
+  },
+  "1021": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "taliya_1",
+        "skinname": "jipusainvlang_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Gypsy Bride) Skin&lt;/size&gt;",
+        "iconname": "taliya_2",
+        "skinname": "jipusainvlang_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(埃及艳后) Skin",
+        "iconname": "taliya_3",
+        "skinname": "jipusainvlang_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "taliya_4",
+        "skinname": "jipusainvlang_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(欢度元宵) Skin",
+        "iconname": "taliya_5",
+        "skinname": "jipusainvlang_tps_cj"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "taliya_6",
+        "skinname": "jipusainvlang_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "taliya_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "taliya_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "taliya_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "taliya_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Provocar) Emoji",
+        "animparm": 50,
+        "iconname": "taliya_50"
+      },
+      {
+        "id": 2,
+        "name": "(Respite) Emoji",
+        "animparm": 200,
+        "iconname": "taliya_200"
+      },
+      {
+        "id": 3,
+        "name": "(Relax) Emoji",
+        "animparm": 201,
+        "iconname": "taliya_201"
+      },
+      {
+        "id": 4,
+        "name": "(Tá fácil) Emoji",
+        "animparm": 51,
+        "iconname": "taliya_51"
+      },
+      {
+        "id": 5,
+        "name": "(Encantar) Emoji",
+        "animparm": 202,
+        "iconname": "taliya_202"
+      }
+    ]
+  },
+  "1022": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "xuenv_1",
+        "skinname": "xuenv_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Chinese Style) Skin&lt;/size&gt;",
+        "iconname": "xuenv_2",
+        "skinname": "xuenv_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(婵娟) Skin",
+        "iconname": "xuenv_3",
+        "skinname": "xuenv_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(寒冰女王) Skin",
+        "iconname": "xuenv_4",
+        "skinname": "xuenv_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "xuenv_5",
+        "skinname": "xuenv_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(欢度新春) Skin",
+        "iconname": "xuenv_6",
+        "skinname": "xuenv_tps_cjsz"
+      },
+      {
+        "id": 7,
+        "name": "(Lava) Skin",
+        "iconname": "xuenv_7",
+        "skinname": "xuenv_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "xuenv_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "xuenv_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "xuenv_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "xuenv_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Sentar) Emoji",
+        "animparm": 200,
+        "iconname": "xuenv_200"
+      },
+      {
+        "id": 2,
+        "name": "(Jest) Emoji",
+        "animparm": 50,
+        "iconname": "xuenv_50"
+      },
+      {
+        "id": 3,
+        "name": "(Bocejar) Emoji",
+        "animparm": 51,
+        "iconname": "xuenv_51"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "xuenv_201"
+      },
+      {
+        "id": 5,
+        "name": "(Manda beijinho) Emoji",
+        "animparm": 52,
+        "iconname": "xuenv_52"
+      }
+    ]
+  },
+  "1023": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "zhurong_1",
+        "skinname": "zhurong_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Enthusiasm) Skin&lt;/size&gt;",
+        "iconname": "zhurong_2",
+        "skinname": "zhurong_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(烈炎娇娃) Skin",
+        "iconname": "zhurong_3",
+        "skinname": "zhurong_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "zhurong_4",
+        "skinname": "zhurong_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(欢度元宵) Skin",
+        "iconname": "zhurong_5",
+        "skinname": "zhurong_tps_cj"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "zhurong_6",
+        "skinname": "zhurong_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "zhurong_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "zhurong_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "zhurong_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "zhurong_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Sim, senhor) Emoji",
+        "animparm": 50,
+        "iconname": "zhurong_50"
+      },
+      {
+        "id": 2,
+        "name": "(Distante) Emoji",
+        "animparm": 51,
+        "iconname": "zhurong_51"
+      },
+      {
+        "id": 3,
+        "name": "(Descansar) Emoji",
+        "animparm": 200,
+        "iconname": "zhurong_200"
+      },
+      {
+        "id": 4,
+        "name": "(Na bala) Emoji",
+        "animparm": 201,
+        "iconname": "zhurong_201"
+      },
+      {
+        "id": 5,
+        "name": "(Rio 40 Graus) Emoji",
+        "animparm": 52,
+        "iconname": "zhurong_52"
+      }
+    ]
+  },
+  "1024": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "houyi_1",
+        "skinname": "houyi_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Ninja) Skin&lt;/size&gt;",
+        "iconname": "houyi_2",
+        "skinname": "houyi_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(光明游侠) Skin",
+        "iconname": "houyi_3",
+        "skinname": "houyi_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(宫廷乐师) Skin",
+        "iconname": "houyi_4",
+        "skinname": "houyi_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "houyi_5",
+        "skinname": "houyi_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "houyi_6",
+        "skinname": "houyi_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "houyi_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "houyi_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "houyi_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "houyi_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Sentar) Emoji",
+        "animparm": 200,
+        "iconname": "houyi_200"
+      },
+      {
+        "id": 2,
+        "name": "(Sneer) Emoji",
+        "animparm": 50,
+        "iconname": "houyi_50"
+      },
+      {
+        "id": 3,
+        "name": "(Fique atento) Emoji",
+        "animparm": 51,
+        "iconname": "houyi_51"
+      },
+      {
+        "id": 4,
+        "name": "(Aplaudir) Emoji",
+        "animparm": 52,
+        "iconname": "houyi_52"
+      },
+      {
+        "id": 5,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "houyi_201"
+      }
+    ]
+  },
+  "1025": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "linglong_1",
+        "skinname": "linglong_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Jade Gem) Skin&lt;/size&gt;",
+        "iconname": "linglong_2",
+        "skinname": "linglong_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(机械女警) Skin",
+        "iconname": "linglong_3",
+        "skinname": "zhumeng_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(机械师) Skin",
+        "iconname": "linglong_4",
+        "skinname": "zhumeng_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(小姐姐) Skin",
+        "iconname": "linglong_5",
+        "skinname": "linglong_tps_sz4"
+      },
+      {
+        "id": 6,
+        "name": "(Starry Sky) Skin",
+        "iconname": "linglong_6",
+        "skinname": "zhumeng_tps_xk"
+      },
+      {
+        "id": 7,
+        "name": "(Lava) Skin",
+        "iconname": "linglong_7",
+        "skinname": "zhumeng_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "linglong_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "linglong_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "linglong_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "linglong_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Standby) Emoji",
+        "animparm": 200,
+        "iconname": "linglong_200"
+      },
+      {
+        "id": 2,
+        "name": "(Sneer) Emoji",
+        "animparm": 50,
+        "iconname": "linglong_50"
+      },
+      {
+        "id": 3,
+        "name": "(Prepare pra briga) Emoji",
+        "animparm": 51,
+        "iconname": "linglong_51"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "linglong_201"
+      },
+      {
+        "id": 5,
+        "name": "(Saúde) Emoji",
+        "animparm": 52,
+        "iconname": "linglong_52"
+      }
+    ]
+  },
+  "1026": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "aidehua_1",
+        "skinname": "vampire_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Dragos Prince) Skin&lt;/size&gt;",
+        "iconname": "aidehua_2",
+        "skinname": "aidehua_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(暴君) Skin",
+        "iconname": "aidehua_3",
+        "skinname": "aidehua_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(血魔) Skin",
+        "iconname": "aidehua_4",
+        "skinname": "aidehua_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "aidehua_5",
+        "skinname": "aidehua_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(Lava) Skin",
+        "iconname": "aidehua_6",
+        "skinname": "aidehua_tps_hy"
+      },
+      {
+        "id": 7,
+        "name": "(踏青节) Skin",
+        "iconname": "aidehua_7",
+        "skinname": "aidehua_tps_sz4"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "aidehua_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "aidehua_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "aidehua_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "aidehua_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Do grego, estratégia) Emoji",
+        "animparm": 50,
+        "iconname": "aidehua_50"
+      },
+      {
+        "id": 2,
+        "name": "(Rir) Emoji",
+        "animparm": 51,
+        "iconname": "aidehua_51"
+      },
+      {
+        "id": 3,
+        "name": "(Sentar) Emoji",
+        "animparm": 200,
+        "iconname": "aidehua_200"
+      },
+      {
+        "id": 4,
+        "name": "(Gentileza) Emoji",
+        "animparm": 52,
+        "iconname": "aidehua_52"
+      },
+      {
+        "id": 5,
+        "name": "(Hora da caça) Emoji",
+        "animparm": 53,
+        "iconname": "aidehua_53"
+      }
+    ]
+  },
+  "1027": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "shawang_1",
+        "skinname": "shawang_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Quarterback) Skin&lt;/size&gt;",
+        "iconname": "shawang_2",
+        "skinname": "shawang_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(朋克) Skin",
+        "iconname": "shawang_3",
+        "skinname": "shawang_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(牛魔王) Skin",
+        "iconname": "shawang_4",
+        "skinname": "shawang_tps_sz3"
+      },
+      {
+        "id": 5,
+        "name": "(Starry Sky) Skin",
+        "iconname": "shawang_5",
+        "skinname": "shawang_tps_xk"
+      },
+      {
+        "id": 6,
+        "name": "(欢度新春) Skin",
+        "iconname": "shawang_6",
+        "skinname": "shawang_tps_cjsz"
+      },
+      {
+        "id": 7,
+        "name": "(Lava) Skin",
+        "iconname": "shawang_7",
+        "skinname": "shawang_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "yinglong_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "yinglong_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "yinglong_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "yinglong_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Salute) Emoji",
+        "animparm": 50,
+        "iconname": "shawang_50"
+      },
+      {
+        "id": 2,
+        "name": "(Hahaha…) Emoji",
+        "animparm": 51,
+        "iconname": "shawang_51"
+      },
+      {
+        "id": 3,
+        "name": "(Sempre alerta) Emoji",
+        "animparm": 200,
+        "iconname": "shawang_200"
+      },
+      {
+        "id": 4,
+        "name": "(Touro mecânico) Emoji",
+        "animparm": 201,
+        "iconname": "shawang_201"
+      },
+      {
+        "id": 5,
+        "name": "(Provocar) Emoji",
+        "animparm": 52,
+        "iconname": "shawang_52"
+      }
+    ]
+  },
+  "1028": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "luoji_1",
+        "skinname": "luoji_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Jungle Rumble) Skin&lt;/size&gt;",
+        "iconname": "luoji_2",
+        "skinname": "luoji_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(地狱厨师) Skin",
+        "iconname": "luoji_3",
+        "skinname": "luoji_tps_sz3"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "luoji_4",
+        "skinname": "luoji_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "luoji_5",
+        "skinname": "luoji_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "luoji_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "luoji_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "luoji_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "luoji_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Leisure) Emoji",
+        "animparm": 202,
+        "iconname": "luoji_202"
+      },
+      {
+        "id": 2,
+        "name": "(SneerProvoke) Emoji",
+        "animparm": 51,
+        "iconname": "luoji_51"
+      },
+      {
+        "id": 3,
+        "name": "(Deitar) Emoji",
+        "animparm": 200,
+        "iconname": "luoji_200"
+      },
+      {
+        "id": 4,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "luoji_201"
+      },
+      {
+        "id": 5,
+        "name": "(Bom trabalho) Emoji",
+        "animparm": 50,
+        "iconname": "luoji_50"
+      }
+    ]
+  },
+  "1029": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "luolita_1",
+        "skinname": "luolita_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Harley Quinn) Skin&lt;/size&gt;",
+        "iconname": "luolita_2",
+        "skinname": "luolita_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(小红帽) Skin",
+        "iconname": "luolita_3",
+        "skinname": "luolita_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "luolita_4",
+        "skinname": "luolita_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "luolita_5",
+        "skinname": "luolita_tps_hy"
+      },
+      {
+        "id": 6,
+        "name": "(愚人节) Skin",
+        "iconname": "luolita_6",
+        "skinname": "luolita_tps_sz3"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "luolita_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "luolita_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "luolita_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "luolita_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Tímido) Emoji",
+        "animparm": 50,
+        "iconname": "luolita_50"
+      },
+      {
+        "id": 2,
+        "name": "(Sentar) Emoji",
+        "animparm": 200,
+        "iconname": "luolita_200"
+      },
+      {
+        "id": 3,
+        "name": "(Sneer) Emoji",
+        "animparm": 52,
+        "iconname": "luolita_52"
+      },
+      {
+        "id": 4,
+        "name": "(Saúde) Emoji",
+        "animparm": 51,
+        "iconname": "luolita_51"
+      },
+      {
+        "id": 5,
+        "name": "(Dance) Emoji",
+        "animparm": 201,
+        "iconname": "luolita_201"
+      }
+    ]
+  },
+  "1030": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "jingke_1",
+        "skinname": "jingke_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Eros) Skin&lt;/size&gt;",
+        "iconname": "jingke_2",
+        "skinname": "jingke_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "jingke_3",
+        "skinname": "jingke_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "jingke_4",
+        "skinname": "jingke_tps_hy"
+      },
+      {
+        "id": 5,
+        "name": "(踏青节) Skin",
+        "iconname": "jingke_5",
+        "skinname": "jingke_tps_sz2"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "jingke_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "jingke_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "jingke_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "jingke_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Ginasta) Emoji",
+        "animparm": 50,
+        "iconname": "jingke_50"
+      },
+      {
+        "id": 2,
+        "name": "(Sentar) Emoji",
+        "animparm": 200,
+        "iconname": "jingke_200"
+      },
+      {
+        "id": 3,
+        "name": "(Um tiro, uma kill) Emoji",
+        "animparm": 51,
+        "iconname": "jingke_52"
+      },
+      {
+        "id": 4,
+        "name": "(Fique atento) Emoji",
+        "animparm": 52,
+        "iconname": "jingke_51"
+      },
+      {
+        "id": 5,
+        "name": "(Passa geral) Emoji",
+        "animparm": 53,
+        "iconname": "jingke_201"
+      }
+    ]
+  },
+  "1031": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "lanbo_1",
+        "skinname": "lanbo_tps"
+      },
+      {
+        "id": 2,
+        "name": "<size=22>(Pop Star) Skin&lt;/size&gt;",
+        "iconname": "lanbo_2",
+        "skinname": "lanbo_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "lanbo_3",
+        "skinname": "lanbo_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "lanbo_4",
+        "skinname": "lanbo_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) arma",
+        "iconname": "lanbo_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "lanbo_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "lanbo_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "lanbo_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(Pronto) Emoji",
+        "animparm": 50,
+        "iconname": "lanbo_50"
+      },
+      {
+        "id": 2,
+        "name": "(True quality of soldiers) Emoji",
+        "animparm": 200,
+        "iconname": "lanbo_200"
+      },
+      {
+        "id": 3,
+        "name": "(Tema da vitória) Emoji",
+        "animparm": 51,
+        "iconname": "lanbo_51"
+      },
+      {
+        "id": 4,
+        "name": "(Cabeça gira) Emoji",
+        "animparm": 52,
+        "iconname": "lanbo_52"
+      }
+    ]
+  },
+  "1032": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "daji_1",
+        "skinname": "daji_tps"
+      },
+      {
+        "id": 2,
+        "name": "(印第安少女) Skin",
+        "iconname": "daji_2",
+        "skinname": "daji_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "daji_3",
+        "skinname": "daji_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "daji_4",
+        "skinname": "daji_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "daji_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "daji_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "daji_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "daji_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(懒起画蛾眉)表情",
+        "animparm": 50,
+        "iconname": "daji_50"
+      },
+      {
+        "id": 2,
+        "name": "(起舞弄清影) Emoji",
+        "animparm": 200,
+        "iconname": "daji_200"
+      },
+      {
+        "id": 3,
+        "name": "(一笑百媚生) Emoji",
+        "animparm": 51,
+        "iconname": "daji_51"
+      },
+      {
+        "id": 4,
+        "name": "(三千宠爱集一身) Emoji",
+        "animparm": 53,
+        "iconname": "daji_53"
+      },
+      {
+        "id": 5,
+        "name": "(狐白裘裳独自伶) Emoji",
+        "animparm": 52,
+        "iconname": "daji_52"
+      }
+    ]
+  },
+  "1033": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "lilisi_1",
+        "skinname": "lilisi_tps"
+      },
+      {
+        "id": 2,
+        "name": "(刺客信仰) Skin",
+        "iconname": "lilisi_2",
+        "skinname": "lilisi_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "lilisi_3",
+        "skinname": "lilisi_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "lilisi_4",
+        "skinname": "lilisi_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "lilisi_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "lilisi_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "lilisi_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "lilisi_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(天气真好)表情",
+        "animparm": 50,
+        "iconname": "lilisi_50"
+      },
+      {
+        "id": 2,
+        "name": "(摩登女郎) Emoji",
+        "animparm": 200,
+        "iconname": "lilisi_200"
+      },
+      {
+        "id": 3,
+        "name": "(弱者的气息) Emoji",
+        "animparm": 51,
+        "iconname": "lilisi_51"
+      },
+      {
+        "id": 4,
+        "name": "(魔术师之礼) Emoji",
+        "animparm": 52,
+        "iconname": "lilisi_52"
+      },
+      {
+        "id": 5,
+        "name": "(见证奇迹) Emoji",
+        "animparm": 53,
+        "iconname": "lilisi_53"
+      }
+    ]
+  },
+  "1034": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "huangzhong_1",
+        "skinname": "hz_tps"
+      },
+      {
+        "id": 2,
+        "name": "(黑手党) Skin",
+        "iconname": "huangzhong_2",
+        "skinname": "huangzhong_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(圣诞老人) Skin",
+        "iconname": "huangzhong_3",
+        "skinname": "huangzhong_tps_sz2"
+      },
+      {
+        "id": 4,
+        "name": "(Starry Sky) Skin",
+        "iconname": "huangzhong_4",
+        "skinname": "huangzhong_tps_xk"
+      },
+      {
+        "id": 5,
+        "name": "(Lava) Skin",
+        "iconname": "huangzhong_5",
+        "skinname": "huangzhong_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "huangzhong_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "huangzhong_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "huangzhong_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "huangzhong_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(老当益壮)表情",
+        "animparm": 50,
+        "iconname": "huangzhong_50"
+      },
+      {
+        "id": 2,
+        "name": "(悠闲时刻) Emoji",
+        "animparm": 51,
+        "iconname": "huangzhong_51"
+      },
+      {
+        "id": 3,
+        "name": "(我的宝贝) Emoji",
+        "animparm": 52,
+        "iconname": "huangzhong_52"
+      },
+      {
+        "id": 4,
+        "name": "(坐下) Emoji",
+        "animparm": 200,
+        "iconname": "huangzhong_200"
+      },
+      {
+        "id": 5,
+        "name": "(跳舞) Emoji",
+        "animparm": 201,
+        "iconname": "huangzhong_201"
+      }
+    ]
+  },
+  "1035": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "nezha_1",
+        "skinname": "nezha_tps"
+      },
+      {
+        "id": 2,
+        "name": "(三太子) Skin",
+        "iconname": "nezha_2",
+        "skinname": "nezha_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "nezha_3",
+        "skinname": "nezha_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "nezha_4",
+        "skinname": "nezha_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "nezha_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "nezha_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "nezha_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "nezha_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(万向乾坤)表情",
+        "animparm": 51,
+        "iconname": "nezha_51"
+      },
+      {
+        "id": 2,
+        "name": "(你们太弱了) Emoji",
+        "animparm": 200,
+        "iconname": "nezha_200"
+      },
+      {
+        "id": 3,
+        "name": "(八面玲珑) Emoji",
+        "animparm": 50,
+        "iconname": "nezha_50"
+      },
+      {
+        "id": 4,
+        "name": "(无所畏惧) Emoji",
+        "animparm": 52,
+        "iconname": "nezha_52"
+      }
+    ]
+  },
+  "1036": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "Medusa_1",
+        "skinname": "meidusha_tps"
+      },
+      {
+        "id": 2,
+        "name": "(女忍) Skin",
+        "iconname": "Medusa_2",
+        "skinname": "meidusha_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "Medusa_3",
+        "skinname": "meidusha_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "Medusa_4",
+        "skinname": "meidusha_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "meidusha_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "meidusha_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "meidusha_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "meidusha_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(蛇女的诱惑)表情",
+        "animparm": 50,
+        "iconname": "Medusa_50"
+      },
+      {
+        "id": 2,
+        "name": "(感冒了) Emoji",
+        "animparm": 51,
+        "iconname": "Medusa_51"
+      },
+      {
+        "id": 3,
+        "name": "(魔蛇之舞) Emoji",
+        "animparm": 200,
+        "iconname": "Medusa_200"
+      },
+      {
+        "id": 4,
+        "name": "(无所畏惧) Emoji",
+        "animparm": 53,
+        "iconname": "Medusa_53"
+      },
+      {
+        "id": 5,
+        "name": "(有点晒啊) Emoji",
+        "animparm": 54,
+        "iconname": "Medusa_54"
+      }
+    ]
+  },
+  "1037": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(经典)皮肤",
+        "iconname": "dawei_1",
+        "skinname": "dawei_tps"
+      },
+      {
+        "id": 2,
+        "name": "(Optimus Prime) Skin",
+        "iconname": "dawei_2",
+        "skinname": "dawei_tps_sz1"
+      },
+      {
+        "id": 3,
+        "name": "(Starry Sky) Skin",
+        "iconname": "dawei_3",
+        "skinname": "dawei_tps_xk"
+      },
+      {
+        "id": 4,
+        "name": "(Lava) Skin",
+        "iconname": "dawei_4",
+        "skinname": "dawei_tps_hy"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(经典)武器",
+        "iconname": "dawei_1"
+      },
+      {
+        "id": 2,
+        "name": "(Golden) arma",
+        "iconname": "dawei_2"
+      },
+      {
+        "id": 3,
+        "name": "(Crystal) arma",
+        "iconname": "dawei_3"
+      },
+      {
+        "id": 4,
+        "name": "(Amethyst) arma",
+        "iconname": "dawei_4"
+      }
+    ],
+    "emotions": [
+      {
+        "id": 1,
+        "name": "(烦人的苍蝇)表情",
+        "animparm": 51,
+        "iconname": "dawei_51"
+      },
+      {
+        "id": 2,
+        "name": "(Popping Dance) Emoji",
+        "animparm": 200,
+        "iconname": "dawei_200"
+      },
+      {
+        "id": 3,
+        "name": "(Who Hit Me) Emoji",
+        "animparm": 50,
+        "iconname": "dawei_50"
+      }
+    ]
+  },
+  "2000": {
+    "skins": [
+      {
+        "id": 1,
+        "name": "(Classic) Skin",
+        "iconname": "male_1",
+        "skinname": "male_tps"
+      }
+    ],
+    "weapons": [
+      {
+        "id": 1,
+        "name": "(Classic) Weapon",
+        "iconname": "luoshen1"
+      }
+    ],
+    "emotions": [
+    ]
+  }
+}

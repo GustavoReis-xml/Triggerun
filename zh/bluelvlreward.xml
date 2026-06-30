@@ -1,0 +1,8 @@
+<root sortname="id">
+	<i id="0" desc="Lv.1-Lv.5" lowlvl="1" highlvl="5" rewards="8848,1#9058,1#9012,3"/>
+	<i id="1" desc="Lv.6-Lv.10" lowlvl="6" highlvl="10" rewards="8848,2#9057,1#9012,5"/>
+	<i id="2" desc="Lv.11-Lv.15" lowlvl="11" highlvl="15" rewards="8848,5#9057,2#9012,5#8983,1"/>
+	<i id="3" desc="Lv.16-Lv.20" lowlvl="16" highlvl="20" rewards="8848,8#9057,3#9012,10#8983,3"/>
+	<i id="4" desc="Lv.21-Lv.25" lowlvl="21" highlvl="25" rewards="8848,10#9057,4#9012,15#8983,5"/>
+	<i id="5" desc="Lv.26¼°ÒÔÉÏ" lowlvl="26" highlvl="100" rewards="8848,20#9057,5#9012,20#8983,5"/>
+</root>

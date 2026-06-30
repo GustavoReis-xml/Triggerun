@@ -1,0 +1,11 @@
+<root>
+	<d day="1" name="福利一" rewarditem="1026,1000" neednum="10"/>
+	<d day="2" name="福利二" rewarditem="2020,4" neednum="25"/>
+	<d day="3" name="福利三" rewarditem="6021,3" neednum="50"/>
+	<d day="4" name="福利四" rewarditem="1031,4" neednum="75"/>
+	<d day="5" name="福利五" rewarditem="1029,1" neednum="100"/>
+	<w id="1" rewarditem="5300,1" needlvl="0" needtotal="5000"/>
+	<w id="2" rewarditem="5301,1" needlvl="0" needtotal="15000"/>
+	<w id="3" rewarditem="5302,1" needlvl="0" needtotal="25000"/>
+	<w id="4" rewarditem="5303,1" needlvl="0" needtotal="50000"/>
+</root>

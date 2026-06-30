@@ -1,0 +1,29 @@
+<root>
+	<i id="101" bgimg="libao_heroreturn_ditu" name="解锁英雄返符文" btntxt="前往解锁" actdesc="&lt;color=#ffcb00&gt;解锁价格&lt;/color&gt;|&lt;color=#ffcb00&gt;返还道具&lt;/color&gt;|388|初级符文箱×6|688|初级符文箱×12|988|高级符文箱×1" notedesc="活动期间，玩家消耗钻石解锁英雄后，系统会返还若干该英雄的符文箱\n使用金币解锁不能享受返还奖励\n活动开始前已解锁的英雄，不能享受返还奖励">
+	<h heroid="1003" type="0" index="0" returnitem="2104,12"/>
+	<h heroid="1006" type="0" index="0" returnitem="2103,6"/>
+	<h heroid="1017" type="0" index="0" returnitem="2101,12"/>
+	<h heroid="1021" type="0" index="0" returnitem="2107,6"/>
+	<h heroid="1023" type="0" index="0" returnitem="2108,6"/>
+	<h heroid="1016" type="0" index="0" returnitem="2112,6"/>
+	<h heroid="1005" type="0" index="0" returnitem="2106,12"/>
+	<h heroid="1022" type="0" index="0" returnitem="2113,6"/>
+	<h heroid="1026" type="0" index="0" returnitem="2109,12"/>
+	<h heroid="1027" type="0" index="0" returnitem="2310,1"/>
+	<h heroid="1028" type="0" index="0" returnitem="2314,1"/>
+	<h heroid="1029" type="0" index="0" returnitem="2115,6"/>
+	<h heroid="1030" type="0" index="0" returnitem="2316,1"/>
+	<h heroid="1032" type="0" index="0" returnitem="2118,12"/>
+	<h heroid="1033" type="0" index="0" returnitem="2119,12"/>
+	<h heroid="1034" type="0" index="0" returnitem="2320,1"/>
+	<h heroid="1035" type="0" index="0" returnitem="2121,12"/>
+	<h heroid="1036" type="0" index="0" returnitem="2122,12"/>
+	<h heroid="1037" type="0" index="0" returnitem="2123,12"/>
+	</i>
+</root>
+<!--
+	heroid：英雄id（对应herounlock.xml）
+	type：类型（0-英雄1-皮肤2-武器3-表情4-姿势）
+	index：序号（对应herounlock.xml）
+	returnitem：返还物品
+-->

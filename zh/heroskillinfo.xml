@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i heroid="1003" star="2">
+		<s id="1" name="狙击步枪" icon="dianna" col="1" type="" key="Key_Use_Weapon_1" desc="可以在远距离对敌人造成致命伤害的狙击步枪" pos="-329,197,0"/>
+		<s id="2" name="瞄准镜" icon="dianna" col="2" type="" key="Key_Use_Weapon_2" desc="长按可以开启镜瞄准" pos="329,197,0"/>
+		<s id="3" name="传送" icon="DiannaCS" col="2" type="" key="Key_Skill_2" desc="可传送到指定的位置" pos="-329,-187,0"/>
+		<s id="4" name="光学迷彩" icon="DiannaYS" col="2" type="" key="Key_Skill_1" desc="隐身以脱离敌人的视野" pos="329,-187,0"/>
+		<s id="5" name="红外侦测" icon="DiannaHWZC" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="追踪所有敌方目标" pos="0,382,0"/>
+	</i>
+	<i heroid="1005" star="3">
+		<s id="1" name="火箭发射器" icon="leizhenzi" col="1" type="" key="Key_Use_Weapon_1" desc="发射小型飞弹的远距离爆破武器" pos="-329,197,0"/>
+		<s id="2" name="雷爆弹" icon="LeizhenziZDCJ" col="2" type="" key="Key_Skill_2" desc="可以制造一片雷暴区域" pos="-329,-187,0"/>
+		<s id="3" name="推进器" icon="LeizhenziTJBB" col="2" type="" key="Key_Skill_1" desc="启动推进器瞬间升至高空" pos="329,-187,0"/>
+		<s id="4" name="悬浮飞行" icon="LeizhenziFX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="长按可以悬浮在空中" pos="0,-220,0"/>
+		<s id="5" name="毒蛇飞弹" icon="LeizhenziHJDM" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="雷震子锁定视野内所有的敌人并向他们发射一枚飞弹。" pos="0,382,0"/>
+	</i>
+	<i heroid="1006" star="1">
+		<s id="1" name="正义之拳" icon="xingtian" col="1" type="" key="Key_Use_Weapon_1" desc="破坏力巨大的机械手臂" pos="-329,197,0"/>
+		<s id="2" name="焰拳" icon="XingtianLYDJ" col="2" type="" key="Key_Skill_2" desc="射出一枚炽热的能量球" pos="-329,-187,0"/>
+		<s id="3" name="护盾" icon="XingtianNLD" col="2" type="" key="Key_Use_Weapon_2" desc="展开一道可以掩护队友的能量屏障" pos="329,197,0"/>
+		<s id="4" name="裂地打击" icon="XingtianLDMJ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="重击地面，击晕周围的所有敌人" pos="0,382,0"/>
+	</i>
+	<i heroid="1015" star="1">
+		<s id="1" name="突击步枪" icon="zhongjiezhe1" col="1" type="" key="Key_Use_Weapon_1" desc="全自动突击武器" pos="-329,197,0"/>
+		<s id="2" name="高爆手雷" icon="ZhongjiezheSL" col="2" type="" key="Key_Use_Weapon_2" desc="扔出一枚高爆手雷" pos="329,197,0"/>
+		<s id="3" name="生物制剂" icon="ZhongjiezheZL" col="2" type="" key="Key_Skill_2" desc="为自己注射生物制剂治疗自己" pos="-329,-187,0"/>
+		<s id="4" name="冲刺" icon="ZhongjiezheCC" col="2" type="" key="Key_Skill_1" desc="快速向前移动" pos="329,-187,0"/>
+		<s id="5" name="毁灭者" icon="ZhongjiezheZJSK" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="使用加特林机枪对敌人造成大量伤害" pos="0,382,0"/>
+	</i>
+	<i heroid="1016" star="3">
+		<s id="1" name="恐惧之刃" icon="waerjili" col="1" type="" key="Key_Use_Weapon_1" desc="毁灭性的近战武器" pos="-329,197,0"/>
+		<s id="2" name="跳斩" icon="WaerjiliTZ" col="2" type="" key="Key_Skill_2" desc="向前跃向空中,着陆后对附近的敌人造成伤害,并且使自己的移动速度提高" pos="-329,-187,0"/>
+		<s id="3" name="能量盾" icon="WaerjiliNLD" col="2" type="" key="Key_Skill_1" desc="在周围生成屏障,最多吸收2000点伤害,屏障持续2.5秒" pos="329,-187,0"/>
+		<s id="4" name="旋风斩" icon="WaerjiliXFZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="对附近所有敌人造成伤害" pos="0,382,0"/>
+	</i>
+	<i heroid="1017" star="2">
+		<s id="1" name="脉冲手枪" icon="mulan" col="1" type="" key="Key_Use_Weapon_1" desc="准确致命的手枪" pos="-329,197,0"/>
+		<s id="2" name="双枪速射" icon="MulanSQSS" col="2" type="" key="Key_Use_Weapon_2" desc="使用两把手枪对正前方进行乱射" pos="329,197,0"/>
+		<s id="3" name="闪现" icon="HermesSX" col="2" type="" key="Key_Skill_2" desc="瞬间向移动方向闪现" pos="-329,-187,0"/>
+		<s id="4" name="死亡裁决" icon="MulanSWZF" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="对附近所有敌人造成伤害" pos="0,382,0"/>
+	</i>
+	<i heroid="1021" star="2">
+		<s id="1" name="塔罗牌" icon="taliya" col="1" type="" key="Key_Use_Weapon_1" desc="可向前方射出数张卡牌" pos="-329,197,0"/>
+		<s id="2" name="切牌 愈" icon="TaliyaZLSJ" col="2" type="" key="Key_Use_Weapon_2" desc="持续恢复目标的生命值" pos="329,197,0"/>
+		<s id="3" name="切牌 殇" icon="MulanXJDB" col="2" type="" key="Key_Skill_2" desc="使目标受到的伤害增加并对目标进行追踪" pos="-329,-187,0"/>
+		<s id="4" name="本能" icon="taliyaJS" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="受到伤害后,移动速度提高" pos="0,-220,0"/>
+		<s id="5" name="命运" icon="TaliyaSJZZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="变为无敌状态并治疗附近的队友" pos="0,382,0"/>
+	</i>
+	<i heroid="1022" star="2">
+		<s id="1" name="雪崩·寒晶" icon="xuenv" col="1" type="" key="Key_Use_Weapon_1" desc="向准心发射一枚大威力子弹，适合攻击远处的敌人" pos="-329,197,0"/>
+		<s id="2" name="雪崩·冰魄" icon="xuenv" col="2" type="" key="Key_Use_Weapon_2" desc="向前方范围发射数枚冰锥子弹，适合攻击近处的敌人" pos="329,197,0"/>
+		<s id="3" name="冰雪精灵" icon="XuenvBXJL" col="2" type="" key="Key_Skill_2" desc="以自身为中心制造一个冰雪结界，让敌人受伤并减速" pos="-329,-187,0"/>
+		<s id="4" name="冰冻陷阱" icon="XuenvBDXJ" col="2" type="" key="Key_Skill_1" desc="放置一个可暂时冰冻敌人的陷阱" pos="329,-187,0"/>
+		<s id="5" name="雪球" icon="XuenvDXQ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="操控并引爆一个会爆炸的雪球" pos="0,382,0"/>
+	</i>
+	<i heroid="1023" star="2">
+		<s id="1" name="火焰喷射器" icon="zhurong" col="1" type="" key="Key_Use_Weapon_1" desc="近距离范围火焰喷射武器" pos="-329,197,0"/>
+		<s id="2" name="火球" icon="zhurong" col="2" type="" key="Key_Use_Weapon_2" desc="射出一团火球攻击远处的敌人" pos="329,197,0"/>
+		<s id="3" name="烈焰哨兵" icon="ZhurongHYJL" col="2" type="" key="Key_Skill_2" desc="部署一个烈焰哨兵攻击范围内的敌人" pos="-329,-187,0"/>
+		<s id="4" name="浴火重生" icon="ZhurongYHCS" col="2" type="" key="Key_Skill_1" desc="暂时进入无敌状态并恢复生命值" pos="329,-187,0"/>
+		<s id="5" name="点燃" icon="ZhurongDR" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="所有火焰攻击均有可能触发点燃效果" pos="0,-220,0"/>
+		<s id="6" name="地狱熔炉" icon="ZhurongHHRC" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="发射一个地狱熔炉,它可以伤害大范围内的敌人" pos="0,382,0"/>
+	</i>
+	<i heroid="1024" star="3">
+		<s id="1" name="复合弓" icon="houyi" col="1" type="" key="Key_Use_Weapon_1" desc="长按鼠标左键然后放开伤害更高" pos="-329,197,0"/>
+		<s id="2" name="震荡射击" icon="HouyiJTJ" col="2" type="" key="Key_Skill_2" desc="射出附带震荡炸弹的箭头击退敌人" pos="-329,-187,0"/>
+		<s id="3" name="爆炸射击" icon="HouyiBLJ" col="2" type="" key="Key_Skill_1" desc="射出附带粘性炸弹的箭头对目标区域进行爆破" pos="329,-187,0"/>
+		<s id="4" name="爬墙" icon="HouyiPQ" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="跃上并沿着墙壁攀爬" pos="0,-220,0"/>
+		<s id="5" name="凤翼天翔" icon="HouyiFYTX" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="召唤致命的凤凰吞噬遇到的所有敌人" pos="0,382,0"/>
+	</i>
+	<i heroid="1025" star="1">
+		<s id="1" name="速射手枪" icon="linglong" col="1" type="" key="Key_Use_Weapon_1" desc="射速很高的手枪" pos="-329,197,0"/>
+		<s id="2" name="牢笼" icon="LingLongLL" col="2" type="" key="Key_Skill_2" desc="牢笼可暂时限制敌人自由,并降低其攻击" pos="-329,-187,0"/>
+		<s id="3" name="自动火炮" icon="LingLongBZPT" col="2" type="" key="Key_Skill_1" desc="部署一个自动火炮攻击敌人" pos="329,-187,0"/>
+		<s id="4" name="传送矩阵" icon="LingLongCSMB" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="部署一个传送矩阵连接至出生点" pos="0,382,0"/>
+	</i>
+	<i heroid="1026" star="3">
+		<s id="1" name="凋零者" icon="aidehua" col="1" type="" key="Key_Use_Weapon_1" desc="近距离光束武器，持续消耗敌人的生命值" pos="-329,197,0"/>
+		<s id="2" name="自爆蝙蝠" icon="aidehuaBFZD" col="2" type="" key="Key_Skill_2" desc="放出三只自爆蝙蝠攻击敌人" pos="-329,-187,0"/>
+		<s id="3" name="化身" icon="aidehuaHS" col="2" type="" key="Key_Skill_1" desc="化身为一只行动迅捷的蝙蝠" pos="329,-187,0"/>
+		<s id="4" name="血性狂暴" icon="aidehuaBS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="进入嗜血状态，使用双爪消灭敌人并将一部分伤害转化为自己的生命值。" pos="0,382,0"/>
+	</i>
+	<i heroid="1027" star="3">
+		<s id="1" name="脉冲散弹枪" icon="shawang" col="1" type="" key="Key_Use_Weapon_1" desc="近距离散射武器" pos="-329,197,0"/>
+		<s id="2" name="嗜血" icon="shawangSX" col="2" type="" key="Key_Skill_2" desc="应龙获得减伤效果，并且短时间内造成的伤害会转换为自己的生命值" pos="-329,-187,0"/>
+		<s id="3" name="冲锋" icon="shawangTJ" col="2" type="" key="Key_Skill_1" desc="向前冲锋并且撞晕一名敌人，获得消灭可以减少技能冷却时间。" pos="329,-187,0"/>
+		<s id="4" name="行星之引" icon="shawangSB" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="丢出一个裂缝生成器困住周围的所有敌人" pos="0,382,0"/>
+	</i>
+	<i heroid="1028" star="2">
+		<s id="1" name="榴弹炮" icon="luoji" col="1" type="" key="Key_Use_Weapon_1" desc="远距离抛物线武器，范围伤害" pos="-329,197,0"/>
+		<s id="2" name="聚能炮" icon="luojiJNP" col="2" type="" key="Key_Skill_2" desc="短时间无敌，并将无敌期间受到的伤害发射出去" pos="-329,-187,0"/>
+		<s id="3" name="遥控炸弹" icon="luojiYKZD" col="2" type="" key="Key_Skill_1" desc="布置一颗炸弹，然后点击鼠标右键手动爆炸" pos="329,-187,0"/>
+		<s id="4" name="狂轰乱炸" icon="luojiKHLZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="丢出一个威力巨大的炸药桶" pos="0,382,0"/>
+	</i>
+	<i heroid="1029" star="1">
+		<s id="1" name="伊夫利特的咆哮" icon="luolita" col="1" type="" key="Key_Use_Weapon_1" desc="用火精灵的力量攻击敌人" pos="-329,197,0"/>
+		<s id="2" name="希尔芙之风" icon="luolitaJS" col="2" type="" key="Key_Skill_2" desc="召唤风精灵的力量，让范围内的己方获得加速效果" pos="-329,-187,0"/>
+		<s id="3" name="温蒂妮之力" icon="luolitaSL" col="2" type="" key="Key_Skill_1" desc="投掷水精灵的力量引起爆炸，范围的己方会恢复生命，敌方会损失生命" pos="329,-187,0"/>
+		<s id="4" name="温蒂妮的祝福" icon="luolitaSL" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="范围内的己方会缓缓恢复生命" pos="0,-220,0"/>
+		<s id="5" name="葛罗姆之光" icon="luolitaFH" col="3" type="&lt;color=#ff8a00&gt;&lt;size=24&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="召唤地精灵的力量，令范围内的阵亡队友重生" pos="0,382,0"/>
+	</i>
+	<i heroid="1030" star="3">
+		<s id="1" name="微型冲锋枪" icon="jingke" col="1" type="" key="Key_Use_Weapon_1" desc="近距离速射武器" pos="-329,197,0"/>
+		<s id="2" name="战意" icon="JingkeHX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="敌人死亡会掉落恢复生命的血球" pos="329,197,0"/>
+		<s id="3" name="刺秦" icon="JingkeCQ" col="2" type="" key="Key_Skill_2" desc="发射一枚飞镖，对命中的敌人造成眩晕效果" pos="-329,-187,0"/>
+		<s id="4" name="弑君" icon="JingkeSJ" col="2" type="" key="Key_Skill_1" desc="向前突进的同时，对沿路上的敌人造成伤害" pos="329,-187,0"/>
+		<s id="5" name="爬墙" icon="HouyiPQ" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="跃上并沿着墙壁攀爬" pos="0,-220,0"/>
+		<s id="6" name="易水" icon="JingkeYS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="一段时间内攻击力、移动速度、伤害减免提升，并且重置技能的冷却时间" pos="0,382,0"/>
+	</i>
+	<i heroid="1031" star="2">
+		<s id="1" name="自动步枪" icon="lanbo" col="1" type="" key="Key_Use_Weapon_1" desc="全自动突击武器" pos="-329,197,0"/>
+		<s id="2" name="瞄准镜" icon="lanboYJJM" col="2" type="" key="Key_Use_Weapon_2" desc="可以开启镜瞄准" pos="329,197,0"/>
+		<s id="3" name="防卫陷阱" icon="lanboKJDL" col="2" type="" key="Key_Skill_2" desc="布置一个防卫陷阱，会对范围内的敌人持续射击" pos="-329,-187,0"/>
+		<s id="4" name="侦测弹" icon="lanboTSZD" col="2" type="" key="Key_Skill_1" desc="射出一颗侦测弹，可以侦测一定范围内的敌方行动" pos="329,-187,0"/>
+		<s id="5" name="自动瞄准" icon="lanboZDMZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="子弹会自动追踪敌人，同时换弹速度变快" pos="0,382,0"/>
+	</i>
+	<i heroid="1032" star="1">
+		<s id="1" name="九尾狐" icon="daji" col="1" type="" key="Key_Use_Weapon_1" desc="高射速能量弹发射" pos="-329,197,0"/>
+		<s id="2" name="治疗领域" icon="dajiZLLY" col="2" type="" key="Key_Skill_2" desc="布置一个结界，可以恢复友方的生命值" pos="-329,-187,0"/>
+		<s id="3" name="远古守护" icon="dajiYGSH" col="2" type="" key="Key_Skill_1" desc="召唤一个护盾，可以抵挡敌方发射的子弹" pos="329,-187,0"/>
+		<s id="4" name="千狐魅影" icon="dajiQHMY" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="范围内友方获得狐妖的祝福，一段时间内可以抵御高伤害" pos="0,382,0"/>
+	</i>
+	<i heroid="1033" star="2">
+		<s id="1" name="魔法链锯" icon="lilisi" col="1" type="" key="Key_Use_Weapon_1" desc="发射链锯撕裂眼前的敌人" pos="-329,197,0"/>
+		<s id="2" name="奥法冲击" icon="lilisiQS" col="2" type="" key="Key_Use_Weapon_2" desc="震退眼前的敌人" pos="329,197,0"/>
+		<s id="3" name="奥法屏障" icon="lilisiMFPZ" col="2" type="" key="Key_Skill_1" desc="召唤一面向前飞行的魔法盾牌，抵御敌方子弹的同时还能对接触到的敌人造成伤害" pos="-329,-187,0"/>
+		<s id="4" name="魔法药剂" icon="lilisiMNZL" col="2" type="" key="Key_Skill_2" desc="制造恢复药剂，为队友提供治疗" pos="329,-187,0"/>
+		<s id="5" name="灵魂枷锁" icon="lilisiTKNW" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="让范围内的敌人不能使用技能，并且持续流失生命" pos="0,382,0"/>
+	</i>
+	<i heroid="1034" star="2">
+		<s id="1" name="加特林机枪" icon="huangzhong" col="1" type="" key="Key_Use_Weapon_1" desc="射速快威力高的武器" pos="-329,197,0"/>
+		<s id="2" name="奉献" icon="huangzhongfx" col="2" type="" key="Key_Skill_2" desc="消耗一部分自己的生命值，来治疗队友" pos="-329,-187,0"/>
+		<s id="3" name="庇护" icon="huangzhongbh" col="2" type="" key="Key_Skill_1" desc="一段时间内，为队友承担伤害" pos="329,-187,0"/>
+		<s id="4" name="血怒" icon="huangzhangxn" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;被动&lt;/size&gt;&lt;/color&gt;" key="" desc="受到伤害可以累计血怒能量，来提升攻击力" pos="0,-220,0"/>
+		<s id="5" name="铁血" icon="huangzhongtx" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="一段时间内不死，血怒能量也不会降低" pos="0,382,0"/>
+	</i>
+	<i heroid="1035" star="3">
+		<s id="1" name="火尖枪" icon="nezha" col="1" type="" key="Key_Use_Weapon_1" desc="用于突刺和范围攻击的长枪" pos="-329,197,0"/>
+		<s id="2" name="乾坤圈" icon="nezhaQKQ" col="2" type="" key="Key_Use_Weapon_2" desc="投掷乾坤圈来攻击远处的敌人" pos="329,197,0"/>
+		<s id="3" name="暴雨梨花" icon="nezhaHMRY" col="2" type="" key="Key_Skill_2" desc="瞬间对正前方的敌人造成大量伤害" pos="-329,-187,0"/>
+		<s id="4" name="金枪突刺" icon="nezhaQCRL" col="2" type="" key="Key_Skill_1" desc="先跳跃到半空中，按下鼠标左键会向着前方穿刺过去，对命中的敌人造成眩晕效果" pos="329,-187,0"/>
+		<s id="5" name="浩然正气" icon="nezhaHRZQ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="短时间内获取三头六臂效果，提升攻击力、移动速度和伤害减免" pos="0,382,0"/>
+	</i>
+	<i heroid="1036" star="2">
+		<s id="1" name="响尾蛇" icon="meidusha" col="1" type="" key="Key_Use_Weapon_1" desc="发射有射程限制的火箭弹" pos="-329,197,0"/>
+		<s id="2" name="死亡凝视" icon="meidushaSWNS" col="2" type="" key="Key_Skill_2" desc="发射一个有距离限制的子弹，造成一个时间减速的空间" pos="-329,-187,0"/>
+		<s id="3" name="钩锁" icon="meidushaGS" col="2" type="" key="Key_Skill_1" desc="发射一个钩锁，命中物体后将自己拉过去，如果命中敌人会给予眩晕效果" pos="329,-187,0"/>
+		<s id="4" name="蛇发女妖" icon="meidushaSFNY" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="自己化为一团毒雾，获得减伤加速的同时，令附近敌人受伤，敌人在毒雾范围内呆的时间越久获得伤害越大" pos="0,382,0"/>
+	</i>
+	<i heroid="1037" star="2">
+		<s id="1" name="电磁加农炮" icon="dawei" col="1" type="" key="Key_Use_Weapon_1" desc="发射范围爆炸的加农炮" pos="-329,197,0"/>
+		<s id="2" name="导弹突袭" icon="daweiDDTX" col="2" type="" key="Key_Skill_2" desc="先瞄准一个区域，然后执行导弹轰炸" pos="-329,-187,0"/>
+		<s id="3" name="防御矩阵" icon="daweiFYJZ" col="2" type="" key="Key_Skill_1" desc="阻拦正前方发射的子弹" pos="329,-187,0"/>
+		<s id="4" name="群体传送" icon="daweiQTCS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;终极技能&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="创造一个传送门，然后队友可以选择立即传送过来" pos="0,382,0"/>
+	</i>
+	<i heroid="2000" star="1">
+		<s id="1" name="拳击" icon="luomo" col="1" type="" key="Key_Use_Weapon_1" desc="力量很弱小的攻击" pos="-329,197,0"/>
+	</i>
+</root>

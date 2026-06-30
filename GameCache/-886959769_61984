@@ -1,0 +1,5 @@
+<root>
+	<i id="1001" num="1" name="[第一章]"  open="0"  nextchapterId ="1002"  taskdata="10001,500,500|10002,600,500"  reward="1,50|3,10" chapterbg="12" rewardbg="aaa"  />
+	<i id="1002" num="1" name="[第一章]"  open="0"  nextchapterId ="1002"  taskdata="10001,500,500|10002,600,500"  reward="1,50|3,10" chapterbg="12" rewardbg="aaa"  />
+ 
+</root>

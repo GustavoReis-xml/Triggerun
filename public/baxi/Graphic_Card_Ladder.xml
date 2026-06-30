@@ -1,0 +1,1801 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i Name="NVIDIA TITAN X" Score="13544"/>
+	<i Name="NVIDIA GeForce GTX 1080" Score="12808"/>
+	<i Name="NVIDIA Quadro M6000 24GB" Score="12007"/>
+	<i Name="NVIDIA Quadro P6000" Score="11926"/>
+	<i Name="NVIDIA GeForce GTX 1070" Score="11866"/>
+	<i Name="NVIDIA GeForce GTX 980 Ti" Score="11133"/>
+	<i Name="NVIDIA Quadro M6000" Score="11077"/>
+	<i Name="NVIDIA Quadro P5000" Score="10844"/>
+	<i Name="NVIDIA GeForce GTX 980" Score="10449"/>
+	<i Name="NVIDIA GeForce GTX 1060 6GB" Score="10258"/>
+	<i Name="Radeon Pro Duo" Score="10186"/>
+	<i Name="NVIDIA GeForce GTX 970TI" Score="9190"/>
+	<i Name="GTX 970TI" Score="9190"/>
+	<i Name="NVIDIA GeForce GTX 1060" Score="9142"/>
+	<i Name="NVIDIA Quadro M5500" Score="9043"/>
+	<i Name="NVIDIA GeForce GTX 780 Ti" Score="8975"/>
+	<i Name="NVIDIA Quadro M5000" Score="8874"/>
+	<i Name="NVIDIA GeForce GTX TITAN Black" Score="8863"/>
+	<i Name="NVIDIA GeForce GTX 1060 3GB" Score="8589"/>
+	<i Name="AMD Radeon(TM) R9 Fury + Fury X" Score="8404"/>
+	<i Name="FirePro W8100 Graphic Adapter" Score="8219"/>
+	<i Name="NVIDIA GeForce GTX 780" Score="8043"/>
+	<i Name="NVIDIA GeForce GTX Titan" Score="7994"/>
+	<i Name="NVIDIA GeForce GTX 980M" Score="7966"/>
+	<i Name="NVIDIA Quadro K6000" Score="7864"/>
+	<i Name="Radeon RX 480" Score="7686"/>
+	<i Name="Radeon (TM) RX 480 Graphics" Score="7686"/>
+	<i Name="AMD Radeon (TM) RX 480" Score="7686"/>
+	<i Name="Radeon (TM) RX 470 Graphics" Score="7495"/>
+	<i Name="Radeon (TM) RX 470 Series" Score="7495"/>
+	<i Name="Radeon Pro WX 7100" Score="7299"/>
+	<i Name="AMD Radeon(TM) R9 Fury" Score="7293"/>
+	<i Name="NVIDIA GeForce GTX TITAN X" Score="7258"/>
+	<i Name="AMD Radeon(TM) R9 390" Score="7246"/>
+	<i Name="NVIDIA Quadro P3000" Score="7157"/>
+	<i Name="AMD Radeon(TM) R9 390X" Score="7121"/>
+	<i Name="AMD Radeon(TM) R9 295X2" Score="7099"/>
+	<i Name="NVIDIA GeForce GTX TITAN Z" Score="7074"/>
+	<i Name="NVIDIA Quadro M5000M" Score="7025"/>
+	<i Name="AMD Radeon(TM) R9 290X / 390X" Score="6964"/>
+	<i Name="AMD Radeon(TM) R9 290X" Score="6787"/>
+	<i Name="NVIDIA Quadro M4000" Score="6775"/>
+	<i Name="NVIDIA Quadro M3000M" Score="6687"/>
+	<i Name="Radeon Pro WX 5100" Score="6622"/>
+	<i Name="AMD Radeon(TM) R9 290 / 390" Score="6610"/>
+	<i Name="GTX 980M" Score="6594"/>
+	<i Name="NVIDIA GeForce GTX 1050 Ti" Score="6401"/>
+	<i Name="AMD Radeon(TM) R9 290" Score="6381"/>
+	<i Name="NVIDIA Quadro K5200" Score="6361"/>
+	<i Name="FirePro W9100" Score="6356"/>
+	<i Name="FirePro S7150" Score="6276"/>
+	<i Name="NVIDIA GeForce GTX 770" Score="6195"/>
+	<i Name="NVIDIA GeForce GTX 960" Score="6098"/>
+	<i Name="AMD Radeon(TM) R9 Fury X" Score="6013"/>
+	<i Name="FirePro W7100 Adapter" Score="5967"/>
+	<i Name="AMD Radeon(TM) R9 380X" Score="5945"/>
+	<i Name="NVIDIA GeForce GTX 970" Score="5848"/>
+	<i Name="NVIDIA GeForce GTX 1050" Score="5809"/>
+	<i Name="AMD Radeon(TM) R9 M395X" Score="5786"/>
+	<i Name="NVIDIA GeForce GTX 680" Score="5717"/>
+	<i Name="FirePro W8100" Score="5694"/>
+	<i Name="AMD Radeon R9 285" Score="5563"/>
+	<i Name="AMD Radeon HD 7990" Score="5548"/>
+	<i Name="AMD Radeon(TM) R9 380" Score="5518"/>
+	<i Name="AMD Radeon (TM) R9 380 Series" Score="5518"/>
+	<i Name="AMD Radeon(TM) R9 280X" Score="5493"/>
+	<i Name="FirePro W7100" Score="5422"/>
+	<i Name="NVIDIA GeForce GTX 670" Score="5386"/>
+	<i Name="FirePro W9000" Score="5328"/>
+	<i Name="FirePro W7170M" Score="5205"/>
+	<i Name="TITAN X" Score="5187"/>
+	<i Name="AMD Radeon(TM) R9 285 / 380" Score="5174"/>
+	<i Name="NVIDIA GeForce GTX 690" Score="5171"/>
+	<i Name="AMD Radeon HD 7970" Score="5139"/>
+	<i Name="AMD Radeon R9 280X" Score="5139"/>
+	<i Name="GTX 965M" Score="5139"/>
+	<i Name="AMD Radeon HD 8990" Score="5012"/>
+	<i Name="NVIDIA GeForce GTX 760" Score="4994"/>
+	<i Name="AMD Radeon (TM) R9 200 Series" Score="4994"/>
+	<i Name="AMD Radeon R9 200 Series" Score="4994"/>
+	<i Name="AMD Radeon(TM) R9 M295X" Score="4977"/>
+	<i Name="NVIDIA GeForce GTX 580" Score="4973"/>
+	<i Name="AMD Radeon R9 280" Score="4919"/>
+	<i Name="FirePro S10000" Score="4897"/>
+	<i Name="NVIDIA GeForce GTX 950" Score="4746"/>
+	<i Name="NVIDIA GeForce GTX 660 Ti" Score="4687"/>
+	<i Name="AMD Radeon R9 280" Score="4673"/>
+	<i Name="AMD Radeon HD 7950" Score="4673"/>
+	<i Name="NVIDIA GeForce GTX 970M" Score="4668"/>
+	<i Name="AMD Radeon HD 7950" Score="4651"/>
+	<i Name="FirePro W8000 Adapter" Score="4646"/>
+	<i Name="NVIDIA GeForce GTX 880M" Score="4633"/>
+	<i Name="FirePro S9000" Score="4613"/>
+	<i Name="NVIDIA Quadro K4200" Score="4592"/>
+	<i Name="NVIDIA Quadro M2000" Score="4589"/>
+	<i Name="AMD Radeon(TM) R9 M395" Score="4585"/>
+	<i Name="Radeon Pro WX4100" Score="4559"/>
+	<i Name="Device" Score="4532"/>
+	<i Name="NVIDIA Graphics Device" Score="4532"/>
+	<i Name="AMD Radeon(TM) R9 270X" Score="4523"/>
+	<i Name="GRID K520" Score="4441"/>
+	<i Name="AMD Radeon HD 7870 XT" Score="4379"/>
+	<i Name="NVIDIA GeForce GTX 570" Score="4376"/>
+	<i Name="AMD Radeon R7 370" Score="4356"/>
+	<i Name="AMD Radeon (TM) R7 370 Series" Score="4356"/>
+	<i Name="NVIDIA GeForce GTX 480" Score="4348"/>
+	<i Name="NVIDIA GeForce GTX 680MX" Score="4341"/>
+	<i Name="NVIDIA GeForce GTX 780M" Score="4340"/>
+	<i Name="FirePro W8000" Score="4310"/>
+	<i Name="Radeon(TM) RX 460 Graphics" Score="4271"/>
+	<i Name="AMD Radeon HD 7870 (Tahiti LE)" Score="4268"/>
+	<i Name="ASUS HD7870 Series" Score="4268"/>
+	<i Name="NVIDIA GeForce GTX 775M" Score="4265"/>
+	<i Name="AMD Radeon HD 7870" Score="4264"/>
+	<i Name="AMD Radeon HD 6900 Series" Score="4264"/>
+	<i Name="FirePro S7000" Score="4253"/>
+	<i Name="NVIDIA GeForce GTX 760 Ti" Score="4237"/>
+	<i Name="AMD Radeon(TM) R9 270" Score="4226"/>
+	<i Name="AMD Radeon(TM) R9 270 / R7 370" Score="4176"/>
+	<i Name="FirePro W7000 Adapter" Score="4128"/>
+	<i Name="NVIDIA GeForce GTX 660" Score="4119"/>
+	<i Name="GRID K260Q" Score="4092"/>
+	<i Name="NVIDIA GeForce GTX 590" Score="4052"/>
+	<i Name="AMD Radeon HD 7800 Series" Score="4029"/>
+	<i Name="NVIDIA Quadro K5000" Score="4003"/>
+	<i Name="FirePro W7000" Score="4003"/>
+	<i Name="AMD Radeon HD 8970M" Score="3956"/>
+	<i Name="AMD Radeon HD 7970M" Score="3809"/>
+	<i Name="GRID K2" Score="3761"/>
+	<i Name="AMD Radeon HD 7850" Score="3720"/>
+	<i Name="NVIDIA GeForce GTX 870M" Score="3646"/>
+	<i Name="AMD Radeon (TM) R9 370 Series" Score="3641"/>
+	<i Name="AMD Radeon(TM) R9 370 Series" Score="3641"/>
+	<i Name="AMD Radeon R9 370 1024SP" Score="3641"/>
+	<i Name="NVIDIA GeForce GTX 750 Ti" Score="3641"/>
+	<i Name="AMD Radeon R9 270 1024SP" Score="3641"/>
+	<i Name="NVIDIA GeForce GTX 470" Score="3571"/>
+	<i Name="NVIDIA GeForce GTX 650 Ti BOOST" Score="3547"/>
+	<i Name="NVIDIA GeForce GTX 560 Ti" Score="3546"/>
+	<i Name="NVIDIA GeForce GTX 680M" Score="3535"/>
+	<i Name="NVIDIA Quadro 6000" Score="3517"/>
+	<i Name="NVIDIA Quadro K2200" Score="3498"/>
+	<i Name="Tesla C2070" Score="3495"/>
+	<i Name="AMD Radeon HD 6970" Score="3489"/>
+	<i Name="Tesla C2050" Score="3478"/>
+	<i Name="Tesla C2050 / C2070" Score="3423"/>
+	<i Name="AMD Radeon HD 6990" Score="3371"/>
+	<i Name="NVIDIA Quadro M620" Score="3369"/>
+	<i Name="Tesla C2075" Score="3362"/>
+	<i Name="NVIDIA GeForce GTX 750" Score="3266"/>
+	<i Name="AMD Radeon (TM) R7 360 Series" Score="3193"/>
+	<i Name="AMD Radeon(TM) R7 360 Series" Score="3193"/>
+	<i Name="AMD Radeon R7 360" Score="3193"/>
+	<i Name="AMD Radeon R7 300 Series" Score="3193"/>
+	<i Name="AMD Radeon HD 6950" Score="3181"/>
+	<i Name="GRID K280Q" Score="3134"/>
+	<i Name="NVIDIA Quadro K5100M" Score="3114"/>
+	<i Name="NVIDIA GeForce GTX 560" Score="3101"/>
+	<i Name="NVIDIA GeForce GPU" Score="3028"/>
+	<i Name="NVIDIA Quadro M1200" Score="3017"/>
+	<i Name="AMD Radeon R7 260X" Score="3017"/>
+	<i Name="AMD Radeon HD 7790" Score="3014"/>
+	<i Name="FirePro W4300" Score="3010"/>
+	<i Name="AMD Radeon R7 260" Score="2981"/>
+	<i Name="Radeon Pro 450" Score="2977"/>
+	<i Name="NVIDIA GeForce GTX 860M" Score="2973"/>
+	<i Name="AMD Radeon(TM) R9 360" Score="2968"/>
+	<i Name="AMD Radeon (TM) R9 360" Score="2968"/>
+	<i Name="FirePro W5000" Score="2959"/>
+	<i Name="NVIDIA Quadro M2000M" Score="2954"/>
+	<i Name="NVIDIA GeForce GTX 465" Score="2952"/>
+	<i Name="AMD Radeon(TM) R9 260" Score="2949"/>
+	<i Name="NVIDIA GeForce GTX 770M" Score="2927"/>
+	<i Name="AMD Radeon(TM) R9 M380" Score="2905"/>
+	<i Name="NVIDIA Quadro K1200" Score="2905"/>
+	<i Name="FirePro M6100" Score="2880"/>
+	<i Name="AMD Radeon(TM) R9 M390X" Score="2854"/>
+	<i Name="NVIDIA Quadro K4100M" Score="2829"/>
+	<i Name="NVIDIA Quadro K5000M" Score="2819"/>
+	<i Name="NVIDIA Quadro K4000" Score="2819"/>
+	<i Name="FirePro 3D V9800" Score="2811"/>
+	<i Name="FirePro M6100 FireGL V" Score="2761"/>
+	<i Name="NVIDIA GeForce GTX 650 Ti" Score="2707"/>
+	<i Name="AMD Radeon HD 6800 Series" Score="2707"/>
+	<i Name="FirePro V7900" Score="2694"/>
+	<i Name="NVIDIA GeForce GTX 460" Score="2665"/>
+	<i Name="AMD Radeon HD 5970" Score="2645"/>
+	<i Name="NVIDIA Quadro 5000" Score="2643"/>
+	<i Name="FirePro V9800" Score="2595"/>
+	<i Name="NVIDIA GeForce GTX 460 v2" Score="2590"/>
+	<i Name="AMD Radeon HD 6870" Score="2580"/>
+	<i Name="AMD Radeon HD 8950" Score="2569"/>
+	<i Name="NVIDIA GeForce GT 645" Score="2555"/>
+	<i Name="AMD Radeon(TM) R9 M290X" Score="2547"/>
+	<i Name="ATI Radeon HD 6850 ( 2 GB / 蓝宝石）" Score="2534"/>
+	<i Name="FirePro W5100 Adapter" Score="2531"/>
+	<i Name="FirePro V8800" Score="2504"/>
+	<i Name="NVIDIA GeForce GTX 675MX" Score="2496"/>
+	<i Name="FirePro 3D V8800" Score="2493"/>
+	<i Name="Intel(R) HD Graphics 5600" Score="2481"/>
+	<i Name="NVIDIA GeForce GTX 580M" Score="2452"/>
+	<i Name="FirePro W5100" Score="2392"/>
+	<i Name="FirePro V8800 Adapter" Score="2376"/>
+	<i Name="FirePro M5100" Score="2343"/>
+	<i Name="NVIDIA Quadro K3100M" Score="2325"/>
+	<i Name="NVIDIA GeForce GTX 560 SE" Score="2281"/>
+	<i Name="NVIDIA GeForce GTX 675M" Score="2271"/>
+	<i Name="NVIDIA GeForce GTX 460 SE" Score="2270"/>
+	<i Name="NVIDIA GeForce GTX 485M" Score="2264"/>
+	<i Name="AMD Radeon HD 6850" Score="2238"/>
+	<i Name="ASUS EAH6850 Series" Score="2238"/>
+	<i Name="NVIDIA GeForce GTX 745" Score="2194"/>
+	<i Name="AMD Radeon(TM) R9 M275X" Score="2193"/>
+	<i Name="AMD Radeon(TM) R9 M375X" Score="2188"/>
+	<i Name="AMD Radeon R7 450" Score="2188"/>
+	<i Name="AMD Radeon(TM) R9 350" Score="2188"/>
+	<i Name="NVIDIA GeForce GTX 555" Score="2186"/>
+	<i Name="NVIDIA Quadro K4000M" Score="2168"/>
+	<i Name="AMD Radeon R7 + HD 7700 Dual Graphics" Score="2159"/>
+	<i Name="AMD Radeon HD 7770" Score="2154"/>
+	<i Name="Radeon TM R9 A360" Score="2148"/>
+	<i Name="NVIDIA GeForce GTX 850M" Score="2133"/>
+	<i Name="NVIDIA GeForce GTX 670MX" Score="2120"/>
+	<i Name="NVIDIA GeForce GTX 765M" Score="2106"/>
+	<i Name="FirePro V9800 Adapter" Score="2078"/>
+	<i Name="NVIDIA GeForce GTX 480M" Score="2060"/>
+	<i Name="AMD Radeon HD 6790" Score="2031"/>
+	<i Name="NVIDIA GeForce GTX 470M" Score="2008"/>
+	<i Name="NVIDIA GeForce GTX 570M" Score="2001"/>
+	<i Name="AMD Radeon(TM) R9 M370X" Score="1991"/>
+	<i Name="AMD Radeon R7 + R7 350 Dual Graphics" Score="1982"/>
+	<i Name="Firepro W5170M" Score="1967"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics P580" Score="1950"/>
+	<i Name="NVIDIA Quadro 4000" Score="1932"/>
+	<i Name="NVIDIA GeForce GTX 670M" Score="1930"/>
+	<i Name="NVIDIA GeForce GTX 550 Ti" Score="1929"/>
+	<i Name="NVIDIA GeForce GTX 645" Score="1912"/>
+	<i Name="Matrox C680 PCIe x16" Score="1907"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics 580" Score="1902"/>
+	<i Name="NVIDIA Quadro K620" Score="1880"/>
+	<i Name="AMD Radeon HD 6500M/5600/5700 Series" Score="1880"/>
+	<i Name="AMD Radeon HD 7660D + HD 7700 Dual Graphics" Score="1878"/>
+	<i Name="AMD Radeon R7 FX-9830P RADEON" Score="1876"/>
+	<i Name="AMD Radeon HD 6900M" Score="1863"/>
+	<i Name="NVIDIA GeForce GTX 950A" Score="1859"/>
+	<i Name="AMD Radeon R7 350 Series" Score="1841"/>
+	<i Name="ASUS R7 350 Series" Score="1841"/>
+	<i Name="NVIDIA GeForce GTX 650" Score="1841"/>
+	<i Name="AMD Radeon HD 7700 Series" Score="1841"/>
+	<i Name="NVIDIA GeForce GTX 960M" Score="1836"/>
+	<i Name="AMD Radeon HD 8570D + HD 7700 Dual Graphics" Score="1834"/>
+	<i Name="AMD Radeon HD 8870M" Score="1802"/>
+	<i Name="AMD Radeon HD 8670D + 7700 Dual Graphics" Score="1788"/>
+	<i Name="GRID K240Q" Score="1763"/>
+	<i Name="FirePro W5130M" Score="1751"/>
+	<i Name="FirePro 3D V7800" Score="1745"/>
+	<i Name="NVIDIA Quadro 4000M" Score="1739"/>
+	<i Name="NVIDIA Quadro M600M" Score="1711"/>
+	<i Name="AMD Radeon HD 7560D + HD 7700 Dual Graphics" Score="1695"/>
+	<i Name="NVIDIA GeForce GT 755M" Score="1693"/>
+	<i Name="NVIDIA GeForce GTX 760M" Score="1690"/>
+	<i Name="AMD Radeon HD 5770" Score="1680"/>
+	<i Name="AMD Radeon HD 6770" Score="1678"/>
+	<i Name="ATI Radeon HD 3800 Series" Score="1678"/>
+	<i Name="FirePro W600" Score="1671"/>
+	<i Name="NVIDIA Quadro K2000" Score="1667"/>
+	<i Name="FirePro M6000 Mobility Pro" Score="1651"/>
+	<i Name="NVIDIA Quadro K2000D" Score="1641"/>
+	<i Name="AMD Radeon HD 7750" Score="1635"/>
+	<i Name="AMD Radeon HD 8870M / R9 M270X" Score="1623"/>
+	<i Name="AMD Radeon HD 8870M / R9 M270X / M370X" Score="1623"/>
+	<i Name="FirePro M4000 Mobility Pro" Score="1619"/>
+	<i Name="AMD Radeon(TM) R9 255" Score="1611"/>
+	<i Name="NVIDIA Quadro K3000M" Score="1594"/>
+	<i Name="NVIDIA Quadro M1000M" Score="1578"/>
+	<i Name="NVIDIA Quadro 5000M" Score="1577"/>
+	<i Name="Radeon E8860" Score="1570"/>
+	<i Name="AMD Radeon R7 + R7 200 Dual Graphics" Score="1555"/>
+	<i Name="NVIDIA GeForce GTX 960A" Score="1552"/>
+	<i Name="NVIDIA GeForce GTX 560M" Score="1547"/>
+	<i Name="FireStream 9270" Score="1546"/>
+	<i Name="FirePro V7800" Score="1544"/>
+	<i Name="NVIDIA GeForce GTS 450" Score="1541"/>
+	<i Name="AMD Radeon HD 5700 Series" Score="1541"/>
+	<i Name="ATI Radeon HD 5700 Series" Score="1541"/>
+	<i Name="AMD Radeon HD 7400M Series" Score="1541"/>
+	<i Name="AMD Radeon HD 6700 Series" Score="1541"/>
+	<i Name="AMD Radeon HD 6700 series" Score="1541"/>
+	<i Name="AMD Radeon HD 6700 Green Edition" Score="1541"/>
+	<i Name="NVIDIA GeForce GTX 660M" Score="1533"/>
+	<i Name="FirePro W4100" Score="1527"/>
+	<i Name="NVIDIA GeForce GT 750M" Score="1526"/>
+	<i Name="AMD Radeon(TM) R9 M270X" Score="1524"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics 6200" Score="1521"/>
+	<i Name="AMD Radeon(TM) R9 M265X" Score="1518"/>
+	<i Name="FirePro W4100 Adapter" Score="1517"/>
+	<i Name="AMD Radeon(TM) R9 M275X / M375" Score="1515"/>
+	<i Name="AMD Radeon HD 4890" Score="1514"/>
+	<i Name="FirePro V5900" Score="1508"/>
+	<i Name="AMD Radeon R7 A12-9800 RADEON" Score="1499"/>
+	<i Name="AMD Radeon HD 7870M" Score="1492"/>
+	<i Name="NVIDIA GeForce GTX 760A" Score="1483"/>
+	<i Name="FirePro V5800 Adapter" Score="1479"/>
+	<i Name="AMD Radeon R7 PRO A12-8870" Score="1471"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics 550" Score="1458"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics 540" Score="1451"/>
+	<i Name="AMD Radeon(TM) R9 M360" Score="1448"/>
+	<i Name="AMD Radeon (TM) R9 M360" Score="1448"/>
+	<i Name="NVIDIA GeForce GT 740" Score="1440"/>
+	<i Name="AMD Radeon HD 7660D + HD 6670 Dual Graphics" Score="1440"/>
+	<i Name="AMD Radeon HD 7560D + 7670 Dual Graphics" Score="1412"/>
+	<i Name="AMD Radeon HD 7560D" Score="1412"/>
+	<i Name="AMD Radeon(TM) R5 PRO A6-9500 R5, 8 COMPUTE CORES 2C+6G" Score="1403"/>
+	<i Name="FirePro M4000" Score="1403"/>
+	<i Name="AMD Radeon HD 5750" Score="1397"/>
+	<i Name="ATI Radeon HD 5750 Series" Score="1397"/>
+	<i Name="AMD Radeon R7 250" Score="1389"/>
+	<i Name="ASUS R7 250 Series" Score="1389"/>
+	<i Name="AMD Radeon R7 Graphics + R7 350 Dual Graphics" Score="1389"/>
+	<i Name="AMD Radeon R7 200 Series" Score="1389"/>
+	<i Name="AMD Radeon R7 M370" Score="1388"/>
+	<i Name="AMD Radeon(TM) R5 PRO A6-8570 R5, 8 COMPUTE CORES 2C+6G" Score="1383"/>
+	<i Name="AMD Radeon HD 4870" Score="1375"/>
+	<i Name="NVIDIA GeForce GTX 460M" Score="1374"/>
+	<i Name="NVIDIA Quadro K2100M" Score="1374"/>
+	<i Name="FirePro M40003" Score="1373"/>
+	<i Name="AMD Radeon R7 PRO A10-9700" Score="1366"/>
+	<i Name="AMD Radeon HD 8850M" Score="1362"/>
+	<i Name="AMD Radeon R9 M265X" Score="1362"/>
+	<i Name="AMD Radeon HD 7730" Score="1356"/>
+	<i Name="NVIDIA GeForce 945M" Score="1354"/>
+	<i Name="AMD Radeon HD 8790M" Score="1349"/>
+	<i Name="AMD Radeon R9 M290X" Score="1349"/>
+	<i Name="AMD Radeon HD 7850M" Score="1343"/>
+	<i Name="AMD Radeon HD 8790M" Score="1342"/>
+	<i Name="AMD Radeon HD 8670D + 6670 Dual Graphics" Score="1336"/>
+	<i Name="Barco MXRT 5400" Score="1334"/>
+	<i Name="NVIDIA Quadro K2200M" Score="1328"/>
+	<i Name="NVIDIA GeForce GT 730" Score="1328"/>
+	<i Name="FirePro 3D V5800" Score="1323"/>
+	<i Name="FirePro V5800" Score="1317"/>
+	<i Name="FirePro M5950" Score="1314"/>
+	<i Name="AMD Radeon HD 6750" Score="1306"/>
+	<i Name="NVIDIA Quadro 5010M" Score="1306"/>
+	<i Name="NVIDIA Quadro 2000" Score="1301"/>
+	<i Name="NVIDIA GeForce GT 650M" Score="1297"/>
+	<i Name="FirePro V4900" Score="1295"/>
+	<i Name="NVIDIA Quadro 3000M" Score="1288"/>
+	<i Name="NVIDIA GeForce GT 640" Score="1287"/>
+	<i Name="Intel(R) Haswell HD Graphics - GT1" Score="1287"/>
+	<i Name="AMD Radeon R7 A370" Score="1281"/>
+	<i Name="FirePro V8750" Score="1277"/>
+	<i Name="NVIDIA Quadro 2000D" Score="1277"/>
+	<i Name="NVIDIA GeForce GT 545" Score="1271"/>
+	<i Name="AMD Radeon R7 PRO A12-9800" Score="1270"/>
+	<i Name="FirePro 3D V8750" Score="1267"/>
+	<i Name="AMD Radeon R7 PRO A10-9700E" Score="1264"/>
+	<i Name="NVIDIA GeForce GTX 285" Score="1264"/>
+	<i Name="AMD Radeon HD 8570D + HD 6670 Dual Graphics" Score="1260"/>
+	<i Name="Intel(R) HD Graphics 530" Score="1251"/>
+	<i Name="AMD Radeon HD 7640G + 7690M Dual Graphics" Score="1251"/>
+	<i Name="AMD Radeon HD 7640G + HD 8750M Dual Graphics" Score="1240"/>
+	<i Name="AMD Radeon HD 8570D + 6570 Dual Graphics" Score="1239"/>
+	<i Name="AMD Radeon HD 7660D + 6670 Dual Graphics" Score="1239"/>
+	<i Name="ATI Radeon HD 4870 X2" Score="1235"/>
+	<i Name="AMD Radeon R7 A10-7890K" Score="1234"/>
+	<i Name="AMD Radeon R7 A8-7650K" Score="1218"/>
+	<i Name="ATI Radeon HD 4800 Series" Score="1211"/>
+	<i Name="AMD Radeon R7 A10-7890K Radeon R7, 12 Compute Cores 4C" Score="1210"/>
+	<i Name="NVIDIA GeForce GTX 275" Score="1209"/>
+	<i Name="NVIDIA GeForce GTX 965M" Score="1208"/>
+	<i Name="AMD Radeon HD 7670" Score="1202"/>
+	<i Name="NVIDIA GeForce GTX 280" Score="1198"/>
+	<i Name="AMD Radeon HD8970M" Score="1197"/>
+	<i Name="FirePro M4170" Score="1194"/>
+	<i Name="NVIDIA GeForce GT 745M" Score="1193"/>
+	<i Name="AMD Radeon R7 M445" Score="1189"/>
+	<i Name="ATI Mobility Radeon HD 5870" Score="1177"/>
+	<i Name="AMD Radeon HD 5870" Score="1177"/>
+	<i Name="Firepro W4190M" Score="1175"/>
+	<i Name="FireStream 9250" Score="1164"/>
+	<i Name="ATI Radeon HD 4850 X2" Score="1162"/>
+	<i Name="AMD Radeon R7 A10-7870K" Score="1155"/>
+	<i Name="AMD Radeon HD 8850M" Score="1150"/>
+	<i Name="Intel(R) HD Graphics P530" Score="1149"/>
+	<i Name="NVIDIA GeForce GT 745A" Score="1146"/>
+	<i Name="AMD Radeon R7 M260X" Score="1145"/>
+	<i Name="AMD Radeon HD 7750M" Score="1144"/>
+	<i Name="FirePro W4170M" Score="1142"/>
+	<i Name="NVIDIA Quadro 2000 D" Score="1135"/>
+	<i Name="AMD Radeon R7 A8-7600 Radeon R7, 10 Compute Cores 4C+6" Score="1132"/>
+	<i Name="AMD Radeon HD 7560D + 6670 Dual Graphics" Score="1130"/>
+	<i Name="NVIDIA GeForce GTX 260" Score="1120"/>
+	<i Name="Intel(R) Iris(TM) Pro Graphics 5200" Score="1117"/>
+	<i Name="NVIDIA GeForce 840M" Score="1108"/>
+	<i Name="AMD Radeon R7 PRO A10-8770" Score="1107"/>
+	<i Name="NVIDIA Quadro FX 5800" Score="1106"/>
+	<i Name="AMD Radeon HD 7660D + 6570 Dual Graphics" Score="1100"/>
+	<i Name="AMD Radeon R7 PRO A10-8750B R7, 12 Compute Cores 4C+8G" Score="1099"/>
+	<i Name="NVIDIA Quadro K1100M" Score="1091"/>
+	<i Name="FirePro 3D V4800" Score="1090"/>
+	<i Name="FirePro V4800" Score="1087"/>
+	<i Name="NVIDIA Quadro K2000M" Score="1081"/>
+	<i Name="NVIDIA GeForce GTX 950M" Score="1079"/>
+	<i Name="AMD Radeon(TM) R9 M275" Score="1077"/>
+	<i Name="FirePro 3D V8700" Score="1068"/>
+	<i Name="NVIDIA Quadro 2000M" Score="1063"/>
+	<i Name="AMD Radeon HD 7520G + 7700M Dual Graphics" Score="1060"/>
+	<i Name="AMD Radeon HD 5670" Score="1060"/>
+	<i Name="ATI Radeon HD 5670 Series" Score="1060"/>
+	<i Name="ATI Radeon HD 5670" Score="1060"/>
+	<i Name="AMD Radeon HD 4770" Score="1059"/>
+	<i Name="FirePro V8700" Score="1056"/>
+	<i Name="NVIDIA GeForce GT 445M" Score="1054"/>
+	<i Name="AMD Radeon R7 PRO A12-9800B" Score="1053"/>
+	<i Name="AMD Radeon R7 A10-8850" Score="1052"/>
+	<i Name="AMD Radeon HD 8500M/8700M" Score="1050"/>
+	<i Name="AMD Radeon HD 7670A" Score="1049"/>
+	<i Name="NVIDIA GeForce 940MX" Score="1044"/>
+	<i Name="AMD Radeon HD 6670" Score="1044"/>
+	<i Name="AMD Radeon HD 4850" Score="1037"/>
+	<i Name="AMD Radeon HD 6770M" Score="1037"/>
+	<i Name="NVIDIA GeForce GTX 295" Score="1036"/>
+	<i Name="AMD Radeon R7 A10-7850K Radeon R7, 12 Compute Cores 4C" Score="1034"/>
+	<i Name="AMD Radeon HD 8570D + HD 8570 Dual Graphics" Score="1032"/>
+	<i Name="AMD Radeon HD 8570D + HD8490 Dual Graphics" Score="1032"/>
+	<i Name="Firepro M4100" Score="1032"/>
+	<i Name="AMD Radeon R7 A10-7860K Radeon R7, 12 Compute Cores 4C" Score="1029"/>
+	<i Name="AMD Radeon HD7570" Score="1028"/>
+	<i Name="AMD Radeon HD 8670D + R7 240 Dual Graphics" Score="1027"/>
+	<i Name="AMD Radeon HD 7660D + 7670 Dual Graphics" Score="1024"/>
+	<i Name="NVIDIA GeForce GT 640M" Score="1021"/>
+	<i Name="AMD Radeon R7 A10-7860K" Score="1020"/>
+	<i Name="AMD Radeon(TM) R5 PRO A6-9500E R5, 6 COMPUTE CORES 2C+4G" Score="1017"/>
+	<i Name="NVIDIA GeForce 840A" Score="1014"/>
+	<i Name="NVIDIA Quadro CX" Score="1013"/>
+	<i Name="NVIDIA GeForce GT 645M" Score="1012"/>
+	<i Name="AMD Radeon R7 340" Score="1011"/>
+	<i Name="AMD Radeon R7 A10-7800 Radeon R7, 12 Compute Cores 4C+" Score="1010"/>
+	<i Name="AMD Radeon R7 + R7 240 Dual Graphics" Score="1007"/>
+	<i Name="AMD Radeon R7 PRO A8-9600" Score="1005"/>
+	<i Name="AMD Radeon HD 7660G + HD 7500M/7600M Dual Graphics" Score="999"/>
+	<i Name="AMD Radeon HD 7690M" Score="998"/>
+	<i Name="NVIDIA GeForce 845M" Score="995"/>
+	<i Name="AMD Radeon HD 7690M XT" Score="993"/>
+	<i Name="NVIDIA Quadro M500M" Score="993"/>
+	<i Name="NVIDIA Quadro FX 4800" Score="990"/>
+	<i Name="NVIDIA GeForce 930A" Score="988"/>
+	<i Name="Intel(R) HD Graphics 620" Score="988"/>
+	<i Name="AMD Radeon R7 A265" Score="987"/>
+	<i Name="NVIDIA Quadro K620M" Score="987"/>
+	<i Name="NVIDIA GeForce GT 730M" Score="986"/>
+	<i Name="AMD Radeon HD 7570" Score="986"/>
+	<i Name="AMD Radeon HD 8650G + 8600/8700M Dual Graphics" Score="986"/>
+	<i Name="AMD Radeon R7 PRO A12-9800E" Score="985"/>
+	<i Name="ATI Mobility Radeon HD 5600/5700 Series" Score="985"/>
+	<i Name="AMD Radeon HD 5600/5700" Score="985"/>
+	<i Name="ATI Radeon HD 5600/5700" Score="985"/>
+	<i Name="ATI Radeon HD 5600 Series" Score="985"/>
+	<i Name="AMD Radeon HD 7560D + 7560D Dual Graphics" Score="982"/>
+	<i Name="AMD Radeon R7 A10-8750" Score="982"/>
+	<i Name="AMD Radeon(TM) R9 M375" Score="967"/>
+	<i Name="AMD Radeon HD 7660G N HD 7660G + HD 7700M N HD 7700M D Graphics" Score="966"/>
+	<i Name="AMD Radeon HD 6800M" Score="963"/>
+	<i Name="AMD Radeon R7 + R5 330 Dual Graphics" Score="963"/>
+	<i Name="AMD Radeon HD 8730M" Score="963"/>
+	<i Name="AMD Radeon HD8570" Score="960"/>
+	<i Name="GRID K220Q" Score="960"/>
+	<i Name="AMD Radeon R7 240" Score="959"/>
+	<i Name="AMD Radeon R7 240 Series" Score="959"/>
+	<i Name="AMD Radeon R7 A10 PRO-7850B R7, 12 Compute Cores 4C+8G" Score="956"/>
+	<i Name="Intel(R) HD Graphics 520" Score="955"/>
+	<i Name="AMD Radeon HD 8670D + HD 6670 Dual Graphics" Score="951"/>
+	<i Name="AMD Radeon HD 8570D + R7 200 Dual Graphics" Score="951"/>
+	<i Name="AMD Radeon HD 8870M" Score="950"/>
+	<i Name="AMD Radeon R9 M270X" Score="950"/>
+	<i Name="AMD Radeon R7 A10-7700K" Score="947"/>
+	<i Name="AMD Radeon HD 4830" Score="946"/>
+	<i Name="NVIDIA GeForce GT 635" Score="944"/>
+	<i Name="AMD Radeon HD 8600/8700M" Score="942"/>
+	<i Name="AMD Radeon R7 A10-7850K" Score="931"/>
+	<i Name="AMD Radeon HD 7660G + 7730M Dual Graphics" Score="931"/>
+	<i Name="NVIDIA GeForce GT 555M" Score="931"/>
+	<i Name="AMD Radeon(TM) R5 PRO A10-8730B R5, 10 COMPUTE CORES 4C+6G" Score="931"/>
+	<i Name="AMD Radeon HD 8550G + HD 8600/8700M Dual Graphics" Score="929"/>
+	<i Name="AMD Radeon R7 240 + HD 8670D Dual Graphics" Score="929"/>
+	<i Name="NVIDIA GeForce 830A" Score="929"/>
+	<i Name="AMD Radeon R7 PRO A8-8650B R7, 10 Compute Cores 4C+6G" Score="928"/>
+	<i Name="Intel(R) HD Graphics 630" Score="928"/>
+	<i Name="AMD Radeon R7 240 + HD 8570D Dual Graphics" Score="927"/>
+	<i Name="NVIDIA GeForce 9800 GTX+" Score="925"/>
+	<i Name="AMD Radeon HD 6700M" Score="924"/>
+	<i Name="AMD Radeon R7 PRO A10-8750B" Score="922"/>
+	<i Name="NVIDIA GeForce GT 720" Score="921"/>
+	<i Name="AMD Radeon HD 7730M" Score="921"/>
+	<i Name="AMD Radeon R7 PRO A8-8650B" Score="917"/>
+	<i Name="AMD Radeon R7 PRO A10-8850B R7, 12 Compute Cores 4C+8G" Score="916"/>
+	<i Name="AMD Radeon HD 8570" Score="916"/>
+	<i Name="AMD Radeon R7 PRO A10-8850B" Score="916"/>
+	<i Name="AMD Radeon R7 A10-8750 Radeon R7, 12 Compute Cores 4C+" Score="915"/>
+	<i Name="AMD Radeon HD 6750M" Score="914"/>
+	<i Name="AMD Radeon R7 A10-7800" Score="912"/>
+	<i Name="NVIDIA GeForce 9800 GTX/9800 GTX+" Score="911"/>
+	<i Name="AMD Radeon(TM) R5 PRO A8-9600B R5, 10 COMPUTE CORES 4C+6G" Score="908"/>
+	<i Name="AMD Radeon R7 PRO A10-8770E" Score="906"/>
+	<i Name="AMD Radeon HD 8570D + R7 240 Dual Graphics" Score="906"/>
+	<i Name="NVIDIA GeForce GTS 250" Score="905"/>
+	<i Name="AMD Radeon HD 7560D + R5 235 Dual Graphics" Score="904"/>
+	<i Name="AMD Radeon R7 A8-8650" Score="902"/>
+	<i Name="NVIDIA GeForce GT 740M" Score="901"/>
+	<i Name="AMD Radeon HD 8690A" Score="896"/>
+	<i Name="NVIDIA GeForce 920MX" Score="894"/>
+	<i Name="Intel(R) Iris(TM) Graphics 6100" Score="893"/>
+	<i Name="NVIDIA Quadro M4000M" Score="890"/>
+	<i Name="AMD Radeon R7 M340" Score="890"/>
+	<i Name="AMD Radeon HD 8670D + R5 235 Dual Graphics" Score="879"/>
+	<i Name="AMD Radeon HD 8650G + 7670M Dual Graphics" Score="879"/>
+	<i Name="FirePro W2100" Score="878"/>
+	<i Name="NVIDIA GeForce 930MX" Score="877"/>
+	<i Name="AMD Radeon R7 A8-7600" Score="873"/>
+	<i Name="NVIDIA GeForce GT 640M LE" Score="870"/>
+	<i Name="AMD Radeon R7 PRO A12-8800B" Score="869"/>
+	<i Name="AMD Radeon HD 8570D + HD 6570 Dual Graphics" Score="868"/>
+	<i Name="AMD Radeon HD 8570D + R5 240 Dual Graphics" Score="868"/>
+	<i Name="FirePro M4150" Score="867"/>
+	<i Name="FirePro V3900" Score="864"/>
+	<i Name="FirePro W2100 Adapter" Score="864"/>
+	<i Name="AMD Radeon R7 A12-9700P RADEON" Score="862"/>
+	<i Name="AMD Radeon R7 A8-7500" Score="860"/>
+	<i Name="VirtualBox Adapter for Windows 8+" Score="858"/>
+	<i Name="AMD Radeon R7 A10 PRO-7850B" Score="857"/>
+	<i Name="AMD Radeon HD 8650G + HD 7600M Dual Graphics" Score="854"/>
+	<i Name="NVIDIA GeForce GTS 240" Score="854"/>
+	<i Name="AMD Radeon R7 A8-8650 Radeon R7, 10 Compute Cores 4C+6" Score="853"/>
+	<i Name="NVIDIA GeForce 8800 GTS 512" Score="852"/>
+	<i Name="AMD Radeon R7 FX-9800P RADEON" Score="851"/>
+	<i Name="AMD Radeon HD 7640G N HD 7640G + HD 7600M N HD 7600M D Graphics" Score="850"/>
+	<i Name="AMD Radeon HD 7660G + 7600M Dual Graphics" Score="849"/>
+	<i Name="Radeon E6760" Score="843"/>
+	<i Name="ATI Radeon HD 3870 X2" Score="843"/>
+	<i Name="NVIDIA Quadro K600" Score="841"/>
+	<i Name="NVIDIA GeForce 940M" Score="841"/>
+	<i Name="Microsoft Basic Render Driver" Score="841"/>
+	<i Name="AMD Radeon HD 8550G + 8600/8700M Dual Graphics" Score="837"/>
+	<i Name="NVIDIA GeForce GT 340" Score="837"/>
+	<i Name="AMD Radeon R7 M460" Score="837"/>
+	<i Name="AMD Radeon HD 7670M" Score="836"/>
+	<i Name="NVIDIA Quadro FX 3800" Score="835"/>
+	<i Name="NVIDIA Quadro K420" Score="834"/>
+	<i Name="NVIDIA GeForce 920A" Score="834"/>
+	<i Name="AMD Radeon HD 7660G" Score="834"/>
+	<i Name="AMD Radeon HD 7560D + 6570 Dual Graphics" Score="833"/>
+	<i Name="AMD Radeon HD 7560D" Score="833"/>
+	<i Name="AMD Radeon HD 7660G + 7700M Dual Graphics" Score="831"/>
+	<i Name="Radeon. HD 7670M" Score="828"/>
+	<i Name="NVIDIA GeForce GT 440" Score="823"/>
+	<i Name="AMD Radeon HD 7600M + 7600M Dual Graphics" Score="823"/>
+	<i Name="AMD Radeon HD 7600M Series" Score="823"/>
+	<i Name="AMD Radeon R7 M440" Score="821"/>
+	<i Name="NVIDIA GeForce 9800 GTX" Score="821"/>
+	<i Name="NVIDIA Quadro FX 3800M" Score="817"/>
+	<i Name="NVIDIA GeForce 9800 GX2" Score="815"/>
+	<i Name="NVIDIA GeForce 940A" Score="810"/>
+	<i Name="AMD Radeon HD 8750M" Score="808"/>
+	<i Name="AMD Radeon HD 8650G + 8750M Dual Graphics" Score="808"/>
+	<i Name="AMD Radeon HD 7660G + HD 7670M Dual Graphics" Score="805"/>
+	<i Name="AMD Radeon R7 M270" Score="801"/>
+	<i Name="GRID K1" Score="801"/>
+	<i Name="NVIDIA GeForce 8800 Ultra" Score="800"/>
+	<i Name="AMD Radeon HD 8650G + HD 8750M Dual Graphics" Score="798"/>
+	<i Name="AMD Radeon HD 8650G" Score="798"/>
+	<i Name="AMD Radeon HD 7660D" Score="798"/>
+	<i Name="NVIDIA GeForce GT 550M" Score="798"/>
+	<i Name="AMD Radeon HD 8670D" Score="793"/>
+	<i Name="ATI Radeon HD 3850 X2" Score="790"/>
+	<i Name="NVIDIA NVS 5400M" Score="788"/>
+	<i Name="AMD Radeon R7 FX-8800P" Score="786"/>
+	<i Name="AMD Radeon HD 7650A" Score="785"/>
+	<i Name="AMD Radeon R7 A10 Extreme Edition" Score="783"/>
+	<i Name="NVIDIA GeForce 8800 GTX" Score="780"/>
+	<i Name="NVIDIA GeForce GT 140" Score="779"/>
+	<i Name="AMD Radeon HD 8570 + 8670D Dual Graphics" Score="779"/>
+	<i Name="AMD Radeon R7 A10-7870K Radeon R7, 12 Compute Cores 4C" Score="778"/>
+	<i Name="Radeon HD 8650G N HD 8650G + HD 8570M Dual Graphics" Score="777"/>
+	<i Name="AMD Radeon(TM) R5 A10-9600P RADEON R5, 10 COMPUTE CORES 4C" Score="777"/>
+	<i Name="NVIDIA Quadro K1000M" Score="777"/>
+	<i Name="Intel(R) HD Graphics 5200" Score="777"/>
+	<i Name="GRID K180Q" Score="776"/>
+	<i Name="Radeon HD 8550G + 8750M Dual Graphics" Score="772"/>
+	<i Name="NVIDIA NVS 510" Score="770"/>
+	<i Name="GRID K140Q" Score="769"/>
+	<i Name="Barco MXRT 5450" Score="769"/>
+	<i Name="AMD Radeon(TM) R5 PRO A6-8530B R5, 6 COMPUTE CORES 2C+4G" Score="768"/>
+	<i Name="Radeon HD 7660G N HD 7660G + HD 7600M N HD 7600M D" Score="766"/>
+	<i Name="Intel(R) Iris(TM) Graphics 5100" Score="762"/>
+	<i Name="ATI Mobility Radeon HD 5850" Score="760"/>
+	<i Name="AMD Radeon HD 5850" Score="760"/>
+	<i Name="NVIDIA GeForce 930M" Score="759"/>
+	<i Name="NVIDIA GeForce GT 730A" Score="759"/>
+	<i Name="NVIDIA GeForce GTS 360M" Score="759"/>
+	<i Name="ATI Mobility Radeon HD 5000" Score="758"/>
+	<i Name="NVIDIA GeForce 8800 GT" Score="758"/>
+	<i Name="Radeon HD 8650G + R5 M200 Dual Graphics" Score="757"/>
+	<i Name="AMD Radeon HD 8650G + R5 M200 Dual Graphics" Score="757"/>
+	<i Name="NVIDIA GeForce GTX 285M" Score="757"/>
+	<i Name="NVIDIA Quadro 1100M" Score="755"/>
+	<i Name="Intel(R) HD Graphics 615" Score="754"/>
+	<i Name="Radeon HD 7640G + 8600/8700M Dual Graphics" Score="754"/>
+	<i Name="AMD Radeon HD 6570" Score="754"/>
+	<i Name="NVIDIA GeForce GT 635M" Score="754"/>
+	<i Name="NVIDIA GeForce 9600 GT (Microsoft Corporation - WDDM v1.1)" Score="752"/>
+	<i Name="NVIDIA GeForce 9600 GT" Score="752"/>
+	<i Name="AMD Radeon R7 A8-7670K Radeon R7, 10 Compute Cores 4C+" Score="750"/>
+	<i Name="AMD Radeon HD 5830" Score="750"/>
+	<i Name="AMD Radeon HD 5800 Series" Score="750"/>
+	<i Name="AMD Radeon R7 A8-7670K" Score="750"/>
+	<i Name="Intel(R) HD Graphics 515" Score="749"/>
+	<i Name="Radeon HD 7660G N HD 7660G + HD 7670M Dual Graphics" Score="745"/>
+	<i Name="Radeon HD 7640G N HD 7640G + HD 7670M Dual Graphics" Score="743"/>
+	<i Name="AMD Radeon HD 6600A Series" Score="742"/>
+	<i Name="NVIDIA GeForce GT 630M" Score="741"/>
+	<i Name="NVIDIA GeForce 825M" Score="741"/>
+	<i Name="Radeon HD 7660G + HD 7730M Dual Graphics" Score="740"/>
+	<i Name="ATI Mobility Radeon HD 4870" Score="739"/>
+	<i Name="Radeon HD 7670M + 7670M Dual Graphics" Score="738"/>
+	<i Name="Radeon HD 7660G + 7670M Dual Graphics" Score="737"/>
+	<i Name="NVIDIA GeForce GT 630" Score="736"/>
+	<i Name="NVIDIA GeForce GT 530" Score="735"/>
+	<i Name="Radeon HD 7660G + 7610M Dual Graphics" Score="735"/>
+	<i Name="Radeon HD 8650G + 7600M Dual Graphics" Score="732"/>
+	<i Name="Radeon HD 7660G + HD 7700M Dual Graphics" Score="731"/>
+	<i Name="AMD Radeon HD 7500/7600 Series" Score="729"/>
+	<i Name="NVIDIA GeForce 730A" Score="729"/>
+	<i Name="NVIDIA Quadro 1000M" Score="728"/>
+	<i Name="AMD Radeon(TM) R5 235 + HD 7560D Dual Graphics" Score="728"/>
+	<i Name="NVIDIA GeForce 9800 GT" Score="727"/>
+	<i Name="Intel(R) HD Graphics 6000" Score="727"/>
+	<i Name="AMD Radeon HD 8550G + HD 8750M Dual Graphics" Score="726"/>
+	<i Name="AMD Radeon HD 7640G + 7600M Dual Graphics" Score="725"/>
+	<i Name="AMD Radeon HD 7550M/7650M" Score="724"/>
+	<i Name="AMD Radeon HD 7650M" Score="723"/>
+	<i Name="ATI Mobility Radeon HD 5570" Score="723"/>
+	<i Name="AMD Radeon HD 7570M/HD 7670M" Score="722"/>
+	<i Name="AMD Radeon HD 7540D + 6570 Dual Graphics" Score="719"/>
+	<i Name="AMD Radeon HD 7540D + 7450 Dual Graphics" Score="719"/>
+	<i Name="NVIDIA GeForce GT 735M" Score="718"/>
+	<i Name="AMD Radeon HD 8470D + 6450 Dual Graphics" Score="717"/>
+	<i Name="AMD Radeon HD 5570" Score="716"/>
+	<i Name="ATI Radeon HD 5570" Score="716"/>
+	<i Name="AMD Radeon HD 6650M" Score="715"/>
+	<i Name="AMD Radeon HD 7640G + HD 7670M Dual Graphics" Score="714"/>
+	<i Name="AMD Radeon HD 6550A" Score="711"/>
+	<i Name="ATI Mobility Radeon HD 4850" Score="708"/>
+	<i Name="AMD Radeon R7 A10 PRO-7800B R7, 12 Compute Cores 4C+8G" Score="708"/>
+	<i Name="AMD Radeon R7 A10 PRO-7800B" Score="708"/>
+	<i Name="FireGL V7700" Score="707"/>
+	<i Name="NVIDIA Quadro FX 2800M" Score="705"/>
+	<i Name="ATI Mobility Radeon HD 5430" Score="700"/>
+	<i Name="NVIDIA GeForce GT 540M" Score="700"/>
+	<i Name="AMD Radeon (TM) R5 M430" Score="700"/>
+	<i Name="AMD Radeon(TM) R5 M430" Score="700"/>
+	<i Name="NVIDIA GeForce GT 710" Score="699"/>
+	<i Name="NVIDIA GeForce 830M" Score="693"/>
+	<i Name="AMD Radeon HD 7640G + 7700M Dual Graphics" Score="690"/>
+	<i Name="Radeon 6600M" Score="688"/>
+	<i Name="AMD Radeon 6600M and 6700M Series" Score="688"/>
+	<i Name="AMD Radeon HD 6630M" Score="686"/>
+	<i Name="NVIDIA GeForce 820A" Score="683"/>
+	<i Name="NVIDIA Quadro 600" Score="682"/>
+	<i Name="AMD Radeon HD 8650G N HD 8650G + HD 8600M N HD 8600M D" Score="679"/>
+	<i Name="AMD Radeon HD 8650G + HD 8570M Dual Graphics" Score="679"/>
+	<i Name="AMD Radeon HD 7640G + HD 8570M Dual Graphics" Score="679"/>
+	<i Name="AMD Radeon R7 A8-7650K Radeon R7, 10 Compute Cores 4C+" Score="679"/>
+	<i Name="Intel(R) HD Graphics 4600" Score="674"/>
+	<i Name="ATI Radeon HD 4600 Series" Score="674"/>
+	<i Name="AMD Radeon HD 7640G + HD 7600M Dual Graphics" Score="674"/>
+	<i Name="AMD Radeon HD 6550D" Score="672"/>
+	<i Name="AMD Radeon HD 8610G + R5 M200 Dual Graphics" Score="671"/>
+	<i Name="NVIDIA Quadro FX 5600" Score="670"/>
+	<i Name="NVIDIA GeForce GT 435M" Score="668"/>
+	<i Name="AMD Radeon HD 8670D + R7 200 Dual Graphics" Score="668"/>
+	<i Name="AMD Radeon HD 8650G + 8570M Dual Graphics" Score="667"/>
+	<i Name="NVIDIA GeForce GTS 160M" Score="666"/>
+	<i Name="AMD Radeon HD 7640G + HD 8500M N HD 8500M Dual Graphics" Score="665"/>
+	<i Name="AMD Radeon HD 7640G + HD 7700M Dual Graphics" Score="665"/>
+	<i Name="NVIDIA Quadro FX 4700 X2" Score="665"/>
+	<i Name="AMD Radeon HD 8570D" Score="662"/>
+	<i Name="AMD Radeon HD 2900 XT" Score="662"/>
+	<i Name="AMD Radeon HD 7560D" Score="660"/>
+	<i Name="NVIDIA GeForce GT 710M" Score="657"/>
+	<i Name="AMD Radeon HD 8670D + HD 7000 Dual Graphics" Score="656"/>
+	<i Name="ATI Mobility Radeon HD 5730" Score="654"/>
+	<i Name="NVIDIA GeForce GTX 280M" Score="653"/>
+	<i Name="AMD Radeon HD 8610G + 8670M Dual Graphics" Score="653"/>
+	<i Name="AMD Radeon HD 4810" Score="653"/>
+	<i Name="AMD Radeon HD 8550G" Score="652"/>
+	<i Name="Radeon Dual Graphics" Score="652"/>
+	<i Name="AMD Radeon HD 7520G + HD 8750M Dual Graphics" Score="651"/>
+	<i Name="AMD Radeon HD 7640G + 7670M Dual Graphics" Score="651"/>
+	<i Name="SUMO 9640" Score="650"/>
+	<i Name="NVIDIA Quadro FX 3700M" Score="650"/>
+	<i Name="7900 MOD - Radeon HD 6520G" Score="649"/>
+	<i Name="NVIDIA Quadro K610M" Score="648"/>
+	<i Name="NVIDIA GeForce GT 525M" Score="648"/>
+	<i Name="AMD Radeon HD 7640G + HD 8500M Dual Graphics" Score="648"/>
+	<i Name="NVIDIA GeForce 9800M GTS" Score="647"/>
+	<i Name="NVIDIA Quadro 500M" Score="646"/>
+	<i Name="AMD Radeon HD 6670 + 6670 Dual Graphics" Score="646"/>
+	<i Name="NVIDIA GeForce GT 820M" Score="646"/>
+	<i Name="NVIDIA GeForce GT 430" Score="645"/>
+	<i Name="NVIDIA GeForce 9800 S" Score="645"/>
+	<i Name="NVIDIA GeForce GT 240" Score="645"/>
+	<i Name="AMD Radeon R5 A220" Score="645"/>
+	<i Name="AMD Radeon HD 8650G + 8500M Dual Graphics" Score="642"/>
+	<i Name="NVIDIA GeForce 810A" Score="642"/>
+	<i Name="NVIDIA Quadro FX 3700" Score="641"/>
+	<i Name="AMD Radeon HD 7660G + HD 7600M Dual Graphics" Score="641"/>
+	<i Name="AMD Radeon HD 8650G + R5 M230 Dual Graphics" Score="640"/>
+	<i Name="AMD Radeon HD 8550G + 8600M Dual Graphics" Score="639"/>
+	<i Name="AMD Radeon HD 8550G + HD 8600M Dual Graphics" Score="639"/>
+	<i Name="AMD Radeon HD 8550G + 8690M Dual Graphics" Score="639"/>
+	<i Name="AMD Radeon HD 8450G + 8750M Dual Graphics" Score="637"/>
+	<i Name="AMD Radeon HD 2900 PRO" Score="637"/>
+	<i Name="FirePro M2000" Score="636"/>
+	<i Name="AMD Radeon R7 M360" Score="636"/>
+	<i Name="AMD Radeon(TM) R7 M360" Score="636"/>
+	<i Name="AMD Radeon HD 8650G + HD 7670M Dual Graphics" Score="634"/>
+	<i Name="FirePro M7740" Score="632"/>
+	<i Name="AMD Radeon HD 8650G + 8600M Dual Graphics" Score="632"/>
+	<i Name="AMD Radeon(TM) R5 M255" Score="631"/>
+	<i Name="NVIDIA GeForce GT 720A" Score="631"/>
+	<i Name="AMD Radeon HD 7610M" Score="629"/>
+	<i Name="AMD Radeon HD 8650G + HD 8600M Dual Graphics" Score="628"/>
+	<i Name="AMD Radeon HD 8650G + 8670M Dual Graphics" Score="628"/>
+	<i Name="AMD Radeon HD 7640G + 7500/7600 Dual Graphics" Score="627"/>
+	<i Name="AMD Radeon HD 7640G + HD 7500M/7600M Dual Graphics" Score="627"/>
+	<i Name="AMD Radeon HD 7640G + 7500M/7600M Dual Graphics" Score="627"/>
+	<i Name="AMD Radeon HD 8650G + HD 8670M Dual Graphics" Score="625"/>
+	<i Name="NVIDIA Quadro K510M" Score="624"/>
+	<i Name="AMD Radeon(TM) R5 240" Score="621"/>
+	<i Name="AMD Radeon HD 7640G + 8750M Dual Graphics" Score="620"/>
+	<i Name="NVIDIA GeForce GT 425M" Score="618"/>
+	<i Name="NVIDIA NVS 5200M" Score="617"/>
+	<i Name="AMD Radeon HD 8610G + 8500M Dual Graphics" Score="616"/>
+	<i Name="Intel(R) HD Graphics P4600/P4700" Score="615"/>
+	<i Name="AMD Radeon HD 8550D" Score="614"/>
+	<i Name="NVIDIA GeForce GT 620M" Score="613"/>
+	<i Name="AMD Radeon HD 7640G" Score="611"/>
+	<i Name="AMD Radeon HD 7570M" Score="610"/>
+	<i Name="AMD Radeon HD 7640G + HD 8600/8700M Dual Graphics" Score="610"/>
+	<i Name="Radeon R6 PRO A10-8700B R6, 10 Compute Cores 4C+6G" Score="609"/>
+	<i Name="AMD Radeon HD 7640G + 7450M Dual Graphics" Score="608"/>
+	<i Name="AMD Radeon HD 7640G + 7400M Dual Graphics" Score="608"/>
+	<i Name="NVIDIA GeForce 8800 GTS" Score="608"/>
+	<i Name="AMD Radeon HD 8610G + HD 8500M Dual Graphics" Score="607"/>
+	<i Name="NVIDIA Quadro FX 4600" Score="607"/>
+	<i Name="Intel(R) HD Graphics 510" Score="606"/>
+	<i Name="AMD Radeon HD 7640G + 8570M Dual Graphics" Score="606"/>
+	<i Name="Intel(R) HD Graphics 5000" Score="606"/>
+	<i Name="AMD Radeon HD 8550G + HD 8600M Dual Graphics" Score="605"/>
+	<i Name="AMD Radeon HD 8550G + 8500M Dual Graphics" Score="604"/>
+	<i Name="AMD Radeon HD 7640G + 8500M Dual Graphics" Score="604"/>
+	<i Name="AMD Radeon HD 6625M" Score="604"/>
+	<i Name="NVIDIA GeForce 710M" Score="603"/>
+	<i Name="NVIDIA GeForce 805A" Score="603"/>
+	<i Name="AMD Radeon R5 M335" Score="602"/>
+	<i Name="AMD Radeon (TM) R5 M335" Score="602"/>
+	<i Name="Radeon. R7 M260" Score="602"/>
+	<i Name="AMD Radeon HD 7640G + 7470M Dual Graphics" Score="599"/>
+	<i Name="AMD Radeon HD 7640G + 7470M Dual Graphics" Score="599"/>
+	<i Name="AMD Radeon HD 7640G + HD 7400M Dual Graphics" Score="597"/>
+	<i Name="AMD Radeon HD 8510G + HD 8600M Dual Graphics" Score="596"/>
+	<i Name="AMD Radeon HD 8510G + 8500M Dual Graphics" Score="596"/>
+	<i Name="NVIDIA Quadro FX 1800" Score="595"/>
+	<i Name="AMD Radeon (TM) R5 M320" Score="594"/>
+	<i Name="AMD Radeon HD 8450G + HD 8670M Dual Graphics" Score="593"/>
+	<i Name="AMD Radeon HD 8550G + 8670M Dual Graphics" Score="593"/>
+	<i Name="NVIDIA GeForce GTS 350M" Score="588"/>
+	<i Name="NVIDIA GeForce GTX 260M" Score="588"/>
+	<i Name="AMD Radeon(TM) R5 M315" Score="588"/>
+	<i Name="AMD Radeon R5 M315" Score="588"/>
+	<i Name="AMD Radeon HD 7660G + 7400M Dual Graphics" Score="588"/>
+	<i Name="AMD Radeon HD 7660G + 8670M Dual Graphics" Score="585"/>
+	<i Name="AMD Radeon HD 8550G + R5 M230 Dual Graphics" Score="583"/>
+	<i Name="NVIDIA GeForce GT 625M" Score="583"/>
+	<i Name="NVIDIA GeForce GT 625 (OEM)" Score="583"/>
+	<i Name="NVIDIA GeForce 920M" Score="583"/>
+	<i Name="AMD Radeon HD 8550G + R5 M200 Dual Graphics" Score="581"/>
+	<i Name="AMD Radeon HD 7520G + 7600M Dual Graphics" Score="581"/>
+	<i Name="AMD Radeon HD 7660G + 7470M Dual Graphics" Score="579"/>
+	<i Name="Intel(R) Skylake HD DT GT2" Score="578"/>
+	<i Name="AMD Radeon HD 8610G" Score="578"/>
+	<i Name="Intel(R) HD Graphics P4600" Score="577"/>
+	<i Name="Intel(R) HD Graphics 610" Score="577"/>
+	<i Name="TRINITY DEVASTATOR MOBILE" Score="575"/>
+	<i Name="AMD Radeon HD 8610G + 8600M Dual Graphics" Score="573"/>
+	<i Name="FirePro V7750" Score="572"/>
+	<i Name="NVIDIA GeForce 8800M GTX" Score="572"/>
+	<i Name="FirePro 3D V7750" Score="572"/>
+	<i Name="FirePro V5700" Score="571"/>
+	<i Name="Radeon R6 + R7 M265DX Dual Graphics" Score="570"/>
+	<i Name="NVIDIA GeForce GTS 250M" Score="567"/>
+	<i Name="NVIDIA GeForce GTS 250 (Microsoft Corporation - WDDM v1.1)" Score="567"/>
+	<i Name="NVIDIA GeForce GT 420M" Score="566"/>
+	<i Name="AMD Radeon HD 6620G" Score="563"/>
+	<i Name="NVIDIA GeForce GT 720M" Score="563"/>
+	<i Name="AMD Radeon HD 8650G + HD 8600/8700M Dual Graphics" Score="559"/>
+	<i Name="AMD Radeon HD 7520G + 7670M Dual Graphics" Score="558"/>
+	<i Name="AMD Radeon HD 7620G + 8670M Dual Graphics" Score="558"/>
+	<i Name="FirePro 3D V5700" Score="558"/>
+	<i Name="AMD Radeon HD 7640G + 8670M Dual Graphics" Score="558"/>
+	<i Name="AMD Radeon HD 8510G" Score="557"/>
+	<i Name="GF117" Score="554"/>
+	<i Name="AMD Radeon HD 8650G" Score="552"/>
+	<i Name="AMD Radeon HD 8450G + 8600M Dual Graphics" Score="551"/>
+	<i Name="NVIDIA GeForce GT 320" Score="550"/>
+	<i Name="AMD Radeon HD 4670" Score="550"/>
+	<i Name="ATI Radeon HD 4670" Score="550"/>
+	<i Name="NVIDIA GeForce 8800 GS" Score="547"/>
+	<i Name="AMD Radeon HD 7520G + HD 7670M Dual Graphics" Score="547"/>
+	<i Name="Radeon R6 A10-8700P" Score="547"/>
+	<i Name="AMD Radeon HD 8670M" Score="544"/>
+	<i Name="AMD Radeon HD 7600G + HD 8670M Dual Graphics" Score="543"/>
+	<i Name="NVIDIA GeForce 615" Score="541"/>
+	<i Name="AMD Radeon HD 8550G + 8570M Dual Graphics" Score="541"/>
+	<i Name="AMD Radeon HD 7640G + 7610M Dual Graphics" Score="539"/>
+	<i Name="Radeon R6 PRO A8-8600B R6, 10 Compute Cores 4C+6G" Score="538"/>
+	<i Name="AMD Radeon R6 Graphics" Score="538"/>
+	<i Name="AMD Radeon(TM) R6" Score="538"/>
+	<i Name="NVIDIA GeForce GT620M" Score="538"/>
+	<i Name="NVIDIA GeForce GT 330" Score="538"/>
+	<i Name="AMD Radeon HD 7600G + HD 7500M/7600M Dual Graphics" Score="536"/>
+	<i Name="AMD Radeon R7 M260" Score="536"/>
+	<i Name="NVIDIA Quadro FX 2700M" Score="536"/>
+	<i Name="ATI Mobility Radeon HD série 5000" Score="536"/>
+	<i Name="AMD Radeon HD 7520G + HD 7400M Dual Graphics" Score="535"/>
+	<i Name="AMD Radeon HD 7560D + HD 7000 Dual Graphics" Score="534"/>
+	<i Name="AMD Radeon HD 3850" Score="534"/>
+	<i Name="NVIDIA GeForce 9800M GS" Score="534"/>
+	<i Name="AMD Radeon(TM) R6 Graphics" Score="534"/>
+	<i Name="AMD Radeon (TM) R6 Graphics" Score="534"/>
+	<i Name="NVIDIA GeForce 705M" Score="532"/>
+	<i Name="NVIDIA GeForce 705A" Score="532"/>
+	<i Name="ATI Mobility Radeon HD 5470" Score="532"/>
+	<i Name="AMD Radeon HD6530D" Score="531"/>
+	<i Name="AMD Radeon HD série 4600" Score="530"/>
+	<i Name="Intel(R) HD Graphics 4400" Score="530"/>
+	<i Name="AMD Radeon HD 7620G + HD 8600M Dual Graphics" Score="530"/>
+	<i Name="AMD Radeon HD 6610M" Score="526"/>
+	<i Name="AMD Radeon HD 7540D" Score="526"/>
+	<i Name="AMD Radeon HD 7640G + 6400M Dual Graphics" Score="526"/>
+	<i Name="NVIDIA GeForce 800M" Score="525"/>
+	<i Name="AMD Radeon HD 7660D + R5 235 Dual Graphics" Score="524"/>
+	<i Name="AMD Radeon(TM) HD 7350A Graphics" Score="524"/>
+	<i Name="AMD Radeon HD 8470D" Score="524"/>
+	<i Name="FireGL V7600" Score="522"/>
+	<i Name="AMD Radeon (TM) R5 M240" Score="521"/>
+	<i Name="AMD Radeon R5 M240" Score="521"/>
+	<i Name="AMD Radeon  R5 M240" Score="521"/>
+	<i Name="AMD Radeon(TM) R5 M330" Score="520"/>
+	<i Name="AMD Radeon R5 M330" Score="520"/>
+	<i Name="AMD Radeon HD 6530D" Score="518"/>
+	<i Name="AMD Radeon HD 7620G" Score="518"/>
+	<i Name="ATI Radeon HD 5550 Series" Score="518"/>
+	<i Name="ATI Radeon HD 5550" Score="518"/>
+	<i Name="NVIDIA GeForce 9600 GSO" Score="515"/>
+	<i Name="AMD Radeon HD 8570M" Score="515"/>
+	<i Name="AMD Radeon HD 7500G + 7550M Dual Graphics" Score="514"/>
+	<i Name="ATI Mobility Radeon HD 4830" Score="514"/>
+	<i Name="AMD Radeon HD 7620G + HD 8670M Dual Graphics" Score="513"/>
+	<i Name="ATI Mobility Radeon HD 3870 X2" Score="512"/>
+	<i Name="AMD Radeon HD 8610G + HD 8670M Dual Graphics" Score="512"/>
+	<i Name="AMD Radeon HD 7620G + 8600M Dual Graphics" Score="511"/>
+	<i Name="AMD Radeon HD 7600G + HD 7550M Dual Graphics" Score="509"/>
+	<i Name="NVIDIA GeForce 9800M GTX" Score="508"/>
+	<i Name="ATI Mobility Radeon HD 5650" Score="503"/>
+	<i Name="NVIDIA GeForce 9600 GSO 512" Score="503"/>
+	<i Name="ASUS EAH5450 Series" Score="503"/>
+	<i Name="AMD Radeon HD 8610G + HD 8600M Dual Graphics" Score="501"/>
+	<i Name="FirePro V3800" Score="498"/>
+	<i Name="SUMO 964A" Score="497"/>
+	<i Name="NVIDIA GeForce GT 335M" Score="488"/>
+	<i Name="ATI Mobility Radeon HD 3870" Score="487"/>
+	<i Name="AMD Radeon(TM) HD 6520G" Score="486"/>
+	<i Name="AMD Radeon HD 6520G" Score="486"/>
+	<i Name="AMD Radeon HD 7520G + 7400M Dual Graphics" Score="486"/>
+	<i Name="AMD Radeon HD 8550G + HD 8670M Dual Graphics" Score="484"/>
+	<i Name="NVIDIA Quadro FX 1800M" Score="483"/>
+	<i Name="PHDGD Ivy 4" Score="481"/>
+	<i Name="NVIDIA GeForce GT625M" Score="479"/>
+	<i Name="ATI Mobility Radeon HD 5000 Serisi" Score="478"/>
+	<i Name="ATI Mobility Radeon HD 5000 Series" Score="478"/>
+	<i Name="AMD Mobility Radeon HD 5000 Series" Score="478"/>
+	<i Name="NVIDIA GeForce 9700M GTS" Score="478"/>
+	<i Name="NVIDIA GeForce GT 230" Score="478"/>
+	<i Name="Intel(R) HD Graphics P4000" Score="478"/>
+	<i Name="NVIDIA Quadro FX 3600M" Score="475"/>
+	<i Name="AMD Radeon HD 8450G + 8670M Dual Graphics" Score="474"/>
+	<i Name="NVIDIA GeForce 8800M GTS" Score="472"/>
+	<i Name="ATI Mobility Radeon HD 4670" Score="472"/>
+	<i Name="AMD Radeon HD 7600G + 8500M/8700M Dual Graphics" Score="469"/>
+	<i Name="AMD Radeon HD 7600G" Score="467"/>
+	<i Name="AMD Radeon HD 7520G + 7610M Dual Graphics" Score="464"/>
+	<i Name="AMD Radeon HD 7520G + HD 8600/8700M Dual Graphics" Score="463"/>
+	<i Name="AMD Radeon HD 8650D" Score="462"/>
+	<i Name="AMD Radeon HD 7520G + HD 7600M Dual Graphics" Score="461"/>
+	<i Name="NVIDIA GeForce GT 520MX" Score="461"/>
+	<i Name="AMD Radeon HD 8500M" Score="460"/>
+	<i Name="AMD Radeon HD 8500 series" Score="460"/>
+	<i Name="ATI Mobility Radeon HD 5100" Score="460"/>
+	<i Name="FirePro 3D V3800" Score="458"/>
+	<i Name="AMD Radeon HD 7420G" Score="458"/>
+	<i Name="NVIDIA Quadro 410" Score="458"/>
+	<i Name="NVIDIA GeForce GT 130" Score="457"/>
+	<i Name="Intel(R) HD Graphics 4000" Score="456"/>
+	<i Name="NVIDIA G72" Score="456"/>
+	<i Name="AMD Radeon HD 6400M Series" Score="456"/>
+	<i Name="AMD Radeon HD 7600G + 6400M Dual Graphics" Score="456"/>
+	<i Name="AMD Radeon HD 7520G" Score="455"/>
+	<i Name="NVIDIA GeForce 910M" Score="453"/>
+	<i Name="AMD Radeon HD 7520G + 7650M Dual Graphics" Score="453"/>
+	<i Name="AMD Radeon HD 8450G + HD 8600M Dual Graphics" Score="452"/>
+	<i Name="AMD Radeon HD 8690M" Score="451"/>
+	<i Name="AMD Radeon HD 7550M" Score="448"/>
+	<i Name="NVIDIA GeForce 610" Score="445"/>
+	<i Name="AMD Radeon HD 7660G + 8600M Dual Graphics" Score="445"/>
+	<i Name="AMD Radeon R7 A10-7700K Radeon R7, 10 Compute Cores 4C" Score="444"/>
+	<i Name="NVIDIA GeForce GT 420" Score="444"/>
+	<i Name="AMD Radeon R7 M265 Series" Score="441"/>
+	<i Name="AMD Radeon R7 M265" Score="441"/>
+	<i Name="NVIDIA GeForce 9600 GS" Score="439"/>
+	<i Name="AMD Radeon HD 7480D" Score="434"/>
+	<i Name="NVIDIA GeForce GT 620" Score="434"/>
+	<i Name="AMD Radeon R7 A8 PRO-7600B" Score="432"/>
+	<i Name="AMD Radeon HD 8370D" Score="431"/>
+	<i Name="NVIDIA GeForce 800A" Score="428"/>
+	<i Name="NVIDIA GeForce 9800M GT" Score="428"/>
+	<i Name="AMD Radeon HD 3850 AGP" Score="427"/>
+	<i Name="AMD Radeon HD 7600G + 7550M Dual Graphics" Score="423"/>
+	<i Name="AMD Radeon HD6410D" Score="422"/>
+	<i Name="AMD Radeon HD 7600G + HD 7450M Dual Graphics" Score="422"/>
+	<i Name="AMD Radeon HD 7600G + 7500M/7600M Dual Graphics" Score="421"/>
+	<i Name="AMD Radeon HD 7500G" Score="420"/>
+	<i Name="AMD Radeon HD 8450G" Score="420"/>
+	<i Name="AMD Radeon HD 8410G" Score="419"/>
+	<i Name="NVIDIA GeForce GT 625" Score="418"/>
+	<i Name="AMD Radeon HD 7470M" Score="413"/>
+	<i Name="NVIDIA GeForce 610M" Score="412"/>
+	<i Name="AMD Radeon(TM) R4 Graphics" Score="410"/>
+	<i Name="AMD Radeon HD 7640G + R5 M200 Dual Graphics" Score="409"/>
+	<i Name="AMD Radeon HD 7640G" Score="409"/>
+	<i Name="Mobile Intel(R) HD Graphics" Score="409"/>
+	<i Name="AMD Radeon(TM) HD 6480G" Score="409"/>
+	<i Name="AMD Radeon HD 6480G" Score="409"/>
+	<i Name="RADEON E4690" Score="405"/>
+	<i Name="AMD Radeon(TM) R5E" Score="404"/>
+	<i Name="NVIDIA GeForce GT 520M" Score="401"/>
+	<i Name="NVIDIA GeForce 820M" Score="401"/>
+	<i Name="AMD Radeon (TM) R5 M230" Score="400"/>
+	<i Name="AMD Radeon R5 M230" Score="400"/>
+	<i Name="AMD Radeon R7 A8 PRO-7600B R7, 10 Compute Cores 4C+6G" Score="399"/>
+	<i Name="AMD Radeon R7 Series" Score="399"/>
+	<i Name="AMD Radeon HD 6410D" Score="396"/>
+	<i Name="AMD Radeon HD 8350G" Score="392"/>
+	<i Name="AMD Radeon HD 7600G + 7450M Dual Graphics" Score="389"/>
+	<i Name="AMD Radeon HD 7600G + HD 7400M Dual Graphics" Score="389"/>
+	<i Name="AMD Radeon(TM) HD8490" Score="387"/>
+	<i Name="AMD Radeon HD 8490" Score="386"/>
+	<i Name="ATI Mobility Radeon HD 4650" Score="384"/>
+	<i Name="NVIDIA GeForce GT 705" Score="382"/>
+	<i Name="AMD Radeon(TM) R3 Graphics" Score="381"/>
+	<i Name="VisionTek Radeon HD 2600 XT" Score="378"/>
+	<i Name="AMD Radeon HD 7470" Score="376"/>
+	<i Name="NVIDIA Quadro FX 880M" Score="374"/>
+	<i Name="NVIDIA NVS 5100M" Score="372"/>
+	<i Name="AMD Radeon(TM) R5 235X" Score="372"/>
+	<i Name="NVIDIA GeForce GT 330M" Score="369"/>
+	<i Name="NVIDIA D10M2-20" Score="369"/>
+	<i Name="ATI Mobility Radeon HD 3850" Score="365"/>
+	<i Name="AMD Radeon HD 6490M" Score="364"/>
+	<i Name="NVIDIA GeForce 810M" Score="362"/>
+	<i Name="NVIDIA GeForce GT 220" Score="360"/>
+	<i Name="NVIDIA GT 220" Score="360"/>
+	<i Name="NVIDIA GeForce GT 520" Score="360"/>
+	<i Name="Intel(R) HD Graphics Family" Score="358"/>
+	<i Name="AMD Radeon HD 4650" Score="356"/>
+	<i Name="ATI Radeon HD 4650" Score="356"/>
+	<i Name="NVIDIA GeForce GT216" Score="356"/>
+	<i Name="AMD Radeon HD 7600G + HD Dual Graphics" Score="356"/>
+	<i Name="AMD Radeon HD 7600 Series" Score="356"/>
+	<i Name="NVIDIA GeForce GT 240M" Score="354"/>
+	<i Name="ATI Mobility Radeon HD 5145" Score="354"/>
+	<i Name="AMD Radeon HD 8400E" Score="353"/>
+	<i Name="FireGL V5600" Score="353"/>
+	<i Name="AMD Radeon(TM) R5 235X" Score="351"/>
+	<i Name="NVIDIA GeForce GT 610" Score="351"/>
+	<i Name="AMD Radeon (TM) R5 235" Score="351"/>
+	<i Name="AMD Radeon R5 235" Score="351"/>
+	<i Name="AMD Radeon HD 7580D" Score="350"/>
+	<i Name="AMD Radeon HD 6400 Series" Score="350"/>
+	<i Name="AMD Radeon HD 8400 / R3 Series" Score="349"/>
+	<i Name="AMD Radeon HD 8400" Score="349"/>
+	<i Name="NVIDIA N10M-LP" Score="349"/>
+	<i Name="NVIDIA GeForce 410M" Score="348"/>
+	<i Name="NVIDIA NVS 4200M" Score="347"/>
+	<i Name="FireGL V8650" Score="346"/>
+	<i Name="AMD Radeon(TM) R5 310" Score="345"/>
+	<i Name="AMD Radeon HD 8330E" Score="345"/>
+	<i Name="AMD Radeon HD 8330" Score="344"/>
+	<i Name="NVIDIA GeForce GTX 850A" Score="344"/>
+	<i Name="FirePro 3D V3750" Score="341"/>
+	<i Name="AMD Radeon HD 8470 Graphics" Score="341"/>
+	<i Name="AMD Radeon HD 8470" Score="341"/>
+	<i Name="NVIDIA GeForce 9700M GT" Score="341"/>
+	<i Name="FirePro V3750" Score="341"/>
+	<i Name="NVIDIA NVS 315" Score="340"/>
+	<i Name="NVIDIA GeForce GT 230M" Score="340"/>
+	<i Name="AMD Radeon HD 8280E" Score="339"/>
+	<i Name="ATI Mobility Radeon HD 560v" Score="333"/>
+	<i Name="AMD Radeon HD 7450M" Score="332"/>
+	<i Name="NVIDIA GeForce GT 415M" Score="330"/>
+	<i Name="Intel(R) HD Graphics 5500" Score="327"/>
+	<i Name="AMD Radeon HD 8280" Score="327"/>
+	<i Name="NVIDIA Quadro FX 1700M" Score="326"/>
+	<i Name="AMD Radeon HD 7450 Graphics" Score="323"/>
+	<i Name="AMD Radeon HD 7450" Score="323"/>
+	<i Name="AMD Radeon HD 7660D + 7470 Dual Graphics" Score="321"/>
+	<i Name="NVIDIA GeForce GT 325M" Score="317"/>
+	<i Name="NVIDIA GeForce 710A" Score="316"/>
+	<i Name="Intel(R) HD Graphics P3000" Score="315"/>
+	<i Name="AMD Radeon HD6370D" Score="315"/>
+	<i Name="NVIDIA Quadro FX 770M" Score="314"/>
+	<i Name="AMD Radeon HD 6470M" Score="314"/>
+	<i Name="Radeon (TM) HD 6470M" Score="314"/>
+	<i Name="NVIDIA GeForce 605" Score="314"/>
+	<i Name="AMD Radeon HD 7520G + 8600/8700M Dual Graphics" Score="311"/>
+	<i Name="NVIDIA GeForce GT 120" Score="311"/>
+	<i Name="NVIDIA GeForce 7900 GTX" Score="310"/>
+	<i Name="AMD Radeon HD 7400G" Score="310"/>
+	<i Name="AMD Radeon HD 6370D" Score="309"/>
+	<i Name="NVIDIA GeForce 8600 GTS" Score="308"/>
+	<i Name="ATI Radeon HD 3400 Series" Score="307"/>
+	<i Name="ATI Mobility Radeon HD 3400 Series" Score="307"/>
+	<i Name="Intel(R) HD Graphics 3000" Score="307"/>
+	<i Name="AMD Radeon HD 6380G" Score="306"/>
+	<i Name="AMD Radeon HD 2600 XT" Score="305"/>
+	<i Name="NVIDIA GeForce 510" Score="305"/>
+	<i Name="NVIDIA GeForce GT 130M" Score="303"/>
+	<i Name="NVIDIA Quadro FX 580" Score="297"/>
+	<i Name="AMD Radeon HD 7350" Score="291"/>
+	<i Name="ASUS HD 7350" Score="291"/>
+	<i Name="AMD Radeon HD 6370M" Score="290"/>
+	<i Name="ATI Mobility Radeon HD 565v" Score="290"/>
+	<i Name="NVIDIA GeForce 9500 GT" Score="290"/>
+	<i Name="NVIDIA GeForce 9500 GT (Microsoft Corporation - WDDM v1.1)" Score="290"/>
+	<i Name="NVIDIA G96" Score="290"/>
+	<i Name="NVIDIA G98-GL" Score="290"/>
+	<i Name="NVIDIA G98" Score="290"/>
+	<i Name="AMD Radeon HD 6450 Graphics" Score="289"/>
+	<i Name="AMD Radeon HD 6450" Score="289"/>
+	<i Name="AMD Radeon HD6450 / HD5450" Score="289"/>
+	<i Name="NVIDIA GeForce 9650M GS" Score="288"/>
+	<i Name="AMD Radeon HD 7450A Graphics" Score="288"/>
+	<i Name="NVIDIA GeForce 9500 GS" Score="287"/>
+	<i Name="AMD Radeon HD 8240" Score="284"/>
+	<i Name="NVIDIA NVS 310" Score="284"/>
+	<i Name="NVIDIA GeForce 9600M GT" Score="283"/>
+	<i Name="NVIDIA GeForce GT 220M" Score="283"/>
+	<i Name="AMD Radeon(TM) R2 Graphics" Score="281"/>
+	<i Name="NVIDIA GeForce GT 120M" Score="280"/>
+	<i Name="NVIDIA GeForce GT 120 / 9500 GT" Score="280"/>
+	<i Name="NVIDIA GeForce 320M" Score="278"/>
+	<i Name="NVIDIA GeForce 9600M GT" Score="277"/>
+	<i Name="NVIDIA GeForce GT 220M" Score="277"/>
+	<i Name="EAH6450" Score="275"/>
+	<i Name="AMD Radeon HD 2900 GT" Score="275"/>
+	<i Name="AMD Radeon HD 5470" Score="274"/>
+	<i Name="NVIDIA GeForce 9650M GT" Score="274"/>
+	<i Name="KB 2C" Score="273"/>
+	<i Name="AMD Radeon(TM) R5 220" Score="273"/>
+	<i Name="AMD Radeon R5 220" Score="273"/>
+	<i Name="Radeon R3E" Score="271"/>
+	<i Name="AMD Radeon HD 8200 / R3 Series" Score="271"/>
+	<i Name="ATI Mobility Radeon HD 5165" Score="270"/>
+	<i Name="AMD Radeon HD 6450A" Score="269"/>
+	<i Name="AMD Radeon HD 6450A Graphics" Score="269"/>
+	<i Name="NVIDIA GeForce 315" Score="269"/>
+	<i Name="AMD Radeon HD 8280G" Score="269"/>
+	<i Name="ATI Mobility Radeon HD 550v" Score="268"/>
+	<i Name="NVIDIA GeForce Go 7950 GTX" Score="267"/>
+	<i Name="AMD Radeon HD 4650 AGP" Score="263"/>
+	<i Name="NVIDIA GeForce 7950 GT" Score="261"/>
+	<i Name="AMD Radeon HD 8250" Score="259"/>
+	<i Name="NVIDIA GeForce 7900 GT" Score="258"/>
+	<i Name="NVIDIA Quadro 400" Score="257"/>
+	<i Name="NVIDIA GeForce 9600M GS" Score="257"/>
+	<i Name="NVIDIA GeForce 8600 GT" Score="256"/>
+	<i Name="ATI Radeon HD 3600 Series" Score="256"/>
+	<i Name="ATI Radeon HD 5400 Series" Score="256"/>
+	<i Name="ATI Mobility Radeon HD 5400 Series" Score="256"/>
+	<i Name="ATI Mobility Radeon HD 5400" Score="256"/>
+	<i Name="AMD Radeon HD 3670" Score="254"/>
+	<i Name="ATI Radeon HD 4550" Score="253"/>
+	<i Name="AMD Radeon HD 8210" Score="251"/>
+	<i Name="IGFX" Score="251"/>
+	<i Name="ATI Radeon HD 3000" Score="251"/>
+	<i Name="NVIDIA Quadro FX 380M" Score="248"/>
+	<i Name="AMD Radeon (TM) R5 340" Score="245"/>
+	<i Name="AMD Radeon R5 340" Score="245"/>
+	<i Name="AMD Radeon (TM) R5 330" Score="245"/>
+	<i Name="AMD Radeon R5 330" Score="245"/>
+	<i Name="AMD Radeon HD 8350" Score="245"/>
+	<i Name="NVIDIA GeForce 7900 GT/GTO" Score="244"/>
+	<i Name="AMD Radeon HD 6300M Series" Score="243"/>
+	<i Name="AMD Radeon HD 6300 series Graphics" Score="243"/>
+	<i Name="A6 Micro-6500T Quad-Core APU with RadeonR4" Score="241"/>
+	<i Name="FirePro 2270" Score="234"/>
+	<i Name="ATI Radeon HD 5450 Series" Score="233"/>
+	<i Name="ATI Radeon HD 5450" Score="233"/>
+	<i Name="NVIDIA GeForce 405" Score="233"/>
+	<i Name="NVIDIA Quadro FX 1600M" Score="231"/>
+	<i Name="NVIDIA GeForce 7800 GTX" Score="230"/>
+	<i Name="ATI Mobility Radeon HD 3670" Score="230"/>
+	<i Name="NVIDIA GeForce 8700M GT" Score="227"/>
+	<i Name="NVIDIA Quadro NVS 320M" Score="227"/>
+	<i Name="AMD Radeon HD 7340M" Score="225"/>
+	<i Name="ATI Mobility Radeon HD 4500/5100 Series" Score="225"/>
+	<i Name="ATI Mobility Radeon HD 4500 Series" Score="225"/>
+	<i Name="ATI Mobility Radeon HD 4500 Series (Microsoft Corporation WDDM 1.1)" Score="225"/>
+	<i Name="ATI Mobility Radeon HD 5470" Score="225"/>
+	<i Name="NVIDIA GeForce Go 7800 GTX" Score="223"/>
+	<i Name="Radeon R2E" Score="223"/>
+	<i Name="AMD Radeon R2" Score="223"/>
+	<i Name="NVIDIA GeForce 310M" Score="221"/>
+	<i Name="NVIDIA GeForce 315M" Score="221"/>
+	<i Name="Wine Display Adapter" Score="220"/>
+	<i Name="ATI Radeon HD 2600 PRO" Score="218"/>
+	<i Name="NVIDIA Quadro FX 380 LP" Score="218"/>
+	<i Name="NVIDIA GeForce 7900 GS" Score="218"/>
+	<i Name="ATI Mobility Radeon HD 3650" Score="217"/>
+	<i Name="NVIDIA GeForce GT 320M" Score="216"/>
+	<i Name="NVIDIA GeForce 310" Score="216"/>
+	<i Name="AMD Radeon HD 6320 Graphics" Score="216"/>
+	<i Name="AMD Radeon R5 230" Score="215"/>
+	<i Name="NVIDIA Quadro FX 5500" Score="215"/>
+	<i Name="NVIDIA NVS 3100M" Score="215"/>
+	<i Name="AMD Radeon HD 6350 Graphics" Score="213"/>
+	<i Name="AMD Radeon HD 6350A Graphics" Score="213"/>
+	<i Name="AMD Radeon HD 6350" Score="213"/>
+	<i Name="ATI Radeon HD 6350" Score="213"/>
+	<i Name="NVIDIA Quadro FX 3500" Score="212"/>
+	<i Name="AMD Radeon HD 6230" Score="211"/>
+	<i Name="AMD Radeon HD 7340 Graphics" Score="210"/>
+	<i Name="NVIDIA Quadro FX 4500" Score="209"/>
+	<i Name="Mobility FireGL V5725" Score="209"/>
+	<i Name="NVIDIA GeForce G210M" Score="208"/>
+	<i Name="ATI Mobility Radeon HD 4530" Score="208"/>
+	<i Name="ATI Mobility Radeon HD 5450" Score="207"/>
+	<i Name="AMD Radeon HD 5450" Score="207"/>
+	<i Name="NVIDIA Quadro FX 1700" Score="206"/>
+	<i Name="ATI Mobility Radeon HD 545v" Score="205"/>
+	<i Name="NVIDIA Quadro FX 2500M" Score="205"/>
+	<i Name="AMD Radeon HD 6320" Score="203"/>
+	<i Name="AMD Radeon HD 2600 XT AGP" Score="203"/>
+	<i Name="NVIDIA GeForce 7800 GT" Score="202"/>
+	<i Name="NVIDIA G70GL" Score="202"/>
+	<i Name="FireGL V3600" Score="202"/>
+	<i Name="ATI MOBILITY RADEON. HD 5470" Score="200"/>
+	<i Name="NVIDIA GeForce 7950 GX2" Score="199"/>
+	<i Name="NVIDIA GeForce 505" Score="198"/>
+	<i Name="AMD Radeon HD 6320M" Score="197"/>
+	<i Name="ATI Mobility Radeon HD 4570" Score="197"/>
+	<i Name="AMD Radeon HD 8180" Score="197"/>
+	<i Name="NVIDIA GeForce 9500M GS" Score="197"/>
+	<i Name="NVIDIA GeForce 9400 GT" Score="196"/>
+	<i Name="NVIDIA Quadro FX 1500M" Score="196"/>
+	<i Name="AMD Radeon HD 6430M" Score="195"/>
+	<i Name="NVIDIA NVS 300" Score="194"/>
+	<i Name="NVIDIA Quadro FX 570M" Score="192"/>
+	<i Name="NVIDIA NVS 2100M" Score="191"/>
+	<i Name="FirePro V3700" Score="191"/>
+	<i Name="FirePro 3D V3700" Score="191"/>
+	<i Name="NVIDIA GeForce 305M" Score="190"/>
+	<i Name="NVIDIA GeForce G105M" Score="189"/>
+	<i Name="ATI Mobility Radeon HD 2600 XT" Score="188"/>
+	<i Name="FirePro 2460" Score="188"/>
+	<i Name="ATI Mobility Radeon HD 540v" Score="188"/>
+	<i Name="ATI Mobility Radeon HD 4550" Score="186"/>
+	<i Name="NVIDIA GeForce 210" Score="185"/>
+	<i Name="NVIDIA GeForce 7600 GT" Score="183"/>
+	<i Name="NVIDIA GeForce 8600M GT" Score="181"/>
+	<i Name="AMD Radeon HD 7340G" Score="181"/>
+	<i Name="AMD Radeon HD 7310G" Score="180"/>
+	<i Name="ATI Mobility Radeon HD 5430" Score="180"/>
+	<i Name="NVIDIA GeForce G210" Score="180"/>
+	<i Name="Intel(R) HD Graphics 1000" Score="180"/>
+	<i Name="Intel(R) HD Graphics 2500" Score="180"/>
+	<i Name="NVIDIA GeForce 7800 GS" Score="179"/>
+	<i Name="ATI Mobility Radeon HD 530v" Score="177"/>
+	<i Name="ATI Radeon HD 4350 Series" Score="176"/>
+	<i Name="ATI Radeon HD 4350" Score="176"/>
+	<i Name="AMD Radeon HD 4350" Score="176"/>
+	<i Name="ATI Radeon HD 4350 (Microsoft Corporation WDDM 1.1)" Score="176"/>
+	<i Name="AMD Radeon HD 7310  Graphics" Score="172"/>
+	<i Name="AMD Radeon HD 7310 Graphics" Score="172"/>
+	<i Name="NVIDIA Quadro FX 380" Score="172"/>
+	<i Name="ATI Mobility Radeon HD 2600" Score="171"/>
+	<i Name="NVIDIA GeForce Go 7900 GS" Score="171"/>
+	<i Name="AMD Radeon HD 7310M" Score="168"/>
+	<i Name="AMD Radeon HD 6310 Graphics" Score="168"/>
+	<i Name="AMD Radeon HD 6310  Graphics" Score="168"/>
+	<i Name="MSI NX6800GS" Score="166"/>
+	<i Name="NVIDIA GeForce 9500M G" Score="166"/>
+	<i Name="NVIDIA GeForce Go 7600 GT" Score="165"/>
+	<i Name="ATI Mobility Radeon HD 4330" Score="164"/>
+	<i Name="ATI Mobility Radeon HD 4330 Series" Score="164"/>
+	<i Name="AMD Radeon HD 4330" Score="163"/>
+	<i Name="NVIDIA GeForce 9400" Score="163"/>
+	<i Name="NVIDIA GeForce Go 6800 Ultra" Score="161"/>
+	<i Name="NVIDIA Quadro FX 1500" Score="159"/>
+	<i Name="ATI Mobility Radeon HD 4300/4500 Series" Score="155"/>
+	<i Name="ATI Radeon HD 4300/4500 Series" Score="155"/>
+	<i Name="ATI Mobility Radeon HD 4300 Series" Score="155"/>
+	<i Name="ATI Mobility Radeon HD 4300" Score="155"/>
+	<i Name="ATI Radeon HD 4300 Series" Score="155"/>
+	<i Name="AMD Radeon HD 3650 AGP" Score="153"/>
+	<i Name="Radeon X1900 CrossFire Edition" Score="153"/>
+	<i Name="NVIDIA GeForce 8600 GS" Score="152"/>
+	<i Name="Radeon X1950 CrossFire Edition" Score="151"/>
+	<i Name="AMD Radeon HD 3470" Score="151"/>
+	<i Name="NVIDIA GeForce 8600GS" Score="150"/>
+	<i Name="VisionTek Radeon 4350" Score="149"/>
+	<i Name="Radeon X1900 GT" Score="148"/>
+	<i Name="AMD Radeon HD 4290" Score="148"/>
+	<i Name="ATI Radeon HD 4290" Score="148"/>
+	<i Name="NVIDIA Quadro FX 3450" Score="148"/>
+	<i Name="NVIDIA GeForce Go 7700" Score="147"/>
+	<i Name="Radeon X1800 GTO" Score="144"/>
+	<i Name="AMD Radeon HD 2600 Pro AGP" Score="143"/>
+	<i Name="ATI Radeon HD 2600 Pro" Score="143"/>
+	<i Name="NVIDIA GeForce 8500 GT" Score="142"/>
+	<i Name="NVIDIA GeForce 8500 GT (Microsoft Corporation - WDDM v1.1)" Score="142"/>
+	<i Name="AMD Radeon HD 6290M" Score="140"/>
+	<i Name="AMD Radeon HD 7290" Score="140"/>
+	<i Name="Intel(R) Haswell HD - GT2" Score="140"/>
+	<i Name="Intel Haswell HD Graphics - GT2" Score="140"/>
+	<i Name="NVIDIA GeForce 6800 GS" Score="138"/>
+	<i Name="NVIDIA GeForce 6800 GT" Score="137"/>
+	<i Name="nForce 760i SLI" Score="136"/>
+	<i Name="NVIDIA GeForce 7600 GS" Score="136"/>
+	<i Name="AMD Radeon HD 6290" Score="135"/>
+	<i Name="AMD Radeon HD 6290 Graphics" Score="135"/>
+	<i Name="NVIDIA GeForce 6800 Ultra" Score="135"/>
+	<i Name="ATI MOBILITY RADEON X1900" Score="134"/>
+	<i Name="ATI Radeon HD 3300 Graphics" Score="133"/>
+	<i Name="ATI MOBILITY RADEON X1800" Score="133"/>
+	<i Name="NVIDIA Quadro FX 3450/4000 SDI" Score="133"/>
+	<i Name="AMD Radeon HD 2400" Score="132"/>
+	<i Name="ATI Radeon HD 2400 Series" Score="132"/>
+	<i Name="ATI Radeon HD 2400" Score="132"/>
+	<i Name="NVIDIA GeForce G200" Score="132"/>
+	<i Name="NVIDIA GeForce Go 7600" Score="132"/>
+	<i Name="ATI Radeon HD 4250 Series" Score="130"/>
+	<i Name="ATI Radeon HD 4250" Score="130"/>
+	<i Name="Intel(R) HD Graphics 2000" Score="130"/>
+	<i Name="NVIDIA GeForce 8600M GS" Score="130"/>
+	<i Name="NVIDIA GeForce 7650 GS" Score="128"/>
+	<i Name="NVIDIA GeForce 9300 / nForce 730i" Score="128"/>
+	<i Name="NVIDIA Quadro FX 560" Score="127"/>
+	<i Name="NVIDIA G73GL" Score="127"/>
+	<i Name="NVIDIA GeForce 9400M G" Score="127"/>
+	<i Name="NVIDIA Quadro FX 570" Score="126"/>
+	<i Name="ATI Radeon HD 2400 Pro" Score="126"/>
+	<i Name="NVIDIA GeForce 9300" Score="126"/>
+	<i Name="NVIDIA GeForce 205" Score="125"/>
+	<i Name="AMD Radeon HD 3450" Score="125"/>
+	<i Name="ATI Radeon HD 3450" Score="125"/>
+	<i Name="AMD Radeon HD 2400 XT" Score="124"/>
+	<i Name="ATI Mobility Radeon HD 4350" Score="123"/>
+	<i Name="Intel(R) HD Graphics 5300" Score="121"/>
+	<i Name="Intel(R) HD Graphics Modded" Score="119"/>
+	<i Name="All-in-Wonder X1900" Score="119"/>
+	<i Name="NVIDIA GeForce 9400M" Score="118"/>
+	<i Name="ATI Radeon HD 4200" Score="117"/>
+	<i Name="AMD Radeon HD 6250" Score="117"/>
+	<i Name="AMD Radeon HD 6250 Graphics" Score="117"/>
+	<i Name="NVIDIA GeForce G 105M" Score="117"/>
+	<i Name="Radeon X1700 Targa Edition" Score="116"/>
+	<i Name="NVIDIA GeForce Go 7800" Score="116"/>
+	<i Name="NVIDIA GeForce 8400 GS" Score="115"/>
+	<i Name="AMD 760G (Microsoft Corporation WDDM 1.1)" Score="115"/>
+	<i Name="AMD 760G" Score="115"/>
+	<i Name="Radeon X1600 XT" Score="114"/>
+	<i Name="RV530 PRO" Score="113"/>
+	<i Name="FireGL V5200" Score="113"/>
+	<i Name="Sapphire RADEON X800 GT" Score="112"/>
+	<i Name="Intel(R) Media Accelerator HD" Score="112"/>
+	<i Name="FirePro 2260" Score="112"/>
+	<i Name="Intel(R) Haswell HD - GT1" Score="111"/>
+	<i Name="Intel Haswell HD Graphics - GT1" Score="111"/>
+	<i Name="FireGL V3400" Score="111"/>
+	<i Name="FireGL V7200" Score="111"/>
+	<i Name="NVIDIA GeForce 7300 GT" Score="110"/>
+	<i Name="NVIDIA GeForce 6800" Score="110"/>
+	<i Name="Radeon X1950 GT" Score="110"/>
+	<i Name="AMD Radeon HD 4270" Score="110"/>
+	<i Name="Radeon X1950 Pro" Score="109"/>
+	<i Name="NVIDIA Quadro FX 370 LP" Score="108"/>
+	<i Name="NVIDIA GeForce Go 6800" Score="108"/>
+	<i Name="NVIDIA GeForce G 103M" Score="108"/>
+	<i Name="RADEON X800 XT" Score="108"/>
+	<i Name="NVIDIA GeForce 9500M" Score="107"/>
+	<i Name="VIA/S3G Chrome 645/640 GPU" Score="106"/>
+	<i Name="GeForce9400M" Score="105"/>
+	<i Name="ATI Radeon 3000 Graphics" Score="105"/>
+	<i Name="ATI Radeon 3000" Score="105"/>
+	<i Name="NVIDIA GeForce 6700 XL" Score="105"/>
+	<i Name="NVIDIA GeForce 6800 XT" Score="104"/>
+	<i Name="NVIDIA GeForce 9300 GE" Score="104"/>
+	<i Name="NVIDIA Quadro FX Go1400" Score="104"/>
+	<i Name="FireGL V7350" Score="104"/>
+	<i Name="NVIDIA Quadro FX 1400" Score="103"/>
+	<i Name="M880G with Mobility Radeon HD 4250" Score="103"/>
+	<i Name="NVIDIA Quadro NVS 295" Score="103"/>
+	<i Name="NVIDIA GeForce 6600 GT" Score="103"/>
+	<i Name="ION LE" Score="103"/>
+	<i Name="ION" Score="102"/>
+	<i Name="NVIDIA Quadro FX 3400/4400" Score="102"/>
+	<i Name="NVIDIA Quadro NVS 290" Score="102"/>
+	<i Name="NVIDIA GeForce G100" Score="102"/>
+	<i Name="NVIDIA GeForce 8400M GT" Score="101"/>
+	<i Name="NVIDIA GeForce 6610 XL" Score="101"/>
+	<i Name="NVIDIA Quadro FX 540" Score="101"/>
+	<i Name="ATI Mobility Radeon HD 3470 Hybrid X2" Score="101"/>
+	<i Name="NVIDIA Quadro NVS 160M" Score="100"/>
+	<i Name="Radeon X1600 Pro" Score="100"/>
+	<i Name="AMD Radeon(TM) R7 Graphics" Score="100"/>
+	<i Name="Intel(R) HD Graphics" Score="100"/>
+	<i Name="AMD Radeon HD 6500 Series" Score="100"/>
+	<i Name="WRESTLER 9802" Score="100"/>
+	<i Name="AMD Radeon (TM) R5 200 Series" Score="100"/>
+	<i Name="AMD Radeon R5 200 Series" Score="100"/>
+	<i Name="AMD Radeon HD 7000 series" Score="100"/>
+	<i Name="NVIDIA GeForce 6800 GS/XT" Score="100"/>
+	<i Name="AMD Radeon(TM) R5 Graphics" Score="100"/>
+	<i Name="AMD Radeon HD 7300 Series" Score="100"/>
+	<i Name="NVIDIA ION" Score="100"/>
+	<i Name="AMD Radeon HD 7500M/7600M Series" Score="100"/>
+	<i Name="ATI Radeon X300/X550/X1050 Series" Score="100"/>
+	<i Name="ATI Mobility Radeon Graphics" Score="100"/>
+	<i Name="NVIDIA Quadro NVS 420" Score="100"/>
+	<i Name="ATI Mobility Radeon HD 4250" Score="100"/>
+	<i Name="AMD Radeon HD 7400A Series" Score="100"/>
+	<i Name="AMD Radeon HD 7400 Series" Score="100"/>
+	<i Name="Intel(R) Atom(TM) Processor E3800 Series/Intel(R) Celeron(R) Processor N2920/J1900" Score="100"/>
+	<i Name="NVIDIA MCP61" Score="100"/>
+	<i Name="NVIDIA GeForce 8400" Score="99"/>
+	<i Name="NVIDIA GeForce G102M" Score="99"/>
+	<i Name="NVIDIA GeForce 9300M GS" Score="99"/>
+	<i Name="NVIDIA GeForce 9300 SE" Score="99"/>
+	<i Name="NVIDIA GeForce 8300" Score="98"/>
+	<i Name="FireMV 2260" Score="98"/>
+	<i Name="NVIDIA Quadro NVS 150M" Score="98"/>
+	<i Name="AMD Radeon HD 5500 Series" Score="98"/>
+	<i Name="ATI Radeon HD 5500 Series" Score="98"/>
+	<i Name="NVIDIA GeForce 9300GE" Score="97"/>
+	<i Name="NVIDIA GeForce G205M" Score="96"/>
+	<i Name="M880G with Mobility Radeon HD 4200" Score="96"/>
+	<i Name="ATI Mobility Radeon HD 2400 XT" Score="95"/>
+	<i Name="ATI Mobility Radeon HD 3470" Score="95"/>
+	<i Name="NVIDIA Quadro NVS 450" Score="94"/>
+	<i Name="NVIDIA Quadro FX 370" Score="94"/>
+	<i Name="ATI Mobility Radeon HD 4270" Score="94"/>
+	<i Name="ATI MOBILITY RADEON 4100" Score="94"/>
+	<i Name="NVIDIA GeForce 6800 LE" Score="94"/>
+	<i Name="NVIDIA Quadro NVS 140M" Score="94"/>
+	<i Name="ATI Mobility Radeon HD serie 4200" Score="93"/>
+	<i Name="ATI Mobility Radeon HD 3430" Score="93"/>
+	<i Name="NVIDIA Quadro FX 360M" Score="93"/>
+	<i Name="ATI Mobility Radeon HD 2400" Score="93"/>
+	<i Name="nForce 780a SLI" Score="92"/>
+	<i Name="ATI Mobility Radeon HD 4200 Series" Score="92"/>
+	<i Name="ATI Radeon HD 4200 Series" Score="92"/>
+	<i Name="ATI Mobility Radeon HD 4200" Score="92"/>
+	<i Name="RADEON X600XT" Score="91"/>
+	<i Name="ATI Mobility Radeon HD 3450" Score="91"/>
+	<i Name="NVIDIA GeForce 9300 GS" Score="91"/>
+	<i Name="Mobile Intel(R) 4 Series Express Chipset Family" Score="91"/>
+	<i Name="Mobile Intel(R) 4 Series Express Chipset Family (Microsoft Corporation - WDDM 1.1)" Score="91"/>
+	<i Name="ASUS Extreme AX600XT-TD" Score="91"/>
+	<i Name="NVIDIA GeForce 9200M GS" Score="90"/>
+	<i Name="ATI MOBILITY RADEON X1600" Score="89"/>
+	<i Name="ATI MOBILITY RADEON X1700" Score="89"/>
+	<i Name="Radeon X1650 Pro" Score="88"/>
+	<i Name="RADEON X850 XT" Score="88"/>
+	<i Name="Radeon X1300 PRO" Score="87"/>
+	<i Name="ATI Mobility Radeon X1300" Score="87"/>
+	<i Name="NVIDIA GeForce 9200M GE" Score="87"/>
+	<i Name="Radeon X1300PRO" Score="87"/>
+	<i Name="RADEON X800 GT" Score="87"/>
+	<i Name="nForce 980a/780a SLI" Score="87"/>
+	<i Name="NVIDIA nForce 980a/780a SLI" Score="87"/>
+	<i Name="NVIDIA GeForce 9100M G" Score="86"/>
+	<i Name="NVIDIA Quadro FX 350" Score="85"/>
+	<i Name="NVIDIA GeForce 8100 / nForce 720a" Score="85"/>
+	<i Name="NVIDIA GeForce 8400M GS" Score="85"/>
+	<i Name="NVIDIA GeForce 9200" Score="85"/>
+	<i Name="FireGL V3200" Score="84"/>
+	<i Name="NVIDIA GeForce 9100" Score="84"/>
+	<i Name="NVIDIA GeForce 9300M G" Score="84"/>
+	<i Name="ATI Radeon HD 3200 Graphics" Score="84"/>
+	<i Name="RADEON X800GT" Score="83"/>
+	<i Name="NVIDIA Quadro FX 370M" Score="83"/>
+	<i Name="FireGL V3350" Score="83"/>
+	<i Name="FireGL V5100" Score="82"/>
+	<i Name="RADEON X700 PRO" Score="82"/>
+	<i Name="MOBILITY FireGL V5000" Score="81"/>
+	<i Name="NVIDIA GeForce 8200" Score="80"/>
+	<i Name="M880G with Mobility Radeon HD 4225" Score="80"/>
+	<i Name="Intel(R) - Express Chipset G45/G43" Score="79"/>
+	<i Name="AMD Radeon HD 2350" Score="79"/>
+	<i Name="128MB DDR Radeon 9800 Pro" Score="79"/>
+	<i Name="RADEON X850 XT Platinum Edition" Score="76"/>
+	<i Name="ATI Radeon 3100 Graphics" Score="76"/>
+	<i Name="M860G with Mobility Radeon 4100" Score="75"/>
+	<i Name="NVIDIA GeForce 7350 LE" Score="74"/>
+	<i Name="RADEON X700 SE" Score="74"/>
+	<i Name="Sapphire RADEON X1600 PRO" Score="74"/>
+	<i Name="Radeon X1650 GTO" Score="74"/>
+	<i Name="NVIDIA nForce 750a SLI" Score="72"/>
+	<i Name="Radeon X1550 Series" Score="72"/>
+	<i Name="RADEON X850 PRO" Score="72"/>
+	<i Name="Radeon X1650 SE" Score="71"/>
+	<i Name="FireGL V3300" Score="71"/>
+	<i Name="RADEON X800 PRO/GTO" Score="70"/>
+	<i Name="NVIDIA GeForce 7500 LE" Score="70"/>
+	<i Name="RADEON X800 GTO" Score="70"/>
+	<i Name="Базовый видеоадаптер" Score="69"/>
+	<i Name="NVIDIA GeForce 8400 SE" Score="69"/>
+	<i Name="Intel(R) - Express Chipset G41" Score="68"/>
+	<i Name="ALL-IN-WONDER X800 GT" Score="68"/>
+	<i Name="ATI MOBILITY RADEON X700" Score="68"/>
+	<i Name="RADEON X800 XL" Score="68"/>
+	<i Name="256MB RADEON X600" Score="68"/>
+	<i Name="Radeon X1300" Score="68"/>
+	<i Name="Radeon X1300/X1550 Series" Score="68"/>
+	<i Name="Radeon X1300 / X1550 Series  (Microsoft Corporation - WDDM)" Score="68"/>
+	<i Name="Intel(R) G45/G43 Express Chipset" Score="68"/>
+	<i Name="Intel(R) G45/G43 Express Chipset (Microsoft Corporation - WDDM 1.1)" Score="68"/>
+	<i Name="RADEON X700" Score="68"/>
+	<i Name="NVIDIA GeForce 8300 GS" Score="67"/>
+	<i Name="SAPPHIRE Radeon X1550" Score="66"/>
+	<i Name="Radeon X550XTX" Score="66"/>
+	<i Name="ATI Mobility Radeon HD 4225" Score="66"/>
+	<i Name="VisionTek Radeon HD2400 Pro AGP" Score="66"/>
+	<i Name="PHDGD Quebec 4.0 for Intel G41 Express Chipset" Score="65"/>
+	<i Name="NVIDIA GeForce 6600" Score="65"/>
+	<i Name="Intel(R) Q45/Q43 Express Chipset" Score="65"/>
+	<i Name="Intel(R) Q45/Q43 Express-Chipsatz" Score="65"/>
+	<i Name="NVIDIA GeForce 7300 GS" Score="64"/>
+	<i Name="NVIDIA Quadro FX 550" Score="64"/>
+	<i Name="ATI Mobility Radeon HD 3410" Score="63"/>
+	<i Name="ATI Radeon HD 3410" Score="63"/>
+	<i Name="NVIDIA GeForce Go 7400" Score="63"/>
+	<i Name="NVIDIA GeForce Go 6600" Score="63"/>
+	<i Name="RADEON X800 PRO" Score="62"/>
+	<i Name="Intel(R) G41 Express Chipset (Microsoft Corporation - WDDM 1.1)" Score="60"/>
+	<i Name="Intel(R) G41 Express Chipset" Score="60"/>
+	<i Name="Intel(R) 82945G Express Chipset Family" Score="60"/>
+	<i Name="NVIDIA Quadro FX 350M" Score="60"/>
+	<i Name="Intel(R) B43 Express Chipset" Score="60"/>
+	<i Name="Mikroukład Intel Q45/Q43 Express Chipset" Score="60"/>
+	<i Name="FireGL X1" Score="59"/>
+	<i Name="ATI Radeon 2100" Score="59"/>
+	<i Name="NVIDIA GeForce FX 5950 Ultra" Score="59"/>
+	<i Name="NVIDIA Quadro NVS 130M" Score="59"/>
+	<i Name="FirePro 2450" Score="59"/>
+	<i Name="Matrox G200eW WDDM 1.2" Score="58"/>
+	<i Name="NVIDIA GeForce 8400M G" Score="58"/>
+	<i Name="Mikroukład Intel G41 Express Chipset" Score="58"/>
+	<i Name="Intel(R) - Express Chipset Q45/Q43" Score="58"/>
+	<i Name="NVIDIA Quadro NVS 135M" Score="57"/>
+	<i Name="Chipset Intel G41 Express" Score="57"/>
+	<i Name="Intel(R) G41 Express-Chipsatz" Score="57"/>
+	<i Name="RADEON 9700 PRO" Score="56"/>
+	<i Name="NVIDIA GeForce 8200M G" Score="56"/>
+	<i Name="NVIDIA GeForce FX Go5700" Score="56"/>
+	<i Name="NVIDIA GeForce Go 6600 TE/6200 TE" Score="55"/>
+	<i Name="MOBILITY FireGL V3200" Score="55"/>
+	<i Name="RADEON X600 256MB HyperMemory" Score="55"/>
+	<i Name="NVIDIA GeForce 7300 LE" Score="55"/>
+	<i Name="FireMV 2250" Score="54"/>
+	<i Name="ATI Mobility Radeon HD 2300" Score="54"/>
+	<i Name="Matrox G200eR WDDM 1.2" Score="54"/>
+	<i Name="ATI MOBILITY RADEON X2500" Score="54"/>
+	<i Name="ATI MOBILITY RADEON X600 SE" Score="52"/>
+	<i Name="RADEON 9800 PRO" Score="52"/>
+	<i Name="RADEON E2400" Score="52"/>
+	<i Name="RADEON X550XT" Score="52"/>
+	<i Name="Matrox G200eW" Score="52"/>
+	<i Name="FireGL V3100" Score="51"/>
+	<i Name="Radeon X1050" Score="51"/>
+	<i Name="Inno3D GeForce 6200" Score="50"/>
+	<i Name="NVIDIA NV43" Score="50"/>
+	<i Name="RADEON X550" Score="50"/>
+	<i Name="NVIDIA Quadro FX 3000" Score="50"/>
+	<i Name="RADEON 9500" Score="50"/>
+	<i Name="ATI MOBILITY RADEON X2300 HD" Score="49"/>
+	<i Name="NVIDIA GeForce Go 7300" Score="49"/>
+	<i Name="Mobile Intel 45 Express-Chipsatzfamilie" Score="49"/>
+	<i Name="ATI MOBILITY RADEON X600" Score="49"/>
+	<i Name="NVIDIA GeForce 6600 LE" Score="48"/>
+	<i Name="NVIDIA Quadro NVS 120M" Score="48"/>
+	<i Name="RADEON 9500 PRO / 9700" Score="48"/>
+	<i Name="128MB RADEON X600 SE" Score="48"/>
+	<i Name="Matrox G200eh WDDM 1.2" Score="48"/>
+	<i Name="ATI MOBILITY RADEON X2300" Score="47"/>
+	<i Name="AMD Radeon HD 2400 PRO AGP" Score="47"/>
+	<i Name="ATI Radeon HD 2400 PRO" Score="47"/>
+	<i Name="Matrox G200e WDDM 1.2" Score="46"/>
+	<i Name="NVIDIA Quadro NVS 110M" Score="46"/>
+	<i Name="Mobile Intel - famiglia Express Chipset serie 4" Score="46"/>
+	<i Name="RADEON 9800 XT" Score="45"/>
+	<i Name="NVIDIA GeForce Go 7200" Score="45"/>
+	<i Name="SAPPHIRE RADEON 9600 ATLANTIS" Score="45"/>
+	<i Name="Mobile Intel 4 Express-Chipsatzfamilie" Score="45"/>
+	<i Name="NVIDIA GeForce FX 5900XT" Score="44"/>
+	<i Name="128 DDR Radeon 9700 TX w/TV-Out" Score="44"/>
+	<i Name="NVIDIA GeForce 6200" Score="44"/>
+	<i Name="GIGABYTE RADEON 9600 PRO" Score="43"/>
+	<i Name="ASUS Extreme AX300" Score="43"/>
+	<i Name="MOBILITY FireGL V5200" Score="43"/>
+	<i Name="Mobile Intel 45 Express" Score="43"/>
+    <i Name="Mobile Intel(R) 45 Express Chipset Family (Microsoft Corporation - WDDM 1.1)" Score="43"/>
+	<i Name="Rodzina mikroukładów Mobile Intel 45 Express" Score="43"/>
+	<i Name="NVIDIA GeForce 7100 GS" Score="42"/>
+	<i Name="Mobile Intel serie 4 Express" Score="42"/>
+	<i Name="ATI MOBILITY RADEON X1400" Score="42"/>
+	<i Name="ATI MOBILITY RADEON X1350" Score="42"/>
+	<i Name="Általános Microsoft-videokártya" Score="42"/>
+	<i Name="NVIDIA Quadro FX 1100" Score="41"/>
+	<i Name="NVIDIA GeForce 7300 SE" Score="41"/>
+	<i Name="NVIDIA Quadro NVS 440" Score="41"/>
+	<i Name="NVIDIA Quadro NVS 285 128MB" Score="41"/>
+	<i Name="Mobile Intel - famiglia Express Chipset 45" Score="41"/>
+	<i Name="MOBILITY FIREGL T2" Score="41"/>
+	<i Name="Radeon X1600" Score="40"/>
+	<i Name="ATI MOBILITY RADEON X1300" Score="40"/>
+	<i Name="NVIDIA GeForce 7300 SE/7200 GS" Score="40"/>
+	<i Name="NVIDIA GeForce 6500" Score="40"/>
+	<i Name="NVIDIA Quadro FX 1000" Score="40"/>
+	<i Name="ATI Radeon Xpress 1250" Score="40"/>
+	<i Name="NVIDIA GeForce Go 6200 TE" Score="40"/>
+	<i Name="NVIDIA GeForce Go 6600 TE" Score="40"/>
+	<i Name="MOBILITY FIRE GL T2" Score="39"/>
+	<i Name="NVIDIA GeForce FX 5700" Score="39"/>
+	<i Name="NVIDIA GeForce FX 5900" Score="39"/>
+	<i Name="S3 Chrome 430 ULP" Score="39"/>
+	<i Name="NVIDIA GeForce 6200 TurboCache" Score="38"/>
+	<i Name="NVIDIA GeForce FX 5900 Ultra" Score="37"/>
+	<i Name="NVIDIA GeForce 7050/nForce 620i" Score="36"/>
+	<i Name="FireMV 2200 PCIe" Score="36"/>
+	<i Name="RADEON 9600 XT" Score="35"/>
+	<i Name="Radeon Xpress 1200" Score="35"/>
+	<i Name="RADEON X300SE" Score="35"/>
+	<i Name="Matrox G200eh" Score="35"/>
+	<i Name="FireGL T2" Score="35"/>
+	<i Name="NVIDIA GeForce 6200 A-LE" Score="35"/>
+	<i Name="Radeon X1550 64-bit" Score="35"/>
+	<i Name="FireGL T2-128" Score="35"/>
+	<i Name="RADEON 9550" Score="34"/>
+	<i Name="NVIDIA Quadro NVS 285" Score="34"/>
+	<i Name="ATI MOBILITY RADEON X300" Score="34"/>
+	<i Name="Radeon X1250" Score="34"/>
+	<i Name="NVIDIA GeForce FX 5700VE" Score="33"/>
+	<i Name="MOBILITY FIREGL T2/T2e" Score="33"/>
+	<i Name="Radeon X1270" Score="32"/>
+	<i Name="ATI Radeon X1200 Series" Score="32"/>
+	<i Name="NVIDIA GeForce 7150/nForce 630i" Score="32"/>
+	<i Name="NVIDIA GeForce PCX 5750" Score="32"/>
+	<i Name="Radeon Xpress 1100" Score="31"/>
+	<i Name="ATI MOBILITY RADEON 9600/9700" Score="30"/>
+	<i Name="NVIDIA GeForce 6200 TurboCache(TM)" Score="30"/>
+	<i Name="NVIDIA GeForce 7100/nForce 630i" Score="30"/>
+	<i Name="OpenXT Display Driver" Score="30"/>
+	<i Name="RADEON 9600 SE Family" Score="29"/>
+	<i Name="NVIDIA GeForce Go 6400" Score="29"/>
+	<i Name="Matrox G200eR" Score="29"/>
+	<i Name="Základní grafický adaptér Microsoft" Score="29"/>
+	<i Name="MOBILITY FIRE GL T2/T2e" Score="28"/>
+	<i Name="Radeon 9550 / X1050" Score="28"/>
+	<i Name="RADEON 9600SE" Score="28"/>
+	<i Name="RADEON 9600 PRO Family" Score="28"/>
+	<i Name="NVIDIA GeForce 7050/nForce 610i" Score="28"/>
+	<i Name="NVIDIA GeForce 7050 / NVIDIA nForce 610i" Score="28"/>
+	<i Name="Radeon Xpress 1150" Score="28"/>
+	<i Name="RADEON XPRESS 200" Score="28"/>
+	<i Name="RADEON 9800 SE" Score="27"/>
+	<i Name="NVIDIA Quadro NVS 210S/GeForce 6150LE" Score="27"/>
+	<i Name="Intel(R) G35 Express" Score="27"/>
+	<i Name="NVIDIA GeForce FX 5700 Ultra" Score="27"/>
+	<i Name="NVIDIA Quadro FX 1300" Score="26"/>
+	<i Name="NVIDIA GeForce 7050/nForce 630i" Score="26"/>
+	<i Name="NVIDIA GeForce 6200 LE" Score="26"/>
+	<i Name="Radeon Xpress 1270" Score="26"/>
+	<i Name="VisionTek Radeon X1300" Score="25"/>
+	<i Name="NVIDIA GeForce 6150SE" Score="25"/>
+	<i Name="ATI MOBILITY RADEON 9700" Score="25"/>
+	<i Name="RADEON 9600 Family" Score="25"/>
+	<i Name="ATI MOBILITY RADEON XPRESS 200" Score="25"/>
+	<i Name="NVIDIA GeForce FX 5700LE" Score="25"/>
+	<i Name="ATI MOBILITY RADEON X1450" Score="25"/>
+	<i Name="NVIDIA GeForce 7025 / NVIDIA nForce 630a" Score="24"/>
+	<i Name="NVIDIA GeForce 7025 / NVIDIA nForce 630a (Microsoft Corporation - WDDM)" Score="24"/>
+	<i Name="NVIDIA GeForce 7025 / nForce 630a" Score="24"/>
+	<i Name="NVIDIA GeForce 6100 nForce 420" Score="24"/>
+	<i Name="NVIDIA Quadro NVS 210S" Score="24"/>
+	<i Name="NVIDIA GeForce 6100 nForce 400" Score="24"/>
+	<i Name="MOBILITY FireGL V5250" Score="24"/>
+	<i Name="NVIDIA GeForce 6100 nForce 405" Score="23"/>
+	<i Name="ATI MOBILITY RADEON 9600 PRO TURBO" Score="23"/>
+	<i Name="Chell 1.8a for Mobile Intel 965" Score="23"/>
+	<i Name="Microsoft 基本顯示卡" Score="23"/>
+	<i Name="Mobile Intel(R) 965 Express Chipset Family" Score="23"/>
+	<i Name="NVIDIA GeForce 7050 PV / NVIDIA nForce 630a" Score="22"/>
+	<i Name="NVIDIA GeForce 6100 nForce 430" Score="22"/>
+	<i Name="NVIDIA GeForce 6150SE nForce 430" Score="22"/>
+	<i Name="NVIDIA GeForce 6150SE nForce 430 (Microsoft Corporation - WDDM)" Score="22"/>
+	<i Name="NVIDIA GeForce 6150 LE" Score="21"/>
+	<i Name="NVIDIA GeForce 6150" Score="21"/>
+	<i Name="NVIDIA GeForce 6100" Score="21"/>
+	<i Name="Matrox M9140 LP PCIe x16" Score="21"/>
+	<i Name="RADEON XPRESS 200M" Score="20"/>
+	<i Name="PHDGD Solo 2 x64" Score="20"/>
+	<i Name="NVIDIA GeForce Go 6150" Score="19"/>
+	<i Name="ASUS RADEON A9600XT" Score="18"/>
+	<i Name="RADEON 9600 TX Family" Score="18"/>
+	<i Name="Mobile Intel 965 Express" Score="18"/>
+	<i Name="Intel(R) G965 Express" Score="17"/>
+	<i Name="NVIDIA GeForce FX 5600 Ultra" Score="17"/>
+	<i Name="NVIDIA GeForce Go 6100" Score="17"/>
+	<i Name="NVIDIA GeForce 7150M/nForce 630M" Score="17"/>
+	<i Name="NVIDIA GeForce FX Go5600" Score="16"/>
+	<i Name="NVIDIA GeForce FX Go5650" Score="16"/>
+	<i Name="Chell 1.7b for Intel G33/G31" Score="16"/>
+	<i Name="AMD Radeon HD 2400 PCI" Score="14"/>
+	<i Name="NVIDIA GeForce 7000M/nForce 610M" Score="14"/>
+	<i Name="NVIDIA GeForce Go 6200" Score="13"/>
+	<i Name="NVIDIA GeForce 7000M" Score="13"/>
+	<i Name="NVIDIA Quadro FX 500/600 PCI" Score="13"/>
+	<i Name="FireMV 2400 PCIe" Score="13"/>
+	<i Name="Chell 1.8b for Mobile Intel 965" Score="13"/>
+	<i Name="Intel(R) Q35 Express Chipset Family" Score="12"/>
+	<i Name="NVIDIA GeForce FX 5600" Score="12"/>
+	<i Name="VIA Chrome9 HD IGP" Score="12"/>
+	<i Name="NVIDIA GeForce FX 5200 Ultra" Score="12"/>
+	<i Name="NVIDIA GeForce FX Go5300" Score="12"/>
+	<i Name="NVIDIA GeForce FX Go 5600" Score="11"/>
+	<i Name="Intel(R) Q33 Express" Score="11"/>
+	<i Name="Intel(R) Q33 Express Chipset Family" Score="11"/>
+	<i Name="PHDGD Solo 1.2.0 x86" Score="11"/>
+	<i Name="Master X3100 Driver" Score="10"/>
+	<i Name="Matrox Millennium P690 PCIe x16" Score="10"/>
+	<i Name="NVIDIA GeForce FX Go5200" Score="9"/>
+	<i Name="NVIDIA GeForce FX 5600XT" Score="9"/>
+	<i Name="Intel(R) G33/G31 Express Chipset Family" Score="9"/>
+	<i Name="Intel(R) G33/G31 Express Chipset Family (Microsoft Corporation - WDDM 1.0)" Score="9"/>
+	<i Name="NVIDIA GeForce FX Go 5200" Score="8"/>
+	<i Name="NVIDIA GeForce FX 5500" Score="8"/>
+	<i Name="NVIDIA Quadro FX 500/FX 600" Score="8"/>
+	<i Name="Famille de jeu de puces Express Intel 946GZ" Score="7"/>
+	<i Name="Intel(R) US15 Embedded Media and Controller" Score="7"/>
+	<i Name="NVIDIA GeForce FX Go5200" Score="7"/>
+	<i Name="GeForce4 MX Integrated GPU" Score="7"/>
+	<i Name="GeForce4 440 Go 64M" Score="7"/>
+	<i Name="ATI MOBILITY RADEON 9000 IGP" Score="7"/>
+	<i Name="NVIDIA GeForce FX 5200" Score="7"/>
+	<i Name="Matrox M9138 LP PCIe x16" Score="6"/>
+	<i Name="Citrix Display Driver" Score="6"/>
+	<i Name="Intel(R) Media Accelerator 600" Score="6"/>
+	<i Name="Chell 1.7b for Mobile Intel 945" Score="6"/>
+	<i Name="RADEON 9100 IGP" Score="6"/>
+	<i Name="NVIDIA Quadro NVS 55/280 PCI" Score="6"/>
+	<i Name="Intel(R) 82945G Express" Score="6"/>
+	<i Name="Intel(R) 82915G Express" Score="6"/>
+	<i Name="NVIDIA GeForce PCX 5300" Score="6"/>
+	<i Name="RADEON IGP 350M" Score="6"/>
+	<i Name="Intel(R) 946GZ Express" Score="6"/>
+	<i Name="Intel(R)  946GZ Express Chipset Family" Score="6"/>
+	<i Name="ATI MOBILITY RADEON 7000 IGP" Score="6"/>
+	<i Name="NVIDIA Quadro4 380 XGL" Score="6"/>
+	<i Name="Intel(R)  Q965/Q963 Express Chipset Family" Score="6"/>
+	<i Name="GeForce4 Ti 4800 SE" Score="6"/>
+	<i Name="GeForce4 Ti 4400" Score="6"/>
+	<i Name="NVIDIA Quadro 280 NVS PCIe" Score="5"/>
+	<i Name="Matrox Parhelia APVe" Score="5"/>
+	<i Name="GeForce4 460 Go --MobileForce M4 Stock--" Score="5"/>
+	<i Name="ALL-IN-WONDER 9000" Score="5"/>
+	<i Name="NVIDIA GeForce FX 5200LE" Score="5"/>
+	<i Name="SiS 760" Score="5"/>
+	<i Name="NVIDIA GeForce 256" Score="5"/>
+	<i Name="GeForce4 Ti 4600" Score="5"/>
+	<i Name="VIA/S3G UniChrome Pro IGP" Score="5"/>
+	<i Name="ALL-IN-WONDER RADEON 8500DV" Score="5"/>
+	<i Name="NVIDIA Quadro4 980 XGL" Score="5"/>
+	<i Name="GeForce4 MX 460" Score="5"/>
+	<i Name="Mobile Intel 945GM Express" Score="5"/>
+	<i Name="VIA/S3G UniChromeII" Score="5"/>
+	<i Name="GeForce4 Ti 4200" Score="5"/>
+	<i Name="SiS M760" Score="5"/>
+	<i Name="FireMV 2400" Score="5"/>
+	<i Name="GeForce4 420 Go 32M" Score="5"/>
+	<i Name="GeForce4 448 Go" Score="5"/>
+	<i Name="Matrox Millennium P650 PCIe 128" Score="5"/>
+	<i Name="RADEON 9100 Family" Score="5"/>
+	<i Name="GeForce4 MX 440SE" Score="4"/>
+	<i Name="SiS 741" Score="4"/>
+	<i Name="MOBILITY/RADEON 9000" Score="4"/>
+	<i Name="SiS 661FX_760_741_M661FX_M760_M741" Score="4"/>
+	<i Name="GeForce4 MX 440" Score="4"/>
+	<i Name="ATI MOBILITY RADEON 7500" Score="4"/>
+	<i Name="VIA/S3G UniChrome IGP" Score="4"/>
+	<i Name="RADEON 7000 / RADEON VE Family" Score="4"/>
+	<i Name="VIA Chrome9 HC IGP Family" Score="4"/>
+	<i Name="GeForce3 Ti 200" Score="4"/>
+	<i Name="SiS 661FX/GX Mirage" Score="4"/>
+	<i Name="SiS M760GX" Score="4"/>
+	<i Name="GeForce4 4200 Go" Score="4"/>
+	<i Name="GeForce4 MX 4000" Score="4"/>
+	<i Name="SiS M661MX" Score="4"/>
+	<i Name="VIA Chrome9 HC IGP" Score="4"/>
+	<i Name="Intel(R) 82865G Controller" Score="4"/>
+	<i Name="Mobile Intel(R) 945 Express Chipset Family" Score="4"/>
+	<i Name="GeForce4 MX 440 with AGP8X" Score="4"/>
+	<i Name="GeForce3" Score="4"/>
+	<i Name="RADEON 7500 Family" Score="4"/>
+	<i Name="GeForce2 Integrated GPU" Score="4"/>
+	<i Name="SiS Mirage" Score="4"/>
+	<i Name="GeForce4 MX 420" Score="4"/>
+	<i Name="GeForce2 Ti" Score="4"/>
+	<i Name="Mobile Intel 945GM/GU Express" Score="4"/>
+	<i Name="Mobile Intel 915GM/GMS/910GML Express" Score="4"/>
+	<i Name="GeForce4 Ti 4200 with AGP8X" Score="4"/>
+	<i Name="ATI MOBILITY RADEON 9000/9100 IGP" Score="4"/>
+	<i Name="S3 Inc. Savage4" Score="3"/>
+	<i Name="ABIT Siluro T400" Score="3"/>
+	<i Name="RIVA TNT2/TNT2 Pro" Score="3"/>
+	<i Name="Sherry 1.3.2 beta for 945 chipsets" Score="3"/>
+	<i Name="Intel(R) Media Accelerator 500" Score="3"/>
+	<i Name="RADEON 9000 Family" Score="3"/>
+	<i Name="VIA/S3G DeltaChrome IGP" Score="3"/>
+	<i Name="SiS 650_651_M650_M652_740" Score="3"/>
+	<i Name="RIVA TNT2 Model 64/Model 64 Pro" Score="3"/>
+	<i Name="RADEON 9200" Score="3"/>
+	<i Name="GeForce2 MX 100/200" Score="3"/>
+	<i Name="Intel(R) 82845G/GL/GE/PE/GV Controller" Score="3"/>
+	<i Name="VIA Chrome9 HC IGP Family WDDM" Score="3"/>
+	<i Name="VIA Chrome9 HC IGP WDDM 1.1" Score="3"/>
+	<i Name="RADEON 9200 SE" Score="3"/>
+	<i Name="Rage Fury Pro/Xpert 2000 Pro" Score="3"/>
+	<i Name="VIA Chrome9 HC IGP WDDM" Score="3"/>
+	<i Name="ATI MOBILITY RADEON 9000" Score="3"/>
+	<i Name="VIA/S3G KM400/KN400" Score="3"/>
+	<i Name="GeForce2 MX/MX 400" Score="3"/>
+	<i Name="SiS 661FX" Score="3"/>
+	<i Name="GeForce4 MX 440-SE" Score="3"/>
+	<i Name="GeForce4 420 Go" Score="3"/>
+	<i Name="GeForce2 MX" Score="3"/>
+	<i Name="Radeon IGP 320M" Score="3"/>
+	<i Name="ATI MOBILITY RADEON 9200" Score="3"/>
+	<i Name="Intel(R) 865 Embedded Controller" Score="3"/>
+	<i Name="GeForce2 GTS/GeForce2 Pro" Score="3"/>
+	<i Name="RADEON IGP 345M" Score="3"/>
+	<i Name="RADEON 7500" Score="3"/>
+	<i Name="Vanta/Vanta LT" Score="3"/>
+	<i Name="GeForce4 440 Go" Score="3"/>
+	<i Name="VIA Chrome9 HC IGP Prerelease WDDM 1.1" Score="2"/>
+	<i Name="SiS 651" Score="2"/>
+	<i Name="ATI MOBILITY RADEON 9100 IGP" Score="2"/>
+	<i Name="VIA Chrome9 HC3 IGP" Score="2"/>
+	<i Name="RADEON 9200 LE Family" Score="2"/>
+	<i Name="SiS Mirage 3 Graphics" Score="2"/>
+	<i Name="Radeon IGP 340M" Score="2"/>
+	<i Name="RADEON 9200 SE Family" Score="2"/>
+	<i Name="RADEON 9200 PRO Family" Score="2"/>
+	<i Name="GeForce3 Ti 500" Score="2"/>
+	<i Name="Intel(R) 82845G/GL Controller" Score="2"/>
+	<i Name="Intel(R) 82915G/GV/910GL Express" Score="2"/>
+	<i Name="Intel(R) 82915G/GV/910GL Express Chipset Family" Score="2"/>
+	<i Name="Intel(R) Graphics Media Accelerator 3150" Score="2"/>
+	<i Name="RADEON 9250" Score="2"/>
+	<i Name="NVIDIA Quadro2 Pro" Score="1"/>
+	<i Name="Sherry 1.3 for GMA 3150" Score="1"/>
+	<i Name="SiS 630/730" Score="1"/>
+	<i Name="S3 ProSavageDDR" Score="1"/>
+	<i Name="NVIDIA Quadro NVS 280 SD" Score="1"/>
+	<i Name="Intel(R) 82845G Controller" Score="1"/>
+	<i Name="Tul , RADEON 9200SE" Score="1"/>
+</root>

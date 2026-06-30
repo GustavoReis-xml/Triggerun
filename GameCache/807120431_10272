@@ -1,0 +1,11 @@
+<root>
+	<i id="101" name="Desconto em diamantes para recarga" bgimg="libao_rechargezuan_ditu" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;Durante o evento, ressarção de diamante será feita após acúmulos diários de recarga para alcançar os limites abaixo&lt;/size&gt;&lt;/color&gt;" desc2="Recargas acumuladas e prêmios serão removidos meia noite, todos os dias">
+		<d id="1" targnum="100" reward="1021,10"/>
+		<d id="2" targnum="200" reward="1021,22"/>
+		<d id="3" targnum="500" reward="1021,60"/>
+		<d id="4" targnum="1000" reward="1021,130"/>
+		<d id="5" targnum="2000" reward="1021,280"/>
+		<d id="6" targnum="5000" reward="1021,750"/>
+		<d id="7" targnum="10000" reward="1021,1750"/>
+	</i>
+</root>

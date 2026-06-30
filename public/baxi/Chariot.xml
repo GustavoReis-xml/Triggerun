@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i Npc_ID="1004" Map_ID="5063" Origin_Point="10297|9850|16039" Detection_Range_1="1000" Detection_Range_2="1000" Rotation_Angle="0|0|0" Move_Speed="150|150" Node_Data="1,13340,11550,9405,600|2,19750,11730,9409,600"  Pass_Node_Data="1,13340,9780,9405,0"/>
+	<i Npc_ID="1020" Map_ID="5022" Origin_Point="24481|10050|20700" Detection_Range_1="1000" Detection_Range_2="1000" Rotation_Angle="0|180|0" Move_Speed="150|150" Node_Data="1,19640,18626,10030,600|2,18210,25337,9530,600"  Pass_Node_Data="1,18750,19550,10030,0"/>
+</root>

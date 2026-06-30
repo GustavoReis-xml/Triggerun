@@ -1,0 +1,92 @@
+{
+    "username": "admin",
+    "password": "123456",
+    "createdAt": "2026-06-20T06:40:42.314Z",
+    "lastLogin": "2026-06-26T05:59:14.404Z",
+    "gold": 999999,
+    "diamonds": 999999,
+    "level": 1,
+    "exp": 0,
+    "face": 2009,
+    "paint": 1019,
+    "runes": {
+        "step": 0,
+        "star": 0
+    },
+    "parts": {
+        "1": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "2": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "3": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "4": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "5": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "6": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "7": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "8": {
+            "lvl": 1,
+            "exp": 0
+        }
+    },
+    "weaponParts": {},
+    "items": {},
+    "equipment": {
+        "1015": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        }
+    },
+    "settings": [
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "unlockedHeroes": [
+        1015
+    ],
+    "unlockedFaces": [
+        2009
+    ],
+    "unlockedSprays": [
+        1019
+    ],
+    "unlockedCosmetics": {
+        "1015": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        }
+    }
+}

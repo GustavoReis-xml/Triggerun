@@ -1,0 +1,11 @@
+<root>
+	<i id="101" name="Recarga acumulada" bgimg="libao_rechargeitem_ditu" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;Durante o evento, ganhe prêmios após acumular recarga e alcançar os seguintes limites&lt;/size&gt;&lt;/color&gt;" desc2="Entretenimento racional e consumação racional">
+		<d id="1" targnum="500" reward="2008,5#1020,200"/>
+		<d id="2" targnum="1000" reward="6021,25#2020,10"/>
+		<d id="3" targnum="5000" reward="6021,150#2020,30#1230,1"/>
+		<d id="4" targnum="10000" reward="2009,5#2020,50#6022,10"/>
+		<d id="5" targnum="20000" reward="2010,3#2020,70#6022,30"/>
+		<d id="6" targnum="50000" reward="2011,2#2020,160#6022,50"/>
+		<d id="7" targnum="100000" reward="6021,500#2020,500#6022,120"/>
+	</i>
+</root>

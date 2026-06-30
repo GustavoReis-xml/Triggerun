@@ -1,0 +1,3 @@
+<root>
+	<i id="101" name="Gifts da Deusa" bgimg="libao_goddess_ditu_bx" desc1="&lt;size=22&gt;&lt;color=#ffa200&gt;Duração do evento:  &lt;/color&gt;&lt;color=#12ff00&gt;&lt;size=26&gt;{0}-{1}&lt;/size&gt;&lt;/color&gt;&lt;/size&gt;" desc2="&lt;size=22&gt;1 - Qualquer compra durante o evento pode ser recompensada com Rune Boxes e melhora da Stones.\n2 - Evento reseta ao final do dia. Recompensas irão para o mail.&lt;/size&gt;" reward="1020,150,1032,2"/>
+</root>

@@ -1,0 +1,23 @@
+<root>
+	<i id="1001" minlvl="30" minnum="5" tipday="7" lvldesc="&lt;size=26&gt;* 5 Partidas de Ranking&lt;/size&gt;" matchdesc="&lt;size=26&gt;* Control e Escort Mode&lt;/size&gt;" seasondesc="&lt;size=26&gt;* Por tempo determinado&lt;/size&gt;" btndesc="PROXIMA SEASON" pretime="2018-9-7" nexttime="2018-10-22" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
+	<lvl id="1" name="Bronze" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,200"/>
+	<lvl id="2" name="Prata" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,400"/>
+	<lvl id="3" name="Ouro" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,600"/>
+	<lvl id="4" name="Plat." minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1000"/>
+	<lvl id="5" name="Diam." minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1400"/>
+	<lvl id="6" name="Master" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1800"/>
+	<lvl id="7" name="Lord" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1665,1#1751,1#1019,2200"/>
+	<lvl id="8" name="King" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1665,1#1751,1#1019,3000"/>
+	</i>
+	<i id="1002" minlvl="30" minnum="5" tipday="7" lvldesc="&lt;size=26&gt;* 5 Partidas de Ranking&lt;/size&gt;" matchdesc="&lt;size=26&gt;* Control e Escort Mode&lt;/size&gt;" seasondesc="&lt;size=26&gt;* Por tempo determinado&lt;/size&gt;" btndesc="PROXIMA SEASON" pretime="2018-11-2" nexttime="2018-12-20" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
+	<lvl id="1" name="Bronze" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,200"/>
+	<lvl id="2" name="Prata" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,400"/>
+	<lvl id="3" name="Ouro" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,600"/>
+	<lvl id="4" name="Plat." minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1000"/>
+	<lvl id="5" name="Diam." minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1400"/>
+	<lvl id="6" name="Master" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1800"/>
+	<lvl id="7" name="Lord" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1665,1#1751,1#1019,2200"/>
+	<lvl id="8" name="King" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1665,1#1751,1#1019,3000"/>
+	</i>
+
+</root>

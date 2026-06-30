@@ -1,0 +1,4 @@
+<root>
+	<i id="101" name="&lt;size=26&gt;每周冒险模式活动&lt;/size&gt;" bgimg="libao_pvpeveryweek" matchnum="5" rewarditem="2020,5,6021,15,1026,2500" stitle="本周冒险模式参与结算次数{0}/{1}" desc="&lt;color=#c7610c&gt;说明：\n1.只有参与结算的冒险比赛才计入场次，中途退出不计(一键扫荡不计入场次)\n2.战斗数据每周日24点清零，请及时领取奖励。&lt;/color&gt;"/>
+	<i id="102" name="&lt;size=26&gt;每周冒险模式活动&lt;/size&gt;" bgimg="libao_pvpeveryweek" matchnum="5" rewarditem="2020,30,6021,30,1026,20000" stitle="本周冒险模式参与结算次数{0}/{1}" desc="&lt;color=#c7610c&gt;说明：\n1.只有参与结算的冒险比赛才计入场次，中途退出不计(一键扫荡不计入场次)\n2.战斗数据每周日24点清零，请及时领取奖励。&lt;/color&gt;"/>
+</root>

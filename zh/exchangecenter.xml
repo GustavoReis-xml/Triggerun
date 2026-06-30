@@ -1,0 +1,213 @@
+<root>
+	<i id="1" name="皮肤" size="142,218" url="SelectHeroUI/headbig/{0}.txt" chip="1022">
+		<s id="27" name="皮肤(欢度元宵)" itemid="1263" pernum="1" exchangeitem="1022" neednum="100" icon="zhurong_3" desc="祝融新皮肤(欢度元宵)，可在英雄界面查看。"/>
+		<s id="26" name="皮肤(雪女)" itemid="1237" pernum="1" exchangeitem="1022" neednum="100" icon="xuenv_4" desc="雪女新皮肤(寒冰女王)，可在英雄界面查看。"/>
+		<s id="25" name="皮肤(雪女)" itemid="1261" pernum="1" exchangeitem="1022" neednum="100" icon="xuenv_3" desc="雪女新皮肤(欢度新春)，可在英雄界面查看。"/>
+		<s id="1" name="皮肤(应龙)" itemid="1230" pernum="1" exchangeitem="1022" neednum="100" icon="shawang_2" desc="应龙新皮肤(牛魔王)，可在英雄界面查看。"/>
+		<s id="2" name="皮肤(狄安娜)" itemid="1244" pernum="1" exchangeitem="1022" neednum="100" icon="dianna_2" desc="狄安娜新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="3" name="皮肤(刑天)" itemid="1255" pernum="1" exchangeitem="1022" neednum="100" icon="xingtian_2" desc="刑天新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="4" name="皮肤(终结者)" itemid="1257" pernum="1" exchangeitem="1022" neednum="100" icon="zhongjiezhe_2" desc="终结者新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="5" name="皮肤(塔利亚)" itemid="1243" pernum="1" exchangeitem="1022" neednum="100" icon="taliya_2" desc="塔利亚新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="6" name="皮肤(祝融)" itemid="1258" pernum="1" exchangeitem="1022" neednum="100" icon="zhurong_2" desc="祝融新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="7" name="皮肤(瓦尔基里)" itemid="1253" pernum="1" exchangeitem="1022" neednum="100" icon="waerjili_2" desc="瓦尔基里新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="8" name="皮肤(木兰)" itemid="1254" pernum="1" exchangeitem="1022" neednum="100" icon="mulan_2" desc="木兰新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="9" name="皮肤(雷震子)" itemid="1251" pernum="1" exchangeitem="1022" neednum="100" icon="leizhenzi_2" desc="雷震子新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="10" name="皮肤(雪女)" itemid="1256" pernum="1" exchangeitem="1022" neednum="100" icon="xuenv_2" desc="雪女新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="11" name="皮肤(后羿)" itemid="1240" pernum="1" exchangeitem="1022" neednum="100" icon="houyi_2" desc="后羿新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="12" name="皮肤(玲珑)" itemid="1236" pernum="1" exchangeitem="1022" neednum="100" icon="linglong_2" desc="玲珑新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="13" name="皮肤(爱德华)" itemid="1238" pernum="1" exchangeitem="1022" neednum="100" icon="aidehua_2" desc="爱德华新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="14" name="皮肤(应龙)" itemid="1252" pernum="1" exchangeitem="1022" neednum="100" icon="yinglong_2" desc="应龙新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="15" name="皮肤(洛基)" itemid="1247" pernum="1" exchangeitem="1022" neednum="100" icon="luoji_2" desc="洛基新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="16" name="皮肤(洛丽塔)" itemid="1248" pernum="1" exchangeitem="1022" neednum="100" icon="luolita_2" desc="洛丽塔新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="17" name="皮肤(荆轲)" itemid="1242" pernum="1" exchangeitem="1022" neednum="100" icon="jingke_2" desc="荆轲新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="18" name="皮肤(兰博)" itemid="1245" pernum="1" exchangeitem="1022" neednum="100" icon="lanbo_2" desc="兰博新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="19" name="皮肤(妲己)" itemid="1239" pernum="1" exchangeitem="1022" neednum="100" icon="daji_2" desc="妲己新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="20" name="皮肤(莉莉丝)" itemid="1246" pernum="1" exchangeitem="1022" neednum="100" icon="lilisi_2" desc="莉莉丝新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="21" name="皮肤(黄忠)" itemid="1241" pernum="1" exchangeitem="1022" neednum="100" icon="huangzhong_2" desc="黄忠新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="22" name="皮肤(哪吒)" itemid="1250" pernum="1" exchangeitem="1022" neednum="100" icon="nezha_2" desc="哪吒新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="23" name="皮肤(美杜莎)" itemid="1249" pernum="1" exchangeitem="1022" neednum="100" icon="meidusha_2" desc="美杜莎新皮肤(星空)，可在英雄界面查看。"/>
+		<s id="24" name="皮肤(大卫)" itemid="1259" pernum="1" exchangeitem="1022" neednum="100" icon="dawei_2" desc="大卫新皮肤(星空)，可在英雄界面查看。"/>
+	</i>
+	<i id="2" name="武器" size="142,218" url="ItemIco/{0}.txt" chip="1031">
+		<s id="1" name="武器(终结者)" itemid="1923" pernum="1" exchangeitem="1031" neednum="100" icon="zhongjiezhe_4" desc="终结者新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="2" name="武器(狄安娜)" itemid="1924" pernum="1" exchangeitem="1031" neednum="100" icon="dianna_4" desc="狄安娜新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="3" name="武器(刑天)" itemid="1925" pernum="1" exchangeitem="1031" neednum="100" icon="xingtian_4" desc="刑天新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="4" name="武器(塔利亚)" itemid="1926" pernum="1" exchangeitem="1031" neednum="100" icon="taliya_4" desc="塔利亚新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="5" name="武器(祝融)" itemid="1927" pernum="1" exchangeitem="1031" neednum="100" icon="zhurong_4" desc="祝融新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="6" name="武器(瓦尔基里)" itemid="1928" pernum="1" exchangeitem="1031" neednum="100" icon="waerjili_4" desc="瓦尔基里新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="7" name="武器(木兰)" itemid="1929" pernum="1" exchangeitem="1031" neednum="100" icon="mulan_4" desc="木兰新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="8" name="武器(雷震子)" itemid="1930" pernum="1" exchangeitem="1031" neednum="100" icon="leizhenzi_4" desc="雷震子新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="9" name="武器(雪女)" itemid="1931" pernum="1" exchangeitem="1031" neednum="100" icon="xuenv_4" desc="雪女新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="10" name="武器(后羿)" itemid="1932" pernum="1" exchangeitem="1031" neednum="100" icon="houyi_4" desc="后羿新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="11" name="武器(玲珑)" itemid="1933" pernum="1" exchangeitem="1031" neednum="100" icon="linglong_4" desc="玲珑新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="12" name="武器(爱德华)" itemid="1934" pernum="1" exchangeitem="1031" neednum="100" icon="aidehua_4" desc="爱德华新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="13" name="武器(应龙)" itemid="1935" pernum="1" exchangeitem="1031" neednum="100" icon="yinglong_4" desc="应龙新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="14" name="武器(洛基)" itemid="1936" pernum="1" exchangeitem="1031" neednum="100" icon="luoji_4" desc="洛基新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="15" name="武器(洛丽塔)" itemid="1937" pernum="1" exchangeitem="1031" neednum="100" icon="luolita_4" desc="洛丽塔新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="16" name="武器(荆轲)" itemid="1938" pernum="1" exchangeitem="1031" neednum="100" icon="jingke_4" desc="荆轲新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="17" name="武器(兰博)" itemid="1939" pernum="1" exchangeitem="1031" neednum="100" icon="lanbo_4" desc="兰博新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="18" name="武器(妲己)" itemid="1940" pernum="1" exchangeitem="1031" neednum="100" icon="daji_4" desc="妲己新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="19" name="武器(莉莉丝)" itemid="1941" pernum="1" exchangeitem="1031" neednum="100" icon="lilisi_4" desc="莉莉丝新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="20" name="武器(黄忠)" itemid="1942" pernum="1" exchangeitem="1031" neednum="100" icon="huangzhong_4" desc="黄忠新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="21" name="武器(哪吒)" itemid="1943" pernum="1" exchangeitem="1031" neednum="100" icon="nezha_4" desc="哪吒新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="22" name="武器(美杜莎)" itemid="1944" pernum="1" exchangeitem="1031" neednum="100" icon="meidusha_4" desc="美杜莎新武器(紫晶)，可在英雄界面查看。"/>
+		<s id="23" name="武器(大卫)" itemid="1945" pernum="1" exchangeitem="1031" neednum="100" icon="dawei_4" desc="大卫新武器(紫晶)，可在英雄界面查看。"/>
+	</i>
+	<i id="3" name="符文" size="142,142" url="ItemIco/{0}.txt" chip="1029">
+		<s id="1" name="高级符文(通用)" itemid="3005" pernum="1" exchangeitem="1029" neednum="50" icon="1000" desc="&lt;color=#ffba00&gt;生命值&lt;/color&gt;额外增加&lt;color=#00ff00&gt;7.0%&lt;/color&gt;"/>
+		<s id="2" name="高级符文(通用)" itemid="3025" pernum="1" exchangeitem="1029" neednum="50" icon="1020" desc="&lt;color=#ffba00&gt;移动速度&lt;/color&gt;增加&lt;color=#00ff00&gt;5.0%&lt;/color&gt;"/>
+		<s id="3" name="高级符文(通用)" itemid="3035" pernum="1" exchangeitem="1029" neednum="50" icon="1030" desc="&lt;color=#ffba00&gt;武器伤害&lt;/color&gt;增加&lt;color=#00ff00&gt;10.0%&lt;/color&gt;"/>
+		<s id="4" name="高级符文(通用)" itemid="3045" pernum="1" exchangeitem="1029" neednum="50" icon="1040" desc="终极技能&lt;color=#ffba00&gt;充能速度&lt;/color&gt;增加&lt;color=#00ff00&gt;5.0%&lt;/color&gt;"/>
+
+		<s id="11" name="高级符文(木兰)" itemid="3105" pernum="1" exchangeitem="1029" neednum="50" icon="2000" desc="&lt;color=#ffba00&gt;闪现&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="12" name="高级符文(木兰)" itemid="3115" pernum="1" exchangeitem="1029" neednum="50" icon="2010" desc="&lt;color=#ffba00&gt;闪现&lt;/color&gt;距离增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="13" name="高级符文(木兰)" itemid="3125" pernum="1" exchangeitem="1029" neednum="50" icon="2020" desc="&lt;color=#ffba00&gt;速射&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="14" name="高级符文(木兰)" itemid="3135" pernum="1" exchangeitem="1029" neednum="50" icon="2030" desc="&lt;color=#ffba00&gt;速射&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="15" name="高级符文(木兰)" itemid="3145" pernum="1" exchangeitem="1029" neednum="50" icon="2040" desc="&lt;color=#ffba00&gt;死亡裁决&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="21" name="高级符文(终结者)" itemid="3205" pernum="1" exchangeitem="1029" neednum="50" icon="2100" desc="&lt;color=#ffba00&gt;手雷&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="22" name="高级符文(终结者)" itemid="3215" pernum="1" exchangeitem="1029" neednum="50" icon="2110" desc="&lt;color=#ffba00&gt;手雷&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="23" name="高级符文(终结者)" itemid="3225" pernum="1" exchangeitem="1029" neednum="50" icon="2120" desc="&lt;color=#ffba00&gt;生物制剂&lt;/color&gt;治疗量增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="24" name="高级符文(终结者)" itemid="3235" pernum="1" exchangeitem="1029" neednum="50" icon="2130" desc="&lt;color=#ffba00&gt;生物制剂&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="25" name="高级符文(终结者)" itemid="3245" pernum="1" exchangeitem="1029" neednum="50" icon="2140" desc="&lt;color=#ffba00&gt;毁灭者&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="31" name="高级符文(刑天)" itemid="3305" pernum="1" exchangeitem="1029" neednum="50" icon="2200" desc="&lt;color=#ffba00&gt;焰拳&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="32" name="高级符文(刑天)" itemid="3315" pernum="1" exchangeitem="1029" neednum="50" icon="2210" desc="&lt;color=#ffba00&gt;焰拳&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="33" name="高级符文(刑天)" itemid="3325" pernum="1" exchangeitem="1029" neednum="50" icon="2220" desc="&lt;color=#ffba00&gt;护盾&lt;/color&gt;上限增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="34" name="高级符文(刑天)" itemid="3335" pernum="1" exchangeitem="1029" neednum="50" icon="2230" desc="&lt;color=#ffba00&gt;护盾&lt;/color&gt;恢复速度增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="35" name="高级符文(刑天)" itemid="3345" pernum="1" exchangeitem="1029" neednum="50" icon="2240" desc="&lt;color=#ffba00&gt;裂地&lt;/color&gt;打击伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="36" name="高级符文(刑天)" itemid="3355" pernum="1" exchangeitem="1029" neednum="50" icon="2250" desc="&lt;color=#ffba00&gt;裂地&lt;/color&gt;打击眩晕时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="41" name="高级符文(狄安娜)" itemid="3405" pernum="1" exchangeitem="1029" neednum="50" icon="2300" desc="&lt;color=#ffba00&gt;光学迷彩&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="42" name="高级符文(狄安娜)" itemid="3415" pernum="1" exchangeitem="1029" neednum="50" icon="2310" desc="&lt;color=#ffba00&gt;光学迷彩&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="43" name="高级符文(狄安娜)" itemid="3425" pernum="1" exchangeitem="1029" neednum="50" icon="2320" desc="&lt;color=#ffba00&gt;传送&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="44" name="高级符文(狄安娜)" itemid="3435" pernum="1" exchangeitem="1029" neednum="50" icon="2330" desc="&lt;color=#ffba00&gt;传送&lt;/color&gt;时免伤&lt;color=#00ff00&gt;50.0%&lt;/color&gt;"/>
+		<s id="45" name="高级符文(狄安娜)" itemid="3445" pernum="1" exchangeitem="1029" neednum="50" icon="2340" desc="&lt;color=#ffba00&gt;红外侦测&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="51" name="高级符文(后羿)" itemid="3505" pernum="1" exchangeitem="1029" neednum="50" icon="2400" desc="&lt;color=#ffba00&gt;震荡射击&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="52" name="高级符文(后羿)" itemid="3515" pernum="1" exchangeitem="1029" neednum="50" icon="2410" desc="&lt;color=#ffba00&gt;震荡射击&lt;/color&gt;力度增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="53" name="高级符文(后羿)" itemid="3525" pernum="1" exchangeitem="1029" neednum="50" icon="2420" desc="&lt;color=#ffba00&gt;爆炸射击&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="54" name="高级符文(后羿)" itemid="3535" pernum="1" exchangeitem="1029" neednum="50" icon="2430" desc="&lt;color=#ffba00&gt;爆炸射击&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="55" name="高级符文(后羿)" itemid="3545" pernum="1" exchangeitem="1029" neednum="50" icon="2440" desc="&lt;color=#ffba00&gt;凤翼天翔&lt;/color&gt;充能速度提高&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="61" name="高级符文(雷震子)" itemid="3605" pernum="1" exchangeitem="1029" neednum="50" icon="2500" desc="&lt;color=#ffba00&gt;燃料&lt;/color&gt;上限增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="62" name="高级符文(雷震子)" itemid="3615" pernum="1" exchangeitem="1029" neednum="50" icon="2510" desc="&lt;color=#ffba00&gt;推进器&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="63" name="高级符文(雷震子)" itemid="3625" pernum="1" exchangeitem="1029" neednum="50" icon="2520" desc="&lt;color=#ffba00&gt;雷暴弹&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="64" name="高级符文(雷震子)" itemid="3635" pernum="1" exchangeitem="1029" neednum="50" icon="2530" desc="&lt;color=#ffba00&gt;雷暴弹&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="65" name="高级符文(雷震子)" itemid="3645" pernum="1" exchangeitem="1029" neednum="50" icon="2540" desc="&lt;color=#ffba00&gt;毒蛇飞弹&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="71" name="高级符文(塔利亚)" itemid="3705" pernum="1" exchangeitem="1029" neednum="50" icon="2600" desc="&lt;color=#ffba00&gt;切牌-愈&lt;/color&gt;治疗量提高&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="72" name="高级符文(塔利亚)" itemid="3715" pernum="1" exchangeitem="1029" neednum="50" icon="2610" desc="&lt;color=#ffba00&gt;切牌-愈&lt;/color&gt;存在时助攻恢复&lt;color=#00ff00&gt;5.0%&lt;/color&gt;生命值"/>
+		<s id="73" name="高级符文(塔利亚)" itemid="3725" pernum="1" exchangeitem="1029" neednum="50" icon="2620" desc="&lt;color=#ffba00&gt;切牌 殇&lt;/color&gt;效果增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="74" name="高级符文(塔利亚)" itemid="3735" pernum="1" exchangeitem="1029" neednum="50" icon="2630" desc="&lt;color=#ffba00&gt;切牌 殇&lt;/color&gt;存在时助攻恢复&lt;color=#00ff00&gt;5.0%&lt;/color&gt;生命值"/>
+		<s id="75" name="高级符文(塔利亚)" itemid="3745" pernum="1" exchangeitem="1029" neednum="50" icon="2640" desc="&lt;color=#ffba00&gt;命运&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;25.0%&lt;/color&gt;"/>
+
+		<s id="81" name="高级符文(祝融)" itemid="3805" pernum="1" exchangeitem="1029" neednum="50" icon="2700" desc="&lt;color=#ffba00&gt;烈焰哨兵&lt;/color&gt;射程增加&lt;color=#00ff00&gt;25.0%&lt;/color&gt;"/>
+		<s id="82" name="高级符文(祝融)" itemid="3815" pernum="1" exchangeitem="1029" neednum="50" icon="2710" desc="&lt;color=#ffba00&gt;烈焰哨兵&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="83" name="高级符文(祝融)" itemid="3825" pernum="1" exchangeitem="1029" neednum="50" icon="2720" desc="&lt;color=#ffba00&gt;浴火重生&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="84" name="高级符文(祝融)" itemid="3835" pernum="1" exchangeitem="1029" neednum="50" icon="2730" desc="&lt;color=#ffba00&gt;浴火重生&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="85" name="高级符文(祝融)" itemid="3845" pernum="1" exchangeitem="1029" neednum="50" icon="2740" desc="&lt;color=#ffba00&gt;地狱熔炉&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="91" name="高级符文(爱德华)" itemid="3905" pernum="1" exchangeitem="1029" neednum="50" icon="2800" desc="&lt;color=#ffba00&gt;自爆蝙蝠&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="92" name="高级符文(爱德华)" itemid="3915" pernum="1" exchangeitem="1029" neednum="50" icon="2810" desc="&lt;color=#ffba00&gt;自爆蝙蝠&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="93" name="高级符文(爱德华)" itemid="3925" pernum="1" exchangeitem="1029" neednum="50" icon="2820" desc="&lt;color=#ffba00&gt;化身&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="94" name="高级符文(爱德华)" itemid="3935" pernum="1" exchangeitem="1029" neednum="50" icon="2830" desc="&lt;color=#ffba00&gt;化身&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="95" name="高级符文(爱德华)" itemid="3945" pernum="1" exchangeitem="1029" neednum="50" icon="2840" desc="&lt;color=#ffba00&gt;血性狂暴&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="101" name="高级符文(应龙)" itemid="4005" pernum="1" exchangeitem="1029" neednum="50" icon="2900" desc="&lt;color=#ffba00&gt;冲锋&lt;/color&gt;昏迷时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="102" name="高级符文(应龙)" itemid="4015" pernum="1" exchangeitem="1029" neednum="50" icon="2910" desc="&lt;color=#ffba00&gt;冲锋&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="103" name="高级符文(应龙)" itemid="4025" pernum="1" exchangeitem="1029" neednum="50" icon="2920" desc="&lt;color=#ffba00&gt;嗜血&lt;/color&gt;持续时间延长&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="104" name="高级符文(应龙)" itemid="4035" pernum="1" exchangeitem="1029" neednum="50" icon="2930" desc="&lt;color=#ffba00&gt;嗜血&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="105" name="高级符文(应龙)" itemid="4045" pernum="1" exchangeitem="1029" neednum="50" icon="2940" desc="&lt;color=#ffba00&gt;行星之引&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="111" name="高级符文(玲珑)" itemid="4105" pernum="1" exchangeitem="1029" neednum="50" icon="3000" desc="&lt;color=#ffba00&gt;哨戒炮&lt;/color&gt;生命值增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="112" name="高级符文(玲珑)" itemid="4115" pernum="1" exchangeitem="1029" neednum="50" icon="3010" desc="&lt;color=#ffba00&gt;哨戒炮&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="113" name="高级符文(玲珑)" itemid="4125" pernum="1" exchangeitem="1029" neednum="50" icon="3020" desc="&lt;color=#ffba00&gt;牢笼&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="114" name="高级符文(玲珑)" itemid="4135" pernum="1" exchangeitem="1029" neednum="50" icon="3030" desc="&lt;color=#ffba00&gt;牢笼&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="115" name="高级符文(玲珑)" itemid="4145" pernum="1" exchangeitem="1029" neednum="50" icon="3040" desc="&lt;color=#ffba00&gt;传送矩阵&lt;/color&gt;传送次数增加&lt;color=#00ff00&gt;5&lt;/color&gt;次"/>
+		<s id="116" name="高级符文(玲珑)" itemid="4155" pernum="1" exchangeitem="1029" neednum="50" icon="3050" desc="&lt;color=#ffba00&gt;传送矩阵&lt;/color&gt;生命值增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="121" name="高级符文(瓦尔基里)" itemid="4205" pernum="1" exchangeitem="1029" neednum="50" icon="3100" desc="&lt;color=#ffba00&gt;能量盾&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="122" name="高级符文(瓦尔基里)" itemid="4215" pernum="1" exchangeitem="1029" neednum="50" icon="3110" desc="&lt;color=#ffba00&gt;能量盾&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="123" name="高级符文(瓦尔基里)" itemid="4225" pernum="1" exchangeitem="1029" neednum="50" icon="3120" desc="&lt;color=#ffba00&gt;跳斩&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="124" name="高级符文(瓦尔基里)" itemid="4235" pernum="1" exchangeitem="1029" neednum="50" icon="3130" desc="&lt;color=#ffba00&gt;跳斩&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="125" name="高级符文(瓦尔基里)" itemid="4245" pernum="1" exchangeitem="1029" neednum="50" icon="3140" desc="&lt;color=#ffba00&gt;旋风斩&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="131" name="高级符文(雪女)" itemid="4305" pernum="1" exchangeitem="1029" neednum="50" icon="3200" desc="&lt;color=#ffba00&gt;冰冻陷阱&lt;/color&gt;冻结时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="132" name="高级符文(雪女)" itemid="4315" pernum="1" exchangeitem="1029" neednum="50" icon="3210" desc="&lt;color=#ffba00&gt;冰冻陷阱&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="133" name="高级符文(雪女)" itemid="4325" pernum="1" exchangeitem="1029" neednum="50" icon="3220" desc="&lt;color=#ffba00&gt;冰雪精灵&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="134" name="高级符文(雪女)" itemid="4335" pernum="1" exchangeitem="1029" neednum="50" icon="3230" desc="&lt;color=#ffba00&gt;冰雪精灵&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="135" name="高级符文(雪女)" itemid="4345" pernum="1" exchangeitem="1029" neednum="50" icon="3240" desc="&lt;color=#ffba00&gt;雪球&lt;/color&gt;生命值增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="141" name="高级符文(洛基)" itemid="4405" pernum="1" exchangeitem="1029" neednum="50" icon="3300" desc="&lt;color=#ffba00&gt;遥控炸弹&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="142" name="高级符文(洛基)" itemid="4415" pernum="1" exchangeitem="1029" neednum="50" icon="3310" desc="&lt;color=#ffba00&gt;遥控炸弹&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="143" name="高级符文(洛基)" itemid="4425" pernum="1" exchangeitem="1029" neednum="50" icon="3320" desc="&lt;color=#ffba00&gt;聚能炮&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="144" name="高级符文(洛基)" itemid="4435" pernum="1" exchangeitem="1029" neednum="50" icon="3330" desc="&lt;color=#ffba00&gt;聚能炮&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="145" name="高级符文(洛基)" itemid="4445" pernum="1" exchangeitem="1029" neednum="50" icon="3340" desc="&lt;color=#ffba00&gt;毁天灭地&lt;/color&gt;预警时间缩短&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="151" name="高级符文(洛丽塔)" itemid="4505" pernum="1" exchangeitem="1029" neednum="50" icon="3400" desc="&lt;color=#ffba00&gt;希尔芙之风&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="152" name="高级符文(洛丽塔)" itemid="4515" pernum="1" exchangeitem="1029" neednum="50" icon="3410" desc="&lt;color=#ffba00&gt;希尔芙之风&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="153" name="高级符文(洛丽塔)" itemid="4525" pernum="1" exchangeitem="1029" neednum="50" icon="3420" desc="&lt;color=#ffba00&gt;温蒂妮之力&lt;/color&gt;伤害和治疗增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="154" name="高级符文(洛丽塔)" itemid="4535" pernum="1" exchangeitem="1029" neednum="50" icon="3430" desc="&lt;color=#ffba00&gt;温蒂妮之力&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="155" name="高级符文(洛丽塔)" itemid="4545" pernum="1" exchangeitem="1029" neednum="50" icon="3440" desc="&lt;color=#ffba00&gt;葛罗姆之光&lt;/color&gt;充能速度提高&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="161" name="高级符文(荆轲)" itemid="4605" pernum="1" exchangeitem="1029" neednum="50" icon="3500" desc="&lt;color=#ffba00&gt;刺秦&lt;/color&gt;眩晕时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="162" name="高级符文(荆轲)" itemid="4615" pernum="1" exchangeitem="1029" neednum="50" icon="3510" desc="&lt;color=#ffba00&gt;刺秦&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="163" name="高级符文(荆轲)" itemid="4625" pernum="1" exchangeitem="1029" neednum="50" icon="3520" desc="&lt;color=#ffba00&gt;弑君&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="164" name="高级符文(荆轲)" itemid="4635" pernum="1" exchangeitem="1029" neednum="50" icon="3530" desc="&lt;color=#ffba00&gt;弑君&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="165" name="高级符文(荆轲)" itemid="4645" pernum="1" exchangeitem="1029" neednum="50" icon="3540" desc="&lt;color=#ffba00&gt;易水&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="171" name="高级符文(兰博)" itemid="4705" pernum="1" exchangeitem="1029" neednum="50" icon="3600" desc="&lt;color=#ffba00&gt;防卫陷阱&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="172" name="高级符文(兰博)" itemid="4715" pernum="1" exchangeitem="1029" neednum="50" icon="3610" desc="&lt;color=#ffba00&gt;防卫陷阱&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="173" name="高级符文(兰博)" itemid="4725" pernum="1" exchangeitem="1029" neednum="50" icon="3620" desc="&lt;color=#ffba00&gt;侦测弹&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="174" name="高级符文(兰博)" itemid="4735" pernum="1" exchangeitem="1029" neednum="50" icon="3630" desc="&lt;color=#ffba00&gt;侦测弹&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="175" name="高级符文(兰博)" itemid="4745" pernum="1" exchangeitem="1029" neednum="50" icon="3640" desc="&lt;color=#ffba00&gt;自动瞄准&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="181" name="高级符文(妲己)" itemid="4805" pernum="1" exchangeitem="1029" neednum="50" icon="3700" desc="&lt;color=#ffba00&gt;远古守护&lt;/color&gt;生命值增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="182" name="高级符文(妲己)" itemid="4815" pernum="1" exchangeitem="1029" neednum="50" icon="3710" desc="&lt;color=#ffba00&gt;远古守护&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="183" name="高级符文(妲己)" itemid="4825" pernum="1" exchangeitem="1029" neednum="50" icon="3720" desc="&lt;color=#ffba00&gt;治疗领域&lt;/color&gt;治疗量增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="184" name="高级符文(妲己)" itemid="4835" pernum="1" exchangeitem="1029" neednum="50" icon="3730" desc="&lt;color=#ffba00&gt;治疗领域&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="185" name="高级符文(妲己)" itemid="4845" pernum="1" exchangeitem="1029" neednum="50" icon="3740" desc="&lt;color=#ffba00&gt;千狐魅影&lt;/color&gt;承受伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="186" name="高级符文(妲己)" itemid="4855" pernum="1" exchangeitem="1029" neednum="50" icon="3750" desc="&lt;color=#ffba00&gt;千狐魅影&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="191" name="高级符文(莉莉丝)" itemid="4905" pernum="1" exchangeitem="1029" neednum="50" icon="3800" desc="&lt;color=#ffba00&gt;奥法冲击&lt;/color&gt;力度增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="192" name="高级符文(莉莉丝)" itemid="4915" pernum="1" exchangeitem="1029" neednum="50" icon="3810" desc="&lt;color=#ffba00&gt;奥法屏障&lt;/color&gt;生命值增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="193" name="高级符文(莉莉丝)" itemid="4925" pernum="1" exchangeitem="1029" neednum="50" icon="3820" desc="&lt;color=#ffba00&gt;奥法屏障&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="194" name="高级符文(莉莉丝)" itemid="4935" pernum="1" exchangeitem="1029" neednum="50" icon="3830" desc="&lt;color=#ffba00&gt;魔法药剂&lt;/color&gt;治疗量增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="195" name="高级符文(莉莉丝)" itemid="4945" pernum="1" exchangeitem="1029" neednum="50" icon="3840" desc="&lt;color=#ffba00&gt;魔法药剂&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="196" name="高级符文(莉莉丝)" itemid="4955" pernum="1" exchangeitem="1029" neednum="50" icon="3850" desc="&lt;color=#ffba00&gt;灵魂枷锁&lt;/color&gt;沉默持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="197" name="高级符文(莉莉丝)" itemid="4965" pernum="1" exchangeitem="1029" neednum="50" icon="3860" desc="&lt;color=#ffba00&gt;灵魂枷锁&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="201" name="高级符文(黄忠)" itemid="7005" pernum="1" exchangeitem="1029" neednum="50" icon="3900" desc="&lt;color=#ffba00&gt;奉献&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="202" name="高级符文(黄忠)" itemid="7015" pernum="1" exchangeitem="1029" neednum="50" icon="3910" desc="&lt;color=#ffba00&gt;奉献&lt;/color&gt;治疗量增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="203" name="高级符文(黄忠)" itemid="7025" pernum="1" exchangeitem="1029" neednum="50" icon="3920" desc="&lt;color=#ffba00&gt;庇护&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="204" name="高级符文(黄忠)" itemid="7035" pernum="1" exchangeitem="1029" neednum="50" icon="3930" desc="&lt;color=#ffba00&gt;庇护&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="205" name="高级符文(黄忠)" itemid="7045" pernum="1" exchangeitem="1029" neednum="50" icon="3940" desc="&lt;color=#ffba00&gt;铁血&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="211" name="高级符文(哪吒)" itemid="7055" pernum="1" exchangeitem="1029" neednum="50" icon="3950" desc="&lt;color=#ffba00&gt;暴雨梨花&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="212" name="高级符文(哪吒)" itemid="7065" pernum="1" exchangeitem="1029" neednum="50" icon="3960" desc="&lt;color=#ffba00&gt;暴雨梨花&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="213" name="高级符文(哪吒)" itemid="7075" pernum="1" exchangeitem="1029" neednum="50" icon="3970" desc="&lt;color=#ffba00&gt;金枪突刺&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="214" name="高级符文(哪吒)" itemid="7085" pernum="1" exchangeitem="1029" neednum="50" icon="3980" desc="&lt;color=#ffba00&gt;金枪突刺&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="215" name="高级符文(哪吒)" itemid="7095" pernum="1" exchangeitem="1029" neednum="50" icon="3990" desc="&lt;color=#ffba00&gt;浩然正气&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="221" name="高级符文(美杜莎)" itemid="7105" pernum="1" exchangeitem="1029" neednum="50" icon="4000" desc="&lt;color=#ffba00&gt;钩索&lt;/color&gt;眩晕时间延长&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="222" name="高级符文(美杜莎)" itemid="7115" pernum="1" exchangeitem="1029" neednum="50" icon="4010" desc="&lt;color=#ffba00&gt;钩索&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="223" name="高级符文(美杜莎)" itemid="7125" pernum="1" exchangeitem="1029" neednum="50" icon="4020" desc="&lt;color=#ffba00&gt;死亡凝视&lt;/color&gt;减速效果增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="224" name="高级符文(美杜莎)" itemid="7135" pernum="1" exchangeitem="1029" neednum="50" icon="4030" desc="&lt;color=#ffba00&gt;死亡凝视&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="225" name="高级符文(美杜莎)" itemid="7145" pernum="1" exchangeitem="1029" neednum="50" icon="4040" desc="&lt;color=#ffba00&gt;蛇发女妖&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="226" name="高级符文(美杜莎)" itemid="7155" pernum="1" exchangeitem="1029" neednum="50" icon="4050" desc="&lt;color=#ffba00&gt;蛇发女妖&lt;/color&gt;持续时间延长&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+
+		<s id="231" name="高级符文(大卫)" itemid="7165" pernum="1" exchangeitem="1029" neednum="50" icon="4060" desc="&lt;color=#ffba00&gt;导弹突袭&lt;/color&gt;伤害增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="232" name="高级符文(大卫)" itemid="7175" pernum="1" exchangeitem="1029" neednum="50" icon="4070" desc="&lt;color=#ffba00&gt;导弹突袭&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="233" name="高级符文(大卫)" itemid="7185" pernum="1" exchangeitem="1029" neednum="50" icon="4080" desc="&lt;color=#ffba00&gt;防御矩阵&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="234" name="高级符文(大卫)" itemid="7195" pernum="1" exchangeitem="1029" neednum="50" icon="4090" desc="&lt;color=#ffba00&gt;防御矩阵&lt;/color&gt;冷却时间减少&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+		<s id="235" name="高级符文(大卫)" itemid="7205" pernum="1" exchangeitem="1029" neednum="50" icon="4100" desc="&lt;color=#ffba00&gt;群体传送&lt;/color&gt;持续时间增加&lt;color=#00ff00&gt;40.0%&lt;/color&gt;"/>
+		<s id="236" name="高级符文(大卫)" itemid="7215" pernum="1" exchangeitem="1029" neednum="50" icon="4110" desc="&lt;color=#ffba00&gt;群体传送&lt;/color&gt;充能速度提高&lt;color=#00ff00&gt;20.0%&lt;/color&gt;"/>
+	</i>
+	<i id="4" name="特殊道具" size="142,142" url="ItemIco/{0}.txt" chip="1034">
+		<s id="1" name="皮肤碎片" itemid="1022" pernum="1" exchangeitem="1034" neednum="5" icon="pfsp" desc="皮肤碎片可在[兑换中心]兑换稀有皮肤。"/>
+		<s id="2" name="武器碎片" itemid="1031" pernum="1" exchangeitem="1034" neednum="5" icon="wqsp" desc="武器碎片可在[兑换中心]兑换稀有武器。"/>
+		<s id="3" name="配件碎片" itemid="1032" pernum="1" exchangeitem="1034" neednum="5" icon="pjsp" desc="提升英雄武器配件等级的必备道具。"/>
+		<s id="4" name="符文兑换券" itemid="1029" pernum="1" exchangeitem="1034" neednum="25" icon="fuwengduihua" desc="符文兑换券可在[兑换中心]兑换5级符文。"/>
+	</i>
+</root>

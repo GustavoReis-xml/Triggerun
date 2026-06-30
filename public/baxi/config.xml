@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<!--version -->
+	<!--loadType 数据表加载格式 0为整个打包,1为xml-->
+	<!--runType  程序运行环境   0为realease(发布),1为debug-->
+	<!--logType  日志类型       0无log,1为命令log,2为始终log-->
+	<!-- EDType 加密设置，0为加密，1为不加密-->
+	<!-- FNType 功能开启，0为引导开启,1为配置开启-->
+	<!--session  runType为1时获取的session-->
+	<!--CacheType  CacheType为1时使用本地缓存-->
+	<!--security  安全域设置-->
+	<!--resource main 为 载入程序加载-->
+	<!--resource role xml swf 启动时第一时间加载的各种MXL .完成后发出初始化成功消息.-->
+	<!--resource scene xml 为游戏数据.进入场景时加载.加载完成后发出场景XML 加载完成消息
+						swf 游戏界面库等 一些通用资源
+		activity forge copy 为延迟加载配制.加载完成后弹出窗口-->
+	<version>1.20.24.1</version>
+	<loadType>1</loadType>
+	<runType>1</runType>
+	<logType>0</logType>
+	<EDType>1</EDType>
+	<FNType>1</FNType>
+	<FNList>1;2;3;4;5;6;8;9;10;11</FNList>
+	<session>84c7943e3d56a45c7d35eeb962f83328</session>
+	<CacheType>0</CacheType>
+	<security>http://test2.wytx.duolegame.com/crossdomain.xml</security>
+	<resource>
+		<data>
+ 
+				<item title="物品" >baxi/iteminfo.xml</item>
+				<item title="异步加载" >baxi/bgloading.xml</item>
+				<item title="技能" >baxi/playerskill.xml</item>
+				<item title="材质爆炸" >baxi/materialTag.xml</item>
+				<item title="武器系统" >baxi/weapon.xml</item>
+				<item title="英雄数据" >baxi/heroinfo.xml</item>
+				<item title="Npc数据" >baxi/Npc.xml</item>
+				<item title="NPC_AI数据" >baxi/Npc_AI.xml</item>
+				<item title="宝石" >baxi/Gem.xml</item>
+				<item title="战车数据" >baxi/Chariot.xml</item>
+				<item title="电梯数据" >baxi/Elevator.xml</item>
+				<item title="显卡天梯" >baxi/Graphic_Card_Ladder.xml</item>
+				<item title="蓝钻特权" >baxi/LanZuanReward.xml</item>
+				<item title="场景效果" >baxi/mapeffect.xml</item>
+				<item title="副本数据" >baxi/fbset.xml</item>
+				<item title="副本模式数据" >baxi/fbmodel.xml</item>
+				<item title="文字库" >baxi/hint.xml</item>
+				<item title="大招" >baxi/dazhao.xml</item>
+				<item title="buff" >baxi/buff.xml</item>
+				<item title="预加载" >baxi/preload.xml</item>
+				<item title="玩家互动" >baxi/Hudong.xml</item>
+				<item title="英雄解锁" >baxi/herounlock.xml</item>
+				<item title="英雄成长奖励" >baxi/heroaward.xml</item>
+				<item title="玩家头像解锁" >baxi/playerface.xml</item>
+				<item title="商城" >baxi/shopdata.xml</item>
+				<item title="英雄技能信息" >baxi/heroskillinfo.xml</item>
+				<item title="英雄界面背景" >baxi/herounlockbg.xml</item>
+				<item title="任务" >baxi/task.xml</item>
+				<item title="加载提示信息" >baxi/loadtipstxt.xml</item>
+				<item title="加载新手教学" >baxi/NewPlayerLearn.xml</item>
+				<item title="问卷数据" >baxi/wenjuan.xml</item>
+				<item title="礼包数据" >baxi/libaoreward.xml</item>
+				<item title="匹配分类" >baxi/MatchModel.xml</item>
+				<item title="黄钻特权" >baxi/HuangZuanReward.xml</item>
+				<item title="天梯活动">baxi/act_skyladder.xml</item>
+				<item title="机器人" >baxi/robot.xml</item>
+				<item title="机器人AI">baxi/robot_ai.xml</item>
+				<item title="活动奖励配表">baxi/actdatingaward.xml</item>
+				<item title="玩家喷漆">baxi/playerpaint.xml</item>
+				<item title="签到奖励配表">baxi/SignReward.xml</item>
+				<item title="Pve">baxi/pvedata.xml</item>
+                <item title="机器人解锁">baxi/monsterunlock.xml</item>
+				<item title="强化">baxi/qianghuadata.xml</item>
+				<item title="新人目标">baxi/sevenday.xml</item>
+				<item title="每周首登">baxi/act_weeklogin.xml</item>
+				<item title="天梯每日福利">baxi/act_skyeveryday.xml</item>
+				<item title="开学新兵">baxi/act_newsoldier.xml</item>
+				<item title="周末在线">baxi/act_weekendonline.xml</item>
+				<item title="开学赠礼">baxi/act_kaixuegift.xml</item>
+				<item title="比赛奖励">baxi/act_matchreward.xml</item>
+				<item title="女神的馈赠">baxi/act_goddessgift.xml</item>
+				<item title="每周累计充值">baxi/act_weekcharge.xml</item>
+				<item title="丛林行动地图资源">baxi/dtsmap.xml</item>
+				<item title="幸运大抽奖">baxi/act_luckydraw.xml</item>
+				<item title="买赠活动">baxi/act_bogoact.xml</item>
+				<item title="英雄对应的技能数据">baxi/heroskill.xml</item>
+				<item title="英雄打折活动">baxi/act_herodiscount.xml</item>
+				<item title="充值返钻活动">baxi/act_rechargezuan.xml</item>
+				<item title="充值返礼活动">baxi/act_rechargeitem.xml</item>
+				<item title="国庆连续登录活动">baxi/NaLianXureward.xml</item>
+				<item title="国庆比赛奖励">baxi/act_namatchreward.xml</item>
+				<item title="折扣活动">baxi/act_discountitem.xml</item>
+				<item title="英雄限时购买">baxi/act_herolimitbuy.xml</item>
+				<item title="回流奖励">baxi/act_huiliuact.xml</item>
+				<item title="任务章节">baxi/taskchapter.xml</item>
+				<item title="英雄解锁返还">baxi/act_heroreturn.xml</item>
+				<item title="高级符文箱折扣促销">baxi/act_discountshop.xml</item>
+				<item title="基因改造">baxi/genedata.xml</item>
+				<item title="新品推荐">baxi/act_tuijian.xml</item>
+				<item title="副本开启设置">baxi/fbopenset.xml</item>
+				<item title="许愿树活动">baxi/act_wishtree.xml</item>
+				<item title="pvp每周参与活动">baxi/act_pvpeveryweek.xml</item>
+				<item title="英雄限时开启">baxi/act_openhero.xml</item>
+				<item title="兑换中心">baxi/exchangecenter.xml</item>
+				<item title="高级符文箱买赠">baxi/act_multibogo.xml</item>
+				<item title="寒假狂欢">baxi/act_winteract.xml</item>
+				<item title="英雄武器配件">baxi/heroparts.xml</item>
+				<item title="节日登陆奖励">baxi/act_jierilogin.xml</item>
+				<item title="战队福利">baxi/guildfuli.xml</item>
+			</data>
+		<res>
+		<!--
+			<item title="主界面资源">UI/UIAssets/Atlas/UICommon.assetbundle</item>
+			<item title="主界面">UI/MainUI.assetbundle</item>
+			<item title="女动画">ani/female_ani.assetbundle</item>
+			<item title="男动画">ani/male_ani.assetbundle</item>
+			<item title="动画">ani/female_car_1.assetbundle</item>
+			<item title="动画">ani/male_car_1.assetbundle</item>
+			<item title="动画">ani/female_car_2.assetbundle</item>
+			<item title="动画">ani/male_car_2.assetbundle</item>
+			<item title="动画">ani/female_car_3.assetbundle</item>
+			<item title="动画">ani/male_car_3.assetbundle</item>
+			<item title="动画">ani/female_car_4.assetbundle</item>
+			<item title="动画">ani/male_car_4.assetbundle</item>
+			<item title="动画">ani/female_car_5.assetbundle</item>
+			<item title="动画">ani/male_car_5.assetbundle</item>
+			<item title="动画">ani/create_female_ani.assetbundle</item>
+			<item title="动画">ani/create_male_ani.assetbundle</item>
+			<item title="动画">ani/cameraControl.assetbundle</item>
+			<item title="动画">ani/create_female.assetbundle</item>
+			<item title="动画">ani/create_male.assetbundle</item>
+			<item title="动画">ani/boxplayer.assetbundle</item>
+			<item title="动画">ani/Character_Female.assetbundle</item>
+			<item title="动画">ani/Character_Male.assetbundle</item>
+			<item title="动画">ani/stand_1_0.assetbundle</item>
+			<item title="动画">ani/stand_1_1.assetbundle</item>
+			<item title="动画">ani/stand_1_2.assetbundle</item>
+			<item title="动画">ani/stand_1_3.assetbundle</item>
+			<item title="动画">ani/stand_1_4.assetbundle</item>
+			<item title="动画">ani/stand_2_0.assetbundle</item>
+			<item title="动画">ani/stand_2_1.assetbundle</item>
+			<item title="动画">ani/stand_2_2.assetbundle</item>
+			<item title="动画">ani/stand_2_3.assetbundle</item>
+			<item title="动画">ani/stand_2_4.assetbundle</item>
+			<item title="动画">ani/FPS_Hand_Animator_Controller.assetbundle</item>
+			<item title="动画">ani/FPS_Weapon_Animator_Controller.assetbundle</item>
+			<item title="主界面xml">UI/MainUI.xml</item>
+			<item title="主界面资源">UI/UIAssets/Atlas/MainUIAtlas.assetbundle</item>
+			<item title="任务">UI/UI_task_tracking.assetbundle</item>
+			<item title="任务xml">UI/UI_task_tracking.xml</item>
+			<item title="任务资源">UI/UIAssets/Atlas/taskTrackatl.assetbundle</item>
+			<item title="新功能开放">UI/UI_EquCom.assetbundle</item>
+			<item title="新功能开放xml">UI/UI_EquCom.xml</item>
+			<item title="新功能开放资源">UI/UIAssets/Atlas/NewItemTipUIAtlas.assetbundle</item>
+			<item title="主界面">UI/UIItenInto.assetbundle</item>
+			<item title="主界面xml">UI/UIItenInto.xml</item>
+			<item title="渲染器">UI/common_shader.unity3d</item-->
+		</res>
+	</resource>
+</data>

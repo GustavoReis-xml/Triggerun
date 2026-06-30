@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i heroid="2000" name="" ico="luomo">
+	</i>
+	<i heroid="1003" name="Alice" ico="dianna_1">
+		<s id="1" name="Teleporte" icon="e" skillindex="1007" isopen="0"/>
+		<s id="2" name="Camuflagem Óptica" icon="shift" skillindex="1009" isopen="0"/>
+		<s id="3" name="Detectar Infrared" icon="q" skillindex="1013" isopen="1"/>
+		<s id="4" name="Gun Sight" icon="youjian" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1005" name="Glider" ico="leizhenzi_1">
+		<s id="1" name="Thunder Bomb" icon="e" skillindex="1017" isopen="0"/>
+		<s id="2" name="Thruster" icon="shift" skillindex="1016" isopen="0"/>
+		<s id="3" name="Viber Missile" icon="q" skillindex="1018" isopen="1"/>
+		<s id="5" name="Suspending Fly" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1006" name="Tagaloa" ico="xingtian_1">
+		<s id="1" name="Fire Fist" icon="e" skillindex="1022" isopen="0"/>
+		<s id="3" name="Earth Rift attack" icon="q" skillindex="1023" isopen="1"/>
+		<s id="4" name="Shield" icon="youjian" skillindex="1021" isopen="0"/>
+	</i>
+	<i heroid="1015" name="Lars" ico="zhongjiezhe_1">
+		<s id="1" name="Biologicals" icon="e" skillindex="1032" isopen="0"/>
+		<s id="2" name="Rush" icon="shift" skillindex="1030" isopen="0"/>
+		<s id="3" name="Destroyer" icon="q" skillindex="1033" isopen="1"/>
+		<s id="4" name="High-explosive Grenade" icon="youjian" skillindex="1031" isopen="0"/>
+	</i>
+	<i heroid="1016" name="Valkyrie" ico="waerjili_1">
+		<s id="1" name="Leap Attack" icon="e" skillindex="1037" isopen="0"/>
+		<s id="2" name="Energy Shield" icon="shift" skillindex="1036" isopen="0"/>
+		<s id="3" name="Whirldwind" icon="q" skillindex="1038" isopen="1"/>
+	</i>
+	<i heroid="1017" name="Celina" ico="mulan_1">
+		<s id="1" name="Flash" icon="e" skillindex="1001" isopen="0"/>
+		<s id="2" name="Double-guns Rapid Fire" icon="shift" skillindex="1042" isopen="0"/>
+		<s id="3" name="Death Sentence" icon="q" skillindex="1044" isopen="1"/>
+	</i>
+	<i heroid="1021" name="Carmen" ico="taliya_1">
+		<s id="1" name="Cut-Death" icon="e" skillindex="1064" isopen="0"/>
+		<s id="2" name="Cut-Heal" icon="shift" skillindex="1062" isopen="0"/>
+		<s id="3" name="Fate" icon="q" skillindex="1063" isopen="1"/>
+		<s id="5" name="Instinct" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1022" name="Scarlett" ico="xuenv_1">
+		<s id="1" name="Snow Fairy" icon="e" skillindex="1066" isopen="0"/>
+		<s id="2" name="Frozen Trap" icon="shift" skillindex="1065" isopen="0"/>
+		<s id="3" name="Snow Ball" icon="q" skillindex="1079" isopen="1"/>
+		<s id="4" name="Snow Slide · Ice Soul" icon="youjian" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1023" name="Brigit" ico="zhurong_1">
+		<s id="1" name="Flame Sentry" icon="e" skillindex="1067" isopen="0"/>
+		<s id="2" name="Born of Fire" icon="shift" skillindex="1068" isopen="0"/>
+		<s id="3" name="Hell Forge" icon="q" skillindex="1069" isopen="1"/>
+		<s id="4" name="Fire Ball" icon="youjian" skillindex="0" isopen="1"/>
+		<s id="5" name="Ignite" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1024" name="Shogun" ico="houyi_1">
+		<s id="1" name="Concussive Shot" icon="e" skillindex="1070" isopen="0"/>
+		<s id="2" name="Explosive Shot" icon="shift" skillindex="1071" isopen="0"/>
+		<s id="3" name="Phoenix's Wings" icon="q" skillindex="1072" isopen="1"/>
+		<s id="5" name="Wall-climb" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1025" name="Eva" ico="linglong_1">
+		<s id="1" name="Cage" icon="e" skillindex="1077" isopen="0"/>
+		<s id="2" name="Auto Cannon" icon="shift" skillindex="1076" isopen="0"/>
+		<s id="3" name="Teleport Metrix" icon="q" skillindex="1078" isopen="1"/>
+	</i>
+	<i heroid="1026" name="Dragos" ico="aidehua_1">
+		<s id="1" name="Explosive Bats" icon="e" skillindex="1099" isopen="0"/>
+		<s id="2" name="Incarnation" icon="shift" skillindex="1100" isopen="0"/>
+		<s id="3" name="Blood Rage" icon="q" skillindex="1101" isopen="1"/>
+	</i>
+	<i heroid="1027" name="Jack" ico="shawang_1">
+		<s id="1" name="Bloodthirsty" icon="e" skillindex="1104" isopen="0"/>
+		<s id="2" name="Charge" icon="shift" skillindex="1102" isopen="0"/>
+		<s id="3" name="Planet Attraction" icon="q" skillindex="1103" isopen="1"/>
+	</i>
+	<i heroid="1028" name="Loki" ico="luoji_1">
+		<s id="1" name="Energy Cannon" icon="e" skillindex="1112" isopen="0"/>
+		<s id="2" name="Remote Bomb" icon="shift" skillindex="1111" isopen="0"/>
+		<s id="3" name="Bombing" icon="q" skillindex="1113" isopen="1"/>
+	</i>
+	<i heroid="1029" name="Angel" ico="luolita_1">
+		<s id="1" name="Sylph's Wind" icon="e" skillindex="1122" isopen="0"/>
+		<s id="2" name="Undina's Power " icon="shift" skillindex="1121" isopen="0"/>
+		<s id="3" name="Gnome's Light" icon="q" skillindex="1123" isopen="1"/>
+		<s id="5" name="Undina's Blessing" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1030" name="Vincent" ico="jingke_1">
+		<s id="1" name="Assassinate" icon="e" skillindex="1132" isopen="0"/>
+		<s id="2" name="Regicide" icon="shift" skillindex="1131" isopen="0"/>
+		<s id="3" name="Duel" icon="q" skillindex="1133" isopen="1"/>
+		<s id="5" name="Warpath" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1031" name="Johnny" ico="lanbo_1">
+		<s id="1" name="Detection Missile" icon="e" skillindex="1142" isopen="0"/>
+		<s id="2" name="Defensive Trap" icon="shift" skillindex="1141" isopen="0"/>
+		<s id="3" name="Auto-Aim" icon="q" skillindex="1143" isopen="1"/>
+		<s id="4" name="Gun Sight" icon="youjian" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1032" name="Venus" ico="daji_1">
+		<s id="1" name="Heal Zone" icon="e" skillindex="1152" isopen="0"/>
+		<s id="2" name="Ancient Guard" icon="shift" skillindex="1151" isopen="0"/>
+		<s id="3" name="Fox Pantom" icon="q" skillindex="1153" isopen="1"/>
+	</i>
+	<i heroid="1033" name="Lily" ico="lilisi_1">
+		<s id="1" name="Magic Drug" icon="e" skillindex="1162" isopen="0"/>
+		<s id="2" name="Magic Shield" icon="shift" skillindex="1163" isopen="0"/>
+		<s id="3" name="Soul Chains" icon="q" skillindex="1164" isopen="1"/>
+		<s id="4" name="Magic Rush" icon="youjian" skillindex="1161" isopen="0"/>
+	</i>
+	<i heroid="1034" name="Khan" ico="huangzhong_1">
+		<s id="1" name="Dedication" icon="e" skillindex="1172" isopen="0"/>
+		<s id="2" name="Asylum" icon="shift" skillindex="1171" isopen="0"/>
+		<s id="3" name="Iron" icon="q" skillindex="1173" isopen="1"/>
+		<s id="5" name="Blood Anger" icon="beidong" skillindex="0" isopen="1"/>
+	</i>
+	<i heroid="1035" name="Nezha" ico="nezha_1">
+		<s id="1" name="Flower Storm" icon="e" skillindex="1182" isopen="0"/>
+		<s id="2" name="Lunge" icon="shift" skillindex="1181" isopen="0"/>
+		<s id="3" name="Great Spirit" icon="q" skillindex="1183" isopen="1"/>
+		<s id="4" name="Sky-earth Round" icon="youjian" skillindex="1184" isopen="0"/>
+	</i>
+</root>

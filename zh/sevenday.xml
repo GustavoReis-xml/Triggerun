@@ -1,0 +1,39 @@
+<root>
+	<i id="101" day="1" type="1" iconname="dengji" targetdesc="完成{0}场快速匹配的比赛" nparam="3" mparam="0" reward="1020,10" title="快速匹配" jiesuo="0"/>
+	<i id="102" day="1" type="4" iconname="qianghua" targetdesc="玩家等级升到{0}级" nparam="4" mparam="0" reward="1006,1" title="提升等级" jiesuo="1"/>
+	<i id="103" day="1" type="8" iconname="shengxing" targetdesc="添加{0}个好友" nparam="1" mparam="0" reward="1660,1" title="添加好友" jiesuo="1"/>
+	<i id="201" day="2" type="1" iconname="dengji" targetdesc="完成{0}场快速匹配的{1}比赛" nparam="3" mparam="7" reward="1020,15" title="死斗模式" jiesuo="0"/>
+	<i id="202" day="2" type="4" iconname="qianghua" targetdesc="玩家等级升到{0}级" nparam="5" mparam="0" reward="1006,1" title="提升等级" jiesuo="1"/>
+	<i id="203" day="2" type="9" iconname="shengxing" targetdesc="创建或加入{0}个战队" nparam="1" mparam="0" reward="2007,5" title="战队" jiesuo="1"/>
+	<i id="301" day="3" type="1" iconname="dengji" targetdesc="完成{0}场快速匹配的{1}比赛" nparam="3" mparam="3" reward="1020,20" title="争夺模式" jiesuo="0"/>
+	<i id="302" day="3" type="4" iconname="qianghua" targetdesc="玩家等级升到{0}级" nparam="6" mparam="0" reward="1006,1" title="提升等级" jiesuo="1"/>
+	<i id="303" day="3" type="10" iconname="shengxing" targetdesc="商城购买{0}个道具" nparam="1" mparam="0" reward="2007,5" title="商城购买" jiesuo="1"/>
+	<i id="401" day="4" type="2" iconname="dengji" targetdesc="完成{0}场天梯匹配的比赛" nparam="3" mparam="0" reward="1020,25" title="天梯匹配" jiesuo="0"/>
+	<i id="402" day="4" type="5" iconname="qianghua" targetdesc="快速匹配或天梯匹配累计伤害{0}" nparam="10000" mparam="0" reward="1006,1" title="累计伤害" jiesuo="0"/>
+	<i id="403" day="4" type="11" iconname="shengxing" targetdesc="给任意英雄装备{0}个符文" nparam="1" mparam="0" reward="1746,1" title="装备符文" jiesuo="1"/>
+	<i id="501" day="5" type="1" iconname="dengji" targetdesc="完成{0}场快速匹配的{1}比赛" nparam="3" mparam="5" reward="1020,30" title="资源模式" jiesuo="0"/>
+	<i id="502" day="5" type="4" iconname="qianghua" targetdesc="玩家等级升到{0}级" nparam="8" mparam="0" reward="1006,1" title="提升等级" jiesuo="1"/>
+	<i id="503" day="5" type="12" iconname="shengxing" targetdesc="消费任意金额的钻石" nparam="1" mparam="0" reward="2007,5" title="消费钻石" jiesuo="1"/>
+	<i id="601" day="6" type="1" iconname="dengji" targetdesc="完成{0}场快速匹配的{1}比赛" nparam="3" mparam="4" reward="1020,40" title="竞技模式" jiesuo="0"/>
+	<i id="602" day="6" type="6" iconname="qianghua" targetdesc="快速匹配或天梯匹配累计消灭{0}个敌人" nparam="10" mparam="0" reward="1006,1" title="累计消灭" jiesuo="0"/>
+	<i id="603" day="6" type="13" iconname="shengxing" targetdesc="购买任意{0}个新英雄" nparam="1" mparam="0" reward="2007,5" title="购买英雄" jiesuo="1"/>
+	<i id="701" day="7" type="3" iconname="dengji" targetdesc="胜利{0}场快速匹配的比赛" nparam="3" mparam="0" reward="1020,60" title="赢得胜利" jiesuo="0"/>
+	<i id="702" day="7" type="7" iconname="qianghua" targetdesc="胜利{0}场天梯匹配的比赛" nparam="10" mparam="0" reward="1006,1" title="提升等级" jiesuo="0"/>
+	<i id="703" day="7" type="14" iconname="shengxing" targetdesc="完成7天内所有的目标" nparam="20" mparam="0" reward="1223,1" title="完成全部目标" jiesuo="1"/>
+</root>
+<!--
+#define SEVENDAY_TARGET1	1	//完成n场快速匹配的m比赛
+#define SEVENDAY_TARGET2	2	//完成n场天梯匹配的比赛
+#define SEVENDAY_TARGET3	3	//胜利n场快速匹配的比赛
+#define SEVENDAY_TARGET4	4	//玩家等级升到n级
+#define SEVENDAY_TARGET5	5	//快速匹配或天梯匹配累计伤害n
+#define SEVENDAY_TARGET6	6	//快速匹配或天梯匹配累计消灭n个敌人
+#define SEVENDAY_TARGET7	7	//胜利n场天梯匹配的比赛
+#define SEVENDAY_TARGET8	8	//添加n个好友
+#define SEVENDAY_TARGET9	9	//创建或加入n个战队
+#define SEVENDAY_TARGET10	10	//商城购买n个道具
+#define SEVENDAY_TARGET11	11	//给任意英雄装备n个符文
+#define SEVENDAY_TARGET12	12	//消费n金额的钻石
+#define SEVENDAY_TARGET13	13	//任意购买n个新英雄
+#define SEVENDAY_TARGET14	14	//完成7天内所有的目标
+-->

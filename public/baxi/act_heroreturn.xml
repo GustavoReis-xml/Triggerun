@@ -1,0 +1,29 @@
+<root>
+	<i id="101" bgimg="libao_heroreturn_ditu" name="Desbloqueie heróis com runes como presente" btntxt="Desbloqueie" actdesc="&lt;color=#ffcb00&gt;Desbloqueie items de compras&lt;/color&gt;|&lt;color=#ffcb00&gt;como gifts &lt;/color&gt;|388|Primary Rune Box *6|688|Primary Rune Box *12|988|Superior Rune Box *1" notedesc="Durante o evento, jogadores podem ganhar algumas rune boxes como presentes dos heróis que desbloquearam com diamantes.\nJogadores não podem obter rune box gifts se usarem moedas para desbloquear heróis.\nJogaroes não podem obter rune box gifts se desbloquearam heróis antes do evento.">
+	<h heroid="1003" type="0" index="0" returnitem="2104,12"/>
+	<h heroid="1006" type="0" index="0" returnitem="2103,6"/>
+	<h heroid="1017" type="0" index="0" returnitem="2101,12"/>
+	<h heroid="1021" type="0" index="0" returnitem="2107,6"/>
+	<h heroid="1023" type="0" index="0" returnitem="2108,6"/>
+	<h heroid="1016" type="0" index="0" returnitem="2112,6"/>
+	<h heroid="1005" type="0" index="0" returnitem="2106,12"/>
+	<h heroid="1022" type="0" index="0" returnitem="2113,6"/>
+	<h heroid="1026" type="0" index="0" returnitem="2109,12"/>
+	<h heroid="1027" type="0" index="0" returnitem="2310,1"/>
+	<h heroid="1028" type="0" index="0" returnitem="2314,1"/>
+	<h heroid="1029" type="0" index="0" returnitem="2115,6"/>
+	<h heroid="1030" type="0" index="0" returnitem="2316,1"/>
+	<h heroid="1032" type="0" index="0" returnitem="2118,12"/>
+	<h heroid="1033" type="0" index="0" returnitem="2119,12"/>
+	<h heroid="1034" type="0" index="0" returnitem="2320,1"/>
+	<h heroid="1035" type="0" index="0" returnitem="2121,12"/>
+	<h heroid="1036" type="0" index="0" returnitem="2122,12"/>
+	<h heroid="1037" type="0" index="0" returnitem="2123,12"/>
+	</i>
+</root>
+<!--
+	heroid：英雄id（对应herounlock.xml）
+	type：类型（0-英雄1-皮肤2-武器3-表情4-姿势）
+	index：序号（对应herounlock.xml）
+	returnitem：返还物品
+-->

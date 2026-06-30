@@ -1,0 +1,3 @@
+<root>
+	<i id="1001" name="开学新兵" bgimg="libao_soldier_ditu" actdesc="新注册的玩家上线可直接领取一份新兵奖励,升到指定等级即可领取等级奖励。" acttime="&lt;color=#f5b905&gt;活动时间：{0}-{1}&lt;/color&gt;" regtitle="新兵注册礼包" regreward="1008,1,1020,50" leveltitle="达成{0}级奖励" level="15" levelreward="2007,10,2020,2"/>
+</root>

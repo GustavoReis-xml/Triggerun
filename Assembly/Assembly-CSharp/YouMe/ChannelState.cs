@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace YouMe
+{
+	// Token: 0x020004E0 RID: 1248
+	public enum ChannelState
+	{
+		// Token: 0x04002990 RID: 10640
+		CHANNEL_STATE_JOINING,
+		// Token: 0x04002991 RID: 10641
+		CHANNEL_STATE_JOINED,
+		// Token: 0x04002992 RID: 10642
+		CHANNEL_STATE_LEAVING_ONE,
+		// Token: 0x04002993 RID: 10643
+		CHANNEL_STATE_LEAVING_ALL,
+		// Token: 0x04002994 RID: 10644
+		CHANNEL_STATE_LEAVED
+	}
+}

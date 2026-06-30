@@ -1,0 +1,689 @@
+{
+    "username": "YuukiC",
+    "password": "123456",
+    "createdAt": "2026-06-25T00:06:44.118Z",
+    "lastLogin": "2026-06-25T01:04:04.812Z",
+    "gold": 921323,
+    "diamonds": 991023,
+    "level": 1,
+    "exp": 0,
+    "face": 2106,
+    "paint": 1019,
+    "runes": {
+        "step": 0,
+        "star": 0
+    },
+    "parts": {
+        "1": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "2": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "3": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "4": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "5": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "6": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "7": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "8": {
+            "lvl": 1,
+            "exp": 0
+        }
+    },
+    "weaponParts": {},
+    "items": {
+        "1002": 200
+    },
+    "unlockedHeroes": [
+        1015,
+        1006,
+        1005,
+        1003,
+        1016,
+        1017,
+        1021,
+        1022,
+        1026,
+        1023,
+        1030,
+        1029,
+        1028,
+        1027,
+        1032,
+        1033,
+        1034,
+        1037,
+        1036,
+        1035
+    ],
+    "unlockedFaces": [
+        2009,
+        2106
+    ],
+    "unlockedSprays": [
+        1019
+    ],
+    "unlockedCosmetics": {
+        "1003": {
+            "skins": [
+                1,
+                4
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1005": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1006": {
+            "skins": [
+                1,
+                3
+            ],
+            "weapons": [
+                1,
+                3
+            ],
+            "emotes": [
+                1,
+                5,
+                4
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1015": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1016": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1017": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1021": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1022": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1023": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1025": {
+            "skins": [
+                1,
+                5
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1026": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1027": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1028": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1029": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1,
+                5
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1030": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1031": {
+            "skins": [
+                1,
+                4
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1032": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1033": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1034": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1035": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1036": {
+            "skins": [
+                1,
+                4
+            ],
+            "weapons": [
+                1,
+                2,
+                3
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1037": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        }
+    },
+    "equipment": {
+        "1001": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1002": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1003": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1004": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1005": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1006": {
+            "skin": 3,
+            "weapon": 3,
+            "emote": 5,
+            "pose": 0
+        },
+        "1007": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1008": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1009": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1010": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1011": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1012": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1013": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1014": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1015": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1016": {
+            "skin": 3,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1017": {
+            "skin": 2,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1018": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1019": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1020": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1021": {
+            "skin": 5,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1022": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1023": {
+            "skin": 5,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1024": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1025": {
+            "skin": 5,
+            "weapon": 4,
+            "emote": 1,
+            "pose": 0
+        },
+        "1026": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1027": {
+            "skin": 6,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1028": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1029": {
+            "skin": 6,
+            "weapon": 1,
+            "emote": 5,
+            "pose": 0
+        },
+        "1030": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1031": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1032": {
+            "skin": 3,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1033": {
+            "skin": 3,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1034": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1035": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1036": {
+            "skin": 4,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1037": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1038": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1039": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1040": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1041": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1042": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1043": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1044": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "1045": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        },
+        "2000": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        }
+    },
+    "settings": [
+        "",
+        "",
+        "",
+        "",
+        ""
+    ]
+}

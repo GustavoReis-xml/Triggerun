@@ -1,0 +1,101 @@
+<root>
+	<i id="101" name="充值返钻" bgimg="libao_rechargezuan_ditu" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,10"/>
+		<d id="2" targnum="200" reward="1021,22"/>
+		<d id="3" targnum="500" reward="1021,60"/>
+		<d id="4" targnum="1000" reward="1021,130"/>
+		<d id="5" targnum="2000" reward="1021,280"/>
+		<d id="6" targnum="5000" reward="1021,750"/>
+		<d id="7" targnum="10000" reward="1021,1750"/>
+	</i>
+	<i id="102" name="充值返钻" bgimg="libao_rechargezuan_ditu_1" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,12"/>
+		<d id="2" targnum="200" reward="1021,25"/>
+		<d id="3" targnum="500" reward="1021,65"/>
+		<d id="4" targnum="1000" reward="1021,150"/>
+		<d id="5" targnum="2000" reward="1021,320"/>
+		<d id="6" targnum="5000" reward="1021,925"/>
+		<d id="7" targnum="10000" reward="1021,2000"/>
+	</i>
+	<i id="103" name="充值返钻" bgimg="libao_rechargezuan_ditu_2" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,180"/>
+		<d id="5" targnum="2000" reward="1021,390"/>
+		<d id="6" targnum="5000" reward="1021,1070"/>
+		<d id="7" targnum="10000" reward="1021,2520"/>
+	</i>
+	<i id="104" name="充值返钻" bgimg="libao_rechargezuan_ditu_3" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,180"/>
+		<d id="5" targnum="2000" reward="1021,390"/>
+		<d id="6" targnum="5000" reward="1021,1070"/>
+		<d id="7" targnum="10000" reward="1021,2520"/>
+	</i>
+	<i id="105" name="充值返钻" bgimg="libao_rechargezuan_ditu_4" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,180"/>
+		<d id="5" targnum="2000" reward="1021,390"/>
+		<d id="6" targnum="5000" reward="1021,1070"/>
+		<d id="7" targnum="10000" reward="1021,2520"/>
+	</i>
+	<i id="106" name="充值返钻" bgimg="libao_rechargezuan_ditu_5" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,180"/>
+		<d id="5" targnum="2000" reward="1021,390"/>
+		<d id="6" targnum="5000" reward="1021,1070"/>
+		<d id="7" targnum="10000" reward="1021,2520"/>
+	</i>
+	<i id="107" name="充值返钻" bgimg="libao_rechargezuan_ditu_6" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,180"/>
+		<d id="5" targnum="2000" reward="1021,390"/>
+		<d id="6" targnum="5000" reward="1021,1070"/>
+		<d id="7" targnum="10000" reward="1021,2520"/>
+	</i>
+	<i id="108" name="充值返钻" bgimg="libao_rechargezuan_ditu_7" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,200"/>
+		<d id="5" targnum="2000" reward="1021,450"/>
+		<d id="6" targnum="5000" reward="1021,1400"/>
+		<d id="7" targnum="10000" reward="1021,3000"/>
+	</i>
+	<i id="109" name="充值返钻" bgimg="libao_rechargezuan_ditu_8" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,200"/>
+		<d id="5" targnum="2000" reward="1021,450"/>
+		<d id="6" targnum="5000" reward="1021,1400"/>
+		<d id="7" targnum="10000" reward="1021,3000"/>
+	</i>
+	<i id="110" name="充值返钻" bgimg="libao_rechargezuan_ditu_9" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,18"/>
+		<d id="2" targnum="200" reward="1021,35"/>
+		<d id="3" targnum="500" reward="1021,90"/>
+		<d id="4" targnum="1000" reward="1021,200"/>
+		<d id="5" targnum="2000" reward="1021,450"/>
+		<d id="6" targnum="5000" reward="1021,1400"/>
+		<d id="7" targnum="10000" reward="1021,3000"/>
+	</i>
+	<i id="111" name="充值返钻" bgimg="libao_rechargezuan_ditu_1" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，每日累计充值达到以下额度，即可领取钻石返利&lt;/size&gt;&lt;/color&gt;" desc2="累计充值额度和奖励每日0点重置">
+		<d id="1" targnum="100" reward="1021,36"/>
+		<d id="2" targnum="200" reward="1021,70"/>
+		<d id="3" targnum="500" reward="1021,180"/>
+		<d id="4" targnum="1000" reward="1021,400"/>
+		<d id="5" targnum="2000" reward="1021,900"/>
+		<d id="6" targnum="5000" reward="1021,2800"/>
+		<d id="7" targnum="10000" reward="1021,6000"/>
+	</i>
+</root>

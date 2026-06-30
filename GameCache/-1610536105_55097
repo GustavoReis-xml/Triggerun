@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--注意，配表里ID索引1001到2000为测试专用，2001以后为正式使用！！！-->
+<root>
+<data id="1001" reward="1020,50" text="希望各位勇士能够认真的回复答卷，提交最真实的感受。我们会根据大家提交的问卷反馈对《超神狙击》进行调整，以使大家获得更好的游戏体验。如果各位勇士有其它建议或者想法，可以前往[color=#00FF00]论坛提交[/color]或者向[color=#00FF00]游戏群管理员建议！[/color]">
+    <event id="1" type="0" text="1.请问您的实际年龄是多少？">
+      <key id="1" type="0" text="[color=#00FF00]12岁以下[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]12-17岁[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]18-24岁[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]25-35岁[/color]"/>
+      <key id="5" type="0" text="[color=#00FF00]35岁以上[/color]"/>
+    </event>
+	<event id="2" type="0" text="2.您的性别是：">
+      <key id="1" type="0" text="[color=#00FF00]男[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]女[/color]"/>
+    </event>
+    <event id="3" type="1" text="3.您一般在什么时间玩游戏？">
+      <key id="1" type="0" text="[color=#00FF00]随时都会玩[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]每天晚上[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]周末白天[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]周末晚上[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+    <event id="4" type="1" text="4.您接触过哪些FPS游戏？">
+      <key id="1" type="0" text="[color=#00FF00]使命召唤系列[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]战地系列[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]CS系列（CS1.5、CSgo）[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]穿越火线CF[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]守望先锋[/color]"/>
+      <key id="6" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+    <event id="5" type="0" text="5.您更愿意购买哪种类型的皮肤？">
+      <key id="1" type="0" text="[color=#00FF00]设计新颖酷炫[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]可爱[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]恶搞[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]贴近现实[/color]"/>
+    </event>
+	<event id="6" type="0" text="6.您是否在游戏中花过钱？">
+      <key id="1" type="0" text="[color=#00FF00]从不花钱[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]较少[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]较多[/color]"/>
+      <key id="4" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+	<event id="7" type="1" text="7.您愿意对《超神狙击》中的哪些东西花钱？">
+      <key id="1" type="0" text="[color=#00FF00]新英雄[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]新皮肤[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]新表情[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]双倍经验[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+	<event id="8" type="0" text="8.您是否快速了解并掌握《超神狙击》的游戏规则和玩法？">
+      <key id="1" type="0" text="[color=#00FF00]可以快速了解游戏规则和玩法[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]玩了3-5局才能了解规则[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]玩了5局以上才了解规则[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]很难掌握，实在玩不懂[/color]"/>
+    </event>
+	<event id="9" type="0" text="9.对于《超神狙击》的操作方式，您的感受是？">
+      <key id="1" type="0" text="[color=#00FF00]很容易上手[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]不容易上手，但是玩过几局之后还能接受[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]技能释放太复杂，完全不能接受[/color]"/>
+    </event>
+	<event id="10" type="0" text="10.您对《超神狙击》目前的游戏节奏满意吗？">
+      <key id="1" type="0" text="[color=#00FF00]满意[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]偏快[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]偏慢[/color]"/>
+    </event>
+	<event id="11" type="1" text="11.您最不喜欢《超神狙击》里的哪些英雄？">
+      <key id="1" type="0" text="[color=#00FF00]刑天[/color]"/>
+	  <key id="2" type="0" text="[color=#00FF00]塔利亚[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]雪女[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]应龙[/color]"/>
+      <key id="5" type="1" text="[color=#00FF00]请输入理由（最多50个汉字）[/color]"/>
+    </event>
+    <event id="12" type="1" text="12.您最不喜欢《超神狙击》里的哪些模式？">
+      <key id="1" type="0" text="[color=#00FF00]争夺模式[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]护送模式[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]竞技场模式[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]资源模式[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]请输入理由（最多50个汉字）[/color]"/>
+    </event>
+	<event id="13" type="1" text="13.您觉得《超神狙击》现在有哪些不足？">
+      <key id="1" type="0" text="[color=#00FF00]玩法模式较少[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]匹配耗时过长[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]英雄数量少，选择范围小[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]英雄平衡性差[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]部分英雄手感不好，影响体验[/color]"/>
+      <key id="6" type="0" text="[color=#00FF00]游戏地图太少[/color]"/>
+      <key id="7" type="0" text="[color=#00FF00]地图平衡性差[/color]"/>
+	  <key id="8" type="0" text="[color=#00FF00]福利活动太少[/color]"/>
+	  <key id="9" type="0" text="[color=#00FF00]游戏不够流畅，有卡顿现象[/color]"/>
+      <key id="10" type="0" text="[color=#00FF00]有外挂和作弊现象[/color]"/>
+      <key id="11" type="0" text="[color=#00FF00]道具定价太贵[/color]"/>
+    </event>
+	<event id="14" type="1" text="14.您认为《超神狙击》中的哪些方面需要改进？">
+      <key id="1" type="0" text="[color=#00FF00]增加更多玩法模式[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]优化匹配时间[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]增加更多英雄[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]优化英雄平衡性[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]优化英雄手感[/color]"/>
+      <key id="6" type="0" text="[color=#00FF00]增加更多地图[/color]"/>
+      <key id="7" type="0" text="[color=#00FF00]优化地图的平衡性[/color]"/>
+      <key id="8" type="0" text="[color=#00FF00]增加更多福利活动[/color]"/>
+	  <key id="9" type="0" text="[color=#00FF00]优化卡顿现象，使游戏更加流畅[/color]"/>
+	  <key id="10" type="0" text="[color=#00FF00]强化反作弊和反外挂功能[/color]"/>
+      <key id="11" type="0" text="[color=#00FF00]优化音乐音效[/color]"/>
+      <key id="12" type="0" text="[color=#00FF00]调整道具定价[/color]"/>
+    </event>
+	<event id="15" type="1" text="15.您希望《超神狙击》增加哪些玩法？">
+      <key id="1" type="0" text="[color=#00FF00]更多对抗模式与对抗地图[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]PVE合作玩法[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]PVE挑战玩法[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]休闲玩法[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]人机对战[/color]"/>
+      <key id="6" type="1" text="[color=#00FF00]我还有更好的想法[/color]"/>
+    </event>
+</data>
+<data id="2001" reward="1020,50" text="希望各位勇士能够认真的回复答卷，提交最真实的感受。我们会根据大家提交的问卷反馈对《超神狙击》进行调整，以使大家获得更好的游戏体验。如果各位勇士有其它建议或者想法，可以前往[color=#00FF00]论坛提交[/color]或者向[color=#00FF00]游戏群管理员建议！[/color]">
+    <event id="1" type="0" text="1.请问您的实际年龄是多少？">
+      <key id="1" type="0" text="[color=#00FF00]12岁以下[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]12-17岁[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]18-24岁[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]25-35岁[/color]"/>
+      <key id="5" type="0" text="[color=#00FF00]35岁以上[/color]"/>
+    </event>
+	<event id="2" type="0" text="2.您的性别是：">
+      <key id="1" type="0" text="[color=#00FF00]男[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]女[/color]"/>
+    </event>
+    <event id="3" type="1" text="3.您一般在什么时间玩游戏？">
+      <key id="1" type="0" text="[color=#00FF00]随时都会玩[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]每天晚上[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]周末白天[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]周末晚上[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+    <event id="4" type="1" text="4.您接触过哪些FPS游戏？">
+      <key id="1" type="0" text="[color=#00FF00]使命召唤系列[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]战地系列[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]CS系列（CS1.5、CSgo）[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]穿越火线CF[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]守望先锋[/color]"/>
+      <key id="6" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+    <event id="5" type="0" text="5.您更愿意购买哪种类型的皮肤？">
+      <key id="1" type="0" text="[color=#00FF00]设计新颖酷炫[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]可爱[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]恶搞[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]贴近现实[/color]"/>
+    </event>
+	<event id="6" type="0" text="6.您是否在游戏中花过钱？">
+      <key id="1" type="0" text="[color=#00FF00]从不花钱[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]较少[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]较多[/color]"/>
+      <key id="4" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+	<event id="7" type="1" text="7.您愿意对《超神狙击》中的哪些东西花钱？">
+      <key id="1" type="0" text="[color=#00FF00]新英雄[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]新皮肤[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]新表情[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]双倍经验[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]其他[/color]"/>
+    </event>
+	<event id="8" type="0" text="8.您是否快速了解并掌握《超神狙击》的游戏规则和玩法？">
+      <key id="1" type="0" text="[color=#00FF00]可以快速了解游戏规则和玩法[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]玩了3-5局才能了解规则[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]玩了5局以上才了解规则[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]很难掌握，实在玩不懂[/color]"/>
+    </event>
+	<event id="9" type="0" text="9.对于《超神狙击》的操作方式，您的感受是？">
+      <key id="1" type="0" text="[color=#00FF00]很容易上手[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]不容易上手，但是玩过几局之后还能接受[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]技能释放太复杂，完全不能接受[/color]"/>
+    </event>
+	<event id="10" type="0" text="10.您对《超神狙击》目前的游戏节奏满意吗？">
+      <key id="1" type="0" text="[color=#00FF00]满意[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]偏快[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]偏慢[/color]"/>
+    </event>
+	<event id="11" type="1" text="11.您最不喜欢《超神狙击》里的哪些英雄？">
+      <key id="1" type="0" text="[color=#00FF00]刑天[/color]"/>
+	  <key id="2" type="0" text="[color=#00FF00]塔利亚[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]雪女[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]应龙[/color]"/>
+      <key id="5" type="1" text="[color=#00FF00]请输入理由（最多50个汉字）[/color]"/>
+    </event>
+    <event id="12" type="1" text="12.您最不喜欢《超神狙击》里的哪些模式？">
+      <key id="1" type="0" text="[color=#00FF00]争夺模式[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]护送模式[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]竞技场模式[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]资源模式[/color]"/>
+	  <key id="5" type="1" text="[color=#00FF00]请输入理由（最多50个汉字）[/color]"/>
+    </event>
+	<event id="13" type="1" text="13.您觉得《超神狙击》现在有哪些不足？">
+      <key id="1" type="0" text="[color=#00FF00]玩法模式较少[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]匹配耗时过长[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]英雄数量少，选择范围小[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]英雄平衡性差[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]部分英雄手感不好，影响体验[/color]"/>
+      <key id="6" type="0" text="[color=#00FF00]游戏地图太少[/color]"/>
+      <key id="7" type="0" text="[color=#00FF00]地图平衡性差[/color]"/>
+	  <key id="8" type="0" text="[color=#00FF00]福利活动太少[/color]"/>
+	  <key id="9" type="0" text="[color=#00FF00]游戏不够流畅，有卡顿现象[/color]"/>
+      <key id="10" type="0" text="[color=#00FF00]有外挂和作弊现象[/color]"/>
+      <key id="11" type="0" text="[color=#00FF00]道具定价太贵[/color]"/>
+    </event>
+	<event id="14" type="1" text="14.您认为《超神狙击》中的哪些方面需要改进？">
+      <key id="1" type="0" text="[color=#00FF00]增加更多玩法模式[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]优化匹配时间[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]增加更多英雄[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]优化英雄平衡性[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]优化英雄手感[/color]"/>
+      <key id="6" type="0" text="[color=#00FF00]增加更多地图[/color]"/>
+      <key id="7" type="0" text="[color=#00FF00]优化地图的平衡性[/color]"/>
+      <key id="8" type="0" text="[color=#00FF00]增加更多福利活动[/color]"/>
+	  <key id="9" type="0" text="[color=#00FF00]优化卡顿现象，使游戏更加流畅[/color]"/>
+	  <key id="10" type="0" text="[color=#00FF00]强化反作弊和反外挂功能[/color]"/>
+      <key id="11" type="0" text="[color=#00FF00]优化音乐音效[/color]"/>
+      <key id="12" type="0" text="[color=#00FF00]调整道具定价[/color]"/>
+    </event>
+	<event id="15" type="1" text="15.您希望《超神狙击》增加哪些玩法？">
+      <key id="1" type="0" text="[color=#00FF00]更多对抗模式与对抗地图[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]PVE合作玩法[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]PVE挑战玩法[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]休闲玩法[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]人机对战[/color]"/>
+      <key id="6" type="1" text="[color=#00FF00]我还有更好的想法[/color]"/>
+    </event>
+</data>
+<data id="2002" reward="1020,50" text="希望各位勇士能够认真的回复答卷，提交最真实的感受。我们会根据大家提交的问卷反馈对《超神狙击》进行调整，以使大家获得更好的游戏体验。如果各位勇士有其它建议或者想法，可以前往[color=#00FF00]论坛提交[/color]或者向[color=#00FF00]游戏群管理员建议！[/color]">
+    <event id="1" type="0" text="1.您的年龄是：">
+      <key id="1" type="0" text="[color=#00FF00]12岁以下[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]12-17岁[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]18-24岁[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]25-35岁[/color]"/>
+      <key id="5" type="0" text="[color=#00FF00]35岁以上[/color]"/>
+    </event>
+	<event id="2" type="0" text="2.您的性别是：">
+      <key id="1" type="0" text="[color=#00FF00]男[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]女[/color]"/>
+    </event>
+    <event id="3" type="1" text="3.您一般会在什么时候玩《超神狙击》？">
+      <key id="1" type="0" text="[color=#00FF00]工作日[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]周末[/color]"/>
+    </event>
+    <event id="4" type="1" text="4.您每天会选择什么时间段玩《超神狙击》？">
+      <key id="1" type="0" text="[color=#00FF00]8:00-12:00[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]12:00-14:00[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]14:00-19:00[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]19:00-0:00[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]0:00-8:00[/color]"/>
+    </event>
+    <event id="5" type="0" text="5.您每天玩《超神狙击》的时长是？">
+      <key id="1" type="0" text="[color=#00FF00]＜1小时[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]＞1小时，但＜3小时[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]＞3小时[/color]"/>
+    </event>
+	<event id="6" type="0" text="6.您对《超神狙击》目前的对局节奏满意吗？">
+      <key id="1" type="0" text="[color=#00FF00]满意[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]偏快[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]偏慢[/color]"/>
+    </event>
+	<event id="7" type="1" text="7.你目前游戏对局中是否容易变得枯燥？">
+      <key id="1" type="0" text="[color=#00FF00]不会[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]会，英雄太少[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]会，地图太少[/color]"/>
+      <key id="4" type="0" text="[color=#00FF00]会，玩法太单一[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]会，找不到同级别的对手[/color]"/>
+    </event>
+	<event id="8" type="0" text="8.您觉得当前版本英雄的平衡性如何？">
+      <key id="1" type="0" text="[color=#00FF00]很平衡，每个英雄都各有特色[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]个别英雄相对比较强，但还能接受[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]很不平衡，强弱悬殊[/color]"/>
+    </event>
+	<event id="9" type="1" text="9.您对近期推出的王者试炼及黑暗圣地玩法，有什么建议？">
+      <key id="1" type="0" text="[color=#00FF00]副本难度太大，挫败感太强[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]英雄不平衡，防御英雄容易死[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]怪物boss单调，缺少策略玩法[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]通关奖励太少[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]单局时间太长了[/color]"/>
+	  <key id="6" type="1" text="[color=#00FF00]我还有更好的想法[/color]"/>
+    </event>
+	<event id="10" type="1" text="10.您对目前的天梯玩法有何建议？">
+      <key id="1" type="0" text="[color=#00FF00]开放时间太少[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]匹配机制不平衡，会匹配到实力差距较大的队伍[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]匹配时间太长了[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]很难找到实力相近的队友[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]奖励太少了[/color]"/>
+	  <key id="6" type="1" text="[color=#00FF00]我还有更好的想法[/color]"/>
+    </event>
+    <event id="11" type="0" text="11.您对近期推出的新英雄哪吒感受如何？">
+      <key id="1" type="0" text="[color=#00FF00]很厉害，机动性和伤害都很高，脆皮收割机[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]很普通，血太少又没有自保技能，容易被秒[/color]"/>
+	  <key id="3" type="1" text="[color=#00FF00]我还有其他的想法[/color]"/>
+    </event>
+	<event id="12" type="1" text="12.您觉得《超神狙击》现在有哪些不足？">
+      <key id="1" type="0" text="[color=#00FF00]玩法模式较少[/color]"/>
+	  <key id="2" type="0" text="[color=#00FF00]匹配耗时过长[/color]"/>
+	  <key id="3" type="0" text="[color=#00FF00]英雄数量少，选择范围小[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]英雄平衡性差[/color]"/>
+	  <key id="5" type="0" text="[color=#00FF00]部分英雄手感不好，影响体验[/color]"/>
+	  <key id="6" type="0" text="[color=#00FF00]游戏地图太少[/color]"/>
+	  <key id="7" type="0" text="[color=#00FF00]地图平衡性差[/color]"/>
+	  <key id="8" type="0" text="[color=#00FF00]福利活动太少[/color]"/>
+	  <key id="9" type="0" text="[color=#00FF00]游戏不够流畅，有卡顿现象[/color]"/>
+	  <key id="10" type="0" text="[color=#00FF00]有外挂和作弊现象[/color]"/>
+	  <key id="11" type="0" text="[color=#00FF00]道具定价太贵[/color]"/>
+    </event>
+	<event id="13" type="1" text="13.您希望《超神狙击》增加哪些玩法？">
+      <key id="1" type="0" text="[color=#00FF00]更多对抗模式与对抗地图[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]趣味娱乐玩法[/color]"/>
+      <key id="3" type="0" text="[color=#00FF00]PVE闯关玩法[/color]"/>
+	  <key id="4" type="0" text="[color=#00FF00]人机对战[/color]"/>
+      <key id="5" type="1" text="[color=#00FF00]我还有更好的想法[/color]"/>
+    </event>
+	<event id="14" type="0" text="14.您对近期推出的《丛林求生》玩法，有何看法？">
+      <key id="1" type="0" text="[color=#00FF00]喜欢[/color]"/>
+      <key id="2" type="0" text="[color=#00FF00]不喜欢[/color]"/>
+      <key id="3" type="1" text="[color=#00FF00]其它[/color]"/>
+    </event>
+	<event id="15" type="0" text="15.您对《超神狙击》有什么建议：">
+      <key id="1" type="1" text="[color=#00FF00]请输入您对《超神狙击》的建议：[/color]"/>
+    </event>
+</data>
+</root>

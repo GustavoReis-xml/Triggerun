@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+  <i id="1" name="寒假8天乐" pic="frame_1" bg="nationaldaybg_2" stitle="累计登录一定天数将会获得丰厚奖励！" sbottom="当前已累计登录&lt;color=#ffffff&gt;&lt;size=72&gt;{0}&lt;/size&gt;&lt;/color&gt;天">
+	<d id="0" name="累计登录1天" denglunum="1" img="libao_tu21" msg="&lt;size=20&gt;头像[寒假莉莉丝]&lt;/size&gt;" itemlist="1671,1,1" />
+	<d id="1" name="累计登录2天" denglunum="2" img="libao_tu14" msg="&lt;size=20&gt;基因碎片(500)+许愿值(20)&lt;/size&gt;" itemlist="1026,500,1|1028,20,1" />
+	<d id="2" name="累计登录3天" denglunum="3" img="libao_tu15" msg="&lt;size=20&gt;晶石宝箱(3)+复活币(2)&lt;/size&gt;" itemlist="2020,3,1|6023,2,1" />
+	<d id="3" name="累计登录4天" denglunum="4" img="libao_tu16" msg="&lt;size=20&gt;升阶晶块(5)+合成符Ⅰ(2)&lt;/size&gt;" itemlist="6021,5,1|3051,2,1" />
+	<d id="4" name="累计登录5天" denglunum="5" img="libao_tu17" msg="&lt;size=20&gt;基因碎片(800)+扫荡券(4)&lt;/size&gt;" itemlist="1026,800,1|1025,4,1" />
+	<d id="5" name="累计登录6天" denglunum="6" img="libao_tu18" msg="&lt;size=20&gt;晶块增幅器+晶石宝箱(5)&lt;/size&gt;" itemlist="6022,1,1|2020,5,1" />
+	<d id="6" name="累计登录7天" denglunum="7" img="libao_tu19" msg="&lt;size=20&gt;合成符Ⅱ+2级符文箱&lt;/size&gt;" itemlist="3052,1,1|2008,1,1" />
+	<d id="7" name="累计登录8天" denglunum="8" img="libao_tu22" msg="&lt;size=20&gt;喷漆[寒假莉莉丝]+基因碎片(2500)&lt;/size&gt;" itemlist="1757,1,1|1026,2500,1" />
+  </i>
+  <i id="2" name="国庆8天乐" pic="frame_1" bg="nationaldaybg_1" stitle="累计登录一定天数将会获得丰厚奖励！" sbottom="当前已累计登录&lt;color=#ffffff&gt;&lt;size=72&gt;{0}&lt;/size&gt;&lt;/color&gt;天">
+	<d id="0" name="累计登录1天" denglunum="1" img="libao_tu1" msg="20金币" itemlist="1020,20,1" />
+	<d id="1" name="累计登录2天" denglunum="2" img="libao_tu2" msg="扫荡券×3" itemlist="1025,3,1" />
+	<d id="2" name="累计登录3天" denglunum="3" img="libao_tu1" msg="40金币" itemlist="1020,40,1" />
+	<d id="3" name="累计登录4天" denglunum="4" img="libao_tu3" msg="晶石宝箱×3" itemlist="2020,3,1" />
+	<d id="4" name="累计登录5天" denglunum="5" img="libao_tu1" msg="60金币" itemlist="1020,60,1" />
+	<d id="5" name="累计登录6天" denglunum="6" img="libao_tu4" msg="升阶晶块×7" itemlist="6021,7,1" />
+	<d id="6" name="累计登录7天" denglunum="7" img="libao_tu1" msg="80金币" itemlist="1020,80,1" />
+	<d id="7" name="累计登录8天" denglunum="8" img="libao_tu5" msg="4级符文箱×1" itemlist="2010,1,1" />
+  </i>
+  <i id="3" name="双旦8天乐" pic="frame_1" bg="nationaldaybg_1" stitle="累计登录一定天数将会获得丰厚奖励！" sbottom="当前已累计登录&lt;color=#ffffff&gt;&lt;size=72&gt;{0}&lt;/size&gt;&lt;/color&gt;天">
+	<d id="0" name="累计登录1天" denglunum="1" img="libao_tu13" msg="头像[圣诞黄忠]" itemlist="1669,1,1" />
+	<d id="1" name="累计登录2天" denglunum="2" img="libao_tu14" msg="基因碎片(500)+许愿值(20)" itemlist="1026,500,1|1028,20,1" />
+	<d id="2" name="累计登录3天" denglunum="3" img="libao_tu15" msg="晶石宝箱(3)+复活币(2)" itemlist="2020,3,1|6023,2,1" />
+	<d id="3" name="累计登录4天" denglunum="4" img="libao_tu16" msg="升阶晶块(5)+合成符Ⅰ(2)" itemlist="6021,5,1|3051,2,1" />
+	<d id="4" name="累计登录5天" denglunum="5" img="libao_tu17" msg="基因碎片(800)+扫荡券(4)" itemlist="1026,800,1|1025,4,1" />
+	<d id="5" name="累计登录6天" denglunum="6" img="libao_tu18" msg="晶块增幅器+晶石宝箱(5)" itemlist="6022,1,1|2020,5,1" />
+	<d id="6" name="累计登录7天" denglunum="7" img="libao_tu19" msg="合成符Ⅱ+2级符文箱" itemlist="3052,1,1|2008,1,1" />
+	<d id="7" name="累计登录8天" denglunum="8" img="libao_tu20" msg="喷漆[元旦萝莉]+基因碎片(2500)" itemlist="1756,1,1|1026,2500,1" />
+  </i>
+</root>

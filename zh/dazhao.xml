@@ -1,0 +1,76 @@
+<root>
+	<i id="1003" name="狄安娜" type="0" >
+	   <skill id="3" name="红外侦测" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1013" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="150" energyaddcure="1" xingtai="0" icon="DiannaHWZC" continuestime="15500"/>
+	</i>
+	<i id="1005" name="雷震子" type="0" >
+	   <skill id="5" name="幻影突袭" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1018" dogun="6" energymax="10000" energyaddtime="120" energyadddamage="185" energyaddcure="1" xingtai="0" icon="LeizhenziHJDM" continuestime="6000"/>
+	</i>
+	<i id="1006" name="刑天" type="0" >
+	   <skill id="6" name="裂地" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1023" dogun="3" energymax="10000" energyaddtime="120" energyadddamage="60" energyaddcure="1" xingtai="0" icon="XingtianLDMJ" continuestime="0"/>
+	</i>
+	<i id="1015" name="终结者" type="0" >
+	   <skill id="15" name="火力压制" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1033" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="330" xingtai="0" icon="ZhongjiezheZJSK" continuestime="8000"/>
+	</i>
+	<i id="1016" name="瓦尔基里" type="0" >
+	   <skill id="16" name="旋风斩" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1038" dogun="3" energymax="10000" energyaddtime="150" energyadddamage="50" energyaddcure="1" xingtai="0" icon="WaerjiliXFZ" continuestime="3500"/>
+	</i>
+	<i id="1017" name="木兰" type="0" >
+	   <skill id="1" name="死亡绽放" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1044" dogun="6|7" energymax="10000" energyaddtime="120" energyadddamage="175" energyaddcure="1" xingtai="0" icon="MulanSWZF" continuestime="3000"/>
+	</i>
+	<i id="1019" name="观音" type="0" >
+	   <skill id="16" name="复活" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="0" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="55" energyaddcure="1" xingtai="0" icon="LuoshenFH" continuestime="0"/>
+	</i>
+	<i id="1021" name="塔利亚" type="0" >
+	   <skill id="21" name="水晶之祝" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1063" dogun="3" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="150" xingtai="0" icon="TaliyaSJZZ" continuestime="6000"/>
+	</i>
+	<i id="1022" name="雪女" type="0" >
+	   <skill id="22" name="大雪球" energycosttype="1" candotype="1" energycost="0" energycosttime="0" doskill="1079" dogun="5" energymax="10000" energyaddtime="120" energyadddamage="175" energyaddcure="1" xingtai="0" icon="XuenvDXQ" continuestime="10000"/>
+	</i>
+	<i id="1023" name="祝融" type="0" >
+	   <skill id="23" name="地狱熔炉" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1069" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="150" energyaddcure="330" xingtai="0" icon="ZhurongHHRC" continuestime="0"/>
+	</i>
+	<i id="1024" name="后羿" type="0" >
+	   <skill id="24" name="凤翼天翔" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1072" dogun="2" energymax="10000" energyaddtime="120" energyadddamage="200" energyaddcure="1" xingtai="0" icon="HouyiFYTX" continuestime="0"/>
+	</i>
+	<i id="1025" name="玲珑" type="0" >
+	   <skill id="25" name="传送面板" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1078" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="1" xingtai="0" icon="LingLongCSMB" continuestime="0"/>
+	</i>
+	<i id="1026" name="爱德华" type="0" >
+	   <skill id="26" name="变身" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1101" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="125" energyaddcure="1" xingtai="0" icon="aidehuaBS" continuestime="8000"/>
+	</i>
+	<i id="1027" name="应龙" type="0" >
+	   <skill id="27" name="沙暴漩涡" energycosttype="1" candotype="1" energycost="0" energycosttime="0" doskill="1103" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="150" energyaddcure="1" xingtai="0" icon="shawangSB" continuestime="0"/>
+	</i>
+	<i id="1028" name="洛基" type="0" >
+	   <skill id="28" name="汽油桶" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1113" dogun="3" energymax="10000" energyaddtime="120" energyadddamage="120" energyaddcure="1" xingtai="0" icon="luojiKHLZ" continuestime="0"/>
+	</i>
+	<i id="1029" name="洛丽塔" type="0" >
+	   <skill id="29" name="葛罗姆之光" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1123" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="120" xingtai="0" icon="luolitaFH" continuestime="1000"/>
+	</i>
+	<i id="1030" name="荆轲" type="0" >
+	   <skill id="30" name="变身" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1133" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="125" energyaddcure="1" xingtai="0" icon="JingkeYS" continuestime="8000"/>
+	</i>
+	<i id="1031" name="兰博" type="0" >
+	   <skill id="31" name="自动瞄准" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1143" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="1" xingtai="0" icon="lanboZDMZ" continuestime="8000"/>
+	</i>
+	<i id="1032" name="妲己" type="0" >
+	   <skill id="32" name="群体护盾" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1153" dogun="4" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="120" xingtai="0" icon="dajiQHMY" continuestime="0"/>
+	</i>
+	<i id="1033" name="莉莉丝" type="0" >
+	   <skill id="33" name="夜之魔女" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1164" dogun="4" energymax="10000" energyaddtime="120" energyadddamage="100" energyaddcure="120" xingtai="0" icon="lilisiTKNW" continuestime="0"/>
+	</i>
+	<i id="1034" name="黄忠" type="0" >
+	   <skill id="34" name="5秒真男人" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1173" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="125" energyaddcure="120" xingtai="0" icon="huangzhongtx" continuestime="5000"/>
+	</i>
+	<i id="1035" name="哪吒" type="0" >
+	   <skill id="35" name="三头六臂" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1183" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="80" energyaddcure="1" xingtai="0" icon="nezhaHRZQ" continuestime="8000"/>
+	</i>
+	<i id="1036" name="美杜莎" type="0" >
+	   <skill id="36" name="蛇发女妖" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1193" dogun="4" energymax="10000" energyaddtime="120" energyadddamage="125" energyaddcure="1" xingtai="0" icon="meidushaSFNY" continuestime="8000"/>
+	</i>
+	<i id="1037" name="大卫" type="0" >
+	   <skill id="37" name="传送面板" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1203" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="80" energyaddcure="1" xingtai="0" icon="daweiQTCS" continuestime="5000"/>
+	</i>
+	<i id="2000" name="哪吒" type="0" >
+	</i>
+</root>

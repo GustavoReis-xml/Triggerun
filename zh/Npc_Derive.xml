@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i Index="1001" Npc_ID="1008" Country="1" Origin_Point="12733,965,24085" Origin_Angle="0,0,0" Refresh_Time="3000"/>
+	<i Index="1002" Npc_ID="1009" Country="1" Origin_Point="16798,965,24069" Origin_Angle="0,0,0" Refresh_Time="3000"/>
+
+	<i Index="1101" Npc_ID="1101" Country="2" Origin_Point="53570,20262,26623" Origin_Angle="0,18000,0" Refresh_Time="3000"/>
+
+	<i Index="1103" Npc_ID="1103" Country="2" Origin_Point="54185,20716,26855" Origin_Angle="0,-180,0" Refresh_Time="3000"/>
+
+	<i Index="1104" Npc_ID="1104" Country="1" Origin_Point="52115,20720,25218" Origin_Angle="0,0,0" Refresh_Time="3000"/>
+
+	<i Index="1105" Npc_ID="1105" Country="2" Origin_Point="49175,20080,27865" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1106" Npc_ID="1106" Country="2" Origin_Point="49175,20200,27550" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1107" Npc_ID="1107" Country="1" Origin_Point="51144,20200,27865" Origin_Angle="0,-9000,0" Refresh_Time="3000"/>
+	<i Index="1108" Npc_ID="1108" Country="1" Origin_Point="51144,20200,27550" Origin_Angle="0,-9000,0" Refresh_Time="3000"/>
+
+	<i Index="1109" Npc_ID="1109" Country="2" Origin_Point="49175,20200,26950" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1110" Npc_ID="1110" Country="2" Origin_Point="49175,20200,26635" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1111" Npc_ID="1111" Country="1" Origin_Point="51144,20200,26950" Origin_Angle="0,-9000,0" Refresh_Time="3000"/>
+	<i Index="1112" Npc_ID="1112" Country="1" Origin_Point="51144,20200,26635" Origin_Angle="0,-9000,0" Refresh_Time="3000"/>
+
+	<i Index="1113" Npc_ID="1113" Country="2" Origin_Point="49935,20100,22718" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1114" Npc_ID="1114" Country="2" Origin_Point="49935,20100,23433" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1115" Npc_ID="1115" Country="2" Origin_Point="49935,20100,24080" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+	<i Index="1116" Npc_ID="1116" Country="2" Origin_Point="49935,20100,24478" Origin_Angle="0,9000,0" Refresh_Time="3000"/>
+
+	<i Index="2001" Npc_ID="1004" Country="1" Origin_Point="10297,9850,16039" Origin_Angle="0,0,0" Refresh_Time="3000"/>
+	<i Index="2002" Npc_ID="1020" Country="1" Origin_Point="24481,10050,20700" Origin_Angle="0,180,0" Refresh_Time="3000"/>
+
+	<i Index="2005" Npc_ID="1108" Country="1" Origin_Point="51335,20200,27133" Origin_Angle="0,-9000,0" Refresh_Time="3000"/>
+	<i Index="1130" Npc_ID="1130" Country="1" Origin_Point="11790,10854,2528" Origin_Angle="0,-9000,0" Refresh_Time="0"/>
+</root>

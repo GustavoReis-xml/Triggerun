@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<s id="0" name="充值好礼" bgimg="libao_shouchong_ditu" money="100" itemlist="1111,1,1|1334,1,1" />
+	<s id="1" name="充值好礼" bgimg="libao_shouchong_ditu" money="500" itemlist="1641,1,1|1727,1,1|1115,1,1|1218,1,1|1366,1,1" />
+	<s id="2" name="充值好礼" bgimg="libao_shouchong_ditu" money="10" itemlist="5310,1,1" />
+
+	<d id="0" name="连续登录1天" denglunum="1" img="LiBao_tu5" msg="30金币" itemlist="1020,30,1" />
+	<d id="1" name="连续登录2天" denglunum="2" img="LiBao_tu1" msg="头像【烈焰】" itemlist="1627,1,1" />
+	<d id="2" name="连续登录4天" denglunum="4" img="LiBao_tu5" msg="70金币" itemlist="1020,70,1" />
+	<d id="3" name="连续登录6天" denglunum="6" img="LiBao_tu2" msg="喷漆【雪花】" itemlist="1706,1,1" />
+	<d id="4" name="连续登录8天" denglunum="8" img="LiBao_tu5" msg="110金币" itemlist="1020,110,1" />
+	<d id="5" name="连续登录10天" denglunum="10" img="LiBao_tu3" msg="表情【狄安娜跳舞】" itemlist="1335,1,1" />
+	<d id="6" name="连续登录12天" denglunum="12" img="LiBao_tu5" msg="150金币" itemlist="1020,150,1" />
+	<d id="7" name="连续登录14天" denglunum="14" img="LiBao_tu4" msg="时装【爱德华王子】" itemlist="1201,1,1" />
+
+	<l id="0" name="10级奖励" bgimg="libao_lvl10_ditu" get_lv="10" itemlist="1112,1,1" checkid="1,1025"/>
+</root>

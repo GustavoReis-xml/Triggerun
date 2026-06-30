@@ -1,0 +1,3 @@
+<root>
+	<i id="1001" name="Ranking Diário" bgimg="libao_sky_ditu_bx" matchnum="3" gold="10" matchtitle="{0} Partidas do Dia" matchdesc="Recompensas Adicionais {0}" matchnumdesc="Partidas restantes do dia {0}" expstart="17:30:00" expend="21:30:00" exptitle="XP Dupla Aqui" expdesc="{0} - {1} todo dia" userexp="100" heroexp="100"/>
+</root>

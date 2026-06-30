@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<i id="0" msg="准备防御" />
+	<i id="1" msg="准备进攻" />
+	<i id="2" msg="进攻目标点{0}" />
+	<i id="3" msg="防守目标点{0}" />
+</root>

@@ -1,0 +1,109 @@
+<root>
+	<i id="1001"  name="1月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1002"  name="2月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到28次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1003"  name="3月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1004"  name="4月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1005"  name="5月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1006"  name="6月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1007"  name="7月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1008"  name="8月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>			
+    </i>	
+
+		<i id="1009"  name="9月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1010"  name="10月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1011"  name="11月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>	
+
+		<i id="1012"  name="12月签到奖励">
+			<f index="0" name = "累计签到2次获得"	signnum="2" msg = "扫荡卷*10" img="sdq.txt"  awarditem="1025,10,1"/>
+			<f index="1" name = "累计签到6次获得"	signnum="6" msg = "升阶石*20" img="sjs.txt"  awarditem="6021,20,1"/>
+			<f index="2" name = "累计签到10次获得"	signnum="10" msg = "许愿值*300" img="xyz.txt"  awarditem="1028,300,1"/>
+			<f index="3" name = "累计签到15次获得"	signnum="15" msg = "晶石宝箱*20" img="1019.txt"  awarditem="2020,20,1"/>
+			<f index="4" name = "累计签到20次获得"	signnum="20" msg = "合成符II*3" img="hc2.txt"  awarditem="3052,3,1"/>
+			<f index="5" name = "累计签到30次获得"	signnum="30" msg = "配件碎片*150" img="wqpj.txt"  awarditem="1032,150,1"/>		
+    </i>
+	</root>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i heroid="1003" star="2">
+		<s id="1" name="Sniper Rifle" icon="dianna" col="1" type="" key="Key_Use_Weapon_1" desc="Sniper Rifle pode ser usado para causar dano crítico a inimigos em longa distância" pos="-329,197,0"/>
+		<s id="2" name="Gun Sight" icon="dianna" col="2" type="" key="Key_Use_Weapon_2" desc="Pressione para mirar com scope" pos="329,197,0"/>
+		<s id="3" name="Teleporte" icon="DiannaCS" col="2" type="" key="Key_Skill_2" desc="Pode teleportar para uma certa posição" pos="-329,-187,0"/>
+		<s id="4" name="Camuflagem Óptica" icon="DiannaYS" col="2" type="" key="Key_Skill_1" desc="Fique invisível para o inimigo não te ver" pos="329,-187,0"/>
+		<s id="5" name="Detectar Infrared" icon="DiannaHWZC" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Localize todos os alvos do oponente" pos="0,382,0"/>
+	</i>
+	<i heroid="1005" star="3">
+		<s id="1" name="Rocket Launcher" icon="leizhenzi" col="1" type="" key="Key_Use_Weapon_1" desc="Uma arma de longa distância explosiva que pode lançar micro mísseis  " pos="-329,197,0"/>
+		<s id="2" name="Thunder Bomb" icon="LeizhenziZDCJ" col="2" type="" key="Key_Skill_2" desc="Pode produzir uma área de tempestade" pos="-329,-187,0"/>
+		<s id="3" name="Thruster" icon="LeizhenziTJBB" col="2" type="" key="Key_Skill_1" desc="Ligue o propulsor para voar imediatamente" pos="329,-187,0"/>
+		<s id="4" name="Suspending Fly" icon="LeizhenziFX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="Pressione para ficar suspenso no ar" pos="0,-220,0"/>
+		<s id="5" name="Viber Missile" icon="LeizhenziHJDM" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Glider observa todos os inimigos em seu campo de visão e lança um míssil em suas direções" pos="0,382,0"/>
+	</i>
+	<i heroid="1006" star="1">
+		<s id="1" name="Fist of Justice" icon="xingtian" col="1" type="" key="Key_Use_Weapon_1" desc="Um braço mecânico com forte poder de colisão" pos="-329,197,0"/>
+		<s id="2" name="Fire Fist" icon="XingtianLYDJ" col="2" type="" key="Key_Skill_2" desc="Lançar uma bola de energia flamejante" pos="-329,-187,0"/>
+		<s id="3" name="Shield" icon="XingtianNLD" col="2" type="" key="Key_Use_Weapon_2" desc="Forma um escudo de energia para cobrir seus companheiros" pos="329,197,0"/>
+		<s id="4" name="Earth Rift attack" icon="XingtianLDMJ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Bate no chão e stunna todos os inimigos ao redor" pos="0,382,0"/>
+	</i>
+	<i heroid="1015" star="1">
+		<s id="1" name="Assault Rifle" icon="zhongjiezhe1" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de assalto totalmente automática" pos="-329,197,0"/>
+		<s id="2" name="High-explosive Grenade" icon="ZhongjiezheSL" col="2" type="" key="Key_Use_Weapon_2" desc="Lança uma granada de grande explosão" pos="329,197,0"/>
+		<s id="3" name="Biologicals" icon="ZhongjiezheZL" col="2" type="" key="Key_Skill_2" desc="Injetar biológicos para curá-lo" pos="-329,-187,0"/>
+		<s id="4" name="Rush" icon="ZhongjiezheCC" col="2" type="" key="Key_Skill_1" desc="Rápido movimento para frente" pos="329,-187,0"/>
+		<s id="5" name="Destroyer" icon="ZhongjiezheZJSK" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Use uma Gaitling gun para causar muito dano aos inimigos" pos="0,382,0"/>
+	</i>
+	<i heroid="1016" star="3">
+		<s id="1" name="Blade of Fear" icon="waerjili" col="1" type="" key="Key_Use_Weapon_1" desc="Uma arma poderosa de curto alcance" pos="-329,197,0"/>
+		<s id="2" name="Leap Attack" icon="WaerjiliTZ" col="2" type="" key="Key_Skill_2" desc="Pular para o ar, causar danos aos inimigos após a aterrissagem e aumentar sua velocidade de movimento" pos="-329,-187,0"/>
+		<s id="3" name="Energy Shield" icon="WaerjiliNLD" col="2" type="" key="Key_Skill_1" desc="Fazer escudos ao redor absorver mais de 2000 damage, e os escudos durarão 2,5 segundos" pos="329,-187,0"/>
+		<s id="4" name="Whirldwind" icon="WaerjiliXFZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Causar dano a todos os inimigos ao redor" pos="0,382,0"/>
+	</i>
+	<i heroid="1017" star="2">
+		<s id="1" name="Pulse Gun" icon="mulan" col="1" type="" key="Key_Use_Weapon_1" desc="Uma arma precisa e fatal" pos="-329,197,0"/>
+		<s id="2" name="Double-guns Rapid Fire" icon="MulanSQSS" col="2" type="" key="Key_Use_Weapon_2" desc="Usar duas armas para lançar fogo imediatamente" pos="329,197,0"/>
+		<s id="3" name="Flash" icon="HermesSX" col="2" type="" key="Key_Skill_2" desc="Reluzir para a direção do movimento" pos="-329,-187,0"/>
+		<s id="4" name="Death Sentence" icon="MulanSWZF" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Causar dano a todos os inimigos ao redor" pos="0,382,0"/>
+	</i>
+	<i heroid="1021" star="2">
+		<s id="1" name="Tarot Cards" icon="taliya" col="1" type="" key="Key_Use_Weapon_1" desc="Jogue algumas cartas para a frente" pos="-329,197,0"/>
+		<s id="2" name="Cut-Heal" icon="TaliyaZLSJ" col="2" type="" key="Key_Use_Weapon_2" desc="Curar continuamente o alvo" pos="329,197,0"/>
+		<s id="3" name="Cut-Death" icon="MulanXJDB" col="2" type="" key="Key_Skill_2" desc="Aumente o dano causado ao alvo e rastreie o alvo" pos="-329,-187,0"/>
+		<s id="4" name="Instinct" icon="taliyaJS" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="Velocidade de movimento aumenta depois de danificado" pos="0,-220,0"/>
+		<s id="5" name="Fate" icon="TaliyaSJZZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Torne-se imbatível e cure companheiros próximos" pos="0,382,0"/>
+	</i>
+	<i heroid="1022" star="2">
+		<s id="1" name="Snow Slide · Cold Stone" icon="xuenv" col="1" type="" key="Key_Use_Weapon_1" desc="Atira uma bala grande usando mira para atacar inimigos a longa distância" pos="-329,197,0"/>
+		<s id="2" name="Snow Slide · Ice Soul" icon="xuenv" col="2" type="" key="Key_Use_Weapon_2" desc="Atira bala de pistão de gelo de gelo na frente, atacar inimigos a curta distância" pos="329,197,0"/>
+		<s id="3" name="Snow Fairy" icon="XuenvBXJL" col="2" type="" key="Key_Skill_2" desc="Constrói um feitiço de neve para o centro de si mesma, para fazer com que os inimigos sejam danificados e desacelerados" pos="-329,-187,0"/>
+		<s id="4" name="Frozen Trap" icon="XuenvBDXJ" col="2" type="" key="Key_Skill_1" desc="Arma uma armadilha para deixar inimigos temporariamente congelados" pos="329,-187,0"/>
+		<s id="5" name="Snow Ball" icon="XuenvDXQ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Controla e detonA uma bola de neve explosiva" pos="0,382,0"/>
+	</i>
+	<i heroid="1023" star="2">
+		<s id="1" name="Flamethrower" icon="zhurong" col="1" type="" key="Key_Use_Weapon_1" desc="Lança chamas de curto alcance" pos="-329,197,0"/>
+		<s id="2" name="Fire Ball" icon="zhurong" col="2" type="" key="Key_Use_Weapon_2" desc="Atira uma bola de fogo para atacar inimigos em longa distância" pos="329,197,0"/>
+		<s id="3" name="Flame Sentry" icon="ZhurongHYJL" col="2" type="" key="Key_Skill_2" desc="Coloque uma Flame Sentry para atacar inimigos dentro da área " pos="-329,-187,0"/>
+		<s id="4" name="Born of Fire" icon="ZhurongYHCS" col="2" type="" key="Key_Skill_1" desc="Temporariamente imbatível e heal" pos="329,-187,0"/>
+		<s id="5" name="Ignite" icon="ZhurongDR" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="Todo ataque de fogo pode causar um efeito incendiário" pos="0,-220,0"/>
+		<s id="6" name="Hell Forge" icon="ZhurongHHRC" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Atira uma Hell Forge e pode lidar com os inimigos dentro de uma área" pos="0,382,0"/>
+	</i>
+	<i heroid="1024" star="3">
+		<s id="1" name="Compound Bow" icon="houyi" col="1" type="" key="Key_Use_Weapon_1" desc="Pressione botão direito do mouse e solte-o para causar mais dano" pos="-329,197,0"/>
+		<s id="2" name="Concussive Shot" icon="HouyiJTJ" col="2" type="" key="Key_Skill_2" desc="Atire uma flecha com bomba de choque para contra atacar os inimigos" pos="-329,-187,0"/>
+		<s id="3" name="Explosive Shot" icon="HouyiBLJ" col="2" type="" key="Key_Skill_1" desc="Atire uma flecha com bomba pegajosa para explodir a área alvo" pos="329,-187,0"/>
+		<s id="4" name="Wall-climb" icon="HouyiPQ" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="Salte e suba as paredes" pos="0,-220,0"/>
+		<s id="5" name="Phoenix's Wings" icon="HouyiFYTX" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Summon uma fênix mortal para engolir todos os inimigos no caminho" pos="0,382,0"/>
+	</i>
+	<i heroid="1025" star="1">
+		<s id="1" name="Rapid Fire Gun" icon="linglong" col="1" type="" key="Key_Use_Weapon_1" desc="Arma com alto ritmo de disparo" pos="-329,197,0"/>
+		<s id="2" name="Cage" icon="LingLongLL" col="2" type="" key="Key_Skill_2" desc="A gaiola pode atrapalhar os inimigos temporariamente e diminuir os danos" pos="-329,-187,0"/>
+		<s id="3" name="Auto Cannon" icon="LingLongBZPT" col="2" type="" key="Key_Skill_1" desc="Coloque um canhão automático para atacar inimigos" pos="329,-187,0"/>
+		<s id="4" name="Teleport Metrix" icon="LingLongCSMB" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Coloque um Teleport Metrix para criar um caminho do local de início" pos="0,382,0"/>
+	</i>
+	<i heroid="1026" star="3">
+		<s id="1" name="Blightcaller" icon="aidehua" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de curto alcance, causa dano contínuo para reduzir health dos inimigos" pos="-329,197,0"/>
+		<s id="2" name="Explosive Bats" icon="aidehuaBFZD" col="2" type="" key="Key_Skill_2" desc="Solta três morcegos explosivos para atacar inimigos" pos="-329,-187,0"/>
+		<s id="3" name="Incarnation" icon="aidehuaHS" col="2" type="" key="Key_Skill_1" desc="Se transforma em um morcego de movimento rápido" pos="329,-187,0"/>
+		<s id="4" name="Blood Rage" icon="aidehuaBS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Ativa o Bloodthirsty state, usa garras para caçar inimigos e transformar uma parte do dano em health" pos="0,382,0"/>
+	</i>
+	<i heroid="1027" star="3">
+		<s id="1" name="Pulsed Shotgun" icon="shawang" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de dispersão curto alcance" pos="-329,197,0"/>
+		<s id="2" name="Bloodthirsty" icon="shawangSX" col="2" type="" key="Key_Skill_2" desc="Jack ganha efeito Mitigation e converte o dano que causou para sua health" pos="-329,-187,0"/>
+		<s id="3" name="Charge" icon="shawangTJ" col="2" type="" key="Key_Skill_1" desc="Ataque adiante, stun um inimigo cool down será reduzido se matar o inimigo" pos="329,-187,0"/>
+		<s id="4" name="Planet Attraction" icon="shawangSB" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Jogue um criador de rachaduras para atrapalhar todos os inimigos ao redor" pos="0,382,0"/>
+	</i>
+	<i heroid="1028" star="2">
+		<s id="1" name="Howitzer" icon="luoji" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de parábola de longa distância com dano AoE" pos="-329,197,0"/>
+		<s id="2" name="Energy Cannon" icon="luojiJNP" col="2" type="" key="Key_Skill_2" desc="Se torna imbatível em um curto período, e dispare danos sofridos no modo imbatível" pos="-329,-187,0"/>
+		<s id="3" name="Remote Bomb" icon="luojiYKZD" col="2" type="" key="Key_Skill_1" desc="Coloca uma bomba e a exploda com botão direito do mouse" pos="329,-187,0"/>
+		<s id="4" name="Bombing" icon="luojiKHLZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Arremesse um terrível barril de pó " pos="0,382,0"/>
+	</i>
+	<i heroid="1029" star="1">
+		<s id="1" name="Erfeet's Roar" icon="luolita" col="1" type="" key="Key_Use_Weapon_1" desc="Use o poder da fire fairy para atacar inimigos" pos="-329,197,0"/>
+		<s id="2" name="Sylph's Wind" icon="luolitaJS" col="2" type="" key="Key_Skill_2" desc="Use o poder da water fairy para acelerar os companheiros dentro da área" pos="-329,-187,0"/>
+		<s id="3" name="Undina's Power " icon="luolitaSL" col="2" type="" key="Key_Skill_1" desc="Use o poder explosão da water fairy para curar companheiros e causar dano nos inimigos dentro da área" pos="329,-187,0"/>
+		<s id="4" name="Undina's Blessing" icon="luolitaSL" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="Companheiros, dentro da área, será curado lentamente" pos="0,-220,0"/>
+		<s id="5" name="Gnome's Light" icon="luolitaFH" col="3" type="&lt;color=#ff8a00&gt;&lt;size=24&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Use o poder da earth fairy, para reviver companheiros de equipe mortos dentro da área" pos="0,382,0"/>
+	</i>
+	<i heroid="1030" star="3">
+		<s id="1" name="Submachine Gun" icon="jingke" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de curto alcance que atira rápido" pos="-329,197,0"/>
+		<s id="2" name="Warpath" icon="JingkeHX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="Health Ball para curar irá cair após a morte de inimigos" pos="329,197,0"/>
+		<s id="3" name="Assassinate" icon="JingkeCQ" col="2" type="" key="Key_Skill_2" desc="Atire um dardo para atordoar o inimigo que o atinge" pos="-329,-187,0"/>
+		<s id="4" name="Regicide" icon="JingkeSJ" col="2" type="" key="Key_Skill_1" desc="Ataca e causa danos aos inimigos no caminho" pos="329,-187,0"/>
+		<s id="5" name="Wall-climb" icon="HouyiPQ" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="Salte e suba as paredes" pos="0,-220,0"/>
+		<s id="6" name="Duel" icon="JingkeYS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Aumenta o dano, velocidade de movimento, redução de danos em um período e reseta cool down de skills" pos="0,382,0"/>
+	</i>
+	<i heroid="1031" star="2">
+		<s id="1" name="Automatic Rifle" icon="lanbo" col="1" type="" key="Key_Use_Weapon_1" desc="Arma de assalto totalmente automática" pos="-329,197,0"/>
+		<s id="2" name="Gun Sight" icon="lanboYJJM" col="2" type="" key="Key_Use_Weapon_2" desc="Capaz de usar scope pra mirar" pos="329,197,0"/>
+		<s id="3" name="Defensive Trap" icon="lanboKJDL" col="2" type="" key="Key_Skill_2" desc="Coloca uma armadilha defensiva para atirar nos inimigos dentro da área" pos="-329,-187,0"/>
+		<s id="4" name="Detection Missile" icon="lanboTSZD" col="2" type="" key="Key_Skill_1" desc="Lança um míssil de detecção que possa detectar as ações dos inimigos dentro da área" pos="329,-187,0"/>
+		<s id="5" name="Auto-Aim" icon="lanboZDMZ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="A bala rastreará automaticamente inimigos e a velocidade de recarga aumentará" pos="0,382,0"/>
+	</i>
+	<i heroid="1032" star="1">
+		<s id="1" name="Nine-tailed Fox" icon="daji" col="1" type="" key="Key_Use_Weapon_1" desc="Atire a bala de alta energia RoF " pos="-329,197,0"/>
+		<s id="2" name="Heal Zone" icon="dajiZLLY" col="2" type="" key="Key_Skill_2" desc="Faz um feitiço para curar companheiros" pos="-329,-187,0"/>
+		<s id="3" name="Ancient Guard" icon="dajiYGSH" col="2" type="" key="Key_Skill_1" desc="Constrói um escudo para repelir as balas dos inimigos" pos="329,-187,0"/>
+		<s id="4" name="Fox Pantom" icon="dajiQHMY" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Companheiros dentro da área recebem blessing da fox fairy, serão capazes de resistir a danos maiores" pos="0,382,0"/>
+	</i>
+	<i heroid="1033" star="2">
+		<s id="1" name="Magic Chains" icon="lilisi" col="1" type="" key="Key_Use_Weapon_1" desc="Use uma motosserra para acabar com inimigos a frente" pos="-329,197,0"/>
+		<s id="2" name="Magic Rush" icon="lilisiQS" col="2" type="" key="Key_Use_Weapon_2" desc="Derruba os inimigos a frente" pos="329,197,0"/>
+		<s id="3" name="Magic Shield" icon="lilisiMFPZ" col="2" type="" key="Key_Skill_1" desc="Invoca um escudo mágico que voa avante, resiste a balas e causa dano aos inimigos que encostam" pos="-329,-187,0"/>
+		<s id="4" name="Magic Drug" icon="lilisiMNZL" col="2" type="" key="Key_Skill_2" desc="Faça medicamentos de recuperação para curar seus companheiros" pos="329,-187,0"/>
+		<s id="5" name="Soul Chains" icon="lilisiTKNW" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Deixa os inimigos dentro da área incapazes de usar skills e causa danos a eles ao longo do tempo" pos="0,382,0"/>
+	</i>
+	<i heroid="1034" star="2">
+		<s id="1" name="Gatling Gun" icon="huangzhong" col="1" type="" key="Key_Use_Weapon_1" desc="ADM com alto ritmo de disparo e alto poder" pos="-329,197,0"/>
+		<s id="2" name="Dedication" icon="huangzhongfx" col="2" type="" key="Key_Skill_2" desc="Perde sua própria health e usa pra curar companheiros" pos="-329,-187,0"/>
+		<s id="3" name="Asylum" icon="huangzhongbh" col="2" type="" key="Key_Skill_1" desc="Leva o dano que companheiros tomam em um período de tempo" pos="329,-187,0"/>
+		<s id="4" name="Blood Anger" icon="huangzhangxn" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="" desc="O danos causado irá adicionar blood rage para aumentar o poder de ataque" pos="0,-220,0"/>
+		<s id="5" name="Iron" icon="huangzhongtx" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Incapaz de ser morto por um tempo, e a energia do blood rage não diminuirá" pos="0,382,0"/>
+	</i>
+	<i heroid="1035" star="3">
+		<s id="1" name="Fire Spear" icon="nezha" col="1" type="" key="Key_Use_Weapon_1" desc="Uma lança usada para esfaquear e atacar em área" pos="-329,197,0"/>
+		<s id="2" name="Sky-earth Round" icon="nezhaQKQ" col="2" type="" key="Key_Use_Weapon_2" desc="Use sky-earth round para atacar inimigos de longa distância" pos="329,197,0"/>
+		<s id="3" name="Flower Storm" icon="nezhaHMRY" col="2" type="" key="Key_Skill_2" desc="Dano enorme aos inimigos a frente" pos="-329,-187,0"/>
+		<s id="4" name="Lunge" icon="nezhaQCRL" col="2" type="" key="Key_Skill_1" desc="Salte no ar, clique mouse botão esquerdo para esfaquear, stun o golpe dos inimigos" pos="329,-187,0"/>
+		<s id="5" name="Great Spirit" icon="nezhaHRZQ" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Ganha efeito Superman Powers em um curto período, para aumentar o dano, velocidade de movimento e redução de dano" pos="0,382,0"/>
+	</i>
+	<i heroid="1036" star="2">
+		<s id="1" name="Cascavel" icon="meidusha" col="1" type="" key="Key_Use_Weapon_1" desc="Atira um foguete com alcance limitado" pos="-329,197,0"/>
+		<s id="2" name="Death Stare" icon="meidushaSWNS" col="2" type="" key="Key_Skill_2" desc="Atira uma bala com alcance limitado e cria espaço onde tempo desacelera" pos="-329,-187,0"/>
+		<s id="3" name="Hook Rope" icon="meidushaGS" col="2" type="" key="Key_Skill_1" desc="Atira uma Hook Rope, empurrando-se caso golpeie um objeto e stun inimigos se golpeados" pos="329,-187,0"/>
+		<s id="4" name="Gorgon" icon="meidushaSFNY" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Produz uma poluição tóxica, redução de dano e velocidade aumentada. A poluição tóxica fere inimigos em seu alcance, quanto mais tempo na poluição, mais dano tomarão." pos="0,382,0"/>
+	</i>
+	<i heroid="1037" star="2">
+		<s id="1" name="Canhão Electromagnético" icon="dawei" col="1" type="" key="Key_Use_Weapon_1" desc="Agira um Canhão Eletromagnético" pos="-329,197,0"/>
+		<s id="2" name="Míssil de Assalto" icon="daweiDDTX" col="2" type="" key="Key_Skill_2" desc="Mire em uma área primeiro e bombardeie com mísseis" pos="-329,-187,0"/>
+		<s id="3" name="Matrix Defensiva" icon="daweiFYJZ" col="2" type="" key="Key_Skill_1" desc="Resista as balas logo em frente" pos="329,-187,0"/>
+		<s id="4" name="Teleport em Grupo" icon="daweiQTCS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Construa um portal, permitindo companheiros se teleportarem" pos="0,382,0"/>
+	</i>
+	<i heroid="2000" star="1">
+		<s id="1" name="Cajado de Caduceus" icon="LuoshenFH" col="1" type="" key="Key_Use_Weapon_1" desc="Emite um feixe que cura ou aumenta o dano de um aliado" pos="-329,197,0"/>
+		<s id="2" name="Blaster de Caduceus" icon="hermes" col="2" type="" key="Key_Use_Weapon_2" desc="Troca para uma pistola blaster automática para causar dano" pos="329,197,0"/>
+		<s id="3" name="Ressuscitar" icon="LuoshenFH" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Ressuscita aliados caídos ao redor com vida cheia" pos="0,382,0"/>
+		<s id="4" name="Descida Angelical" icon="LeizhenziFX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="Segure a tecla de pular para planar lentamente no ar" pos="0,-220,0"/>
+	</i>
+</root>

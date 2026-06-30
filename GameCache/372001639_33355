@@ -1,0 +1,2311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<i id="1101" name="Tempo" />
+	<i id="1102" name="Kill jogadores" />
+	<i id="1103" name="20" />
+	<i id="1104" name="Kill" />
+	<i id="1105" name="Death" />
+	<i id="1106" name="Jogador" />
+	<i id="1107" name="Social" />
+	<i id="1108" name="Jogo Empatado" />
+	<i id="1109" name="Vitória" />
+
+	<i id="1302" name="Repita Login"/>
+	<i id="1401" name="Fechando o Jogo"/>
+	<i id="1500" name="Desconectado, tente de novo!"/>
+  <i id="1501" name="Desconectado, tente de novo!"/>
+  <i id="1502" name="Desconectado, tente de novo!"/>
+   <i id="1503" name="Desistência frequente da partida será punida pelo sistema"/>
+   <i id="1504" name="Você foi punido devido a desistência frequente de partida, por favor complete o jogo para remover a punição."/>
+     <i id="1505" name="Desconectado, tente de novo!"/>
+	  <i id="1506" name="Força consumida não será recuperada se você sair agora!"/>
+	  <i id="1507" name="Preparando para reconectar ao servidor"/>
+	  <i id="1508" name="Conectando ao servidor, aguarde um momento..."/>
+	<i id="1509" name="Tempo esgotado para conectar ao servidor, faça o relogin!"/>  
+	<i id="1510" name="ID errado, por favor tente de novo"/>  
+	<i id="1511" name="Senha errada, por favor tente de novo"/>
+	<i id="1512" name="Servidores em manutenção..."/>
+	<i id="1513" name="Wrong version number, cannot login"/>
+	<i id="1514" name="Este IP foi bloqueado"/>
+	<i id="1515" name="Esta conta foi bloqueada"/>
+
+  <!--\fCreateScene.cs [1];-->
+
+	<!--\Scripts\UIControl\newroleuiCon.cs [2]-->
+	<i id="2001" name="selecione Herói"/>
+	<i id="2002" name="Fight"/>
+	<i id="2003" name="Sim"/>
+	<i id="2004" name="Voltar"/>
+	<i id="2005" name="Clique Enter para chat"/>
+	<i id="2006" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="2007" name="&lt;size=22&gt;Ataque&lt;/size&gt;"/>
+	<i id="2008" name="&lt;size=22&gt;Defesa&lt;/size&gt;"/>
+	<i id="2009" name="&lt;size=22&gt;Tank&lt;/size&gt;"/>
+	<i id="2010" name="&lt;size=22&gt;Suporte&lt;/size&gt;"/>
+	<i id="2011" name="Muitos heróis semelhantes"/>
+	<i id="2012" name="Faltam Heróis Tank"/>
+	<i id="2013" name="Faltam Heróis Suporte"/>
+	<i id="2014" name="Faltam Heróis Defesa"/>
+	<i id="2015" name="Faltam Heróis Ataque"/>
+	<i id="2016" name="Muitos Heróis Tank"/>
+	<i id="2017" name="Muitos Heróis Suporte"/>
+	<i id="2018" name="Muitos Heróis Defesa"/>
+	<i id="2019" name="Mudar Heróis"/>
+	<i id="2020" name="Monte seu time:"/>
+	<i id="2021" name="Mudar Herói {0}"/>
+	<i id="2022" name="Mudar Herói ({0})"/>
+	<i id="2023" name="Level: {0}"/>
+	<i id="2024" name="Fase de preparação: {0}"/>
+	<i id="2025" name="Fase competitiva: {0}"/>
+	<i id="2026" name="Ganhe XP: {0}"/>
+	<i id="2027" name="Um outro usuário esta tentando acessar sua conta. Por favor, troque sua senha agora se não foi você"/>
+	<i id="2028" name="Info Herói"/>
+	<i id="2029" name="Clique {0} para checar info Herói"/>
+	<i id="2030" name="Servidor em Manutenção!"/>
+	<i id="2031" name="&lt;color=#ff0000&gt;Precisa escolher alvo para usar&lt;/color&gt;"/>
+	<i id="2032" name="&lt;color=#ff0000&gt;Uso apenas a favor de amigos&lt;/color&gt;"/>
+	<i id="2033" name="&lt;color=#ff0000&gt;Uso apenas contra inimigos&lt;/color&gt;"/>
+	<i id="2034" name="&lt;color=#ff0000&gt;Muito distante&lt;/color&gt;"/>
+	<i id="2035" name="&lt;color=#FFA000&gt;Selecione Heróis&lt;/color&gt;"/>
+	<i id="2036" name="Esperando outros jogadores"/>
+	<i id="2037" name="Double Kill"/>
+	<i id="2038" name="Triple Kill"/>
+	<i id="2039" name="Quadra Kill"/>
+	<i id="2040" name="Penta Kill"/>
+	<i id="2041" name="ACE!"/>
+	<i id="2042" name="&lt;color=#ff9000&gt;Em Uso companheiro&lt;/color&gt;"/>
+	<i id="2043" name="Vá até o alvo e capture"/>
+	<i id="2044" name="Vá até a carga e acompanhe"/>
+	<i id="2045" name="Vá até a carga e intercepte"/>
+	<i id="2046" name="Vá até o alvo e capture recursos"/>
+	<i id="2047" name="Ativar"/>
+	<i id="2048" name="Moedas obtidas: {0}"/>
+	<i id="2049" name="Ataque"/>
+	<i id="2050" name="&lt;color=#ff0000&gt;Falhou o cast pelo baixo HP&lt;/color&gt;"/>
+	<!--\Scripts\UIControl\gameuiCon.cs [3]-->
+	<i id="3001" name="Você morreu"/>
+	<i id="3002" name="Você foi morto por &lt;color=#ff0000&gt;{0}&lt;/color&gt;"/>
+	<i id="3003" name="Heroi Escolhido: {0}"/>
+	<i id="3004" name="Tempo de partida usado: {0}"/>
+	<i id="3005" name="Ganhou efeito de &lt;color=#00FFFF&gt;Detectar Infrared&lt;/color&gt; do &lt;color=#00FFFF&gt;{0}&lt;/color&gt;"/>
+	<i id="3006" name=""/>
+	<i id="3007" name="&lt;color=#FFAE00&gt;Revive&lt;/color&gt;"/>
+	<i id="3008" name="Killer"/>
+	<i id="3009" name="RESPAWN:"/>
+	<i id="3010" name="Tempo Partida: {0}"/>
+	<i id="3011" name=""/>
+	<i id="3012" name="Detectar Infrared"/>
+	<i id="3013" name="Teleporte"/>
+	<i id="3014" name="Não"/>
+	<i id="3015" name="Energia do Shield"/>
+	<i id="3016" name="Assist &lt;color=#ff0000&gt;{0}&lt;/color&gt;"/>
+	<i id="3017" name="Construir"/>
+	<i id="3018" name="&lt;color=#ff0000&gt;Congelado&lt;/color&gt;"/>
+	<i id="3019" name="Ganhou o efeito de &lt;color=#00FFFF&gt;{1}&lt;/color&gt; do &lt;color=#00FFFF&gt;{0}&lt;/color&gt;"/>
+	<i id="3020" name="Ganhou o efeito de &lt;color=#ff0000&gt;{1}&lt;/color&gt; do &lt;color=#00FFFF&gt;{0}&lt;/color&gt;"/>
+	<i id="3021" name="&lt;color={0}&gt; {1} &lt;/color&gt;expirou"/>
+	<i id="3022" name="&lt;color=#ff0000&gt;{0} &lt;/color&gt;foi morto."/>
+	<i id="3023" name="&lt;size=14&gt;Invisível&lt;/size&gt;"/>
+	<i id="3024" name="Cast"/>
+	<i id="3025" name="Você ganhou &lt;color=#00FFFF&gt;{0}&lt;/color&gt;"/>
+	<i id="3026" name="{0}&lt;color=#ff0000&gt; foi destruido&lt;/color&gt;"/>
+	<i id="3027" name="Clique {0} para usar emojis"/>
+	<i id="3028" name="Clique {0} para usar editor"/>
+	<i id="3029" name="Começar"/>
+	<i id="3030" name="Kill Assist &lt;color=#ff0000&gt;{0}&lt;/color&gt;, e heal &lt;color=#00FFFF&gt;{1}&lt;/color&gt; de health"/>
+	<i id="3031" name="Revivido por &lt;color=#0095FF&gt;{0}&lt;/color&gt;"/>
+	<i id="3032" name="Soldados veteranos nunca morrem"/>
+	<i id="3033" name="Aperte Space para reviver"/>
+	<i id="3034" name="Você vai reviver em breve: {0}"/>
+	<i id="3035" name="Muito próximo a parede"/>
+	<i id="3036" name="Espaço de teleporte"/>
+	<i id="3037" name="Barbette"/>
+	<i id="3038" name="Fire Fairy"/>
+	<i id="3039" name="Sim"/>
+	<i id="3040" name="Rejeito"/>
+	<i id="3041" name="Fuel"/>
+	<i id="3042" name="Dano Acumulado"/>
+	<!--\Scripts\UIControl\GameTabUICon.cs [4]-->
+	<i id="4001" name="Tempo: {0}"/>
+	<i id="4002" name="Kill"/>
+	<i id="4003" name="Kills (A/D)"/>
+	<i id="4004" name="Tempo (A/D)"/>
+	<i id="4005" name="Dano"/>
+	<i id="4006" name="Heal"/>
+	<i id="4007" name="Death"/>
+	<i id="4008" name="MVP"/>
+	<i id="4009" name="Heróis usados: {0}"/>
+	<!--\Scripts\UIControl\cmm\MainUICon.cs [5]-->
+	<i id="5001" name="&lt;size=22&gt;LOBBY&lt;/size&gt;"/>
+	<i id="5002" name="&lt;size=22&gt;HEROS&lt;/size&gt;"/>
+	<i id="5003" name="&lt;size=22&gt;SHOP&lt;/size&gt;"/>
+	<i id="5004" name="&lt;size=22&gt;GUILD&lt;/size&gt;"/>
+	<i id="5005" name="&lt;size=22&gt;DADOS&lt;/size&gt;"/>
+	<i id="5006" name="Voltar"/>
+	<i id="5007" name="Partida Rápida"/>
+	<i id="5008" name="TREINO"/>
+	<i id="5009" name="Partida Rankeada"/>
+	<i id="5010" name="&lt;size=22&gt;Aceito&lt;/size&gt;"/>
+	<i id="5011" name="&lt;size=22&gt;Rejeito&lt;/size&gt;"/>
+	<i id="5012" name="Pre-loading: {0} M/{1} M {2} "/>
+	<i id="5013" name="Processo perfeito"/>
+	<i id="5014" name="Processo possível"/>
+	<i id="5015" name="{0} adicionou você como amigo"/>
+	<i id="5016" name="CRIAR SALA"/>
+	<i id="5017" name="Preencha o certicado para o sistema de Prevenção de Indulgências"/>
+	<i id="5018" name="Tempo acumulado online: {0}"/>
+	<i id="5019" name="Desativado enquanto estiver matching"/>
+	<i id="5020" name="Você vai sair da sala customizada para entrar na Área de Treino, deseja prosseguir?"/>
+	<i id="5021" name="Você vai cancelar o Partida Rápida para entrar na Área de Treino, deseja prosseguir?"/>
+	<i id="5022" name="Você vai sair do time atual para entrar na Área de Treino, deseja prosseguir?"/>
+	<i id="5023" name="&lt;color=#d58840&gt;&lt;size=18&gt;Jogadores Diamante Azul podem obter as seguintes vantagens:\n&lt;/size&gt;&lt;/color&gt;1 - Gift Diamante Azul novato\n2 - Gift Diamante Azul diário\n3 - Gift Diamante Azul level-up\n4 - 20% off ao comprar diamantes\n5 - Símbolo exclusivo Diamante Azul"/>
+	<i id="5024" name="Em Breve"/>
+	<i id="5025" name="Diamantes: {0}"/>
+	<i id="5026" name="Moedas: {0}"/>
+	<i id="5027" name="&lt;size=20&gt;LOJA&lt;/size&gt;"/>
+	<i id="5028" name="&lt;color=#ffa200&gt;Preloading, o jogo esta sendo instalado. Depois disso, você pode iniciar diretamente.&lt;/color&gt;"/>
+	<i id="5029" name="Pré-loading completo, divirta-se!"/>
+	<i id="5030" name="Downloading recursos, por favor aguarde um momento..."/>
+	<i id="5031" name="Operação frequente, por favor aguarde um momento..."/>
+	<i id="5032" name="&lt;color=#d58840&gt;&lt;size=18&gt;Abaixo as vantagens de jogadores que logam do 2Axion Game Lobby:\n&lt;/size&gt;&lt;/color&gt;1 - Gift de registro\n2 - Gift ativo diário C\n3 - Gift de Growth"/>
+	<i id="5033" name="Você vai sair da sala customizada para iniciar Tutorial, deseja prosseguir?"/>
+	<i id="5034" name="Você vai cancelar o Partida Rápida para entrar no Tutorial, deseja prosseguir?"/>
+	<i id="5035" name="Você vai sair do time atual para entrar no Tutorial, deseja prosseguir?"/>
+	<i id="5036" name="Clique para trocar a foto profile e pintura"/>
+	<i id="5037" name="Offseason\n&lt;size=24&gt;Nova temporada inicia em {1}/{0}&lt;/size&gt;"/>
+	<i id="5038" name="Season {0}"/>
+	<i id="5039" name="&lt;size=28&gt;Partidas Classificatórias: {0}/{1}&lt;/size&gt;"/>
+	<i id="5040" name="A temporada vai terminar as 0:00 h. {1}/{0}"/>
+	<i id="5041" name="&lt;color=#d58840&gt;&lt;size=18&gt;Jogadores Diamante Amarelo podem obter as seguintes vantagens:\n&lt;/size&gt;&lt;/color&gt;1 - Gift Diamante Amarelo novato\n2 - Gift Diamante Amarelo diário\n3 - Gift Diamante Amarelo level-up\n4 - 20% off ao comprar diamantes\n5 - Símbolo exclusivo Diamante Amarelo"/>
+	<i id="5042" name="Clique para ver o aviso de atualização"/>
+	<i id="5043" name="&lt;size=18&gt;Ver as regras&lt;/size&gt;"/>
+	<i id="5044" name="Clique com botão direito do mouse para ver regras de ranking"/>
+	<i id="5045" name="Pontos {0}"/>
+	<i id="5046" name="&lt;size=22&gt;Aberto as {0}-{1} hoje&lt;/size&gt;"/>
+	<i id="5047" name="&lt;size=22&gt;MELHORIA&lt;/size&gt;"/>
+	<i id="5048" name="Aventura"/>
+	<i id="5049" name="Partidas com Amigos"/>
+	<i id="5050" name="PARTIDA RANKEADA"/>
+	<i id="5051" name="Batalha Royale"/>
+	<i id="5052" name="Você vai sair do time atual para entrar no Individual Deadmatch, deseja prosseguir?"/>
+	<i id="5053" name="Aberto o dia todo nos finais de semana"/>
+	<i id="5054" name="Partes dos genes serão enviadas como prêmio pela primeira participação em match diariamente"/>
+	<i id="5055" name="{1} moedas serão enviadas como prêmio pelos primeiros {0} matches todos dias"/>
+
+	<!--\Scripts\UIControl\cmm\FindRoomCon.cs [6]-->
+	<i id="6001" name="Salas"/>
+	<i id="6002" name="&lt;size=22&gt;Info da Sala&lt;/size&gt;"/>
+	<i id="6003" name="&lt;size=22&gt;Nome da Sala&lt;/size&gt;"/>
+	<i id="6004" name="&lt;size=22&gt;Número&lt;/size&gt;"/>
+	<i id="6005" name="&lt;size=22&gt;Mapa&lt;/size&gt;"/>
+	<i id="6006" name="&lt;size=22&gt;Mode&lt;/size&gt;"/>
+	<i id="6007" name="&lt;size=22&gt;No Jogadores&lt;/size&gt;"/>
+	<i id="6008" name="&lt;size=22&gt;Status&lt;/size&gt;"/>
+	<i id="6009" name="Criar"/>
+	<i id="6010" name="Entrar"/>
+	<i id="6011" name="Criar Sala"/>
+	<i id="6012" name="Mapa de batalha"/>
+	<i id="6013" name="&lt;size=22&gt;1st Team&lt;/size&gt;"/>
+	<i id="6014" name="Ready"/>
+	<i id="6015" name="&lt;size=22&gt;2nd Team&lt;/size&gt;"/>
+	<i id="6016" name="amigos"/>
+	<i id="6017" name="Sair da Sala"/>
+	<i id="6018" name="Start"/>
+	<i id="6019" name="Não"/>
+	<i id="6020" name="&lt;color=#E2AB44FF&gt;&lt;size=18&gt;Dono da sala: &lt;/size&gt;&lt;/color&gt;{0}"/>
+	<i id="6021" name="Sala de {0}"/>
+	<i id="6022" name="Loading completo"/>
+	<i id="6023" name="Retirar da Sala"/>
+	<i id="6024" name="Mudar de time"/>
+	<i id="6025" name="Time está cheio, você não pode trocar"/>
+	<i id="6026" name="Time está pronto, você não pode trocar"/>
+	<i id="6027" name="A vaga foi ocupada por outro jogador, você não pode trocar de time"/>
+	<i id="6028" name="&lt;size=28&gt;Zona Novatos&lt;/size&gt;"/>
+	<i id="6029" name="&lt;size=28&gt;Zona Expert&lt;/size&gt;"/>
+	<i id="6030" name="&lt;size=28&gt;Zona Master&lt;/size&gt;"/>
+	<i id="6031" name="&lt;size=28&gt;Zona Free&lt;/size&gt;"/>
+	<i id="6032" name="&lt;size=22&gt;Level Restrição {0}-{1}&lt;/size&gt;"/>
+	<i id="6033" name="&lt;size=22&gt;Sem restrição de level&lt;/size&gt;"/>
+	<i id="6034" name="Sem vagas, você não pode trocar de time"/>
+	<i id="6035" name="Somente o líder do time pode trocar de time"/>
+	<i id="6036" name="&lt;size=46&gt;Selecionar Canal&lt;/size&gt;"/>
+	<i id="6037" name="Espera"/>
+	<i id="6038" name="&lt;size=22&gt;O dono da sala pode convidar amigos para lutarem juntos&lt;/size&gt;"/>
+	<i id="6039" name=""/>
+	<i id="6040" name=""/>
+	<i id="6041" name="Partidas com Amigos"/>
+	<i id="6042" name="Criar ou Entrar em uma sala customizada vai te remover da lista Procurando Time, deseja continuar?"/>
+	<i id="6043" name="Criar ou Entrar em um time vai te remover da sala customizada, deseja continuar?"/>
+	<i id="6044" name="Crie senhas"/>
+	<i id="6045" name="Numeros (6 digitos)"/>
+	<i id="6046" name="Escolhendo mapa"/>
+	<i id="6047" name="Senha deve ser somente numérica e no máximo 6 dígitos"/>
+	<i id="6048" name="Senha"/>
+	<!--\Scripts\UIControl\cmm\HeroInfoUICon.cs [7]-->
+	<i id="7001" name="&lt;color=#ffae00&gt;Prêmio de Growth&lt;/color&gt;"/>
+	<i id="7002" name="Equip"/>
+	<i id="7003" name="{0} moedas"/>
+	<i id="7004" name="Desbloquear"/>
+	<i id="7005" name="INFO"/>
+	<i id="7006" name="Skin"/>
+	<i id="7007" name="&lt;size=22&gt;Arma&lt;/size&gt;"/>
+	<i id="7008" name="Ação"/>
+	<i id="7009" name="Pose"/>
+	<i id="7010" name="Rune"/>
+	<i id="7011" name="Equipado"/>
+	<i id="7012" name="Processo de Coleta: {0}/{1}"/>
+	<i id="7013" name="Uso temporário restante: {0}"/>
+	<i id="7014" name="Limitado"/>
+	<i id="7015" name="Para desbloquear: {0}"/>
+	<i id="7016" name="Parte de Emoji: {0}"/>
+	<i id="7017" name="Você quer usar {0} {1} para desbloquear [{2}]?"/>
+	<i id="7018" name="Você quer usar {0 partes para desbloquear emoji [{1}]?"/>
+	<i id="7019" name="Sem partes suficientes \nVocê quer usar {0} diamantes para desbloquear?"/>
+	<i id="7020" name="Você quer usar {0} diamantes para desbloquear emoji [{1}]?"/>
+	<i id="7021" name="Você quer usar {0} partes para troca? "/>
+	<i id="7022" name="Você quer usar {0} diamantes para desbloquear arma [{1}]?"/>
+	<i id="7023" name="Precisa {1} moedas para desbloquear [{0}]"/>
+	<i id="7024" name="Level: &lt;size=34&gt;{0}&lt;/size&gt;"/>
+	<i id="7025" name="Moedas: {0}/{1}"/>
+	<i id="7026" name="Diamantes: {0}/{1}"/>
+	<i id="7027" name="Sem moedas! "/>
+	<i id="7028" name="XP: {0}/{1}"/>
+	<i id="7029" name="Tempo que falta: {0}"/>
+	<i id="7030" name="Tempo de Partida"/>
+	<i id="7031" name="Vitórias"/>
+	<i id="7032" name="&lt;size=30&gt;Este Herói não esta disponível&lt;/size&gt;"/>
+	<i id="7033" name="Sem diamantes!"/>
+	<i id="7034" name="Sem saldo {0}!"/>
+	<i id="7035" name="Não ativado"/>
+	<i id="7036" name="Partes de Skin: {0}"/>
+	<i id="7037" name="Level: {0}"/>
+	<i id="7038" name="Precisa {1} moedas para desbloquear [{0}]"/>
+	<i id="7039" name="&lt;size=18&gt;{0}-{1} left&lt;/size&gt;"/>
+	<i id="7040" name="Pontos de Ranking: {0}"/>
+	<i id="7041" name="Precisa {1} diamantes ou {2} moedas para desbloquear [{0}]"/> 
+	<i id="7042" name="&lt;size=22&gt;Desbloquear&lt;/size&gt;"/>
+	<i id="7043" name="&lt;size=22&gt;Desbloquear&lt;/size&gt;"/>
+	<i id="7044" name="&lt;size=22&gt;Envie&lt;/size&gt;"/>
+	<i id="7045" name="Envie usando diamantes"/>
+	<i id="7046" name="Envie usando moedas"/>
+	<i id="7047" name="&lt;size=22&gt;&lt;color=#fea900&gt;Health&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7048" name="&lt;size=22&gt;&lt;color=#fea900&gt;Velocidade&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7049" name="&lt;size=22&gt;&lt;color=#fea900&gt;Mitigation&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7050" name="&lt;size=22&gt;&lt;color=#fea900&gt;Dano&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7051" name="Atenção: você pode mandar gift para {0} amigos usando moedas"/>
+	<i id="7052" name="{0} &lt;size=16&gt;discount&lt;/size&gt;"/>
+	<i id="7053" name="Pontos de Ranking insuficientes"/>
+	<i id="7054" name="É necessário {1} Pontos de Ranking para desbloquear {0}, gostaria de desbloquear?"/>
+	<i id="7055" name="&lt;size=22&gt;&lt;color=#fea900&gt;Rebote de dano&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7056" name="&lt;size=22&gt;&lt;color=#fea900&gt;Recarregar&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7057" name="&lt;size=22&gt;&lt;color=#fea900&gt;Vamp&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7058" name="&lt;size=22&gt;&lt;color=#fea900&gt;Velocidade de recuperação da health&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7059" name="&lt;size=22&gt;&lt;color=#fea900&gt;Recover&lt;/color&gt;  &lt;color=#00ff03&gt;+{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7060" name="&lt;color=#fc5401&gt;Desbloquear para ser Lv {0}&lt;/color&gt;"/>
+	<i id="7061" name="&lt;size=16&gt;&lt;color=#ffffff&gt;&lt;color=#ffde00&gt;{0} pts Ranking&lt;/color&gt;&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7062" name="&lt;size=16&gt;&lt;color=#ffffff&gt;&lt;color=#ffde00&gt;{0} pts diamantes&lt;/color&gt;&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7063" name="&lt;color=#2bc60e&gt;Equip&lt;/color&gt;"/>
+	<i id="7064" name="&lt;size=16&gt;&lt;color=#de9208&gt;Lv.{0}\n{1}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7065" name="Desbloqueado quando o jogador alcança Lv{0}"/>
+	<i id="7066" name="Desbloqueado quando o Herói [{0}] alcança Lv{1}"/>
+	<i id="7067" name="Sem moedas!"/>
+	<i id="7068" name="Pontos de Ranking insuficientes, você pode obter Pontos de Ranking em Partidas Rankeadas"/>
+	<i id="7069" name="Primeiro desbloqueie [{0}]"/>
+	<i id="7070" name="&lt;size=16&gt;&lt;color=#ffffff&gt;{0}\n&lt;color=#ffde00&gt;Lv{1}&lt;/color&gt; Desb&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7071" name="&lt;size=16&gt;&lt;color=#02eef3&gt;level full&lt;/color&gt;\n&lt;color=#de9208&gt;{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7072" name="&lt;color=#ffde00&gt;{0}*{1}&lt;/color&gt;&lt;color=#4cdffd&gt;(Balanço:{2})&lt;/color&gt;"/>
+	<i id="7073" name="&lt;size=22&gt;&lt;color=#ffde00&gt;{0}&lt;/color&gt;?&lt;/size&gt;"/>
+	<i id="7074" name="1 - podem ser obtidas no evento [Prêmios Online]\n2 - podem ser obtidas no evento [Online On Time]\n3 - podem ser obtidas no evento [Check-in]\n4 - podem ser compradas no [Game Shop]\n5 - podem ser obtidas em alguns eventos"/>
+	<i id="7075" name="Sem&lt;color=#ffde00&gt; [{0}]&lt;/color&gt;!"/>
+	<i id="7076" name="&lt;color=#fed600&gt;XP +{0}&lt;/color&gt;"/>
+	<i id="7077" name="&lt;color=#fed600&gt;Este acessório alcançou o level máximo&lt;/color&gt;"/>
+	<i id="7078" name="&lt;color=#ffffff&gt;Desbloquear Condição:\n&lt;color=#fa0101&gt;[{0}] alcança &lt;/color&gt;&lt;color=#ffde00&gt;Lv{1}&lt;/color&gt;&lt;/color&gt;"/>
+	<i id="7079" name="Equipe [Acessório da Arma] primeiro"/>
+	<i id="7080" name=""/>
+	<i id="7081" name="1 - podem ser compradas diretamente no [Game Shop]\n2 - podem ser obtidas em alguns eventos"/>
+	<i id="7082" name="&lt;size=22&gt;&lt;color=#fea900&gt;Health&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7083" name="&lt;size=22&gt;&lt;color=#fea900&gt;Velocidade&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7084" name="&lt;size=22&gt;&lt;color=#fea900&gt;Mitigation&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7085" name="&lt;size=22&gt;&lt;color=#fea900&gt;Dano&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7086" name="&lt;size=22&gt;&lt;color=#fea900&gt;Rebote de dano&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7087" name="&lt;size=22&gt;&lt;color=#fea900&gt;Recarregar&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7088" name="&lt;size=22&gt;&lt;color=#fea900&gt;Vamp&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7089" name="&lt;size=22&gt;&lt;color=#fea900&gt;Recover&lt;/color&gt;  &lt;color=#ff0000&gt;-{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="7090" name="Use {0} diamantes para desbloquear"/>
+	<i id="7091" name="Use {0} moedas para desbloquear"/>
+	<i id="7092" name="Use {0} pontos de ranking para desbloquear"/>
+	<i id="7093" name="Não há nenhum acessório reserva de arma desbloqueado, desbloqueie na página [Oficina de Acessórios]"/>
+	<i id="7094" name="Desmontado com sucesso"/>
+	<i id="7095" name="&lt;size=20&gt;{0} slot para acessório disponível&lt;/size&gt;"/>
+	<i id="7096" name="{0}   (Acessório {1})"/>
+	<i id="7097" name="&lt;size=20&gt;Desbloqueado    (Acessório {0})&lt;/size&gt;"/>
+	<i id="7098" name="&lt;size=20&gt;Não equipado    (Acessório {0})&lt;/size&gt;"/>
+	<i id="7099" name="&lt;size=22&gt;Crafting&lt;/size&gt;"/>
+	<i id="7100" name="&lt;size=22&gt;Demolir&lt;/size&gt;"/>
+	<i id="7101" name="&lt;size=22&gt;Atributos Agora:&lt;/size&gt;"/>
+	<i id="7102" name="&lt;size=22&gt;Atributos básicos&lt;/size&gt;"/>
+	<i id="7103" name="&lt;size=22&gt;Atributos de acessório&lt;/size&gt;"/>
+	<i id="7104" name="&lt;size=22&gt;Atributos Prox:&lt;/size&gt;"/>
+	<i id="7105" name="&lt;size=22&gt;Upgrade&lt;/size&gt;"/>
+	<i id="7106" name="&lt;size=22&gt;Up Agora&lt;/size&gt;"/>
+	<i id="7107" name="&lt;size=22&gt;Montar&lt;/size&gt;"/>
+	<i id="7108" name="Desconto"/>
+	<i id="7109" name="Voltar"/>
+	<i id="7110" name="Desconto"/>
+	<!--\Scripts\UIControl\RoomManage.cs [8]-->
+	<i id="8001" name="占领模式"/>
+	<i id="8002" name="&lt;size=18&gt;ESCORT&lt;/size&gt;"/>
+	<i id="8003" name="&lt;size=18&gt;CONTROL&lt;/size&gt;"/>
+	<i id="8004" name="&lt;size=18&gt;ARENA&lt;/size&gt;"/>
+	<i id="8005" name="&lt;size=18&gt;CAPTURA&lt;/size&gt;"/>
+	<i id="8006" name="&lt;color=#00ff00&gt;Não começou&lt;/color&gt;"/>
+	<i id="8007" name="&lt;color=#ffff00&gt;Em processo&lt;/color&gt;"/>
+	<i id="8008" name="&lt;color=#ff0000&gt;Próximo do fim&lt;/color&gt;"/>
+	<i id="8009" name="Atenção"/>
+	<i id="8010" name="Existem jogadores que não estão prontos, o jogo não pode começar"/>
+	<i id="8011" name="Mantenham-se preparados, o dono da sala começará o jogo em breve"/>
+	<i id="8012" name="Sim"/>
+	<i id="8013" name="Você foi removido da sala"/>
+	<i id="8014" name="Sala Inexistente"/>
+	<i id="8015" name="Password errado"/>
+	<i id="8016" name="Sala cheia"/>
+	<i id="8017" name="Jogo terminou"/>
+	<i id="8018" name="Nenhuma sala encontrada neste momento, você pode tentar match ou convidar amigos para jogar com você"/>
+	<i id="8019" name="&lt;size=24&gt;Quer sair da sala?&lt;/size&gt;"/>
+	<i id="8020" name="Não"/>
+	<i id="8021" name="Você esteve na sala"/>
+	<i id="8022" name="Level mais alto necessário"/>
+	<i id="8023" name="A partida terminou"/>
+	<i id="8024" name="&lt;size=18&gt;DEATHMATCH&lt;/size&gt;"/>
+	<i id="8025" name="Sem vagas, falha ao entrar em um time"/>
+	<i id="8026" name="Você vai sair da sala e do time, deseja prosseguir?"/>
+	<i id="8027" name="Time vai sair da sala, deseja prosseguir?"/>
+	<i id="8028" name="Você vai sair da partida e abandonar seu time! "/>
+	<i id="8029" name="Você vai sair da sala e do time, deseja prosseguir?"/>
+	<i id="8030" name="Time vai sair da sala, deseja prosseguir?"/>
+	<i id="8031" name="{0} está no time"/>
+	<i id="8032" name="Individual Deadmatch"/>
+	
+	<!--\Scripts\utils\Fun.cs [9]-->
+	<i id="9001" name="{0} dias"/>
+	<i id="9002" name="{0} horas"/>
+	<i id="9003" name="{0} minutos"/>
+	<i id="9004" name="{0} segundos"/>
+	<i id="9005" name="{0} horas"/>
+	<i id="9006" name="{0} minutos"/>
+	<i id="9007" name="{0} segundos"/>
+	<i id="9008" name="{0} dias"/>
+	<i id="9009" name="{0} minutos"/>
+	<i id="9010" name="{0}k"/>
+	<i id="9011" name="{0}mi"/>
+	<!--\Scripts\UIControl\cmm\CreateRoleUICon.cs [10]-->
+	<i id="10001" name="Criar Char"/>
+	<i id="10002" name="&lt;size=36&gt;Nick&lt;/size&gt;"/>
+	<i id="10003" name="Criar"/>
+	<i id="10004" name="&lt;color=#ff0000&gt;Por favor use um nick de 6-15 caracteres.&lt;/color&gt;"/>
+	<i id="10005" name="&lt;color=#ff0000&gt;Há palavras não permitidas no nick.&lt;/color&gt;"/>
+	<i id="10006" name="&lt;color=#ff0000&gt;Este nick ja está sendo usado.&lt;/color&gt;"/>
+	<i id="10007" name="&lt;size=22&gt;&lt;color=#fa9b05&gt;O nick deve conter mínimo 6 e máximo 15 letras ou números.&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="10008" name="&lt;color=#fa9b05&gt;Você está na lista de espera, não pode trocar o nickname agora.&lt;/color&gt;"/>
+	<i id="10009" name="&lt;color=#00ff00&gt;É necessário 200 diamantes para mudar de nome (primeira vez grátis)&lt;/color&gt;"/>
+	<i id="10010" name="É necessário 200 diamantes para mudar de nome"/>
+	<i id="10011" name="Sim"/>
+	<i id="10012" name="NAO"/>
+	<i id="10013" name="MUDAR NICK"/>
+	<i id="10014" name="Random"/>
+	<i id="10015" name="Alterar"/>
+	<i id="10016" name="Não"/>
+	<i id="10017" name="Coloque o nome aqui"/>
+	<i id="10018" name="Mudar Nome Guild"/>
+	<i id="10019" name="&lt;color=#00ff00&gt;É necessário 200 diamantes para mudar de nome&lt;/color&gt;"/>
+	<i id="10020" name="Nome do Guild"/>
+	<i id="10021" name="&lt;color=#fa9b05&gt;O nick deve conter mínimo 4 e máximo 10 letras ou números.&lt;/color&gt;"/>
+	<i id="10022" name="&lt;color=#ff0000&gt;Por favor use um nick de 4-10 caracteres.&lt;/color&gt;"/>
+	<i id="10023" name="&lt;color=#ff0000&gt;Há palavras não permitidas no nick.&lt;/color&gt;"/>
+	<i id="10024" name="&lt;color=#ff0000&gt;Este nick ja está sendo usado.&lt;/color&gt;"/>
+	<i id="10025" name="É necessário 200 diamantes para mudar de nome"/>
+	<i id="10026" name="&lt;color=#ff0000&gt;Autoridade insuficiente!&lt;/color&gt;"/>
+	<i id="10027" name="&lt;color=#fa9b05&gt;房间中，不能改名。&lt;/color&gt;"/>
+	<!--\Scripts\UIControl\GameTabUICon.cs [11]-->
+	<i id="11001" name="SAIR"/>
+	<i id="11002" name="Jogador"/>
+	<i id="11003" name="Kill"/>
+	<i id="11004" name="Kills (A/D)"/>
+	<i id="11005" name="Tempo (A/D)"/>
+	<i id="11006" name="Dano"/>
+	<i id="11007" name="Heal"/>
+	<i id="11008" name="Death"/>
+	<i id="11009" name="Social"/>
+	<i id="11010" name="+{0} experience"/>
+	<i id="11011" name="Dano:    {0}"/>
+	<i id="11012" name="Heal:     {0}"/>
+	<i id="11013" name="Kill:      {0}"/>
+	<i id="11014" name="Death:  {0}"/>
+	<i id="11015" name="Média {0}"/>
+	<!--\Scripts\UIControl\cmm\FaceUICon.cs [12]-->
+	<i id="12001" name="PROFILE"/>
+	<i id="12002" name="Frame da foto profile"/>
+	<i id="12003" name="Level: {0}"/>
+	<i id="12004" name="Novo"/>
+	<i id="12005" name="GRAFITE"/>
+	<i id="12006" name="(*)"/>
+	<i id="12007" name="Todos Heróis"/>
+	<i id="12008" name="Desbloquear"/>
+	<i id="12009" name="Você gostaria de usar {0} diamantes para desbloquear [{1}]."/>
+	<i id="12010" name="Sim"/>
+	<i id="12011" name="Não"/>
+	<!--\Scripts\UIControl\cmm\HeroSkillInfoUICon.cs [13]-->
+	<i id="13001" name="Dificuldade:"/>
+	<i id="13002" name="Fechar"/>
+	<i id="13003" name="ou"/>
+	<!--\Scripts\UIControl\zlg\FriendCon.cs[14]-->
+	<i id="14001" name="Remover"/>
+	<!--\Scripts\UIControl\HeroDataManager.cs[15]-->
+	<i id="15001" name="Parabéns! Você desbloqueou o Herói [{0}]."/>
+	<i id="15002" name="账号已纳入防沉迷系统，是否需要进行身份信息填写，\n3小时后将被强制下线。"/>
+	<i id="15003" name="防沉迷"/>
+	<i id="15004" name="Preencha"/>
+	<i id="15005" name="我未成年"/>
+	<i id="15006" name="&lt;color=#ff0000&gt;由于您的累计离线时间不足5小时，您已被强制离线。为了保证您能正常游戏，\n请您稍后登陆。还需要等待{0}&lt;/color&gt;"/>
+	<i id="15007" name="&lt;color=#ff0000&gt;您的累计在线时间已满{0}小时，由于您当前处于防沉迷系统，当累计在线时间\n达到3小时，系统将强制您下线。&lt;/color&gt;"/>
+	<i id="15008" name="&lt;color=#ff0000&gt;账号已纳入防沉迷系统，您已累计在线2小时55分钟，5分钟后系统将强制您下线，\n请休息一会，适当做些舒展运动。&lt;/color&gt;"/>
+	<i id="15009" name="&lt;color=#ff0000&gt;您的游戏时间超过3小时被强制下线，请点击下方按钮填写身份信息才能继续参加游戏，\n或等待5小时后方可解除防沉迷机制。祝您游戏愉快。&lt;/color&gt;"/>
+	<i id="15010" name="Relogin"/>
+	<i id="15011" name="补填身份信息"/>
+	<i id="15012" name="&lt;color=#ff0000&gt;您的游戏时间超过3小时被强制下线，等待5小时后方可解除防沉迷机制。祝您游戏愉快。&lt;/color&gt;"/>
+	<i id="15013" name="Enviado com sucesso"/>
+	<i id="15014" name="&lt;size=30&gt;Falha ao enviar, seu amigo &lt;color=#00ff00&gt;{0}&lt;/color&gt; já possui &lt;color=#ffa500&gt;[{1}]&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="15015" name="Falha ao enviar, seu amigo não está online"/>
+
+	<!--\Scripts\UIControl\cmm\HeroSkillInfoUICon.cs [16]-->
+	<i id="16001" name="实名认证与防沉迷系统"/>
+	<i id="16002" name="&lt;color=#cecece&gt;按照版署《网络游戏未成年人防沉迷系统》要求\n\n为预防青少年过度游戏，未满18岁的用户和身份信息不完整的用户将受到防沉迷系统的限制。积极响应国家新闻出版总署的防沉迷政策要求，开发出网页游戏防沉迷系统。年龄已满18周岁的玩家，在填写身份证资料后，可不受防沉迷系统的影响，自由进行游戏。&lt;color=#ff0000&gt;否则游戏每在线3小时必须下线休息5小时。&lt;/color&gt;\n说明: 系统只支持输入15位或18位的中国身份证号码。持有其他证件（如: 外国护照，军人证等）者，请于客服GM联系处理。\n填写身份信息将使我们可以对您的年龄做出判断，以确定您的游戏时间是否需要按照国家新闻出版总署的要求纳入防沉迷系统的管理。\n&lt;color=#ff0000&gt;隐私说明: &lt;/color&gt;用户填写的身份信息属于用户的隐私。本游戏绝对尊重用户的个人隐私，所以，本游戏绝对不会公开、编辑或透露用户的信息内容，除非有法律许可的公安管理规定。&lt;/color&gt;"/>
+	<i id="16003" name="身份证: "/>
+	<i id="16004" name="Enviar"/>
+	<i id="16005" name="姓名或身份证有误，请核对!"/>
+	<i id="16006" name="真实姓名: "/>
+	<i id="16007" name="姓名输入有误"/>
+	<!--\Scripts\UIControl\zlg\MatchUICon.cs [17]-->
+	<i id="17001" name="Destivado"/>
+	<i id="17002" name="pro jogo:"/>
+	<i id="17003" name="espera:"/>
+	<i id="17004" name="Não"/>
+	<i id="17005" name="Matched"/>
+	<i id="17006" name="Entrando na partida"/>
+	<i id="17007" name="Você está matching, não pode entrar na sala!"/>
+	<i id="17008" name="Você está matching, não pode criar sala!"/>
+	<i id="17009" name="Você está numa sala, não pode match!"/>
+	<i id="17010" name="N/A"/>
+	<i id="17011" name="Formando time {0}/{1}"/>
+	<i id="17012" name="Procurando oponentes"/>
+	<i id="17013" name="Procurando partida"/>
+	<i id="17014" name="Desbloqueado após LV 10"/>
+	<i id="17015" name="{0} players"/>
+	<i id="17016" name="Uma partida lendária começará, aguarde!"/>
+	<i id="17017" name="Abrir no Level {0}"/>
+	<i id="17018" name="Procurando oponentes {0}/{1}"/>
+	<i id="17019" name="Tempo esgotado para matching por favor tente novamente"/>
+	<i id="17020" name="Tempo de espera anormal, por favor tente novamente"/>
+	<i id="17021" name="&lt;size=20&gt;Aberto amanhã&lt;/size&gt;"/>
+	<i id="17022" name="Disponível em {1}/{0}"/>
+	<i id="17023" name="Indisponível"/>
+	<i id="17024" name="Escolha modo"/>
+	
+	<!--\Scripts\UIControl\zlg\RegCon.cs [18]-->
+	<i id="18001" name="ID Errado, apenas 6~15 letras e números podem ser usados "/>
+	<i id="18002" name="As senhas digitadas não coincidem"/>
+	<i id="18003" name="请正确输入身份证号"/>
+	<i id="18004" name="Informacão de Registro errada, por favor tente novamente"/>
+	<i id="18005" name="Por favor, digite o nome corretamente"/>
+	<i id="18006" name="Senhas erradas, apenas entre 6~16 letras e números podem ser usados "/>
+	<i id="18007" name="Conta Existente"/>
+	<i id="18008" name="Registrado com sucesso"/>
+	<i id="18009" name="Falha ao registrar"/>
+	<i id="18010" name="姓名，身份中有误，请正确输入"/>
+	<!--\Scripts\UIControl\TipManager.cs[19]-->
+	<i id="19001" name="Congratulations!  Lv{0} para Lv{1}"/>
+	<i id="19002" name="&lt;color=#ffa800&gt;Prêmio: {0} moedas&lt;/color&gt;"/>
+	<i id="19003" name="&lt;color=#ffa800&gt;Prêmio: {0}&lt;/color&gt;"/>
+	<i id="19004" name="Ganhou: {1} of [{0}]"/>
+	<i id="19005" name="Novo Herói"/>
+	<i id="19006" name=""/>
+	<i id="19007" name="&lt;color=#f4a700&gt;———————— Recompensas obtidas ————————&lt;/color&gt;"/>
+	<i id="19008" name="Recompensas do Close Beta"/>
+	<i id="19009" name="Seu amigo [{0}] mandou [{1}] um gift"/>
+	<i id="19010" name="Problemas de conexão"/>
+	<i id="19011" name="Desconectado do servidor"/>
+	<i id="19012" name="Re login ({0})"/>
+	<i id="19013" name="Feche o jogo"/>
+   <!--\Scripts\UIControl\lm\HeroRoundEndCon.cs [20]-->
+   <i id="20001" name="Round {0}"/>
+   <i id="20002" name="&lt;size=132&gt;&lt;color=#FFD700&gt;VITORIA&lt;/color&gt;&lt;/size&gt;"/>
+   <i id="20003" name="&lt;size=132&gt;&lt;color=#FF0000&gt;DERROTA&lt;/color&gt;&lt;/size&gt;"/>
+   <i id="20004" name="&lt;color=#FF7700&gt;Distância&lt;/color&gt;"/>
+   <i id="20005" name="&lt;color=#FF7700&gt;Tempo gasto&lt;/color&gt;"/>
+   <i id="20006" name="{0}m"/>
+	<!--\Scripts\UIControl\cmm\InviteUICon.cs [21]-->
+	<i id="21001" name="amigos"/>
+	<i id="21002" name="1st Team"/>
+	<i id="21003" name="2nd Team"/>
+	<i id="21004" name="Procurar um nick"/>
+	<i id="21005" name="Voltar"/>
+	<i id="21006" name="Convidar"/>
+	<i id="21007" name="Nenhum usuário pode ser convidado"/>
+	<i id="21008" name="Nenhuma sala para convidar amigos"/>
+	<i id="21009" name="Por favor, escolha um amigo antes! "/>
+	<i id="21010" name="O jogador está offline ou não existe"/>
+	<i id="21011" name="Você pode convidar 5 amigos"/>
+	<i id="21012" name="{0} rejeitou o seu convite"/>
+	<i id="21013" name="{0} está numa partida, não pode ser convidado"/>
+	<i id="21014" name="{0} aceitou o seu convite"/>
+	<i id="21015" name="&lt;color=#36ff00&gt;Convite&lt;/color&gt;"/>
+	<i id="21016" name="&lt;color=#36ff00&gt;Na sala&lt;/color&gt;"/>
+	<i id="21017" name="&lt;color=#36ff00&gt;Em espera&lt;/color&gt;"/>
+	<i id="21018" name="{0} esta num time, não pode ser convidado"/>
+	<i id="21019" name="amigos"/>
+	<i id="21020" name="Envie"/>
+	<!--\Scripts\Ycj\Login\LoginCon.cs [22]-->
+	<i id="22000" name="Seu IP foi banido\nPorque: {1}"/>
+	<i id="22001" name="Sua conta foi banida\nTempo de punição restante: {0}\nPorque: {1}"/>
+    <i id="22002" name="Se possui perguntas, por favor entre em contato com o suporte"/>
+	<!--\Scripts\UIControl\cmm\SkyLadderUICon.cs [23]-->
+	<i id="23000" name="Partida Rankeada"/>
+	<i id="23001" name="Ranking"/>
+	<i id="23002" name="Regras"/>
+	<i id="23003" name="Tier atual"/>
+	<i id="23004" name="Tier info"/>
+	<i id="23005" name="Prêmio da Season"/>
+	<i id="23006" name="Você ganhará um prêmio ao final da Season, de acordo com a sua tier"/>
+	<i id="23007" name="Coletar"/>
+	<i id="23008" name="1 - Partidas Rankeadas são organizadas em seasons. Toda season dura um mês.\n2 - A Partida Rankeada é baseada no sistema Tier-Score. Os jogadores podem ganhar pontuações com partidas e passar para tiers mais altas.\n3 - Os jogadores podem ganhar o prêmio da season depois que eles alcançam níveis específicos e o prêmio será enviado de acordo com suas pontuações e níveis durante a season.\n4 - Após a nova season começar, os jogadores precisam comparecer a X Partidas Classificatórias para ganhar pontuações e níveis.\n5 - As pontuações e níveis de todos os usuários obtidos nas Partidas Rankeadas serão eliminadas após o final de cada season.\n6 - Os jogadores que abandonam as Partidas com frequência serão punidos e banidos pelo sistema.\n7 - Pontuação de pessoas que estão ausentes por muito tempo serão deduzidas."/>
+	<i id="23009" name="SEASON {0}"/>
+	<i id="23010" name="{0} ({1})"/>
+	<i id="23011" name="1st Team"/>
+	<i id="23012" name="2nd Team"/>
+	<i id="23013" name="Loading"/>
+	<i id="23014" name="Nova season não começou, por favor leia o comunicado oficial "/>
+	<i id="23015" name="Você terá sua pontuação rankeada e tier depois de completar todas Partidas Classificatórias"/>
+	<i id="23016" name="&lt;color=#ffefc9&gt;Prêmio da Season&lt;/color&gt;"/>
+	<i id="23017" name="Season {0} terminou. Sua tier mais alta na season foi &lt;color=#ff02f1&gt;{1}&lt;/color&gt; e maior pontuação de &lt;color=#1eff00&gt;{2}&lt;/color&gt;. Seu prêmio de season é: "/>
+	<i id="23018" name="START"/>
+	<i id="23019" name="Tier Rankeada"/>
+	<i id="23020" name="Partida Rankeada"/>
+	<i id="23021" name="Season Rankeada"/>
+	<i id="23022" name="Você não pode se juntar com jogadores que não completaram as Partidas Classificatórias"/>
+	<i id="23023" name="&lt;size=22&gt;Ranking baseado em atividade&lt;/size&gt;"/>
+	<i id="23024" name="&lt;size=22&gt;O jogador sairá de sua tier atual&lt;/size&gt;"/>
+	<i id="23025" name="Apenas Top1000 na lista. Jogue Partidas Classificatórias para entrar. Atualiza a cada 4hrs."/>
+	<i id="23026" name="LIST"/>
+	<i id="23027" name="Season"/>
+	<i id="23028" name="Sem dados"/>
+	<i id="23029" name="Acima {0}"/>
+	<i id="23030" name="Algum jogador no time está punido das partidas rankeadas"/>
+	<i id="23031" name="Você abandonou a partida várias vezes, e então está banido de partidas rankeadas em {0}"/>
+	<i id="23032" name="Você abandonou a partida muitas vezes, e então está banido de partidas rankeadas por toda a season "/>
+	<i id="23033" name="&lt;size=22&gt;Partidas Classificatórias {0}/{1}&lt;/size&gt;&lt;size=18&gt; &lt;color=#ffffff&gt;(&lt;/color&gt;&lt;color=#53b100&gt;Vitória {2}&lt;/color&gt;&lt;color=#e60012&gt; Derrota {3}&lt;/color&gt;&lt;color=#ffffff&gt; Empate {4})&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="23034" name="horário: dia de semana (11:30am-14:30pm) e (17:30-21:30pm), direto aos finais de semana"/>
+	<i id="23035" name="horário: dia de semana (11:30am-14:30pm) e (17:30-21:30pm), direto aos finais de semana"/>
+	<i id="23036" name="Pontos de Ranking: {0}\nPontos de Ranking podem ser usados para trocar por Armas Douradas na página Herói"/>
+	<i id="23037" name="à &lt;color=#00fcff&gt;{0}&lt;/color&gt; pontos da tier &lt;color=#d18305&gt;{1}&lt;/color&gt;"/>
+	<i id="23038" name="&lt;size=22&gt;Partidas Rankeadas nessa season estão esquentando, você pode participar de partidas {0} a {1} diariamente&lt;/size&gt;&lt;color=#00ffba&gt;&lt;size=20&gt; (Pontos de Ranking ganhos podem ser usados para comprar &lt;color=#f0ff00&gt;Armas Douradas&lt;/color&gt; maneiras. Então por que esperar? Participe das Partidas Rankeadas com seus amigos!) &lt;/size&gt;&lt;/color&gt;"/>
+	<i id="23039" name="&lt;color=#ff7e00&gt;&lt;size=48&gt;Partida Rankeada está aberta agora&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="23040" name="Entre agora"/>
+	<i id="23041" name="Partidas Rankeadas estão disponíveis o dia inteiro nos fins de semana"/>
+	<i id="23042" name="Período aberto: o dia todo nos fins de semana"/>
+	<i id="23043" name="&lt;size=22&gt;Partidas Rankeadas nessa season estão esquentando, você pode participar de partidas o dia todo nos fins de semana&lt;/size&gt;&lt;color=#00ffba&gt;&lt;size=28&gt; (Pontos de Ranking ganhos podem ser usados para comprar &lt;color=#f0ff00&gt;Armas Douradas&lt;/color&gt; maneiras. Participe das Partidas Rankeadas com seus amigos!) &lt;/size&gt;&lt;/color&gt;"/>
+	<i id="23044" name="Somente jogadores top 1000 serão exibidos na leaderboard e a leaderboard será atualizada todos os dias. Jogadores com 1 vitória podem aparecer na leaderboard."/>
+
+	<!--\Scripts\UIControl\cmm\SkyLadderOverUICon.cs [24]-->
+	<i id="24000" name="{0} &lt;color=#ff7200&gt;&lt;size=36&gt;Pontos&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="24001" name="&lt;size=36&gt;{0} pontos insuficientes para upgrade para &lt;/size&gt;&lt;color=#00b4ff&gt;{1}&lt;/color&gt;"/>
+	<i id="24002" name="&lt;color=#ff7200&gt;&lt;size=48&gt;Mais alto da season&lt;/size&gt;/&lt;/color&gt;"/>
+	<i id="24003" name="&lt;color=#ff7200&gt;&lt;size=48&gt;Mais alto da carreira&lt;/size&gt;/&lt;/color&gt;"/>
+	<i id="24004" name="Um membro do seu time deixou a partida"/>
+	<i id="24005" name="Você está se reconectando, aguarde {0}; Saída forçada enquanto espera será considerada derrota e receberá punição"/>
+	<i id="24006" name="Após {0}, o jogador matched será forçado a terminar"/>
+	<i id="24007" name="Partidas Classificatórias"/>
+	<i id="24008" name="Vitória"/>
+	<i id="24009" name="Empate"/>
+	<i id="24010" name="Derrota"/>
+	<i id="24011" name="Pontos Ranking"/>
+	<i id="24012" name="&lt;size=24&gt;Level mais alto necessário, por favor level up para Lv {0}&lt;/size&gt;"/>
+	<i id="24013" name="Alguém no time não tem Lv {0}"/>
+	<i id="24014" name=""/>
+	<i id="24015" name="&lt;color=#FF0000&gt;Aviso - punido devido a desistencia de partida&lt;/color&gt;"/>
+	<i id="24016" name="&lt;color=#FF0000&gt;O abandono frequente acarretará em punições. As penas se acumulam, e como resultado você não poderá participar de partidas por um período. Quando este período se extende muito, você pode não conseguir mais participar de toda a season.&lt;/color&gt;"/>
+	<i id="24017" name="&lt;color=#00ff00&gt;Vitoria{0}&lt;/color&gt;/Empate{1}/&lt;color=#ff0000&gt;Derrota{2}&lt;/color&gt;"/>
+	<i id="24018" name="Um jogador deixou a partida"/>
+	<i id="24019" name="Um jogador deixou a partida, esta partida será encerrada em {0} segundos. Sua pontuação rankeada e tier não serão afetadas"/>
+	<i id="24020" name="Você está suspenso devido a desistencia frequente de partidas rankeadas, {0} saiu."/>
+	<i id="24021" name="Você deixou a partida com segurança"/>
+	<i id="24022" name="Você deixou a partida sem punição desta vez, mas será considerada como derrota"/>
+	<i id="24023" name="Esta partida está terminando"/>
+	<i id="24024" name="Um jogador deixou a partida, esta partida será encerrada em {0} segundos. Sua pontuação rankeada e tier não serão afetadas"/>
+	<i id="24025" name="{0} &lt;size=36&gt;&lt;color=#00ff03&gt;{1} {2} &lt;/color&gt;&lt;color=#ff7200&gt;scores&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="24026" name="Um jogador deixou a partida, esta partida será inválida. Sua pontuação rankeada e tier não serão afetadas"/>
+	<i id="24027" name="A diferença de pontuação dos membros do time é muito grande, não será possível unirem-se para match"/>
+	<i id="24028" name="Vitória, pontuação rankeada +{0}"/>
+	<i id="24029" name="Derrota, pontuação rankeada -{0}"/>
+
+
+	<!--\Scripts\UIControl\zlg\CareerUICon.cs [20]-->
+	<i id="30000" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="30001" name="Partida Rankeada Season One"/>
+	<i id="30002" name="Partida Rankeada Season Two"/>
+	<i id="30003" name="Match Rápido"/>
+	<i id="30004" name="Game Lobby"/>
+	<i id="30005" name="Vitórias"/>
+	<i id="30006" name="Tempo de Jogo"/>
+	<i id="30007" name="Número Total Partidas"/>
+	<i id="30008" name="Win Rate"/>
+	<i id="30009" name="Número de MVP"/>
+	<i id="30011" name="Kill"/>
+	<i id="30012" name="Kills"/>
+	<i id="30013" name="Dano"/>
+	<i id="30014" name="Média Dano"/>
+	<i id="30015" name="Heal"/>
+	<i id="30016" name="Média Heal"/>
+	<i id="30017" name="Kills (A/D)"/>
+	<i id="30018" name="Média Kills (A/D)"/>
+	<i id="30019" name="Tempo (A/D)"/>
+	<i id="30020" name="Objetivo na Match (A/D)"/>
+	<i id="30021" name="Death"/>
+	<i id="30022" name="Média de Deaths"/>
+	<i id="30023" name="Final shoot"/>
+	<i id="30024" name="Média de final shot"/>
+	<i id="30025" name="Golden Medal"/>
+	<i id="30026" name="Silver Medal"/>
+	<i id="30027" name="Bronze Medal"/>
+	<i id="30028" name="Melhor ataque da partida"/>
+	<i id="30029" name="Melhor kill da partida"/>
+	<i id="30030" name="Melhor finalização de partida"/>
+	<i id="30031" name="Kills per vida"/>
+	<i id="30032" name="Tempo na Match (A/D)"/>
+	<i id="30033" name="Maior heal da partida"/>
+	<i id="30034" name="Hit"/>
+	<i id="30035" name="Rate de Headshot"/>
+	<i id="30036" name="Média Dano"/>
+	<i id="30037" name="Média kills"/>
+	<i id="30038" name="Média de final shot"/>
+	<i id="30039" name="Média de Finalizações"/>
+	<i id="30040" name="Média Heal"/>
+	<i id="30041" name="Objetivo na Match (A/D)"/>
+	<i id="30042" name="Média Kills (A/D)"/>
+	<i id="30043" name="Média de Deaths"/>
+	<i id="30044" name="Finalização"/>
+	<i id="30045" name="Tier atual: "/>
+	<i id="30046" name="Tier mais alta dessa temporada: "/>
+	<i id="30047" name="Tempo jogado por temporada: "/>
+	<i id="30048" name="Número de partidas nesta temporada: "/>
+	<i id="30049" name="Level: "/>
+	<i id="30050" name="Level: {0}"/>
+	<i id="30051" name="{0} horas"/>
+	<i id="30052" name="Kills por partida atacando e defendendo objetivo"/>
+	<i id="30053" name="Se você ficar parado será removido da partida."/>
+	<i id="30054" name="Você foi removido da partida por estar inativo."/>
+	<i id="30055" name="Se você ficar parado na base será removido da partida."/>
+	<i id="30056" name="Você foi removido da partida por estar na base por muito tempo."/>
+	<i id="30057" name="{0}"/>
+	<i id="30058" name="Se você ficar parado será removido da partida."/>
+	<i id="30059" name="Você foi removido da partida por estar muito tempo parado."/>
+	<i id="30060" name="Partida Rankeada"/>
+	<i id="30061" name="&lt;size=22&gt;Partida Rankeada (S{0})&lt;/size&gt;"/>
+	<i id="30062" name="Tier rankeada atual"/>
+	<i id="30063" name="Tier rankeada mais alta dessa temporada: "/>
+	<!--\Scripts\UIControl\SocialUICon.cs [31]-->
+	<i id="31000" name="SOCIAL"/>
+	<i id="31001" name="Pós-Partida"/>
+	<i id="31002" name="convites"/>
+	<i id="31003" name="Adicionar amigos"/>
+	<i id="31004" name="&lt;size=22&gt;Adicionar&lt;/size&gt;"/>
+	<i id="31005" name="Amigos online {0}"/>
+	<i id="31006" name="&lt;size=22&gt;&lt;color=#00ff00&gt;{0} &lt;/color&gt;adicionou como amigo&lt;/size&gt;"/>
+	<i id="31007" name="AMIGOS"/>
+	<i id="31008" name="&lt;color=#838383&gt;Off a {0}&lt;/color&gt;"/>
+	<i id="31009" name="&lt;color=#ff0000&gt;não achou o jogador com nick [{0}]&lt;/color&gt;"/>
+	<i id="31010" name="&lt;color=#ff0000&gt;[{0}] é seu amigo&lt;/color&gt;"/>
+	<i id="31011" name="&lt;color=#ff0000&gt;O seu número de amigos atingiu o limite máximo&lt;/color&gt;"/>
+	<i id="31012" name="&lt;color=#838383&gt;Offline&lt;/color&gt;"/>
+	<i id="31013" name="Este amigo alcançou o limite máximo de amigos"/>
+	<i id="31014" name="Seu amigo {0} está online"/>
+	<i id="31015" name="Seu amigo {0} está offline"/>
+	<i id="31016" name="{0} adicionou você como amigo"/>
+	<i id="31017" name="{0} aceitou o seu convite de amizade"/>
+	<i id="31018" name="{0} rejeitou o seu convite de amizade"/>
+	<i id="31019" name="O jogador recebeu o seu convite para conectar"/>
+	<i id="31020" name="O número de amigos atingiu o limite máximo"/>
+	<i id="31021" name="Seu convite de amizade foi enviado"/>
+	<i id="31022" name="{0} está offline ou não existe"/>
+	<i id="31023" name="Existem palavras não permitidas no nick"/>
+	<i id="31024" name="&lt;size=22&gt;Mostrar amigos offline&lt;/size&gt;"/>
+<!--[37]-->
+  <i id="37021" name="({0}条检测){1}"/>
+  <i id="37022" name="本秒累计子弹数: {0},{1}"/>
+  <i id="37025" name="脱离卡死: 玩家({0})点了脱离卡死,场景: {1},玩家当前坐标: {2}"/>
+  <i id="37026" name="穿墙: 玩家({0})想穿过({1}),场景: {2},碰点坐标: {3},从:{4}-{5},dis:{6},玩家坐标:{7}"/>
+  <i id="37027" name="隐藏:玩家({0})被卡到({1})({2})里了,场景:{3},碰点坐标:{4},玩家坐标:{5}."/>
+  <i id="37028" name="玩家({0})开启了极速模式,在场景({1}),玩家坐标:{2}!"/>
+  <i id="37029" name="第三方隐藏:玩家({0})被卡到({1})里了,场景:{2},碰点坐标:{3},玩家坐标:{4}."/>
+  <i id="37030" name="脱离卡死:玩家({0})点了脱离卡死,场景:{1},玩家当前坐标:{2}"/>
+	<!--\Guild-->
+   <i id="38000" name="Criar Guild"/>
+   <i id="38001" name="Nome do Guild"/>
+   <i id="38002" name="Criar"/>
+   <i id="38003" name="Não"/>
+   <i id="38004" name="Precisa pagar {0} diamantes ou {1} moedas para criar um guild"/>
+   <i id="38005" name="Necessário level maior que Lv{0}"/>
+   <i id="38006" name="Já tem um guild!"/>
+   <i id="38007" name="O nome do guild já existe!"/>
+   <i id="38008" name="Autoridade insuficiente!"/>
+   <i id="38009" name="O guild não existe!"/>
+   <i id="38010" name="Pedido enviado!"/>
+   <i id="38011" name="O guild está cheio!"/>
+   <i id="38012" name="Lista de inscrição está cheia!"/>
+   <i id="38013" name="Transfira a liderança para outro membro primeiro para poder sair do guild!"/>
+   <i id="38014" name="O guild será dispensado após sair"/>
+   <i id="38015" name="[{0}] rejeitou seu pedido para participar do guild"/>
+   <i id="38016" name="Este jogador já possui um guild!"/>
+   <i id="38017" name="Não pode haver mais co-líderes!"/>
+   <i id="38018" name="Você não pode configurar as pessoas com mais autoridade do que você!"/>
+   <i id="38019" name="entrou no guild!"/>
+   <i id="38020" name="Você não pode conceder mais autoridade do que possui!"/>
+   <i id="38021" name="Alcançou nível máximo"/>
+   <i id="38022" name="Não há atividade suficiente do guild!"/>
+   <i id="38023" name="Não entrou para o guild!"/>
+   <i id="38024" name="Você não pode remover pessoas com mais autoridade do que você!"/>
+   <i id="38025" name="Você foi kickado do guild!"/>
+   <i id="38026" name="Você não é o líder do guild, então não pode transferir a autoridade! "/>
+   <i id="38027" name="Gostaria de transferir a liderança do guild?"/>
+   <i id="38028" name="Você não participa de uma guild, não pode convidar outros"/>
+   <i id="38029" name="Sua solicitação de guild foi recebida!"/>
+   <i id="38030" name="O nome deve ter no mínimo 2-5 caracteres e no mínimo 4 e máximo 10 letras/números!"/>
+   <i id="38031" name="Por favor digite um nome para o guild"/>
+   <i id="38032" name="Sem diamantes!"/>
+   <i id="38033" name="Level mais alto necessário!"/>
+   <i id="38034" name="Você quer usar {0} diamantes para criar o guild?"/>
+   <i id="38035" name="Você não tem permissão pra convidar outros jogadores pro guild!"/>
+   <i id="38036" name="{0} está te convidando para entrar no guild [{1}]"/>
+   <i id="38037" name="Este jogador já está em um guild!"/>
+   <i id="38038" name="O convite foi enviado com sucesso!"/>
+   <i id="38039" name="Membros"/>
+   <i id="38040" name="Co-líder"/>
+   <i id="38041" name="Líder"/>
+   <i id="38042" name="Online"/>
+   <i id="38043" name="Offline"/>
+   <i id="38044" name="Você deseja sair do guild?"/>
+   <i id="38045" name="O aviso não pode estar em branco!"/>
+   <i id="38046" name="O aviso deve conter entre 4-200 caracteres!"/>
+   <i id="38047" name="Há palavras não permitidas no aviso!"/>
+   <i id="38048" name="Ranking atual"/>
+   <i id="38049" name="O nível do guild aumentará com o aumento da atividade nele\nMembros no guild podem ganhar atividade participando de partidas"/>
+   <i id="38050" name="Solicitar"/>
+   <i id="38051" name="Entrou"/>
+   <i id="38052" name="Participar?"/>
+   <i id="38053" name="Sala cheia"/>
+   <i id="38054" name="Level mais alto necessário para entrar para o guild!"/>
+   <i id="38055" name="Você não pode se remover!"/>
+   <i id="38056" name="Gostaria de remover [{0}] do guild?"/>
+   <i id="38057" name=""/>
+   <i id="38058" name="Função guild sera desbloqueada após alcançar Lv10"/>
+   <i id="38059" name="O nível de {0} é menor do que Lv10, então este jogador não pode ser convidado para o guild"/>
+   <i id="38060" name="O número máximo de membros que a guild pode ter aumentará se o guild subir de level"/>
+   <i id="38061" name="Criar"/>
+   <i id="38062" name="Criar"/>
+   <i id="38063" name="Gostaria de usar {0} moedas para criar o guild?"/>
+   <i id="38064" name="Há palavras não permitidas no nome do guild"/>
+   <i id="38065" name="{0} está em um guild"/>
+   <i id="38066" name="Este jogador não está em um guild"/>
+   <i id="38067" name="Offline {0}"/>
+   <i id="38068" name="Mudar Nome Guild"/>
+   <i id="38069" name="Tempo de acusação restante: {0}"/>
+   <i id="38070" name="Falha em acusar o líder da guild"/>
+   <i id="38071" name="Falha ao acusar, pois o líder da guild está online agora, cheque suas moedas usadas na acusação."/>
+   <i id="38072" name="Falha ao acusar, pois o guild está dispensado agora, cheque suas moedas usadas na acusação."/>
+   <i id="38073" name="Você precisa usar {0} moedas para solicitar uma acusação"/>
+   <i id="38074" name="Continuar acusando"/>
+   <i id="38075" name="deixe eu pensar"/>
+   <i id="38076" name="Pedido de acusação feito com sucesso"/>
+   <!--\Task-->
+   <i id="38300" name="Missão diária pode ser alterada uma vez por dia"/>
+   <i id="38301" name="Missão diária completa"/>
+   <i id="38302" name="Missão principal completa"/>
+   <i id="38303" name="Missão secundária completa"/>
+   <i id="38304" name="&lt;size=22&gt;Missão principal&lt;/size&gt;"/>
+   <i id="38305" name="&lt;size=22&gt;Missão diária&lt;/size&gt;"/>
+   <i id="38306" name="Missão principal"/>
+   <i id="38307" name="&lt;size=18&gt;Nãp há missões disponívels&lt;/size&gt;"/>
+    <!--\Mail-->
+   <i id="38500" name="O email não existe"/>
+   <i id="38501" name="Anexo do email foi coletado"/>
+   <i id="38502" name="Sem anexos no email"/>
+   <i id="38503" name="Anexo do email não foi coletado"/>
+   <i id="38504" name="Nenhum email pode ser deletado"/>
+   <i id="38505" name="Nenhum email pode ser coletado"/>
+   <i id="38506" name="Coletar"/>
+   <i id="38507" name="Coletado"/>
+   <i id="38508" name="Sem anexo no email!"/>
+   <i id="38509" name="Coletado"/>
+   <i id="38510" name="Você não possui emails neste momento"/>
+   <i id="38511" name="Gostaria de deletar todos os emails lidos?"/>
+   <i id="38512" name="Gostaria de deletar o email {0}, ele não pode ser recuperado após deletar "/>
+   <i id="38513" name="Deletar"/>
+   <i id="38514" name="Coletar Tudo"/>
+   <i id="38515" name="Email"/>
+   <i id="38516" name="TL"/>
+   <i id="38517" name="Conteúdo"/>
+	 
+   
+   
+   
+   
+   
+   <!--\Chat-->
+   <i id="39000" name="Enviado com muita frequência! Aguarde alguns segundos..."/>
+   <i id="39001" name="Sem moedas suficientes para falar no chat global"/>
+   <i id="39002" name="Você foi silenciado, {0} restantes"/>
+   <i id="39003" name="Você não está em um time, entre em um primeiro!"/>
+   <i id="39004" name="Você não está em um time, escolha um primeiro!"/>
+   <i id="39005" name="Jogador não encontrado!"/>
+   <i id="39006" name="Você não entrou na match, entre em uma primeiro!"/>
+   <i id="39007" name="Você não está em um guild, escolha um primeiro!"/>
+   <i id="39008" name="Eu"/>
+   <i id="39009" name=""/>
+   <i id="39010" name=""/>
+   <i id="39011" name="Você"/>
+   <i id="39012" name="{0} está falando com {1}"/>
+   <i id="39013" name="Emojis não podem ser usados agora, aguarde um momento..."/>
+   <i id="39014" name="Interação muito frequente! Aguarde um momento..."/>
+   <i id="39015" name="Você pode enviar apenas uma vez por segundo, aguarde um momento..."/>
+   <i id="39016" name="Sem moedas! "/>
+   <i id="39017" name="{0} Moedas para usar chat"/>
+   <i id="39018" name="Por favor, não use isso para você..."/>
+  
+   <i id="39019" name="World"/>
+   <i id="39020" name="Time"/>
+   <i id="39021" name="Grupo"/>
+   <i id="39022" name="Match"/>
+   <i id="39023" name="Guild"/>
+   <i id="39024" name="Sistema"/>
+   <i id="39025" name="Loudspeaker"/>
+   <i id="39026" name="Lamento, você foi silenciado..."/>
+   <i id="39027" name="{0} moedas devem ser usadas para falar no chat global"/>
+   <i id="39028" name="Selecione para não ser exibido novamente"/>
+   <i id="39029" name="Você bloqueou mensagens desse jogador!"/>
+   <i id="39030" name="whisper"/>	
+   <i id="39031" name="{0} diamantes devem ser usados para falar no chat loudspeaker"/>
+   <i id="39032" name="Sem diamantes! "/>
+   <i id="39033" name="Não é permitido usar loudspeaker em mapas de novatos"/>
+   <i id="39034" name="Falha ao enviar, por favor digite o conteúdo entre 1-34 caracteres"/>
+   <i id="39035" name="Game service terminará em  &lt;color=#ff0000&gt; {0}&lt;/color&gt;, por favor, verifique mais detalhes na game community"/>
+   
+
+   <!--\shop-->
+   <i id="39500" name="Sem gift bag"/>
+   <i id="39501" name="Abrir Loot Boxes com um clique"/>
+   <i id="39502" name="{0} moedas que possui"/>
+   <i id="39503" name="Parar"/>
+   <i id="39504" name="Equip"/>
+   <i id="39505" name="Equipado"/>
+   <i id="39506" name="Sem moedas! "/>
+   <i id="39507" name="Sem diamantes, adquira mais!"/>
+   <i id="39508" name="Expirou"/>
+   <i id="39509" name="{0} saiu"/>
+   <i id="39510" name="Desconto"/>
+   <i id="39511" name="Este item expirou"/>
+   <i id="39512" name="Gift bags"/>
+   <i id="39513" name="Itens"/>
+   <i id="39514" name="Herói"/>
+   <i id="39515" name="Skin"/>
+   <i id="39516" name="Ação"/>
+   <i id="39517" name="Arma"/>
+   <i id="39518" name="Pose"/>
+   <i id="39519" name="Pintura"/>
+   <i id="39520" name="Rune"/>
+   <i id="39521" name="Moedas"/>
+   <i id="39522" name="Diamantes"/>
+   <i id="39523" name="Partes de Heróis"/>
+   <i id="39524" name="Partes de Skins"/>
+   <i id="39525" name="Partes de Emojis"/>
+   <i id="39526" name="Quantidade:"/>
+   <i id="39527" name="Recomendação"/>
+   <i id="39528" name="Loot boxes"/>
+   <i id="39529" name="&lt;size=26&gt;Consumíveis&lt;/size&gt;"/>
+   <i id="39530" name="&lt;size=26&gt;Depósito&lt;/size&gt;"/>
+   <i id="39531" name="Todos os items na gift bag foram desbloqueados"/>
+   <i id="39532" name="&lt;size=24&gt;Runes Primárias&lt;/size&gt;"/>
+   <i id="39533" name="&lt;size=24&gt;Runes Superiores&lt;/size&gt;"/>
+   <i id="39534" name="&lt;size=22&gt;Comprar&lt;/size&gt;"/>
+   <i id="39535" name="A quantidade de &lt;color=#00ff00&gt;{0}&lt;/color&gt; que você possui atingiu seu limite máximo, e {1} moedas foram devolvidas"/>
+   <i id="39536" name="&lt;size=22&gt;Envie&lt;/size&gt;"/>
+   <i id="39537" name="Você pode selecionar apenas um amigo!"/>
+   <i id="39538" name="&lt;size=30&gt;enviado com sucesso&lt;/size&gt;"/>
+   <i id="39539" name="&lt;size=30&gt;Seu amigo &lt;color=#00ff00&gt;{0} &lt;/color&gt;desbloqueou &lt;color=#ffa500&gt;[{1}]&lt;/color&gt;, falha to ao enviar&lt;/size&gt;"/>
+   <i id="39540" name="&lt;size=30&gt;Seu amigo &lt;color=#00ff00&gt;{0}&lt;/color&gt; te enviou &lt;color=#ffa500&gt;[{1}]&lt;/color&gt;&lt;/size&gt;"/>
+   <i id="39541" name="&lt;size=30&gt;&lt;color=#ffa500&gt;[{0}]&lt;/color&gt; Enviado com sucesso&lt;/size&gt;"/>
+   <i id="39542" name="&lt;size=22&gt;Esquerda: &lt;color=#00ff00&gt;{0}&lt;/color&gt;&lt;/size&gt;"/>
+   <i id="39543" name="&lt;size=22&gt; Use o cupom 20% off para comprar (restantes: &lt;color=#00ff00&gt;{0}&lt;/color&gt;)&lt;/size&gt;"/>
+
+  <i id="40000" name="Entrar na sala fará com que saia do time"/>
+  <i id="40001" name="Criar uma sala fará com que saia do time"/>
+  <i id="40002" name="{0} entrou no time"/>
+  <i id="40003" name="{0} rejeitou o pedido do time"/>
+  <i id="40004" name="{0} é o novo capitão do time"/>
+  <i id="40005" name="O time está cheio"/>
+  <i id="40006" name="O time que você solicitou participar não existe"/>
+  <i id="40007" name="O jogador que você convidou não existe"/>
+  <i id="40008" name="{0} saiu do time"/>
+  <i id="40009" name="Você saiu do time"/>
+  <i id="40010" name="{0} está te convidando para entrar no time"/>
+  <i id="40011" name="{0} está te convidando para entrar no time. Concordar e sair da sala?"/>
+  <i id="40012" name="O jogador está em um time"/>
+  <i id="40013" name="Enviar o convite fará com que que saia da sala"/>
+  <i id="40014" name="Convite enviado"/>
+  <i id="40015" name="Você possui mensagens de convites para tratar "/>
+  <i id="40016" name="Você pode convidar apenas {0} amigos"/>
+  <i id="40017" name="Convite não pode ser feito durante a match"/>
+  <i id="40018" name="Time não encontrado"/>
+  <i id="40019" name="{0} entrou em outro time"/>
+  <i id="40020" name="Sistema team-up estará disponível em breve!"/>
+  <i id="40021" name="{0} foi removido do time"/>
+  <i id="40022" name="Sua equipe vai sair da match, tem certeza?"/>
+  <i id="40023" name="Você vai sair da match e time, tem certeza?"/>
+  <i id="40024" name="Você vai sair do time, gostaria de continuar a match?"/>
+  <i id="40025" name="sair do time vai terminar com a match, tem certeza?"/>
+  <i id="40026" name="Enviar mensagens de convite vai parar o matching, tem certeza?"/>
+  <i id="40027" name="Se você entrar pra outro time enquanto aguarda, a match será cancelada"/>
+  <i id="40028" name="O líder saiu, saia da match"/>
+  <i id="40029" name="Alguns membros do time estão na match, não pode entrar pra match novamente"/>
+  <i id="40030" name="O time está na lista de espera, os membros agora não podem ser alterados"/>
+  <i id="40031" name="tatus de preparação pode ser usado apenas pelo líder"/>
+  <i id="40032" name="Mensagem convite desse jogador não foi processada"/>
+  <i id="40033" name="Este jogador está em uma partida rankeada, não podem se juntar"/>
+  <i id="40034" name="&lt;color=#1E90FF&gt;Você está no portal de voz do time. {0} jogadores estão no chat agora. Pressione {1} para abrir a interface do portal de voz. Agora o mode é [Push to Talk], pressione {2} para falar.&lt;/color&gt;"/>
+  <i id="40035" name="&lt;color=#1E90FF&gt;Você está no portal de voz do time. {0} jogadores estão no chat agora. Pressione {1} para abrir a interface do portal de voz. Agora o mode é [Free Talk].&lt;/color&gt;"/>
+  <i id="40036" name="&lt;color=#1E90FF&gt;Você saiu do portal de voz do time.&lt;/color&gt; "/>
+  <i id="40037" name="Microfone não pode ser desligado enquanto Push to Talk estiver em uso"/>
+  <i id="40038" name="Herói escolhendo fase em partida, não pode abrir a interface do portal de voz, tente mais tarde!"/>
+   <i id="40039" name="Match Rápido"/>
+   <i id="40040" name="Partida Rankeada"/>
+   <i id="40041" name="Modo Aventura"/>
+   <i id="40042" name="Criar"/>
+   <i id="40043" name="Entrada rápida"/>
+   <i id="40044" name="Entrar"/>
+   <i id="40045" name="Líder"/>
+   <i id="40046" name="Membros"/>
+   <i id="40047" name="Já está em um time!"/>
+   <i id="40048" name="{0} está pedindo para entrar em seu time"/>
+   <i id="40049" name="Você não pode criar um time enquanto estiver na lista de espera"/>
+   <i id="40050" name="Você não pode criar um time enquanto estiver na sala de jogo de amigos"/>
+   <i id="40051" name="Já possui um time, não pode criar"/>
+   <i id="40052" name="Já está em um time, não pode entrar"/>
+   <i id="40053" name="Este time já começou a batalha, escolha outro"/>
+   <i id="40054" name="Entrou no sistema de Procurar Time"/>
+   <i id="40055" name="O time está cheio"/>
+   <i id="40056" name="Está em partida rankeada, não dá pra aceitar convite"/>
+
+
+   <!--\问卷-->
+   <i id="41000" name="Questionário"/>
+   <i id="41001" name="Start"/>
+   <i id="41002" name="Obrigado por responder! Suas respostas nos ajudam muito! Te vejo na próxima!"/>
+   <i id="41003" name="Única escolha"/>	
+   <i id="41004" name="Múltipla escolha"/>	
+   <i id="41005" name="Enviar ({0}/{1})"/>
+   <i id="41006" name="Receber rewards"/>
+   <i id="41007" name="Não"/>
+   <i id="41008" name="Rewards abaixo podem ser obtidas após envio do questionário"/>
+   <i id="41009" name="Máximo de 50 caracteres podem ser inseridos"/>
+   <!--\礼包-->
+   <i id="42000" name="&lt;size=22&gt;Login Consecutivo&lt;/size&gt;"/>
+   <i id="42001" name="&lt;size=22&gt;Rewards Recarga&lt;/size&gt;"/>
+   <i id="42002" name="&lt;color=#ff9300&gt;Hot Hero&lt;/color&gt; - Shogun"/>
+   <i id="42003" name="&lt;color=#ff9300&gt;Exclusive Emoji&lt;/color&gt; - Lars Relax"/>
+   <i id="42004" name="CAXH SHOP único&lt;size=48&gt;&lt;color=#e35c21&gt;100diamantes&lt;/color&gt;&lt;/size&gt;, pode ganhar &lt;color=#ff9300&gt;Hot Hero&lt;/color&gt; e &lt;color=#ff9300&gt;Exclusive Emoji&lt;/color&gt;. Limite de um por"/>
+   <i id="42005" name="Coletar"/>
+   <i id="42006" name="Coletado"/>
+   <i id="42007" name="Login contínuo durou &lt;color=#ffffff&gt;&lt;size=34&gt;{0}&lt;/size&gt;&lt;/color&gt; dias"/>
+   <i id="42008" name="Ganhe Prêmios por Sequência de Logins"/>
+   <i id="42009" name="Pague pouco e divirta-se muito!"/>
+   <i id="42010" name="&lt;size=22&gt;Prêmio do Lv10&lt;/size&gt;"/>
+   <i id="42011" name="Indisponível"/>
+   <i id="42012" name="&lt;size=22&gt;Level Up Novato&lt;/size&gt;"/>
+   <i id="42013" name="Prêmio de Level Up novato. Você pode ganhar prêmios legais após estar em certo level."/>
+   <i id="42014" name="&lt;size=22&gt;Check in&lt;/size&gt;"/>
+   <i id="42015" name="&lt;size=22&gt;Checked in: &lt;/size&gt;&lt;color=#ffffff&gt;&lt;size=26&gt;{0}/{1}&lt;/size&gt;&lt;/color&gt; &lt;size=22&gt;vezes&lt;/size&gt;"/>
+	<i id="42016" name="&lt;size=22&gt;Ganhe 5 no check-in diário&lt;/size&gt;"/>
+	<i id="42017" name="Moedas"/>
+	<i id="42018" name="&lt;size=40&gt;CHECK-IN&lt;/size&gt;"/>
+	<i id="42019" name="&lt;size=30&gt;{1}/{0}&lt;/size&gt;"/>
+	<i id="42020" name="&lt;size=22&gt;Check-in acumulado de {0} dias&lt;/size&gt;"/>
+	<i id="42021" name="Duração do evento: {0}"/>
+	<i id="42022" name="O evento está fechado"/>
+	<i id="42023" name="Feito"/>
+	<i id="42024" name="XP Adicional do jogador ganha em partidas {0}%"/>
+	<i id="42025" name="Exp Adicional do herói ganha em partidas {0}%"/>
+	<i id="42026" name="Usar somente um Promocode por vez e por tipo."/>
+	<i id="42027" name="Resgatar"/>
+	<i id="42028" name="Por favor insira card new ou gift codes"/>
+	<i id="42029" name="CDKey"/>
+	<i id="42030" name="&lt;size=22&gt;Resgatar gift bag&lt;/size&gt;"/>
+	<i id="42031" name="Já ganhou gift bags do mesmo tipo hoje"/>
+	<i id="42032" name="Gift code inválido ou já usado"/>
+	<i id="42033" name="Resgatado com sucesso, prêmios enviados para você!"/>
+	<i id="42034" name="Operação muito frequente, tente depois!"/>
+	<i id="42035" name="Por favor insira um gift code correto!"/>
+	<i id="42036" name="Você não pode resgatar mais gift bags hoje!"/>
+	<i id="42037" name="Já ganhou gift bags do mesmo tipo este mês"/>
+	<i id="42038" name="&lt;size=30&gt;Compra | 250 diamantes&lt;/size&gt;"/>
+	<i id="42039" name="&lt;size=30&gt;Compra | 500 diamantes&lt;/size&gt;"/>
+	<i id="42040" name="&lt;size=22&gt;Prêmio Online&lt;/size&gt;"/>
+	<i id="42041" name="{0}min"/>
+	<i id="42042" name="Pode ser coletado"/>
+	<i id="42043" name="&lt;size=22&gt;Online on time&lt;/size&gt;"/>
+	<i id="42044" name="Expirou"/>
+	<i id="42045" name="&lt;color=#FF0000&gt;fechado&lt;/color&gt;"/>
+	<i id="42046" name="&lt;size=22&gt;Ranking Semanal&lt;/size&gt;"/>
+	<i id="42047" name="Você pode ganhar prêmios jogando partidas toda semana"/>
+	<i id="42048" name="Aviso: Somente partidas completas irão contar, batalhas serão no domingo a noite"/>
+	<i id="42049" name="&lt;color=#FF0000&gt;Não conseguiu&lt;/color&gt;"/>
+	<i id="42050" name="Primeiro Login desta semana"/>
+	<i id="42051" name="Prêmio do Primeiro Login desta semana"/>
+	<i id="42052" name="Coletar"/>
+	<i id="42053" name="Preparando"/>
+	<i id="42054" name="Prêmio do Primeiro Login da próxima semana"/>
+	<i id="42055" name="&lt;size=22&gt;Ranking Diário&lt;/size&gt;"/>
+	<i id="42056" name="Jogador"/>
+	<i id="42057" name="Herói"/>
+	<i id="42058" name="Back-to-school Military Surge"/>
+	<i id="42059" name="&lt;size=22&gt;Horário Nobre&lt;/size&gt;"/>
+	<i id="42060" name="Autorizado"/>
+	<i id="42061" name="Pode ser coletado as 00:00"/>
+	<i id="42062" name="Fechado"/>
+	<i id="42063" name="Back2school Gift"/>
+	<i id="42064" name="Prêmios da partida"/>
+	<i id="42065" name="&lt;size=22&gt;Gift das Deusas&lt;/size&gt;"/>
+	<i id="42066" name="&lt;size=22&gt;Regras:&lt;/size&gt;"/>
+	<i id="42067" name="CAXH SHOP"/>
+	<i id="42068" name="Aceito"/>
+	<i id="42069" name="Volte amanhã"/>
+	<i id="42070" name="&lt;size=22&gt;Cash Acumulado&lt;/size&gt;"/>
+	<i id="42071" name="&lt;size=40&gt;caxh&lt;/size&gt;"/>
+	<i id="42072" name="&lt;size=22&gt;Recarga agora&lt;/size&gt;"/>
+	<i id="42073" name="Comprar Upgrade Stone com gift"/>
+	<i id="42074" name="Compra"/>
+	<i id="42075" name="Free fill pode ser feito após 60 minutos de partida"/>
+	<i id="42076" name="&lt;size=22&gt;Luta contra ranking&lt;/size&gt;"/>
+	<i id="42077" name="&lt;size=30&gt;Compra | 100 diamantes&lt;/size&gt;"/>
+	<!--\惩罚提示-->
+
+	<i id="50000" name="Desistência frequente de partidas será punida pelo sistema"/>
+	<i id="50001" name="Punição por abandono"/>
+	<i id="50002" name="- 25% redução de XP 
+- {0} partidas restantes"/>
+	<i id="50010" name="Portal de Voz"/>
+	<i id="50011" name="Portal do Time"/>
+	<i id="50012" name="Portal do Jogo"/>
+	<i id="50013" name="{0} jogadores"/>
+	<i id="50014" name="Agora o mode é [Push to Talk], pressione {0} para falar."/>
+	<i id="50016" name="Você não está em um time"/>
+	<i id="50017" name="Você não está em uma partida"/>
+	<i id="50018" name="Agora o mode é [Free to Talk]"/>
+	<!--\充值-->
+		
+	<i id="43000" name="Comprar"/>
+	<i id="43001" name="{0} Diamantes"/>
+	<i id="43002" name="Recarga indisponível agora"/>
+
+	<!--\GameManager\TencentPlatform.cs [110];-->
+	<i id="110001" name="Erro de Parametro"/>
+	<i id="110002" name="Solicitação de pagamento falhou, tente novamente"/>
+	<i id="110003" name="Erro nos parâmetros de pagamento, tente novamente"/>
+
+	<!--\符文-->
+	<i id="101001" name="Rune tier: "/>
+	<i id="101002" name="Tier"/>
+	<i id="101003" name="Herói Limitado:"/>
+	<i id="101004" name="Nada"/>
+	<i id="101005" name="Rune tipo"/>
+
+	<i id="101006" name="Rune info"/>
+	<i id="101007" name="A quantidade de Runes usadas para combinação não é suficiente, coloque quatro Runes de mesmo tier"/>
+	<i id="101008" name="Há Runes de tier diferentes, coloque quatro Runes de mesmo tier"/>
+	<i id="101009" name="Existem alguns Runes já equipados, não podem ser combinadas"/>
+	<i id="101010" name="Runes desse tipo não podem ser reutilizadas"/>
+	<i id="101011" name="Full-tier Runes não podem ser combinadas"/>
+	<i id="101012" name="Mix Lote"/>
+	<i id="101013" name="Parar"/>
+	<i id="101014" name="não dá pra equipar"/>
+	<i id="101015" name="Símbolos de Combinação insuficiente, a combinação em lote irá parar automaticamente após todos os Símbolos Sintéticos terem sido usados."/>
+	<i id="101016" name="Continuar a combinar"/>
+	<i id="101017" name="Comprar Símbolo de Combinação"/>
+
+	<i id="101021" name="Defesa"/>
+	<i id="101024" name="Ataque"/>
+	<i id="101022" name="Skill"/>
+	<i id="101023" name="Ult"/>
+
+	<i id="106001" name="1 - Sempre são usadas 4 runes com mesmo tier para combinar.\n2 - Após combinar com sucesso, haverá uma rune sendo melhorada dos 4 materiais combinados aleatóriamente, e há uma possibilidade de 1% de ser melhorada para Tier 2 \n3 - Após falhar ao combinar, você perderá 3 runes de combinação aleatórias.\n4 - Maior tier de runes é 5.\n5 - \n Tier 1 -> Tier 2: 100%\n Tier 2 -> Tier 3 : 75%\n Tier 3 -> Tier 4 : 50%\n Tier 4 -> Tier 5: 25%\n Tier 5 -> Tier 6: 25%"/>
+	<i id="106002" name="Guia de combinação de runes "/>
+	<i id="106003" name="Não"/>
+	<i id="106004" name="Comprar Símbolo de Combinação"/>
+	<i id="106005" name="combinação"/>
+	<i id="106006" name="Sim"/>
+	<i id="106007" name="Mix Lote"/>
+	<i id="106008" name="Sucesso: 100%"/>
+	<i id="106009" name="Atenção"/>
+	<i id="106010" name="Todas"/>
+	<i id="106011" name="Você não está usando um símbolo de combinação, quer mesmo forçar a combinação das runes?"/>
+	<i id="106012" name="Não"/>
+	<i id="106013" name="Mix"/>
+	<i id="106014" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="106015" name="Bolsa"/>
+	<i id="106016" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="106017" name="Sucesso: 100%"/>
+	<i id="106018" name="Comprar runes"/>
+	<i id="106019" name="Vender"/>
+	<i id="106020" name="Vender"/>
+	<i id="106021" name="Mix Lote"/>
+	<i id="106022" name="Rune"/>
+	<i id="106023" name="Clique nas runes da bolsa"/>
+	<i id="106024" name="Guia de combinação "/>
+	<i id="106025" name="Geral"/>
+	<i id="106026" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="106027" name="Ataque"/>
+	<i id="106028" name="Defesa"/>
+	<i id="106029" name="Skill"/>
+	<i id="106030" name="Ult"/>
+	<i id="106031" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="106032" name="Tier 1"/>
+	<i id="106033" name="Tier 2"/>
+	<i id="106034" name="Tier 3"/>
+	<i id="106035" name="Tier 4"/>
+	<i id="106036" name="Tier 5"/>
+	<i id="106037" name="Tier 6"/>
+	<i id="106038" name="Sucesso:{0}%"/>
+	<!--\符文-->
+
+	<!--\符文售卖-->
+	<i id="107001" name="Não"/>
+	<i id="107002" name="Sim"/>
+	<i id="107003" name="Vender runes"/>
+	<i id="107004" name="Ganhos ao vender runes"/>
+	<!--\符文售卖-->
+
+	<!--\符文弹框-->
+	<i id="108001" name="Health Rune"/>
+	<i id="108002" name="Limited Hero: Nil"/>
+	<i id="108003" name="Rune Type: Nil"/>
+	<!--\符文弹框-->
+
+	<!--\特权-->
+	<i id="109001" name="Privilege 4"/>
+	<i id="109002" name="Privilege 5"/>
+	<i id="109003" name="Privilege 2"/>
+	<i id="109004" name="Privilege 3"/>
+	<i id="109005" name="Pode ser coletado"/>
+	<i id="109006" name="Pode ser coletado"/>
+	<i id="109007" name="Pode ser coletado"/>
+	<i id="109008" name="Coletar"/>
+	<i id="109009" name="Privilege 1"/>
+	<i id="109010" name="Muitos presentes se fizer login todo dia"/>
+	<i id="109011" name="Gifts de novato"/>
+	<i id="109012" name="Diamante Azul Anual"/>
+	<i id="109013" name="Coletar"/>
+	<i id="109014" name="Diamante Azul VIP pode ganhar prêmios após logar consecutivamente\n Quanto maior o level, melhores recompensas"/>
+	<i id="109015" name="Gift Diamante Azul anual adicional"/>
+	<i id="109016" name="20% off em top-up"/>
+	<i id="109017" name="Diamante Azul gifts de novato"/>
+	<i id="109018" name="Blue Diamonds gifts diários"/>
+	<i id="109019" name="Diamante Azul Anual podem coletar gifts extras exclusivos todos os dias.\nMuito presente é muito da hora!"/>
+	<i id="109020" name="Diamante Azul growth gifts"/>
+	<i id="109021" name="Jogadores novatos podem coletar gifts extras exclusivos após login.\nPrimeiro passo para se tornar líder do servidor!"/>
+	<i id="109022" name="Diamante Azul Luxury"/>
+	<i id="109023" name="Mais Privilégios de Diamante Azul, sigam-me os bons"/>
+	<i id="109024" name="Você terá 20% off quando for comprar diamantes.\nPara comprar mais e economizar mais, Diamante Azul é excelente!"/>
+	<i id="109025" name="VIP Diamante Azul"/>
+	<i id="109026" name="Coletar"/>
+	<i id="109027" name="VIP Diamante Azul"/>
+	<i id="109028" name="Site Oficial Diamante Azul"/>
+	<i id="109029" name="Blue Diamonds gifts diários"/>
+	<i id="109030" name="Este personagem pode obter muitos prêmios a cada 10 levels.\nSeja um líder com Diamante Azul!"/>
+	<i id="109031" name="Growth gift e loucamente feliz"/>
+	<i id="109032" name="Você não é um usuário Diamante Azul agora, abra Diamante Azul e então poderá coletar seus prêmios"/>
+	<!--\特权-->
+
+	<!--\QQ大厅特权-->
+	<i id="120001" name="Coletar"/>
+	<i id="120002" name="Coletar"/>
+	<i id="120003" name="Coletar"/>
+	<i id="120004" name="Jogadores podem conseguir muitos prêmios de growth após alcançar certos levels"/>
+	<i id="120005" name="Gifts de novato exclusivos podem ser coletados após primeiro login da plataforma DoubleAxion todos os dias"/>
+	<i id="120006" name="Gifts ativos podem ser coletados após primeiro login da plataforma DoubleAxion todos os dias"/>
+	<i id="120007" name="Gifts Diários Ativos"/>
+	<i id="120008" name="Gift de Registro de Novato"/>
+	<i id="120009" name="Game growth gifts"/>
+	<i id="120010" name="Usuários da plataforma DoubleAxion tem os seguintes privilégios"/>
+	<i id="120011" name="Privilégios da plataforma DoubleAxion "/>
+	<!--\QQ大厅特权-->
+
+	<!--\设置智能提示-->
+	<i id="130001" name="[Ignorar]"/>
+	<i id="130002" name="para jogar com imagem melhor"/>
+	<i id="130003" name="Clique"/>
+	<i id="130004" name="Sua frame rate é muito baixa"/>
+	<i id="130005" name=""/>
+	<i id="130006" name="Clique"/>
+	<i id="130007" name=""/>
+	<i id="130008" name="Teclado -"/>
+	<i id="130009" name="Teclado +"/>
+	<!--\设置智能提示-->
+
+	<!--\设置智能提示-->
+	<i id="140001" name="Voltar Lobby"/>
+	<i id="140002" name="Quer mesmo voltar para o Lobby?"/>
+	<!--\设置智能提示-->
+
+	<!--\设置智能提示-->
+	<i id="150001" name="Comece a batalha"/>
+	<i id="150002" name="TEMPO EXTRA"/>
+	<i id="150003" name="Round termina"/>
+	<i id="150004" name="Batalha termina"/>
+	<i id="150005" name="Controlando"/>
+	<i id="150006" name="Controlando"/>
+	<i id="150007" name="ALIADO"/>
+	<i id="150008" name="INIMIGO"/>
+	<i id="150009" name="{0} está sendo controlado por {1}"/>
+	<i id="150010" name="{0} foi controlado por {1}"/>
+	<!--\设置智能提示-->
+
+	<i id='160001' name='Configurações'/>
+	<i id='160002' name='Sair'/>
+	<i id='160003' name='MENU'/>
+
+	<i id='170001' name='Configurações'/>
+	<i id='170002' name='Voltar Lobby'/>
+	<i id='170003' name='MENU'/>
+
+	<!--\设置-->
+	<i id="102001" name="fps: {0:F0}"/>
+	<i id="102002" name="lag: {0:F0}"/>
+	<i id="102003" name="Qualidade da imagem na resolução mais alta"/>
+	<i id="102004" name="Qualidade da imagem na resolução mais baixa"/>
+
+	<i id="102101" name="Botão esquerdo mouse"/>
+	<i id="102102" name="Botão direito mouse"/>
+	<i id="102103" name="Função mouse botão 1"/>
+	<i id="102104" name="Função mouse botão 2"/>
+	<i id="102105" name="Função mouse botão 3"/>
+	<i id="102106" name="Função mouse botão 4"/>
+	<i id="102107" name="Função mouse botão 5"/>
+	<i id="102108" name="Shift Esq."/>
+	<i id="102109" name="Shift Dir."/>
+	<i id="102110" name="Ctrl Esq."/>
+	<i id="102111" name="Ctrl Dir."/>
+	<i id="102112" name="Alt Esq."/>
+	<i id="102113" name="Alt Dir."/>
+	<i id="102114" name="Keypad"/>
+	<i id="102115" name="Seta (acima)"/>
+	<i id="102116" name="Seta (abaixo)"/>
+	<i id="102117" name="Seta (esquerda)"/>
+	<i id="102118" name="Seta (direita)"/>
+	<i id="102119" name="Backspace"/>
+	<i id="102120" name="Enter"/>
+	<i id="102121" name="Space"/>
+	<i id="102122" name="Win Esquerdo"/>
+	<i id="102123" name="Win Direito"/>
+
+	<i id="102201" name="Ligar"/>
+	<i id="102202" name="Fechar"/>
+	<i id="102203" name="Free Talk"/>
+	<i id="102204" name="Push to Talk"/>
+	<i id="102205" name="Display"/>
+	<i id="102206" name="Somente amigos"/>
+	<i id="102207" name="Qualquer um"/>
+
+	<i id="102208" name="Não mostrar"/>
+	<i id="102209" name="Entrar automaticamente"/>
+	<i id="102210" name="Random"/>
+	<i id="102211" name="Ctrl Dir."/>
+	<i id="102212" name="Alt Esq."/>
+	<i id="102213" name="Alt Dir."/>
+	<i id="102214" name="Keypad"/>
+	<i id="102215" name="Esta tecla já está alocada e não pode ser escolhida!"/>
+
+	<i id="102216" name="Configurações"/>
+	<i id="102217" name="Sim"/>
+	<i id="102218" name="Não"/>
+	<i id="102219" name="Você quer restaurar todas as configurações de vídeo para padrão original?"/>
+	<i id="102220" name="Você quer restaurar todas as configurações de áudio para padrão original?"/>
+	<i id="102221" name="Você quer restaurar todas as configurações de jogo para padrão original?"/>
+	<i id="102222" name="Você quer restaurar todas as configurações de controle para padrão original?"/>
+
+	<i id="102301" name="Ligar"/>
+	<i id="102302" name="Mostrar"/>
+	<i id="102303" name="Fechar"/>
+	<i id="102304" name="&lt;size=22&gt;Opções avançadas&lt;/size&gt;"/>
+	<i id="102305" name="Ligar"/>
+	<i id="102306" name="Fechar"/>
+	<i id="102307" name="Tudo"/>
+	<i id="102308" name="Ligar"/>
+	<i id="102309" name="Low"/>
+	<i id="102310" name="Random"/>
+	<i id="102311" name="Low"/>
+	<i id="102312" name="Free Talk"/>
+	<i id="102313" name="Low"/>
+	<i id="102314" name="Ligar"/>
+	<i id="102315" name="Ligar"/>
+	<i id="102316" name="Ligar"/>
+	<i id="102317" name="Fechar"/>
+	<i id="102318" name="Full Screen"/>
+	<i id="102319" name="&lt;size=22&gt;Anti-aliasing&lt;/size&gt;"/>
+	<i id="102320" name="&lt;size=22&gt;Volume Máximo&lt;/size&gt;"/>
+	<i id="102321" name="&lt;size=22&gt;Ultra Skill&lt;/size&gt;"/>
+	<i id="102322" name="&lt;size=22&gt;Comunicação: Recebida&lt;/size&gt;"/>
+	<i id="102323" name="&lt;size=22&gt;Display Mode&lt;/size&gt;"/>
+	<i id="102324" name="&lt;size=22&gt;Death Shot Playback&lt;/size&gt;"/>
+	<i id="102325" name="&lt;size=22&gt;selecione Herói&lt;/size&gt;"/>
+	<i id="102326" name="&lt;size=22&gt;Skill 2&lt;/size&gt;"/>
+	<i id="102327" name="&lt;size=22&gt;Arma Principal Atirando&lt;/size&gt;"/>
+	<i id="102328" name="&lt;size=22&gt;Voice Speaking Mode&lt;/size&gt;"/>
+	<i id="102329" name="&lt;size=22&gt;Página Portal de Voz&lt;/size&gt;"/>
+	<i id="102330" name="&lt;size=22&gt;Info Herói&lt;/size&gt;"/>
+	<i id="102331" name="&lt;size=22&gt;Pintura&lt;/size&gt;"/>
+	<i id="102332" name="&lt;size=22&gt;Equipar Arma 2&lt;/size&gt;"/>
+	<i id="102333" name="&lt;size=22&gt;Display FPS&lt;/size&gt;"/>
+	<i id="102334" name="Sensibilidade do mouse para tiro com scope"/>
+	<i id="102335" name="&lt;size=22&gt;Display lags&lt;/size&gt;"/>
+	<i id="102336" name="&lt;size=22&gt;Limitar no FPS&lt;/size&gt;"/>
+	<i id="102337" name="&lt;size=22&gt;Resolution ratio&lt;/size&gt;"/>
+	<i id="102338" name="&lt;size=22&gt;Recarregar armas&lt;/size&gt;"/>
+	<i id="102339" name="&lt;size=22&gt;Movimento suave&lt;/size&gt;"/>
+	<i id="102340" name="&lt;size=22&gt;Ataque próximo&lt;/size&gt;"/>
+	<i id="102341" name="&lt;size=30&gt;Current Graphics chips&lt;/size&gt;"/>
+	<i id="102342" name="&lt;size=22&gt;Voltar&lt;/size&gt;"/>
+	<i id="102343" name="&lt;size=22&gt;Barra health dos companheiros&lt;/size&gt;"/>
+	<i id="102344" name="&lt;size=22&gt;Comunicação: Status Ultra Skill&lt;/size&gt;"/>
+	<i id="102345" name="&lt;size=22&gt;Sincronia Vertical&lt;/size&gt;"/>
+	<i id="102346" name="&lt;size=22&gt;Interface Background do Herói&lt;/size&gt;"/>
+	<i id="102347" name="&lt;size=22&gt;Skill 1&lt;/size&gt;"/>
+	<i id="102348" name="&lt;size=22&gt;Volume da música&lt;/size&gt;"/>
+	<i id="102349" name="&lt;size=22&gt;Comunicação: Emojis&lt;/size&gt;"/>
+	<i id="102350" name="&lt;size=22&gt;Shadow&lt;/size&gt;"/>
+	<i id="102351" name="&lt;size=22&gt;Comunicação: Olá&lt;/size&gt;"/>
+	<i id="102352" name="&lt;size=22&gt;Left-move&lt;/size&gt;"/>
+	<i id="102353" name="&lt;size=22&gt;Reverse Mouse&lt;/size&gt;"/>
+	<i id="102354" name="&lt;size=22&gt;Menu de Comunicação&lt;/size&gt;"/>
+	<i id="102355" name="&lt;size=22&gt;Equipar Arma 1&lt;/size&gt;"/>
+	<i id="102356" name="&lt;size=22&gt;Aviso amigos online&lt;/size&gt;"/>
+	<i id="102357" name="&lt;size=22&gt;Participar/sair do portal de voz da partida&lt;/size&gt;"/>
+	<i id="102358" name="&lt;size=22&gt;Aceitar pedido de amizade automatico&lt;/size&gt;"/>
+	<i id="102359" name="&lt;size=22&gt;Alternar Arma&lt;/size&gt;"/>
+	<i id="102360" name="&lt;size=22&gt;Qualidade de Filtro&lt;/size&gt;"/>
+	<i id="102361" name="&lt;size=22&gt;Comunicação: preciso de melhoria/heal&lt;/size&gt;"/>
+	<i id="102362" name="&lt;size=22&gt;Responder mensagens privadas&lt;/size&gt;"/>
+	<i id="102363" name="&lt;size=22&gt;Qualidade da imagem&lt;/size&gt;"/>
+	<i id="102364" name="&lt;size=22&gt;Volume Efeitos Sonoros&lt;/size&gt;"/>
+	<i id="102365" name="&lt;size=22&gt;Canal de voz: alterar, se possuir microfone&lt;/size&gt;"/>
+	<i id="102366" name="&lt;size=22&gt;Pular&lt;/size&gt;"/>
+	<i id="102367" name="&lt;size=22&gt;Avançar&lt;/size&gt;"/>
+	<i id="102368" name="&lt;size=22&gt;Participar/sair do portal de voz do time&lt;/size&gt;"/>
+	<i id="102369" name="&lt;size=22&gt;Volume microfone&lt;/size&gt;"/>
+	<i id="102370" name="&lt;size=22&gt;Volume da voz in-game&lt;/size&gt;"/>
+	<i id="102371" name="&lt;size=22&gt;Comunicação: Thanks&lt;/size&gt;"/>
+	<i id="102372" name="&lt;size=22&gt;Portal de voz: Push to talk&lt;/size&gt;"/>
+	<i id="102373" name="&lt;size=22&gt;Right-move&lt;/size&gt;"/>
+	<i id="102374" name="&lt;size=22&gt;Qualidade Texturas&lt;/size&gt;"/>
+	<i id="102375" name="&lt;size=22&gt;Sensibilidade do mouse para tiro com scope&lt;/size&gt;"/>
+	<i id="102376" name="&lt;size=22&gt;Aceitar pedido de team-up&lt;/size&gt;"/>
+	<i id="102377" name="&lt;size=22&gt;Communication: Assemble&lt;/size&gt;"/>
+	<i id="102378" name="&lt;size=30&gt;Configurações de volume in-game&lt;/size&gt;"/>
+	<i id="102379" name="&lt;size=30&gt;Operação&lt;/size&gt;"/>
+	<i id="102380" name="&lt;size=30&gt;Configurações do portal de voz&lt;/size&gt;"/>
+	<i id="102381" name="&lt;size=30&gt;Mouse&lt;/size&gt;"/>
+	<i id="102382" name="&lt;size=30&gt;Herói&lt;/size&gt;"/>
+	<i id="102383" name="Controle"/>
+	<i id="102384" name="&lt;size=26&gt;Restaurar para padrão&lt;/size&gt;"/>
+	<i id="102385" name="&lt;size=22&gt;Restaurar para padrão&lt;/size&gt;"/>
+	<i id="102386" name="&lt;size=26&gt;Restaurar para padrão&lt;/size&gt;"/>
+	<i id="102387" name="Game"/>
+	<i id="102388" name="Display"/>
+	<i id="102389" name="&lt;size=26&gt;Restaurar para padrão&lt;/size&gt;"/>
+	<i id="102390" name="&lt;size=22&gt;Todos Heróis&lt;/size&gt;"/>
+	<i id="102391" name="Som"/>
+	<i id="102392" name="&lt;size=26&gt;Restaurar para padrão&lt;/size&gt;"/>
+	<i id="102393" name="Aplicar"/>
+	<i id="102394" name="Voltar"/>
+	<i id="102395" name="&lt;size=26&gt;Sim&lt;/size&gt;"/>
+	<i id="102396" name="Configurações"/>
+	<i id="102397" name="Low"/>
+	<i id="102398" name="Mid"/>
+	<i id="102399" name="High"/>
+	<i id="102400" name="Personalizar"/>
+	<i id="102401" name="Low"/>
+	<i id="102402" name="Mid"/>
+	<i id="102403" name="High"/>
+	<i id="102404" name="Fechar"/>
+	<i id="102405" name="Low"/>
+	<i id="102406" name="Mid"/>
+	<i id="102407" name="High"/>
+	<i id="102408" name="Low"/>
+	<i id="102409" name="Mid"/>
+	<i id="102410" name="High"/>
+	<i id="102411" name="Full Screen"/>
+	<i id="102412" name="Window Mode"/>
+	<i id="102413" name="Fechar"/>
+	<i id="102414" name="&lt;size=22&gt;Todos Heróis&lt;/size&gt;"/>
+	<i id="102415" name="Herói 1"/>
+	<i id="102416" name="Herói 2"/>
+	<i id="102417" name="Herói 3"/>
+	<i id="102418" name="Herói 4"/>
+	<i id="102419" name="Herói 5"/>
+	<i id="102420" name="Herói 6"/>
+	<i id="102421" name="Herói 7"/>
+	<i id="102422" name="Herói 8"/>
+	<i id="102423" name="Herói 9"/>
+	<i id="102424" name="Herói 10"/>
+	<i id="102425" name="Herói 11"/>
+	<!--\设置-->
+
+  	<!--\争夺-->
+	<i id="103001" name="Assault"/>
+	<i id="103002" name="Assault"/>
+	<i id="103003" name="Assault"/>
+	<i id="103004" name="Comece a batalha"/>
+	<i id="103005" name="Preparando"/>
+	<!--\争夺-->
+
+	<!--\竞技场-->
+	<i id="104001" name="Comece a batalha"/>
+	<i id="104002" name="Preparando"/>
+	<!--\竞技场-->
+
+	<!--\死斗-->
+	<i id="105001" name="INIMIGO"/>
+	<i id="105002" name="ALIADO"/>
+	<i id="105003" name="Comece a batalha"/>
+	<!--\死斗-->
+  
+
+	<i id="90001" name ="&lt;color=#ffba00&gt;Health &lt;/color&gt;&lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="90002" name ="&lt;color=#ffba00&gt;Shield &lt;/color&gt;&lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="90003" name ="&lt;color=#ffba00&gt;Velocidade &lt;/color&gt;&lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="90004" name ="&lt;color=#ffba00&gt;Dano Arma &lt;/color&gt;&lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="90005" name ="&lt;color=#ffba00&gt;Ult skill&lt;/color&gt; Velocidade Recarga &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91001" name ="&lt;color=#ffba00&gt;Flash &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91002" name ="&lt;color=#ffba00&gt;Flash &lt;/color&gt;Maximum Range &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91003" name ="&lt;color=#ffba00&gt;Rapid Fire &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91004" name ="&lt;color=#ffba00&gt;Rapid Fire &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91005" name ="&lt;color=#ffba00&gt;Death Sentence &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91006" name ="&lt;color=#ffba00&gt;Granada &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91007" name ="&lt;color=#ffba00&gt;Granada &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91008" name ="&lt;color=#ffba00&gt;Biologicals &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91009" name ="&lt;color=#ffba00&gt;Biologicals &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91010" name ="&lt;color=#ffba00&gt;Destroyer &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91011" name ="&lt;color=#ffba00&gt;Fire Fist &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91012" name ="&lt;color=#ffba00&gt;Fire Fist &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91013" name ="&lt;color=#ffba00&gt;Shield &lt;/color&gt;Limite máximo &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91014" name ="&lt;color=#ffba00&gt;Shield &lt;/color&gt;Velocidade Recarga &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91015" name ="&lt;color=#ffba00&gt;Seismic Hit &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91016" name ="&lt;color=#ffba00&gt;Seismic Hit &lt;/color&gt;Stun Time &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91017" name ="&lt;color=#ffba00&gt;Optical Camo &lt;/color&gt;Tempo de duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91018" name ="&lt;color=#ffba00&gt;Optical Camo &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91019" name ="&lt;color=#ffba00&gt;Teleport &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91020" name ="Redução de Dano &lt;color=#00ba00&gt;{0}%&lt;/color&gt; durante &lt;color=#ffba00&gt;Teleport&lt;/color&gt;"/>
+	<i id="91021" name ="&lt;color=#ffba00&gt;Infrared Detection &lt;/color&gt;Tempo de duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91022" name ="&lt;color=#ffba00&gt;Concussive Shot &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91023" name ="&lt;color=#ffba00&gt;Concussive Shot &lt;/color&gt;Ejection Intensity &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91024" name ="&lt;color=#ffba00&gt;Explosive Shot &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91025" name ="&lt;color=#ffba00&gt;Explosive Shot &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91026" name ="&lt;color=#ffba00&gt;Phoenix's Wings &lt;/color&gt;Velocidade Recarga &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91027" name ="&lt;color=#ffba00&gt;Aviation Fuel &lt;/color&gt;Upper Limit &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91028" name ="&lt;color=#ffba00&gt;Thruster Backpack &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91029" name ="&lt;color=#ffba00&gt;Thunderstorm &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91030" name ="&lt;color=#ffba00&gt;Thunderstorm &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91031" name ="&lt;color=#ffba00&gt;Viber Missile &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91032" name ="&lt;color=#ffba00&gt;Cut-Heal &lt;/color&gt;Heal &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91033" name ="&lt;color=#ffba00&gt;Cut-Heal &lt;/color&gt;Assist Heal &lt;color=#00ba00&gt;{0}%&lt;/color&gt;health"/>
+	<i id="91034" name ="&lt;color=#ffba00&gt;Cut-Death &lt;/color&gt;Efeito &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91035" name ="&lt;color=#ffba00&gt;Cut-Death &lt;/color&gt;Assist Heal &lt;color=#00ba00&gt;{0}%&lt;/color&gt;health"/>
+	<i id="91036" name ="&lt;color=#ffba00&gt;Fate &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91037" name ="&lt;color=#ffba00&gt;Flame Sentry &lt;/color&gt;Range &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91038" name ="&lt;color=#ffba00&gt;Flame Sentry &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91039" name ="&lt;color=#ffba00&gt;Born of Fire &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91040" name ="&lt;color=#ffba00&gt;Born of Fire &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91041" name ="&lt;color=#ffba00&gt;Hell Forge &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91042" name ="&lt;color=#ffba00&gt;Explosive Bats &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91043" name ="&lt;color=#ffba00&gt;Explosive Bats &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91044" name ="&lt;color=#ffba00&gt;Incarnation &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91045" name ="&lt;color=#ffba00&gt;Incarnation &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91046" name ="&lt;color=#ffba00&gt;Blood Rage &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91047" name ="&lt;color=#ffba00&gt;Charge &lt;/color&gt;Stun Time &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91048" name ="&lt;color=#ffba00&gt;Charge &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91049" name ="&lt;color=#ffba00&gt;Bloodthirsty &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91050" name ="&lt;color=#ffba00&gt;Bloodthirsty &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91051" name ="&lt;color=#ffba00&gt;Planet Attraction &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91052" name ="&lt;color=#ffba00&gt;Sentry Gun &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91053" name ="&lt;color=#ffba00&gt;Sentry Gun &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91054" name ="&lt;color=#ffba00&gt;Cage &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91055" name ="&lt;color=#ffba00&gt;Cage &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91056" name ="&lt;color=#ffba00&gt;Teleport Matrix &lt;/color&gt;Number of Teleportation &lt;color=#00ba00&gt;+{0}&lt;/color&gt;"/>
+	<i id="91057" name ="&lt;color=#ffba00&gt;Teleport Matrix &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91058" name ="&lt;color=#ffba00&gt;Energy Shield &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91059" name ="&lt;color=#ffba00&gt;Energy Shield &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91060" name ="&lt;color=#ffba00&gt;Leap Attack &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91061" name ="&lt;color=#ffba00&gt;Leap Attack &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91062" name ="&lt;color=#ffba00&gt;Whirl Wind &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91063" name ="&lt;color=#ffba00&gt;Frozen Trap &lt;/color&gt;tempo congelado &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91064" name ="&lt;color=#ffba00&gt;Frozen Trap &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91065" name ="&lt;color=#ffba00&gt;Snow Fairy &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91066" name ="&lt;color=#ffba00&gt;Snow Fairy &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91067" name ="&lt;color=#ffba00&gt;Snowball &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91068" name ="&lt;color=#ffba00&gt;Remote Bomb &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91069" name ="&lt;color=#ffba00&gt;Remote Bomb &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91070" name ="&lt;color=#ffba00&gt;Energy Cannon &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91071" name ="&lt;color=#ffba00&gt;Energy Cannon &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91072" name ="&lt;color=#ffba00&gt;Extermination &lt;/color&gt;Prewarning Time &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91073" name ="&lt;color=#ffba00&gt;Sylph's Wind &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91074" name ="&lt;color=#ffba00&gt;Sylph's Wind &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91075" name ="&lt;color=#ffba00&gt;Undina's Power &lt;/color&gt;Damage and Heal &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91076" name ="&lt;color=#ffba00&gt;Undina's Power &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91077" name ="&lt;color=#ffba00&gt;Gnome's Light &lt;/color&gt;Recharge Speed &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91078" name ="&lt;color=#ffba00&gt;Assassinate &lt;/color&gt;Stun Time &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91079" name ="&lt;color=#ffba00&gt;Assassinate &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91080" name ="&lt;color=#ffba00&gt;Regicide &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91081" name ="&lt;color=#ffba00&gt;Regicide &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91082" name ="&lt;color=#ffba00&gt;Duel &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91083" name ="&lt;color=#ffba00&gt;Defensive Trap &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91084" name ="&lt;color=#ffba00&gt;Defensive Trap &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91085" name ="&lt;color=#ffba00&gt;Detection &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91086" name ="&lt;color=#ffba00&gt;Detection &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91087" name ="&lt;color=#ffba00&gt;Auto Aim &lt;/color&gt;Dagame &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91088" name ="&lt;color=#ffba00&gt;Ancient Guard &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91089" name ="&lt;color=#ffba00&gt;Ancient Guard &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91090" name ="&lt;color=#ffba00&gt;Heal Zone &lt;/color&gt;Heal &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91091" name ="&lt;color=#ffba00&gt;Heal Zone &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91092" name ="&lt;color=#ffba00&gt;Fox Phantom &lt;/color&gt;Damage Taken &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91093" name ="&lt;color=#ffba00&gt;Fox Phantom &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91094" name ="&lt;color=#ffba00&gt;Magic Rush &lt;/color&gt;Intensity &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91095" name ="&lt;color=#ffba00&gt;Magic Shield &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91096" name ="&lt;color=#ffba00&gt;Magic Shield &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91097" name ="&lt;color=#ffba00&gt;Magic Drug &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91098" name ="&lt;color=#ffba00&gt;Magic Drug &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91099" name ="&lt;color=#ffba00&gt;Soul Shackles [silence] &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91100" name ="&lt;color=#ffba00&gt;Soul Shackles [silence] &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91101" name ="&lt;color=#ffba00&gt;Dedicate &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91102" name ="&lt;color=#ffba00&gt;Dedicate &lt;/color&gt;Health &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91103" name ="&lt;color=#ffba00&gt;Protection &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91104" name ="&lt;color=#ffba00&gt;Protection &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91105" name ="&lt;color=#ffba00&gt;Iron &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91106" name ="&lt;color=#ffba00&gt;Flower Storm &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91107" name ="&lt;color=#ffba00&gt;Flower Storm &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91108" name ="&lt;color=#ffba00&gt;Lunge &lt;/color&gt;Damage &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91109" name ="&lt;color=#ffba00&gt;Lunge &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91110" name ="&lt;color=#ffba00&gt;Great Spirit &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91111" name ="&lt;color=#ffba00&gt;Hook Rope &lt;/color&gt;Tempo de Stun &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91112" name ="&lt;color=#ffba00&gt;Hook Rope &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91113" name ="&lt;color=#ffba00&gt;Death Stare &lt;/color&gt;Efeito de Lentidão &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91114" name ="&lt;color=#ffba00&gt;Death Stare &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91115" name ="&lt;color=#ffba00&gt;Gorgon &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91116" name ="&lt;color=#ffba00&gt;Gorgon &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91117" name ="&lt;color=#ffba00&gt;Assault Missile &lt;/color&gt;Dano &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91118" name ="&lt;color=#ffba00&gt;Assault Missile &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91119" name ="&lt;color=#ffba00&gt;Defensive Matrix &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91120" name ="&lt;color=#ffba00&gt;Defensive Matrix &lt;/color&gt;Cool Down &lt;color=#00ba00&gt;-{0}%&lt;/color&gt;"/>
+	<i id="91121" name ="&lt;color=#ffba00&gt;Group Teleport &lt;/color&gt;Tempo de Duração &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+	<i id="91122" name ="&lt;color=#ffba00&gt;Group Teleport &lt;/color&gt;Tempo de Recarga &lt;color=#00ba00&gt;+{0}%&lt;/color&gt;"/>
+
+
+
+	<!-- HuangZuanUICon黄钻蓝钻 -->
+	<i id="92001" name ="Diamante Azul VIP"/>
+	<i id="92002" name ="Diamante Amarelo VIP"/>
+	<i id="92003" name ="Você não é Diamante Azul VIP, abra o service para coletar este prêmio"/>
+	<i id="92004" name ="Você não é Diamante Amarelo VIP, abra o service para coletar este prêmio"/>
+	<i id="92005" name ="&lt;color=#0096FF&gt;Site Oficial Diamante Azul&lt;/color&gt;"/>
+	<i id="92006" name ="&lt;color=#FFFF00&gt;Site Oficial Diamante Amarelo&lt;/color&gt;"/>
+	<i id="92007" name ="Mais privilégio Diamante Azul, preste atenção"/>
+	<i id="92008" name ="Mais privilégio Diamante Amarelo, preste atenção"/>
+	<i id="92009" name ="Gift Diamante Azul Novato"/>
+	<i id="92010" name ="Gift Diamante Amarelo Novato"/>
+	<i id="92011" name ="Gift Diamante Azul growth"/>
+	<i id="92012" name ="Gift Diamante Amarelo growth"/>
+	<i id="92013" name ="Gift Diamante Azul diário"/>
+	<i id="92014" name ="Gift Diamante Amarelo diário"/>
+	<i id="92015" name ="Diamante Azul VIP"/>
+	<i id="92016" name ="Diamante Amarelo VIP"/>
+	<i id="92017" name ="Diamante Azul Luxury"/>
+	<i id="92018" name ="Diamante Amarelo Luxury"/>
+	<i id="92019" name ="Diamante Azul Anual"/>
+	<i id="92020" name ="Diamante Amarelo Anual"/>
+	<i id="92021" name ="Diamante Azul VIP pode ganhar prêmios após logar consecutivamente\n Quanto maior o level, melhores recompensas"/>
+	<i id="92022" name ="Diamante Amarelo VIP pode ganhar prêmios após logar consecutivamente\n Quanto maior o level, melhores recompensas"/>
+	<i id="92023" name ="Gift Diamante Azul anual adicional"/>
+	<i id="92024" name ="Gift Diamante Amarelo anual adicional"/>
+	<i id="92025" name ="Diamante Azul VIP Anual pode ganhar prêmios diários exclusivos, \nGift diário, diversão constante!"/>
+	<i id="92026" name ="Diamante Amarelo VIP Anual pode ganhar prêmios diários exclusivos, \nGift diário, diversão constante!"/>
+	<i id="92027" name ="角色每十级奖励海量道具，\n做蓝钻朝前者，时刻保持领先!"/>
+	<i id="92028" name ="角色每十级奖励海量道具，\n做黄钻朝前者，时刻保持领先!"/>
+	<i id="92029" name ="Compre diamantes com 20% off\nFaça mais com menos, Diamante Azul te ajuda bastante!"/>
+	<i id="92030" name ="Compre diamantes com 20% off\nFaça mais com menos, Diamante Amarelo te ajuda bastante!"/>	
+	<i id="92031" name =""/>	
+	<i id="92032" name =""/>	
+	<i id="92033" name ="&lt;color=#0096FF&gt;_______&lt;/color&gt;"/>
+	<i id="92034" name ="&lt;color=#FFFF00&gt;_______&lt;/color&gt;"/>	
+	<!--\Mail-->
+    <i id="93000" name="&lt;color=#DE960B&gt;50 emails no máximo podem ser armazenados&lt;/color&gt;"/>
+	<!--\JoinTest-->
+	<i id="94001" name="Entrou com sucesso"/>
+	<i id="94002" name="Falha ao entrar"/>
+	<i id="94003" name="Entrou"/>
+	<i id="94004" name="A função de caxh não está disponível no servidor de teste agora"/>
+	<!--\Scripts\UIControl\cmm\SevenTargetUICon.cs [24]-->
+	<i id="25001" name="Novato"/>
+	<i id="25002" name="Tempo restante do evento: {0} dias {1} horas {2} minutos"/>
+	<i id="25003" name="{0}"/>
+	<i id="25004" name="&lt;size=22&gt;Desbloqueado amanhã&lt;/size&gt;"/>
+	<i id="25005" name="Missão do dia {0}"/>
+	<i id="25006" name="Completas: {0}/{1}"/>
+	<i id="25007" name="Coletar"/>
+	<i id="25008" name="Em progresso"/>
+	<i id="25009" name="Um"/>
+	<i id="25010" name="Dois"/>
+	<i id="25011" name="Três"/>
+	<i id="25012" name="Quatro"/>
+	<i id="25013" name="Cinco"/>
+	<i id="25014" name="Seis"/>
+	<i id="25015" name="Sete"/>
+	<i id="25016" name="Oito"/>
+	<i id="25017" name="Nove"/>
+	<i id="25018" name="Coletado"/>
+	<i id="25019" name="Desbloqueado"/>
+	<i id="25020" name="Dia"/>
+	<i id="25021" name="Aviso: Khan, Lily, Venus não estão disponíveis nos eventos de teste"/>
+	<!--\pve-->
+	<i id="26000" name="Força"/>
+	<i id="26001" name="Round"/>
+	<i id="26002" name="Inimigos:"/>
+	<i id="26003" name="Status de preparação"/>
+	<i id="26004" name="Você está morto"/>
+	<i id="26005" name="Usar {0} moedas ressurreição"/>
+	<i id="26006" name="{0} restante"/>
+	<i id="26007" name="Pressione {0} para ressurreição"/>
+	<i id="26008" name="Jogador"/>
+	<i id="26009" name="Dano"/>
+	<i id="26010" name="Contagem Ressurreição: {0}"/>
+	<i id="26011" name="Resistência do cristal: {0}%"/>
+	<i id="26012" name="Sem moedas de ressurreição suficientes"/>
+	<i id="26013" name="&lt;color=#FFB800&gt;Round {0} terminou!&lt;/color&gt;"/>
+	<i id="26014" name="&lt;color=#FFB800&gt;Dano neste round: &lt;/color&gt;{0}"/>
+	<i id="26015" name="Onda de inimigo número {0} está vindo! "/>
+	<i id="26016" name="Jogadores estão mortos, use moedas de ressurreição ou desafio terminará"/>
+	<i id="26017" name="&lt;color=#ff0000&gt;&lt;size=50&gt;O cristal está sendo atacado!&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="26018" name="Minha maior pontuação: {0}"/>
+	<i id="26019" name="Rating Batalha: &lt;color=#FFB800&gt;{0}&lt;/color&gt;"/>
+	<i id="26020" name="Força necessária: &lt;color=#FFB800&gt;{0}&lt;/color&gt;"/>
+	<i id="26021" name="{0} - 2 estrelas"/>
+	<i id="26023" name="Terminou"/>
+	<i id="26024" name="Rating:"/>
+	<i id="26025" name="Há pelo menos um membro sem nível ou força suficientes no time"/>
+	<i id="26026" name="Há pelo menos um membro no time que não possui esta dificuldade desbloqueada"/>
+	<i id="26027" name="Há pelo menos um membro no time que não possui o requisito mínimo de rating de batalha"/>
+	<i id="26028" name="Seu rating de batalha não alcança o requisito mínimo para esta batalha"/>
+	<i id="26029" name="Matching, por favor aguarde!"/>
+	<i id="26030" name="Tempo"/>
+	<i id="26031" name="Bloqueado!"/>
+	<i id="26032" name="Sem força suficiente!"/>
+	<i id="26033" name="Matching, por favor aguarde!"/>
+	<i id="26034" name="Fácil"/>
+	<i id="26035" name="Normal"/>
+	<i id="26036" name="Hard"/>
+	<i id="26037" name="Elite"/>
+	<i id="26038" name="Master"/>
+	<i id="26039" name="Nightmare"/>
+	<i id="26040" name="Purgatory"/>
+	<i id="26041" name="Tale"/>
+	<i id="26042" name="Myth"/>
+	<i id="26043" name="Legendary"/>
+	<i id="26044" name="Força"/>
+	<i id="26045" name="Velocidade de recuperação: 2 pontos/hora \n Pode ganhar 12 pontos adicionais nos eventos On Time Online"/>
+	<i id="26046" name="DESAFIO TERMINOU"/>
+	<i id="26047" name="Pontuação final: round {0}"/>
+	<i id="26048" name="Possibilidades de Lotto foram usadas"/>
+	<i id="26049" name="Itens abaixo podem ser ganhos a partir do round {0}"/>
+	<i id="26050" name="Pressione {0} para comprar"/>
+	<i id="26051" name="{0} diamantes devem ser usados para Lotto"/>
+	<i id="26052" name="ACE"/>
+	<i id="26053" name="Rating"/>
+	<i id="26054" name="&lt;color=#ff0000&gt;&lt;size=50&gt;Crystal com low healthl {0}%&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="26055" name="Tempo esgotado"/>
+	<i id="26056" name="O cristal foi destruído"/>
+	<i id="26057" name="Portão para a próxima área está aberta, continue"/>
+	<i id="26058" name="&lt;color=#FF9600&gt;&lt;size=30&gt;Inimigos restantes nesta área: {0}&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="26059" name="&lt;color=#FF9600&gt;&lt;size=40&gt;Remova obstáculos e explore as profundezas de Black Land!&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="26060" name="King hard"/>
+	<i id="26061" name="Seu rating de batalha é mais baixo que o recomendado, escolha outra dificuldade"/>
+	<i id="26062" name="Reselecionar"/>
+	<i id="26063" name="Vá em matching"/>
+	<i id="26064" name="Seu rating de batalha é mais baixo que o recomendado, escolha outra dificuldade"/>
+	<i id="26065" name="Rating Mínimo: &lt;color=#FFB800&gt;{0}&lt;/color&gt;"/>
+	<i id="26066" name="Haverá punição caso você não retorne para a área de batalha em {0} segundos"/>
+	<i id="26067" name="Prêmios pela primeira participação"/>
+	<i id="26068" name="Seu rating de batalha é muito alto, então não poderá usar sua força e não receberá prêmios nessa batalha."/>
+	<i id="26069" name="Vá em matching"/>
+	<i id="26070" name="Sair do matching"/>
+	<i id="26071" name="Seu rating de batalha é muito alto, então não poderá usar sua força e não receberá prêmios nessa batalha."/>
+	<i id="26072" name="Flowers obtidas ultrapassaram o limite máximo"/>
+	<i id="26073" name="Ganhe [Flower]*{0}"/>
+	<i id="26074" name="RATING"/>
+
+
+	<!--\qianghua-->
+	<i id="27000" name="{0} diamantes devem ser usados para melhoria"/>
+	<i id="27001" name="{0} diamantes devem ser usados para level-up"/>
+	<i id="27002" name="Sem materiais, não pode level up"/>
+	<i id="27003" name="{0} diamantes devem ser usados para melhoria em um clique"/>
+	<i id="27004" name="level"/>
+	<i id="27005" name="Tier"/>
+	<i id="27006" name="&lt;color=#ffff00&gt;Level up com sucesso&lt;/color&gt;"/>
+	<i id="27007" name="Sem diamantes! "/>
+	<i id="27008" name="Alcançou nível máximo!"/>
+	<i id="27009" name="Falha level up"/>
+	<i id="27010" name="Blocos de cristais level-up insuficientes"/>
+	<i id="27011" name="Clique para comprar materiais"/>
+	<i id="27012" name="Esquerda"/>
+	<i id="27013" name="Upgrade"/>
+	<i id="27014" name="&lt;color=#ffff00&gt;Level up com sucesso&lt;/color&gt;"/>
+	<i id="27015" name="Barra de XP Atributos cheia, atualize após level-up"/>
+	<i id="27016" name="{0} diamantes devem ser usados para esta melhoria"/>
+	
+	<i id="27017" name="Adição atual"/>
+	<i id="27018" name="Adição do próximo level: level full"/>
+	<i id="27019" name="Uso da upgrade: level full"/>
+	<i id="27020" name="Próxima adição de level: {0}"/>
+	<i id="27021" name="Uso da upgrade: "/>
+	<i id="27022" name="Uso level up: "/>
+
+	<i id="27023" name="Distorção Tempo-espaço"/>
+	<i id="27024" name="Campo de Força de Vácuo"/>
+	<i id="27025" name="Toxina da Mina"/>
+
+	<i id="27026" name="Você está afetado por Distorção Tempo-espaço, Cool Down de habilidades aumentado"/>
+	<i id="27027" name="Você está afetado por Campo de Força de Vácuo, tempo de caxh da ULT skill diminuido"/>
+	<i id="27028" name="Você está afetado por Toxina da Mina, Cool Down da health diminuido"/>
+	<i id="27029" name="&lt;color=#ffff00&gt;Level up com sucesso&lt;/color&gt;"/>
+	<i id="27030" name="Você quer usar {0} diamantes para comprar 60 de força? "/>
+	<i id="27031" name="Possibilidades de compras foram todas usadas!"/>
+	<i id="27032" name="Os amplificadores de blocos de cristal não são suficientes!"/>
+	<i id="27033" name="Probabilidade de sucesso &lt;color=#00ff00&gt;{0}%&lt;/color&gt;, materiais level-up não serão retornados caso falhar"/>
+	<i id="27034" name="Aumente sucesso com Blocos de Cristais"/>
+	<i id="27035" name="&lt;color=#13FF00&gt;(Possui: {0})&lt;/color&gt;"/>
+	<i id="27036" name="&lt;color=#ff0000&gt;(Possui: {0})&lt;/color&gt;"/>
+	<i id="27037" name="Força já foi utilizada hoje, venha para o desafio amanhã!"/>	
+	<i id="27038" name="força: {0} / 3 "/>	
+	<i id="27039" name="Disponível em {0}-{1}"/>	
+	<i id="27040" name="Creditos um clique apos 3 estrelas"/>	
+	<i id="27041" name="Creditos com um clique"/>	
+	<i id="27042" name="Possui: &lt;color=#{0}&gt;{1}/{2}&lt;/color&gt;"/>
+	<i id="27043" name="Mopped up"/>
+	<i id="27044" name="creditos restantes: {0}"/>
+	<i id="27045" name="Em matching, não é permitido mop up"/>
+	<i id="27046" name="Disponível no Lv{0}"/>
+	<i id="27047" name="Força não suficiente!\n\n&lt;color=#FFB800&gt;Você quer usar {0} diamantes para comprar 60 de força?&lt;/color&gt;"/>	
+	<i id="27048" name="Blocos de cristal insuficientes!"/>
+	<i id="27049" name="&lt;color=#00ff00&gt;Probabilidade de sucesso {0}%&lt;/color&gt;"/>
+	<i id="27050" name="rank"/>
+	
+	<!--\Scripts\UIControl\cmm\LuckyDrawUICon.cs [28]-->
+	<i id="28000" name="Lucky points"/>
+	<i id="28001" name="Lucky points podem aumentar participando de sorteio. Ganha-se grande prêmio quando lucky points estiverem cheios. Lucky points serão zerados após um grande prêmio."/>
+	<i id="28002" name="Lucky list"/>
+	<i id="28003" name="&lt;color=#22ff01&gt;{0}&lt;/color&gt; Ganhou Lucky Prize&lt;color={1}&gt; [{2}*{3}]&lt;/color&gt;"/>
+	<i id="28004" name="Duração do evento: {1}/{0}-{3}/{2}"/>
+	<i id="28005" name="{0}{1} sorteio"/>
+	<i id="28006" name="Diamantes"/>
+	<i id="28007" name="Moedas"/>
+	<i id="28008" name="Pontos rankeados"/>
+	<i id="28009" name="Moeda de Ressurreição"/>
+	<i id="28010" name="Lotto"/>
+	<i id="28011" name="&lt;color=#ffffff&gt;Parabéns!&lt;/color&gt;&lt;color=#00b4ff&gt; [{0}] &lt;/color&gt;&lt;color=#ffffff&gt;ganhou &lt;/color&gt;&lt;color={1}>{2}&lt;/color&gt; no sorteio, &lt;h=openui:LuckyDrawUI&gt;&lt;color=#00ff00&gt;Entre agora>>>&lt;/color&gt;&lt;/h&gt;"/>
+	<i id="28012" name="Lucky points acrescentados"/>
+	<i id="28013" name="Duração do evento: {2}/{1}/{0}-{5}/{4}/{3}"/>
+	<i id="28014" name="Uso de Lotto"/>
+	<i id="28015" name="Quantidade que possui:"/>
+	<i id="28016" name="Comprar"/>
+
+	<!--\Scripts\UIControl\lm\DtsUICon.cs [29]-->
+	<i id="29000" name="Tecla de atalho {0}"/>
+	<i id="29001" name="&lt;color=#FFF800&gt;Herói [{0}]&lt;/color&gt;"/>
+	<i id="29002" name="Use [{0}] para mudar o herói atual para {1}"/>
+	<i id="29003" name="Caixas restantes"/>
+	<i id="29004" name="&lt;color=#00EAFF&gt;Survival&lt;/color&gt;"/>
+	<i id="29005" name="Ataque {0}"/>
+	<i id="29006" name="Defesa {0}"/>
+	<i id="29007" name="Teclado Principal 1"/>
+	<i id="29008" name="Novo Herói encontrado"/>
+	<i id="29009" name="&lt;color=#ffbc00&gt;{0}&lt;/color&gt;'s remains box &lt;color=#ff7800&gt;&lt;size=24&gt;(inventory of loots)&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="29010" name="Skill E"/>
+	<i id="29011" name="Skill Shift"/>
+	<i id="29012" name="Skill Q"/>
+	<i id="29013" name="Skill Mouse-Direito"/>
+	<i id="29014" name="Skill Passiva {0}"/>
+	<i id="29015" name="Bolsas de sangue {0}"/>
+	<i id="29016" name="Balls de ataque {0}"/>
+	<i id="29017" name="Balls de defesa {0}"/>
+	<i id="29018" name="Você não desbloqueou [&lt;color=#ff0000&gt;{0}&lt;/color&gt;], então não pode alterar este Herói"/>
+	<i id="29019" name="Você não possui Herói para pegar esta caixa com restos"/>
+	<i id="29020" name="O destino do Teleport será escolhido após {0} segundos"/>
+	<i id="29021" name="A partida começa após {0} segundos, escolha um destino pelo Teleport"/>
+	<i id="29022" name="&lt;color=#FFFF00&gt;{0} jogadores sairam&lt;/color&gt;"/>
+	<i id="29023" name="&lt;color=#FFF800&gt;Área de jogo vai ser restrita após {0} segundos!&lt;/color&gt;"/>
+	<i id="29024" name="&lt;color=#FFC600&gt;{0}&lt;/color&gt;&lt;color=#565656&gt;/{1}&lt;/color&gt;"/>
+	<i id="29025" name="&lt;color=#FFC600&gt;Winner winner! Chicken dinner!&lt;/color&gt;"/>
+	<i id="29026" name="Rank: {0}"/>
+	<i id="29027" name="Kill: {0} jogadores"/>
+	<i id="29028" name="&lt;size=35&gt; Rewards:&lt;/size&gt;"/>
+	<i id="29029" name="Recomendação"/>
+	<i id="29030" name="Safe area será restrita após {0}"/>
+	<i id="29031" name="&lt;color=#ffbc00&gt;Área de jogo será restringida após  {0}&lt;/color&gt;"/>
+	<i id="29032" name="&lt;color=#ffbc00&gt;Área de jogo será limitada após {0}&lt;/color&gt;"/>
+	<i id="29033" name="&lt;color=#ffbc00&gt;Cuidado!  Área perigosa começou a expandir&lt;/color&gt;"/>
+	<i id="29034" name="{0} jogadores restantes"/>
+	<i id="29035" name="&lt;color=#FFF800&gt;A match irá acabar em &lt;/color&gt;&lt;color=#01ee00&gt;{0}&lt;/color&gt;"/>
+	<i id="29036" name="&lt;color=#FFC600&gt;Tenha mais sorte da próxima vez!&lt;/color&gt;"/>
+	<i id="29037" name="&lt;color=#F16E08&gt;Survival&lt;/color&gt; {0}"/>
+	<i id="29038" name="&lt;color=#F16E08&gt;Kill&lt;/color&gt; {0}"/>
+	<i id="29039" name="Pegou [{0}]"/>
+	<i id="29040" name="{0} Herói"/>
+	<i id="29041" name="&lt;color=#FFD800&gt;está usando uma bolsa de sangue&lt;/color&gt;"/>
+	<i id="29042" name="&lt;color=#FF0000&gt;Kill&lt;/color&gt;"/>
+	<i id="29043" name="&lt;size=30&gt;Você foi morto por &lt;color=#ff0000&gt;{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="29044" name="&lt;color=#FF0000&gt;Possui o nível mais alto&lt;/color&gt;"/>
+	<i id="29045" name="&lt;color=#FF0000&gt;Selecione um Herói primeiro&lt;/color&gt;"/>
+	<i id="29046" name="&lt;color=#FF0000&gt;Você não desbloqueou este Herói&lt;/color&gt;"/>
+	<i id="29047" name="&lt;color=#FF0000&gt;O herói atual já é [{0}]&lt;/color&gt;"/>
+	<i id="29048" name="&lt;color=#FF0000&gt;Você desbloqueou [{0}]&lt;/color&gt;"/>
+	<i id="29049" name="&lt;color=#FF0000&gt;Seu level de ataque alcançou o límite máximo&lt;/color&gt;"/>
+	<i id="29050" name="&lt;color=#FF0000&gt;Seu level de defesa alcançou o limite máximo&lt;/color&gt;"/>
+	<i id="29051" name="&lt;color=#FF0000&gt;Herói atual não possui esta skill&lt;/color&gt;"/>
+	<i id="29052" name="Royale Ranking"/>
+	<i id="29053" name="Kills total"/>
+	<i id="29054" name="Vezes chicken dinner"/>
+	<i id="29055" name="Erro ao entrar na batalha, por favor match novamente"/>
+	<i id="29056" name="Erro na batalha, por favor match novamente"/>
+	<i id="29057" name="Atalho [main keyboard 1] para usar [bolsa de sangue]"/>
+	<i id="29058" name="&lt;color=#FF0000&gt;Health atingiu o limite máximo&lt;/color&gt;"/>
+	<i id="29059" name="Você se matou!"/>
+	<i id="29060" name="Main keyboard 2"/>
+	<i id="29061" name="Energia da Ultra Skill atingiu o limite máximo"/>
+	<i id="29062" name="Por favor colete [Energia da Ultra Skill] primeiro"/>
+	<i id="29063" name="&lt;color=#FFD800&gt;Usando [Energia da Ultra Skill]&lt;/color&gt;"/>
+	<i id="29064" name="Energia da Ultra Skill"/>
+	<i id="29065" name="Colete items Skill-Q"/>
+	<i id="29066" name="Prêmios de participação"/>
+	<i id="29067" name="&lt;color=#00ff00&gt;Prêmios em moedas podem ser obtidas no máximo {0} vezes todo dia&lt;/color&gt;"/>
+	<i id="29068" name="&lt;color=#e89a02&gt;&lt;size=22&gt;1º partida (premio) {0} moedas&lt;/size&gt;&lt;/color&gt;"/>
+	<i id="29069" name="Atalho [main keyboard 2] para usar [Energia da Ultra Skill]"/>
+	<i id="29070" name="Colete a [bolsa de sangue] primeiro"/>
+	<i id="29071" name="Mais kills em único jogo"/>
+	<i id="29072" name="Flower Ranking"/>
+	<!--\Scripts\UIControl\cmm\RechargeZuanUICon.cs [32]-->
+	<i id="32000" name="Recarga acumulada de hoje"/>
+	<i id="32001" name="CAXH SHOP"/>
+	<i id="32002" name="Recarga acumulada alcançada"/>
+	<i id="32003" name="Pode ser coletado"/>
+	<i id="32004" name="Incompleto"/>
+	<i id="32005" name="Você possui caxh acumulada"/>
+	<i id="32006" name="Preço original:"/>
+	<i id="32007" name="Preço atual:"/>
+	<i id="32008" name="Tempo restante para compra: {0}"/>
+	<i id="32009" name="Comprar"/>
+	<i id="32010" name="{0} desconto"/>
+	<!--\Scripts\UIControl\cmm\GeneUICon.cs [33]-->
+	<i id="33000" name="Rating: &lt;color=#e8ac0a&gt;{0}&lt;/color&gt;"/>
+	<i id="33001" name="Introdução ao atributo"/>
+	<i id="33002" name="Melhorar atributos"/>
+	<i id="33003" name="LV {0}"/>
+	<i id="33004" name="&lt;color=#e8ac0a&gt;Taxa Sucesso: &lt;/color&gt;{0}%"/>
+	<i id="33005" name="&lt;color=#e8ac0a&gt;Partes Genes Usadas: &lt;/color&gt;{0}"/>
+	<i id="33006" name="Transformar"/>
+	<i id="33007" name="&lt;color=#e8ac0a&gt;Partes Genes: &lt;/color&gt;{0}"/>
+	<i id="33008" name="Gene"/>
+	<i id="33009" name="Aviso: atributos melhorados só estão disponíveis no Modo Aventura"/>
+	<i id="33010" name="Attack level:"/>
+	<i id="33011" name="Defense level:"/>
+	<i id="33012" name="Health máxima:"/>
+	<i id="33013" name="Recuperação de Health:"/>
+	<i id="33014" name="Cool down da skill:"/>
+	<i id="33015" name="Velocidade Recarga:"/>
+	<i id="33016" name="Intensidade da Skill:"/>
+	<i id="33017" name="Velocidade:"/>
+	<i id="33018" name="Lvl strike crítico:"/>
+	<i id="33019" name="Lvl persistência:"/>
+	<i id="33020" name="Taxa de consumo:"/>
+	<i id="33021" name="Recuperação de consumo:"/>
+	<i id="33022" name="Não há partes suficientes, você quer usar {0} diamantes para fazer transformação de genes?"/>
+	<i id="33023" name="Use diamantes para comprar partes de genes"/>
+	<i id="33024" name="Aviso: atributos de transformação genética são apenas disponíveis no Modo Aventura"/>
+	<i id="33025" name="Transformação genética bem sucedida, {0} diamantes deduzidos."/>
+	<i id="33026" name="Falha na transformação genética, {0} diamantes deduzidos."/>
+	<i id="33027" name="Aumenta a taxa de strike crítico em cada ataque"/>
+	<i id="33028" name="Diminui a taxa de strike crítico para cada ataque recebido"/>
+	<i id="33029" name="Consumir:"/>
+	<i id="33030" name="Health"/>
+	<i id="33031" name="Transformação genética atingiu limite máximo"/>
+	<i id="33032" name="Rating"/>
+	<i id="33033" name="精灵"/>
+	<i id="33034" name="Offense"/>
+	<i id="33035" name="Deffense"/>
+	<i id="33036" name="Support"/>
+	<i id="33037" name="&lt;size=30&gt;Batalha:&lt;/size&gt;"/>
+	<i id="33038" name="拥有材料"/>
+	<i id="33039" name="Herois Afetados"/>
+	<i id="33040" name="one-click"/>
+	<i id="33041" name="Auto-comprar, sem material"/>
+	<i id="33042" name="升阶时使用成功率道具"/>
+	<i id="33043" name="精灵训练"/>
+	<i id="33044" name="精灵洗髓"/>
+	<i id="33045" name="Melhorar atributos"/>
+	<i id="33046" name="精灵领悟"/>
+	<i id="33047" name="Premio"/>
+	<i id="33048" name="Escolha Premio"/>
+	<i id="33049" name="Voltar"/>
+	<!--\Scripts\UIControl\cmm\WishTreeUICon.cs [34]-->
+	<i id="34000" name="Regras"/>
+	<i id="34001" name="Pontos de Desejo usados: {0}"/>
+	<i id="34002" name="Faça um desejo"/>
+	<i id="34003" name="Pontos de Desejo restantes:"/>
+	<i id="34004" name="{1} pontos de desejos podem ser obtidos ao usar {0} diamantes"/>
+	<i id="34005" name="1 - 10 pontos de desejo podem ser obtidos ao usar 10 diamantes &lt;color=#ff0000&gt;(Pontos de desejo não podem ser obtidos em pagamento único de 10 diamantes ou menos ou comprando força no Modo Aventura)&lt;/color&gt;\n2 - Se você usar pontos de desejo para fazer desejos, itens de prêmio dos desejos serão obtidos após login no próximo dia.\n3 - Você pode desejar um item repetidamente, até que todos seus pontos de desejo forem usados.\n4 - Você pode ganhar &lt;color=#FF8400&gt;cupom 20% off&lt;/color&gt;"/>
+	<i id="34006" name="Pontos de desejo insuficientes"/>
+	<i id="34007" name="Aviso Importante"/>
+	<i id="34008" name="Você terminou de desejar, e pode obter os prêmios da wishing tree após login amanhã.\n&lt;color=#ff0000&gt;Seus prêmios de desejo expirarão se não fazer login amanhã&lt;/color&gt;"/>
+	<i id="34009" name="Feedback da Wishing Tree"/>
+	<i id="34010" name="Participe agora"/>
+	<i id="34011" name="Completou esta semana"/>
+	<!--\Scripts\UIControl\cmm\ExchangeUICon.cs [35]-->
+	<i id="35000" name="Resgatar"/>
+	<i id="35001" name="&lt;size=22&gt;Todos&lt;/size&gt;"/>
+	<i id="35002" name="Em uso comum"/>
+	<i id="35003" name="{0} necessários para resgatar:"/>
+	<i id="35004" name="use &lt;color=#00FF00&gt;[{0}]*{1}&lt;/color&gt; para resgatar&lt;color=#FFFF00&gt; [{2}]&lt;/color&gt;"/>
+	<!--\Scripts\UIControl\cmm\WinterUICon.cs [36]-->
+	<i id="36000" name="[Ticket Resgate] pode ser obtido após completar a missão seguinte"/>
+	<i id="36001" name="[Ticket Resgate] que possui"/>
+	<i id="36002" name="Incompleto"/>
+	<i id="36003" name="Atingiu o limite máximo de resgatar"/>
+	<i id="36004" name="*{0}"/>
+	<i id="36005" name="&lt;color=#ff0000&gt;Aviso: [{0}] serão removidos quando o evento acabar, resgate os itens a tempo durante o evento&lt;/color&gt;"/>
+	<i id="36007" name="[Ticket Resgate] usado:"/>
+	<i id="36008" name="Resgatar"/>
+	<i id="36009" name="Vezes de resgatar restantes: {0}"/>
+	<!--\Scripts\UIControl\cmm\RankUI.cs [37]-->
+	<i id="37000" name="RANKING"/>
+	<i id="37001" name="LEVEL"/>
+	<i id="37002" name="HEROI"/>
+	<i id="37003" name="AVENTURA"/>
+	<i id="37004" name="Ranking"/>
+	<i id="37005" name="Level"/>
+	<i id="37006" name="Info Jogador"/>
+	<i id="37007" name="Número de flowers"/>
+	<i id="37008" name="Somente jogadores top 1000 serão exibidos na Flower leaderboard e a leaderboard será atualizada todos os dias. Jogadores com 1 flower podem aparecer na leaderboard."/>
+	<i id="37009" name="n.º partidas"/>
+	<i id="37010" name="Herói suporte"/>
+	<i id="37011" name="Apenas Top 1,000 aparecem no Ranking, atualizado dia a dia. Level mínimo para aparecer, Lvl15."/>
+	<i id="37012" name="Tempo (min)"/>
+	<i id="37013" name="Rating geral"/>
+	<i id="37014" name="Apenas Top1000 no aparecem no Ranking, atualizado todos os dias. Jogue 20 partidas para aparecer."/>
+	<i id="37015" name="Tier"/>
+	<i id="37016" name="Scores"/>
+	<i id="37017" name="Rating"/>
+	<i id="37018" name="Somente jogadores top 1000 serão exibidos na leaderboard e a leaderboard será atualizada todos os dias. Jogadores com rating de batalha maior que 10000 podem aparecer na leaderboard."/>
+	<i id="37019" name="FLOWER"/>
+	<!--\Scripts\UIControl\cmm\JieRiActUICon.cs [44]-->
+	<i id="44000" name="&lt;size=26&gt;春节当日登录可领奖&lt;/size&gt;"/>
+	<i id="44001" name="Coletar"/>
+	<i id="44002" name="Coletado"/>
+	<!--Server\MailManager[45]-->
+	<i id="45000" name="Sistema"/>
+	<i id="45001" name="Descolete rewards"/>
+	<i id="45002" name="Evento Novato Leveling Up acabou, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45003" name="In Accumulated Check-in last month, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45004" name="Prêmio Online"/>
+	<i id="45005" name="No evento Recompensas Online, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45006" name="On-time Online Recompensas"/>
+	<i id="45007" name="No evento On-time Online, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45008" name="Prêmio semanal para partidas rankeadas"/>
+	<i id="45009" name="No evento Recompensa Semanal: Partida Rankeadas, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45010" name="Prêmio pelo primeiro login da semana"/>
+	<i id="45011" name="No evento Primeiro Login Semanal, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45012" name="Volta às Aulas Novo Recruta Recompensas"/>
+	<i id="45013" name="No evento Volta às Aulas Novo Recruta, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45014" name="Weekend Online Recompensas"/>
+	<i id="45015" name="No evento Weekend Online, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45016" name="Volta às Aulas Gifts Recompensas"/>
+	<i id="45017" name="No evento Volta às Aulas Gift, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45018" name="Prêmios da partida"/>
+	<i id="45019" name="No evento Recompensas em Partidas, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45020" name="Gifts da Deusa Recompensas"/>
+	<i id="45021" name="No evento Gifts da Deusa, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45022" name="Recarga diária acumulada"/>
+	<i id="45023" name="No evento Top-up Acumulado Diário, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45024" name="Sales Upgrade Stones e Gifts Recompensas"/>
+	<i id="45025" name="No evento Sales Upgrade Stones e Gifts, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45026" name="Desconto em Top-up Diamantes Recompensas"/>
+	<i id="45027" name="Desconto em Top-up Diamantes Recompensas, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45028" name="Top-up Acumulado Recompensas"/>
+	<i id="45029" name="No evento Accumulated Top-up, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45030" name="Competição pra Todos Recompensas"/>
+	<i id="45031" name="No evento Competição pra Todos, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45032" name="Modo Aventura Semanal Recompensas"/>
+	<i id="45033" name="No evento Modo Aventura Semanal, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45034" name="Sales Superior Rune Box e Gifts"/>
+	<i id="45035" name="No evento Sales Superior Rune Box e Gifts, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45036" name="Feriado Ano Novo Recompensas"/>
+	<i id="45037" name="No evento Feriado Ano Novo, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45038" name="Ano Novo Login Recompensas"/>
+	<i id="45039" name="No evento Ano Novo Login, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45040" name="Meta Novato Recompensas"/>
+	<i id="45041" name="No evento Meta Novato, você possui algumas recompensas para coletar. As recompensas foram enviadas para seu email, confira."/>
+	<i id="45042" name="Prêmio Online"/>
+	<!--\Scripts\UIControl\zlg\easy_TipCon.cs [47]-->
+	<i id="47000" name="whisper"/>
+	<i id="47001" name="Guild +"/>
+	<i id="47002" name="Copiar nome"/>
+	<i id="47003" name="Adicionar amigo"/>
+	<i id="47004" name="Deletar amigo"/>
+	<i id="47005" name="Time +"/>
+	<i id="47006" name="Reportar"/>
+	<i id="47007" name="Bloquear"/>
+	<i id="47008" name="Cancelar block"/>
+	<i id="47009" name="Não"/>
+	<i id="47010" name="Transferir líder do time"/>
+	<i id="47011" name="Promover"/>
+	<i id="47012" name="Rebaixar"/>
+	<i id="47013" name="Sair do time"/>
+	<i id="47014" name="Promover para líder do time"/>
+	<i id="47015" name="Remover do time"/>
+	<i id="47016" name="Por favor, não use isso para você..."/>
+	<i id="47017" name="Você"/>
+
+	
+	<!--\Scripts\UIControl\lp\jointestserverCon.cs [48]-->
+	<i id="48001" name="Não há vagas hoje"/>
+	<i id="48002" name="Vagas restantes hoje:"/>
+	
+	<!--\Scripts\UIControl\lp\playerreportCon.cs [49]-->
+	<i id="49001" name="Reportar jogador -"/>
+	<i id="49002" name="Nos diga o motivo do report com 10-100 letras."/>
+	<i id="49003" name="Cancelar"/>
+	<i id="49004" name="Enviar report"/>
+	<i id="49005" name="Report enviado com sucesso"/>
+	<i id="49006" name="Obrigado pelo suporte!"/>
+	<i id="49007" name="Seu report nos ajudará a melhorar o jogo!"/>
+	<i id="49008" name="Sim"/>
+	
+
+	<!--外国翻译遗漏ZY[46]-->
+	<i id="46000" name="Abrir Loot"/>
+	<i id="46001" name="Voltar Loja"/>
+	<i id="46002" name="Abrir Loot"/>
+	<i id="46003" name="&lt;size=30&gt;LISTA GUILDS&lt;/size&gt;"/>
+	<i id="46004" name="Ranking Guild"/>
+	<i id="46005" name="Nome Guild"/>
+	<i id="46006" name="Guild Level"/>
+	<i id="46007" name="Líder"/>
+	<i id="46008" name="n.º Membros"/>
+	<i id="46009" name="Desde"/>
+	<i id="46010" name="Criar Guild"/>
+	<i id="46011" name="nome do guild"/>
+	<i id="46012" name="&lt;size=30&gt;MINHA GUILD&lt;/size&gt;"/>
+	<i id="46013" name="&lt;size=26&gt;Membros&lt;/size&gt;"/>
+	<i id="46014" name="&lt;size=26&gt;Candidatos&lt;/size&gt;"/>
+	<i id="46015" name="Nome:"/>
+	<i id="46016" name="Level:"/>
+	<i id="46017" name="Atividade:"/>
+	<i id="46018" name="Membros:"/>
+	<i id="46019" name="Líder:"/>
+	<i id="46020" name="Guild News"/>
+	<i id="46021" name="&lt;size=22&gt;Sair Guild&lt;/size&gt;"/>
+	<i id="46022" name="Acusar"/>
+	<i id="46023" name="&lt;size=22&gt;Up&lt;/size&gt;"/>
+	<i id="46024" name="&lt;size=22&gt; Mostrar membros offline&lt;/size&gt;"/>
+	<i id="46025" name="&lt;size=22&gt; Aceitar Aplicação&lt;/size&gt;"/>
+	<i id="46026" name="Tempo Aplicado"/>
+	<i id="46027" name="Ranking Tier"/>
+	<i id="46028" name="Pontuação"/>
+	<i id="46029" name="Nome"/>
+	<i id="46030" name="Level"/>
+	<i id="46031" name="Status online"/>
+	<i id="46032" name="Posição"/>
+	<i id="46033" name="Atividade"/>
+	<i id="46034" name="Solicite para participar"/>
+	<i id="46035" name="Aceito"/>
+	<i id="46036" name="Rejeito"/>
+	<i id="46037" name="Remover"/>
+	<i id="46038" name="Mudar posição"/>
+	<i id="46039" name="Obrigado"/>
+	<i id="46040" name="Recebido"/>
+	<i id="46041" name="Mensagem de Voz"/>
+	<i id="46042" name="Status Ult skill"/>
+	<i id="46043" name="Ação"/>
+	<i id="46044" name="Olá"/>
+	<i id="46045" name="Ajuda"/>
+	<i id="46046" name="Montar"/>
+	<i id="46047" name="Pintura"/>
+	<i id="46048" name="Sim"/>
+	<i id="46049" name="&lt;size=20&gt;Mudar canal (Tab)&lt;/size&gt;"/>
+	<i id="46050" name="&lt;size=20&gt; Pressione Enter para enviar mensagens&lt;/size&gt;"/>
+	<i id="46051" name="Upgrade"/>
+	<i id="46052" name="Rating"/>
+	<i id="46053" name="Taxa de sucesso é 80%, level de upgrade não se restaurá caso falhe"/>
+	<i id="46054" name="Usar:"/>
+	<i id="46055" name="&lt;size=22&gt;Quantidade:&lt;/size&gt;"/>
+	<i id="46056" name="Preço original:"/>
+	<i id="46057" name="&lt;size=22&gt;Preço:&lt;/size&gt;"/>
+	<i id="46058" name="ou"/>
+	<i id="46059" name="&lt;size=22&gt;Comprar\nDiamantes&lt;/size&gt;"/>
+	<i id="46060" name="&lt;size=22&gt;Comprar\nMoedas&lt;/size&gt;"/>
+	<i id="46061" name="&lt;size=30&gt;Sair&lt;/size&gt;"/>
+	<i id="46062" name="份"/>
+	<i id="46063" name="nome do guild"/>
+	<i id="46064" name="&lt;size=22&gt;Nome da guild não pode exceder 5 letras&lt;/size&gt;"/>
+	<i id="46065" name="refresh"/>
+	<i id="46066" name="(Não ganhou agora)"/>
+	<i id="46067" name="Pressione ícone para compra-rápida"/>
+	<i id="46068" name="Tempo que falta:"/>
+	<i id="46069" name="ganhou "/>
+	<i id="46070" name="O Jogador esta offline"/>
+	<i id="46071" name="{0} aceitou seu pedido de guild"/>
+	<i id="46072" name="{0} negou seu pedido de guild"/>
+	<i id="46073" name="Nome alterado com sucesso, relogin"/>
+	<i id="46074" name="{0} está te convidando para entrar em uma partida"/>
+	<i id="46075" name="Permanente"/>
+	<i id="46076" name="Controle o ponto alvo"/>
+	<i id="46077" name="Ataque"/>
+	<i id="46078" name="Acompanhe a carga"/>
+	<i id="46079" name="Acompanhar"/>
+	<i id="46080" name="Pare a carga"/>
+	<i id="46081" name="Defenda"/>
+	<i id="46082" name="Controlando"/>
+	<i id="46083" name="Objetivo está sendo controlado"/>
+	<i id="46084" name="Controlando..."/>
+	<i id="46085" name="{0}m"/>
+	<i id="46086" name="Controlou o objetivo"/>
+	<i id="46087" name="Missão Fracassada"/>
+	<i id="46088" name="Round {0} concluído"/>
+	<i id="46089" name="Preparando para atacar"/>	
+	<i id="46090" name="Atacar após 30 segundos"/>
+	<i id="46091" name="Inimigos atacarão após 30 segundos"/>
+	<i id="46092" name="{0}万"/>
+	<i id="46093" name="&lt;size=22&gt;Meu Ranking: &lt;color=#00FF00&gt;N/A&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="46094" name="&lt;size=22&gt;Meu Ranking: &lt;color=#00ff00&gt;{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="46095" name="&lt;size=22&gt;Partida Rápida&lt;/size&gt;"/>
+	<i id="46096" name="&lt;size=22&gt;Season {0}&lt;/size&gt;"/>
+	<i id="46097" name="Bronze"/>
+	<i id="46098" name="Prata"/>
+	<i id="46099" name="Ouro"/>
+	<i id="46100" name="Plat."/>
+	<i id="46101" name="Diam."/>
+	<i id="46102" name="Master"/>
+	<i id="46103" name="Lord"/>
+	<i id="46104" name="King"/>
+	<i id="46105" name="Top 100"/>
+	<i id="46106" name="Domingo"/>
+	<i id="46107" name="Segunda"/>
+	<i id="46108" name="Terça"/>
+	<i id="46109" name="Quarta"/>
+	<i id="46110" name="Quinta"/>
+	<i id="46111" name="Sexta"/>
+	<i id="46112" name="Sabado"/>
+	<i id="46113" name="&lt;size=22&gt;Retrocheck&lt;/size&gt;"/>
+	<i id="46114" name="Lutando: 60/{0}mins"/>
+	<i id="46115" name="Ainda faltam: {0}"/>
+	<i id="46116" name="&lt;size=30&gt;Quantidades&lt;/size&gt;"/>
+	<i id="46117" name="Ranking"/>
+	<i id="46118" name="Missão"/>
+	<i id="46119" name="Amigos"/>
+	<i id="46120" name="Opções"/>
+	<i id="46121" name="Defesa"/>
+	<i id="46122" name="Controlando"/>
+	<i id="46123" name="Controlando"/>
+	<i id="46124" name="Controlando..."/>
+	<i id="46125" name="Controlando"/>
+	<i id="46126" name="Defenda Ponto A"/>
+	<i id="46127" name="Objetivo em:"/>
+	<i id="46128" name="CONTROLANDO"/>
+	<i id="46129" name="Novo"/>
+	<i id="46130" name="Prêmio!"/>
+	<i id="46131" name="&lt;size=26&gt;Preço:&lt;/size&gt;"/>
+	<i id="46132" name="CAMERA DO TIME, ESQUERDA OU DIREITA PARA MUDAR CAM"/>
+	<i id="46133" name="MENU"/>
+	<i id="46134" name="Configurações"/>
+	<i id="46135" name="Sair"/>
+	<i id="46136" name="Fórum"/>
+	<i id="46137" name="Quer mesmo sair?"/>
+	<i id="46138" name=""/>
+	<i id="46139" name="[Alterar]"/>	
+	<i id="46140" name="&lt;size=30&gt;WELFARE&lt;/size&gt;"/>
+	<i id="46141" name="&lt;color=#ffa500&gt;1 - [Atividade Pessoal] será apagada ao final do dia as 24pm, e [Atividade Guild] será apagada semanalmente aos domingos as 24pm.&lt;color=#00ff00&gt; (Atividade Total Guild = soma de atividade dos membros)&lt;/color&gt;\n2 - [Gifts de Atividades Pessoais] será atualizado as 24pm diariamente, e  [Gifts de Atividades Guild] será atualizado as 24pm aos domingos, por favor, colete em tempo.&lt;/color&gt;"/>
+	<i id="46142" name="Gift de Atividade Pessoal Diária    &lt;size=22&gt;(Atividade Pessoal Diária: &lt;color=#00ff00&gt;{0}&lt;/color&gt;)&lt;/size&gt;"/>
+	<i id="46143" name="Não pode deixar a guild durante acusação"/>
+	<i id="46144" name="Não pode deletar a guild durante acusação"/>
+	<i id="46145" name="Gifts Semanais Guild"/>
+	<i id="46146" name="&lt;size=22&gt;(Atividade Total Guild: &lt;color=#00ff00&gt;{0}&lt;/color&gt;)&lt;/size&gt;"/>
+	<i id="46147" name="Guild Level: &lt;color=#00ff00&gt;{0}&lt;/color&gt;"/>
+	<i id="46148" name="&lt;size=22&gt;Atividade: {0}/{1}&lt;/size&gt;"/>
+	<i id="46149" name="Objetivo não alcançado (atrasado)"/>
+	<i id="46150" name="进度周{0}开启"/>
+	<i id="46151" name="&lt;size=22&gt;Alcance semanalmente &lt;color=#ff0000&gt;{0}&lt;/color&gt;&lt;/size&gt;"/>
+	<i id="46152" name="Gifts Atividade Guild"/>
+	<i id="46153" name="Sua atividade na guild não foi coletada, cheque em tempo"/>
+	<i id="46154" name="Sua atividade na guild não foi coletada, cheque em tempo"/>
+	<i id="46155" name="&lt;size=90&gt;Ataque&lt;/size&gt;"/>
+	<i id="46156" name="&lt;size=90&gt;Defenda&lt;/size&gt;"/>
+	<!--XinShouJiaoXueCon[50]-->
+	<i id="51001" name="Alvo"/>
+	<i id="51002" name="AVISO DE UPDATE"/>
+	<i id="51003" name="Sim"/>
+	<i id="51004" name="Maiores "/>
+	<i id="51005" name="       TUTORIAL"/>
+	<i id="51006" name="Pular"/>
+	<i id="51007" name="Entrar"/>
+	<i id="51008" name="&lt;size=40&gt;Tutorial&lt;/size&gt;"/>
+	<i id="51009" name="&lt;size=40&gt;Area de Treino&lt;/size&gt;"/>
+	<i id="51010" name="&lt;size=60&gt;Treino&lt;/size&gt;"/>
+	<i id="51011" name="Você não pode alterar configurações no Tutorial"/>
+	<i id="51012" name="Atenção"/>
+	<i id="51013" name="Sim"/>
+	<i id="51014" name="&lt;color=#ffd800&gt;Oficial do treinamento: &lt;/color&gt;{0}"/>
+	<i id="50015" name="Há diferentes condições de vitória para modos diferentes, pressione START para começar partida"/>
+	<i id="51016" name="Você pode batalhar contra outros jogadores na Partida Rápida"/>
+	<i id="51017" name="informações"/>
+	<i id="51018" name=" no forum"/>
+
+	<!--\Scripts\UIControl\cmm\GMUICon.cs [52]-->
+	<i id="52000" name="TRIG GM TOOLS"/>
+	<i id="52001" name="Total online players："/>
+	<i id="52002" name="Players in trainning range："/>
+	<i id="52003" name="Players in custom rooms："/>
+	<i id="52004" name="Players in fast matches："/>
+	<i id="52005" name="Check"/>
+	<i id="52006" name="Ranked game stats"/>
+	<i id="52007" name="Item ID"/>
+	<i id="52008" name="Amount"/>
+	<i id="52009" name="Add"/>
+	<i id="52010" name="Add diamonds"/>
+	<i id="52011" name="Add coins"/>
+	<i id="52012" name="Add exp"/>
+	<i id="52013" name="Nickname"/>
+	<i id="52014" name="Map name："/>
+	<i id="52015" name="Teleport to the place of this player"/>
+	<i id="52016" name="Possess"/>
+	<i id="52017" name="Slience"/>
+	<i id="52018" name="Second"/>
+	<i id="52019" name="Unsilence"/>
+	<i id="52020" name="Ban"/>
+	<i id="52021" name="Unban"/>
+	<i id="52022" name="Players in friend matches: {0}"/>
+	<i id="52023" name="Players in pool of ranked games: {0} Current coefficient: {1}"/>
+	<i id="52024" name="(Creating)"/>
+	<i id="52025" name="(Processing)"/>
+</root>

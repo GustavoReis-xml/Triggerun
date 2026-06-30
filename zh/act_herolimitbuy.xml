@@ -1,0 +1,7 @@
+<root>
+	<i id="101" bgimg="libao_herolimitbuy_ditu" name="英雄金币狂欢" btntxt="" notedesc="注：活动时间内黄忠、莉莉丝、妲己三位英雄可消耗金币解锁">
+		<h heroid="1032" type="0" index="0" unlockdata="5|1298|2|688" btndata="钻石解锁|2|金币解锁|5" desc="消耗&lt;color=#ffde00&gt;688钻石&lt;/color&gt;或&lt;color=#ffde00&gt;1298金币&lt;/color&gt;解锁" zstype="1,2" jbzsnum="0" zsdesc="消耗&lt;color=#ffde00&gt;688钻石&lt;/color&gt;赠送"/>
+		<h heroid="1033" type="0" index="0" unlockdata="5|1298|2|688" btndata="钻石解锁|2|金币解锁|5" desc="消耗&lt;color=#ffde00&gt;688钻石&lt;/color&gt;或&lt;color=#ffde00&gt;1298金币&lt;/color&gt;解锁" zstype="1,2" jbzsnum="0" zsdesc="消耗&lt;color=#ffde00&gt;688钻石&lt;/color&gt;赠送"/>
+		<h heroid="1034" type="0" index="0" unlockdata="5|1988|2|988" btndata="钻石解锁|2|金币解锁|5" desc="消耗&lt;color=#ffde00&gt;988钻石&lt;/color&gt;或&lt;color=#ffde00&gt;1988金币&lt;/color&gt;解锁" zstype="1,2" jbzsnum="0" zsdesc="消耗&lt;color=#ffde00&gt;988钻石&lt;/color&gt;赠送"/>
+	</i>
+</root>

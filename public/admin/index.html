@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trigger Run — Painel de Controle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0c12;
+      --bg2: #111420;
+      --bg3: #181c2a;
+      --border: rgba(255,255,255,0.07);
+      --accent: #6c63ff;
+      --accent2: #4ef0c4;
+      --red: #ff4757;
+      --blue: #4da6ff;
+      --gold: #ffd700;
+      --text: #e0e6f0;
+      --muted: #6b7a99;
+      --card: rgba(255,255,255,0.04);
+      --glass: rgba(108,99,255,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background decoration */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(108,99,255,0.15) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -200px; right: -200px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(78,240,196,0.10) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,12,18,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 900; font-size: 18px; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .logo svg { fill: var(--accent); }
+    .header-status {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .status-dot {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--muted);
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #ff4757;
+      transition: background 0.3s;
+    }
+    .dot.online { background: #2ecc71; box-shadow: 0 0 8px #2ecc71; }
+    .player-count {
+      font-size: 13px; color: var(--muted);
+      background: var(--card); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 20px;
+    }
+    #playerCountNum { color: var(--accent2); font-weight: 600; }
+
+    /* ---- LAYOUT ---- */
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ---- SIDEBAR ---- */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 20px 16px;
+      position: sticky; top: 60px; height: calc(100vh - 60px);
+      overflow-y: auto; z-index: 10;
+    }
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0 8px; margin-bottom: 8px; margin-top: 16px;
+    }
+    .nav-btn {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; padding: 10px 12px; border-radius: 10px;
+      border: none; background: transparent;
+      color: var(--muted); font-size: 14px; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all 0.2s; text-align: left;
+    }
+    .nav-btn:hover { background: var(--card); color: var(--text); }
+    .nav-btn.active { background: var(--glass); color: var(--accent); }
+    .nav-btn .icon { font-size: 16px; min-width: 20px; text-align: center; }
+
+    /* ---- MAIN ---- */
+    .main { padding: 28px; overflow-y: auto; position: relative; z-index: 1; }
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Page header */
+    .page-header { margin-bottom: 24px; }
+    .page-header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+    .page-header p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* ---- CARDS ---- */
+    .card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: rgba(108,99,255,0.3); }
+    .card-title {
+      font-size: 12px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title .card-icon { font-size: 16px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    /* ---- PLAYER CARDS ---- */
+    #playersList { display: flex; flex-direction: column; gap: 12px; }
+    .player-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 16px; align-items: center;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .player-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-1px); }
+    .player-card.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .player-avatar {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: white;
+    }
+    .player-info { min-width: 0; }
+    .player-name { font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .player-meta { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+    .badge {
+      font-size: 11px; padding: 2px 8px; border-radius: 20px;
+      font-weight: 500;
+    }
+    .badge-blue { background: rgba(77,166,255,0.15); color: var(--blue); border: 1px solid rgba(77,166,255,0.3); }
+    .badge-red { background: rgba(255,71,87,0.15); color: var(--red); border: 1px solid rgba(255,71,87,0.3); }
+    .badge-gold { background: rgba(255,215,0,0.12); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
+    .badge-green { background: rgba(46,204,113,0.15); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+    .badge-purple { background: rgba(108,99,255,0.15); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+    .badge-muted { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+    .player-coords { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px; }
+
+    /* HP bar */
+    .hp-section { text-align: right; min-width: 100px; }
+    .hp-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+    .hp-bar { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; margin-bottom: 4px; }
+    .hp-fill { height: 100%; border-radius: 3px; transition: width 0.5s, background 0.3s; }
+    .hp-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+    /* Player actions panel */
+    #playerActions {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px; margin-top: 16px;
+      display: none;
+    }
+    #playerActions.visible { display: block; }
+    .player-actions-title {
+      font-size: 14px; font-weight: 600; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ---- FORM CONTROLS ---- */
+    .form-group { margin-bottom: 14px; }
+    .form-label {
+      display: block; font-size: 12px; font-weight: 500;
+      color: var(--muted); margin-bottom: 6px; letter-spacing: 0.5px;
+    }
+    input, select, textarea {
+      width: 100%; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); font-family: 'Inter', sans-serif;
+      padding: 10px 14px; font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(108,99,255,0.15);
+    }
+    select option { background: var(--bg3); }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 7px; padding: 10px 18px; border-radius: 10px;
+      border: none; font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s; letter-spacing: 0.3px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: white; box-shadow: 0 4px 15px rgba(108,99,255,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,99,255,0.4); }
+    .btn-danger {
+      background: rgba(255,71,87,0.15); color: var(--red);
+      border: 1px solid rgba(255,71,87,0.3);
+    }
+    .btn-danger:hover { background: rgba(255,71,87,0.25); }
+    .btn-success {
+      background: rgba(46,204,113,0.15); color: #2ecc71;
+      border: 1px solid rgba(46,204,113,0.3);
+    }
+    .btn-success:hover { background: rgba(46,204,113,0.25); }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--card); color: var(--text); }
+    .btn-sm { padding: 7px 12px; font-size: 12px; border-radius: 8px; }
+    .btn-full { width: 100%; }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ---- TOGGLE ---- */
+    .toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-info { }
+    .toggle-info strong { font-size: 14px; display: block; }
+    .toggle-info small { color: var(--muted); font-size: 12px; }
+    .toggle {
+      position: relative; width: 44px; height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle input { display: none; }
+    .toggle-track {
+      position: absolute; inset: 0; border-radius: 12px;
+      background: rgba(255,255,255,0.1); cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle input:checked + .toggle-track { background: var(--accent); }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; border-radius: 9px;
+      background: white; transition: transform 0.2s;
+      pointer-events: none;
+    }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(20px); }
+
+    /* ---- STATS ---- */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px;
+    }
+    .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .stat-value { font-size: 32px; font-weight: 700; letter-spacing: -1px; }
+    .stat-value.accent { color: var(--accent); }
+    .stat-value.teal { color: var(--accent2); }
+    .stat-value.red { color: var(--red); }
+    .stat-value.gold { color: var(--gold); }
+
+    /* ---- TDM HUD ---- */
+    .tdm-hud {
+      background: linear-gradient(135deg, rgba(77,166,255,0.1), rgba(255,71,87,0.1));
+      border: 1px solid rgba(108,99,255,0.2);
+      border-radius: 16px; padding: 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px; gap: 16px;
+    }
+    .tdm-team { text-align: center; flex: 1; }
+    .tdm-team-name { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tdm-score { font-size: 48px; font-weight: 900; letter-spacing: -2px; }
+    .tdm-score.blue { color: var(--blue); }
+    .tdm-score.red { color: var(--red); }
+    .tdm-sep { font-size: 24px; color: var(--muted); font-weight: 300; }
+    .tdm-phase {
+      text-align: center; font-size: 12px; color: var(--muted);
+      padding: 4px 14px; border-radius: 20px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    }
+
+    /* ---- LOG ---- */
+    #logArea {
+      background: rgba(0,0,0,0.4); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      height: 200px; overflow-y: auto; color: var(--accent2);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .log-entry { padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .log-ok { color: #2ecc71; }
+    .log-err { color: var(--red); }
+    .log-info { color: var(--accent2); }
+
+    /* ---- QUICK ACTIONS grid ---- */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .quick-action {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 14px;
+      text-align: center; cursor: pointer;
+      transition: all 0.2s; display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+    }
+    .quick-action:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-2px); background: rgba(108,99,255,0.08); }
+    .quick-action .qa-icon { font-size: 28px; }
+    .quick-action .qa-label { font-size: 13px; font-weight: 500; color: var(--text); }
+    .quick-action .qa-sub { font-size: 11px; color: var(--muted); }
+
+    /* ---- ENTITY SPAWN GRID ---- */
+    #entityGrid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px;
+    }
+    .entity-btn {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px;
+      cursor: pointer; text-align: center; transition: all 0.2s;
+      font-size: 12px; color: var(--text);
+    }
+    .entity-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .entity-btn .e-icon { font-size: 22px; margin-bottom: 6px; }
+    .entity-btn .e-name { font-weight: 500; }
+    .entity-btn .e-hp { color: var(--muted); font-size: 10px; margin-top: 2px; }
+
+    /* ---- HERO GRID ---- */
+    #heroGrid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px;
+      max-height: 340px; overflow-y: auto;
+    }
+    .hero-btn {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px;
+      cursor: pointer; text-align: center; transition: all 0.2s;
+      font-size: 13px; color: var(--text);
+    }
+    .hero-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+    .hero-btn .h-id { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono'; }
+
+    /* ---- TOAST ---- */
+    #toastArea { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
+    .toast {
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 12px 18px; border-radius: 12px;
+      font-size: 13px; box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      animation: slideUp 0.3s ease; max-width: 320px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .toast.ok { border-left: 3px solid #2ecc71; }
+    .toast.err { border-left: 3px solid var(--red); }
+    .toast.info { border-left: 3px solid var(--accent); }
+    @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+    /* empty state */
+    .empty-state {
+      text-align: center; padding: 60px 20px;
+      color: var(--muted); font-size: 14px;
+    }
+    .empty-state .es-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-state strong { display: block; color: var(--text); margin-bottom: 4px; }
+
+    /* buff list */
+    #buffListWrapper { max-height: 320px; overflow-y: auto; }
+    .buff-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+    }
+    .buff-item:last-child { border-bottom: none; }
+    .buff-id { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--muted); }
+
+    /* ---- COSMETICS ---- */
+    .cosmetic-tabs {
+      display: flex; gap: 6px; margin-bottom: 16px;
+    }
+    .cosmetic-tab {
+      padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .cosmetic-tab.active { background: var(--glass); color: var(--accent); border-color: rgba(108,99,255,0.4); }
+    .cosmetic-tab:hover:not(.active) { background: var(--card); color: var(--text); }
+
+    .skin-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px;
+      max-height: 420px; overflow-y: auto;
+    }
+    .skin-card {
+      background: var(--bg); border: 2px solid var(--border);
+      border-radius: 14px; padding: 14px 10px;
+      text-align: center; cursor: pointer; transition: all 0.2s;
+      position: relative;
+    }
+    .skin-card:hover { border-color: rgba(108,99,255,0.5); transform: translateY(-2px); }
+    .skin-card.equipped { border-color: var(--accent2); box-shadow: 0 0 0 1px var(--accent2); }
+    .skin-card .sc-icon { font-size: 32px; margin-bottom: 8px; }
+    .skin-card .sc-name { font-size: 12px; font-weight: 500; line-height: 1.3; }
+    .skin-card .sc-id { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono'; margin-top: 4px; }
+    .skin-card .equipped-badge {
+      position: absolute; top: 6px; right: 6px;
+      font-size: 9px; background: var(--accent2); color: #000;
+      padding: 1px 5px; border-radius: 4px; font-weight: 700;
+    }
+
+    .emote-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
+      max-height: 420px; overflow-y: auto;
+    }
+    .emote-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px;
+      cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .emote-card:hover { border-color: rgba(78,240,196,0.5); background: rgba(78,240,196,0.05); }
+    .emote-card .em-icon { font-size: 24px; flex-shrink: 0; }
+    .emote-card .em-info { min-width: 0; }
+    .emote-card .em-name { font-size: 12px; font-weight: 500; }
+    .emote-card .em-anim { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono'; }
+    /* cross-hero emotes */
+    .emote-cross-hero { border-style: dashed; }
+    .emote-cross-hero:hover { border-color: rgba(255,215,0,0.5); background: rgba(255,215,0,0.05); }
+
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; height: auto; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    Trigger Run · Admin Panel
+  </div>
+  <div class="header-status">
+    <div class="status-dot">
+      <div class="dot" id="serverDot"></div>
+      <span id="serverStatus">Conectando...</span>
+    </div>
+    <div class="player-count">
+      <span id="playerCountNum">0</span> jogadores online
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <p class="sidebar-section-label">Visão Geral</p>
+    <button class="nav-btn active" onclick="showPage('dashboard')" id="nav-dashboard">
+      <span class="icon">📊</span> Dashboard
+    </button>
+
+    <p class="sidebar-section-label">Jogadores</p>
+    <button class="nav-btn" onclick="showPage('players')" id="nav-players">
+      <span class="icon">👥</span> Jogadores
+    </button>
+    <button class="nav-btn" onclick="showPage('heroes')" id="nav-heroes">
+      <span class="icon">🦸</span> Trocar Herói
+    </button>
+    <button class="nav-btn" onclick="showPage('buffs')" id="nav-buffs">
+      <span class="icon">⚡</span> Buffs & Debuffs
+    </button>
+
+    <p class="sidebar-section-label">Cosméticos</p>
+    <button class="nav-btn" onclick="showPage('cosmetics')" id="nav-cosmetics">
+      <span class="icon">🎨</span> Skins & Emotes
+    </button>
+
+    <p class="sidebar-section-label">Mundo</p>
+    <button class="nav-btn" onclick="showPage('entities')" id="nav-entities">
+      <span class="icon">🤖</span> Spawnar Entidades
+    </button>
+    <button class="nav-btn" onclick="showPage('tdm')" id="nav-tdm">
+      <span class="icon">⚔️</span> TDM Match
+    </button>
+    <button class="nav-btn" onclick="showPage('zueira')" id="nav-zueira">
+      <span class="icon">🤪</span> Modo Zueira
+    </button>
+
+    <p class="sidebar-section-label">Ferramentas</p>
+    <button class="nav-btn" onclick="showPage('chat')" id="nav-chat">
+      <span class="icon">💬</span> Enviar Mensagem
+    </button>
+    <button class="nav-btn" onclick="showPage('crashes')" id="nav-crashes" style="display: flex; align-items: center; justify-content: flex-start; width: 100%;">
+      <span class="icon">⚠️</span> Crashes & Bugs <span id="crashBadge" class="badge badge-red" style="padding: 2px 7px; font-size: 10px; display: none; margin-left: auto; border-radius: 10px; font-weight: bold; background: var(--red); color: #fff;">0</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('packets')" id="nav-packets">
+      <span class="icon">🔍</span> Inspetor de Pacotes
+    </button>
+
+    <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px;">
+      <div style="font-size:11px; color:var(--muted); text-align:center; line-height:1.8;">
+        Trigger Run Server v1.3.5<br>
+        <span id="uptimeLabel">–</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h1>📊 Dashboard</h1>
+        <p>Visão geral em tempo real do servidor</p>
+      </div>
+
+      <div class="stat-grid" id="statGrid">
+        <div class="stat-card">
+          <div class="stat-label">Jogadores</div>
+          <div class="stat-value accent" id="s-players">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Entidades Ativas</div>
+          <div class="stat-value teal" id="s-npcs">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">TDM Ativo</div>
+          <div class="stat-value gold" id="s-tdm">Não</div>
+        </div>
+      </div>
+
+      <!-- TDM HUD -->
+      <div class="tdm-hud" id="tdmHud" style="display:none;">
+        <div class="tdm-team">
+          <div class="tdm-team-name">🔵 Time Azul</div>
+          <div class="tdm-score blue" id="blueScore">0</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="tdm-phase" id="tdmPhase">warmup</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">Tempo: <span id="tdmTime">–</span>s</div>
+        </div>
+        <div class="tdm-team">
+          <div class="tdm-team-name">🔴 Time Vermelho</div>
+          <div class="tdm-score red" id="redScore">0</div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">⚡</span> Ações Rápidas (todos os jogadores)</div>
+        <div class="quick-grid">
+          <div class="quick-action" onclick="quickAction('heal_all')">
+            <div class="qa-icon">💚</div>
+            <div class="qa-label">Curar Todos</div>
+            <div class="qa-sub">HP máximo</div>
+          </div>
+          <div class="quick-action" onclick="quickAction('kill_npcs')">
+            <div class="qa-icon">🗑️</div>
+            <div class="qa-label">Limpar NPCs</div>
+            <div class="qa-sub">Remove tudo</div>
+          </div>
+          <div class="quick-action" onclick="quickAction('kill_npcs_all')">
+            <div class="qa-icon">💥</div>
+            <div class="qa-label">Limpar Tudo</div>
+            <div class="qa-sub">Inclusive dummies</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-title"><span class="card-icon">🚀</span> Alteração de Mapa em Tempo Real</div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">Selecionar Novo Mapa</label>
+            <select id="mapSelector">
+              <option value="5202">bachang_baxi (Arena de Treino — Padrão)</option>
+              <option value="5204">jiaodouchang_02_3 (🏆 Hall do Rei — TDM)</option>
+              <option value="5010">dz_jjc (Mausoléu do Faraó — TDM)</option>
+              <option value="5030">wudingzhengduo_baked_3_xiugai (Terraço das Nuvens — Control)</option>
+              <option value="5074">shuiba_smc_3_xiugai (Barragem profunda — Control)</option>
+              <option value="5068">persian_3_xiugai (Palácio Real do Deserto — Control)</option>
+              <option value="5050">degulagubao_3_xiugai (Castelo do Drácula — Control)</option>
+              <option value="5055">fengducheng_3_xgjg (Palácio Subterrâneo — Control)</option>
+              <option value="5063">husong01_new_03 (Cidade da Glória — Escort)</option>
+              <option value="5022">husong02 (Cidade Estelar — Escort 2)</option>
+              <option value="5049">xiudaoyuan_3_xiugai_huzi (Mosteiro da Montanha — Resource)</option>
+              <option value="5260">ziyuan_02_baitian (Mansão do Anjo — Resource)</option>
+              <option value="5205">xinshouyindao_3 (Tutorial de Introdução)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Aplicar Efeito Em</label>
+            <select id="mapTargetPlayer">
+              <option value="">— Todos os Jogadores Online —</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="changeMapRealtime()">🚀 Alterar Cenário Agora</button>
+      </div>
+
+      <!-- Players preview -->
+      <div class="card">
+        <div class="card-title"><span class="card-icon">👥</span> Jogadores Online</div>
+        <div id="dashPlayerList">
+          <div class="empty-state"><div class="es-icon">🎮</div><strong>Nenhum jogador online</strong>Aguardando conexões...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PLAYERS ===== -->
+    <div class="page" id="page-players">
+      <div class="page-header">
+        <h1>👥 Jogadores</h1>
+        <p>Inspecione e controle jogadores em tempo real</p>
+      </div>
+      <div id="playersList">
+        <div class="empty-state"><div class="es-icon">🎮</div><strong>Nenhum jogador online</strong></div>
+      </div>
+      <div id="playerActions">
+        <div class="player-actions-title">🎯 Ações — <span id="selectedPlayerName">–</span></div>
+        <div class="grid-2">
+          <div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>God Mode</strong><small>Invencível + Escudo</small></div>
+              <label class="toggle"><input type="checkbox" id="tog-god" onchange="toggleGodMode(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>Super Velocidade</strong><small>Mover rápido pelo mapa</small></div>
+              <label class="toggle"><input type="checkbox" id="tog-speed" onchange="toggleSpeed(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>Invisibilidade</strong><small>Ocultar dos outros jogadores</small></div>
+              <label class="toggle"><input type="checkbox" id="tog-invis" onchange="toggleInvis(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+          </div>
+          <div>
+            <div class="btn-row" style="margin-top:8px;">
+              <button class="btn btn-success btn-sm" onclick="healPlayer()">💚 Curar</button>
+              <button class="btn btn-danger btn-sm" onclick="killPlayer()">💀 Eliminar</button>
+              <button class="btn btn-ghost btn-sm" onclick="kickPlayer()" style="border-color:var(--red);color:var(--red);">🛑 Expulsar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HEROES ===== -->
+    <div class="page" id="page-heroes">
+      <div class="page-header">
+        <h1>🦸 Trocar Herói</h1>
+        <p>Troque o personagem de qualquer jogador instantaneamente</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">🎯</span> Selecionar Jogador</div>
+        <select id="heroTargetPlayer" onchange="updateHeroTarget()">
+          <option value="">— Nenhum jogador online —</option>
+        </select>
+        <div id="heroTargetInfo" style="margin-top:10px; font-size:13px; color:var(--muted);"></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">🦸</span> Selecionar Herói</div>
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <input type="number" id="customHeroId" placeholder="ID de Herói Livre (Ex: 1101, 1022)..." style="flex:1;" />
+          <button class="btn btn-primary" onclick="switchCustomHero()">Transformar</button>
+        </div>
+        <input type="text" placeholder="Buscar herói..." id="heroSearch" oninput="filterHeroes()" style="margin-bottom:12px;" />
+        <div id="heroGrid"></div>
+      </div>
+    </div>
+
+    <!-- ===== BUFFS ===== -->
+    <div class="page" id="page-buffs">
+      <div class="page-header">
+        <h1>⚡ Buffs & Debuffs</h1>
+        <p>Aplique efeitos em jogadores a partir do buff.xml</p>
+      </div>
+      <div class="grid-2" style="margin-bottom:16px;">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🎯</span> Aplicar Buff</div>
+          <div class="form-group">
+            <label class="form-label">Jogador</label>
+            <select id="buffTargetPlayer"><option value="">— Selecione —</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selecionar Buff por Nome</label>
+            <select id="buffSelectDropdown" onchange="document.getElementById('buffIdInput').value = this.value">
+              <option value="">— Selecione um Buff —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Buff ID (Bruto)</label>
+            <input type="number" id="buffIdInput" placeholder="Ex: 1008" min="1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Duração (ms)</label>
+            <input type="number" id="buffDurInput" placeholder="Ex: 10000" value="10000" />
+          </div>
+          <button class="btn btn-primary btn-full" onclick="applyBuff()">⚡ Aplicar Buff</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="card-icon">📋</span> Buffs Disponíveis</div>
+          <input type="text" placeholder="Filtrar buffs..." id="buffSearch" oninput="filterBuffs()" style="margin-bottom:12px;" />
+          <div id="buffListWrapper"><div style="color:var(--muted); font-size:13px;">Carregando...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ENTITIES ===== -->
+    <div class="page" id="page-entities">
+      <div class="page-header">
+        <h1>🤖 Spawnar Entidades</h1>
+        <p>Spawne NPCs, bots de treino e inimigos no mundo</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">⚙️</span> Configuração de Spawn</div>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Jogador Alvo</label>
+            <select id="spawnTargetPlayer"><option value="">— Selecione —</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantidade</label>
+            <input type="number" id="spawnCount" value="1" min="1" max="20" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selecionar Entidade por Nome</label>
+            <select id="spawnNpcSelectDropdown" onchange="document.getElementById('spawnCustomId').value = this.value">
+              <option value="">— Selecione um NPC —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ID Bruto (opcional)</label>
+            <input type="number" id="spawnCustomId" placeholder="Ex: 1121" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Escala Inicial</label>
+            <select id="spawnScaleSelector">
+              <option value="100">Normal (100%)</option>
+              <option value="30">Minúsculo (30%)</option>
+              <option value="50">Pequeno (50%)</option>
+              <option value="200">Grande (200%)</option>
+              <option value="300">Gigante (300%)</option>
+              <option value="500">Colossal (500%)</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="spawnCustom()">🤖 Spawnar ID Customizado</button>
+          <button class="btn btn-danger" onclick="killNpcs(false)">🗑️ Limpar NPCs</button>
+          <button class="btn btn-danger" onclick="killNpcs(true)">💥 Limpar Tudo (+ Dummies)</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📦</span> Entidades Rápidas</div>
+        <div id="entityGrid"></div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <div class="card-title"><span class="card-icon">👁️</span> NPCs Ativos</div>
+        <div id="npcList"><div style="color:var(--muted); font-size:13px;">Nenhum NPC ativo</div></div>
+      </div>
+    </div>
+
+    <!-- ===== TDM ===== -->
+    <div class="page" id="page-tdm">
+      <div class="page-header">
+        <h1>⚔️ TDM Match</h1>
+        <p>Acompanhe e controle a partida de Team Deathmatch</p>
+      </div>
+      <div class="card" id="tdmCard">
+        <div class="tdm-hud" id="tdmHud2">
+          <div class="tdm-team">
+            <div class="tdm-team-name">🔵 Time Azul</div>
+            <div class="tdm-score blue" id="blueScore2">0</div>
+          </div>
+          <div style="text-align:center;">
+            <div class="tdm-phase" id="tdmPhase2">Sem Partida</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:6px;" id="tdmTimeLabel2">–</div>
+          </div>
+          <div class="tdm-team">
+            <div class="tdm-team-name">🔴 Time Vermelho</div>
+            <div class="tdm-score red" id="redScore2">0</div>
+          </div>
+        </div>
+        <div style="color:var(--muted); font-size:13px; text-align:center;" id="tdmStatusMsg">Nenhuma partida TDM ativa no momento.</div>
+        <div class="grid-2" style="margin-top:20px;">
+          <div class="card" style="background:var(--bg2);">
+            <div class="card-title" style="margin-bottom:10px;"><span class="card-icon">⏱️</span> Controle de Tempo</div>
+            <div class="btn-row">
+              <button class="btn btn-success btn-sm" onclick="modifyTdmTime('add')">+ 1 Minuto</button>
+              <button class="btn btn-danger btn-sm" onclick="modifyTdmTime('sub')">- 1 Minuto</button>
+              <button class="btn btn-ghost btn-sm" onclick="modifyTdmTime('end')">Encerrar Agora</button>
+            </div>
+          </div>
+          <div class="card" style="background:var(--bg2);">
+            <div class="card-title" style="margin-bottom:10px;"><span class="card-icon">🏆</span> Manipular Placar</div>
+            <div class="btn-row">
+              <button class="btn btn-primary btn-sm" onclick="modifyTdmScore('blue', 10)">+ 10 Azul</button>
+              <button class="btn btn-danger btn-sm" onclick="modifyTdmScore('red', 10)">+ 10 Vermelho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MODO ZUEIRA ===== -->
+    <div class="page" id="page-zueira">
+      <div class="page-header">
+        <h1>🤪 Modo Zueira</h1>
+        <p>Hacks cômicos, troca de tamanho e modificação visual em tempo real</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">🎯</span> Jogador Alvo</div>
+        <div class="grid-2">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Selecionar Jogador</label>
+            <select id="zueiraTargetPlayer" onchange="selectPlayer(this.value)"></select>
+          </div>
+          <div id="zueiraPlayerStatus" style="display:flex;align-items:flex-end;padding-bottom:4px;font-size:13px;color:var(--muted);"></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:16px;">
+        <!-- Card 1: Scale -->
+        <div class="card">
+          <div class="card-title"><span class="card-icon">📏</span> Redimensionar (Escalar)</div>
+          <div class="form-group">
+            <label class="form-label">Tipo de Alvo</label>
+            <select id="scaleTargetType" onchange="toggleScaleTarget(this.value)">
+              <option value="player">Jogador Selecionado</option>
+              <option value="npc">NPC Ativo no Mapa</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="zueiraNpcSelectGroup" style="display:none;">
+            <label class="form-label">Escolher NPC do Mapa</label>
+            <select id="scaleNpcSelector">
+              <option value="">— Nenhum NPC ativo —</option>
+            </select>
+          </div>
+
+          <div style="margin-top:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:500;">Largura (Eixo X):</span>
+              <span id="label-scaleX" style="font-family:'JetBrains Mono'; font-weight:600; color:var(--accent);">100%</span>
+            </div>
+            <input type="range" id="range-scaleX" min="10" max="800" value="100" oninput="updateScaleLabel('X', this.value)" style="width:100%; margin-bottom:16px;" />
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:500;">Altura (Eixo Y):</span>
+              <span id="label-scaleY" style="font-family:'JetBrains Mono'; font-weight:600; color:var(--accent);">100%</span>
+            </div>
+            <input type="range" id="range-scaleY" min="10" max="800" value="100" oninput="updateScaleLabel('Y', this.value)" style="width:100%; margin-bottom:16px;" />
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:13px; font-weight:500;">Profundidade (Eixo Z):</span>
+              <span id="label-scaleZ" style="font-family:'JetBrains Mono'; font-weight:600; color:var(--accent);">100%</span>
+            </div>
+            <input type="range" id="range-scaleZ" min="10" max="800" value="100" oninput="updateScaleLabel('Z', this.value)" style="width:100%; margin-bottom:16px;" />
+          </div>
+
+          <div class="btn-row" style="margin-bottom:12px;">
+            <button class="btn btn-ghost btn-sm" onclick="setQuickScale(300)">🏢 Gigante (3x)</button>
+            <button class="btn btn-ghost btn-sm" onclick="setQuickScale(30)">🐁 Mini (0.3x)</button>
+            <button class="btn btn-ghost btn-sm" onclick="setQuickScale(100)">👤 Normal (1x)</button>
+            <button class="btn btn-ghost btn-sm" onclick="setCustomScale(20, 100, 20)">🥖 Espeto</button>
+            <button class="btn btn-ghost btn-sm" onclick="setCustomScale(160, 20, 160)">🥞 Panqueca</button>
+          </div>
+
+          <button class="btn btn-primary btn-full" onclick="applyScale()">📏 Aplicar Escala 3D</button>
+        </div>
+
+        <!-- Card 2: Visual Model Swapper -->
+        <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div class="card-title"><span class="card-icon">🎭</span> Trocar Aparência (Model Swap)</div>
+            <p style="font-size:12px; color:var(--muted); margin-bottom:16px;">
+              Troque a aparência visual do seu personagem por outro herói ou NPC de treino. Suas habilidades e arma continuarão sendo as do herói original!
+            </p>
+            <div class="form-group">
+              <label class="form-label">Selecionar Aparência de Herói</label>
+              <select id="zueiraHeroModelSelector" onchange="document.getElementById('zueiraCustomModelId').value = this.value">
+                <option value="">— Selecione —</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ou Usar ID de NPC de Treino (Modelos)</label>
+              <select id="zueiraNpcModelSelector" onchange="document.getElementById('zueiraCustomModelId').value = this.value">
+                <option value="1121">Dummy de Treino Fraco (#1121)</option>
+                <option value="1122">Dummy de Treino Médio (#1122)</option>
+                <option value="1101">Dummy de Treino Forte (#1101)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ID de Aparência Customizado</label>
+              <input type="number" id="zueiraCustomModelId" placeholder="Ex: 1015, 1121..." />
+            </div>
+          </div>
+          <div class="btn-row" style="margin-top:16px;">
+            <button class="btn btn-primary" style="flex:1;" onclick="applyVisualModel()">🎭 Transformar Modelo</button>
+            <button class="btn btn-ghost" onclick="resetVisualModel()">🔄 Resetar Original</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Hacks and Cheats -->
+      <div class="card">
+        <div class="card-title"><span class="card-icon">⚡</span> Modificadores Rápidos (Trapaças)</div>
+        <div class="grid-2">
+          <div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>Sem Cooldown (NoCD)</strong><small>Habilidades instantâneas sem tempo de recarga</small></div>
+              <label class="toggle"><input type="checkbox" id="z-tog-nocd" onchange="toggleNoCd(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>God Mode (Vida Infinita)</strong><small>Invulnerabilidade e escudo máximo</small></div>
+              <label class="toggle"><input type="checkbox" id="z-tog-god" onchange="toggleGodMode(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+          </div>
+          <div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>Super Velocidade (Speed)</strong><small>Velocidade de movimento absurdamente rápida</small></div>
+              <label class="toggle"><input type="checkbox" id="z-tog-speed" onchange="toggleSpeed(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><strong>Invisibilidade (Ghost)</strong><small>Ficar totalmente invisível para outros jogadores</small></div>
+              <label class="toggle"><input type="checkbox" id="z-tog-invis" onchange="toggleInvis(this)"><div class="toggle-track"></div><div class="toggle-thumb"></div></label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== COSMETICS ===== -->
+    <div class="page" id="page-cosmetics">
+      <div class="page-header">
+        <h1>🎨 Skins & Emotes</h1>
+        <p>Troque a skin, arma e emotes dos jogadores em tempo real</p>
+      </div>
+
+      <!-- Target player selector -->
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">🎯</span> Jogador Alvo</div>
+        <div class="grid-2">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Selecionar Jogador</label>
+            <select id="cosmeticTargetPlayer" onchange="loadCosmeticsForPlayer()"></select>
+          </div>
+          <div id="cosmeticPlayerStatus" style="display:flex;align-items:flex-end;padding-bottom:4px;font-size:13px;color:var(--muted);"></div>
+        </div>
+      </div>
+
+      <!-- Cosmetic tabs -->
+      <div class="cosmetic-tabs">
+        <button class="cosmetic-tab active" onclick="showCosmeticTab('skins')" id="ctab-skins">👕 Skins</button>
+        <button class="cosmetic-tab" onclick="showCosmeticTab('weapons')" id="ctab-weapons">🔫 Armas</button>
+        <button class="cosmetic-tab" onclick="showCosmeticTab('emotes')" id="ctab-emotes">🎭 Emotes (Herói)</button>
+        <button class="cosmetic-tab" onclick="showCosmeticTab('crossemotes')" id="ctab-crossemotes">⭐ Emotes de Todos</button>
+      </div>
+
+      <!-- Skins panel -->
+      <div id="ctab-panel-skins">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">👕</span> Skins Disponíveis</div>
+          <div class="skin-grid" id="skinGrid"><div style="color:var(--muted);font-size:13px;">Selecione um jogador</div></div>
+        </div>
+      </div>
+
+      <!-- Weapons panel -->
+      <div id="ctab-panel-weapons" style="display:none;">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🔫</span> Armas Disponíveis</div>
+          <div class="skin-grid" id="weaponGrid"><div style="color:var(--muted);font-size:13px;">Selecione um jogador</div></div>
+        </div>
+      </div>
+
+      <!-- Emotes panel -->
+      <div id="ctab-panel-emotes" style="display:none;">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🎭</span> Emotes do Herói Atual</div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;background:rgba(255,255,255,0.05);padding:10px;border-radius:10px;">
+            <label style="font-size:12px;font-weight:600;color:var(--muted);">Som Personalizado (Opcional):</label>
+            <input type="text" id="emoteSoundInput" placeholder="Ex: Audio/Emotes/dance01" style="flex:1;padding:6px 10px;font-size:12px;" />
+          </div>
+          <div class="emote-grid" id="emoteGrid"><div style="color:var(--muted);font-size:13px;">Selecione um jogador</div></div>
+        </div>
+      </div>
+
+      <!-- Cross-hero emotes panel -->
+      <div id="ctab-panel-crossemotes" style="display:none;">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">⭐</span> Emotes de Todos os Heróis</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Esses emotes usam o <code>animparm</code> de outros heróis no personagem atual. Pode causar animações únicas ou inesperadas!</p>
+          <input type="text" id="crossEmoteSearch" placeholder="Buscar emote ou herói..." oninput="filterCrossEmotes()" style="margin-bottom:12px;" />
+          <div class="emote-grid" id="crossEmoteGrid"><div style="color:var(--muted);font-size:13px;">Carregando...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CHAT ===== -->
+    <div class="page" id="page-chat">
+      <div class="page-header">
+        <h1>💬 Enviar Mensagem</h1>
+        <p>Envie mensagens do sistema para todos os jogadores</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title"><span class="card-icon">📢</span> Mensagem Global</div>
+        <div class="form-group">
+          <label class="form-label">Mensagem</label>
+          <input type="text" id="chatMsg" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter') sendChatMsg()" />
+        </div>
+        <button class="btn btn-primary" onclick="sendChatMsg()">📢 Enviar para Todos</button>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-icon">📋</span> Log de Ações</div>
+        <div id="logArea"></div>
+      </div>
+    </div>
+
+    <!-- ===== CRASHES & BUGS ===== -->
+    <div class="page" id="page-crashes">
+      <div class="page-header">
+        <h1>⚠️ Relatório de Crashes e Bugs</h1>
+        <p>Acompanhe exceções do servidor e falhas importantes em tempo real</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+          <span>🚨 Ocorrências Detectadas</span>
+          <button class="btn btn-danger btn-sm" onclick="clearCrashLogs()">🧹 Limpar Logs</button>
+        </div>
+        <div id="crashLogsArea" style="background: rgba(18, 10, 15, 0.65); border: 1px solid rgba(255, 71, 87, 0.2); border-radius: 12px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; min-height: 300px; max-height: 500px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+          <div class="empty-state"><div class="es-icon" style="color:#2ecc71;">🛡️</div><strong>Nenhum crash detectado!</strong>O servidor está rodando de forma estável.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PACKETS INSPECTOR ===== -->
+    <div class="page" id="page-packets">
+      <div class="page-header">
+        <h1>🔍 Inspetor de Pacotes de Rede</h1>
+        <p>Monitore o tráfego de rede TCP do servidor em tempo real (limite de 150 linhas)</p>
+      </div>
+      <div class="card" style="margin-bottom:16px;">
+        <div class="card-title" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+          <div style="display:flex; align-items:center; gap:20px;">
+            <span>📡 Monitor de Rede</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:12px; color:var(--muted);">Ocultar Movimento/Ping</span>
+              <label class="toggle">
+                <input type="checkbox" id="hideSyncPackets" checked>
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="clearPackets()">🧹 Limpar Terminal</button>
+        </div>
+        <div id="packetLogsArea" style="background: #06080e; border: 1px solid var(--border); border-radius: 12px; padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; min-height: 400px; max-height: 600px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
+          <div class="empty-state"><div class="es-icon" style="color:var(--muted);">📡</div><strong>Nenhum pacote capturado</strong>Aguardando tráfego de rede...</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- TOAST AREA -->
+<div id="toastArea"></div>
+
+<script>
+let state = { players: [], npcs: [], tdm: { active: false } };
+let selectedPlayerId = null;
+let allHeroes = [];
+let allBuffs = [];
+let allNpcs = [];
+let startTime = Date.now();
+
+// ---- API helpers ----
+async function api(method, path, body) {
+  try {
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(path, opts);
+    return await r.json();
+  } catch(e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+// ---- POLLING ----
+async function poll() {
+  try {
+    const data = await api('GET', '/api/state');
+    state = data;
+    updateUI();
+    await pollCrashes();
+    document.getElementById('serverDot').classList.add('online');
+    document.getElementById('serverStatus').textContent = 'Online';
+  } catch(e) {
+    document.getElementById('serverDot').classList.remove('online');
+    document.getElementById('serverStatus').textContent = 'Offline';
+  }
+}
+setInterval(poll, 2000);
+poll();
+
+// ---- UPTIME ----
+setInterval(() => {
+  const s = Math.floor((Date.now() - startTime) / 1000);
+  const h = String(Math.floor(s / 3600)).padStart(2,'0');
+  const m = String(Math.floor((s % 3600) / 60)).padStart(2,'0');
+  const sec = String(s % 60).padStart(2,'0');
+  document.getElementById('uptimeLabel').textContent = `Sessão: ${h}:${m}:${sec}`;
+}, 1000);
+
+// ---- UPDATE UI ----
+function updateUI() {
+  const ps = state.players || [];
+  const npcs = state.npcs || [];
+  const tdm = state.tdm || {};
+
+  // Header
+  document.getElementById('playerCountNum').textContent = ps.length;
+  document.getElementById('s-players').textContent = ps.length;
+  document.getElementById('s-npcs').textContent = npcs.length;
+  document.getElementById('s-tdm').textContent = tdm.active ? 'Sim ⚔️' : 'Não';
+
+  // TDM HUD
+  for (const suf of ['', '2']) {
+    document.getElementById('blueScore' + suf).textContent = tdm.blueScore ?? 0;
+    document.getElementById('redScore' + suf).textContent = tdm.redScore ?? 0;
+    const phaseEl = document.getElementById('tdmPhase' + suf);
+    if (phaseEl) phaseEl.textContent = tdm.phase || 'Sem Partida';
+    const timeEl = document.getElementById('tdmTimeLabel' + suf) || document.getElementById('tdmTime' + suf);
+    if (timeEl) timeEl.textContent = tdm.timeLeft !== undefined ? `${tdm.timeLeft}s` : '–';
+  }
+  document.getElementById('tdmHud').style.display = tdm.active ? 'flex' : 'none';
+  if (document.getElementById('tdmStatusMsg')) {
+    document.getElementById('tdmStatusMsg').textContent = tdm.active ? `Partida em andamento — Fase: ${tdm.phase}` : 'Nenhuma partida TDM ativa no momento.';
+  }
+
+  // Players list
+  renderPlayersList(ps);
+  renderDashPlayers(ps);
+  updateSelects(ps);
+
+  // NPCs list
+  renderNpcList(npcs);
+
+  // Update selected player flags
+  if (selectedPlayerId) {
+    const p = ps.find(x => String(x.playerId) === String(selectedPlayerId));
+    if (p) {
+      document.getElementById('tog-god').checked = p.godMode;
+      const tSpeed = document.getElementById('tog-speed'); if(tSpeed) tSpeed.checked = p.superSpeed;
+      const tInvis = document.getElementById('tog-invis'); if(tInvis) tInvis.checked = p.isInvis;
+      
+      const zStatus = document.getElementById('zueiraPlayerStatus');
+      if (zStatus) {
+        zStatus.textContent = `Herói ${p.heroId} · CD: ${p.nocd ? '0' : 'Normal'} · Aparência: ${p.visualHeroId || p.heroId} · ${p.mapName || 'Lobby'}`;
+      }
+      
+      // Sync Zueira switches
+      const zCd = document.getElementById('z-tog-nocd'); if(zCd) zCd.checked = p.nocd;
+      const zGod = document.getElementById('z-tog-god'); if(zGod) zGod.checked = p.godMode;
+      const zSpeed = document.getElementById('z-tog-speed'); if(zSpeed) zSpeed.checked = p.superSpeed;
+      const zInvis = document.getElementById('z-tog-invis'); if(zInvis) zInvis.checked = p.isInvis;
+    }
+  }
+
+  // Populate active NPCs scale dropdown
+  const npcSelector = document.getElementById('scaleNpcSelector');
+  if (npcSelector) {
+    const currentNpc = npcSelector.value;
+    npcSelector.innerHTML = npcs.length
+      ? npcs.map(n => `<option value="${n.id}">ID ${n.id} (NPC ${n.index}) · HP: ${n.hp}</option>`).join('')
+      : '<option value="">— Nenhum NPC ativo —</option>';
+    if (currentNpc && npcSelector.querySelector(`option[value="${currentNpc}"]`)) {
+      npcSelector.value = currentNpc;
+    }
+  }
+}
+
+function hpColor(pct) {
+  if (pct > 0.5) return `hsl(${Math.round(120 * ((pct - 0.5) * 2))}, 80%, 50%)`;
+  return `hsl(${Math.round(60 * (pct * 2))}, 80%, 50%)`;
+}
+
+function forceTeam(f) {
+  if (f == 1) return '<span class="badge badge-blue">🔵 Azul</span>';
+  if (f == 2) return '<span class="badge badge-red">🔴 Vermelho</span>';
+  return '<span class="badge badge-muted">Sem Time</span>';
+}
+
+function renderPlayersList(ps) {
+  const el = document.getElementById('playersList');
+  if (!ps.length) {
+    el.innerHTML = `<div class="empty-state"><div class="es-icon">🎮</div><strong>Nenhum jogador online</strong><p>Aguardando conexões...</p></div>`;
+    return;
+  }
+  el.innerHTML = ps.map(p => {
+    const hpPct = p.maxHp > 0 ? (p.hp / p.maxHp) : 0;
+    const selected = String(p.playerId) === String(selectedPlayerId) ? 'selected' : '';
+    return `
+      <div class="player-card ${selected}" onclick="selectPlayer('${p.playerId}')">
+        <div class="player-avatar">${(p.playerName || '?')[0].toUpperCase()}</div>
+        <div class="player-info">
+          <div class="player-name">${p.playerName || 'Desconhecido'}</div>
+          <div class="player-meta">
+            ${forceTeam(p.force)}
+            <span class="badge badge-purple">Herói ${p.heroId}</span>
+            ${p.godMode ? '<span class="badge badge-gold">⭐ God</span>' : ''}
+            ${p.isInvis ? '<span class="badge badge-muted">👻 Invis</span>' : ''}
+            ${p.superSpeed ? '<span class="badge badge-green">⚡ Speed</span>' : ''}
+          </div>
+          <div class="player-coords">X:${p.x} Y:${p.y} Z:${p.z} · ${p.mapName || 'sem mapa'}</div>
+        </div>
+        <div class="hp-section">
+          <div class="hp-label">HP / Shield</div>
+          <div class="hp-bar"><div class="hp-fill" style="width:${Math.round(hpPct*100)}%;background:${hpColor(hpPct)};"></div></div>
+          <div class="hp-text">${p.hp}/${p.maxHp} <span style="color:var(--blue);font-size:10px;">${p.shield > 0 ? '+' + p.shield : ''}</span></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderDashPlayers(ps) {
+  const el = document.getElementById('dashPlayerList');
+  if (!ps.length) {
+    el.innerHTML = `<div class="empty-state"><div class="es-icon">🎮</div><strong>Nenhum jogador online</strong><p>Aguardando conexões...</p></div>`;
+    return;
+  }
+  el.innerHTML = ps.map(p => {
+    const hpPct = p.maxHp > 0 ? (p.hp / p.maxHp) : 0;
+    return `<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);">
+      <div class="player-avatar" style="width:36px;height:36px;font-size:14px;">${(p.playerName||'?')[0].toUpperCase()}</div>
+      <div style="flex:1;">
+        <div style="font-weight:600;font-size:14px;">${p.playerName}</div>
+        <div class="hp-bar" style="margin-top:4px;"><div class="hp-fill" style="width:${Math.round(hpPct*100)}%;background:${hpColor(hpPct)};"></div></div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);">Herói ${p.heroId} · ${p.mapName || '–'}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderNpcList(npcs) {
+  const el = document.getElementById('npcList');
+  if (!el) return;
+  if (!npcs.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px;">Nenhum NPC ativo</div>'; return; }
+  el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;">${npcs.map(n => `
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:12px;">
+      <span style="color:var(--accent);font-family:'JetBrains Mono';">ID ${n.id}</span>
+      · Index ${n.index} · <span style="color:#2ecc71;">${n.hp}/${n.maxHp} HP</span>
+      · <span style="color:var(--muted);">X:${n.x} Y:${n.y} Z:${n.z}</span>
+    </div>`).join('')}</div>`;
+}
+
+function updateSelects(ps) {
+  const selects = ['heroTargetPlayer', 'buffTargetPlayer', 'spawnTargetPlayer', 'mapTargetPlayer', 'zueiraTargetPlayer'];
+  selects.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const current = el.value;
+    
+    if (id === 'mapTargetPlayer') {
+      el.innerHTML = '<option value="">— Todos os Jogadores Online —</option>' + 
+        (ps.length ? ps.map(p => `<option value="${p.playerId}">${p.playerName} (${p.mapName || 'Sem Mapa'})</option>`).join('') : '');
+    } else {
+      el.innerHTML = ps.length
+        ? ps.map(p => `<option value="${p.playerId}">${p.playerName} (${p.mapName || 'sem mapa'})</option>`).join('')
+        : '<option value="">— Nenhum jogador online —</option>';
+    }
+    if (current) el.value = current;
+  });
+  
+  updateCosmeticSelects(ps);
+}
+
+
+// ---- PAGES ----
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+}
+
+// ---- PLAYER SELECTION ----
+function selectPlayer(pid) {
+  selectedPlayerId = pid;
+  const p = state.players.find(x => String(x.playerId) === String(pid));
+  if (!p) return;
+  document.getElementById('selectedPlayerName').textContent = p.playerName;
+  document.getElementById('tog-god').checked = p.godMode;
+  const tSpeed = document.getElementById('tog-speed'); if(tSpeed) tSpeed.checked = p.superSpeed;
+  const tInvis = document.getElementById('tog-invis'); if(tInvis) tInvis.checked = p.isInvis;
+  
+  document.getElementById('playerActions').classList.add('visible');
+  renderPlayersList(state.players);
+  // Auto-set selects
+  ['buffTargetPlayer', 'spawnTargetPlayer', 'heroTargetPlayer', 'zueiraTargetPlayer'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = pid;
+  });
+  updateHeroTarget();
+  
+  const zStatus = document.getElementById('zueiraPlayerStatus');
+  if (zStatus) {
+    zStatus.textContent = `Herói ${p.heroId} · CD: ${p.nocd ? '0' : 'Normal'} · Aparência: ${p.visualHeroId || p.heroId} · ${p.mapName || 'Lobby'}`;
+  }
+  syncZueiraToggles();
+}
+
+function updateHeroTarget() {
+  const pid = document.getElementById('heroTargetPlayer').value;
+  const p = state.players.find(x => String(x.playerId) === String(pid));
+  const info = document.getElementById('heroTargetInfo');
+  info.textContent = p ? `Herói atual: ${p.heroId} · HP: ${p.hp}/${p.maxHp} · ${p.mapName || '–'}` : '';
+}
+
+// ---- HERO ACTIONS ----
+async function switchHero(heroId) {
+  const pid = document.getElementById('heroTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador primeiro', 'err');
+  const r = await api('POST', '/api/hero', { playerId: pid, heroId });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function toggleGodMode(el) {
+  if (!selectedPlayerId) { el.checked = !el.checked; return; }
+  const r = await api('POST', '/api/godmode', { playerId: selectedPlayerId, enabled: el.checked });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function healPlayer() {
+  if (!selectedPlayerId) return toast('Nenhum jogador selecionado', 'err');
+  const r = await api('POST', '/api/heal', { playerId: selectedPlayerId });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function killPlayer() {
+  if (!selectedPlayerId) return toast('Nenhum jogador selecionado', 'err');
+  const r = await api('POST', '/api/kill_player', { playerId: selectedPlayerId });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function kickPlayer() {
+  if (!selectedPlayerId) return toast('Nenhum jogador selecionado', 'err');
+  if (!confirm('Deseja realmente expulsar este jogador?')) return;
+  const r = await api('POST', '/api/kick', { playerId: selectedPlayerId });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function toggleSpeed(el) {
+  if (!selectedPlayerId) { el.checked = !el.checked; return; }
+  const r = await api('POST', '/api/speed', { playerId: selectedPlayerId, enabled: el.checked });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function toggleInvis(el) {
+  if (!selectedPlayerId) { el.checked = !el.checked; return; }
+  const r = await api('POST', '/api/invis', { playerId: selectedPlayerId, enabled: el.checked });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+// ---- TDM ACTIONS ----
+async function modifyTdmTime(action) {
+  const r = await api('POST', '/api/tdm/time', { action });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function modifyTdmScore(team, amount) {
+  const r = await api('POST', '/api/tdm/score', { team, amount });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+// ---- BUFF ACTIONS ----
+async function applyBuff() {
+  const pid = document.getElementById('buffTargetPlayer').value;
+  const bid = document.getElementById('buffIdInput').value;
+  const dur = document.getElementById('buffDurInput').value;
+  if (!pid || !bid) return toast('Selecione jogador e ID do buff', 'err');
+  const r = await api('POST', '/api/buff', { playerId: pid, buffId: bid, duration: dur });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+function filterBuffs() {
+  const q = document.getElementById('buffSearch').value.toLowerCase();
+  document.querySelectorAll('.buff-item').forEach(el => {
+    el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+// ---- SPAWN ACTIONS ----
+async function spawnEntity(npcIndex, count = 1) {
+  const pid = document.getElementById('spawnTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador alvo', 'err');
+  const scale = document.getElementById('spawnScaleSelector')?.value || '100';
+  const r = await api('POST', '/api/spawn', { playerId: pid, npcIndex, count, scale });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function spawnCustom() {
+  const pid = document.getElementById('spawnTargetPlayer').value;
+  const idx = document.getElementById('spawnCustomId').value;
+  const cnt = document.getElementById('spawnCount').value;
+  if (!pid) return toast('Selecione um jogador alvo', 'err');
+  if (!idx) return toast('Informe um NPC ID', 'err');
+  await spawnEntity(idx, cnt);
+}
+
+async function killNpcs(includeDummies) {
+  const r = await api('POST', '/api/kill_npcs', { includeDummies });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+// ---- CHAT ----
+async function sendChatMsg() {
+  const msg = document.getElementById('chatMsg').value.trim();
+  if (!msg) return;
+  const r = await api('POST', '/api/chat', { message: msg });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+  if (r.ok) document.getElementById('chatMsg').value = '';
+}
+
+// ---- QUICK ACTIONS ----
+async function quickAction(action) {
+  if (action === 'heal_all') {
+    for (const p of state.players) await api('POST', '/api/heal', { playerId: p.playerId });
+    toast('Todos os jogadores curados!', 'ok');
+    log('✅ Todos os jogadores curados', 'ok');
+  } else if (action === 'kill_npcs') {
+    await killNpcs(false);
+  } else if (action === 'kill_npcs_all') {
+    await killNpcs(true);
+  }
+}
+
+async function changeMapRealtime() {
+  const mid = document.getElementById('mapSelector').value;
+  const pid = document.getElementById('mapTargetPlayer').value;
+  
+  const body = { mapId: mid };
+  if (pid) body.playerId = pid;
+
+  const r = await api('POST', '/api/map', body);
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+// ---- HERO GRID ----
+function filterHeroes() {
+  const q = document.getElementById('heroSearch').value.toLowerCase();
+  document.querySelectorAll('.hero-btn').forEach(el => {
+    el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function renderHeroGrid(heroes) {
+  const grid = document.getElementById('heroGrid');
+  grid.innerHTML = heroes.map(h => `
+    <div class="hero-btn" onclick="switchHero(${h.id})">
+      <div class="h-id">#${h.id}</div>
+      <div style="font-size:20px;margin:4px 0;">${heroEmoji(h.id)}</div>
+      <div>${h.name || 'Hero ' + h.id}</div>
+    </div>`).join('');
+}
+
+function heroEmoji(id) {
+  const map = {1003:'🏹',1005:'⚡',1006:'🪓',1015:'🤖',1016:'🛡️',1017:'⚔️',1021:'🌊',1022:'❄️',1023:'🌿',1024:'🏹',1025:'💫',1026:'🤺',1027:'🐉',1028:'🃏',1029:'👼',1030:'🗡️',1031:'💪',1032:'🔥',1033:'🌙',1034:'🎯',1035:'🌟',1036:'🐍',1037:'🏆'};
+  return map[id] || '👤';
+}
+
+// ---- ENTITY GRID ----
+function renderEntityGrid(npcs) {
+  const grid = document.getElementById('entityGrid');
+  const entities = [
+    { id: 1121, icon: '🎯', name: 'Dummy Fraco', hp: 10 },
+    { id: 1122, icon: '🛡️', name: 'Dummy Médio', hp: 1000 },
+    { id: 1101, icon: '💪', name: 'Dummy Forte', hp: 1500 },
+    ...npcs.filter(n => n.id < 1200).slice(0, 20)
+  ].map((n, i, arr) => arr.find(x => x.id === n.id) === n ? n : null).filter(Boolean);
+  grid.innerHTML = entities.map(e => `
+    <div class="entity-btn" onclick="spawnEntity(${e.id})">
+      <div class="e-icon">${e.icon || '🤖'}</div>
+      <div class="e-name">${e.name || 'NPC ' + e.id}</div>
+      <div class="e-hp">HP: ${e.hp || '?'}</div>
+    </div>`).join('');
+}
+
+// ---- BUFF LIST ----
+function renderBuffList(buffs) {
+  const el = document.getElementById('buffListWrapper');
+  el.innerHTML = buffs.map(b => `
+    <div class="buff-item">
+      <span>${b.name || 'Buff ' + b.id}</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="buff-id">${b.id}</span>
+        <button class="btn btn-ghost btn-sm" onclick="document.getElementById('buffIdInput').value='${b.id}';showPage('buffs')">Usar</button>
+      </div>
+    </div>`).join('');
+}
+
+// ---- TOAST ----
+function toast(msg, type = 'info') {
+  const area = document.getElementById('toastArea');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  const icons = { ok: '✅', err: '❌', info: 'ℹ️' };
+  el.innerHTML = `<span>${icons[type]}</span><span>${msg}</span>`;
+  area.appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+
+// ---- LOG ----
+function log(msg, type = 'info') {
+  const area = document.getElementById('logArea');
+  if (!area) return;
+  const el = document.createElement('div');
+  el.className = `log-entry log-${type}`;
+  const now = new Date().toLocaleTimeString();
+  el.textContent = `[${now}] ${msg}`;
+  area.appendChild(el);
+  area.scrollTop = area.scrollHeight;
+}
+
+// ---- MODO ZUEIRA ACTIONS ----
+function toggleScaleTarget(type) {
+  document.getElementById('zueiraNpcSelectGroup').style.display = type === 'npc' ? '' : 'none';
+}
+
+function updateScaleLabel(axis, val) {
+  document.getElementById(`label-scale${axis}`).textContent = val + '%';
+}
+
+function setQuickScale(val) {
+  ['X', 'Y', 'Z'].forEach(axis => {
+    document.getElementById(`range-scale${axis}`).value = val;
+    updateScaleLabel(axis, val);
+  });
+}
+
+function setCustomScale(x, y, z) {
+  document.getElementById('range-scaleX').value = x;
+  updateScaleLabel('X', x);
+  document.getElementById('range-scaleY').value = y;
+  updateScaleLabel('Y', y);
+  document.getElementById('range-scaleZ').value = z;
+  updateScaleLabel('Z', z);
+}
+
+async function applyScale() {
+  const type = document.getElementById('scaleTargetType').value;
+  let targetId = null;
+  
+  if (type === 'player') {
+    targetId = document.getElementById('zueiraTargetPlayer').value;
+    if (!targetId) return toast('Selecione um jogador alvo', 'err');
+  } else {
+    targetId = document.getElementById('scaleNpcSelector').value;
+    if (!targetId) return toast('Selecione um NPC alvo', 'err');
+  }
+  
+  const scaleX = document.getElementById('range-scaleX').value;
+  const scaleY = document.getElementById('range-scaleY').value;
+  const scaleZ = document.getElementById('range-scaleZ').value;
+  
+  const r = await api('POST', '/api/scale', {
+    targetId,
+    targetType: type,
+    scaleX,
+    scaleY,
+    scaleZ
+  });
+  
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function applyVisualModel() {
+  const pid = document.getElementById('zueiraTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador alvo', 'err');
+  
+  const visualHeroId = document.getElementById('zueiraCustomModelId').value;
+  if (!visualHeroId) return toast('Digite ou selecione um ID de modelo', 'err');
+  
+  const r = await api('POST', '/api/visual_hero', { playerId: pid, visualHeroId });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function resetVisualModel() {
+  const pid = document.getElementById('zueiraTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador alvo', 'err');
+  
+  const r = await api('POST', '/api/visual_hero', { playerId: pid, visualHeroId: 0 });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function toggleNoCd(el) {
+  const pid = document.getElementById('zueiraTargetPlayer').value;
+  if (!pid) { el.checked = !el.checked; return toast('Selecione um jogador alvo', 'err'); }
+  
+  const r = await api('POST', '/api/nocd', { playerId: pid, enabled: el.checked });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+function syncZueiraToggles() {
+  const pid = document.getElementById('zueiraTargetPlayer').value;
+  const p = state.players.find(x => String(x.playerId) === String(pid));
+  if (p) {
+    const zCd = document.getElementById('z-tog-nocd'); if(zCd) zCd.checked = p.nocd;
+    const zGod = document.getElementById('z-tog-god'); if(zGod) zGod.checked = p.godMode;
+    const zSpeed = document.getElementById('z-tog-speed'); if(zSpeed) zSpeed.checked = p.superSpeed;
+    const zInvis = document.getElementById('z-tog-invis'); if(zInvis) zInvis.checked = p.isInvis;
+  }
+}
+
+// ---- INIT ----
+let allCosmetics = {};
+async function init() {
+  // Load heroes
+  const heroes = await api('GET', '/api/heroes');
+  if (Array.isArray(heroes)) { 
+    allHeroes = heroes; 
+    renderHeroGrid(heroes); 
+    const zueiraHeroDropdown = document.getElementById('zueiraHeroModelSelector');
+    if (zueiraHeroDropdown) {
+      zueiraHeroDropdown.innerHTML = '<option value="">— Selecione um Herói —</option>' + 
+        heroes.map(h => `<option value="${h.id}">${h.name || 'Herói ' + h.id} (${h.id})</option>`).join('');
+    }
+  }
+
+  // Load buffs
+  const buffs = await api('GET', '/api/buffs');
+  if (Array.isArray(buffs)) { 
+    allBuffs = buffs; 
+    renderBuffList(buffs); 
+    const buffDropdown = document.getElementById('buffSelectDropdown');
+    if (buffDropdown) {
+      buffDropdown.innerHTML = '<option value="">— Selecione um Buff —</option>' + 
+        buffs.map(b => `<option value="${b.id}">${b.name} (${b.id})</option>`).join('');
+    }
+  }
+
+  // Load NPCs
+  const npcs = await api('GET', '/api/npcs');
+  if (Array.isArray(npcs)) { 
+    allNpcs = npcs; 
+    renderEntityGrid(npcs); 
+    const npcDropdown = document.getElementById('spawnNpcSelectDropdown');
+    if (npcDropdown) {
+      npcDropdown.innerHTML = '<option value="">— Selecione um NPC —</option>' + 
+        npcs.map(n => `<option value="${n.id}">${n.name} (${n.id})</option>`).join('');
+    }
+  }
+
+  // Load cosmetics map
+  const cosm = await api('GET', '/api/cosmetics');
+  if (cosm && typeof cosm === 'object') {
+    allCosmetics = cosm;
+    buildCrossEmoteGrid();
+  }
+
+  startPacketStream();
+
+  log('🎮 Admin Panel conectado ao servidor', 'info');
+}
+
+// ---- COSMETICS PAGE ----
+let activeCosmeticTab = 'skins';
+
+function showCosmeticTab(tab) {
+  activeCosmeticTab = tab;
+  ['skins','weapons','emotes','crossemotes'].forEach(t => {
+    document.getElementById(`ctab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`ctab-panel-${t}`).style.display = t === tab ? '' : 'none';
+  });
+}
+
+function updateCosmeticSelects(ps) {
+  const el = document.getElementById('cosmeticTargetPlayer');
+  if (!el) return;
+  const cur = el.value;
+  
+  el.innerHTML = ps.length
+    ? ps.map(p => `<option value="${p.playerId}">${p.playerName} — Herói ${p.heroId} · Skin ${p.skinId}</option>`).join('')
+    : '<option value="">— Nenhum jogador online —</option>';
+    
+  // Mantém o jogador que estava selecionado, ou seleciona o 1º da lista automaticamente
+  if (cur && el.querySelector(`option[value="${cur}"]`)) {
+    el.value = cur;
+  } else if (ps.length > 0) {
+    el.value = ps[0].playerId;
+  }
+
+  // Verifica se houve mudança no Herói ou Skin equipada para recarregar a grade
+  const p = ps.find(x => String(x.playerId) === String(el.value));
+  if (p) {
+    const currentState = `${p.heroId}-${p.skinId}-${p.weaponId}`;
+    if (el.dataset.lastState !== currentState) {
+      el.dataset.lastState = currentState;
+      loadCosmeticsForPlayer(); // Dispara o carregamento automaticamente!
+    }
+  } else {
+    el.dataset.lastState = "";
+  }
+}
+
+function loadCosmeticsForPlayer() {
+  const el = document.getElementById('cosmeticTargetPlayer');
+  const pid = el ? el.value : '';
+  const p = state.players.find(x => String(x.playerId) === String(pid));
+  if (!p) return;
+  const heroId = p.heroId;
+  const cosm = allCosmetics[heroId] || allCosmetics[String(heroId)] || { skins: [], weapons: [], emotions: [] };
+  document.getElementById('cosmeticPlayerStatus').textContent =
+    `Herói ${heroId} · Skin equipada: ${p.skinId} · Arma equipada: ${p.weaponId}`;
+  renderSkinGrid(cosm.skins || [], p.skinId);
+  renderWeaponGrid(cosm.weapons || [], p.weaponId);
+  renderEmoteGrid(cosm.emotions || []);
+}
+
+function renderSkinGrid(skins, equippedId) {
+  const grid = document.getElementById('skinGrid');
+  if (!skins.length) { grid.innerHTML = '<div style="color:var(--muted);font-size:13px;">Nenhuma skin disponível</div>'; return; }
+  grid.innerHTML = skins.map(s => {
+    const name = s.name ? s.name.replace(/<[^>]+>/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>').trim() : `Skin ${s.id}`;
+    const eq = s.id === equippedId;
+    return `<div class="skin-card${eq ? ' equipped' : ''}" onclick="equipSkin(${s.id}, null)">
+      ${eq ? '<div class="equipped-badge">ON</div>' : ''}
+      <div class="sc-icon">👕</div>
+      <div class="sc-name">${name}</div>
+      <div class="sc-id">#${s.id} · ${s.skinname || ''}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderWeaponGrid(weapons, equippedId) {
+  const grid = document.getElementById('weaponGrid');
+  if (!weapons.length) { grid.innerHTML = '<div style="color:var(--muted);font-size:13px;">Nenhuma arma disponível</div>'; return; }
+  grid.innerHTML = weapons.map(w => {
+    const name = w.name ? w.name.replace(/<[^>]+>/g,'').trim() : `Arma ${w.id}`;
+    const eq = w.id === equippedId;
+    return `<div class="skin-card${eq ? ' equipped' : ''}" onclick="equipSkin(null, ${w.id})">
+      ${eq ? '<div class="equipped-badge">ON</div>' : ''}
+      <div class="sc-icon">🔫</div>
+      <div class="sc-name">${name}</div>
+      <div class="sc-id">#${w.id}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderEmoteGrid(emotions) {
+  const grid = document.getElementById('emoteGrid');
+  if (!emotions.length) { grid.innerHTML = '<div style="color:var(--muted);font-size:13px;">Nenhum emote disponível</div>'; return; }
+  const emotIconMap = {50:'😵',51:'💪',52:'✨',53:'🫡',200:'🛡️',201:'💃',202:'🤸',203:'🎉',204:'🎯'};
+  grid.innerHTML = emotions.map(e => {
+    const icon = emotIconMap[e.animparm] || '🎭';
+    const name = e.name ? e.name.replace(/<[^>]+>/g,'').trim() : `Emote ${e.id}`;
+    return `<div class="emote-card" onclick="playEmote(${e.animparm})">
+      <div class="em-icon">${icon}</div>
+      <div class="em-info">
+        <div class="em-name">${name}</div>
+        <div class="em-anim">animparm: ${e.animparm}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function buildCrossEmoteGrid() {
+  const grid = document.getElementById('crossEmoteGrid');
+  if (!grid) return;
+  const heroNameMap = {};
+  allHeroes.forEach(h => { heroNameMap[h.id] = h.name || `Herói ${h.id}`; });
+  const allEmotes = [];
+  for (const [heroId, data] of Object.entries(allCosmetics)) {
+    const hname = heroNameMap[parseInt(heroId)] || `Herói ${heroId}`;
+    const emoji = heroEmoji(parseInt(heroId));
+    (data.emotions || []).forEach(e => {
+      allEmotes.push({ heroId: parseInt(heroId), heroName: hname, heroEmoji: emoji, ...e });
+    });
+  }
+  window._allCrossEmotes = allEmotes;
+  renderCrossEmoteGrid(allEmotes);
+}
+
+function renderCrossEmoteGrid(emotes) {
+  const grid = document.getElementById('crossEmoteGrid');
+  const emotIconMap = {50:'😵',51:'💪',52:'✨',53:'🫡',200:'🛡️',201:'💃',202:'🤸',203:'🎉',204:'🎯'};
+  grid.innerHTML = emotes.map(e => {
+    const icon = emotIconMap[e.animparm] || '🎭';
+    const name = e.name ? e.name.replace(/<[^>]+>/g,'').trim() : `Emote ${e.id}`;
+    return `<div class="emote-card emote-cross-hero" onclick="playEmote(${e.animparm})" title="${e.heroName}">
+      <div class="em-icon">${icon}</div>
+      <div class="em-info">
+        <div class="em-name">${name}</div>
+        <div class="em-anim">${e.heroEmoji} ${e.heroName} · ${e.animparm}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterCrossEmotes() {
+  const q = document.getElementById('crossEmoteSearch').value.toLowerCase();
+  const filtered = (window._allCrossEmotes || []).filter(e => {
+    const name = (e.name || '').toLowerCase();
+    return name.includes(q) || String(e.animparm).includes(q) || e.heroName.toLowerCase().includes(q);
+  });
+  renderCrossEmoteGrid(filtered);
+}
+
+async function equipSkin(skinId, weaponId) {
+  const pid = document.getElementById('cosmeticTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador', 'err');
+  const body = { playerId: pid };
+  if (skinId != null) body.skinId = skinId;
+  if (weaponId != null) body.weaponId = weaponId;
+  const r = await api('POST', '/api/equip_skin', body);
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+  if (r.ok) setTimeout(() => loadCosmeticsForPlayer(), 500);
+}
+
+async function playEmote(animparm) {
+  const pid = document.getElementById('cosmeticTargetPlayer').value;
+  if (!pid) return toast('Selecione um jogador', 'err');
+  
+  const soundInput = document.getElementById('emoteSoundInput');
+  const sound = soundInput && soundInput.value ? soundInput.value.trim() : '';
+
+  const r = await api('POST', '/api/play_emote', { playerId: pid, animparm, sound });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function switchCustomHero() {
+  const customId = document.getElementById('customHeroId').value;
+  if (!customId) return toast('Digite um ID de Herói', 'err');
+  await switchHero(parseInt(customId));
+}
+
+// Override updateSelects to include cosmetic select
+
+async function pollCrashes() {
+  try {
+    const data = await api('GET', '/api/crash-logs');
+    if (data && Array.isArray(data.logs)) {
+      renderCrashLogs(data.logs);
+    }
+  } catch(e) {}
+}
+
+function renderCrashLogs(logs) {
+  const el = document.getElementById('crashLogsArea');
+  const badge = document.getElementById('crashBadge');
+  
+  if (badge) {
+    if (logs.length > 0) {
+      badge.textContent = logs.length;
+      badge.style.display = 'inline-block';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  if (logs.length === 0) {
+    el.innerHTML = `<div class="empty-state"><div class="es-icon" style="color:#2ecc71;">🛡️</div><strong>Nenhum crash detectado!</strong>O servidor está rodando de forma estável.</div>`;
+    return;
+  }
+
+  el.innerHTML = logs.map(l => {
+    return `
+      <div style="background: rgba(255,71,87,0.04); border: 1px solid rgba(255,71,87,0.15); border-left: 4px solid var(--red); padding: 12px 16px; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 4px;">
+          <span>🕒 ${l.timestamp}</span>
+          <span class="badge badge-red" style="font-size: 9px; font-weight: bold; background: var(--red); color: #fff;">${l.type}</span>
+        </div>
+        <div style="color: #ffb3b3; white-space: pre-wrap; font-size: 12px; line-height: 1.5; font-family: 'JetBrains Mono', monospace; word-break: break-all;">${escapeHtml(l.message)}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+async function clearCrashLogs() {
+  if (!confirm('Deseja realmente limpar todos os logs de crash e bugs?')) return;
+  const r = await api('POST', '/api/clear-crash-logs');
+  if (r.ok) {
+    toast('Logs de crash limpos!', 'ok');
+    pollCrashes();
+  }
+}
+
+let packetEventSource = null;
+
+function startPacketStream() {
+  if (packetEventSource) return;
+  packetEventSource = new EventSource('/api/packet-stream');
+  const area = document.getElementById('packetLogsArea');
+  
+  packetEventSource.onmessage = (event) => {
+    try {
+      const packet = JSON.parse(event.data);
+      const hideSync = document.getElementById('hideSyncPackets')?.checked;
+      if (hideSync) {
+        const isSync = packet.raw.includes(':SP,') || 
+                       packet.raw.includes(':SN,') || 
+                       packet.raw.includes(':CP,') || 
+                       packet.raw.includes(':CN,') ||
+                       packet.raw.includes(':ST,') ||
+                       packet.raw.includes(':SR,') ||
+                       packet.raw.includes(':SV,') ||
+                       packet.raw.includes(':SA,') ||
+                       packet.raw.includes(':CT,') ||
+                       packet.raw.includes(':CR,') ||
+                       packet.raw.includes(':CV,') ||
+                       packet.raw.includes(':CA,') ||
+                       packet.raw.includes('SendMsgToAllClient,(CDH') ||
+                       packet.raw.includes('SendMsgToClient,(CDH');
+        if (isSync) return;
+      }
+      
+      const emptyState = area.querySelector('.empty-state');
+      if (emptyState) emptyState.remove();
+      
+      const time = new Date().toLocaleTimeString();
+      const direction = packet.direction === 'in' ? '⬅️ IN' : '➡️ OUT';
+      const color = packet.direction === 'in' ? '#2ecc71' : '#4da6ff';
+      const playerText = `(${packet.playerName} / ID: ${packet.playerId})`;
+      
+      const div = document.createElement('div');
+      div.style.borderBottom = '1px solid rgba(255, 255, 255, 0.03)';
+      div.style.padding = '4px 0';
+      div.style.lineHeight = '1.4';
+      div.innerHTML = `
+        <span style="color:var(--muted); font-size:11px;">[${time}]</span>
+        <span style="color:${color}; font-weight:600; font-size:11px;">[${direction}]</span>
+        <span style="color:var(--gold); font-size:11px;">${playerText}</span>
+        <span style="color:var(--text); word-break:break-all;">${escapeHtml(packet.raw.trim())}</span>
+      `;
+      area.appendChild(div);
+      
+      while (area.children.length > 150) {
+        area.removeChild(area.firstChild);
+      }
+      area.scrollTop = area.scrollHeight;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+}
+
+function clearPackets() {
+  const area = document.getElementById('packetLogsArea');
+  if (area) {
+    area.innerHTML = `<div class="empty-state"><div class="es-icon" style="color:var(--muted);">📡</div><strong>Nenhum pacote capturado</strong>Aguardando tráfego de rede...</div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

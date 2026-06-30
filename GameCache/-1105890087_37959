@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<s id="0" name="Rewards de Recarga" bgimg="libao_shouchong_ditu_bx" money="250" itemlist="1111,1,1|1334,1,1" />
+	<s id="1" name="Rewards de Recarga" bgimg="libao_shouchong_ditu_bx" money="500" itemlist="1641,1,1|1727,1,1|1115,1,1|1204,1,1|1366,1,1" />
+	<s id="2" name="Rewards de Recarga" bgimg="libao_shouchong_ditu_bx" money="100" itemlist="5310,1,1" />
+
+	<d id="0" name="&lt;size=22&gt;Login Consecutivo por 1 dia&lt;/size&gt;" denglunum="1" img="LiBao_tu5" msg="moedas *30" itemlist="1020,30,1" />
+	<d id="1" name="&lt;size=22&gt;Login Consecutivo por 2 dias&lt;/size&gt;" denglunum="2" img="LiBao_tu1" msg="Foto profile [Roaring Flame]" itemlist="1627,1,1" />
+	<d id="2" name="&lt;size=22&gt;Login Consecutivo por 4 dias&lt;/size&gt;" denglunum="4" img="LiBao_tu5" msg="moedas *71" itemlist="1020,70,1" />
+	<d id="3" name="&lt;size=22&gt;Login Consecutivo por 6 dias&lt;/size&gt;" denglunum="6" img="LiBao_tu2" msg="Grafite [Snow Flower]" itemlist="1706,1,1" />
+	<d id="4" name="&lt;size=22&gt;Login Consecutivo por 8 dias&lt;/size&gt;" denglunum="8" img="LiBao_tu5" msg="moedas *111" itemlist="1020,110,1" />
+	<d id="5" name="&lt;size=22&gt;Login Consecutivo por 10 dias&lt;/size&gt;" denglunum="10" img="LiBao_tu10" msg="Emoji [Na bala]" itemlist="1340,1,1" />
+	<d id="6" name="&lt;size=22&gt;Login Consecutivo por 12 dias&lt;/size&gt;" denglunum="12" img="LiBao_tu5" msg="moedas *151" itemlist="1020,150,1" />
+	<d id="7" name="&lt;size=22&gt;Login Consecutivo por 14 dias&lt;/size&gt;" denglunum="14" img="LiBao_tu9" msg="Skin [Quarterbacki]" itemlist="1205,1,1" />
+
+	<l id="0" name="Prêmio do Lv10" bgimg="libao_lvl10_ditu_bx" get_lv="10" itemlist="1112,1,1" checkid="1,1025"/>
+</root>
