@@ -75,6 +75,12 @@ app.use(['/res', '/scene'], (req, res) => {
         const parts = req.path.split('/');
         const filename = parts[parts.length - 1]; 
 
+        if (filename.toLowerCase() === 'files_dir.xml') {
+            console.log(`[🎯 FILES_DIR SERVIDO]: ${req.path} -> ${config.filesDirXmlPath}`);
+            res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+            return res.sendFile(config.filesDirXmlPath);
+        }
+
         const localPath = path.join(config.publicDir, 'baxi', filename);
         if (fs.existsSync(localPath)) {
             console.log(`[🎯 XML LOCAL SERVIDO]: ${req.path} -> ${localPath}`);
@@ -101,6 +107,15 @@ app.use(['/res', '/scene'], (req, res) => {
     let cdnUrl = `http://trig.2cdn.xyz/TRIG/res1${finalPath}${queryPart}`;
 
     const localCachePath = path.join(config.cdnCacheDir, finalPath);
+    // npc_lanbo_xianjing_fallback: redireciona _blue/_red para o .mo local se necessário
+    if (!fs.existsSync(localCachePath) && (finalPath.includes('npc_lanbo_xianjing_blue.mo') || finalPath.includes('npc_lanbo_xianjing_red.mo'))) {
+        const fallbackPath = localCachePath.replace(/_blue\.mo|_red\.mo/, '.mo');
+        if (fs.existsSync(fallbackPath)) {
+            console.log(`[🎯 FALLBACK ASSET SERVIDO]: ${req.path} -> ${fallbackPath}`);
+            return res.sendFile(fallbackPath);
+        }
+    }
+
 
     // 1. Verifica cache local antes de ir ao CDN
     if (fs.existsSync(localCachePath)) {
@@ -289,17 +304,28 @@ app.post('/api/kill_npcs', (req, res) => {
     res.json({ ok: true, message: `${count} NPC(s) destruído(s).` });
 });
 
-// POST /api/buff — apply/remove buff on player
+// POST /api/buff — apply/remove buff on player, bot or NPC
 app.post('/api/buff', (req, res) => {
     const { playerId, buffId, duration } = req.body;
-    const socket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && String(s.playerId) === String(playerId));
-    if (!socket) return res.json({ ok: false, error: 'Jogador não encontrado.' });
+    let target = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && String(s.playerId) === String(playerId));
+    let senderSocket = target || state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed);
+    if (!target && state.activeBots && state.activeBots[playerId]) {
+        target = state.activeBots[playerId];
+    }
+    if (!target && state.spawnedNpcs && state.spawnedNpcs[playerId]) {
+        target = state.spawnedNpcs[playerId];
+    }
+    if (!target) return res.json({ ok: false, error: 'Entidade alvo não encontrada.' });
+    if (!senderSocket) return res.json({ ok: false, error: 'Nenhum jogador online para broadcast do buff.' });
+
     const bid = parseInt(buffId);
     const dur = parseInt(duration) || 10000;
     if (!db.buffsMap[bid]) return res.json({ ok: false, error: `Buff ID ${bid} não existe no buff.xml.` });
     try {
-        gameLogic.applyBuffToEntity(socket, socket.playerId, bid, dur);
-        res.json({ ok: true, message: `Buff "${db.buffsMap[bid].name}" (${bid}) aplicado por ${dur}ms em ${socket.playerName}.` });
+        const targetId = target.playerId || target.id || playerId;
+        const targetName = target.playerName || target.name || `Entidade #${targetId}`;
+        gameLogic.applyBuffToEntity(senderSocket, targetId, bid, dur);
+        res.json({ ok: true, message: `Buff "${db.buffsMap[bid].name}" (${bid}) aplicado por ${dur}ms em ${targetName}.` });
     } catch(e) {
         res.json({ ok: false, error: e.message });
     }
@@ -430,6 +456,17 @@ app.post('/api/map', (req, res) => {
 // GET /api/buffs — list all available buffs
 app.get('/api/buffs', (req, res) => {
     const list = Object.entries(db.buffsMap).map(([id, b]) => ({ id: parseInt(id), name: b.name || `Buff ${id}`, time: b.time }));
+    res.json(list);
+});
+
+// GET /api/maps — list all available maps
+app.get('/api/maps', (req, res) => {
+    const list = Object.entries(db.MAP_CONFIG).map(([id, m]) => ({
+        id: parseInt(id),
+        name: m.name,
+        type: m.type,
+        isBotMap: [5100, 5102, 5103, 5104].includes(parseInt(id))
+    }));
     res.json(list);
 });
 
@@ -572,21 +609,23 @@ app.post('/api/equip_skin', (req, res) => {
 
 // POST /api/play_emote — force player to play emote
 app.post('/api/play_emote', (req, res) => {
-    const { playerId, animparm } = req.body;
-    const socket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && String(s.playerId) === String(playerId));
-    if (!socket) return res.json({ ok: false, error: 'Jogador não encontrado ou offline.' });
+    const { playerId, animparm, sound } = req.body;
+    const socket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && 
+        (String(s.playerId) === String(playerId) || String(s.playerIndex) === String(playerId) || String(s.playerName) === String(playerId)));
+    if (!socket) return res.json({ ok: false, error: 'Jogador não encontrado ou não está em uma partida ativa.' });
     try {
         const anim = String(parseInt(animparm) || 50);
-        const pid = socket.playerIndex || 1;
+        const pid = socket.playerIndex || socket.playerId || 1;
         const p2000 = encodeInt(2000);
         const p2001 = encodeInt(2001);
         const one = encodeInt(1);
         const zero = encodeInt(0);
         const force = encodeInt(socket.force || 1);
         const netId = encodeInt(pid);
+        const soundStr = sound ? String(sound).trim() : '';
 
-        const szNetMsg = `(${zero},'','','',(),('','','${anim}',${zero},''),${zero},(zero,'',${zero}),())`.replace('zero', zero);
-        const szData = `(${szNetMsg},'','${anim}',${zero},${zero},${force},${netId},'',${one},${one},${one},${zero})`;
+        const szNetMsg = `(${zero},'','','',(),('','','${anim}',${zero},''),${zero},(${zero},'',${zero}),())`;
+        const szData = `(${szNetMsg},'${soundStr}','${anim}',${zero},${zero},${force},${netId},'',${one},${one},${one},${zero})`;
         const emotePacket = `e${pid}:SendMsgToClient,(${p2000},(${p2001},${szData}))\n`;
 
         state.activeSockets.forEach(s => {
@@ -597,9 +636,59 @@ app.post('/api/play_emote', (req, res) => {
         const cosm = db.heroCosmeticsMap[heroId] || db.heroCosmeticsMap[String(heroId)] || {};
         const emoteInfo = (cosm.emotions || []).find(e => e.animparm === parseInt(animparm));
         const emoteName = emoteInfo ? emoteInfo.name : `Emote animparm=${animparm}`;
-        console.log(`[🎭 EMOTE PLAY] ${socket.playerName}: ${emoteName} (animparm: ${anim})`);
-        res.json({ ok: true, message: `Emote "${emoteName}" executado para ${socket.playerName}.` });
+        console.log(`[🎭 GM EMOTE PLAY] ${socket.playerName} (${socket.playerId}) -> ${emoteName} (animparm: ${anim})`);
+        res.json({ ok: true, message: `Emote "${emoteName}" (animparm ${anim}) executado para ${socket.playerName}.` });
     } catch(e) {
+        res.json({ ok: false, error: e.message });
+    }
+});
+
+// POST /api/spawn_dummy — spawns a practice hero dummy
+app.post('/api/spawn_dummy', (req, res) => {
+    try {
+        const { playerId, heroId, mode, hpOption, x, y, z } = req.body;
+        let targetSocket = null;
+        if (playerId) {
+            targetSocket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && (
+                s.playerId === playerId ||
+                String(s.playerId) === String(playerId) ||
+                String(s.playerIndex) === String(playerId) ||
+                (s.playerName && s.playerName.toLowerCase() === String(playerId).toLowerCase())
+            ));
+        }
+        if (!targetSocket) {
+            targetSocket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed);
+        }
+        if (!targetSocket) {
+            return res.json({ ok: false, error: 'Nenhum jogador online em partida encontrado para referência de spawn.' });
+        }
+
+        const dummy = gameLogic.spawnPracticeHeroBot(targetSocket, {
+            heroId: parseInt(heroId) || 1015,
+            mode: mode || 'static',
+            hpOption: hpOption || 'normal',
+            x: x !== undefined ? parseInt(x) : undefined,
+            y: y !== undefined ? parseInt(y) : undefined,
+            z: z !== undefined ? parseInt(z) : undefined
+        });
+
+        if (dummy) {
+            const heroName = db.getHeroName(dummy.currentHeroId) || `Herói ${dummy.currentHeroId}`;
+            res.json({ ok: true, message: `Boneco de Treino "${heroName}" #${dummy.playerIndex} (Modo: ${dummy.dummyMode}, HP: ${dummy.maxHp}/${dummy.shield}) spawnado com sucesso!` });
+        } else {
+            res.json({ ok: false, error: 'Falha ao spawnar boneco de treino.' });
+        }
+    } catch (e) {
+        res.json({ ok: false, error: e.message });
+    }
+});
+
+// POST /api/clear_dummies — clears all practice hero dummies
+app.post('/api/clear_dummies', (req, res) => {
+    try {
+        const count = gameLogic.clearPracticeHeroBots();
+        res.json({ ok: true, message: `${count} boneco(s) de treino removidos da partida.` });
+    } catch (e) {
         res.json({ ok: false, error: e.message });
     }
 });

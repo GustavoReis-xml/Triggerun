@@ -27,7 +27,7 @@ const mapBases = {};
 // Mapeamento de Mapas (baseado em fbset.xml)
 const MAP_CONFIG = {
     // 训练 / Tutorial
-    5205: { name: 'xinshouyindao_3', type: 8 },
+    5205: { name: 'xinshouyindao_3', type: 7 }, // Space Base
     5202: { name: 'bachang_baxi', type: 6 },
     
     // 团队死斗 (Type 7)
@@ -36,6 +36,13 @@ const MAP_CONFIG = {
     5024: { name: 'sidou03', type: 7 },          // 远航者号
     5210: { name: 'sidou04', type: 7 },          // 血狱工厂
     5212: { name: 'sidou05', type: 7 },          // 深井基地
+    5214: { name: 'sidou06', type: 7 },          // Mata-Mata 06
+    5215: { name: 'pintu', type: 7 },            // Pintu (Puzzle)
+    5216: { name: 'conglinyiji', type: 7 },      // Ruínas da Selva
+    5217: { name: 'fengbaozhanqu', type: 7 },    // Zona de Tempestade
+    5218: { name: 'xinfengbaozhanqu', type: 7 }, // Nova Zona de Tempestade
+    5004: { name: 'csjj_dataosha_gai', type: 7 },// Batalha Royale
+    5099: { name: 'test', type: 7 },             // Sandbox de Teste
     
     // 争夺模式 (Type 3)
     5030: { name: 'wudingzhengduo_baked_3_xiugai', type: 3 }, // 云中天台
@@ -44,6 +51,7 @@ const MAP_CONFIG = {
     5050: { name: 'degulagubao_3_xiugai', type: 3 },          // 德古拉城堡
     5055: { name: 'fengducheng_3_xgjg', type: 3 },            // 幽冥地宫
     5208: { name: 'zhengduo_06_anse_3', type: 3 },            // 英魂祭坛
+    5045: { name: 'qab02', type: 3 },                         // Dominação A/B
     
     // 护送模式 (Type 2)
     5063: { name: 'husong01_new_03', type: 2 },  // 荣耀之城
@@ -63,7 +71,35 @@ const MAP_CONFIG = {
     5302: { name: 'shuiba_smc_3_xiugai', type: 11 },
     5303: { name: 'persian_3_xiugai', type: 11 },
     5304: { name: 'degulagubao_3_xiugai', type: 11 },
-    5305: { name: 'fengducheng_3_xgjg', type: 11 }
+    5305: { name: 'fengducheng_3_xgjg', type: 11 },
+
+    // PVE 冒险模式 - 水晶矿洞 / Mina de Cristal (Type 9)
+    5105: { name: 'shuijingkuangdong', type: 7 },
+    5106: { name: 'shuijingkuangdong', type: 9 },
+    5107: { name: 'shuijingkuangdong', type: 9 },
+    5108: { name: 'shuijingkuangdong', type: 9 },
+    5109: { name: 'shuijingkuangdong', type: 9 },
+    5110: { name: 'shuijingkuangdong', type: 9 },
+    5111: { name: 'shuijingkuangdong', type: 9 },
+    5112: { name: 'shuijingkuangdong', type: 9 },
+    5113: { name: 'shuijingkuangdong', type: 9 },
+    5114: { name: 'shuijingkuangdong', type: 9 },
+    5310: { name: 'shuijingkuangdong', type: 9 },
+    5311: { name: 'shuijingkuangdong', type: 9 },
+
+    // PVE 冒险模式 - 黑暗之地 / Terra das Trevas (Type 12)
+    5115: { name: 'hasd_qingshen', type: 7 },
+    5116: { name: 'hasd_qingshen', type: 12 },
+    5117: { name: 'hasd_qingshen', type: 12 },
+    5118: { name: 'hasd_qingshen', type: 12 },
+    5119: { name: 'hasd_qingshen', type: 12 },
+    5120: { name: 'hasd_qingshen', type: 12 },
+    5121: { name: 'hasd_qingshen', type: 12 },
+    5122: { name: 'hasd_qingshen', type: 12 },
+    5123: { name: 'hasd_qingshen', type: 12 },
+    5124: { name: 'hasd_qingshen', type: 12 },
+    5125: { name: 'hasd_qingshen', type: 12 },
+    5126: { name: 'hasd_qingshen', type: 12 }
 };
 
 // Sobrescritas manuais para habilidades de grupo
@@ -73,8 +109,13 @@ const groupSkillsOverrides = {
         buff_idx: [1047]
     },
     1122: { // Angel/Luolita - Sylph's Wind (Group Speed)
-        buff_idx_me: [1035], // Sylph's Wind (speed up)
-        buff_idx: [1035]
+        buff_idx_me: [1035] // Sylph's Wind (speed up)
+    },
+    1103: { // Jack/Yinglong - Quicksand Vortex (Ultimate)
+        longtime: 5000
+    },
+    1164: { // Lily/Lilith - Soul Chains (Ultimate)
+        longtime: 5000
     }
 };
 
@@ -183,12 +224,18 @@ function initializeDatabase() {
                             const sMax = getAttr(sm, 'energymax');
                             const sCont = getAttr(sm, 'continuestime');
                             const sDoSkill = getAttr(sm, 'doskill');
+                            const sAddTime = getAttr(sm, 'energyaddtime');
+                            const sAddDamage = getAttr(sm, 'energyadddamage');
+                            const sAddCure = getAttr(sm, 'energyaddcure');
                             if (sId && sMax) {
                                 skills.push({
                                     id: parseInt(sId),
                                     maxEnergy: parseInt(sMax),
                                     continueTime: sCont ? parseInt(sCont) : 0,
-                                    doskill: sDoSkill ? parseInt(sDoSkill) : 0
+                                    doskill: sDoSkill ? parseInt(sDoSkill) : 0,
+                                    energyAddTime: sAddTime ? parseInt(sAddTime) : 120,
+                                    energyAddDamage: sAddDamage ? parseInt(sAddDamage) : 150,
+                                    energyAddCure: sAddCure ? parseInt(sAddCure) : 120
                                 });
                             }
                         });
@@ -220,9 +267,11 @@ function initializeDatabase() {
                     const longtime = getAttr(b, 'longtime');
                     const buffMe = getAttr(b, 'buff_idx_me');
                     const buffTarget = getAttr(b, 'buff_idx');
+                    const maxSkillNumber = getAttr(b, 'maxskillnumber') || getAttr(b, 'maxSkillNumber');
                     playerSkillsMap[skillId] = {
                         cd: cd ? parseInt(cd) : 0,
                         longtime: longtime ? parseInt(longtime) : 0,
+                        maxSkillNumber: maxSkillNumber ? parseInt(maxSkillNumber) : 1,
                         buff_idx_me: (buffMe && buffMe !== "0") ? buffMe.split('|').map(x => parseInt(x)) : [],
                         buff_idx: (buffTarget && buffTarget !== "0") ? buffTarget.split('|').map(x => parseInt(x)) : []
                     };
@@ -234,6 +283,9 @@ function initializeDatabase() {
         console.error('[⚠️ ERRO AO CARREGAR PLAYERSKILL.XML EM SERVER.JS]:', e);
     }
 
+
+    
+
     // 7. buff.xml
     try {
         const pathBuff = path.join(config.publicDir, 'baxi', 'buff.xml');
@@ -241,7 +293,7 @@ function initializeDatabase() {
         const blocks = buffContent.match(/<i\s+id="(\d+)"[^>]*\/>/g);
         if (blocks) {
             const getAttr = (tag, attr) => {
-                const m = tag.match(new RegExp(`${attr}=\\s*\"([^\"]*)\"`));
+                const m = tag.match(new RegExp(`${attr}=\\s*"([^"]*)"`));
                 return m ? m[1] : null;
             };
             blocks.forEach(b => {
@@ -254,6 +306,7 @@ function initializeDatabase() {
                     const value = getAttr(b, 'value');
                     const interval = getAttr(b, 'interval');
                     const isdebuff = getAttr(b, 'isdebuff');
+                    const overlaytype = getAttr(b, 'overlaytype');
 
                     buffDurationsMap[buffId] = time ? parseInt(time) : 0;
                     buffsMap[buffId] = {
@@ -263,7 +316,8 @@ function initializeDatabase() {
                         time: time ? parseInt(time) : 0,
                         value: value ? parseInt(value) : 0,
                         interval: interval ? parseInt(interval) : 0,
-                        isdebuff: isdebuff ? parseInt(isdebuff) : 0
+                        isdebuff: isdebuff ? parseInt(isdebuff) : 0,
+                        overlaytype: overlaytype ? parseInt(overlaytype) : 0
                     };
                 }
             });
@@ -273,7 +327,7 @@ function initializeDatabase() {
         console.error('[⚠️ ERRO AO CARREGAR BUFF.XML EM SERVER.JS]:', e);
     }
 
-    // 8. weapon.xml
+// 8. weapon.xml
     try {
         const pathWeapon = path.join(config.publicDir, 'baxi', 'weapon.xml');
         const weaponContent = fs.readFileSync(pathWeapon, 'utf8');
@@ -316,6 +370,7 @@ function initializeDatabase() {
                     const dampEnd = getAttr(launcherTag, 'damagedampdisend');
                     const dampParm = getAttr(launcherTag, 'damagedampparm');
                     const boomType = getAttr(launcherTag, 'boomdamagetype');
+                    const damageForce = getAttr(launcherTag, 'damageforce');
                     const buffAttr = getAttr(launcherTag, 'buff');
                     const buffId = buffAttr ? parseInt(buffAttr) : 0;
                     
@@ -344,6 +399,7 @@ function initializeDatabase() {
                         boomType: boomType ? parseInt(boomType) : 0,
                         boomRange: boomRange,
                         cullBack: cullBack,
+                        damageForce: damageForce ? parseInt(damageForce) : 0,
                         buff: buffId
                     };
                     totalWeaponsLoaded++;
@@ -709,7 +765,17 @@ const generateHeroSkillsData = (heroId) => {
     const skills = heroSkillsMap[heroId] || [];
     const skillList = [];
     for (const skId of skills) {
-        skillList.push(`(${encodeInt(skId)},0,${one},0,${one},0,0,0,0,0,0)`);
+        let skConfig = playerSkillsMap[skId];
+        if (groupSkillsOverrides[skId]) {
+            skConfig = Object.assign({}, skConfig, groupSkillsOverrides[skId]);
+        }
+        const maxCharges = (skConfig && skConfig.maxSkillNumber > 1) ? skConfig.maxSkillNumber : 1;
+        const longtime = (skConfig && skConfig.longtime) ? skConfig.longtime : 0;
+        const cd = (skConfig && skConfig.cd) ? skConfig.cd : 0;
+        const chargesEnc = encodeInt(maxCharges);
+        const longtimeEnc = encodeInt(longtime);
+        const cdEnc = encodeInt(cd);
+        skillList.push(`(${encodeInt(skId)},0,${chargesEnc},0,${one},0,0,0,0,${longtimeEnc},${cdEnc})`);
     }
     return `(${skillList.join(',')})`;
 };
@@ -827,12 +893,13 @@ const generateFullHeroData = (id, useSkinId = 1, useWeaponId = 1, useEmoteId = 1
 
 function getEntityClassName(npcIndex) {
     if (npcIndex === 1019) return 'Radiobomb_Entity';
-    if (npcIndex === 1007 || npcIndex === 1025 || npcIndex === 1005 || npcIndex === 1011 || npcIndex === 1012) return 'Area_Entity';
-    if (npcIndex === 1021 || npcIndex === 1023) return 'Trap_Entity';
+    if (npcIndex === 1007 || npcIndex === 1025 || npcIndex === 1005 || npcIndex === 1011 || npcIndex === 1012 || npcIndex === 1022) return 'Area_Entity';
+    if (npcIndex === 1021) return 'Sentry_Entity';
+    if (npcIndex === 1021 || npcIndex === 1023 || npcIndex === 1024) return 'Trap_Entity';
     if (npcIndex >= 1026 && npcIndex <= 1035) return 'Sentry_Entity';
     
-    if (npcIndex >= 1101 && npcIndex <= 1125) {
-        return 'Npc_Entity';
+    if (npcIndex >= 1101 && npcIndex <= 1130) {
+        return 'Idiocy_Entity';
     }
 
     const npcConf = npcData[npcIndex] || { type: 1 };
@@ -883,6 +950,18 @@ const isPaintUnlocked = (paintId, profile) => {
     return profile.unlockedSprays.includes(paintId);
 };
 
+const getHeroName = (heroId) => {
+    const cosm = heroCosmeticsMap[heroId] || heroCosmeticsMap[String(heroId)];
+    if (cosm && cosm.name) return cosm.name;
+    const HERO_NAMES = {
+        1001: "Xing Tian", 1002: "D.Va", 1003: "Diana", 1004: "Mulán", 1005: "Hou Yi",
+        1006: "Lei Zhenzi", 1007: "Medusa", 1008: "Talia", 1009: "Rambo", 1011: "Guan Yin",
+        1012: "Pharaoh", 1013: "Ne Zha", 1014: "Jing Ke", 1015: "Lars", 1017: "Da Wei",
+        1020: "Reinhardt", 1021: "Zhu Rong", 1023: "Brigit"
+    };
+    return HERO_NAMES[heroId] || `Herói ${heroId}`;
+};
+
 module.exports = {
     initializeDatabase,
     filesVersionMap,
@@ -896,6 +975,7 @@ module.exports = {
     weaponsMap,
     groupSkillsOverrides,
     getHeroMaxHp,
+    getHeroName,
     generateHeroDazhaoData,
     generateHeroSkillsData,
     generateFullHeroData,
