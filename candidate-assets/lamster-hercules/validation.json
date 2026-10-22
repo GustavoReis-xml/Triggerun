@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "objectsCompared": 190,
+  "bones": 44,
+  "parts": 5,
+  "triangles": 13388,
+  "poses": {
+    "arms_raised": {
+      "p99EdgeStretch": 1.1892788049182923,
+      "maxDisplacement": 0.6671266648564388
+    },
+    "guard": {
+      "p99EdgeStretch": 1.1706059107663234,
+      "maxDisplacement": 0.586754729786637
+    },
+    "punch": {
+      "p99EdgeStretch": 1.1519211046396813,
+      "maxDisplacement": 0.5550158579688238
+    }
+  },
+  "UnityTested": false
+}

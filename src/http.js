@@ -1,3 +1,4 @@
+const telemetry = require('./logger');
 // Módulo HTTP e Express do servidor Trigger Run
 
 const express = require('express');
@@ -12,6 +13,10 @@ const { encodeInt, decodeInt, encodeHex, decodeHex, Fun } = require('./utils');
 const gameLogic = require('./gameLogic');
 const dbPersistence = require('./dbPersistence');
 
+const entityCatalog = require('./entityCatalog');
+const catalog = entityCatalog.loadCatalog(path.join(config.publicDir,'baxi'));
+const spawnCatalogEntity = entityCatalog.createSpawner({state,db,game:gameLogic,catalog});
+const swapModel = require('./modelSwap').createModelSwapper(state,catalog);
 const app = express();
 
 app.use(express.json());
@@ -54,6 +59,11 @@ app.use(['/res', '/scene'], (req, res) => {
 
     // Se o jogo pedir arquivos XML, serve localmente da pasta public/baxi/
     const pathLower = req.path.toLowerCase();
+    const lamsterAsset = require('./lamsterAssets').resolveAsset(req.path);
+    if (lamsterAsset) {
+        res.type('png');
+        return res.sendFile(path.join(config.publicDir, 'lamster', lamsterAsset));
+    }
     
     // Intercepta requisições de spray do Icon/painticon para servir arquivos personalizados locais (.png ou .jpg)
     if (pathLower.includes('icon/painticon/')) {
@@ -235,6 +245,21 @@ app.get('/api/state', (req, res) => {
     res.json({ players, npcs, tdm });
 });
 
+// POST /api/restart-server — reinicia o processo do servidor no PM2
+app.post('/api/restart-server', (req, res) => {
+    res.json({ ok: true, message: 'Comando de reinicialização enviado. O servidor voltará em poucos segundos!' });
+    setTimeout(() => {
+        const { exec } = require('child_process');
+        exec('sudo pm2 restart triggerun || pm2 restart triggerun', (err, stdout, stderr) => {
+            if (err) {
+                console.error('[🔄 RESTART ERROR]:', err);
+            } else {
+                console.log('[🔄 RESTART SUCCESS]:', stdout);
+            }
+        });
+    }, 400);
+});
+
 // POST /api/hero — switch hero for a player
 app.post('/api/hero', (req, res) => {
     const { playerId, heroId } = req.body;
@@ -249,38 +274,25 @@ app.post('/api/hero', (req, res) => {
 });
 
 // POST /api/spawn — spawn NPC near a player
-app.post('/api/spawn', (req, res) => {
-    const { playerId, npcIndex, count, scale } = req.body;
-    const socket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && String(s.playerId) === String(playerId));
-    if (!socket) return res.json({ ok: false, error: 'Jogador não encontrado ou offline.' });
-    try {
-        const total = Math.max(1, Math.min(parseInt(count) || 1, 20));
-        const idx = parseInt(npcIndex) || 1121;
-        const npcConf = db.npcData[idx] || {};
-        const npcMaxHp = parseInt(npcConf.hp) || 500;
-        const spawnX = socket.lastX || 50000;
-        const spawnY = socket.lastY || 20104;
-        const spawnZ = socket.lastZ || 26000;
-        const spawned = [];
-        const scaleVal = parseInt(scale) || 100;
-        for (let i = 0; i < total; i++) {
-            const botNetId = 15000 + Math.floor(Math.random() * 50000);
-            state.spawnedNpcs[botNetId] = { id: botNetId, index: idx, hp: npcMaxHp, maxHp: npcMaxHp, x: spawnX, y: spawnY, z: spawnZ, isPracticeDummy: true };
-            const className = db.getEntityClassName(idx);
-            const spawnPacket = `c${className}:${encodeInt(botNetId)},("Initialize",(${encodeInt(1)},${encodeInt(botNetId)},${encodeInt(idx)},${encodeInt(2)},(${encodeInt(spawnX)},${encodeInt(spawnY)},${encodeInt(spawnZ)}),(0,0,0),(${encodeInt(100)},${encodeInt(100)},${encodeInt(100)}),(0,0,0),${encodeInt(-1)},${encodeInt(npcMaxHp)},${encodeInt(0)},${encodeInt(1)},${encodeInt(0)},""),((),()),0)\n`;
-            
-            state.activeSockets.forEach(s => { if (s.socketType === 'SCENE' && !s.destroyed) s.write(spawnPacket); });
-            
-            if (scaleVal !== 100) {
-                const scalePacket = `c${className}:${encodeInt(botNetId)},("NSS",((${encodeInt(scaleVal)},${encodeInt(scaleVal)},${encodeInt(scaleVal)})))\n`;
-                state.activeSockets.forEach(s => { if (s.socketType === 'SCENE' && !s.destroyed) s.write(scalePacket); });
-            }
-            spawned.push(botNetId);
-        }
-        res.json({ ok: true, message: `${total} entidade(s) NPC ${idx} spawnada(s) com escala de ${scaleVal}%.`, ids: spawned });
-    } catch(e) {
-        res.json({ ok: false, error: e.message });
+app.get('/api/entities', (req,res)=>res.json(catalog));
+app.post('/api/spawn', (req,res)=> {
+    try { res.json(spawnCatalogEntity(req.body)); }
+    catch(error) { res.status(400).json({ok:false,error:error.message}); }
+});
+
+// Remove only entities created by this admin tool, in the selected scene.
+app.post('/api/entities/clear', (req,res)=> {
+    const scope=require('./sceneScope');
+    const player=state.activeSockets.find(p=>String(p.playerId)===String(req.body.playerId)&&scope.canReceive(p,p));
+    if(!player)return res.status(400).json({ok:false,error:'Selecione um jogador em partida.'});
+    let count=0;
+    for(const pool of [state.activeBots,state.spawnedNpcs])for(const [id,entity] of Object.entries(pool)) {
+        if(!entity.isAdminSpawn || !scope.sameScene(entity,player))continue;
+        if(entity.isPveMonster)gameLogic.handlePlayerDeath(entity);
+        else { delete pool[id];state.activeSockets.forEach(p=>{if(scope.canReceive(entity,p))p.write('d'+encodeInt(Number(id))+'\n');}); }
+        count++;
     }
+    res.json({ok:true,message:count+' entidade(s) de teste removida(s) desta sala.'});
 });
 
 // POST /api/kill_npcs — destroy all spawned NPCs
@@ -489,7 +501,7 @@ app.get('/api/heroes', (req, res) => {
 app.get('/api/npcs', (req, res) => {
     const list = Object.entries(db.npcData)
         .map(([id, n]) => ({ id: parseInt(id), name: n.name || `NPC ${id}`, hp: n.hp, type: n.type }))
-        .filter(n => n.id >= 1101 && n.id <= 1200)
+        
         .sort((a, b) => a.id - b.id);
     res.json(list);
 });
@@ -695,8 +707,8 @@ app.post('/api/clear_dummies', (req, res) => {
 
 // POST /api/tdm/time — modify TDM match time or end it
 app.post('/api/tdm/time', (req, res) => {
-    const { action } = req.body;
-    const match = global.activeTdmMatch;
+    const { action, roomUID } = req.body;
+    const match = gameLogic.getTdmMatch ? gameLogic.getTdmMatch(roomUID || global.activeTdmMatch, false) : global.activeTdmMatch;
     if (!match) return res.json({ ok: false, error: 'Nenhuma partida TDM ativa.' });
     
     if (action === 'add') {
@@ -715,7 +727,7 @@ app.post('/api/tdm/time', (req, res) => {
         return res.json({ ok: true, message: 'Tempo de partida reduzido em 1 minuto.' });
     } else if (action === 'end') {
         try {
-            gameLogic.endTdmMatch();
+            gameLogic.endTdmMatch(match);
             return res.json({ ok: true, message: 'Partida TDM encerrada com sucesso.' });
         } catch(e) {
             return res.json({ ok: false, error: e.message });
@@ -726,14 +738,14 @@ app.post('/api/tdm/time', (req, res) => {
 
 // POST /api/tdm/score — modify TDM team score
 app.post('/api/tdm/score', (req, res) => {
-    const { team, amount } = req.body;
-    const match = global.activeTdmMatch;
+    const { team, amount, roomUID } = req.body;
+    const match = gameLogic.getTdmMatch ? gameLogic.getTdmMatch(roomUID || global.activeTdmMatch, false) : global.activeTdmMatch;
     if (!match) return res.json({ ok: false, error: 'Nenhuma partida TDM ativa.' });
     
     try {
         const amt = parseInt(amount) || 1;
         const force = team === 'blue' ? 1 : 2;
-        gameLogic.incrementTdmScore(force, amt);
+        gameLogic.incrementTdmScore(match, force, amt);
         return res.json({ ok: true, message: `Adicionado ${amt} pontos para o time ${team === 'blue' ? 'Azul' : 'Vermelho'}.` });
     } catch(e) {
         return res.json({ ok: false, error: e.message });
@@ -751,26 +763,8 @@ app.post('/api/nocd', (req, res) => {
 
 // POST /api/visual_hero — swap character visual appearance
 app.post('/api/visual_hero', (req, res) => {
-    const { playerId, visualHeroId } = req.body;
-    const socket = state.activeSockets.find(s => s.socketType === 'SCENE' && !s.destroyed && String(s.playerId) === String(playerId));
-    if (!socket) return res.json({ ok: false, error: 'Jogador não encontrado ou offline.' });
-    try {
-        const vId = parseInt(visualHeroId);
-        socket.visualHeroId = vId || null;
-        
-        // Broadcast the spawn packets dynamically to recreate player's appearance instantly!
-        state.activeSockets.forEach(s => {
-            if (s.socketType === 'SCENE' && !s.destroyed) {
-                s.bypassInterceptor = true;
-                s.write(gameLogic.getPlayerSpawnPacket(socket, s));
-                s.bypassInterceptor = false;
-            }
-        });
-        
-        res.json({ ok: true, message: `Aparência visual do jogador alterada para o ID de Herói ${vId || 'original'}.` });
-    } catch(e) {
-        res.json({ ok: false, error: e.message });
-    }
+    try { res.json(swapModel(req.body)); }
+    catch(error) { res.status(400).json({ok:false,error:error.message}); }
 });
 
 // POST /api/scale — modify scale of player or NPC
@@ -827,6 +821,7 @@ app.post('/api/clear-crash-logs', (req, res) => {
 // POST /api/client-crash
 app.post('/api/client-crash', (req, res) => {
     const { message, stack } = req.body;
+    telemetry.logTelemetry('CLIENT_ERROR', { message, stack, player: req.body.playerName || null, address: req.ip });
     if (message) {
         global.crashLogs.push({
             timestamp: new Date().toLocaleTimeString(),

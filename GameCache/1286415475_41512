@@ -1,7 +1,0 @@
-<root>
-	<i id="101" name="Competição para todos" bgimg="libao_matchreward_ditu_1" desc1="Jogadores podem ganhar prêmios após sua 1ª, 2ª e 10ª partidas de Partidas Rápidas ou Partidas Rankeadas de 01 Outubro a 30 Outubro" desc2="Campo de treino e Tutorial não serão válidos como sessão.\nRecompensas não coletadas serão enviadas pro email após evento terminar.">
-		<m id="1" matchtype="1,2" matchnum="1" title="{0} partida" img="6023" msg="Moeda de Ressurreição" reward="6023,1"/>
-		<m id="2" matchtype="1,2" matchnum="5" title="{0} partidas" img="saodangquan" msg="Mop-up Ticket *3" reward="1025,3"/>
-		<m id="3" matchtype="1,2" matchnum="10" title="{0} partidas" img="cjlb" msg="Crystal Box *3" reward="2020,3"/>
-	</i>
-</root>

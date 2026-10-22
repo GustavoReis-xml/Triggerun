@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,7 +25,8 @@ public class CObjectRender : MonoBehaviour
 				Debug.LogError("老朱EnemyRender挂错了，请老朱查找");
 			}
 		}
-		flag = (mustClose || active);
+		bool hasEnemyVisuals = (this.EnemyRender != null && this.EnemyRender.Length > 0) || (this.EnemyParticleSystem != null && this.EnemyParticleSystem.Length > 0);
+		flag = (mustClose || (active && hasEnemyVisuals));
 		for (int j = 0; j < this.FriendRender.Length; j++)
 		{
 			bool flag4 = this.FriendRender[j] != null;
@@ -59,7 +60,7 @@ public class CObjectRender : MonoBehaviour
 				Debug.LogError("老朱EnemyParticleSystem挂错了，请老朱查找");
 			}
 		}
-		flag = (mustClose || active);
+		flag = (mustClose || (active && hasEnemyVisuals));
 		for (int l = 0; l < this.FriendParticleSystem.Length; l++)
 		{
 			bool flag8 = this.FriendParticleSystem[l] != null;

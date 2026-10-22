@@ -1,7 +1,7 @@
 <root>
-	<i id="101" name="比赛奖励" bgimg="libao_matchreward_ditu" desc1="9月1日至9月30日期间，玩家每日进行1场，5场，10场快速匹配或天梯比赛可领取奖励" desc2="1.玩家只有进行快速匹配或天梯比赛才会计算有效场次。好友比赛，训练靶场，新手教学等副本不计算场次\n2.如果玩家没有手动领取。则活动结束后，系统自动通过邮件将玩家可以领取但没有领取的奖励发送到他的邮箱">
-		<m id="1" matchtype="1,2" matchnum="1" title="对局{0}场" reward="1020,10"/>
-		<m id="2" matchtype="1,2" matchnum="5" title="对局{0}场" reward="2007,1"/>
-		<m id="3" matchtype="1,2" matchnum="10" title="对局{0}场" reward="2020,2"/>
+	<i id="101" name="Prêmios da partida" bgimg="libao_matchreward_ditu" desc1="Jogadores podem ganhar prêmios após sua 1ª, 2ª e 10ª partidas de Partidas Rápidas ou Partidas Rankeadas de 01 Setembro a 30 Setembro" desc2="1 - Apenas Partidas Rápidas e Partidas Rankeadas serão consideradas partidas válidas. Batalha Amistosa, Treinamento e Tutorial não serão contados.\n2 - Se os jogadores não coletarem os prêmios, estes serão enviados para as mailboxes.">
+		<m id="1" matchtype="1,2" matchnum="1" title="{0} partida" reward="1020,10"/>
+		<m id="2" matchtype="1,2" matchnum="5" title="{0} partidas" reward="2007,1"/>
+		<m id="3" matchtype="1,2" matchnum="10" title="{0} partidas" reward="2020,2"/>
 	</i>
 </root>

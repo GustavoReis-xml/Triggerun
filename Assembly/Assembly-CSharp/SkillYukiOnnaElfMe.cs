@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,14 +19,19 @@ public class SkillYukiOnnaElfMe : SkillBaseMe
 		((CWeaponControlMe)base.hero.wc).cancelFillCartridge();
 		base.OneSkillAction(target, parm2);
 		base.hero.SetAnimator("Skill_2_Effect", 0, true, 2);
-		base.StartCoroutine(this.Wait_Finish());
+		
+		float duration = 5f;
+		if (base.heroSkillData != null && base.heroSkillData.m_nSKLongTime > 0)
+		{
+			duration = (float)base.heroSkillData.m_nSKLongTime / 1000f;
+		}
+		this._endTime = Time.time + duration;
+		this._nextShootTime = 0f;
 	}
 
 	// Token: 0x060028F6 RID: 10486 RVA: 0x0016C772 File Offset: 0x0016A972
 	private IEnumerator Wait_Finish()
 	{
-		yield return new WaitForSeconds((float)(base.heroSkillData.m_nSKLongTime / 1000));
-		this.OneSkillFinish();
 		yield break;
 	}
 
@@ -37,6 +42,7 @@ public class SkillYukiOnnaElfMe : SkillBaseMe
 		if (state)
 		{
 			this._State = false;
+			this._endTime = 0f;
 			base.hero.SetAnimator("Skill_2_Effect", 0, false, 2);
 			base.OneSkillFinish();
 		}
@@ -48,8 +54,20 @@ public class SkillYukiOnnaElfMe : SkillBaseMe
 		bool state = this._State;
 		if (state)
 		{
-			base.RealShoot(base.hero.thisModel.transform.position, null);
-			((CWeaponControlMe)base.hero.wc).CheckMustFillCartridge();
+			if (Time.time >= this._endTime && this._endTime > 0f)
+			{
+				this.OneSkillFinish();
+				return;
+			}
+			if (Time.time >= this._nextShootTime)
+			{
+				this._nextShootTime = Time.time + 0.2f;
+				if (base.hero != null && base.hero.thisModel != null)
+				{
+					base.RealShoot(base.hero.thisModel.transform.position, null);
+					((CWeaponControlMe)base.hero.wc).CheckMustFillCartridge();
+				}
+			}
 		}
 	}
 
@@ -62,4 +80,6 @@ public class SkillYukiOnnaElfMe : SkillBaseMe
 
 	// Token: 0x04002326 RID: 8998
 	private bool _State;
+	private float _endTime;
+	private float _nextShootTime;
 }

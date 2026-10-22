@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "objectsCompared": 804,
+  "bones": 62,
+  "bodyRenderers": 11,
+  "auxiliaryUltimateUnchanged": true,
+  "physicsHierarchyUnchanged": true,
+  "sourceGLBPreserved": true,
+  "correctedGLBAccessorsUnchanged": 4,
+  "outsideFaceMaskUnchanged": true,
+  "faceUVPixels": 5275,
+  "rigidPauldrons": true,
+  "headGeometryAndBodyUVsUnchanged": true,
+  "handsHeadWeightsGeometryUnchanged": true,
+  "textureMaterialByteIdenticalTo028": true,
+  "customObjectsChanged": [
+    -8625515224505956798,
+    -6876593314986387943,
+    -1509544786113007159,
+    -223434996762529642,
+    -2821954666871096,
+    743722026389162907,
+    3783654109525315982,
+    4030032883849330007,
+    7867717620852293147,
+    9133840624548575407
+  ],
+  "baselineSelection": {
+    "p99EdgeStretch": 1.1892011165618896,
+    "maxEdgeStretch": 4.803842067718506
+  },
+  "poses": {
+    "aim": {
+      "p99EdgeStretch": 1.0317672491073608,
+      "maxEdgeStretch": 1.756700038909912
+    },
+    "run": {
+      "p99EdgeStretch": 1.1439146995544434,
+      "maxEdgeStretch": 2.557765483856201
+    },
+    "turn": {
+      "p99EdgeStretch": 1.0883047580718994,
+      "maxEdgeStretch": 2.456570863723755
+    },
+    "neck": {
+      "p99EdgeStretch": 1.1639877557754517,
+      "maxEdgeStretch": 2.6660895347595215
+    },
+    "shoulders": {
+      "p99EdgeStretch": 1.077569842338562,
+      "maxEdgeStretch": 3.0956716537475586
+    },
+    "scarf": {
+      "p99EdgeStretch": 1.0096548795700073,
+      "maxEdgeStretch": 2.61869740486145
+    },
+    "shoot": {
+      "p99EdgeStretch": 1.1073650121688843,
+      "maxEdgeStretch": 3.3130741119384766
+    },
+    "selection": {
+      "p99EdgeStretch": 1.1877433061599731,
+      "maxEdgeStretch": 2.762669563293457
+    }
+  },
+  "selectionPoseIsSynthetic": true,
+  "UnityTested": false
+}

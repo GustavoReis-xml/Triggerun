@@ -1,0 +1,48 @@
+Bugs gerais: é possivel aplicar Stuns atraves dos escudos (deveriam ser imunes a todos os efeitos), tanto da valk e da venus, e escudos barreiras tipo tagaloa e venus, da pra lançar o stun na barreira que o stun acaba atordoando o dono da barreira.
+
+Alice: OK
+Tagaloa: OK
+Lars: Ok
+
+Celina: OK
+
+Carmen: OK
+
+Brigit: OK
+Valkrie: OK
+
+Glider: OK
+
+Scarlett: OK
+Shogun: OK
+
+Eva: OK
+
+Dragos: OK
+
+Jack: OK
+
+Loki: OK
+
+Angel: OK
+
+Vincent: OK
+
+Johnny: OK
+
+Venus: OK
+
+Lily: OK
+
+Khan: OK
+
+nezha: OK
+
+Gaya/medusa: OK
+
+David: OK
+
+
+
+
+

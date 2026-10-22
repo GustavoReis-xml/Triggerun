@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<root>
-	<i Npc_ID="1008" Map_ID="5037" Position="12733|24085|965" Rotation="0|0|0" Speed="260" Node_Data="1,12733,24085,945,0|2,12733,24085,1722,0" />
-	<i Npc_ID="1009" Map_ID="5037" Position="16798|24069|965" Rotation="0|0|0" Speed="260" Node_Data="1,16798,24069,945,0|2,16798,24069,1722,0" />
-</root>

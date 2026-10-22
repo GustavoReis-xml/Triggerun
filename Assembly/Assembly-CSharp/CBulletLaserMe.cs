@@ -48,7 +48,7 @@ public class CBulletLaserMe : CBulletMe
 						}
 						Ray ray = new Ray(vector, base.transform.forward);
 						RaycastHit hitGameObject;
-						bool flag6 = Physics.Raycast(ray, out hitGameObject, num2, base.bulletLayer);
+						bool flag6 = TriggerunHitCollision.Raycast(ray, out hitGameObject, num2, base.bulletLayer);
 						if (!flag6)
 						{
 							vector = base.transform.position + base.transform.forward * num2;

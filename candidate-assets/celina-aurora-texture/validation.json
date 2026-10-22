@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "objectsCompared": 1211,
+  "objectsChanged": 2,
+  "geometryAndWeightsExactlyPreserved": true,
+  "dedicatedUvTiles": 16,
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "skin": 6,
+  "installed": false,
+  "sha256": "4545a85a39a844706c7dedb668b706211cd9f324c166e9c47ea0ea3643560566"
+}

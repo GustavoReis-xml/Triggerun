@@ -208,8 +208,8 @@ public class GamePlayer : NetLiving
 			this.userRoot.transform.eulerAngles = Vector3.zero;
 			this.publicInfo = this.userRoot.AddComponent<PlayerInfo>();
 			this.publicInfo.InitInfo(this);
-			this.UserControl = new GameObject("control");
-			this.UserControl.layer = LayerMask.NameToLayer("Ignore Raycast");
+			this.UserControl = new GameObject("control_IgnoreDamge");
+			this.UserControl.layer = LayerMask.NameToLayer("Default");
 			this.UserControl.transform.parent = this.userRoot.transform;
 			bool flag = this.playerCommon.posCreate != Vector3.zero;
 			if (flag)
@@ -229,15 +229,16 @@ public class GamePlayer : NetLiving
 			capsuleCollider.center = center;
 			this.defaultRigidbody = rigidbody;
 			this.defaultCollider = capsuleCollider;
-			this.defaultMesh = new GameObject("defaultMesh");
+			this.defaultMesh = new GameObject("defaultMesh_IgnoreDamge");
 			this.defaultMesh.transform.parent = this.UserControl.transform;
 			this.defaultMesh.transform.localPosition = center + new Vector3(0f, 0.3f, 0f);
 			this.defaultMesh.transform.localScale = Vector3.one * 0.3f;
 			this.defaultMesh.transform.localEulerAngles = new Vector3(45f, 0f, 45f);
 			this.bodyCollider = this.defaultMesh.AddComponent<BoxCollider>();
+			this.bodyCollider.isTrigger = true;
 			this.bodyRigidbody = this.defaultMesh.AddComponent<Rigidbody>();
 			this.bodyRigidbody.isKinematic = true;
-			this.defaultMesh.layer = LayerMask.NameToLayer("Ignore Raycast");
+			this.defaultMesh.layer = LayerMask.NameToLayer("Default");
 			GameObject gameObject = new GameObject("UserHeadTarget");
 			this.UserHeadTarget = gameObject.transform;
 			this.UserHeadTarget.parent = this.UserControl.transform;
@@ -936,10 +937,11 @@ public class GamePlayer : NetLiving
 			Collider[] componentsInChildren = this.userModelTps.GetComponentsInChildren<Collider>();
 			foreach (Collider collider in componentsInChildren)
 			{
-				bool flag4 = (1 << collider.gameObject.layer & LayerManager.bulletLayer()) == 0;
-				if (flag4)
+				if (collider != null)
 				{
-					collider.gameObject.layer = 2;
+					collider.enabled = true;
+					collider.isTrigger = false;
+					collider.gameObject.layer = 0;
 				}
 			}
 		}
@@ -1073,8 +1075,25 @@ public class GamePlayer : NetLiving
 		{
 			this.UserControl.layer = layer2;
 		}
+		else
+		{
+			this.UserControl.layer = layer;
+		}
+		this.UserControl.name = "control_IgnoreDamge";
 		this.UserControl.tag = "can_damage_human";
+		this.defaultMesh.name = "defaultMesh_IgnoreDamge";
 		this.defaultMesh.tag = "can_damage_human";
+		this.defaultMesh.layer = layer;
+		if (this.defaultCollider != null)
+		{
+			this.defaultCollider.enabled = true;
+		}
+		if (this.bodyCollider != null)
+		{
+			this.bodyCollider.gameObject.tag = "can_damage_human";
+			this.bodyCollider.isTrigger = true;
+			this.bodyCollider.enabled = true;
+		}
 		bool flag3 = this.userModelTps == null;
 		if (!flag3)
 		{
@@ -1087,15 +1106,11 @@ public class GamePlayer : NetLiving
 				this.rigidbodyAll = new ArrayList();
 				flag4 = true;
 			}
-			this.bodyCollider.gameObject.tag = "can_damage_human";
-			bool flag6 = this.isMainPlayer || this.filmMainLayer;
-			if (flag6)
+			if (this.bodyCollider != null)
 			{
-				this.bodyCollider.gameObject.layer = layer2;
-			}
-			else
-			{
-				this.bodyCollider.gameObject.layer = layer;
+				this.bodyCollider.gameObject.tag = "can_damage_human";
+				this.bodyCollider.isTrigger = true;
+				this.bodyCollider.enabled = true;
 			}
 			for (int i = 0; i < componentsInChildren.Length; i++)
 			{

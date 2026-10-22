@@ -351,8 +351,14 @@
 
     /* ---- ENTITY SPAWN GRID ---- */
     #entityGrid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px;
+      display: block;
     }
+    #entityGrid table { border-collapse: collapse; min-width: 620px; text-align: left; }
+    #entityGrid th, #entityGrid td { padding: 12px; border-bottom: 1px solid var(--border); }
+    #entityGrid th { background: var(--bg3); position: sticky; top: 0; }
+    #entityGrid small { color: var(--muted); }
+    #entityGrid button { background: var(--bg3); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+    a[href="/api/entities"] { color: var(--accent); }
     .entity-btn {
       background: var(--bg3); border: 1px solid var(--border);
       border-radius: 12px; padding: 12px;
@@ -489,6 +495,9 @@
     <div class="player-count">
       <span id="playerCountNum">0</span> jogadores online
     </div>
+    <button class="btn btn-sm btn-danger" onclick="restartServer()" title="Reiniciar Servidor via PM2" style="padding: 5px 12px; font-size: 12px; cursor: pointer; border-radius: 8px;">
+      🔄 Reiniciar Servidor
+    </button>
   </div>
 </header>
 
@@ -750,12 +759,71 @@
     <!-- ===== ENTITIES ===== -->
     <div class="page" id="page-entities">
       <div class="page-header">
-        <h1>🤖 Spawnar Entidades</h1>
-        <p>Spawne NPCs, bots de treino e inimigos no mundo</p>
+        <h1>🤖 Spawnar Entidades & Treino</h1>
+        <p>Spawne bonecos de treino com hitboxes reais de heróis, bots e NPCs no mundo</p>
       </div>
+
+      <!-- Practice Dummy Spawner Card -->
+      <div class="card" style="margin-bottom:16px; border: 1px solid rgba(0, 200, 255, 0.25); background: linear-gradient(180deg, rgba(0, 200, 255, 0.05) 0%, rgba(13, 17, 23, 0.8) 100%);">
+        <div class="card-title" style="color:var(--accent);"><span class="card-icon">🎯</span> Spawner de Bonecos de Treino (Hitbox & Dano 100% Real de Jogador)</div>
+        <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">
+          Spawna um <strong>Hero Bot com a hitbox oficial da Unity</strong> na frente do jogador selecionado. Registra Headshots 2.0x, dano de armas/skills, absorção de escudos e auto-revive idêntico a um player real!
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom:16px;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Herói do Boneco</label>
+            <select id="dummyHeroSelect">
+              <option value="1015">Lars (Terminator)</option>
+              <option value="1003">Diana (Sniper)</option>
+              <option value="1020">Reinhardt (Lobo com Escudo)</option>
+              <option value="1001">Xing Tian (Tanque)</option>
+              <option value="1004">Mulán</option>
+              <option value="1005">Hou Yi</option>
+              <option value="1002">D.Va (DaJi)</option>
+              <option value="1006">Lei Zhenzi</option>
+              <option value="1007">Medusa</option>
+              <option value="1008">Talia</option>
+              <option value="1009">Rambo</option>
+              <option value="1011">Guan Yin</option>
+              <option value="1012">Pharaoh</option>
+              <option value="1013">Ne Zha</option>
+              <option value="1014">Jing Ke</option>
+              <option value="1017">Da Wei</option>
+              <option value="1021">Zhu Rong</option>
+              <option value="1023">Brigit (Fênix)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Comportamento</label>
+            <select id="dummyModeSelect">
+              <option value="static">🎯 Estático (Parado para teste de DPS/Mira)</option>
+              <option value="strafe">🚶 Strafe Lateral (Esquerda/Direita)</option>
+              <option value="follow">🏃 Seguidor (Anda até você)</option>
+              <option value="combat">⚔️ Combate (IA Ativa)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Vida / Resistência</label>
+            <select id="dummyHpSelect">
+              <option value="normal">👤 Normal (HP e Escudo Reais do Herói)</option>
+              <option value="tank">🛡️ Super Tanque (10.000 HP + 2.000 Escudo)</option>
+              <option value="immortal">❤️ Imortal (Auto-Revive em 1.5s)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Jogador Referência</label>
+            <select id="dummyTargetPlayer"><option value="">— Selecione o Jogador —</option></select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="spawnPracticeDummy()">🎯 Spawnar Boneco de Treino</button>
+          <button class="btn btn-danger" onclick="clearPracticeDummies()">🧹 Limpar Todos os Bonecos</button>
+        </div>
+      </div>
+
       <div class="card" style="margin-bottom:16px;">
-        <div class="card-title"><span class="card-icon">⚙️</span> Configuração de Spawn</div>
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+        <div class="card-title"><span class="card-icon">⚙️</span> Criar entidades na sala do jogador</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
           <div class="form-group">
             <label class="form-label">Jogador Alvo</label>
             <select id="spawnTargetPlayer"><option value="">— Selecione —</option></select>
@@ -771,8 +839,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">ID Bruto (opcional)</label>
-            <input type="number" id="spawnCustomId" placeholder="Ex: 1121" />
+            <label class="form-label">Chave da entidade</label>
+            <input type="text" id="spawnCustomId" placeholder="Ex: robot:1101 ou npc:1101" />
           </div>
           <div class="form-group">
             <label class="form-label">Escala Inicial</label>
@@ -787,14 +855,22 @@
           </div>
         </div>
         <div class="btn-row">
-          <button class="btn btn-primary" onclick="spawnCustom()">🤖 Spawnar ID Customizado</button>
-          <button class="btn btn-danger" onclick="killNpcs(false)">🗑️ Limpar NPCs</button>
-          <button class="btn btn-danger" onclick="killNpcs(true)">💥 Limpar Tudo (+ Dummies)</button>
+          <button class="btn btn-primary" onclick="spawnCustom()">🤖 Criar entidade selecionada</button>
+          <button class="btn btn-danger" onclick="clearCatalogEntities()">🗑️ Remover testes desta sala</button>
         </div>
       </div>
       <div class="card">
-        <div class="card-title"><span class="card-icon">📦</span> Entidades Rápidas</div>
-        <div id="entityGrid"></div>
+        <div class="card-title"><span class="card-icon">📦</span> Catálogo completo</div>
+        <p style="color:var(--muted)">IDs de NPC, modelo e bot são separados. Heróis são criados como bonecos de teste. NPCs de habilidades podem depender da arma ou do efeito original.</p>
+        <div class="form-row" style="display:flex;gap:12px;flex-wrap:wrap">
+          <input id="entitySearch" placeholder="Buscar nome, ID, modelo ou rota..." oninput="renderCatalog()" style="flex:2;min-width:220px" aria-label="Buscar entidade">
+          <select id="entityCategory" onchange="renderCatalog()" aria-label="Categoria"><option value="">Todas as categorias</option></select>
+          <select id="entityBehavior" aria-label="Comportamento"><option value="static">Teste parado</option><option value="native">IA nativa (somente bots)</option></select>
+          <a class="btn" href="/api/entities" target="_blank" rel="noopener">Abrir lista completa</a>
+        </div>
+        <p style="color:var(--muted)">IA nativa: use bots do mapa atual; rotas de outro mapa podem não funcionar. Escala inicial aplica-se a NPCs; personagens usam o tamanho original.</p>
+        <p id="entityCount" aria-live="polite"></p>
+        <div id="entityGrid" style="max-height:520px;overflow:auto"></div>
       </div>
       <div class="card" style="margin-top:16px;">
         <div class="card-title"><span class="card-icon">👁️</span> NPCs Ativos</div>
@@ -917,7 +993,7 @@
           <div>
             <div class="card-title"><span class="card-icon">🎭</span> Trocar Aparência (Model Swap)</div>
             <p style="font-size:12px; color:var(--muted); margin-bottom:16px;">
-              Troque a aparência visual do seu personagem por outro herói ou NPC de treino. Suas habilidades e arma continuarão sendo as do herói original!
+              Experimento: use o corpo e as animações de um monstro, mantendo arma, habilidades e braços em primeira pessoa do herói original. Todos os clientes precisam da atualização Model Swap. Animações e encaixe da arma podem variar por modelo.
             </p>
             <div class="form-group">
               <label class="form-label">Selecionar Aparência de Herói</label>
@@ -926,16 +1002,14 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Ou Usar ID de NPC de Treino (Modelos)</label>
+              <label class="form-label">Monstros do Aventura (modelo externo)</label>
               <select id="zueiraNpcModelSelector" onchange="document.getElementById('zueiraCustomModelId').value = this.value">
-                <option value="1121">Dummy de Treino Fraco (#1121)</option>
-                <option value="1122">Dummy de Treino Médio (#1122)</option>
-                <option value="1101">Dummy de Treino Forte (#1101)</option>
+                <option value="">— Selecione um monstro —</option>
               </select>
             </div>
             <div class="form-group">
               <label class="form-label">ID de Aparência Customizado</label>
-              <input type="number" id="zueiraCustomModelId" placeholder="Ex: 1015, 1121..." />
+              <input type="text" id="zueiraCustomModelId" placeholder="Ex: robot:1109 ou 1015" />
             </div>
           </div>
           <div class="btn-row" style="margin-top:16px;">
@@ -998,6 +1072,7 @@
         <button class="cosmetic-tab" onclick="showCosmeticTab('weapons')" id="ctab-weapons">🔫 Armas</button>
         <button class="cosmetic-tab" onclick="showCosmeticTab('emotes')" id="ctab-emotes">🎭 Emotes (Herói)</button>
         <button class="cosmetic-tab" onclick="showCosmeticTab('crossemotes')" id="ctab-crossemotes">⭐ Emotes de Todos</button>
+        <button class="cosmetic-tab" onclick="showCosmeticTab('poses')" id="ctab-poses">🏆 Poses Secretas (300+)</button>
       </div>
 
       <!-- Skins panel -->
@@ -1020,9 +1095,17 @@
       <div id="ctab-panel-emotes" style="display:none;">
         <div class="card">
           <div class="card-title"><span class="card-icon">🎭</span> Emotes do Herói Atual</div>
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;background:rgba(255,255,255,0.05);padding:10px;border-radius:10px;">
-            <label style="font-size:12px;font-weight:600;color:var(--muted);">Som Personalizado (Opcional):</label>
-            <input type="text" id="emoteSoundInput" placeholder="Ex: Audio/Emotes/dance01" style="flex:1;padding:6px 10px;font-size:12px;" />
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;background:rgba(255,255,255,0.05);padding:10px;border-radius:10px;flex-wrap:wrap;">
+            <div style="display:flex;gap:8px;align-items:center;flex:1;min-width:260px;">
+              <label style="font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;">Animparm Manual:</label>
+              <input type="number" id="customAnimParmInput" placeholder="Ex: 50, 201..." style="width:100px;padding:6px 10px;font-size:12px;" />
+              <button class="btn btn-primary" style="padding:6px 12px;font-size:12px;" onclick="playManualEmote()">▶ Executar</button>
+              <button class="btn btn-danger" style="padding:6px 12px;font-size:12px;" onclick="playEmote(0)">⏹ Parar Emote</button>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex:1;min-width:240px;">
+              <label style="font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;">Som (Opcional):</label>
+              <input type="text" id="emoteSoundInput" placeholder="Ex: Audio/Emotes/dance01" style="flex:1;padding:6px 10px;font-size:12px;" />
+            </div>
           </div>
           <div class="emote-grid" id="emoteGrid"><div style="color:var(--muted);font-size:13px;">Selecione um jogador</div></div>
         </div>
@@ -1032,9 +1115,119 @@
       <div id="ctab-panel-crossemotes" style="display:none;">
         <div class="card">
           <div class="card-title"><span class="card-icon">⭐</span> Emotes de Todos os Heróis</div>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Esses emotes usam o <code>animparm</code> de outros heróis no personagem atual. Pode causar animações únicas ou inesperadas!</p>
-          <input type="text" id="crossEmoteSearch" placeholder="Buscar emote ou herói..." oninput="filterCrossEmotes()" style="margin-bottom:12px;" />
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Esses emotes disparam o parâmetro <code>animparm</code> do emote diretamente no jogador alvo na partida em tempo real.</p>
+          <div style="display:flex;gap:10px;margin-bottom:12px;">
+            <input type="text" id="crossEmoteSearch" placeholder="Buscar emote ou herói..." oninput="filterCrossEmotes()" style="flex:1;" />
+            <button class="btn btn-danger" style="padding:6px 12px;font-size:12px;white-space:nowrap;" onclick="playEmote(0)">⏹ Parar Emote</button>
+          </div>
           <div class="emote-grid" id="crossEmoteGrid"><div style="color:var(--muted);font-size:13px;">Carregando...</div></div>
+        </div>
+      </div>
+
+      <!-- Secret poses panel (300+) -->
+      <div id="ctab-panel-poses" style="display:none;">
+        <div class="card">
+          <div class="card-title"><span class="card-icon">🏆</span> Poses Secretas & Vitória (animparm 300+)</div>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+            Poses estáticas de <strong>Vitória, MVP, Vitrine de Loja e Comemoração</strong> embutidas nos controladores de animação dos heróis. Clique em qualquer card para forçar o herói a posar na partida!
+          </p>
+          <div style="display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn-danger" style="padding:8px 16px;font-size:13px;" onclick="playEmote(0)">⏹ Cancelar / Parar Pose (animparm 0)</button>
+            <span style="font-size:12px;color:var(--muted);">Dica: Use 0 para voltar o herói para o combate normal.</span>
+          </div>
+          <div class="emote-grid" id="posesGrid">
+            <div class="emote-card" onclick="playEmote(300)">
+              <div class="em-icon">🏆</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Vitória #1</div>
+                <div class="em-anim">animparm: 300</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(301)">
+              <div class="em-icon">🥇</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Vitória #2</div>
+                <div class="em-anim">animparm: 301</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(302)">
+              <div class="em-icon">⭐</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Destaque / MVP</div>
+                <div class="em-anim">animparm: 302</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(303)">
+              <div class="em-icon">🎖️</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Loja / Showcase</div>
+                <div class="em-anim">animparm: 303</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(304)">
+              <div class="em-icon">🔥</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Combate #4</div>
+                <div class="em-anim">animparm: 304</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(305)">
+              <div class="em-icon">✨</div>
+              <div class="em-info">
+                <div class="em-name">Pose Estática #5</div>
+                <div class="em-anim">animparm: 305</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(306)">
+              <div class="em-icon">🎯</div>
+              <div class="em-info">
+                <div class="em-name">Pose de Triunfo #6</div>
+                <div class="em-anim">animparm: 306</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(307)">
+              <div class="em-icon">💎</div>
+              <div class="em-info">
+                <div class="em-name">Pose Especial #7</div>
+                <div class="em-anim">animparm: 307</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(308)">
+              <div class="em-icon">👑</div>
+              <div class="em-info">
+                <div class="em-name">Pose Lendária #8</div>
+                <div class="em-anim">animparm: 308</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(309)">
+              <div class="em-icon">⚡</div>
+              <div class="em-info">
+                <div class="em-name">Pose Suprema #9</div>
+                <div class="em-anim">animparm: 309</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(310)">
+              <div class="em-icon">🌟</div>
+              <div class="em-info">
+                <div class="em-name">Pose Oculta #10</div>
+                <div class="em-anim">animparm: 310</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(311)">
+              <div class="em-icon">🛡️</div>
+              <div class="em-info">
+                <div class="em-name">Pose Oculta #11</div>
+                <div class="em-anim">animparm: 311</div>
+              </div>
+            </div>
+            <div class="emote-card" onclick="playEmote(312)">
+              <div class="em-icon">⚔️</div>
+              <div class="em-info">
+                <div class="em-name">Pose Oculta #12</div>
+                <div class="em-anim">animparm: 312</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1298,7 +1491,7 @@ function renderNpcList(npcs) {
 }
 
 function updateSelects(ps) {
-  const selects = ['heroTargetPlayer', 'buffTargetPlayer', 'spawnTargetPlayer', 'mapTargetPlayer', 'zueiraTargetPlayer'];
+  const selects = ['heroTargetPlayer', 'buffTargetPlayer', 'spawnTargetPlayer', 'dummyTargetPlayer', 'mapTargetPlayer', 'zueiraTargetPlayer'];
   selects.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -1444,26 +1637,43 @@ function filterBuffs() {
 }
 
 // ---- SPAWN ACTIONS ----
-async function spawnEntity(npcIndex, count = 1) {
-  const pid = document.getElementById('spawnTargetPlayer').value;
-  if (!pid) return toast('Selecione um jogador alvo', 'err');
-  const scale = document.getElementById('spawnScaleSelector')?.value || '100';
-  const r = await api('POST', '/api/spawn', { playerId: pid, npcIndex, count, scale });
-  toast(r.message || r.error, r.ok ? 'ok' : 'err');
-  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+async function spawnEntity(entityKey, count = 1) {
+  const pid=document.getElementById('spawnTargetPlayer').value;
+  if(!pid)return toast('Selecione um jogador alvo','err');
+  if(!String(entityKey).includes(':'))entityKey='npc:'+entityKey;
+  const r=await api('POST','/api/spawn',{playerId:pid,entityKey,count,scale:document.getElementById('spawnScaleSelector').value,behavior:document.getElementById('entityBehavior').value});
+  toast(r.message||r.error,r.ok?'ok':'err');log(r.message||r.error,r.ok?'ok':'err');
 }
-
 async function spawnCustom() {
-  const pid = document.getElementById('spawnTargetPlayer').value;
-  const idx = document.getElementById('spawnCustomId').value;
-  const cnt = document.getElementById('spawnCount').value;
-  if (!pid) return toast('Selecione um jogador alvo', 'err');
-  if (!idx) return toast('Informe um NPC ID', 'err');
-  await spawnEntity(idx, cnt);
+  const key=document.getElementById('spawnCustomId').value.trim();
+  if(!key)return toast('Escolha uma entidade do catálogo','err');
+  await spawnEntity(key,document.getElementById('spawnCount').value);
+}
+async function clearCatalogEntities() {
+  const playerId=document.getElementById('spawnTargetPlayer').value;
+  if(!playerId)return toast('Selecione um jogador alvo','err');
+  const r=await api('POST','/api/entities/clear',{playerId});toast(r.message||r.error,r.ok?'ok':'err');
 }
 
 async function killNpcs(includeDummies) {
   const r = await api('POST', '/api/kill_npcs', { includeDummies });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function spawnPracticeDummy() {
+  const pid = document.getElementById('dummyTargetPlayer').value;
+  const heroId = document.getElementById('dummyHeroSelect').value;
+  const mode = document.getElementById('dummyModeSelect').value;
+  const hpOption = document.getElementById('dummyHpSelect').value;
+
+  const r = await api('POST', '/api/spawn_dummy', { playerId: pid, heroId, mode, hpOption });
+  toast(r.message || r.error, r.ok ? 'ok' : 'err');
+  log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
+}
+
+async function clearPracticeDummies() {
+  const r = await api('POST', '/api/clear_dummies', {});
   toast(r.message || r.error, r.ok ? 'ok' : 'err');
   log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
 }
@@ -1527,20 +1737,19 @@ function heroEmoji(id) {
 }
 
 // ---- ENTITY GRID ----
-function renderEntityGrid(npcs) {
-  const grid = document.getElementById('entityGrid');
-  const entities = [
-    { id: 1121, icon: '🎯', name: 'Dummy Fraco', hp: 10 },
-    { id: 1122, icon: '🛡️', name: 'Dummy Médio', hp: 1000 },
-    { id: 1101, icon: '💪', name: 'Dummy Forte', hp: 1500 },
-    ...npcs.filter(n => n.id < 1200).slice(0, 20)
-  ].map((n, i, arr) => arr.find(x => x.id === n.id) === n ? n : null).filter(Boolean);
-  grid.innerHTML = entities.map(e => `
-    <div class="entity-btn" onclick="spawnEntity(${e.id})">
-      <div class="e-icon">${e.icon || '🤖'}</div>
-      <div class="e-name">${e.name || 'NPC ' + e.id}</div>
-      <div class="e-hp">HP: ${e.hp || '?'}</div>
-    </div>`).join('');
+let entityCatalog=[];
+function catalogText(value) {return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function chooseEntity(key) {
+  document.getElementById('spawnCustomId').value=key;
+  document.getElementById('spawnNpcSelectDropdown').value=key;
+  toast('Selecionado: '+key,'ok');
+}
+function renderCatalog() {
+  const query=document.getElementById('entitySearch').value.toLocaleLowerCase();
+  const category=document.getElementById('entityCategory').value;
+  const list=entityCatalog.filter(e=>(!category||e.category===category)&&[e.key,e.name,e.model,e.heroId,e.ai,e.description].join(' ').toLocaleLowerCase().includes(query));
+  document.getElementById('entityCount').textContent=list.length+' de '+entityCatalog.length+' definições';
+  document.getElementById('entityGrid').innerHTML=list.length?'<table style="width:100%"><thead><tr><th>Entidade</th><th>Origem / ID</th><th>Modelo / IA</th><th></th></tr></thead><tbody>'+list.map(e=>'<tr><td>'+catalogText(e.name)+'<br><small>'+catalogText(e.category)+'</small></td><td>'+catalogText(e.key)+'<br><small>'+catalogText(e.source)+'</small></td><td>'+catalogText(e.model)+'<br><small>'+catalogText(e.ai?'IA '+e.ai+' · modelo '+e.heroId:'')+'</small></td><td><button class="btn" data-key="'+e.key+'" onclick="chooseEntity(this.dataset.key)">Selecionar</button></td></tr>').join('')+'</tbody></table>':'Nenhuma entidade encontrada.';
 }
 
 // ---- BUFF LIST ----
@@ -1639,7 +1848,7 @@ async function applyVisualModel() {
   const visualHeroId = document.getElementById('zueiraCustomModelId').value;
   if (!visualHeroId) return toast('Digite ou selecione um ID de modelo', 'err');
   
-  const r = await api('POST', '/api/visual_hero', { playerId: pid, visualHeroId });
+  const r = await api('POST', '/api/visual_hero', { playerId: pid, ...(visualHeroId.startsWith('robot:') ? {entityKey:visualHeroId} : {visualHeroId}) });
   toast(r.message || r.error, r.ok ? 'ok' : 'err');
   log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
 }
@@ -1700,16 +1909,16 @@ async function init() {
     }
   }
 
-  // Load NPCs
-  const npcs = await api('GET', '/api/npcs');
-  if (Array.isArray(npcs)) { 
-    allNpcs = npcs; 
-    renderEntityGrid(npcs); 
-    const npcDropdown = document.getElementById('spawnNpcSelectDropdown');
-    if (npcDropdown) {
-      npcDropdown.innerHTML = '<option value="">— Selecione um NPC —</option>' + 
-        npcs.map(n => `<option value="${n.id}">${n.name} (${n.id})</option>`).join('');
-    }
+  const entities=await api('GET','/api/entities');
+  if(Array.isArray(entities)) {
+    entityCatalog=entities;
+    const monsters=entities.filter(e=>e.kind==='robot' && ['Monstros do Aventura','Chefes'].includes(e.category));
+    const models=[...new Map(monsters.map(e=>[e.model,e])).values()];
+    document.getElementById('zueiraNpcModelSelector').innerHTML='<option value="">— Selecione um monstro —</option>'+models.map(e=>'<option value="'+e.key+'">'+catalogText(e.name)+' · '+catalogText(e.model)+' ('+e.key+')</option>').join('');
+    allNpcs=entities.filter(e=>e.kind==='npc');
+    document.getElementById('entityCategory').innerHTML='<option value="">Todas as categorias</option>'+[...new Set(entities.map(e=>e.category))].map(c=>'<option>'+catalogText(c)+'</option>').join('');
+    document.getElementById('spawnNpcSelectDropdown').innerHTML='<option value="">— Selecione uma entidade —</option>'+entities.map(e=>'<option value="'+e.key+'">'+catalogText(e.name)+' ('+e.key+')</option>').join('');
+    renderCatalog();
   }
 
   // Load cosmetics map
@@ -1729,9 +1938,11 @@ let activeCosmeticTab = 'skins';
 
 function showCosmeticTab(tab) {
   activeCosmeticTab = tab;
-  ['skins','weapons','emotes','crossemotes'].forEach(t => {
-    document.getElementById(`ctab-${t}`).classList.toggle('active', t === tab);
-    document.getElementById(`ctab-panel-${t}`).style.display = t === tab ? '' : 'none';
+  ['skins','weapons','emotes','crossemotes','poses'].forEach(t => {
+    const btn = document.getElementById(`ctab-${t}`);
+    const pnl = document.getElementById(`ctab-panel-${t}`);
+    if (btn) btn.classList.toggle('active', t === tab);
+    if (pnl) pnl.style.display = t === tab ? '' : 'none';
   });
 }
 
@@ -1891,6 +2102,13 @@ async function playEmote(animparm) {
   log(r.ok ? `✅ ${r.message}` : `❌ ${r.error}`, r.ok ? 'ok' : 'err');
 }
 
+async function playManualEmote() {
+  const input = document.getElementById('customAnimParmInput');
+  const val = input ? parseInt(input.value) : 0;
+  if (isNaN(val)) return toast('Digite um valor numérico para o animparm', 'err');
+  await playEmote(val);
+}
+
 async function switchCustomHero() {
   const customId = document.getElementById('customHeroId').value;
   if (!customId) return toast('Digite um ID de Herói', 'err');
@@ -1954,6 +2172,24 @@ async function clearCrashLogs() {
   if (r.ok) {
     toast('Logs de crash limpos!', 'ok');
     pollCrashes();
+  }
+}
+
+async function restartServer() {
+  if (!confirm('⚠️ Deseja realmente reiniciar o servidor Triggerun agora?')) return;
+  toast('Enviando comando para reiniciar o servidor...', 'ok');
+  const dot = document.getElementById('serverDot');
+  const status = document.getElementById('serverStatus');
+  if (dot) dot.classList.remove('online');
+  if (status) status.textContent = 'Reiniciando...';
+  
+  const r = await api('POST', '/api/restart-server');
+  if (r.ok) {
+    toast('Servidor reiniciando via PM2! Reconectando em breve...', 'ok');
+    if (typeof log === 'function') log('🔄 Comando de reinício do servidor enviado com sucesso', 'ok');
+  } else {
+    toast(r.error || 'Erro ao tentar reiniciar servidor', 'err');
+    if (typeof log === 'function') log(`❌ Erro no reinício: ${r.error}`, 'err');
   }
 }
 

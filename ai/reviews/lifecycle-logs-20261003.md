@@ -1,0 +1,21 @@
+# Passagem — LIFE-001 / OBS-001
+
+- Responsável: Codex; destinatários: usuário/Antigravity. 03/10/2026 23:45 BRT (04/10 02:45 UTC).
+- Objetivo: explicitar ciclo principal de partidas e manter diagnóstico persistente/correlacionado; aceitação automatizada e instalação concluídas, cliente real pendente.
+- Base: backups/lifecycle-logs-20261003/; hashes locais anteriores coincidiram com Oracle. Nenhuma alteração concorrente nos arquivos de execução; HERO-001 do Antigravity preservada.
+- Arquivos: src/{socketServer,gameLogic,index,http,logger,rotatingLog,matchLifecycle}.js; tests/{match-lifecycle,logging}.test.js; tools/trace-player.cjs; docs/match-lifecycle-and-logs.md. Reservas liberadas.
+- Estados explícitos por conexão: connected/lobby/queued/selecting/loading/playing/leaving/ended/closed. Seleção, carga e prontidão passam pelo módulo; sala/sessão e modos antigos permanecem em migração gradual.
+- Telemetria inclui runId/seq/connectionId, conta, NetID, canal, sala, mapa, epoch, fase e motivo. Entrada/saída/erro, seleção e mapa pronto registrados sem adicionar movimento.
+- Logs não são truncados ao iniciar: telemetria ativo10MiB +5 backups; texto ativo50MiB +3 backups. Erros console/cliente persistidos. Rotação serializada pressupõe processo único (PM2fork).
+- Registros muito grandes são resumidos; falha de disco não interrompe gameplay. Retenção dos logs PM2 é independente. Arquivos legados maiores saem pela rotação normal.
+- Correções adjacentes: fila antiga ignora já admitidos; redirecionamento inicial invalida ao sair; diagnóstico loadmapok:True não representa mapa pronto; encerrar TDM cancela carga/spawn também de entrantes pendentes.
+- Assembly usado: contratos já mapeados MatchManager, SelectHeroUICon, fUIManager/CNetMsgManager; BaseSocket.LoadMapOKMsg confirmado para diagnóstico versus RPC.
+- Testes: 44/44 local e Oracle, incluindo preservação entre dois processos, rotação/ordem/limites, falha de gravação, consulta por conta, transições, término durante carga e fila obsoleta. Sintaxe conferida antes do reinício.
+- Cliente real: não testado após esta atualização. Os testes JIP/saída/equipes anteriores continuam aprovados em simulação; validação anterior do usuário é histórica.
+- Oracle: instalada e PM2online PID514169, restart175 estável após26s. HTTP/api/maps200; TCP7777 externo conectado.
+- Preservação efetiva: primeiro registro dos dois logs continua datado30/09 antes do reinício; novo SERVER_START de04/10 foi acrescentado. Sondagem TCP gerou eventos estruturados OPEN/CLOSE/TRANSITION no mesmo runId.
+- Backup remoto: /home/ubuntu/backups/lifecycle-logs-20261004T024538Z/{runtime,logs}.tar.gz.
+- Manifestos de hashes e evidências locais: scratch/lifecycle-deploy-20261003/{base.sha256,new.sha256,tests.tap,install.sh}. Staging remoto: /home/ubuntu/lifecycle-stage-20261003/. Chave temporária removida.
+- Reversão: preservar logs novos, restaurar runtime.tar.gz em server-tr, verificar sintaxe e reiniciar; módulos novos deixam de ser referenciados pela versão anterior.
+- Próximo passo: teste com duas contas de fila→seleção→mapa→saída e entrada tardia; consultar tools/trace-player.cjs para cada conta. Migrar Control/PvE e handlers restantes somente com seus contratos/testes.
+- Não afirmar que todo protocolo ou todos os controladores já foram convertidos em máquina de estados; documentação explicita o alcance desta primeira etapa.

@@ -1,0 +1,58 @@
+{
+  "engine": "built-in image_gen",
+  "canonicalView": "01-frente.png",
+  "referenceSkeleton": "Johnny1031 native lanbo_tps",
+  "proportions": "visual guide, not a calibrated projection of a shared 3D mesh",
+  "pose": "T-pose front/rear; arms naturally foreshortened in profiles",
+  "files": {
+    "01-frente.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1256219,
+      "opaquePixels": 1413,
+      "sha256": "ed20c7b1bdd9834ddd67c76adfad0ac93a8dc68728f853290b373947b46ce7fb",
+      "bytes": 688858,
+      "edgeOpaquePixels": 0
+    },
+    "02-esquerda.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1400483,
+      "opaquePixels": 377,
+      "sha256": "870ae83e975174a8fec5baf5d1f65b66c13eb4978a015f2c6876639e8441acd2",
+      "bytes": 427865,
+      "edgeOpaquePixels": 0
+    },
+    "03-direita.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1401953,
+      "opaquePixels": 467,
+      "sha256": "993aa7716c112d76a807aaf85544da2787baf4569fd4f5da9dcf65cf6e1ad6c3",
+      "bytes": 417945,
+      "edgeOpaquePixels": 0
+    },
+    "04-costas.png": {
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1256124,
+      "opaquePixels": 1452,
+      "sha256": "29a4fe3a5e5695d264b59738b5efdbab848e5b6c624085f185589e738550c14b",
+      "bytes": 685312,
+      "edgeOpaquePixels": 0
+    }
+  },
+  "review": "same identity/materials/body build checked visually; small generative details may differ between views"
+}

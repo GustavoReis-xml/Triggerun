@@ -1,0 +1,82 @@
+{
+  "images": [
+    {
+      "file": "01-frente.png",
+      "size": [
+        1319,
+        1193
+      ],
+      "mode": "RGBA",
+      "background": "transparent",
+      "subjectBounds": [
+        94,
+        105,
+        1226,
+        1107
+      ],
+      "subjectInsideFrame": true,
+      "bytes": 763926,
+      "SHA256": "3517e4ef110c4c0a2031225681d01328adea4e3014a73c1aefe37082e8174eb6"
+    },
+    {
+      "file": "02-esquerda.png",
+      "size": [
+        1199,
+        1312
+      ],
+      "mode": "RGB",
+      "background": "neutral gray",
+      "subjectBounds": [
+        415,
+        18,
+        973,
+        1245
+      ],
+      "subjectInsideFrame": true,
+      "bytes": 1504170,
+      "SHA256": "82a04b66d306446f67bd1821490ffcf9d8927b7f313732f9c379ff02a78714aa"
+    },
+    {
+      "file": "03-direita.png",
+      "size": [
+        1169,
+        1345
+      ],
+      "mode": "RGB",
+      "background": "neutral gray",
+      "subjectBounds": [
+        234,
+        33,
+        772,
+        1274
+      ],
+      "subjectInsideFrame": true,
+      "bytes": 1519574,
+      "SHA256": "ae8c981aa792dc58524bfe4e878ded90236c69742984d201b2c12efdfbb613eb"
+    },
+    {
+      "file": "04-costas.png",
+      "size": [
+        1319,
+        1193
+      ],
+      "mode": "RGBA",
+      "background": "transparent",
+      "subjectBounds": [
+        73,
+        89,
+        1246,
+        1116
+      ],
+      "subjectInsideFrame": true,
+      "bytes": 817448,
+      "SHA256": "2ed036bf945c216d2953b345c147421f629cbfeb7f21f6add449b77ce95dc044"
+    }
+  ],
+  "zip": "tagaloa-lobo-mau-tripo.zip",
+  "zipIntact": true,
+  "tool": "built-in image_gen",
+  "notCalibratedProjections": true,
+  "gameModified": false,
+  "UnityTested": false
+}

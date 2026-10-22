@@ -1,0 +1,23 @@
+# Passagem de trabalho — SKIN-037
+
+- Responsável / destinatário / data: Codex / usuário e próxima IA / 22/10/2026 BRT.
+- Objetivo: referência para Tripo da skin corvo do Shogun, baseada na ilustração enviada; considerar esqueleto/poses reais do personagem antes de desenhar.
+- Estado: análise e quatro imagens entregues; aguarda GLB. Reserva liberada; nenhum arquivo de execução/Oracle alterado.
+- Fontes: `zh/heroinfo.xml` ID1024/HouYi; `herounlock.xml` seis skins originais; `heroskill.xml`, `playerskill.xml`, `dazhao.xml`; HeroHouYiMe/It e TBCharAnimationHouYiTps/Fps consultados, buscas de métodos ampliadas para carga/disparo/escala/ultimate.
+- Bundles: houyi_tps,houyi_tps_sz1,houyi_tps_sz2,houyi_fps e controllersTPS/FPS; hashes e inventário em `scratch/shogun-inspection/inventory.json`. Nenhum modificado.
+- BaseTPS: corpo mesh−4379871602250762842,6090v/8520tri/56bones; LODs25bones. Bounds Z−0,00209..1,85776; corpo esguio, UpperArmX±0,1632/Z1,5121, ForearmX±0,2883/Z1,28, HandX±0,3939/Z1,0899. CabeçaHeadZ1,6213.
+- Corpo completo: rosto/olhos/aljava também têm meshes separadas; prévias diagnósticas corporais não compõem todos esses acessórios. Não tomar rosto ausente na prévia como falta no jogo.
+- Rigs: corpoNinja72bones,LightRanger56; FPS38,arco6bones. Palette corporal contémForeTwist/dedos completos/Toe; Bone005/006 são auxiliares da cabeça (32/31v na região facial), NÃO asas ou cauda de casaco.
+- Animações:44clipsTPS/23FPS inventariados, incl. stand,walk_stand,fire_A/B/C,paqiang,skill,winpose300–304 eexpressions. Não foram decodificados/reproduzidos; inspeção estática do rig e lógica C# fundamenta as restrições, não comprova clipping em Unity.
+- Lógica: TPS herdaTBCharAnimationThirdIK e mistura carga `fireforce`/PlayerState/CancelXuli; HeroHouYiMe ativa corrida/escalada de parede e SkillSuper temporário. Mãos/ombros/cervical precisam de folga ao mirar, puxar corda, virar e escalar.
+- Ultimate: hierarquias próprias `fenghuang `,fenghuang_1,fenhuang2,yumao/Point001/Bone001–004 existem no bundle; não confundir esses efeitos com ossos de asa corporal disponível na palette. Não prometer batimento/abertura de novas asas por reaproveitamento automático.
+- Conceito: corvo antropomorfo esguio, olhosvermelhos, bico moderado/chapeu caçador preto/vinho/bronze, vestecoletes/casaco aberto/pantalonasjustas/botas; mãos5dedos/polegares e garrascurtas. Armadura bronze no ombro anatômico esquerdo; outro com penasvinho.
+- Decisão: duas asas compactas recolhidas nas costas até meia-coxa, braços humanos separados, sem arco/flechas/aljava na referência; usar equipamento nativo depois. Menos volume lateral do que na ilustração de asas abertas para preservar pose de arqueiro.
+- Imagens: `candidate-assets/shogun-raven/multiview/` 01frente,02esquerda(bicoesquerda),03direita(bicodireita),04costas. Pose de modelagem com braços estendidos/T, mão5dedos; perfis com braços escorçados, front everso leve queda visual dos braços.
+- Ferramenta/prompts: image_gen integrada, frente usa ilustração do usuário + prévia corporal nativa como proporções; costas/perfis derivados da frente. Quatro prompt-*.txt preservados; nenhuma edição manual de pixels.
+- Inspeção visual: corpo inteiro/identidade/bico/penas/bracers/assimetria do ombro conferidos; pequenas variações de ornamentos/mãos/ângulos entre vistas. Não são projeções calibradas de uma mesh3D. Frente autoritativa, perfis apoiam profundidade.
+- Verificação:4PNG1254×1254RGBA/alpha0–255, cada<20MB, sujeito opaco sem corte nas bordas; resíduosalpha≤4 nasbordas não cortam sujeito. ZIP íntegro/README/4prompts/hash porPNG em validation.json; script `scratch/shogun-inspection/package.py`.
+- Cliente real: não testado/não há nova malha nesta tarefa. Não instalar nada a partir de uma imagem.
+- Oracle: intacta; sem cadastro/reinício nesta tarefa. Nenhum backup remoto necessário, pois só há novos derivados/documentação.
+- Próximo passo: gerar GLB com textura usando multivisão, enviar modelo; conferir se asas/casaco não fundiram braços/pernas, adaptar mãos/bico ao Head, folga de chapéu/puxada de corda e asas decorativas. Testar clips/IK reais antes publicar; asa dobrada ainda pode colidir visualmente ao escalar.
+- Bloqueio: aguarda GLB do usuário para iniciar adaptação; referências concluídas.

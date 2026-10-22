@@ -1,7 +1,0 @@
-<root>
-	<i id="101" bgimg="libao_herolimitbuy_ditu" name="Festa Herói &amp; Moeda" btntxt="" notedesc="Aviso: Khan, Lily, Venus podem ser desbloqueados com moedas durante o evento">
-		<h heroid="1032" type="0" index="0" unlockdata="5|1298|2|688" btndata="Desbloqueie com diamantes|2|Desbloqueie com moedas|5" desc="Use &lt;color=#ffde00&gt;688 diamantes &lt;/color&gt;ou&lt;color=#ffde00&gt; 1298 moedas&lt;/color&gt; para desbloquear" zstype="1,2" jbzsnum="0" zsdesc="Use &lt;color=#ffde00&gt;688 diamantes &lt;/color&gt;para enviar"/>
-		<h heroid="1033" type="0" index="0" unlockdata="5|1298|2|688" btndata="Desbloqueie com diamantes|2|Desbloqueie com moedas|5" desc="Use &lt;color=#ffde00&gt;688 diamantes &lt;/color&gt;ou&lt;color=#ffde00&gt; 1298 moedas&lt;/color&gt; para desbloquear" zstype="1,2" jbzsnum="0" zsdesc="Use &lt;color=#ffde00&gt;688 diamantes &lt;/color&gt;para enviar"/>
-		<h heroid="1034" type="0" index="0" unlockdata="5|1988|2|988" btndata="Desbloqueie com diamantes|2|Desbloqueie com moedas|5" desc="Use &lt;color=#ffde00&gt;988 diamantes &lt;/color&gt;ou&lt;color=#ffde00&gt; 1988 moedas&lt;/color&gt; para desbloquear" zstype="1,2" jbzsnum="0" zsdesc="Use &lt;color=#ffde00&gt;988 diamantes &lt;/color&gt;para enviar"/>
-	</i>
-</root>

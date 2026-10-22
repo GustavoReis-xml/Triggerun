@@ -1,131 +1,131 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root>
-	<i id="1" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
-	<i id="2" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
-	<i id="3" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
-	<i id="4" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
-	<i id="5" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
-	<i id="6" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;按下F键可以使用近战攻击终结敌人。&lt;/color&gt;" />
+	<i id="1" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
+	<i id="2" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
+	<i id="3" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
+	<i id="4" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
+	<i id="5" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
+	<i id="6" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt; Pressione F para usar ataque a curta distância e matar o inimigo.&lt;/color&gt;" />
 
-	<i id="7" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
-	<i id="8" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
-	<i id="9" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
-	<i id="10" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
-	<i id="11" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
-	<i id="12" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;合理的阵容是取胜的关键。&lt;/color&gt;" />
+	<i id="7" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
+	<i id="8" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
+	<i id="9" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
+	<i id="10" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
+	<i id="11" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
+	<i id="12" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Jogue como um time.&lt;/color&gt;" />
 
-	<i id="13" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;生命值过低时可以寻找地图中的急救包为自己恢复生命值。&lt;/color&gt;" />
-	<i id="14" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;生命值过低时可以寻找地图中的急救包为自己恢复生命值。&lt;/color&gt;" />
-	<i id="15" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;生命值过低时可以寻找地图中的急救包为自己恢复生命值。&lt;/color&gt;" />
-	<i id="16" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;生命值过低时可以寻找地图中的急救包为自己恢复生命值。&lt;/color&gt;" />
+	<i id="13" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Com pouca health?! Procure por pacotes de primeiros socorros no mapa&lt;/color&gt;" />
+	<i id="14" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Com pouca health?! Procure por pacotes de primeiros socorros no mapa&lt;/color&gt;" />
+	<i id="15" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Com pouca health?! Procure por pacotes de primeiros socorros no mapa&lt;/color&gt;" />
+	<i id="16" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Com pouca health?! Procure por pacotes de primeiros socorros no mapa&lt;/color&gt;" />
 
-	<i id="17" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
-	<i id="18" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
-	<i id="19" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
-	<i id="20" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
-	<i id="21" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
-	<i id="22" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;你可以通过脚步声来判断敌方的方位和距离。&lt;/color&gt;" />
+	<i id="17" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
+	<i id="18" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
+	<i id="19" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
+	<i id="20" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
+	<i id="21" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
+	<i id="22" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Escute os passos do inimigo para descobrir a posição e a distância dele&lt;/color&gt;" />
 
-	<i id="23" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
-	<i id="24" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
-	<i id="25" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
-	<i id="26" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
-	<i id="27" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
-	<i id="28" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看制高点的视野优势。&lt;/color&gt;" />
+	<i id="23" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
+	<i id="24" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
+	<i id="25" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
+	<i id="26" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
+	<i id="27" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
+	<i id="28" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime as vantagens de um campo de visão de altitudes elevadas&lt;/color&gt;" />
 
-	<i id="29" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
-	<i id="30" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
-	<i id="31" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
-	<i id="32" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
-	<i id="33" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
-	<i id="34" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;保持移动可以让敌人很难命中你。&lt;/color&gt;" />
+	<i id="29" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
+	<i id="30" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
+	<i id="31" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
+	<i id="32" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
+	<i id="33" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
+	<i id="34" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Mova-se constantemente, fica mais difícil para o inimigo conseguir mirar em você&lt;/color&gt;" />
 
-	<i id="35" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;正面很难突破的情况下不妨试试寻找其他路线包抄敌人。&lt;/color&gt;" />
-	<i id="36" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;正面很难突破的情况下不妨试试寻找其他路线包抄敌人。&lt;/color&gt;" />
-	<i id="37" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;正面很难突破的情况下不妨试试寻找其他路线包抄敌人。&lt;/color&gt;" />
-    <i id="38" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;正面很难突破的情况下不妨试试寻找其他路线包抄敌人。&lt;/color&gt;" />
+	<i id="35" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Se um ataque frontal não funcionar, tente seguir outras rotas para despistar os inimigos&lt;/color&gt;" />
+	<i id="36" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Se um ataque frontal não funcionar, tente seguir outras rotas para despistar os inimigos&lt;/color&gt;" />
+	<i id="37" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Se um ataque frontal não funcionar, tente seguir outras rotas para despistar os inimigos&lt;/color&gt;" />
+    <i id="38" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Se um ataque frontal não funcionar, tente seguir outras rotas para despistar os inimigos&lt;/color&gt;" />
 	
-	<i id="39" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
-	<i id="40" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
-	<i id="41" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
-	<i id="42" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
-	<i id="43" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
-	<i id="44" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;按下F1可以查看当前英雄的信息。&lt;/color&gt;" />
+	<i id="39" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
+	<i id="40" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
+	<i id="41" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
+	<i id="42" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
+	<i id="43" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
+	<i id="44" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione F1 para checar informações detalhadas sobre o personagem&lt;/color&gt;" />
 
-	<i id="45" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
-	<i id="46" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
-	<i id="47" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
-	<i id="48" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
-	<i id="49" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
-	<i id="50" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;注意脚步声，提防试图从后方包抄你的敌人。&lt;/color&gt;" />
+	<i id="45" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
+	<i id="46" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
+	<i id="47" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
+	<i id="48" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
+	<i id="49" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
+	<i id="50" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Cuidado com os passos. Seja atento para que seu inimigo não te surpreenda facilmente.&lt;/color&gt;" />
 
-	<i id="51" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;在出生点按H键可以更换英雄。&lt;/color&gt;" />
-	<i id="52" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;在出生点按H键可以更换英雄。&lt;/color&gt;" />
-	<i id="53" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;在出生点按H键可以更换英雄。&lt;/color&gt;" />
-	<i id="54" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;在出生点按H键可以更换英雄。&lt;/color&gt;" />
+	<i id="51" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione H para trocar de heróis na tela inicial.&lt;/color&gt;" />
+	<i id="52" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione H para trocar de heróis na tela inicial.&lt;/color&gt;" />
+	<i id="53" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione H para trocar de heróis na tela inicial.&lt;/color&gt;" />
+	<i id="54" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Pressione H para trocar de heróis na tela inicial.&lt;/color&gt;" />
 
-	<i id="55" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
-	<i id="56" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
-	<i id="57" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
-	<i id="58" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
-	<i id="59" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
-	<i id="60" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;频繁的对敌方造成伤害可以使你的终极技能充能更快。&lt;/color&gt;" />
+	<i id="55" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
+	<i id="56" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
+	<i id="57" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
+	<i id="58" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
+	<i id="59" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
+	<i id="60" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Causar dano aos inimigos fará com que sua Ult Skill se recarregue mais rápido&lt;/color&gt;" />
 
 
-	<i id="67" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
-	<i id="68" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
-	<i id="69" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
-	<i id="70" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
-	<i id="71" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
-	<i id="72" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;不要小看瓦尔基里的近战能力，拉开距离才是和她对决的上策。&lt;/color&gt;" />
+	<i id="67" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
+	<i id="68" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
+	<i id="69" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
+	<i id="70" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
+	<i id="71" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
+	<i id="72" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Não subestime a capacidade de combate curto alcance da Valkyrie, mantenha distância&lt;/color&gt;" />
 
-	<i id="73" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
-	<i id="74" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
-	<i id="75" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
-	<i id="76" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
-	<i id="77" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
-	<i id="78" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;摧毁玲珑的传送矩阵可以阻止敌人快速到达战场。&lt;/color&gt;" />
+	<i id="73" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
+	<i id="74" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
+	<i id="75" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
+	<i id="76" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
+	<i id="77" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
+	<i id="78" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Destruir o Teleport Metrix da Eva para inimigos no campo de batalha&lt;/color&gt;" />
 
-	<i id="79" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
-	<i id="80" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
-	<i id="81" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
-	<i id="82" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
-	<i id="83" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
-	<i id="84" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;雷震子飞行一段时间之后必须降落并充能后才能继续。这是消灭他的最佳时机。&lt;/color&gt;" />
+	<i id="79" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
+	<i id="80" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
+	<i id="81" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
+	<i id="82" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
+	<i id="83" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
+	<i id="84" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Glider desce depois de voar este é o melhor momento para matá-lo&lt;/color&gt;" />
 
-	<i id="85" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
-	<i id="86" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
-	<i id="87" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
-	<i id="88" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
-	<i id="89" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
-	<i id="90" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;刑天的能量盾只可阻挡来自正面的伤害。&lt;/color&gt;" />
+	<i id="85" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
+	<i id="86" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
+	<i id="87" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
+	<i id="88" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
+	<i id="89" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
+	<i id="90" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;O escudo de energia de Tagaloa resisti aos danos causados na frente&lt;/color&gt;" />
 
-	<i id="91" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
-	<i id="92" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
-	<i id="93" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
-	<i id="94" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
-	<i id="95" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
-	<i id="96" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;终结者的自我恢复能力很强，不要给他喘气的机会一口气将他消灭。&lt;/color&gt;" />
+	<i id="91" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
+	<i id="92" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
+	<i id="93" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
+	<i id="94" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
+	<i id="95" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
+	<i id="96" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;O Lars possui auto-recuperação, não dê trégua a ele e mate-o de uma só vez&lt;/color&gt;" />
 
-	<i id="97" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
-	<i id="98" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
-	<i id="99" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
-	<i id="100" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
-	<i id="101" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
-	<i id="102" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;应龙的中远距离伤害能力很弱，保持距离他将对你毫无办法。&lt;/color&gt;" />
+	<i id="97" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
+	<i id="98" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
+	<i id="99" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
+	<i id="100" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
+	<i id="101" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
+	<i id="102" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Jack possui fraca capacidade de dano de longa e média distância, fique longe&lt;/color&gt;" />
 
-	<i id="103" maptype="1" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
-	<i id="104" maptype="2" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
-	<i id="105" maptype="3" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
-	<i id="106" maptype="4" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
-	<i id="107" maptype="5" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
-	<i id="108" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;抓住木兰闪现的冷却空当将她消灭。&lt;/color&gt;" />
+	<i id="103" maptype="1" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
+	<i id="104" maptype="2" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
+	<i id="105" maptype="3" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
+	<i id="106" maptype="4" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
+	<i id="107" maptype="5" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
+	<i id="108" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Pegue o intervalo de cool down do Flash da Celina para matá-la. &lt;/color&gt;" />
 
-	<i id="109" maptype="6" tipstxt="小提示：&lt;color=#ffb345&gt;训练靶场可以帮助你熟悉英雄的技能以及武器。&lt;/color&gt;" />
+	<i id="109" maptype="6" tipstxt="Dicas: &lt;color=#ffb345&gt;Aprenda sobre habilidades e armas do herói na Área de Treino&lt;/color&gt;" />
 
-	<i id="110" maptype="7" tipstxt="小提示：&lt;color=#ffb345&gt;英雄复活后会有2秒的无敌时间，避免在这段时间内与他交火。&lt;/color&gt;" />
+	<i id="110" maptype="7" tipstxt="Dicas: &lt;color=#ffb345&gt;Seu herói não pode morrer durante 2s após reviver, não lute neste tempo&lt;/color&gt;" />
 
-	<i id="111" maptype="8" tipstxt="小提示：&lt;color=#ffb345&gt;在新手教学中，你可以学习到游戏中的基础操作。&lt;/color&gt;" />
+	<i id="111" maptype="8" tipstxt="Dicas: &lt;color=#ffb345&gt;No Tutorial, você pode aprender os comandos básicos deste jogo.&lt;/color&gt;" />
 
-	<i id="112" maptype="11" tipstxt="小提示：&lt;color=#ffb345&gt;优先消灭20个敌人的强者获胜。&lt;/color&gt;" />
+	<i id="112" maptype="11" tipstxt="Dica: &lt;color=#ffb345&gt;Quem matar 20 inimigos primeiro ganhará.&lt;/color&gt;" />
 </root>

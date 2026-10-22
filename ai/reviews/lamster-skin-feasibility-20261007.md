@@ -1,0 +1,21 @@
+# Passagem de trabalho — SKIN-001
+
+- Responsável: Codex, 2026-10-07. Estado: inspeção concluída; sem implementação/instalação.
+- Objetivo: verificar viabilidade de skins/modelos do Lamster preservando bones/animações.
+- Arquivos originais: downloads/cdn_cache/res/1.1.1/StreamingAssets/HeroAnimator/male_{tps,fps}.mo e male_{tps,fps}_animator.mo. Cabeçalhos UnityFS, versão produtora5.5.2f1; extensão.mo não é formato de malha avulsa.
+- Ferramenta: UnityPy instalado somente em scratch/skin-inspection/python; scripts read-bundles.py/read-rig.py. Nenhum arquivo original regravado.
+- Corpo TPS: prefab assets/male/tps/male_tps.prefab;5 SkinnedMeshRenderer/5meshes/5materiais/5texturas256x256;4.105vértices;44bones distintos referenciados por skinning,59Transforms totais (não confundir todosTransforms com bones).
+- Partes e bindposes: corpo667v/14bones, pernas822v/6, pés293v/6, cabeça1707v/3, mãos616v/22. m_Skin possui um registro por vértice em todas as partes; bindposes presentes; hierarquiaBip001 incluindo twist/fingers.
+- FPS: prefab assets/male/fps/male_fps.prefab;malha F_BaseBody_01,5.268vértices/31bones/bindposes, textura F_BaseBody_04_D2 de512x512. Rig/material próprios: não presumir UV compartilhada comTPS.
+- TPSshader: Toon/Basic, _MainTex e _ToonShade; FPSshader é referência externa e não foi resolvida. Não prometer render realista somente trocando textura.
+- Animações:15clipsTPS (stand/run/direções/jump/death/fight_stand/fight_right),6FPS (stand/run/fight_right/jumps). Animadores e Avatars existem; preservá-los para evitar retargeting inicial.
+- Fato do Assembly ATUAL confirmado porMono.Cecil: PlayerCommon.GetNowModelData faz ramo2000 e devolve male_tps/male_tps_animator/male_fps/male_fps_animator. Apenas mudar XML não selecionará outro modelo nesse ramo. Substituição do bundle atual afeta todos usuários dessa base; skin selecionável exige adaptar resolução e cadastrar recursos.
+- Carregamento: GameRoot/fResourceManager usam www.assetBundle, manifestGetAllDependencies e WWW.LoadFromCacheOrDownload com versão. Para publicação planejar nomes/prefab/dependências/cache, sem ignorar shaders externos.
+- Verificação: quatrobundles reempacotados em CÓPIAS *-roundtrip.bundle e reabertos; conjunto deIDs/tipos eSHA256 de todos os objetos serializados idêntico. Não equivale a cargaUnity nem prova importação de geometria/textura editada.
+- Extraídos: texturasPNG em scratch/skin-inspection; inventory.json, rig-and-roundtrip.json, avatarJSONs. Todos resultados locais, não partilhados comOracle.
+- Proposta: primeira skin por texturas do corpo/bermuda/mãos + braçosFPS, mantendo rig/meshes/colliders/animações. Para roupa volumétrica/modelo novo: editar malhas e transferir pesos ao rig nativo, preservar ordem dos bones/bindposes/UVs/rootbones/LOD/socketpoints.
+- Limite: nenhum Blender/UnityEditor encontrado nos locais padrão/comando; não concluir ausência global. FBX editável/novo bundle importado/skin emUnity ainda não testados. AssetBundles novos devem ser compatíveis com cliente antigo; preferir produtorUnity5.5.2f1, jamais presumir compatibilidade de editoratual.
+- Fontes técnicas: https://github.com/K0lb3/UnityPy ; https://docs.unity.com/en-us/engine/6000.0/manual/assets-and-media/assets-managing-runtime/assetbundles-section/asset-bundles-intro . Evidência principal é leitura dos arquivos locais.
+- Cliente real: não testado. Oracle: não alterada. Código/DLLs/XMLs/assets de execução: não alterados.
+- Próximo passo: sob pedido de criação, desenhar skin sobre UVs extraídas e produzir candidato isolado; conferir meshes/rig inalterados e testar carregamento/TPS/FPS/animações/LOD antes de distribuir.
+- Reserva liberada; verificação concluída.

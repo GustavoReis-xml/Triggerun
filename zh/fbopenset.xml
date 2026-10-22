@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root>
-	<i id="0" name="需要限制开启的副本类型" fbtype="2,4,5,11"/>
-	<i id="101" name="先单后双" fbtype="5,11"/>
+	<i id="0" name="需要限制开启的副本类型" fbtype="2,4,5"/>
+	<i id="101" name="先单后双" fbtype="5"/>
 	<i id="102" name="先双后单" fbtype="2,4"/>
 </root>

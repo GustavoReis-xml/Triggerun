@@ -153,10 +153,10 @@
 		<s id="3" name="Matrix Defensiva" icon="daweiFYJZ" col="2" type="" key="Key_Skill_1" desc="Resista as balas logo em frente" pos="329,-187,0"/>
 		<s id="4" name="Teleport em Grupo" icon="daweiQTCS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Construa um portal, permitindo companheiros se teleportarem" pos="0,382,0"/>
 	</i>
-	<i heroid="2000" star="1">
-		<s id="1" name="Cajado de Caduceus" icon="LuoshenFH" col="1" type="" key="Key_Use_Weapon_1" desc="Emite um feixe que cura ou aumenta o dano de um aliado" pos="-329,197,0"/>
-		<s id="2" name="Blaster de Caduceus" icon="hermes" col="2" type="" key="Key_Use_Weapon_2" desc="Troca para uma pistola blaster automática para causar dano" pos="329,197,0"/>
-		<s id="3" name="Ressuscitar" icon="LuoshenFH" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Ressuscita aliados caídos ao redor com vida cheia" pos="0,382,0"/>
-		<s id="4" name="Descida Angelical" icon="LeizhenziFX" col="4" type="&lt;color=#0090ff&gt;&lt;size=26&gt;Skill Passiva&lt;/size&gt;&lt;/color&gt;" key="Key_Jump" desc="Segure a tecla de pular para planar lentamente no ar" pos="0,-220,0"/>
+<i heroid="2000" star="1">
+		<s id="1" name="Punho Solidário" icon="lamster_primary" col="1" type="" key="Key_Use_Weapon_1" desc="Causa 120 de dano em inimigos ou recupera 180 de vida de aliados próximos. Alcance de 2,2 metros; intervalo de 1 segundo. Bloqueado por obstáculos." pos="-329,197,0"/>
+		<s id="2" name="Pulso de Inspiração" icon="lamster_rally" col="2" type="" key="Key_Use_Weapon_2" desc="Em 8 metros: cura aliados em 360, inspira você e aliados (+25% dano por 5 segundos) e causa 250 de dano em inimigos. Recarga de 6 segundos. Não ressuscita." pos="329,197,0"/>
+		<s id="3" name="Cuidado Compartilhado" icon="lamster_passive" col="4" type="Skill Passiva" key="" desc="Ao curar um aliado, recupera 25% da cura efetiva em si mesmo, até 45 por aliado. Aliados com vida cheia não geram cura. Não possui ultimate ativa." pos="0,-220,0"/>
+		<s id="4" name="Soco de Defesa" icon="lamster_primary" col="1" type="" key="Corpo a corpo (F padrão)" desc="Soco de 120 de dano, a cada 0,8 segundo. Alcance de 2,2 metros. O botão direito também inspira aliados e atinge inimigos." pos="0,382,0"/>
 	</i>
 </root>

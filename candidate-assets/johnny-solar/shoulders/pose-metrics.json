@@ -1,0 +1,150 @@
+{
+  "aim": {
+    "p99EdgeStretch": 1.2207413911819458,
+    "maxEdgeStretch": 2.176362991333008
+  },
+  "run": {
+    "p99EdgeStretch": 1.1412793397903442,
+    "maxEdgeStretch": 2.8252623081207275
+  },
+  "turn": {
+    "p99EdgeStretch": 1.1529521942138672,
+    "maxEdgeStretch": 1.6780946254730225
+  },
+  "neck": {
+    "p99EdgeStretch": 1.0656285285949707,
+    "maxEdgeStretch": 2.006647825241089
+  },
+  "shoulders": {
+    "p99EdgeStretch": 1.1615755558013916,
+    "maxEdgeStretch": 2.0732522010803223
+  },
+  "shoot": {
+    "p99EdgeStretch": 1.16005539894104,
+    "maxEdgeStretch": 2.039076566696167
+  },
+  "reload": {
+    "p99EdgeStretch": 1.102607011795044,
+    "maxEdgeStretch": 2.0860023498535156
+  },
+  "crouch": {
+    "p99EdgeStretch": 1.167726755142212,
+    "maxEdgeStretch": 2.459832191467285
+  },
+  "headYaw-45": {
+    "p99EdgeStretch": 1.0294684171676636,
+    "maxEdgeStretch": 2.4940149784088135
+  },
+  "headYaw-30": {
+    "p99EdgeStretch": 1.014514684677124,
+    "maxEdgeStretch": 1.9360880851745605
+  },
+  "headYaw-15": {
+    "p99EdgeStretch": 1.0051101446151733,
+    "maxEdgeStretch": 1.4659374952316284
+  },
+  "headYaw0": {
+    "p99EdgeStretch": 1.0000089406967163,
+    "maxEdgeStretch": 1.0000412464141846
+  },
+  "headYaw15": {
+    "p99EdgeStretch": 1.0066938400268555,
+    "maxEdgeStretch": 1.4339097738265991
+  },
+  "headYaw30": {
+    "p99EdgeStretch": 1.0167399644851685,
+    "maxEdgeStretch": 1.871207356452942
+  },
+  "headYaw45": {
+    "p99EdgeStretch": 1.0286507606506348,
+    "maxEdgeStretch": 2.370893955230713
+  },
+  "headPitch-30": {
+    "p99EdgeStretch": 1.004781723022461,
+    "maxEdgeStretch": 2.357818126678467
+  },
+  "headPitch-15": {
+    "p99EdgeStretch": 1.0016599893569946,
+    "maxEdgeStretch": 1.6876686811447144
+  },
+  "headPitch0": {
+    "p99EdgeStretch": 1.0000089406967163,
+    "maxEdgeStretch": 1.0000412464141846
+  },
+  "headPitch15": {
+    "p99EdgeStretch": 1.0031027793884277,
+    "maxEdgeStretch": 1.3991637229919434
+  },
+  "headPitch30": {
+    "p99EdgeStretch": 1.0084725618362427,
+    "maxEdgeStretch": 1.8615291118621826
+  },
+  "armLift-60": {
+    "p99EdgeStretch": 1.138891577720642,
+    "maxEdgeStretch": 1.9573510885238647
+  },
+  "armLift-45": {
+    "p99EdgeStretch": 1.1054874658584595,
+    "maxEdgeStretch": 1.6757121086120605
+  },
+  "armLift-30": {
+    "p99EdgeStretch": 1.0712482929229736,
+    "maxEdgeStretch": 1.399687647819519
+  },
+  "armLift-15": {
+    "p99EdgeStretch": 1.036719799041748,
+    "maxEdgeStretch": 1.1983213424682617
+  },
+  "armLift0": {
+    "p99EdgeStretch": 1.0000089406967163,
+    "maxEdgeStretch": 1.0000412464141846
+  },
+  "armLift15": {
+    "p99EdgeStretch": 1.034272313117981,
+    "maxEdgeStretch": 1.4737305641174316
+  },
+  "armLift30": {
+    "p99EdgeStretch": 1.0708528757095337,
+    "maxEdgeStretch": 1.9349086284637451
+  },
+  "armLift45": {
+    "p99EdgeStretch": 1.1104670763015747,
+    "maxEdgeStretch": 2.3682820796966553
+  },
+  "armLift60": {
+    "p99EdgeStretch": 1.1526600122451782,
+    "maxEdgeStretch": 2.7639822959899902
+  },
+  "armTwist-60": {
+    "p99EdgeStretch": 1.0381903648376465,
+    "maxEdgeStretch": 1.4504224061965942
+  },
+  "armTwist-30": {
+    "p99EdgeStretch": 1.0233579874038696,
+    "maxEdgeStretch": 1.260915994644165
+  },
+  "armTwist0": {
+    "p99EdgeStretch": 1.0000089406967163,
+    "maxEdgeStretch": 1.0000412464141846
+  },
+  "armTwist30": {
+    "p99EdgeStretch": 1.0243898630142212,
+    "maxEdgeStretch": 1.2460782527923584
+  },
+  "armTwist60": {
+    "p99EdgeStretch": 1.040239930152893,
+    "maxEdgeStretch": 1.4130929708480835
+  },
+  "grip": {
+    "p99EdgeStretch": 1.263896107673645,
+    "maxEdgeStretch": 2.46388578414917
+  },
+  "gripHigh": {
+    "p99EdgeStretch": 1.2852481603622437,
+    "maxEdgeStretch": 2.7586655616760254
+  },
+  "gripLow": {
+    "p99EdgeStretch": 1.2287659645080566,
+    "maxEdgeStretch": 2.165863037109375
+  }
+}

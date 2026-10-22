@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -145,33 +145,83 @@ public class Pve_Fb_Con : Window
 	}
 
 	// Token: 0x06001FB6 RID: 8118 RVA: 0x00123624 File Offset: 0x00121824
+	protected virtual void OnEnable()
+	{
+		if (this.pdata == null && this.m_nPveModelId != 0 && fGameManager.mloadConfig.AllPveFbData.ContainsKey(this.m_nPveModelId))
+		{
+			this.pdata = fGameManager.mloadConfig.AllPveFbData[this.m_nPveModelId];
+		}
+		if (this.pdata != null)
+		{
+			this.OnDiffList(this.pdata, this.m_nCurPage);
+		}
+	}
+
+	// Token: 0x06001FB6 RID: 8118 RVA: 0x00123624 File Offset: 0x00121824
 	private void Start()
 	{
-		this.pdata = fGameManager.mloadConfig.AllPveFbData[this.m_nPveModelId];
-		int count = this.pdata.szScnid.Count;
-		bool flag = count % this.m_nPageMaxCount == 0;
-		if (flag)
+		if (this.m_nPveModelId == 0)
 		{
-			this.m_nMaxPage = count / this.m_nPageMaxCount;
+			this.m_nPveModelId = 1;
 		}
-		else
+		if (fGameManager.mloadConfig.AllPveFbData.ContainsKey(this.m_nPveModelId))
 		{
-			this.m_nMaxPage = count / this.m_nPageMaxCount + 1;
+			this.pdata = fGameManager.mloadConfig.AllPveFbData[this.m_nPveModelId];
+			int count = this.pdata.szScnid.Count;
+			bool flag = count % this.m_nPageMaxCount == 0;
+			if (flag)
+			{
+				this.m_nMaxPage = count / this.m_nPageMaxCount;
+			}
+			else
+			{
+				this.m_nMaxPage = count / this.m_nPageMaxCount + 1;
+			}
+			this.OnDiffList(this.pdata, this.m_nCurPage);
 		}
-		this.OnDiffList(this.pdata, this.m_nCurPage);
 	}
 
 	// Token: 0x06001FB7 RID: 8119 RVA: 0x001236A6 File Offset: 0x001218A6
 	public void InitData(int nPveId, int nFbNum)
 	{
 		this.m_nPveModelId = nPveId;
-		this.m_pPveData = fGameManager.mloadConfig.AllPveFbData[nPveId];
 		this.m_nFbNum = nFbNum;
+		if (fGameManager.mloadConfig.AllPveFbData.ContainsKey(nPveId))
+		{
+			this.m_pPveData = fGameManager.mloadConfig.AllPveFbData[nPveId];
+			this.pdata = this.m_pPveData;
+			int count = this.pdata.szScnid.Count;
+			if (count % this.m_nPageMaxCount == 0)
+			{
+				this.m_nMaxPage = count / this.m_nPageMaxCount;
+			}
+			else
+			{
+				this.m_nMaxPage = count / this.m_nPageMaxCount + 1;
+			}
+			this.OnDiffList(this.pdata, this.m_nCurPage);
+		}
 	}
 
 	// Token: 0x06001FB8 RID: 8120 RVA: 0x001236D0 File Offset: 0x001218D0
 	public void OnDiffList(PveXmlData pdata, int nCurPage)
 	{
+		if (pdata == null || pdata.szScnid == null)
+		{
+			return;
+		}
+		if (this.pDiffPanel == null && this.UIGameObj != null)
+		{
+			this.pDiffPanel = this.UIGameObj.Get_GameObj(8);
+		}
+		if (this.pOneDiffBtn == null && this.UIGameObj != null)
+		{
+			this.pOneDiffBtn = this.UIGameObj.Get_GameObj(9);
+		}
+		if (this.pDiffPanel == null || this.pOneDiffBtn == null)
+		{
+			return;
+		}
 		string[] szColor = pdata.szColor;
 		ArrayList szScnid = pdata.szScnid;
 		int count = szScnid.Count;
@@ -180,8 +230,20 @@ public class Pve_Fb_Con : Window
 		int num = (nCurPage != this.m_nMaxPage) ? (this.m_nPageMaxCount * nCurPage) : szScnid.Count;
 		for (int i = (nCurPage - 1) * this.m_nPageMaxCount; i < num; i++)
 		{
+			if (i >= szScnid.Count)
+			{
+				break;
+			}
 			int num2 = (int)szScnid[i];
+			if (!fGameManager.mloadConfig.FbData.ContainsKey(num2))
+			{
+				continue;
+			}
 			FbXmlData fbXmlData = fGameManager.mloadConfig.FbData[num2];
+			if (!fGameManager.mloadConfig.FbModeData.ContainsKey(fbXmlData.nstartplotid))
+			{
+				continue;
+			}
 			FbModelXmlData fbModelXmlData = fGameManager.mloadConfig.FbModeData[fbXmlData.nstartplotid];
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.pOneDiffBtn);
 			gameObject.transform.SetParent(this.pDiffPanel.transform);
@@ -189,7 +251,14 @@ public class Pve_Fb_Con : Window
 			gameObject.transform.localPosition = Vector3.zero;
 			gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
 			gameObject.name = num2.ToString() + "_" + fbModelXmlData.m_nNanDu.ToString();
-			gameObject.transform.FindChild("bgdownimg").GetComponent<Image>().color = Fun.StrToColor(szColor[i], 1f);
+			if (szColor != null && i < szColor.Length)
+			{
+				Transform bgDown = gameObject.transform.FindChild("bgdownimg");
+				if (bgDown != null)
+				{
+					bgDown.GetComponent<Image>().color = Fun.StrToColor(szColor[i], 1f);
+				}
+			}
 			FbNanDuCon fbNanDuCon = gameObject.AddComponent<FbNanDuCon>();
 			fbNanDuCon.OnInitData(num2, fbModelXmlData.m_nNanDu, fbXmlData.nType, this.m_nFbNum);
 			this.m_szObjList.Add(gameObject);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,16 +18,7 @@ public class DynamicBone : MonoBehaviour
 		bool flag = this.switchCheck;
 		if (flag)
 		{
-			bool flag2 = QualitySettings.GetQualityLevel() == 0;
-			if (flag2)
-			{
-				this.switchOff = true;
-				this.m_Weight = 0f;
-			}
-			else
-			{
-				this.switchOff = false;
-			}
+			this.switchOff = false;
 		}
 		bool flag3 = this.switchOff;
 		if (!flag3)
@@ -179,6 +170,8 @@ public class DynamicBone : MonoBehaviour
 	// Token: 0x060009AB RID: 2475 RVA: 0x0005629C File Offset: 0x0005449C
 	private void UpdateDynamicBones(float t)
 	{
+		// SKIN-040: scoped discontinuity reset and owner-local cosmetic volumes.
+		if (!TriggerunRavenDynamics.BeforeTick(this, t)) return;
 		bool flag = this.m_Root == null;
 		if (!flag)
 		{

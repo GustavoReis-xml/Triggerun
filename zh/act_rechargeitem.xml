@@ -1,5 +1,5 @@
 <root>
-	<i id="101" name="全民累充" bgimg="libao_rechargeitem_ditu" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，累计充值达到以下额度，可以领取双节豪礼&lt;/size&gt;&lt;/color&gt;" desc2="适度娱乐  理性消费">
+	<i id="101" name="Recarga acumulada" bgimg="libao_rechargeitem_ditu" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;Durante o evento, ganhe prêmios após acumular recarga e alcançar os seguintes limites&lt;/size&gt;&lt;/color&gt;" desc2="Entretenimento racional e consumação racional">
 		<d id="1" targnum="500" reward="2008,5#1020,200"/>
 		<d id="2" targnum="1000" reward="6021,25#2020,10"/>
 		<d id="3" targnum="5000" reward="6021,150#2020,30#1230,1"/>
@@ -7,32 +7,5 @@
 		<d id="5" targnum="20000" reward="2010,3#2020,70#6022,30"/>
 		<d id="6" targnum="50000" reward="2011,2#2020,160#6022,50"/>
 		<d id="7" targnum="100000" reward="6021,500#2020,500#6022,120"/>
-	</i>
-	<i id="102" name="全民累充" bgimg="libao_rechargeitem_ditu_1" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，累计充值达到以下额度，可以领取豪礼&lt;/size&gt;&lt;/color&gt;" desc2="适度娱乐  理性消费">
-		<d id="1" targnum="200" reward="1025,15#2020,5"/>
-		<d id="2" targnum="500" reward="6021,5#2020,15"/>
-		<d id="3" targnum="1000" reward="2008,1#2020,20"/>
-		<d id="4" targnum="2000" reward="6021,25#2020,30"/>
-		<d id="5" targnum="5000" reward="2009,2#2020,60#6022,5"/>
-		<d id="6" targnum="10000" reward="6021,80#2020,90#6022,10"/>
-		<d id="7" targnum="20000" reward="2010,2#2020,120#6022,20"/>
-	</i>
-	<i id="103" name="全民累充" bgimg="libao_rechargeitem_ditu_1" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，累计充值达到以下额度，可以领取豪礼&lt;/size&gt;&lt;/color&gt;" desc2="适度娱乐  理性消费">
-		<d id="1" targnum="200" reward="1025,15#1032,10"/>
-		<d id="2" targnum="500" reward="1029,2#1032,20"/>
-		<d id="3" targnum="1000" reward="3052,1#1032,30"/>
-		<d id="4" targnum="2000" reward="1022,35#1032,50"/>
-		<d id="5" targnum="5000" reward="2020,60#1032,80#1029,5"/>
-		<d id="6" targnum="10000" reward="2009,4#1032,110#1029,15"/>
-		<d id="7" targnum="20000" reward="1026,30000#1032,180#1029,25"/>
-	</i>
-	<i id="104" name="全民累充" bgimg="libao_rechargeitem_ditu_1" desc1="&lt;color=#fff44c&gt;&lt;size=22&gt;活动期间内，累计充值达到以下额度，可以领取豪礼&lt;/size&gt;&lt;/color&gt;" desc2="适度娱乐  理性消费">
-		<d id="1" targnum="200" reward="1025,15#1032,15"/>
-		<d id="2" targnum="500" reward="1029,3#1032,25"/>
-		<d id="3" targnum="1000" reward="3052,1#1032,40"/>
-		<d id="4" targnum="2000" reward="1022,50#1032,60"/>
-		<d id="5" targnum="5000" reward="2020,80#1032,100#1029,10"/>
-		<d id="6" targnum="10000" reward="2009,4#1032,150#1029,30"/>
-		<d id="7" targnum="20000" reward="1026,60000#1032,200#1029,80"/>
 	</i>
 </root>

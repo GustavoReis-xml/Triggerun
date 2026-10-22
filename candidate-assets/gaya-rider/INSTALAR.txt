@@ -1,0 +1,1 @@
+No computador principal as DLLs já estão instaladas. Em outros computadores, feche o TRIG, preserve as DLLs atuais de TRIG_Data/Managed e copie as duas DLLs deste pacote. Reabra o jogo e selecione Gaya > Rider (skin 5 gratuita). FPS/arma/habilidades originais. Cabelo com movimento simplificado.

@@ -1,0 +1,1453 @@
+{
+  "receiversCount": 406,
+  "rpcCount": 155,
+  "receivers": {
+    "1000": [
+      "fGameManager.cs:566",
+      "LoginCon.cs:216"
+    ],
+    "1001": [
+      "fGameManager.cs:569",
+      "LoginCon.cs:221"
+    ],
+    "1002": [
+      "fGameManager.cs:572",
+      "LoginCon.cs:226"
+    ],
+    "1003": [
+      "fGameManager.cs:582",
+      "LoginCon.cs:237"
+    ],
+    "1004": [
+      "fGameManager.cs:604",
+      "LoginCon.cs:260"
+    ],
+    "1005": [
+      "fGameManager.cs:605",
+      "LoginCon.cs:261"
+    ],
+    "1301": [
+      "HallUser.cs:172"
+    ],
+    "1302": [
+      "HallUser.cs:204"
+    ],
+    "1303": [
+      "HallUser.cs:207"
+    ],
+    "1304": [
+      "HallUser.cs:214"
+    ],
+    "1305": [
+      "HallUser.cs:208"
+    ],
+    "1306": [
+      "HallUser.cs:219"
+    ],
+    "1307": [
+      "HallUser.cs:222"
+    ],
+    "1308": [
+      "HallUser.cs:225"
+    ],
+    "1309": [
+      "HallUser.cs:228"
+    ],
+    "1310": [
+      "HallUser.cs:231"
+    ],
+    "1311": [
+      "HallUser.cs:209"
+    ],
+    "1312": [
+      "HallUser.cs:210"
+    ],
+    "1313": [
+      "HallUser.cs:234"
+    ],
+    "1314": [
+      "HallUser.cs:237"
+    ],
+    "1315": [
+      "HallUser.cs:240"
+    ],
+    "1316": [
+      "HallUser.cs:211"
+    ],
+    "1317": [
+      "HallUser.cs:212"
+    ],
+    "1318": [
+      "HallUser.cs:243"
+    ],
+    "1319": [
+      "HallUser.cs:247"
+    ],
+    "1600": [
+      "GameRoot.cs:985"
+    ],
+    "1601": [
+      "GameRoot.cs:1007"
+    ],
+    "1602": [
+      "GameRoot.cs:1020"
+    ],
+    "1604": [
+      "GameRoot.cs:1045"
+    ],
+    "1605": [
+      "GameRoot.cs:1061"
+    ],
+    "1606": [
+      "GameRoot.cs:1071"
+    ],
+    "1607": [
+      "GameRoot.cs:1081"
+    ],
+    "1608": [
+      "GameRoot.cs:1098"
+    ],
+    "3001": [
+      "HallUser.cs:264"
+    ],
+    "3002": [
+      "HallUser.cs:267"
+    ],
+    "3003": [
+      "HallUser.cs:270"
+    ],
+    "3004": [
+      "HallUser.cs:272"
+    ],
+    "3301": [
+      "RoomManage.cs:42"
+    ],
+    "3302": [
+      "RoomManage.cs:45"
+    ],
+    "3303": [
+      "RoomManage.cs:48"
+    ],
+    "3304": [
+      "RoomManage.cs:51"
+    ],
+    "3305": [
+      "RoomManage.cs:54"
+    ],
+    "3306": [
+      "RoomManage.cs:56"
+    ],
+    "3307": [
+      "RoomManage.cs:59"
+    ],
+    "3308": [
+      "RoomManage.cs:62"
+    ],
+    "3318": [
+      "RoomManage.cs:68"
+    ],
+    "3320": [
+      "RoomManage.cs:71"
+    ],
+    "3324": [
+      "RoomManage.cs:74"
+    ],
+    "3325": [
+      "RoomManage.cs:77"
+    ],
+    "3326": [
+      "RoomManage.cs:80"
+    ],
+    "3329": [
+      "RoomManage.cs:83"
+    ],
+    "3331": [
+      "RoomManage.cs:86"
+    ],
+    "3333": [
+      "RoomManage.cs:95"
+    ],
+    "3335": [
+      "RoomManage.cs:98"
+    ],
+    "3336": [
+      "RoomManage.cs:101"
+    ],
+    "3337": [
+      "RoomManage.cs:104"
+    ],
+    "3338": [
+      "RoomManage.cs:107"
+    ],
+    "3401": [
+      "MailManager.cs:26"
+    ],
+    "3403": [
+      "MailManager.cs:29"
+    ],
+    "3404": [
+      "MailManager.cs:32"
+    ],
+    "3405": [
+      "MailManager.cs:35"
+    ],
+    "3406": [
+      "MailManager.cs:38"
+    ],
+    "3407": [
+      "MailManager.cs:41"
+    ],
+    "3408": [
+      "MailManager.cs:44"
+    ],
+    "3409": [
+      "MailManager.cs:47"
+    ],
+    "3410": [
+      "MailManager.cs:50"
+    ],
+    "5001": [
+      "FBManager.cs:54"
+    ],
+    "5002": [
+      "FBManager.cs:77"
+    ],
+    "5003": [
+      "FBManager.cs:86"
+    ],
+    "5004": [
+      "FBManager.cs:95"
+    ],
+    "5005": [
+      "FBManager.cs:96"
+    ],
+    "5006": [
+      "FBManager.cs:112"
+    ],
+    "5007": [
+      "FBManager.cs:97"
+    ],
+    "5008": [
+      "FBManager.cs:125"
+    ],
+    "5009": [
+      "FBManager.cs:98"
+    ],
+    "5010": [
+      "FBManager.cs:99"
+    ],
+    "5011": [
+      "FBManager.cs:100"
+    ],
+    "5012": [
+      "FBManager.cs:101"
+    ],
+    "5013": [
+      "FBManager.cs:134"
+    ],
+    "5014": [
+      "FBManager.cs:143"
+    ],
+    "5015": [
+      "FBManager.cs:102"
+    ],
+    "5016": [
+      "FBManager.cs:103"
+    ],
+    "5017": [
+      "FBManager.cs:152"
+    ],
+    "5018": [
+      "FBManager.cs:161"
+    ],
+    "5019": [
+      "FBManager.cs:170"
+    ],
+    "5020": [
+      "FBManager.cs:179"
+    ],
+    "5021": [
+      "FBManager.cs:188"
+    ],
+    "5022": [
+      "FBManager.cs:197"
+    ],
+    "5023": [
+      "FBManager.cs:104"
+    ],
+    "5024": [
+      "FBManager.cs:206"
+    ],
+    "5025": [
+      "FBManager.cs:215"
+    ],
+    "5026": [
+      "FBManager.cs:219"
+    ],
+    "5027": [
+      "FBManager.cs:222"
+    ],
+    "5028": [
+      "FBManager.cs:231"
+    ],
+    "5029": [
+      "FBManager.cs:254"
+    ],
+    "5030": [
+      "FBManager.cs:105"
+    ],
+    "5031": [
+      "FBManager.cs:106"
+    ],
+    "5032": [
+      "FBManager.cs:107"
+    ],
+    "5033": [
+      "FBManager.cs:108"
+    ],
+    "5034": [
+      "FBManager.cs:109"
+    ],
+    "5035": [
+      "FBManager.cs:264"
+    ],
+    "5036": [
+      "FBManager.cs:110"
+    ],
+    "5037": [
+      "FBManager.cs:272"
+    ],
+    "5038": [
+      "FBManager.cs:276"
+    ],
+    "8201": [
+      "HallUserData.cs:221"
+    ],
+    "8203": [
+      "HallUserData.cs:230"
+    ],
+    "8204": [
+      "HallUserData.cs:247"
+    ],
+    "11001": [
+      "HeroDataManager.cs:27"
+    ],
+    "11002": [
+      "HeroDataManager.cs:30"
+    ],
+    "11003": [
+      "HeroDataManager.cs:33"
+    ],
+    "11004": [
+      "HeroDataManager.cs:36"
+    ],
+    "11005": [
+      "HeroDataManager.cs:37"
+    ],
+    "11006": [
+      "HeroDataManager.cs:38"
+    ],
+    "11007": [
+      "HeroDataManager.cs:39"
+    ],
+    "11008": [
+      "HeroDataManager.cs:42"
+    ],
+    "11009": [
+      "HeroDataManager.cs:45"
+    ],
+    "11010": [
+      "HeroDataManager.cs:40"
+    ],
+    "11011": [
+      "HeroDataManager.cs:48"
+    ],
+    "11012": [
+      "HeroDataManager.cs:51"
+    ],
+    "11013": [
+      "HeroDataManager.cs:54"
+    ],
+    "11014": [
+      "HeroDataManager.cs:57"
+    ],
+    "12001": [
+      "HeroDataManager.cs:63"
+    ],
+    "12002": [
+      "HeroDataManager.cs:66"
+    ],
+    "12005": [
+      "HeroDataManager.cs:69"
+    ],
+    "12006": [
+      "HeroDataManager.cs:72"
+    ],
+    "12008": [
+      "HeroDataManager.cs:75"
+    ],
+    "12009": [
+      "HeroDataManager.cs:78"
+    ],
+    "12010": [
+      "HeroDataManager.cs:81"
+    ],
+    "12011": [
+      "HeroDataManager.cs:84"
+    ],
+    "12016": [
+      "HeroDataManager.cs:87"
+    ],
+    "12017": [
+      "HeroDataManager.cs:90"
+    ],
+    "12018": [
+      "HeroDataManager.cs:93"
+    ],
+    "12020": [
+      "HeroDataManager.cs:96"
+    ],
+    "12021": [
+      "HeroDataManager.cs:99"
+    ],
+    "12023": [
+      "HeroDataManager.cs:102"
+    ],
+    "12024": [
+      "HeroDataManager.cs:105"
+    ],
+    "13001": [
+      "HeroDataManager.cs:825"
+    ],
+    "13004": [
+      "HeroDataManager.cs:828"
+    ],
+    "13005": [
+      "HeroDataManager.cs:831"
+    ],
+    "14002": [
+      "WenJuanManager.cs:24"
+    ],
+    "14004": [
+      "WenJuanManager.cs:27"
+    ],
+    "14005": [
+      "WenJuanManager.cs:30"
+    ],
+    "15001": [
+      "LiBaoManager.cs:24"
+    ],
+    "15002": [
+      "LiBaoManager.cs:27"
+    ],
+    "15003": [
+      "LiBaoManager.cs:30"
+    ],
+    "15004": [
+      "LiBaoManager.cs:43"
+    ],
+    "15005": [
+      "LiBaoManager.cs:31"
+    ],
+    "15006": [
+      "LiBaoManager.cs:32"
+    ],
+    "15007": [
+      "LiBaoManager.cs:46"
+    ],
+    "15008": [
+      "LiBaoManager.cs:33"
+    ],
+    "15009": [
+      "LiBaoManager.cs:49"
+    ],
+    "15010": [
+      "LiBaoManager.cs:34"
+    ],
+    "15011": [
+      "LiBaoManager.cs:35"
+    ],
+    "15012": [
+      "LiBaoManager.cs:52"
+    ],
+    "15013": [
+      "LiBaoManager.cs:55"
+    ],
+    "15014": [
+      "LiBaoManager.cs:36"
+    ],
+    "15015": [
+      "LiBaoManager.cs:58"
+    ],
+    "15016": [
+      "LiBaoManager.cs:37"
+    ],
+    "15017": [
+      "LiBaoManager.cs:61"
+    ],
+    "15018": [
+      "LiBaoManager.cs:38"
+    ],
+    "15019": [
+      "LiBaoManager.cs:64"
+    ],
+    "15020": [
+      "LiBaoManager.cs:67"
+    ],
+    "15021": [
+      "LiBaoManager.cs:70"
+    ],
+    "15022": [
+      "LiBaoManager.cs:73"
+    ],
+    "15023": [
+      "LiBaoManager.cs:76"
+    ],
+    "15024": [
+      "LiBaoManager.cs:79"
+    ],
+    "15025": [
+      "LiBaoManager.cs:82"
+    ],
+    "15026": [
+      "LiBaoManager.cs:85"
+    ],
+    "15027": [
+      "LiBaoManager.cs:88"
+    ],
+    "15028": [
+      "LiBaoManager.cs:91"
+    ],
+    "15029": [
+      "LiBaoManager.cs:39"
+    ],
+    "15030": [
+      "LiBaoManager.cs:94"
+    ],
+    "15031": [
+      "LiBaoManager.cs:97"
+    ],
+    "15032": [
+      "LiBaoManager.cs:100"
+    ],
+    "15033": [
+      "LiBaoManager.cs:103"
+    ],
+    "15034": [
+      "LiBaoManager.cs:106"
+    ],
+    "15035": [
+      "LiBaoManager.cs:109"
+    ],
+    "15036": [
+      "LiBaoManager.cs:112"
+    ],
+    "15037": [
+      "LiBaoManager.cs:40"
+    ],
+    "15038": [
+      "LiBaoManager.cs:41"
+    ],
+    "15039": [
+      "LiBaoManager.cs:115"
+    ],
+    "15040": [
+      "LiBaoManager.cs:118"
+    ],
+    "15041": [
+      "LiBaoManager.cs:121"
+    ],
+    "15042": [
+      "LiBaoManager.cs:124"
+    ],
+    "15043": [
+      "LiBaoManager.cs:127"
+    ],
+    "16100": [
+      "ActivityManager.cs:24"
+    ],
+    "16101": [
+      "ActivityManager.cs:27"
+    ],
+    "16103": [
+      "ActivityManager.cs:30"
+    ],
+    "16104": [
+      "ActivityManager.cs:33"
+    ],
+    "16105": [
+      "ActivityManager.cs:36"
+    ],
+    "16106": [
+      "ActivityManager.cs:39"
+    ],
+    "16108": [
+      "ActivityManager.cs:42"
+    ],
+    "16109": [
+      "ActivityManager.cs:45"
+    ],
+    "16200": [
+      "SkyLadderManager.cs:49"
+    ],
+    "16202": [
+      "SkyLadderManager.cs:52"
+    ],
+    "16203": [
+      "SkyLadderManager.cs:55"
+    ],
+    "16205": [
+      "SkyLadderManager.cs:58"
+    ],
+    "16208": [
+      "SkyLadderManager.cs:61"
+    ],
+    "16210": [
+      "SkyLadderManager.cs:64"
+    ],
+    "17001": [
+      "RankManager.cs:39"
+    ],
+    "17002": [
+      "RankManager.cs:42"
+    ],
+    "17003": [
+      "RankManager.cs:45"
+    ],
+    "17005": [
+      "RankManager.cs:48"
+    ],
+    "17006": [
+      "RankManager.cs:51"
+    ],
+    "17007": [
+      "RankManager.cs:54"
+    ],
+    "19001": [
+      "KingTrainManager.cs:36",
+      "KingTrainManager.cs:184"
+    ],
+    "19002": [
+      "KingTrainManager.cs:54",
+      "KingTrainManager.cs:202"
+    ],
+    "19003": [
+      "DtsBatteManager.cs:223",
+      "KingTrainManager.cs:70",
+      "KingTrainManager.cs:218"
+    ],
+    "19004": [
+      "DtsBatteManager.cs:226",
+      "KingTrainManager.cs:84",
+      "KingTrainManager.cs:232"
+    ],
+    "19005": [
+      "DtsBatteManager.cs:231",
+      "KingTrainManager.cs:94",
+      "KingTrainManager.cs:242"
+    ],
+    "19007": [
+      "DtsBatteManager.cs:234",
+      "KingTrainManager.cs:108",
+      "KingTrainManager.cs:251"
+    ],
+    "19008": [
+      "DtsBatteManager.cs:237",
+      "KingTrainManager.cs:118",
+      "KingTrainManager.cs:261"
+    ],
+    "19009": [
+      "DtsBatteManager.cs:240"
+    ],
+    "19010": [
+      "DtsBatteManager.cs:243"
+    ],
+    "19011": [
+      "DtsBatteManager.cs:246",
+      "KingTrainManager.cs:132",
+      "KingTrainManager.cs:275"
+    ],
+    "19012": [
+      "DtsBatteManager.cs:249"
+    ],
+    "19013": [
+      "KingTrainManager.cs:135",
+      "KingTrainManager.cs:278"
+    ],
+    "19014": [
+      "KingTrainManager.cs:150",
+      "KingTrainManager.cs:293"
+    ],
+    "19501": [
+      "PveManager.cs:43"
+    ],
+    "19502": [
+      "PveManager.cs:52"
+    ],
+    "19503": [
+      "PveManager.cs:55"
+    ],
+    "19504": [
+      "PveManager.cs:72"
+    ],
+    "19507": [
+      "PveManager.cs:75"
+    ],
+    "19511": [
+      "PveManager.cs:78"
+    ],
+    "19512": [
+      "PveManager.cs:88"
+    ],
+    "19513": [
+      "PveManager.cs:114"
+    ],
+    "19514": [
+      "PveManager.cs:124"
+    ],
+    "19515": [
+      "PveManager.cs:127"
+    ],
+    "19516": [
+      "PveManager.cs:131"
+    ],
+    "19517": [
+      "PveManager.cs:134"
+    ],
+    "19518": [
+      "PveManager.cs:137"
+    ],
+    "19520": [
+      "PveManager.cs:141"
+    ],
+    "19521": [
+      "PveManager.cs:151"
+    ],
+    "47000": [
+      "easy_tipCon.cs:446"
+    ],
+    "47001": [
+      "easy_tipCon.cs:455"
+    ],
+    "47002": [
+      "easy_tipCon.cs:458"
+    ],
+    "47003": [
+      "easy_tipCon.cs:466"
+    ],
+    "47004": [
+      "easy_tipCon.cs:469"
+    ],
+    "47005": [
+      "easy_tipCon.cs:472"
+    ],
+    "47006": [
+      "easy_tipCon.cs:475"
+    ],
+    "47007": [
+      "easy_tipCon.cs:478"
+    ],
+    "47008": [
+      "easy_tipCon.cs:481"
+    ],
+    "47010": [
+      "easy_tipCon.cs:484"
+    ],
+    "47011": [
+      "easy_tipCon.cs:487"
+    ],
+    "47012": [
+      "easy_tipCon.cs:490"
+    ],
+    "47013": [
+      "easy_tipCon.cs:493"
+    ],
+    "47014": [
+      "easy_tipCon.cs:527"
+    ],
+    "47015": [
+      "easy_tipCon.cs:530"
+    ],
+    "50004": [
+      "CFilmManager.cs:241",
+      "GamePlayer.cs:1521",
+      "RobotAI.cs:1314"
+    ],
+    "50005": [
+      "CFilmManager.cs:244",
+      "GamePlayer.cs:1524",
+      "RobotAI.cs:1317"
+    ],
+    "50008": [
+      "CFilmManager.cs:247",
+      "GamePlayer.cs:1525",
+      "RobotAI.cs:1318"
+    ],
+    "60001": [
+      "TeamManager.cs:54"
+    ],
+    "60002": [
+      "TeamManager.cs:57"
+    ],
+    "60003": [
+      "TeamManager.cs:60"
+    ],
+    "60004": [
+      "TeamManager.cs:63"
+    ],
+    "60005": [
+      "fUIManager.cs:1618",
+      "TeamManager.cs:66"
+    ],
+    "60006": [
+      "fUIManager.cs:1621",
+      "TeamManager.cs:69"
+    ],
+    "60007": [
+      "fUIManager.cs:1628",
+      "TeamManager.cs:76"
+    ],
+    "60008": [
+      "TeamManager.cs:87"
+    ],
+    "60009": [
+      "TeamManager.cs:90"
+    ],
+    "60010": [
+      "TeamManager.cs:93"
+    ],
+    "60012": [
+      "TeamManager.cs:96"
+    ],
+    "60016": [
+      "TeamManager.cs:99"
+    ],
+    "60018": [
+      "TeamManager.cs:115"
+    ],
+    "60019": [
+      "TeamManager.cs:124"
+    ],
+    "60020": [
+      "TeamManager.cs:127"
+    ],
+    "60021": [
+      "TeamManager.cs:130"
+    ],
+    "60022": [
+      "TeamManager.cs:133"
+    ],
+    "60024": [
+      "TeamManager.cs:136"
+    ],
+    "60026": [
+      "TeamManager.cs:139"
+    ],
+    "60102": [
+      "FriendManager.cs:29"
+    ],
+    "60103": [
+      "FriendManager.cs:32"
+    ],
+    "60104": [
+      "FriendManager.cs:36"
+    ],
+    "60105": [
+      "FriendManager.cs:33"
+    ],
+    "60106": [
+      "FriendManager.cs:39"
+    ],
+    "60107": [
+      "FriendManager.cs:51"
+    ],
+    "60108": [
+      "FriendManager.cs:34"
+    ],
+    "60109": [
+      "FriendManager.cs:54"
+    ],
+    "70001": [
+      "ShopManager.cs:25"
+    ],
+    "70002": [
+      "ShopManager.cs:27"
+    ],
+    "70004": [
+      "ShopManager.cs:29"
+    ],
+    "70005": [
+      "ShopManager.cs:31"
+    ],
+    "70006": [
+      "ShopManager.cs:42"
+    ],
+    "70007": [
+      "ShopManager.cs:51"
+    ],
+    "70008": [
+      "ShopManager.cs:61"
+    ],
+    "70009": [
+      "ShopManager.cs:64"
+    ],
+    "70010": [
+      "ShopManager.cs:67"
+    ],
+    "70012": [
+      "ShopManager.cs:76"
+    ],
+    "70018": [
+      "ShopManager.cs:79"
+    ],
+    "71007": [
+      "TaskManager.cs:33"
+    ],
+    "71008": [
+      "TaskManager.cs:36"
+    ],
+    "71009": [
+      "TaskManager.cs:39"
+    ],
+    "80006": [
+      "MatchManager.cs:106"
+    ],
+    "80007": [
+      "MatchManager.cs:114"
+    ],
+    "80008": [
+      "MatchManager.cs:155"
+    ],
+    "80009": [
+      "MatchManager.cs:156"
+    ],
+    "80010": [
+      "MatchManager.cs:157"
+    ],
+    "80011": [
+      "MatchManager.cs:161"
+    ],
+    "80012": [
+      "MatchManager.cs:170"
+    ],
+    "80013": [
+      "MatchManager.cs:173"
+    ],
+    "80014": [
+      "MatchManager.cs:158"
+    ],
+    "80015": [
+      "MatchManager.cs:159"
+    ],
+    "80016": [
+      "MatchManager.cs:176"
+    ],
+    "90001": [
+      "MatchManager.cs:187"
+    ],
+    "90002": [
+      "MatchManager.cs:209"
+    ],
+    "90004": [
+      "MatchManager.cs:212"
+    ],
+    "90005": [
+      "MatchManager.cs:215"
+    ],
+    "90006": [
+      "MatchManager.cs:218"
+    ],
+    "90007": [
+      "MatchManager.cs:221"
+    ],
+    "90008": [
+      "MatchManager.cs:224"
+    ],
+    "90009": [
+      "MatchManager.cs:234"
+    ],
+    "91001": [
+      "GuildManager.cs:26"
+    ],
+    "91002": [
+      "GuildManager.cs:29"
+    ],
+    "91003": [
+      "GuildManager.cs:32"
+    ],
+    "91004": [
+      "GuildManager.cs:35"
+    ],
+    "91005": [
+      "GuildManager.cs:38"
+    ],
+    "91006": [
+      "GuildManager.cs:41"
+    ],
+    "91007": [
+      "GuildManager.cs:44"
+    ],
+    "91008": [
+      "GuildManager.cs:47"
+    ],
+    "91012": [
+      "GuildManager.cs:50"
+    ],
+    "91013": [
+      "GuildManager.cs:53"
+    ],
+    "91015": [
+      "GuildManager.cs:56"
+    ],
+    "91016": [
+      "GuildManager.cs:59"
+    ],
+    "91017": [
+      "GuildManager.cs:62"
+    ],
+    "91018": [
+      "GuildManager.cs:65"
+    ],
+    "91019": [
+      "GuildManager.cs:68"
+    ],
+    "91020": [
+      "GuildManager.cs:71"
+    ],
+    "91022": [
+      "GuildManager.cs:74"
+    ],
+    "91023": [
+      "GuildManager.cs:77"
+    ],
+    "91025": [
+      "GuildManager.cs:80"
+    ],
+    "91027": [
+      "GuildManager.cs:83"
+    ],
+    "91031": [
+      "GuildManager.cs:86"
+    ],
+    "91033": [
+      "GuildManager.cs:89"
+    ],
+    "91034": [
+      "GuildManager.cs:92"
+    ],
+    "91035": [
+      "GuildManager.cs:95"
+    ],
+    "91036": [
+      "GuildManager.cs:98"
+    ],
+    "110001": [
+      "Arena_Message_Handle.cs:178"
+    ],
+    "110002": [
+      "Arena_Message_Handle.cs:192"
+    ],
+    "110003": [
+      "Arena_Message_Handle.cs:206"
+    ],
+    "110004": [
+      "Arena_Message_Handle.cs:220"
+    ],
+    "110005": [
+      "Arena_Message_Handle.cs:233"
+    ],
+    "110006": [
+      "Arena_Message_Handle.cs:236"
+    ],
+    "110009": [
+      "Arena_Message_Handle.cs:245"
+    ],
+    "110010": [
+      "Arena_Message_Handle.cs:258"
+    ],
+    "110011": [
+      "Arena_Message_Handle.cs:272"
+    ],
+    "110101": [
+      "Scramble_Message_Handle.cs:88"
+    ],
+    "110102": [
+      "Scramble_Message_Handle.cs:102"
+    ],
+    "110103": [
+      "Scramble_Message_Handle.cs:111"
+    ],
+    "110104": [
+      "Scramble_Message_Handle.cs:125"
+    ],
+    "110105": [
+      "Scramble_Message_Handle.cs:134"
+    ],
+    "110106": [
+      "Scramble_Message_Handle.cs:143"
+    ],
+    "110107": [
+      "Scramble_Message_Handle.cs:152"
+    ],
+    "110108": [
+      "Scramble_Message_Handle.cs:161"
+    ],
+    "110109": [
+      "Scramble_Message_Handle.cs:170"
+    ],
+    "110301": [
+      "Arena_Score_Message_Handle.cs:163"
+    ],
+    "110302": [
+      "Arena_Score_Message_Handle.cs:177"
+    ],
+    "110303": [
+      "Arena_Score_Message_Handle.cs:191"
+    ],
+    "110304": [
+      "Arena_Score_Message_Handle.cs:204"
+    ],
+    "110305": [
+      "Arena_Score_Message_Handle.cs:207"
+    ],
+    "110306": [
+      "Arena_Score_Message_Handle.cs:216"
+    ],
+    "110307": [
+      "Arena_Score_Message_Handle.cs:225"
+    ],
+    "110308": [
+      "Arena_Score_Message_Handle.cs:239"
+    ],
+    "110309": [
+      "Arena_Score_Message_Handle.cs:253"
+    ],
+    "1020002": [
+      "Npc_Handle.cs:28"
+    ],
+    "1020004": [
+      "Npc_Handle.cs:31"
+    ],
+    "3020102": [
+      "HallUser.cs:537"
+    ],
+    "3020104": [
+      "HallUser.cs:547"
+    ],
+    "3020106": [
+      "HallUser.cs:557"
+    ],
+    "3020108": [
+      "HallUser.cs:566"
+    ],
+    "3020110": [
+      "HallUser.cs:576"
+    ],
+    "3020112": [
+      "HallUser.cs:590"
+    ],
+    "3020114": [
+      "HallUser.cs:599"
+    ],
+    "3020116": [
+      "HallUser.cs:608"
+    ],
+    "3020117": [
+      "HallUser.cs:617"
+    ],
+    "3020119": [
+      "HallUser.cs:620"
+    ]
+  },
+  "rpcMethods": {
+    "UpdateFlag": [
+      "CPlayerDazhao.cs (ArrayList arrPam)"
+    ],
+    "CA": [
+      "GamePlayer.cs (ArrayList aryParam)",
+      "Npc_Entity.cs (ArrayList aryParam)"
+    ],
+    "RemoteCreate": [
+      "GamePlayer.cs (ArrayList szCom)"
+    ],
+    "PlayerSelect": [
+      "GamePlayer.cs (ArrayList aryNetInfo)",
+      "HeroPlayer.cs (ArrayList aryNetInfo)",
+      "NetLiving.cs (ArrayList aryNetInfo)"
+    ],
+    "RefreshNewModel": [
+      "GamePlayer.cs (ArrayList aryNetMsg)"
+    ],
+    "setReviveData": [
+      "GamePlayer.cs (ArrayList szNetMsg)"
+    ],
+    "OnRevive": [
+      "GamePlayer.cs (ArrayList szNetMsg)",
+      "HeroPlayer.cs (ArrayList szNetMsg)",
+      "NetLiving.cs (ArrayList szNetMsg)"
+    ],
+    "CV": [
+      "GamePlayer.cs (ArrayList aryParam)"
+    ],
+    "CP": [
+      "GamePlayer.cs (ArrayList aryParam)"
+    ],
+    "CR": [
+      "GamePlayer.cs (ArrayList aryParam)"
+    ],
+    "CT": [
+      "GamePlayer.cs (ArrayList aryParam)"
+    ],
+    "AddBuff": [
+      "GamePlayer.cs (ArrayList arrPam)",
+      "HeroPlayer.cs (ArrayList arrPam)",
+      "NetLiving.cs (ArrayList arrPam)"
+    ],
+    "DeleteBuff": [
+      "GamePlayer.cs (ArrayList arrPam)",
+      "HeroPlayer.cs (ArrayList arrPam)",
+      "NetLiving.cs (ArrayList arrPam)"
+    ],
+    "LLS_FlyShieldData": [
+      "GamePlayer.cs (ArrayList arrPam)",
+      "HeroPlayer.cs (ArrayList arrPam)",
+      "NetLiving.cs (ArrayList arrPam)"
+    ],
+    "SkillParmsUpdate": [
+      "GamePlayer.cs (ArrayList list)"
+    ],
+    "SkillDo": [
+      "GamePlayer.cs (ArrayList parm, ArrayList parm2)",
+      "HeroPlayer.cs (ArrayList parm, ArrayList parm2)",
+      "NetLiving.cs (ArrayList parm, ArrayList parm2)"
+    ],
+    "HaveDamage": [
+      "GamePlayer.cs (ArrayList szDamage, ArrayList szHp)",
+      "HeroPlayer.cs (ArrayList szDamage, ArrayList szHp)",
+      "NetLiving.cs (ArrayList szDamage, ArrayList szHp)",
+      "Npc_Entity.cs (ArrayList szDamage, ArrayList szHp)"
+    ],
+    "XingTaiGroupUpdate": [
+      "GamePlayer.cs (ArrayList data)",
+      "HeroPlayer.cs (ArrayList data)",
+      "NetLiving.cs (ArrayList data)"
+    ],
+    "SuperSkillUpdate": [
+      "GamePlayer.cs (object parm)",
+      "HeroPlayer.cs (object parm)",
+      "NetLiving.cs (object parm)"
+    ],
+    "OnRoundEndClear": [
+      "GamePlayer.cs (ArrayList arrPam)",
+      "NetLiving.cs (ArrayList szNetMsg)"
+    ],
+    "BlackCC": [
+      "GamePlayer.cs (ArrayList szNetMsg)",
+      "NetLiving.cs (ArrayList szNetMsg)"
+    ],
+    "boradCastShawangSuper": [
+      "GamePlayer.cs (ArrayList szNetMsg)",
+      "NetLiving.cs (ArrayList szNetMsg)"
+    ],
+    "boradCastDaJiHunDun": [
+      "GamePlayer.cs (ArrayList szNetMsg)",
+      "NetLiving.cs (ArrayList szNetMsg)"
+    ],
+    "DAZHAOToClient": [
+      "GamePlayer.cs (ArrayList arrPam)",
+      "NetLiving.cs (ArrayList arrPam)"
+    ],
+    "NVM": [
+      "GamePlayer.cs (ArrayList _Parameters)",
+      "NetLiving.cs (ArrayList _Parameters)"
+    ],
+    "SuperSkillDo": [
+      "HeroBase.cs (object parm)",
+      "HeroBaseMe.cs (object parm)",
+      "HeroBastionMe.cs (object parm)",
+      "HeroDaJiIt.cs (object parm)",
+      "HeroDaJiMe.cs (object parm)",
+      "HeroDaWeiIt.cs (object parm)",
+      "HeroDaWeiMe.cs (object parm)",
+      "HeroGuanyinMe.cs (object parm)",
+      "HeroHeiguafuIt.cs (object parm)",
+      "HeroHeiguafuMe.cs (object parm)",
+      "HeroHouYiIt.cs (object parm)",
+      "HeroHouYiMe.cs (object parm)",
+      "HeroHuangZhongIt.cs (object parm)",
+      "HeroHuangZhongMe.cs (object parm)",
+      "HeroHunterIt.cs (object parm)",
+      "HeroHunterMe.cs (object parm)",
+      "HeroJingKeIt.cs (object parm)",
+      "HeroJingKeMe.cs (object parm)",
+      "HeroJipusaiIt.cs (object parm)",
+      "HeroJipusaiMe.cs (object parm)",
+      "HeroJvjishouIt.cs (object parm)",
+      "HeroJvjishouMe.cs (object parm)",
+      "HeroLeiZhenZiIt.cs (object parm)",
+      "HeroLeiZhenZiMe.cs (object parm)",
+      "HeroLilisiIt.cs (object parm)",
+      "HeroLilisiMe.cs (object parm)",
+      "HeroLuoJiMe.cs (object parm)",
+      "HeroLuoLiMe.cs (object parm)",
+      "HeroMedusaIt.cs (object parm)",
+      "HeroMedusaMe.cs (object parm)",
+      "HeroNeZhaIt.cs (object parm)",
+      "HeroNeZhaMe.cs (object parm)",
+      "HeroRoadhogMe.cs (object parm)",
+      "HeroShawangMe.cs (object parm)",
+      "HeroTerminatorIt.cs (object parm)",
+      "HeroTerminatorMe.cs (object parm)",
+      "HeroValkyriesIt.cs (object parm)",
+      "HeroValkyriesMe.cs (object parm)",
+      "HeroVampireMe.cs (object parm)",
+      "HeroXingJiLieRenIt.cs (object parm)",
+      "HeroXingJiLieRenMe.cs (object parm)",
+      "HeroXingTianIt.cs (object parm)",
+      "HeroXingTianMe.cs (object parm)",
+      "HeroYanluoIt.cs (object parm)",
+      "HeroYanluoMe.cs (object parm)",
+      "HeroYukiOnnaMe.cs (object parm)",
+      "HeroZhurongMe.cs (object parm)",
+      "Hero_Rambo_It.cs (object parm)",
+      "Hero_Rambo_Me.cs (object parm)"
+    ],
+    "beDamage": [
+      "HeroBase.cs (ArrayList szDamage, ArrayList szHp)",
+      "HeroBaseIt.cs (ArrayList szDamage, ArrayList szHp)",
+      "HeroBaseMe.cs (ArrayList szDamage, ArrayList szHp)",
+      "HeroHuangZhongIt.cs (ArrayList szDamage, ArrayList szHp)",
+      "HeroHuangZhongMe.cs (ArrayList szDamage, ArrayList szHp)"
+    ],
+    "GetHeroNpc": [
+      "HeroBase.cs (object obj)",
+      "HeroLuoJiMe.cs (object obj)",
+      "HeroShawangIt.cs (object obj)",
+      "HeroShawangMe.cs (object obj)"
+    ],
+    "InitUserData": [
+      "HeroCareerData.cs (ArrayList arr)"
+    ],
+    "OnHeroDataMsg": [
+      "HeroDataManager.cs (ArrayList szNetMsg)"
+    ],
+    "SetOpenHeroData": [
+      "HeroDataManager.cs (ArrayList szMsg)"
+    ],
+    "OnSelectHeroUILockEnd": [
+      "HeroDataManager.cs (ArrayList szMsg)"
+    ],
+    "InitOpenHeroData": [
+      "HeroDataManager.cs (ArrayList szData)"
+    ],
+    "UpdateOneHero": [
+      "HeroDataManager.cs (ArrayList szData)",
+      "PlayerCommon.cs (ArrayList szData)"
+    ],
+    "OnFcmDataMsg": [
+      "HeroDataManager.cs (ArrayList szNetMsg)"
+    ],
+    "GetPlayerOldRewardBack": [
+      "HeroDataManager.cs (ArrayList szMsg)"
+    ],
+    "OnChangeTab": [
+      "HeroInfoUICon.cs (object szParam)"
+    ],
+    "SetData": [
+      "HeroMatchData.cs (ArrayList szData)",
+      "HeroPartsData.cs (ArrayList szdata)",
+      "OpenHeroData.cs (ArrayList szInfo)",
+      "PlayerPaintData.cs (ArrayList szData)"
+    ],
+    "onUpdate": [
+      "HeroOneAttData.cs (ArrayList szData)"
+    ],
+    "SendSkillParms": [
+      "HeroPlayer.cs (ArrayList list)",
+      "NetLiving.cs (ArrayList list)"
+    ],
+    "MatchUserInfo": [
+      "HeroPlayer.cs (ArrayList aryNetInfo)"
+    ],
+    "PlayerCreate": [
+      "HeroPlayer.cs (ArrayList aryNetInfo)"
+    ],
+    "LuoJiHurtLeiJi": [
+      "HeroPlayer.cs (ArrayList list)"
+    ],
+    "DeadOrReviveChangeCameraState": [
+      "HeroPlayer.cs (object parm)"
+    ],
+    "CW": [
+      "HeroPlayer.cs (ArrayList data)",
+      "NetLiving.cs (ArrayList data)"
+    ],
+    "OnSetUI": [
+      "HeroRoundEndCon.cs (ArrayList szData)"
+    ],
+    "SetSkinData": [
+      "HeroUnlockData.cs (ArrayList szData)"
+    ],
+    "SetWeaponData": [
+      "HeroUnlockData.cs (ArrayList szData)"
+    ],
+    "SetEmotionData": [
+      "HeroUnlockData.cs (ArrayList szData)"
+    ],
+    "SetPoseData": [
+      "HeroUnlockData.cs (ArrayList szData)"
+    ],
+    "OnSuperData": [
+      "NetLiving.cs (ArrayList data)"
+    ],
+    "UpdateAnimatorParm": [
+      "NetLiving.cs (ArrayList aryParam)"
+    ],
+    "SetHp": [
+      "NetLiving.cs (ArrayList szHp)",
+      "Npc_Entity.cs (ArrayList szHp)"
+    ],
+    "ChangeWeaponGroupUpdate": [
+      "NetLiving.cs (ArrayList data)"
+    ],
+    "OnFillBullet": [
+      "NetLiving.cs (ArrayList data)"
+    ],
+    "NSS": [
+      "NetLiving.cs (ArrayList _Parameters)"
+    ],
+    "NSP": [
+      "Npc_Entity.cs (ArrayList _Parameters)"
+    ],
+    "NSR": [
+      "Npc_Entity.cs (ArrayList _Parameters)"
+    ],
+    "NST": [
+      "Npc_Entity.cs (ArrayList _Parameters)"
+    ],
+    "Chariot_Create_Scene_Effect": [
+      "Npc_Entity.cs (ArrayList _Parameters)"
+    ],
+    "initSuperData": [
+      "PlayerCommon.cs (ArrayList szBase)"
+    ],
+    "InitBase": [
+      "PlayerCommon.cs (ArrayList szBase)"
+    ],
+    "InitBattleAttr": [
+      "PlayerCommon.cs (ArrayList szAttr)"
+    ],
+    "InitScn": [
+      "PlayerCommon.cs (ArrayList szScn)"
+    ],
+    "InitBuffInfo": [
+      "PlayerCommon.cs (ArrayList szInfo)"
+    ],
+    "InItQQGiftData": [
+      "PlayerCommon.cs (ArrayList szGetData)"
+    ],
+    "SetMoneyData": [
+      "PlayerDetail.cs (ArrayList szMoney)"
+    ]
+  }
+}

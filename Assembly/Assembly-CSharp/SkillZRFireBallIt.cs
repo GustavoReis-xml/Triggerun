@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 
 // Token: 0x020003AB RID: 939
@@ -8,6 +8,8 @@ public class SkillZRFireBallIt : SkillBaseIt
 	public override void OneSkillAction(object __target, ArrayList parm2)
 	{
 		base.gameplayer.charMove.notMove = true;
+		base.hero.SetAnimator("SkillE", 0, true, 2);
+		base.hero.SetAnimator("SkillShift", 0, true, 2);
 		this.SyncAnimator(true);
 		base.OneSkillAction(__target, parm2);
 	}
@@ -26,6 +28,8 @@ public class SkillZRFireBallIt : SkillBaseIt
 	public override void OneSkillFinish()
 	{
 		base.gameplayer.charMove.notMove = false;
+		base.hero.SetAnimator("SkillE", 0, false, 2);
+		base.hero.SetAnimator("SkillShift", 0, false, 2);
 		this.SyncAnimator(false);
 		base.OneSkillFinish();
 	}

@@ -1,0 +1,13 @@
+# Passagem de trabalho — SKIN-025
+- Responsável: Codex; 12/10/2026~22:30BRT / 13/10 01:30UTC.
+- Objetivo: corrigir deformações relatadas em braços/ombros/pescoço da VenusGuardiãdeJade.
+- Evidência024: pesos por proximidade variavam nos braços e misturavam cabeça/clavículas no pescoço; mira simulada p99stretch2,30/max6,31.
+- Implementação: pesos regionais contínuos clavícula→braço→antebraço→mão; influência dedosnativa preservada no final; torso→pescoço→cabeça com transição abaixo do queixo. Sem alteração de ossos/animação/hitbox.
+- Comparação: geometry.npz024 vs025 idênticos em body/bodytri/bodyuv/bind/world. Mudança somente nos pesos da região superior; cauda/UVroot024 preservados.
+- Testes: objetos/bundle/pesos/índices/bones aprovados; seis poses sintéticas. Mira p99/max1,109/1,673; corrida1,280/3,875; giro1,195/2,478; pescoço1,064/2,184; ombros1,197/2,796; cauda1,026/1,216. Extremos locais ainda existem; simulação não garante animaçãoUnity.
+- Revisão visual: neck-pose-025.png último ajuste do queixo; upperbody-poses-025.png revisão anterior à transição final de cabeça, não usar como referência final do pescoço.
+- Oracle: recursoTPS+manifestoCRC26101205 instalados; zero conexões ao reiniciar; PM2onlinePID700428. Catálogo/ícone/FPS preservados.
+- Pós-instalação:4HTTP hashes (duas versões recurso/manifesto)/TCP7777 OK; arquivos locais sincronizados após hashesbase.
+- Backups: backups/venus025-before inclui script/verificação/geometry/validation/manifesto/TPS024; remoto /home/ubuntu/backups/venus-jade-skin025-20261013T013023Z/runtime.tar.gz.
+- Cliente real: pendente. Próximo passo reabrir/equipar Venus5, observar mira/tiro/corrida/giro de cabeça e ombros.
+- Sem DLL nova; reserva liberada; diagnóstico020 e VALK001 intactos.

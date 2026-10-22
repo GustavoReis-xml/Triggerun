@@ -1,0 +1,28 @@
+# Passagem de trabalho — FFA-001 / FFA-002
+
+- Responsável: Codex; 2026-10-04 23:06 UTC / 20:06 BRT.
+- Objetivo: individual funcional na primeira entrada, reentrada e matchmaking; todos adversários, até 20 eliminações/600 segundos.
+- Estado: implementado e instalado; teste real da versão final pendente.
+- Base: árvore local já modificada; hashes anteriores em scratch/ffa-deploy-20261004/base.sha256 e scratch/ffa-menu-deploy-20261004/base.sha256. Sem reset/reversão de outros trabalhos.
+- Arquivos: src/gameLogic.js, socketServer.js, lamster.js, combatRules.js, ffaMaps.json, database.js; public/baxi/MatchModel.xml; files_dir.xml; tests/match-lifecycle.test.js.
+- Assembly consultado: WarPersonManager (19701/19703), CCameraChange (19702), PersonListDataSort, GamePlayer.setHeroForce, PlayerCommon.InitBase, CCOpyNameManager, BaseSocket.CLoadScene e MatchManager.OnShowLoad.
+- Primeira causa: modo 11 seguia caminho genérico, sem controlador, pontuação/tempo/resultado; aryWarData vazia no spawn.
+- Implementação: controlador por sala, renascimento, pontos nativos do fbmodel, resultados/recompensas individuais, callbacks antigos invalidados e fila separada do TDM/PvE.
+- Relação de combate: identidade do dono no individual; equipes preservadas nos demais modos. Cura/buffs/dano e NPCs usam combatRules.
+- Cliente relatado após FFA-001: placar funciona; na primeira entrada parece haver equipes, após reentrar o individual funciona. Menu ausente.
+- Causa confirmada da primeira entrada: 90004 abre loading; CLoadScene troca assets, mas nenhum atualiza MatchManager.m_pFbData (ainda 5010/tipo 7). Reentrada usa 90001 com mapa correto.
+- FFA-002: 90009 (mapa/nome) antes do carregamento individual muda o tipo para 11, permitindo que o cliente escolha camadas inimigas já no primeiro spawn.
+- Outra distinção: nome, contorno e som comparam m_nShiliServer; spawn e roster agora usam equipe relativa ao destinatário (ele=1, demais=2).
+- Menu: MatchModel tipo11 isopen=1, texto português e cache key 100004 no manifesto baxi/zh. Reiniciar clientes para atualizar XMLs.
+- Mapas: todos os sete fbset tipo11 (5301–5307); dois últimos faltavam de MAP_CONFIG. Pontos de nascimento copiados do XML, testados em ordem x,z,altura,yaw.
+- Critério de ordenação: eliminações decrescentes, mortes crescentes, ID estável como terceiro campo. Sem eliminações ao fim do tempo resulta empate.
+- Testes: 70/70 locais e Oracle; sintaxe JS e XMLs conferidos. Incluem morte via collider pré-marcada, salas independentes, entrada tardia, 90009 inicial, equipes por destinatário e menu/mapas.
+- Cliente real: retorno do usuário acima refere-se à FFA-001; FFA-002 ainda não validada no Unity. Nenhum DLL foi alterado nesta tarefa.
+- Oracle: FFA-001 às 22:57 UTC, FFA-002 às 23:06 UTC; reinícios explicitamente autorizados com jogadores conectados. PM2 PID final 530539, restart178.
+- Backup remoto inicial: /home/ubuntu/backups/ffa-20261004T225725Z/{runtime,logs}.tar.gz.
+- Backup remoto complementar: /home/ubuntu/backups/ffa-menu-20261004T230635Z/{runtime,logs}.tar.gz; tar avisou que log ativo mudou durante leitura, runtime preservado.
+- Backups locais: backups/ffa-20261004-before e backups/ffa-menu-20261004-before.
+- Hashes/testes implantados: scratch/ffa-menu-deploy-20261004/new.sha256 e oracle-tests.tap; Lamster permanece no hash da FFA-001.
+- Próximo passo: reiniciar os dois clientes, criar sala individual nova, testar identificação/dano antes de qualquer saída, placar, 20 kills, respawn e modo visível no matchmaking.
+- Limites: habilidades de todos os heróis e sete mapas ainda precisam de cobertura real; testes simulados não equivalem ao cliente.
+- Verificação externa pós-instalação: HTTP /api/maps=200, XML MatchModel servido com individual habilitado e TCP7777 acessível.

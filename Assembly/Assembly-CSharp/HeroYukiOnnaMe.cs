@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -106,42 +106,36 @@ public class HeroYukiOnnaMe : HeroBaseMe
 	public override void SuperSkillFinish()
 	{
 		base.SuperSkillFinish();
-		base.StartCoroutine(this.Wait_SuperSkillFinish());
-	}
-
-	// Token: 0x0600154E RID: 5454 RVA: 0x000C87AB File Offset: 0x000C69AB
-	public IEnumerator Wait_SuperSkillFinish()
-	{
-		yield return new WaitForSeconds(1f);
 		this.Release_Musth_State = false;
-		base.StartCoroutine(this.Wait_Handle());
-		bool isDead = base.hero.isDead;
-		if (isDead)
+		if (gameuiCon.inst != null)
 		{
-			base.hero.DelayDeath(base.hero.playerCommon.m_nDeathAttackId);
-			yield break;
+			gameuiCon.inst.mYukiOnna = false;
 		}
-		CameraControl.Instance.InitCameraHero(base.hero);
-		base.hero.changeCameraState(CameraState.FirstState, null, "playeraction");
-		yield break;
-	}
-
-	// Token: 0x0600154F RID: 5455 RVA: 0x000C87BA File Offset: 0x000C69BA
-	private IEnumerator Wait_Handle()
-	{
-		yield return new WaitForSeconds(0.5f);
-		base.hero.SetAnimator("Skill_Musth", 0, false, 2);
-		base.hero.wInput.notInput = false;
-		base.hero.charMove.notMove = false;
-		base.hero.bePlayActive = true;
-		yield break;
+		if (base.hero != null)
+		{
+			base.hero.SetAnimator("Skill_Musth", 0, false, 2);
+			base.hero.wInput.notInput = false;
+			base.hero.charMove.notMove = false;
+			base.hero.bePlayActive = true;
+			CameraControl.Instance.InitCameraHero(base.hero);
+			base.hero.changeCameraState(CameraState.FirstState, null, "playeraction");
+		}
 	}
 
 	// Token: 0x06001550 RID: 5456 RVA: 0x000C87C9 File Offset: 0x000C69C9
 	public override void OnDeath()
 	{
 		base.OnDeath();
-		base.hero.SetAnimator("Skill_Musth", 0, false, 2);
+		this.Release_Musth_State = false;
+		if (gameuiCon.inst != null)
+		{
+			gameuiCon.inst.mYukiOnna = false;
+		}
+		if (base.hero != null)
+		{
+			base.hero.SetAnimator("Skill_Musth", 0, false, 2);
+			CameraControl.Instance.InitCameraHero(base.hero);
+		}
 	}
 
 	// Token: 0x06001551 RID: 5457 RVA: 0x000C87EC File Offset: 0x000C69EC

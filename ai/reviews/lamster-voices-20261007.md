@@ -1,0 +1,23 @@
+# Passagem — VOICE-002 / LAMSTER-002
+
+- Responsável: Codex; 2026-10-07, instalação 22:24 UTC.
+- Objetivo: falas de acerto/kill nativas; Lamster selecionável, esquerdo híbrido, direito cura e HUD clara.
+- Estado: implementação/testes/instalação concluídos; cliente real pendente.
+- Base/backups locais: backups/lamster-voices-20261007-before/ (runtime, XMLs, testes e DLLs); hashes em scratch/lamster-voices/deploy/{base,new}.sha256.
+- VOICE-001: usuário confirmou fala de renascimento funcionando; preservar respawn sem PlayerCreate/PlayerSelect.
+- Causa confirmada de VOICE-002: CWeaponControl.DeadSound/damageHitTalk consultam weapons[shootname], mas servidor enviava ID do herói em HaveDamage[13] e OnDeath[4]. HUD-001 preservava o ID errado; testes anteriores também reproduziam esse erro.
+- Correção: sendEntityDamageUpdate recebe attackName separado do weaponId; SDG passa loopShootname; HaveDamage13 e OnDeath4 usam ataque, launcher mantido. Campo8 mantém ID do herói. Chamadas sem ataque conhecido enviam0, sem inventar fala de arma.
+- Limite: nem todo disparo tem fala configurada; XMLs de várias armas têm talksound=0. Não aumentamos probabilidades nem inventamos falas periódicas. Falas de habilidades têm gatilhos próprios.
+- Causa Lamster: roleuiManager.GetHeroList exige AllHeroUnlock; faltava cadastro2000. Cura usava layer1 (só inimigos), impossibilitando os acertos aliados.
+- Dados: herounlock2000 default1/isshow1, skin male_tps/fps com animadores nativos, arma sem materiais externos e emote neutro. Cadastro necessário à seleção e ao acesso seguro a cosméticos.
+- Combate autorizado pelo usuário: esquerdo120 dano inimigo/180 cura aliado, raio2,2m/1s; direito360 cura aliados raio8m/5s; corpo a corpo120/0,8s. HP1400 e retorno de cura até45/aliado mantidos. FFA trata outros humanos como inimigos.
+- Filtros: esquerdo layer0 inclui ambos lados; direito layer4 aliados; bloqueio por obstáculos mantido. Servidor limita socos por alvo/cena/alcance, evita duplicação de colisores e não cura inimigos.
+- HUD: TriggerunLamsterHud anexada à instância existente de configurações; mostra botões, valores, alcance, intervalos e passiva só durante controle do Lamster vivo. Sem contadores simulando confirmação do servidor.
+- Arquivos: src/{gameLogic,socketServer,lamster}.js; public/baxi e zh/{herounlock,weapon,heroskill,heroskillinfo}.xml; files_dir.xml; client-patches/CombatHud.cs; testes pertinentes. Helpers HIT/MODEL e Assembly preservados.
+- Cache XML:26100702 nos4 arquivos/2 idiomas; requer reabrir cliente.
+- Testes: sintaxe,8 XMLs parseados;99/99 testes locais e Oracle; helper compilado contra bibliotecas reais;7 verificações simuladas de feedback com shootname correto. Não equivale a teste Unity.
+- Cliente local: TriggerunCombatHud.dll instalado com jogo fechado; SHA256 0F290730B67F70D960CF98A1514848735102BD57055618E4F0FB6029FCF2C161. Assembly permanece FB3E8178790E30DE4E7CCAED0F29CCCA4286DD719B7288E30D152789EF5B24A7.
+- Oracle: instalado07/10 22:24UTC, zero conexões antes do restart; PM2 PID593461/restart186; XML/admin HTTP200 e porta7777 escutando.
+- Backup remoto: /home/ubuntu/backups/lamster-voices-20261007T222457Z/{runtime,logs}.tar.gz.
+- Próximo teste real: reabrir cliente, escolher Lamster na categoria suporte, esquerdo em aliado ferido/inimigo, direito em múltiplos aliados, F, intervalo/alcance/obstáculo; conferir HUD, respawn, eliminação por ataque1/4 e falas de kill/acerto com outros heróis.
+- Distribuição: demais computadores precisam do novo TriggerunCombatHud.dll para HUD; regras e seleção vêm da Oracle. Não substituir Assembly ou remover outros helpers.

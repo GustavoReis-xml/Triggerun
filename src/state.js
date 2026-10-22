@@ -2,6 +2,7 @@
 
 const activeSockets = [];
 const spawnedNpcs = {};
+const activeBots = {};
 const ipNames = {};
 const ipIndexes = {};
 const playerSessions = {};
@@ -13,6 +14,7 @@ const playerEquipment = {};
 module.exports = {
     activeSockets,
     spawnedNpcs,
+    activeBots,
     ipNames,
     ipIndexes,
     playerSessions,

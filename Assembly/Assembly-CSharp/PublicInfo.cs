@@ -177,14 +177,31 @@ public class PublicInfo : MonoBehaviour
 			{
 				or.OnDeathCloseTrans(false);
 			}
-			Rigidbody[] rigBodys = this.NetObject.userModelTps.GetComponentsInChildren<Rigidbody>();
-			foreach (Rigidbody rigidbody in rigBodys)
+			if (this.NetObject.userModelTps != null)
 			{
-				rigidbody.isKinematic = false;
-				rigidbody.velocity = Vector3.zero;
-				rigidbody.AddForce(v3Random, ForceMode.Impulse);
+				Collider[] allColls = this.NetObject.userModelTps.GetComponentsInChildren<Collider>();
+				foreach (Collider col in allColls)
+				{
+					if (col != null)
+					{
+						col.enabled = true;
+						col.isTrigger = false;
+						col.gameObject.layer = 0;
+					}
+				}
+				Rigidbody[] rigBodys = this.NetObject.userModelTps.GetComponentsInChildren<Rigidbody>();
+				foreach (Rigidbody rigidbody in rigBodys)
+				{
+					if (rigidbody != null)
+					{
+						rigidbody.isKinematic = false;
+						rigidbody.useGravity = true;
+						rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+						rigidbody.velocity = Vector3.zero;
+						rigidbody.AddForce(v3Random, ForceMode.Impulse);
+					}
+				}
 			}
-			Rigidbody[] array = null;
 			this.NetObject.tChar.DeadInit();
 			bool flag4 = this.NetObject.tpsRender != null;
 			if (flag4)
@@ -193,7 +210,6 @@ public class PublicInfo : MonoBehaviour
 			}
 			v3Random = default(Vector3);
 			or = null;
-			rigBodys = null;
 		}
 		yield break;
 	}

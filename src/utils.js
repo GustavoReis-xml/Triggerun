@@ -138,13 +138,18 @@ function logPacket(type, direction, data) {
     console.log(`[${type}] ${direction === 'IN' ? '⬅️' : '➡️'} ID: ${idLabel} | DATA: ${data.trim().substring(0, 150)}...`);
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function sendPacket(socket, data, delay = 0) {
+    const isCurrent = socket ? require('./sceneScope').capture(socket) : () => false;
     if (delay > 0) await new Promise(r => setTimeout(r, delay));
-    if (socket && !socket.destroyed) {
+    if (socket && isCurrent()) {
         let finalData = data;
-        if (socket.socketType === "SCENE" && (data.includes('SendMsgToHallClient') || data.includes('SendMsgToClient'))) {
-            const idxPrefix = `e${socket.playerIndex || 1}:`;
-            finalData = data.replace(/^e\d+:/, idxPrefix);
+        if (socket.socketType === "SCENE" && !socket.bypassInterceptor && (data.includes('SendMsgToHallClient') || data.includes('SendMsgToClient'))) {
+            const idxPrefix = `e${encodeInt(socket.playerIndex || 1)}:`;
+            finalData = data.replace(/^e[0-9A-Z_`a-z]+:(?=SendMsgTo(?:Hall)?Client,)/gm, idxPrefix);
         }
         socket.write(finalData);
         logPacket(socket.socketType || 'HALL', 'OUT', finalData);
@@ -208,7 +213,46 @@ class PacketBuilder {
     }
 }
 
+function fixSbToCbArgs(str, fallbackLoadId) {
+    if (!str) return str;
+    let result = [];
+    let current = '';
+    let depth = 0;
+    let inQuotes = false;
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (char === "'" && (i === 0 || str[i - 1] !== '\\')) inQuotes = !inQuotes;
+        if (!inQuotes) {
+            if (char === '(') depth++;
+            if (char === ')') depth--;
+            if (char === ',' && depth === 0) {
+                result.push(current.trim());
+                current = '';
+                continue;
+            }
+        }
+        current += char;
+    }
+    if (current.trim() !== '') result.push(current.trim());
+    
+    // NetLiving.CB(int weaponName, int launcherNo, string muzzleName, int bullId, int bullettype, ArrayList born, ArrayList target, ArrayList parm, int numberBullet, int _cartridge, int _loadid)
+    // Expects EXACTLY 11 arguments!
+    if (result.length >= 11) {
+        const cartridge = result[10] !== undefined ? result[10] : '0';
+        const realLoadId = (result.length > 11 && result[result.length - 1] !== undefined)
+            ? result[result.length - 1]
+            : (fallbackLoadId !== undefined ? encodeInt(fallbackLoadId) : '1');
+        
+        const cbParams = result.slice(0, 9);
+        cbParams.push(cartridge);
+        cbParams.push(realLoadId);
+        return cbParams.join(',');
+    }
+    return result.join(',');
+}
+
 module.exports = {
+    fixSbToCbArgs,
     ALPHABET,
     encodeInt,
     decodeInt,
@@ -220,6 +264,7 @@ module.exports = {
     encodingUTF8,
     logPacket,
     sendPacket,
+    sleep,
     Fun,
     RawString,
     raw,

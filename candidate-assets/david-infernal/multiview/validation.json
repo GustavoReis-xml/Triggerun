@@ -1,0 +1,50 @@
+{
+  "engine": "built-in image_gen",
+  "canonicalView": "01-frente.png",
+  "nativeReference": "David1037 dawei_tps",
+  "pose": "T-pose front/rear, arms foreshortened in profiles",
+  "source": "AI references derived from a canonical front, not calibrated projections of one shared 3D mesh",
+  "rearLowerBodyRepaired": true,
+  "files": {
+    "01-frente.png": {
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1181232,
+      "bytes": 977241,
+      "sha256": "a53f34f2d792bf7d0be985c4e2bf294007f512c208f9bbdf43a6f0414376fe89"
+    },
+    "02-esquerda.png": {
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1374036,
+      "bytes": 548171,
+      "sha256": "48ed8875e974f0c0ace15fa70d608f19422661429c2a8494f5c958f72d45c571"
+    },
+    "03-direita.png": {
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1376597,
+      "bytes": 529103,
+      "sha256": "36e636631ef893662c2c7fc02658cb5e9c949b204e7851e4664c710bc285475a"
+    },
+    "04-costas.png": {
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "transparentPixels": 1150856,
+      "bytes": 1025357,
+      "sha256": "9120e284b1cac575bac7fdf7ba72357be0edf3c6bd57637204c2ca86da699102"
+    }
+  }
+}

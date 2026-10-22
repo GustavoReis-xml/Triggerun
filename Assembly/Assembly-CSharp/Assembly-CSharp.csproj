@@ -34,31 +34,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Debuger">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\Debuger.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\Debuger.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\DOTween.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\DOTween46.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\System.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\System.Core.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\System.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\System.Xml.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="TriggerunHitCollision">
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\TriggerunHitCollision.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:\CSJJ\GAME\CSJJ_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\trig2\GAME\TRIG_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +201,7 @@
     <Compile Include="ChatLink.cs" />
     <Compile Include="ChatManager.cs" />
     <Compile Include="ChatUICon.cs" />
+    <Compile Include="EmotePoseHUD.cs" />
     <Compile Include="ChatUser.cs" />
     <Compile Include="CheckAutoAirUI.cs" />
     <Compile Include="CheckCreateItemCon.cs" />

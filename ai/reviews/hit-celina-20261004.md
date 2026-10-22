@@ -1,0 +1,25 @@
+# Passagem de trabalho — HIT-001
+
+- Responsável: Codex; 2026-10-04. Estado: implementação/instalação concluídas; validação com cliente pendente.
+- Objetivo: investigar tiro lateral/curta distância da Celina contra inimigos; Lamster não é referência de dano.
+- Base: cópia de trabalho já alterada; não revertida. Backups em `backups/hit-protocol-20261003/` e `backups/hit-client-20261004/`.
+- Modificados: `src/socketServer.js`, novo `src/sdgProtocol.js`, `tests/match-lifecycle.test.js`, Assembly `CameraControl.cs`/`CBulletNormalMe.cs`, novo `tools/patch-hit-client.ps1`.
+- Protocolo confirmado: `HeroPlayer.DamageMsgToServer` envolve o envelope de 15 campos de `CBulletMe.sendDamageToServer`; somente campo 0 contém acertos. Antes somente Lamster era desembrulhado; outros heróis perdiam shootname/launcher/carga e caíam na arma primária.
+- Correção servidor: desembrulhar envelope para todos; remover extração recursiva que confundia vetores/metadados com acertos. Sem rebalancear armas.
+- Dados Celina 1017/Ft (`public/baxi/weapon.xml`): primária dano 375/HS permitido; secundária 300/HS desabilitado. Testes usam os atributos do XML real.
+- Log anterior preservado em `scratch/hit-audit-20261004/output_log.capture.txt`, SHA256 `474bf0576e19b460a9f5faad5c7cb0554abaabedfd2fa8c2fcbc97d8c66a5aec`.
+- Evidência: 340 SDGs interpretados, zero envelopes rejeitados/acertos descartados. Celina primária: 51 pacotes, 33 vazios, 18 acertos, 8 HS; secundária: 72 pacotes, 61 vazios, 11 acertos, zero HS. Vazio NÃO prova tiro que deveria acertar; log não contém mira/normal da superfície nem intenção do jogador.
+- DLL original real inspecionado por IL: `C:/trig2/GAME/TRIG_Data/Managed/Assembly-CSharp.dll`, SHA256 `084c0454fa4541142bb037bd6fb833c0000a94d75f7a553429ccdbb7e439c25d`.
+- Defeito cliente 1: `CameraControl.setPlayerTarget` reutilizava menor distância entre 3 máscaras. Um acerto aliado próximo podia impedir escolha do inimigo mais distante na máscara seguinte e devolver alvo padrão. Correção: reiniciar distância em cada iteração; preserva filtro de escudos.
+- Defeito cliente 2: `CBulletNormalMe.FixedUpdate` avançava origem temporária ao pular `_IgnoreDamge`, mas somava o restante a transform.position antigo no ramo sem colisão. Correção: continuar a partir da origem temporária; não altera tamanho de hitbox nem inventa HS.
+- DLL foi gerado com Mono.Cecil local (illink 8.0.10), sem reconstruir todo o projeto decompilado; ferramenta exige SHA original e saída separada. Comparação dos corpos IL de 14.780 métodos: somente os 2 previstos mudaram; saltos curtos válidos. Não equivale a teste Unity.
+- Alteração preexistente de HS em `CBulletMe.damageGetData` foi preservada e também existe no DLL original; normal pula `_IgnoreDamge` antes dela.
+- Candidato instalado no cliente fechado, hash final `a45b19aa1d03f8c45e057c6884683a93f19dfd06f0a22644a36284c0b3f620f5`. Cópia em `scratch/hit-audit-20261004/candidate/Assembly-CSharp.dll`; IL antes/depois e relatório na mesma pasta de auditoria.
+- Testes servidor: `node --check` nos módulos e teste; `node --test tests/logging.test.js tests/lamster.test.js tests/match-lifecycle.test.js`: 53/53 local e Oracle.
+- Oracle: instalada em 2026-10-04 08:54 UTC (05:54 BRT), após hashes e zero conexões estabelecidas em 7777. Backup remoto `/home/ubuntu/backups/hit-protocol-20261004T085449Z/{runtime,logs}.tar.gz`; stage `/home/ubuntu/hit-stage-20261004`; PM2 PID 519682, reinício 176. HTTP /api/maps 200; TCP7777 respondeu.
+- Cliente real: NÃO executado após instalação; não declarar o HS lateral/reflexo resolvido. DLL alterado só nesta instalação Windows, não distribuído aos demais jogadores.
+- Hipóteses restantes: mira tem buffer de apenas 5 colisores; origem do tiro é reposicionada quando alvo fica atrás da boca da arma; sobreposição/animação pode eleger corpo antes da cabeça. Não mudar sem reprodução.
+- Limitação adicional observada: contador nowFlyDistance ainda usa distância restante após ignorar colisor. Não alterado nesta correção pontual; investigar se afetar alcance, sem confundir com deslocamento visual já corrigido.
+- Próximo teste: 2 contas inimigas, primária Celina, alvo parado de frente/lado/costas a curta e média distância; comparar HS, HP e aparência do tiro. Depois repetir secundária, que não tem HS pelo XML. Registrar horário e preservar novo output_log para correlação com Oracle.
+- Reversão cliente: fechar jogo, conferir hash atual e restaurar `backups/hit-client-20261004/Assembly-CSharp.dll` para Managed. Reversão servidor: restaurar runtime.tar.gz remoto, conferir sintaxe e reiniciar PM2; módulo novo pode permanecer sem importação.
+- Arquivos liberados para outras IAs; consultar esta passagem antes de nova tentativa. Não ampliar hitbox por hipótese.

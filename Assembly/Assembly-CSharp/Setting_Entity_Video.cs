@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -543,7 +543,7 @@ public class Setting_Entity_Video
 	public void Use_Data()
 	{
 		int vsync = this.VSync;
-		bool flag = this.Effect_Level < 3;
+		bool flag = this.Effect_Level < 2;
 		if (flag)
 		{
 			QualitySettings.SetQualityLevel(this.Effect_Level);
@@ -551,7 +551,7 @@ public class Setting_Entity_Video
 		}
 		else
 		{
-			QualitySettings.SetQualityLevel(3);
+			QualitySettings.SetQualityLevel(Math.Min(this.Effect_Level, 3));
 			this.Set_Data();
 		}
 		this.Change_Effect_Level_State = false;
@@ -561,26 +561,18 @@ public class Setting_Entity_Video
 	public void Use_Auto_Data()
 	{
 		string text = this.Graphics_Equipment_Describe.TrimEnd(new char[0]);
-		Debug.Log("查看显卡型号1:" + this.Graphics_Equipment_Describe.TrimStart(new char[0]));
-		Debug.Log("查看显卡型号2:" + this.Graphics_Equipment_Describe.Trim());
-		Debug.Log("查看显卡型号3:" + this.Graphics_Equipment_Describe.TrimEnd(new char[0]));
+		Debug.Log("[⚡ Ultra Graphics Mod] GPU Identificada: " + text);
 		bool flag = fGameManager.GetInstance() == null;
 		if (!flag)
 		{
 			bool flag2 = !fGameManager.mloadConfig._Graphic_Card_Ladder_Xml_Data.ContainsKey(text);
 			if (flag2)
 			{
-				this.Effect_Level = 0;
-				ArrayList value = new ArrayList
-				{
-					text,
-					0
-				};
-				fGameManager.SendMsgToHallServer(3010000, new ArrayList
-				{
-					3010017,
-					value
-				});
+				// GPU moderna no presente no XML antigo -> Fora Modo Ultra nativo com resoluo mxima
+				this.Effect_Level = 3;
+				this.Resolution_Ratio = -1;
+				this.Set_Data();
+				Debug.Log("[⚡ Ultra Graphics Mod] GPU moderna detectada! Modo Ultra (Effect_Level = 3) ativado com sucesso.");
 			}
 			else
 			{
@@ -601,12 +593,9 @@ public class Setting_Entity_Video
 					}
 					else
 					{
-						bool flag5 = graphic_Card_Ladder_Entity.Score >= 3266f;
-						if (flag5)
-						{
-							this.Effect_Level = 2;
-							this.Resolution_Ratio = -1;
-						}
+						this.Effect_Level = 3;
+						this.Resolution_Ratio = -1;
+						this.Set_Data();
 					}
 				}
 			}
@@ -637,21 +626,24 @@ public class Setting_Entity_Video
 	// Token: 0x0600242A RID: 9258 RVA: 0x0014857C File Offset: 0x0014677C
 	public void Set_Data()
 	{
-		QualitySettings.pixelLightCount = this.Pixel_Light_Count;
-		QualitySettings.anisotropicFiltering = (AnisotropicFiltering)this.Anisotropic_Textures;
-		QualitySettings.antiAliasing = this.Anti_Aliasing;
-		QualitySettings.realtimeReflectionProbes = (this.Realtime_Reflection_Probes == 1);
-		QualitySettings.shadowResolution = (ShadowResolution)this.Shadow_Resolution;
-		QualitySettings.shadowProjection = (ShadowProjection)this.Shadow_Projection;
-		QualitySettings.shadowDistance = this.Shadow_Distance;
-		QualitySettings.shadowNearPlaneOffset = this.Shadow_Near_Plane_Offset;
-		QualitySettings.shadowCascades = this.Shadow_Cascades;
-		QualitySettings.blendWeights = (BlendWeights)this.Blend_Weights;
-		QualitySettings.lodBias = this.Lod_Bias;
-		QualitySettings.maximumLODLevel = this.Maximum_LOD_Level;
-		QualitySettings.particleRaycastBudget = this.Particle_Raycast_Budget;
-		QualitySettings.asyncUploadTimeSlice = this.Async_Upload_Time_Slice;
-		QualitySettings.asyncUploadBufferSize = this.Async_Upload_Buffer_Size;
+		// [⚡ Ultra Graphics Mod] - Injeo de Fidelidade Mxima da Unity Engine
+		QualitySettings.pixelLightCount = Math.Max(16, this.Pixel_Light_Count);
+		QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
+		QualitySettings.antiAliasing = Math.Max(8, this.Anti_Aliasing);
+		QualitySettings.realtimeReflectionProbes = true;
+		QualitySettings.shadowResolution = ShadowResolution.VeryHigh;
+		QualitySettings.shadowProjection = ShadowProjection.CloseFit;
+		QualitySettings.shadowDistance = Math.Max(250f, this.Shadow_Distance);
+		QualitySettings.shadowNearPlaneOffset = 0.1f;
+		QualitySettings.shadowCascades = 4;
+		QualitySettings.blendWeights = BlendWeights.FourBones;
+		QualitySettings.lodBias = Math.Max(4.0f, this.Lod_Bias);
+		QualitySettings.maximumLODLevel = 0;
+		QualitySettings.particleRaycastBudget = Math.Max(2048, this.Particle_Raycast_Budget);
+		QualitySettings.softParticles = true;
+		QualitySettings.softVegetation = true;
+		QualitySettings.vSyncCount = this.VSync;
+		Shader.globalMaximumLOD = 1000;
 	}
 
 	// Token: 0x0600242B RID: 9259 RVA: 0x00148644 File Offset: 0x00146844

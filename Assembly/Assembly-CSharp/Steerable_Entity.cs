@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -134,14 +134,59 @@ public class Steerable_Entity : Npc_Entity
 		bool main = base.Main;
 		if (main)
 		{
-			bool flag = gameuiCon.inst != null;
-			if (flag)
+			if (!base.Death_State && this.wc != null)
+			{
+				((CWeaponControlMe)this.wc).WeaponFire(1, "0", this.UserControl.transform.position, this.UserControl);
+			}
+			if (gameuiCon.inst != null)
 			{
 				gameuiCon.inst.OnCheckHeadHpData(base.Synchronization_Object, null);
+				gameuiCon.inst.mYukiOnna = false;
 			}
-			base.Synchronization_Object.heroBase.SuperSkillFinish();
+			if (fGameManager.Heroplayer != null)
+			{
+				CameraControl.Instance.InitCameraHero(fGameManager.Heroplayer);
+				fGameManager.Heroplayer.changeCameraState(CameraState.FirstState, null, "playeraction");
+				fGameManager.Heroplayer.wInput.notInput = false;
+				fGameManager.Heroplayer.charMove.notMove = false;
+				fGameManager.Heroplayer.bePlayActive = true;
+			}
+			if (base.Synchronization_Object != null && base.Synchronization_Object.heroBase != null)
+			{
+				base.Synchronization_Object.heroBase.SuperSkillFinish();
+			}
 		}
 		base.OnDeathNpc(_attackId, 0, new ArrayList(), 0, _State, m_szCanYuXiaoMie, nDeadType);
+	}
+
+	public override void OnNetDestroy()
+	{
+		bool main = base.Main;
+		if (main)
+		{
+			if (!base.Death_State && this.wc != null)
+			{
+				((CWeaponControlMe)this.wc).WeaponFire(1, "0", this.UserControl.transform.position, this.UserControl);
+			}
+			if (gameuiCon.inst != null)
+			{
+				gameuiCon.inst.OnCheckHeadHpData(base.Synchronization_Object, null);
+				gameuiCon.inst.mYukiOnna = false;
+			}
+			if (fGameManager.Heroplayer != null)
+			{
+				CameraControl.Instance.InitCameraHero(fGameManager.Heroplayer);
+				fGameManager.Heroplayer.changeCameraState(CameraState.FirstState, null, "playeraction");
+				fGameManager.Heroplayer.wInput.notInput = false;
+				fGameManager.Heroplayer.charMove.notMove = false;
+				fGameManager.Heroplayer.bePlayActive = true;
+			}
+			if (base.Synchronization_Object != null && base.Synchronization_Object.heroBase != null)
+			{
+				base.Synchronization_Object.heroBase.SuperSkillFinish();
+			}
+		}
+		base.OnNetDestroy();
 	}
 
 	// Token: 0x04002416 RID: 9238

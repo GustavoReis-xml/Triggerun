@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "objectsCompared": 1211,
+  "objectsChanged": 2,
+  "geometryAndWeightsExactlyPreserved": true,
+  "dedicatedUvTiles": 16,
+  "textureSize": [
+    2048,
+    2048
+  ],
+  "skin": 6,
+  "installed": false,
+  "sha256": "8cea72555f3b798605767d97261fb3102290c52976fa5b74783404abc2b6a043",
+  "onlyMeshChangedVersusSkin008": true,
+  "poseValidation": "base/validation.json"
+}

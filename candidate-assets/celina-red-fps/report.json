@@ -1,0 +1,228 @@
+{
+  "bones": [
+    "Bip001 R Forearm",
+    "Bip001 R ForeTwist",
+    "Bip001 R Hand",
+    "Bip001 R Finger0",
+    "Bip001 R UpperArm",
+    "Bip001 R Finger42",
+    "Bip001 R Finger41",
+    "Bip001 R Finger4",
+    "Bip001 R Finger3",
+    "Bip001 R Finger32",
+    "Bip001 R Finger31",
+    "Bip001 R Finger21",
+    "Bip001 R Finger2",
+    "Bip001 R Finger22",
+    "Bip001 R Finger02",
+    "Bip001 R Finger01",
+    "Bip001 R Finger1",
+    "Bip001 R Finger11",
+    "Bip001 R Finger12",
+    "Bip001 R Clavicle",
+    "Bip001 L Forearm",
+    "Bip001 L ForeTwist",
+    "Bip001 L Hand",
+    "Bip001 L Finger0",
+    "Bip001 L UpperArm",
+    "Bip001 L Finger42",
+    "Bip001 L Finger41",
+    "Bip001 L Finger4",
+    "Bip001 L Finger3",
+    "Bip001 L Finger32",
+    "Bip001 L Finger31",
+    "Bip001 L Finger21",
+    "Bip001 L Finger2",
+    "Bip001 L Finger22",
+    "Bip001 L Finger02",
+    "Bip001 L Finger01",
+    "Bip001 L Finger1",
+    "Bip001 L Finger11",
+    "Bip001 L Finger12",
+    "Bip001 L Clavicle"
+  ],
+  "boneRefs": [
+    {
+      "m_FileID": 0,
+      "m_PathID": 8353615160442341932
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -67348480262421737
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1321504832638152630
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6919882682624245142
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7725380786668811794
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2420777374564901687
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -658554269548591709
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -961695299733653005
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8603541127312813650
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2800489747387204238
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -9203095924563389269
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2339822353513665283
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1213580757795129369
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -910837255723786174
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6347182159145657056
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7769543928561237141
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4602844111358200519
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 685874349159264891
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1174810803569338059
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1706341730089554303
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8644482360218546872
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4446103433946666598
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2821470507949050934
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8298330865090435029
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6802545818335492727
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7203595987484340816
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2105504866028918247
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3298005189673043067
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1104841827055773887
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3889836404328124867
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8447263340236714301
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8983024527084130390
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -9191615661547540985
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7032185341367867353
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 246018771354341385
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8740630004493805093
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4480359356295632530
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6854511042122336193
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3270312252402984292
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5627303428835573730
+    }
+  ],
+  "objectsCompared": 203,
+  "modified": [
+    1,
+    7652950675385080048,
+    6895895999165897010,
+    -2327151893227692930
+  ],
+  "added": [
+    900000000000002201,
+    900000000000002202,
+    900000000000002203
+  ],
+  "vertices": 1835,
+  "triangles": 2756,
+  "originalBraceletComponentsRemoved": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "UnityTested": false,
+  "installed": false
+}

@@ -1,5 +1,5 @@
 <root>
-	<i id="1001" minlvl="30" minnum="5" tipday="7" lvldesc="&lt;size=26&gt;* 5 Partidas de Ranking&lt;/size&gt;" matchdesc="&lt;size=26&gt;* Control e Escort Mode&lt;/size&gt;" seasondesc="&lt;size=26&gt;* Por tempo determinado&lt;/size&gt;" btndesc="Pr¨®xima season {0}/{1}" pretime="2018-2-10" nexttime="2018-3-26" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
+	<i id="1001" minlvl="30" minnum="5" tipday="7" lvldesc="&lt;size=26&gt;* 5 Partidas de Ranking&lt;/size&gt;" matchdesc="&lt;size=26&gt;* Control e Escort Mode&lt;/size&gt;" seasondesc="&lt;size=26&gt;* Por tempo determinado&lt;/size&gt;" btndesc="Prï¿½ï¿½xima season {0}/{1}" pretime="2018-2-10" nexttime="2018-3-26" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
 	<lvl id="1" name="Bronze" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,200"/>
 	<lvl id="2" name="Prata" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,400"/>
 	<lvl id="3" name="Ouro" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,600"/>

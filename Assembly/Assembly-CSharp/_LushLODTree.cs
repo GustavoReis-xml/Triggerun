@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,23 +14,7 @@ public class _LushLODTree : MonoBehaviour
 		{
 			_LushLODTree.ShaderReferences = new _LushLODTree.Shader_References();
 		}
-		Shader result = _LushLODTree.ShaderReferences.Tree_Leaves_Ultra;
-		switch (billboard_quality)
-		{
-		case _LushLODTreesManager.BillboardQualitySettings.Low:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves4;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Medium:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves3;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Great:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves2;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Ultra:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves_Ultra;
-			break;
-		}
-		return result;
+		return _LushLODTree.ShaderReferences.Tree_Leaves_Ultra;
 	}
 
 	// Token: 0x06002F68 RID: 12136 RVA: 0x001A6C28 File Offset: 0x001A4E28
@@ -41,23 +25,7 @@ public class _LushLODTree : MonoBehaviour
 		{
 			_LushLODTree.ShaderReferences = new _LushLODTree.Shader_References();
 		}
-		Shader result = _LushLODTree.ShaderReferences.Tree_Leaves_Far_Ultra;
-		switch (billboard_quality)
-		{
-		case _LushLODTreesManager.BillboardQualitySettings.Low:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves_Far4;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Medium:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves_Far3;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Great:
-			result = _LushLODTree.ShaderReferences.Tree_Leaves_Far2;
-			break;
-		case _LushLODTreesManager.BillboardQualitySettings.Ultra:
-			result = ((BillBoardSetting != _LushLODTreesManager.BillBoardSettings.BillboardsOnly) ? _LushLODTree.ShaderReferences.Tree_Leaves_Far_Ultra : _LushLODTree.ShaderReferences.Tree_Leaves_Far_Ultra_BB);
-			break;
-		}
-		return result;
+		return (BillBoardSetting != _LushLODTreesManager.BillBoardSettings.BillboardsOnly) ? _LushLODTree.ShaderReferences.Tree_Leaves_Far_Ultra : _LushLODTree.ShaderReferences.Tree_Leaves_Far_Ultra_BB;
 	}
 
 	// Token: 0x06002F69 RID: 12137 RVA: 0x001A6CCC File Offset: 0x001A4ECC

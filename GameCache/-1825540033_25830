@@ -1,3 +1,0 @@
-<root>
-	<i id="101" name="Comprar Upgrade Stone com gift" buyitem="6021" giftitem="6021" maxnum="1" rate="1:1" bgimg="libao_bogoact" stitle1="Você comprou{0} {1}" stitle2="Você não comprou {0} ou coletou seus gift" desc1="Gifts abaixo podem ser recebidos" desc2="Não pode receber gifts" sbottom1="Colete os gifts" sbottom2="Você pode coletar mais gifts após a compra de {0} mais"/>
-</root>

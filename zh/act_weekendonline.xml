@@ -1,7 +1,7 @@
 <root>
-	<i id="101" name="周末在线" bgimg="libao_weekend_ditu" resetday="2" desc="9月1日至9月30日每周五、六、日晚上20:00整点在线，次日可领取奖励。">
-	<t id="1" start="20:00:00" end="20:00:59" weekday="5" title="每周{0}{1}在线奖励" reward="2007,1"/>
-	<t id="2" start="20:00:00" end="20:00:59" weekday="6" title="每周{0}{1}在线奖励" reward="2020,1"/>
-	<t id="3" start="20:00:00" end="20:00:59" weekday="7" title="每周{0}{1}在线奖励" reward="6021,2"/>
+	<i id="101" name="Evento fim de semana online" bgimg="libao_weekend_ditu" resetday="2" desc="Online as 20:00 na Sexta, Sábado e Domingo a partir de 1 setembro a 30 setembro, prêmios podem ser coletados após esse período.">
+	<t id="1" start="20:00:00" end="20:00:59" weekday="5" title="Prêmios online {0}{1} toda semana" reward="2007,1"/>
+	<t id="2" start="20:00:00" end="20:00:59" weekday="6" title="Prêmios online {0}{1} toda semana" reward="2020,1"/>
+	<t id="3" start="20:00:00" end="20:00:59" weekday="7" title="Prêmios online {0}{1} toda semana" reward="6021,2"/>
 	</i>
 </root>

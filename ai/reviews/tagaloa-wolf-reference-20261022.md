@@ -1,0 +1,24 @@
+# Passagem de trabalho — SKIN-041
+
+- Responsável/destinatário/data: Codex / usuário e próxima IA /22/10/2026 BRT.
+- Objetivo: criar referências Tripo da skin Tagaloa Lobo Mau a partir de duas ideias visuais, respeitando o modelo/rig do jogo.
+- Estado: análise e quatro imagens concluídas; aguarda GLB do Tripo. Nenhum arquivo de execução/Oracle alterado.
+- Fontes: herounlock1006 (`xt_tps`, controller `xingtian_tps_animator`), HeroXingTianMe/It, TBCharAnimationXingTianTps/ThirdIK e cinco bundles nativos inventariados.
+- BaseTPS SHA256 `29c927059a5ec45016e351d01b1d21233bb33956d51683a283911da90eef6aef`; inventário/hashes/rig em `scratch/tagaloa-inspection/{inventory.json,hierarchy.json,analysis.json}`.
+- Corpo: mesh−8612445080646183882,3333v/3425tri/36bones, altura do mesh2,2675m; ombros±0,2511/Z1,8511, pelveZ1,1856, joelhosZ0,6545, HeadZ1,9834. Modelar humanoide grande, não um quadrúpede baixo.
+- Particularidade: braço direito/arma separado, mesh4149678304044407739/1641v/1452tri/18bones; paletas corpo+braço somam53nomes únicos. Main body não contém mão/dedos direitos. FPS braço/arma19bones, corpo23.
+- Preservar na futura integração: hierarquia nativa, conjunto direito/arma/emissores, `body2_dun`, `shieldbody`, `dun`, `Aim`, `huzhao/huzhaopo/huzhaopo1/huzhaosui`. Código move corpo do escudo em relação a `dun`; não remover por parecer decoração.
+- Poses:51clipsTPS/14FPS inventariados, incluindo tiro/corrida/erguer escudo/jump/dazhao. Não foram reproduzidos nem decodificados nesta tarefa. Diagnósticos de meshes isoladas não compõem a arma/escudo exatamente como no Unity.
+- Conceito: Lobo Mau/Alfa da Lua Negra, lobo humanoide masculino robusto com peito/braços expostos em pelagem cinza-azulada/prata, couro escuro, bronze, pequenos tecidos vinho nos quadris; materiais limpos.
+- Anatomia de referência: focinho moderado/boca fechada, pupilas pretas/olhos âmbar, mãos cinco dedos com polegar/garras curtas, pés plantígrados/quatro dedos curtos, articulações humanas e cauda única central afastada das pernas.
+- Decisão: corpo completo na referência, sem arma/escudo embutidos; braço direito funcional será adaptado separadamente depois. Sem capa longa/espinhos nas articulações.
+- Entrega: `candidate-assets/tagaloa-wolf/multiview/01-frente.png`,02esquerda(narizesquerda),03direita(narizdireita),04costas + `tagaloa-lobo-mau-tripo.zip`, README e12prompts.
+- Ferramenta: image_gen integrada, sem edição manual de pixels; PNGs finais copiados para o projeto. Frente/costas1319×1193RGBA; esquerda1199×1312RGB; direita1169×1345RGB.
+- Qualidade: corrigido enquadramento cortado da primeira frente/costas; recorte transparente falhou nos pelos brancos dos perfis mesmo após edição. Reformulado para fundo cinza opaco, que limpou contorno/beard/cauda. Tentativas de duas vistas na mesma imagem rejeitadas; perfis finais usam só o perfil como entrada.
+- Aprendizado: para futuros perfis, usar uma única imagem alvo e fundo neutro quando alpha automático danificar pelos claros; múltiplas entradas frente+perfil favoreceram composição com dois personagens apesar do prompt.
+- Inspeção visual: quatro vistas individuais, corpo inteiro sem corte, identidade/roupa/focinho/cauda coerentes; pose próxima deT, braços foreshortened nos perfis. Vistas não são projeções calibradas: pequenas diferenças de ornamentos/ângulo/proporção, frente autoritativa.
+- Testes: `scratch/tagaloa-inspection/package.py` passou; quatroPNG<20MB/≥1024px porlado, alpha frente/costas0–255, perfisRGB/cinza e sujeito dentro das bordas, hashes registrados em validation.json, ZIP íntegro.
+- Cliente real: sem nova malha para testar. Oracle: intacta; sem cadastro/reinício/DLL nova.
+- Retorno anterior registrado: usuário aprovou SKIN-040Corvo no cliente real e pediu considerar DLL universal futuramente. Generalização não implementada; preservar isolamento de ator/reset/culling/configuração por skin ao evoluir o auxiliar.
+- Próximo passo: gerar corpo/textura no Tripo com quatro arquivos individuais e enviar GLB; conferir fusão cauda/roupa/perna, mãos/olhos e membro direito, adaptar rig nativo e testar tiro/escudo/ultimate antes instalar.
+- Bloqueio: apenas aguarda novo GLB para iniciar a etapa de adaptação. Referências entregues, reserva liberada.

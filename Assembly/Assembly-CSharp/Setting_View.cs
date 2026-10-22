@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -310,7 +310,12 @@ public class Setting_View : MonoBehaviour
 	private void Initialize_Video_Setting_Component()
 	{
 		this.Install_Language(this.UI_Component.Video_Content_Structure["Display_Type"].GetComponentInChildren<Dropdown>());
-		this.Install_Language(this.UI_Component.Video_Content_Structure["Effect_Level"].GetComponentInChildren<Dropdown>());
+		Dropdown effectDdl = this.UI_Component.Video_Content_Structure["Effect_Level"].GetComponentInChildren<Dropdown>();
+		this.Install_Language(effectDdl);
+		if (effectDdl.options.Count <= 3)
+		{
+			effectDdl.options.Add(new Dropdown.OptionData("Ultra"));
+		}
 		this.Install_Language(this.UI_Component.Video_Content_Structure["Texture_Quality"].GetComponentInChildren<Dropdown>());
 		this.Install_Language(this.UI_Component.Video_Content_Structure["Anisotropic_Textures"].GetComponentInChildren<Dropdown>());
 		this.Install_Language(this.UI_Component.Video_Content_Structure["Anti_Aliasing"].GetComponentInChildren<Dropdown>());
@@ -1053,6 +1058,18 @@ public class Setting_View : MonoBehaviour
 	private void Set_Dropdown(GameObject _Parent_Object, string _Component_Object_Name, string _Parameter)
 	{
 		Dropdown component = _Parent_Object.transform.Find(_Component_Object_Name).GetComponent<Dropdown>();
+		if (_Parent_Object.name == "Effect_Level")
+		{
+			if (component.options.Count == 3)
+			{
+				component.options.Add(new Dropdown.OptionData("Ultra"));
+			}
+			int parsedVal = 2;
+			int.TryParse(_Parameter, out parsedVal);
+			component.value = Mathf.Clamp(parsedVal, 0, component.options.Count - 1);
+			component.RefreshShownValue();
+			return;
+		}
 		bool flag = _Parent_Object.name == "Anti_Aliasing";
 		if (flag)
 		{

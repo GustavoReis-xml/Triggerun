@@ -1,0 +1,23 @@
+# Passagem de trabalho — SKIN-030
+
+- Responsável / destinatário / data: Codex / próxima IA / 13/10/2026 BRT.
+- Objetivo: analisar Johnny e propor skin com musculatura exposta, incluindo tema além do militar.
+- Estado: análise concluída; referência Tripo/modelo novo ainda não criados.
+- Interpretação: preferência por braços expostos corresponde ao Johnny1031 sugerido na resposta anterior.
+- Base: oito bundles locais extraídos em modo leitura, com SHA256 em `scratch/johnny-inspection/inventory.json`; hashes conferidos novamente ao terminar.
+- Recurso efetivo: `herounlock.xml` usa `lanbo_tps`/`lanbo_fps`, controllers `rambo_tps_animator`/`rambo_fps_animator`. `heroinfo.xml` ainda tem modelo genérico76; não usá-lo como única fonte da skin.
+- Corpo principal: mesh3312078527959215714 (`lanbo_tps001`),3412 vértices/5042 triângulos/54 referências de ossos; três níveis de detalhe, além dos renderers de efeitos.
+- Rig: humanoide com clavículas, coluna, dedos, torção de braço/antebraço. `UpperArm` existe na hierarquia, mas os pesos principais do braço usam `LUpArmTwist`/`RUpArmTwist`; transferência deve respeitar isso.
+- Mãos em±0,5662/0,0765/1,1578, cabeça0/0,0562/1,67 nas coordenadas da mesh; altura da mesh~1,878. Não confundir esses valores com pivôs no mundo/colliders.
+- Hierarquia contém auxiliaresBone001/002; não fazem parte da lista54 do corpo. Nenhuma cauda/estrutura de braços extras na mesh principal.
+- FPS padrão: mesh4244173866307001073 (`lanbo_shou`),3192v/5112tri/39 referências; PopStar usa outra mesh43 referências, exigindo mapeamento por nomes e não índices.
+- Animação: controllers incluem39clipsTPS/48FPS, todos com dados humanoides; mira/tiro/recarga/corrida/skill_Q/skill_E/gestos. Clipes inventariados, não reproduzidos/decodificados nesta análise.
+- Assembly: `TBCharAnimation_Rambo_Tps` herda `TBCharAnimationThirdIK`; efetores de mãos/ombros corrigidos emLateUpdate. `Hero_Rambo_It` usa CAimingFps eMusth_State na ultimate; preservar arma/pivôs/IK/autoridade.
+- Observação visual: padrão tem braços expostos e tronco coberto, musculatura pouco definida; PopStar confirma troca de roupa no mesmo formato humanoide. Prévia é render externo da geometria/UV reais.
+- Proposta favorita: Campeão Solar, gladiador futurista adulto de tronco descoberto, peitoral/deltoides/dorsais definidos, cintura mais estreita, calça ajustada e proteção abaixo da cintura. Bronze/grafite/tecido vermelho, detalhes compactos, rosto identificável.
+- Alternativas: Corsário da Tempestade (tronco descoberto, acessórios náuticos/couro); Lutador Cibernético (musculatura exposta e implantes discretos).
+- Preparação recomendada: referência de corpo inteiro emA-pose próxima do original, axilas livres, dedos separados; geometria deve definir os volumes maiores e textura as transições anatômicas. Evitar tiras soltas/ombros volumosos nesta primeira versão.
+- Testes: leitura/extracão/renderização e pesos originais finitos/normalizados aprovados; sem candidata ou testeUnity novo. Não alegar retargeting validado antes de receber oGLB.
+- Oracle/execução: intactas. SKIN-029 Nezha recebeu elogio e confirmação real do usuário nesta conversa.
+- Evidências: `scratch/johnny-inspection/inventory.json`, `hierarchy.json`, NPZs e `lanbo_tps-view-0/90/180.png`, `lanbo_tps_sz1-view-0.png`.
+- Próximo passo: definir direção artística e gerar referênciaTripo ajustada às proporções; depois inspecionarGLB/UV e adaptar ao rig nativo. Reserva liberada.

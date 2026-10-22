@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -724,6 +724,59 @@ public class ChatManager
 			Fun.GetLzNianImgName(),
 			Fun.GetQQ_Zuan_Type(null)
 		};
+	}
+
+	public void SendPoseNetMsg(int targetPose)
+	{
+		HeroPlayer heroplayer = fGameManager.Heroplayer;
+		if (heroplayer == null || heroplayer.isDead || heroplayer.haveDestroy)
+		{
+			return;
+		}
+
+		string animStr = (targetPose == 0) ? "0" : targetPose.ToString();
+		ArrayList msg = new ArrayList
+		{
+			Fun.EncodingUTF8(string.Empty),
+			string.Empty,
+			animStr,
+			1,
+			string.Empty
+		};
+
+		int num = 1;
+		int num2 = 1;
+		int num3 = 1;
+		int nHuDongState = targetPose;
+
+		ArrayList value = new ArrayList
+		{
+			num,
+			num2,
+			num3,
+			nHuDongState
+		};
+
+		this.Chat_Client_To_ScnNetMsg(3, new ArrayList
+		{
+			3,
+			msg[0].ToString(),
+			Fun.EncodingUTF8(string.Empty),
+			new ArrayList(),
+			msg,
+			value,
+			this.GetUserChatParam()
+		});
+
+		if (targetPose == 0)
+		{
+			heroplayer.SetAnimator("HuDongState", 2, 0, 2);
+			heroplayer.nHuDongState = 0;
+		}
+		else
+		{
+			heroplayer.changeCameraState(CameraState.ThirdState, new NetLiving.ChangeCameraStateEnd(this.OnChangeCameraOk), animStr);
+		}
 	}
 
 	// Token: 0x06000479 RID: 1145 RVA: 0x00023ED0 File Offset: 0x000220D0

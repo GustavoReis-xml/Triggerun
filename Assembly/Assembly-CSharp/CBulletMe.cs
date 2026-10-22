@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -361,6 +361,15 @@ public class CBulletMe : CBullet
 					{
 						int num2 = 0;
 						bool flag6 = !isRange && base.bulletData.bulletType != 8 && collider.name.Contains("Head");
+						if (!flag6 && !isRange && base.bulletData.bulletType != 8 && collider.name.Contains("_IgnoreDamge") && netLiving.userHeadTransform != null)
+						{
+							Vector3 hitPos = (base.hitGameObject.collider != null) ? base.hitGameObject.point : base.transform.position;
+							Vector3 headPos = netLiving.userHeadTransform.position;
+							if (Mathf.Abs(hitPos.y - headPos.y) <= 0.35f && Vector2.Distance(new Vector2(hitPos.x, hitPos.z), new Vector2(headPos.x, headPos.z)) <= 0.4f)
+							{
+								flag6 = true;
+							}
+						}
 						if (flag6)
 						{
 							num2 = 1;

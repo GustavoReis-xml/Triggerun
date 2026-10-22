@@ -1,0 +1,21 @@
+# Passagem — TDM-003 saída e equipes
+
+- Responsável: Codex. Implementação/testes/instalação concluídos em 30/09/2026 01:52 UTC (29/09 22:52 BRT); validação do cliente pendente.
+- Usuário confirmou que o patch anterior de seleção JIP resolveu o travamento em teste real.
+- Arquivos alterados: src/socketServer.js e tests/match-lifecycle.test.js. Reserva liberada.
+- Evidência Assembly: fUIManager.GotoHall envia20001 na cena e pode coexistir com20002 do Hall; CNetMsgManager exige resposta20001 para OnReturnHallOK; este envia1310 no Hall.
+- Causa saída: Hall20002 aposentava a cena antes de cena20001 ser tratada, perdendo a confirmação. Limpar também antes da notificação de destroy fazia close ignorar o personagem já aposentado.
+- Correção: cleanPlayerMatchState notifica peers e confirma retorno antes de aposentar/limpar; handlers preservam sala original até essa operação. 1310 completa limpeza sem nova confirmação. Cancela fila pendente do jogador.
+- Idempotência: avisos Hall/Scene repetidos e close não duplicam destroy; isolamento entre salas mantido.
+- Causa equipes: fila atribuía forces alternadas mas slots sequenciais; backfill interpretava slots0–4/time1 e5–9/time2. Lista de sala ativa escolhia primeiro slot vazio e podia criar2x0.
+- Correção: fila PvP preenche slots compatíveis comforce; entrada tardia via lista/matchmaking escolhe equipe menor. Slot existente é reutilizado para não duplicar participante. Slots escolhidos em sala ainda não iniciada preservados.
+- Testes: 35/35 locais e Oracle; sintaxe conferida antes de reiniciar. Seis casos novos: três ordens de saída, duas formas de entrada balanceada/repetida e slots da fila inicial.
+- Cliente real: ainda não validado para esta atualização; não confundir com a validação positiva do patch JIP anterior.
+- Backup local: backups/tdm-exit-teams-20260930/.
+- Backup remoto: /home/ubuntu/backups/tdm-exit-teams-20260930T015224Z/{runtime,logs}.tar.gz.
+- Base remota verificada contra instalação anterior antes de substituir; gameLogic.js permanece intacto.
+- SHA256 instalado socketServer: f6de9ed4122771ddaa829ae561b5bdad65cbb8470df553cae6646e47824d6525.
+- Oracle: PM2online PID431965, contador174 estável após15s; TCP7777 externo conectado, HTTP/api/maps200.
+- Evidência: scratch/tdm-exit-deploy-20260930/tests.tap e install.sh; chave temporária removida.
+- Próximo teste: dois jogadores em matchmaking1x1; sair um e confirmar retorno real e desaparecimento no outro; reentrar e conferir equilíbrio; repetir sala criada e fechamento do cliente.
+- Limites: não redistribui automaticamente equipes escolhidas manualmente em sala pré-partida; outros achados da auditoria seguem pendentes.

@@ -2,16 +2,16 @@
     "username": "king",
     "password": "123456",
     "createdAt": "2026-06-25T00:06:40.004Z",
-    "lastLogin": "2026-06-26T05:35:18.734Z",
-    "gold": 980009,
-    "diamonds": 991994,
-    "level": 1,
-    "exp": 0,
-    "face": 1104,
+    "lastLogin": "2026-09-30T01:24:54.248Z",
+    "gold": 985187,
+    "diamonds": 986666,
+    "level": 13,
+    "exp": 4526,
+    "face": 2200,
     "paint": 1105,
     "runes": {
-        "step": 0,
-        "star": 0
+        "step": 10,
+        "star": 10
     },
     "parts": {
         "1": {
@@ -48,7 +48,19 @@
         }
     },
     "weaponParts": {},
-    "items": {},
+    "items": {
+        "7": 9999,
+        "1001": 2,
+        "1002": 1,
+        "6000": 9999,
+        "6001": 9999,
+        "6002": 9999,
+        "6003": 9999,
+        "6004": 9999,
+        "6005": 9999,
+        "6006": 9999,
+        "6021": 9999
+    },
     "unlockedHeroes": [
         1015,
         1003,
@@ -102,7 +114,8 @@
         },
         "1005": {
             "skins": [
-                1
+                1,
+                2
             ],
             "weapons": [
                 1
@@ -118,7 +131,9 @@
         },
         "1006": {
             "skins": [
-                1
+                1,
+                3,
+                2
             ],
             "weapons": [
                 1
@@ -161,7 +176,8 @@
         },
         "1017": {
             "skins": [
-                1
+                1,
+                3
             ],
             "weapons": [
                 1
@@ -189,13 +205,17 @@
         },
         "1022": {
             "skins": [
-                1
+                1,
+                3,
+                2,
+                7
             ],
             "weapons": [
                 1
             ],
             "emotes": [
-                1
+                1,
+                119
             ],
             "poses": [
                 0
@@ -219,7 +239,9 @@
             "skins": [
                 1,
                 7,
-                5
+                5,
+                2,
+                3
             ],
             "weapons": [
                 1
@@ -261,7 +283,8 @@
         },
         "1028": {
             "skins": [
-                1
+                1,
+                3
             ],
             "weapons": [
                 1
@@ -289,7 +312,24 @@
         },
         "1030": {
             "skins": [
+                1,
+                2
+            ],
+            "weapons": [
                 1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1031": {
+            "skins": [
+                1,
+                2,
+                4
             ],
             "weapons": [
                 1
@@ -302,20 +342,6 @@
             ]
         },
         "1032": {
-            "skins": [
-                1
-            ],
-            "weapons": [
-                1
-            ],
-            "emotes": [
-                1
-            ],
-            "poses": [
-                0
-            ]
-        },
-        "1033": {
             "skins": [
                 1,
                 2
@@ -330,9 +356,29 @@
                 0
             ]
         },
+        "1033": {
+            "skins": [
+                1,
+                2,
+                4
+            ],
+            "weapons": [
+                1,
+                2
+            ],
+            "emotes": [
+                1,
+                5
+            ],
+            "poses": [
+                0
+            ]
+        },
         "1034": {
             "skins": [
-                1
+                1,
+                3,
+                2
             ],
             "weapons": [
                 1
@@ -378,7 +424,8 @@
         "1037": {
             "skins": [
                 1,
-                2
+                2,
+                4
             ],
             "weapons": [
                 1
@@ -407,7 +454,7 @@
         "1003": {
             "skin": 4,
             "weapon": 1,
-            "emote": 1,
+            "emote": 4,
             "pose": 0
         },
         "1004": {
@@ -417,13 +464,13 @@
             "pose": 0
         },
         "1005": {
-            "skin": 1,
-            "weapon": 1,
+            "skin": 2,
+            "weapon": 4,
             "emote": 5,
             "pose": 0
         },
         "1006": {
-            "skin": 4,
+            "skin": 2,
             "weapon": 1,
             "emote": 4,
             "pose": 0
@@ -477,13 +524,13 @@
             "pose": 0
         },
         "1015": {
-            "skin": 1,
+            "skin": 4,
             "weapon": 4,
             "emote": 1,
             "pose": 0
         },
         "1016": {
-            "skin": 1,
+            "skin": 3,
             "weapon": 1,
             "emote": 1,
             "pose": 0
@@ -513,7 +560,7 @@
             "pose": 0
         },
         "1021": {
-            "skin": 1,
+            "skin": 5,
             "weapon": 1,
             "emote": 1,
             "pose": 0
@@ -521,23 +568,23 @@
         "1022": {
             "skin": 6,
             "weapon": 4,
-            "emote": 1,
+            "emote": 119,
             "pose": 0
         },
         "1023": {
-            "skin": 1,
+            "skin": 5,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1024": {
-            "skin": 1,
+            "skin": 4,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1025": {
-            "skin": 5,
+            "skin": 4,
             "weapon": 1,
             "emote": 1,
             "pose": 0
@@ -549,13 +596,13 @@
             "pose": 0
         },
         "1027": {
-            "skin": 1,
+            "skin": 6,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1028": {
-            "skin": 1,
+            "skin": 3,
             "weapon": 1,
             "emote": 1,
             "pose": 0
@@ -567,37 +614,37 @@
             "pose": 0
         },
         "1030": {
-            "skin": 3,
+            "skin": 2,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1031": {
-            "skin": 1,
+            "skin": 4,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1032": {
-            "skin": 1,
+            "skin": 2,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1033": {
             "skin": 2,
-            "weapon": 1,
-            "emote": 1,
+            "weapon": 2,
+            "emote": 2,
             "pose": 0
         },
         "1034": {
-            "skin": 1,
+            "skin": 2,
             "weapon": 1,
             "emote": 1,
             "pose": 0
         },
         "1035": {
-            "skin": 1,
+            "skin": 2,
             "weapon": 1,
             "emote": 1,
             "pose": 0
@@ -675,5 +722,389 @@
         "",
         "",
         ""
-    ]
+    ],
+    "career": {
+        "totalMatches": 74,
+        "wins": 30,
+        "losses": 23,
+        "draws": 21,
+        "kills": 492,
+        "deaths": 401,
+        "assists": 0,
+        "totalDamage": 1056379,
+        "totalHealing": 52155,
+        "mvps": 45,
+        "heroes": {
+            "1003": {
+                "matches": 1,
+                "wins": 0,
+                "kills": 6,
+                "deaths": 7,
+                "assists": 0,
+                "damage": 11318,
+                "healing": 0,
+                "playTimeSeconds": 631,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 6,
+                "maxDamage": 11318,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 6
+            },
+            "1006": {
+                "matches": 2,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 6,
+                "assists": 0,
+                "damage": 5268,
+                "healing": 0,
+                "playTimeSeconds": 654,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 20,
+                "maxKills": 0,
+                "maxDamage": 5268,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "1017": {
+                "matches": 3,
+                "wins": 2,
+                "kills": 19,
+                "deaths": 10,
+                "damage": 30173,
+                "assists": 0,
+                "healing": 2500,
+                "playTimeSeconds": 1258,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 20,
+                "maxKills": 15,
+                "maxDamage": 15335,
+                "maxHealing": 2500,
+                "maxAssists": 0,
+                "maxKillStreak": 15
+            },
+            "1021": {
+                "matches": 2,
+                "wins": 1,
+                "kills": 12,
+                "deaths": 13,
+                "assists": 0,
+                "damage": 13723,
+                "healing": 0,
+                "playTimeSeconds": 1404,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 20,
+                "maxKills": 9,
+                "maxDamage": 10453,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 9
+            },
+            "1022": {
+                "matches": 1,
+                "wins": 1,
+                "kills": 13,
+                "deaths": 15,
+                "assists": 0,
+                "damage": 18350,
+                "healing": 8850,
+                "playTimeSeconds": 918,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 13,
+                "maxDamage": 18350,
+                "maxHealing": 8850,
+                "maxAssists": 0,
+                "maxKillStreak": 13
+            },
+            "1023": {
+                "matches": 2,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "damage": 3947,
+                "healing": 0,
+                "playTimeSeconds": 676,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 20,
+                "maxKills": 0,
+                "maxDamage": 2280,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "1024": {
+                "matches": 11,
+                "wins": 3,
+                "kills": 85,
+                "deaths": 60,
+                "assists": 0,
+                "damage": 151357,
+                "healing": 0,
+                "playTimeSeconds": 4577,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 110,
+                "maxKills": 31,
+                "maxDamage": 52742,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 31
+            },
+            "1025": {
+                "matches": 4,
+                "wins": 0,
+                "kills": 9,
+                "deaths": 19,
+                "assists": 0,
+                "damage": 20619,
+                "healing": 0,
+                "playTimeSeconds": 1870,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 40,
+                "maxKills": 9,
+                "maxDamage": 20319,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 9
+            },
+            "1026": {
+                "matches": 3,
+                "wins": 1,
+                "kills": 39,
+                "deaths": 15,
+                "assists": 0,
+                "damage": 86123,
+                "healing": 0,
+                "playTimeSeconds": 1778,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 30,
+                "maxKills": 35,
+                "maxDamage": 54159,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 35
+            },
+            "1027": {
+                "matches": 5,
+                "wins": 2,
+                "kills": 9,
+                "deaths": 5,
+                "assists": 0,
+                "damage": 14582,
+                "healing": 0,
+                "playTimeSeconds": 1769,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 50,
+                "maxKills": 6,
+                "maxDamage": 6059,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 6
+            },
+            "1028": {
+                "matches": 7,
+                "wins": 4,
+                "kills": 7,
+                "deaths": 10,
+                "assists": 0,
+                "damage": 200100,
+                "healing": 0,
+                "playTimeSeconds": 2601,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 70,
+                "maxKills": 4,
+                "maxDamage": 187400,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 4
+            },
+            "1029": {
+                "matches": 3,
+                "wins": 0,
+                "kills": 2,
+                "deaths": 6,
+                "assists": 0,
+                "damage": 3775,
+                "healing": 800,
+                "playTimeSeconds": 960,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 30,
+                "maxKills": 2,
+                "maxDamage": 3775,
+                "maxHealing": 800,
+                "maxAssists": 0,
+                "maxKillStreak": 2
+            },
+            "1030": {
+                "matches": 8,
+                "wins": 4,
+                "kills": 100,
+                "deaths": 73,
+                "assists": 0,
+                "damage": 215664,
+                "healing": 16000,
+                "playTimeSeconds": 4949,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 80,
+                "maxKills": 31,
+                "maxDamage": 47264,
+                "maxHealing": 9000,
+                "maxAssists": 0,
+                "maxKillStreak": 31
+            },
+            "1031": {
+                "matches": 1,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 0,
+                "damage": 335,
+                "healing": 0,
+                "playTimeSeconds": 338,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 0,
+                "maxDamage": 335,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "1032": {
+                "matches": 1,
+                "wins": 1,
+                "kills": 21,
+                "deaths": 15,
+                "assists": 0,
+                "damage": 26455,
+                "healing": 7125,
+                "playTimeSeconds": 919,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 21,
+                "maxDamage": 26455,
+                "maxHealing": 7125,
+                "maxAssists": 0,
+                "maxKillStreak": 21
+            },
+            "1033": {
+                "matches": 8,
+                "wins": 5,
+                "kills": 22,
+                "deaths": 15,
+                "assists": 0,
+                "damage": 30259,
+                "healing": 0,
+                "playTimeSeconds": 4035,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 80,
+                "maxKills": 5,
+                "maxDamage": 10282,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 5
+            },
+            "1035": {
+                "matches": 6,
+                "wins": 3,
+                "kills": 99,
+                "deaths": 87,
+                "assists": 0,
+                "damage": 154851,
+                "healing": 0,
+                "playTimeSeconds": 4120,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 60,
+                "maxKills": 30,
+                "maxDamage": 46348,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 30
+            },
+            "1036": {
+                "matches": 3,
+                "wins": 2,
+                "kills": 29,
+                "deaths": 20,
+                "assists": 0,
+                "damage": 31995,
+                "healing": 0,
+                "playTimeSeconds": 1868,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 30,
+                "maxKills": 23,
+                "maxDamage": 26534,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 23
+            },
+            "1037": {
+                "matches": 1,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 0,
+                "damage": 0,
+                "healing": 0,
+                "playTimeSeconds": 328,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 0,
+                "maxDamage": 0,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "2000": {
+                "matches": 2,
+                "wins": 1,
+                "kills": 20,
+                "deaths": 20,
+                "assists": 0,
+                "damage": 37485,
+                "healing": 16880,
+                "playTimeSeconds": 1565,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 20,
+                "maxKills": 16,
+                "maxDamage": 27300,
+                "maxHealing": 16880,
+                "maxAssists": 0,
+                "maxKillStreak": 16
+            }
+        },
+        "playTimeSeconds": 37218,
+        "damage": 1056379,
+        "healing": 52155,
+        "goldMedals": 68,
+        "silverMedals": 0,
+        "bronzeMedals": 0
+    },
+    "qhJie": 50,
+    "qhLv": 10,
+    "geneStep": 10,
+    "geneStar": 10
 }

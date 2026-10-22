@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -19,6 +19,12 @@ public class SkillZRFireBallMe : SkillBaseMe
 		base.hero.charMove.notMove = true;
 		this.isSkillDo = true;
 		base.hero.bePlayActive = false;
+
+		float duration = (base.heroSkillData != null && base.heroSkillData.m_nSKLongTime > 0) ? ((float)base.heroSkillData.m_nSKLongTime / 1000f) : 4f;
+		this.lastTime = Time.time + duration;
+
+		base.hero.SetAnimator("SkillE", 0, true, 2);
+		base.hero.SetAnimator("SkillShift", 0, true, 2);
 		base.hero.changeCameraState(CameraState.ThirdState, new NetLiving.ChangeCameraStateEnd(this.ChangeCameraEnd), "SkillZRFireBallStart");
 	}
 
@@ -50,14 +56,23 @@ public class SkillZRFireBallMe : SkillBaseMe
 			if (isDead)
 			{
 				this.OneSkillFinish();
+				return;
 			}
 			base.hero.SetAnimator("SkillE", 0, true, 2);
-			this.lastTime = Time.time + (float)base.heroSkillData.m_nSKLongTime / 1000f;
+			base.hero.SetAnimator("SkillShift", 0, true, 2);
+			base.hero.wInput.notInput = true;
+			base.hero.charMove.notMove = true;
+			if (this.lastTime <= Time.time)
+			{
+				float duration = (base.heroSkillData != null && base.heroSkillData.m_nSKLongTime > 0) ? ((float)base.heroSkillData.m_nSKLongTime / 1000f) : 4f;
+				this.lastTime = Time.time + duration;
+			}
 		}
 		bool flag2 = objParam.ToString() == "SkillZRFireBallEnd";
 		if (flag2)
 		{
 			base.hero.SetAnimator("SkillE", 0, false, 2);
+			base.hero.SetAnimator("SkillShift", 0, false, 2);
 			base.hero.charMove.notMove = false;
 			base.hero.wInput.notInput = false;
 			this.lastTime = 0f;
@@ -73,6 +88,8 @@ public class SkillZRFireBallMe : SkillBaseMe
 		{
 			base.OneSkillFinish();
 			this.isSkillDo = false;
+			base.hero.SetAnimator("SkillE", 0, false, 2);
+			base.hero.SetAnimator("SkillShift", 0, false, 2);
 			base.hero.changeCameraState(CameraState.FirstState, new NetLiving.ChangeCameraStateEnd(this.ChangeCameraEnd), "SkillZRFireBallEnd");
 			this.Send_Messages(1);
 		}
@@ -84,17 +101,12 @@ public class SkillZRFireBallMe : SkillBaseMe
 		bool flag = this.isSkillDo;
 		if (flag)
 		{
-			bool flag2 = Time.time >= this.lastTime;
+			base.hero.wInput.notInput = true;
+			base.hero.charMove.notMove = true;
+			bool flag2 = this.lastTime > 0f && Time.time >= this.lastTime;
 			if (flag2)
 			{
 				this.OneSkillFinish();
-			}
-			bool flag3 = base.hero.playerCommon.m_nDongjie != 1 && (Input_Manager.Get_Button_Down("WeaponFirst") || Input_Manager.Get_Button_Down("WeaponSec"));
-			if (flag3)
-			{
-				base.StopAllCoroutines();
-				this.OneSkillFinish();
-				base.hero.wc.UpdateFireTime(0.2f);
 			}
 		}
 	}

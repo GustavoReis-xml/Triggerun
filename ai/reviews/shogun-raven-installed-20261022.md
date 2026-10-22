@@ -1,0 +1,26 @@
+# Passagem de trabalho — SKIN-039
+
+- Responsável/destinatário/data: Codex / usuário e próxima IA /22/10/2026 18:31BRT (21:31UTC).
+- Objetivo: corrigir a pupila ausente do GLB e instalar o corvo como skin independente do Shogun1024.
+- Estado: implementada, verificada por estrutura/poses sintéticas e instalada. Teste realUnity pendente; reserva liberada.
+- Fonte: `candidate-assets/shogun-raven/source-tripo.glb` igual ao Downloads/fantasy character3dmodel.glb, preservado.30565v/21579tri/4096textura, semrig. Bundlebasehouyi_tps SHA256a9bd223448c378cf42a0156871cf7a317134cbb1052b83d97a576c420d4e8e65 intacto.
+- Adaptada:30598v/21611tri/56bones,11SMRcorporais; só33v/32tri adicionais para pupila, todosos triângulos eUVs originais preservados. FPS/arco6bones/flechas/efeitos e física/IK/controllers/Avatar/hierarquia intactos.
+- Pupila: olhoXpositivo sempupila; nova elipse conformada à superfície, raios2,5×4,8mm/offset0,5mm, rígidaHead. Cor RGB12,0,0 amostrada do centro escuro do outro olho, UVconstante no atlas; nenhum pixel do mapa de textura foi pintado.
+- Mãos/braços: converter poseT→A nativa, mão67% uniformemente escalada, landmarks explícitos em build.py. Mangas com transição geométrica contínua; peça separada de ombro/bracelete transformada inteira, sem corte por metade.
+- Pesos: transferência nativa restrita por ramo, mãos/fingers separados, tronco sem influência de braços abaixados, pequenos componentes rígidos. Asas/posteriores prendem aSpine2, painéis frontais do casaco àcintura; média de costurasUV/difusão100iterações na superfície conectada, cabeça e núcleo das asas preservados rígidos.
+- Cabeça: bico/olhos/chapéu rígidosHead, transição localNeck. Corpo nativo não possui ossos de asa corporal; novas asas recolhidas são decorativas, sem batimento/abertura/física próprios.
+- Originais humanos:8MeshRenderer de rosto/LODsilhuetas/óculos/aljava desabilitados somente neste prefab; meshes/Transforms continuam no bundle. Arco/flechas/renderers correspondentes e61ParticleSystem inalterados.
+- Material: albedoTripo4096→2048DXT5/mips12, shaderToon nativo/clones de material e textura IDs3902/3901 e CAB exclusivo. Não usaPBR completo.
+- Cadastro:1024/skin7 Corvo Noturno gratuita,default0/qual4/unlockdata6|0/szattrvazio; houyi_tps_raven,controllers originais,FPS houyi_fps eícone houyi_1 iniciais. Não substitui skins1–6. LODcorporal usa meshcompleta.
+- Estrutural:677objetosbase comparados; somente meshcorporal/11SMR/8MR/metadadosBundle mudam e2objetos adicionados. Bind/refspec/malha/UV/normais/pesos/índices/pupila e integridade dos componentes de gameplay verificados.
+- Simulação:22poses, cabeça±45°yaw/±30°pitch, forearmtwist±45°, corrida/agachamento/escalada/ombros e2poses assimétricas de arqueiro. Pose atual preserva Head/pupila e núcleo das asas sem erro relativo ao osso; todas finitas.
+- Detalhe do rig: ForeTwist é IRMÃO deForearm, amboscom mesmo pivô, e não seu filho. Simulação de dobra/IK fornece explicitamente a mesma dobra aosdois; teste separado varia só rotação deTwist. Não alterou os ossos do jogo; sem reprodução dos clips/solverUnity reais.
+- Critérios de malha: controle com corpoShogun nativo submetido àsMESMAS matrizes. P99candidata≤1,311; max4,667 em poucos edges pequenos/escalada, contra maxnativo10,963 emIK. CritérioP99<1,5 e max≤min(5,max(3,5,nativoMax×1,5)); limites rígidosHead/asas1e−6. Ainda há pinçamento/alongamento localizado em poses fortes, sem garantia de acabamento perfeito.
+- Histórico útil: primeira tentativa de pesos tinha partes de dedos fora da seleção e pequenos ornamentos divididos entre tronco/pernas, com picos63×; corrigida antes de publicar. Limite absoluto inicial3,5 foi recalibrado por controle nativo, não registrar como teste original inalterado. Só candidata final foi instalada.
+- Inspeção: repouso frente/perfil/costas, ambas pupilas, arqueirofrente/costas, corrida/agachamento/escalada renderizados. Arco não aparece nos renders diagnósticos, mas está preservado no bundle; verificar encaixe com ele no cliente real.
+- Oracle:22/10 21:31:54UTC,CRC26102201/5561entradas; zero conexões ao reiniciar. PM2triggerun onlinePID886212/TCP7777;8HTTP SHA256 nas rotas1.1.1/1.3.5 aprovados e cópia local sincronizada com guardadehashes.
+- Backups: local `backups/shogun039-before/` 3XML; remoto `/home/ubuntu/backups/shogun-raven-skin039-20261022T213154Z/runtime.tar.gz`. Novo recurso não existia. ChaveSSH temporária removida ao concluir.
+- HashTPS:c4ebb120e936035ef16db6030016c68feadfc97661ece6cdc26ab9127311a669. Manifesto ecatálogos completos em `scratch/shogun-raven-release/new.sha256`; validaçãoHTTP/deploy e relatórios emmesma pasta/candidate-assets/shogun-raven/adapted/.
+- Cliente real: não testado nesta tarefa. Sem instalaçãoDLL/localManaged; só download/cadastro de recursos novo.
+- Próximo passo: reabrir cliente, equipar Corvo Noturno; testar selecionar, virar cabeça, andar/correr/agachar/escalar, carga/disparo arco eultimate, ver poroutrocliente. Conferir mão da corda contra bico/aba/ombreira e movimentos de penas/casaco.
+- Bloqueio: nenhum de instalação; acabamento final depende de captura da pose que falhar noUnity.

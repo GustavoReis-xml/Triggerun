@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 // Token: 0x02000056 RID: 86
@@ -46,7 +46,16 @@ public class CBulletContraMe : CBulletMe
 						{
 							Ray ray = new Ray(vector, base.transform.forward);
 							RaycastHit hitGameObject;
-							bool flag7 = Physics.Raycast(ray, out hitGameObject, num, base.bulletLayer);
+							bool flag7 = TriggerunHitCollision.Raycast(ray, out hitGameObject, num, base.bulletLayer);
+							if (flag7 && hitGameObject.collider != null && hitGameObject.collider.transform.name.Contains("_IgnoreDamge"))
+							{
+								Ray ray2 = new Ray(hitGameObject.point + ray.direction * 0.1f, ray.direction);
+								RaycastHit hitGameObject2;
+								if (TriggerunHitCollision.Raycast(ray2, out hitGameObject2, num, base.bulletLayer))
+								{
+									hitGameObject = hitGameObject2;
+								}
+							}
 							if (flag7)
 							{
 								base.transform.position = hitGameObject.point;

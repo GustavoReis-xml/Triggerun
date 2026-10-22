@@ -1,0 +1,16 @@
+{
+  "uniformScale": 1.07,
+  "checks": [
+    {
+      "part": "body",
+      "verticesUnaffectedByArms": 11046,
+      "maxErrorFromUniformSource": 1.9540474549159378e-07
+    },
+    {
+      "part": "vertices",
+      "verticesUnaffectedByArms": 2870,
+      "maxErrorFromUniformSource": 1.8621502046904904e-07
+    }
+  ],
+  "handsAlignedByBuildAssertion": true
+}

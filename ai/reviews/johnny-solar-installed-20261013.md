@@ -1,0 +1,22 @@
+# Passagem de trabalho — SKIN-032
+
+- Responsável / destinatário / horário: Codex / próxima IA / 13/10/2026 13:00:08 UTC (10:00BRT).
+- Objetivo: adaptar e cadastrar Johnny Campeão Solar como skin independente gratuita; estado: instalada, validaçãoUnity pendente.
+- Base: GLBTripo recebido `C:/Users/Gustavo/Downloads/fantasy warrior 3d model.glb`, cópia intacta em `candidate-assets/johnny-solar/source-tripo.glb`.
+- Fonte:25678v/21270tri/uma mesh/4096JPEG/sem rig ou animações; rosto/olhos/textura visualmente legíveis e preservados. Nenhuma pintura/edição de textura feita.
+- Escala:1,90823596 para altura1,877488 da mesh nativa; eixosGLB convertidos para meshUnity e UVv invertida como nos casos anteriores.
+- Adaptação: braçosT→pose nativa com marcos anatômicos medidos. Braço mantém~0,996 do comprimento, antebraço~0,807; mãos com escala uniforme0,95 e transições suaves, evitando alongar dedos.
+- Rig nativo54referências mantido. Braço usaUpArmTwist no palette; UpperArm preservado na hierarquia e dirige antebraço nos testes. Transferência de pesos nativa+regiões contínuas, difusão de12passes com UVseams soldadas somente para pesos.
+- Pesos de cabeça/pescoço independentes dos braços; painel frontal e peças soltas da cintura presos à bacia; calças filtram influências da perna oposta abaixo do quadril.
+- Candidata: `candidate-assets/johnny-solar/adapted/lanbo_tps_solar.mo`; mesh principal3312078527959215714, dois objetos novos textura/material900000000000003201/3202. Somente mesh,11renderers e metadataAssetBundle alterados.
+- Hierarquia/Avatar/IK/colliders/rigidbodies/armas/efeitos/controllers preservados byte a byte. LODs continuam usando a mesh completa adaptada nos renderers existentes; sem LOD otimizado nesta etapa.
+- Catálogo: hero1031/skin5, nomeCampeãoSolar, gratuito6|0, TPSlanbo_tps_solar, FPSlanbo_fps/controladores originais, íconelanbo_1 nativo provisório. Default intacta.
+- XML: adição isolada empublic/baxi ezh/herounlock.xml, sem demais diferenças semânticas; files_dir5559entradas/CRC26101301 para catálogos e novo recurso.
+- Testes: estruturaUnity/reabertura/índices/pesos/normais/UV/cabeça+GLB intactos aprovados. Oito poses sintéticas de hierarquia completa: mira/corrida/torção/pescoço/ombros/tiro/recarga/agachar; p99≤1,186, máximo≤3,198. Não são animações nativas reproduzidas.
+- Ajuste após primeira candidata: centros reais dos braços substituem marcos anteriores; recarga máxima caiu3,375→2,086. Primeira geometria/report/validation preservados em `backups/johnny032-first-candidate/`.
+- Prévia: view0/90/180 epreviewaim/run/shoot/reload/crouch no diretórioadapted; são renderizações externas para diagnóstico.
+- Oracle: backups antes de copiar, hashes-base/new guardados; catálogo validado no processo isolado, reinício comzero conexões; PM2onlinePID709544. Oito hashesHTTP1.1.1/1.3.5 eTCP7777 aprovados; cópia local sincronizada.
+- Backup local: `backups/johnny032-before/`; remoto: `/home/ubuntu/backups/johnny-solar-skin032-20261013T130008Z/runtime.tar.gz` (trêsXML anteriores; recurso novo não existia).
+- Evidências/build/verify/release: `scratch/johnny-solar-inspection/`, `scratch/johnny-solar-adapt/`, `scratch/johnny-solar-release/`; nenhum patchDLL/client local nesta etapa.
+- Cliente real: não testado. Próximo passo: reiniciar cliente, selecionarJohnny→CampeãoSolar, conferir seleção/mira/tiro/recarga/corrida/ultimate emdoisclientes. FPS/íconeoriginais podem receber atualização visual separada depois.
+- Bloqueio: nenhum; reserva liberada.

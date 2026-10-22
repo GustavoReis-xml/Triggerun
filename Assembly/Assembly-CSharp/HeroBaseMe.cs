@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -150,7 +150,7 @@ public class HeroBaseMe : HeroBase
 			this.checkTimer = 1f;
 			this.EnemyOnlineCount = this.enemyOnlineCount();
 		}
-		bool flag3 = Fun.m_nIsTopUp() == 1 && MatchManager.GetInstance().m_pFbData.nType != 10;
+		bool flag3 = false; // [MOD] Inactivity / AFK Kick 100% desativado para testes livres
 		if (flag3)
 		{
 			bool flag4 = !this.hero.isDead && this.EnemyOnlineCount > 0;

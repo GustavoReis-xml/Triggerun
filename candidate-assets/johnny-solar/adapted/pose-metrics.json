@@ -1,0 +1,34 @@
+{
+  "aim": {
+    "p99EdgeStretch": 1.0942872762680054,
+    "maxEdgeStretch": 1.485677719116211
+  },
+  "run": {
+    "p99EdgeStretch": 1.1352547407150269,
+    "maxEdgeStretch": 2.8252623081207275
+  },
+  "turn": {
+    "p99EdgeStretch": 1.1696408987045288,
+    "maxEdgeStretch": 1.6595956087112427
+  },
+  "neck": {
+    "p99EdgeStretch": 1.1417025327682495,
+    "maxEdgeStretch": 2.3563032150268555
+  },
+  "shoulders": {
+    "p99EdgeStretch": 1.1857211589813232,
+    "maxEdgeStretch": 2.3142056465148926
+  },
+  "shoot": {
+    "p99EdgeStretch": 1.137505054473877,
+    "maxEdgeStretch": 3.197446346282959
+  },
+  "reload": {
+    "p99EdgeStretch": 1.1038380861282349,
+    "maxEdgeStretch": 2.0860037803649902
+  },
+  "crouch": {
+    "p99EdgeStretch": 1.1677005290985107,
+    "maxEdgeStretch": 2.459832191467285
+  }
+}

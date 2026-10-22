@@ -3,9 +3,10 @@
 // ⚡ GERENCIADOR DINÂMICO DE ENERGIA DE ULTIMATE (DAZHAO)
 // ══════════════════════════════════════════════════════════════
 function addPlayerUltEnergy(socket, amount) {
-    if (!socket || socket.destroyed || socket.socketType !== "SCENE" || socket.isDead) return;
+    if (!socket || socket.destroyed || socket.socketType !== "SCENE" || socket.isDead || !socket.isCombatReady || socket.sceneRetired || socket.inMatch === false) return;
     if (socket.ultimateTimer) return; // Não ganha energia enquanto a Ultimate estiver ativa
     const currentHero = socket.currentHeroId || 1015;
+    if (Number(currentHero) === 2000) return; // Lamster usa uma passiva, sem ultimate ativa.
     const dzList = db.heroDazhaoMap[currentHero] || [];
     const maxEnergy = (dzList.length > 0 && dzList[0].maxEnergy) ? dzList[0].maxEnergy : 10000;
     
@@ -21,7 +22,7 @@ function addPlayerUltEnergy(socket, amount) {
         const p50004 = utils.encodeInt(50004);
         const zero = utils.encodeInt(0);
         const energyEnc = utils.encodeInt(socket.ultEnergy);
-        const chargePacket = `e${socket.playerId}:SendMsgToAllClient,(${p50001},(${p50004},(${zero},${energyEnc},${zero})))\n`;
+        const chargePacket = `e${utils.encodeInt(Number(socket.playerId))}:SendMsgToAllClient,(${p50001},(${p50004},(${zero},${energyEnc},${zero})))\n`;
         socket.write(chargePacket);
     }
 }
@@ -34,10 +35,16 @@ const PLAYER_NAME = "Admin";
 const PLAYER_NAME_ENC = "41646d696e";
 const state = require('./state');
 const db = require('./database');
+const lamster = require('./lamster');
 const utils = require('./utils');
 const gameLogic = require('./gameLogic');
 const dbPersistence = require('./dbPersistence');
 const packetSniffer = require('./packetSniffer');
+const sceneScope = require('./sceneScope');
+const combat = require('./combatRules');
+const lifecycle = require('./matchLifecycle');
+const clientStream = require('./clientStream');
+const { decodeDamageEnvelope } = require('./sdgProtocol');
 
 // Desestruturação das referências globais mutáveis do estado
 const { activeSockets, spawnedNpcs, ipNames, ipIndexes, playerSessions, playerInventory, playerEquipment } = state;
@@ -54,9 +61,10 @@ function isEntityInsideEvaCage(entity, entityForce) {
     const cageRadiusSq = 400 * 400; // Raio real da jaula: 4 metros (400 unidades)
     for (const id in spawnedNpcs) {
         const npc = spawnedNpcs[id];
+        if (!sceneScope.sameScene(entity, npc)) continue;
         if (npc && (npc.index === 1015 || String(npc.index) === "1015") && !npc.isDead) {
             // Apenas inimigos da criadora da jaula sofrem a penalidade (forças opostas)
-            if (entityForce !== undefined && npc.force !== undefined && Number(entityForce) === Number(npc.force)) {
+            if (entityForce !== undefined && npc.force !== undefined && combat.sameSide(entity, npc, Number(entityForce) === Number(npc.force))) {
                 continue;
             }
             const cx = npc.x !== undefined ? npc.x : 0;
@@ -154,8 +162,23 @@ function getPlayerCustomizationData(playerName, heroId) {
     };
 }
 
-function getFullMatchUserList() {
-    const matchPlayers = activeSockets.filter(s => (s.socketType === "SCENE" || s.socketType === "LOBBY") && s.inMatch && !s.destroyed);
+function getFullMatchUserList(source) {
+    const rawMatchPlayers = activeSockets.filter(s => (s.socketType === "SCENE" || s.socketType === "LOBBY") && s.inMatch && !s.destroyed && sceneScope.sameScene(source, s));
+    // Agrupa por playerName único para evitar que o mesmo jogador apareça duplicado (ou em ambos os times)
+    const uniquePlayersMap = new Map();
+    rawMatchPlayers.forEach(p => {
+        const name = p.playerName || (p.remoteAddress && ipNames[p.remoteAddress]) || `Jogador_${p.playerIndex || 1}`;
+        if (!uniquePlayersMap.has(name)) {
+            uniquePlayersMap.set(name, p);
+        } else {
+            const existing = uniquePlayersMap.get(name);
+            // Prioriza o socket SCENE se estiver em cena de jogo, senão mantém o mais atual
+            if (p.socketType === "SCENE" && existing.socketType !== "SCENE") {
+                uniquePlayersMap.set(name, p);
+            }
+        }
+    });
+    const matchPlayers = Array.from(uniquePlayersMap.values());
     let elements = [];
     const one = utils.encodeInt(1);
     const zero = utils.encodeInt(0);
@@ -169,30 +192,44 @@ function getFullMatchUserList() {
         const pHeroInfo = `(${pHeroEnc},${utils.encodeInt(pCust.skinId || 1)},${utils.encodeInt(pCust.emoteId || 1)},${one},${utils.encodeInt(pCust.weaponId || 1)})`;
         const pPrerog = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${p.playerNameEnc}',${zero},'',${zero})`;
         const isChs = p.hasConfirmedHero ? one : zero;
-        const pUserData = `('${p.playerNameEnc}',${utils.encodeInt(pLvl)},${one},${utils.encodeInt(p.force || 1)},${one},${one},${pHeroEnc},${one},${one},${isChs},${utils.encodeInt(pCust.faceId || 1)},'Local',${zero},${pHeroInfo},${utils.encodeInt(p.playerIndex || 1)},${zero},${zero},${isCapEnc},${pPrerog},())`;
+        const pUserData = `('${p.playerNameEnc}',${utils.encodeInt(pLvl)},${one},${utils.encodeInt(combat.visibleForce(p, source))},${one},${one},${pHeroEnc},${one},${one},${isChs},${utils.encodeInt(pCust.faceId || 1)},'Local',${zero},${pHeroInfo},${utils.encodeInt(p.playerIndex || 1)},${zero},${zero},${isCapEnc},${pPrerog},())`;
         elements.push(`'${p.playerNameEnc}',${pUserData}`);
     });
     return elements.join(',');
 }
 
-function broadcastMatchUserList() {
-    const userList = getFullMatchUserList();
+function broadcastMatchUserList(source) {
+    const userList = getFullMatchUserList(source);
     if (!userList) return;
     const p20014 = utils.encodeInt(20014);
     const s90006 = utils.encodeInt(90006);
     activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
-            s.write(`e${s.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90006},(${userList})))\n`);
-            s.write(`e${s.playerIndex || 1}:OnFightStat,(1,0)\n`);
+        if (s.socketType === "SCENE" && !s.destroyed && !s.sceneRetired && sceneScope.sameScene(source, s)) {
+            s.write(`e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90006},(${combat.isFreeForAll(s) ? getFullMatchUserList(s) : userList})))\n`);
+            s.write(`e${utils.encodeInt(s.playerIndex || 1)}:OnFightStat,(1,0)\n`);
         }
     });
 }
 
 
+// OnShowLoad reads the roster to decide which hero model to load.
+function confirmInitialHero(socket, heroId) {
+    if (!socket.waitingForHeroLock || socket.destroyed || socket.sceneRetired || !socket.inMatch) return;
+    const room = roomContainers.get(socket.currentRoomUID);
+    if (socket.currentRoomUID != null && (!room || room.state !== 4)) return;
+    socket.currentHeroId = heroId;
+    socket.hasConfirmedHero = true;
+    const userList = getFullMatchUserList(socket);
+    socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(20014)},(${utils.encodeInt(90006)},(${userList})))\n`);
+    gameLogic.switchPlayerHero(socket, heroId);
+    broadcastMatchUserList(socket);
+}
+
 // Funções de sincronização de sessão de jogadores
 function updateSessionFromSocket(socket) {
     if (!socket || !socket.playerName) return;
     if (socket.socketType !== "SCENE") return; // Apenas atualiza a sessão de gameplay a partir do socket de cena
+    if (socket.sceneRetired) return; // Uma conexão antiga não pode ressuscitar a sessão do lobby.
     const session = playerSessions[socket.playerName];
     if (session) {
         if (socket.playerIndex !== undefined) session.playerIndex = socket.playerIndex;
@@ -207,6 +244,7 @@ function updateSessionFromSocket(socket) {
         if (socket.waitingForHeroLock !== undefined) session.waitingForHeroLock = socket.waitingForHeroLock;
         if (socket.hasConfirmedHero !== undefined) session.hasConfirmedHero = socket.hasConfirmedHero;
         if (socket.userData !== undefined) session.userData = socket.userData;
+        if (socket.currentRoomUID !== undefined) session.currentRoomUID = socket.currentRoomUID;
     }
     if (socket.lobbySocket) {
         if (socket.currentHeroId !== undefined) socket.lobbySocket.currentHeroId = socket.currentHeroId;
@@ -215,6 +253,7 @@ function updateSessionFromSocket(socket) {
         if (socket.finalMapId !== undefined) socket.lobbySocket.finalMapId = socket.finalMapId;
         if (socket.waitingForHeroLock !== undefined) socket.lobbySocket.waitingForHeroLock = socket.waitingForHeroLock;
         if (socket.hasConfirmedHero !== undefined) socket.lobbySocket.hasConfirmedHero = socket.hasConfirmedHero;
+        if (socket.currentRoomUID !== undefined) socket.lobbySocket.currentRoomUID = socket.currentRoomUID;
     }
 }
 
@@ -222,8 +261,8 @@ function syncSocketFromSession(socket) {
     if (!socket || !socket.playerName) return;
     const session = playerSessions[socket.playerName];
     if (session) {
-        socket.playerIndex = session.playerIndex;
-        socket.playerId = session.playerId;
+        socket.playerIndex = session.playerIndex || (global.userIndexes && global.userIndexes[socket.playerName]) || (Number(session.playerId) || 1);
+        socket.playerId = session.playerId || String(socket.playerIndex);
         socket.force = session.force;
         socket.targetMapId = session.targetMapId;
         socket.targetMapName = session.targetMapName;
@@ -234,12 +273,157 @@ function syncSocketFromSession(socket) {
         socket.waitingForHeroLock = session.waitingForHeroLock || false;
         socket.hasConfirmedHero = session.hasConfirmedHero || false;
         socket.userData = session.userData;
+        if (session.currentRoomUID !== undefined) socket.currentRoomUID = session.currentRoomUID;
     }
 }
 
-let currentRoom = null;
+function findBalancedSlot(room) {
+    const counts = [0, 0];
+    room.players.forEach((p, i) => { if (p) counts[(p.force || (i < 5 ? 1 : 2)) - 1]++; });
+    const first = counts[0] <= counts[1] ? 0 : 5;
+    for (const start of [first, first === 0 ? 5 : 0]) {
+        for (let i = start; i < start + 5; i++) if (!room.players[i]) return i;
+    }
+    return -1;
+}
+
+function cleanPlayerMatchState(socket, playerName, returnToHall = false) {
+    const pName = playerName || (socket && socket.playerName);
+    // Detach before clearing room identifiers. Retire every old scene connection so
+    // late packets cannot copy combat state back into the persistent lobby session.
+    const related = activeSockets.filter(s => s === socket || (pName && s.playerName === pName));
+    matchmakingQueue = matchmakingQueue.filter(entry => !related.includes(entry.socket));
+    for (const s of related) {
+        if (s.socketType === 'SCENE') {
+            if (!s.sceneRetired && s.inMatch !== false) {
+                const id = utils.encodeInt(s.playerIndex || Number(s.playerId) || 1);
+                activeSockets.forEach(peer => {
+                    if (peer !== s && sceneScope.canReceive(s, peer) && String(peer.playerIndex) !== String(s.playerIndex)) {
+                        peer.write(`d${id}\n`);
+                    }
+                });
+                // Hall can report departure before the scene request arrives.
+                if (returnToHall && !s.destroyed) {
+                    s.write(`e${id}:SendMsgToClient,(${utils.encodeInt(20001)},(0,'',0))\n`);
+                }
+            }
+            gameLogic.leavePveMatch(s);
+            const match = gameLogic.getTdmMatch(s, false);
+            if (match) match.players = match.players.filter(p => p !== s);
+            s.sceneRetired = true;
+        }
+        lifecycle.transition(s, 'leaving', 'return-or-disconnect');
+        sceneScope.invalidate(s);
+        s.inMatch = false;
+        s.currentRoomUID = null;
+        s.finalMapId = null;
+        s.waitingForHeroLock = false;
+        s.hasConfirmedHero = false;
+        lifecycle.transition(s, s.socketType === 'SCENE' ? 'closed' : 'lobby', 'match-state-cleared');
+    }
+    
+    // Limpa socket fornecido
+    if (socket) {
+        socket.inMatch = false;
+        socket.force = null;
+        socket.waitingForHeroLock = false;
+        socket.hasConfirmedHero = false;
+        socket.finalMapId = null;
+        socket.targetMapId = 5202;
+        socket.targetMapName = 'bachang_baxi';
+        socket.matchKills = 0;
+        socket.matchDeaths = 0;
+        socket.matchAssists = 0;
+        socket.matchDamage = 0;
+        socket.matchHeal = 0;
+        if (socket.heroLockTimeout) {
+            clearTimeout(socket.heroLockTimeout);
+            socket.heroLockTimeout = null;
+        }
+        if (socket.lobbySocket) {
+            socket.lobbySocket.inMatch = false;
+            socket.lobbySocket.force = null;
+            socket.lobbySocket.waitingForHeroLock = false;
+            socket.lobbySocket.hasConfirmedHero = false;
+            socket.lobbySocket.finalMapId = null;
+            socket.lobbySocket.currentRoomUID = null;
+        }
+        socket.currentRoomUID = null;
+    }
+
+    // Limpa sessão persistente
+    if (pName && playerSessions[pName]) {
+        playerSessions[pName].inMatch = false;
+        playerSessions[pName].force = null;
+        playerSessions[pName].finalMapId = null;
+        playerSessions[pName].targetMapId = 5202;
+        playerSessions[pName].targetMapName = 'bachang_baxi';
+        playerSessions[pName].waitingForHeroLock = false;
+        playerSessions[pName].hasConfirmedHero = false;
+        playerSessions[pName].currentRoomUID = null;
+        playerSessions[pName].playerIndex = null;
+    }
+
+    // Limpa lobby socket se encontrado em activeSockets
+    if (pName) {
+        const lobbyMatch = activeSockets.find(s => s.socketType === "LOBBY" && s.playerName === pName && !s.destroyed);
+        if (lobbyMatch && lobbyMatch !== socket) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.force = null;
+            lobbyMatch.waitingForHeroLock = false;
+            lobbyMatch.hasConfirmedHero = false;
+            lobbyMatch.finalMapId = null;
+            lobbyMatch.currentRoomUID = null;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 🏠 SISTEMA DE CONTAINERS DE SALAS AUTÔNOMOS
+// ---------------------------------------------------------------------------
+const roomContainers = new Map();
+global.roomContainers = roomContainers;
+let nextRoomUID = 1000;
+let currentRoom = null; // Mantido como fallback dinâmico
+
+function getRoom(roomUID) {
+    if (!roomUID) return null;
+    return roomContainers.get(Number(roomUID)) || null;
+}
+
+function getSocketRoom(socket) {
+    if (socket.currentRoomUID && roomContainers.has(Number(socket.currentRoomUID))) {
+        return roomContainers.get(Number(socket.currentRoomUID));
+    }
+    for (const room of roomContainers.values()) {
+        for (let i = 0; i < 10; i++) {
+            const p = room.players[i];
+            if (p && (p.socket === socket || (socket.playerName && p.name === socket.playerName))) {
+                socket.currentRoomUID = room.roomUID;
+                return room;
+            }
+        }
+    }
+    return null;
+}
+
+function getSceneSocketsForRoom(roomUID) {
+    if (roomUID == null) return [];
+    return activeSockets.filter(s => s.socketType === "SCENE" && !s.destroyed && !s.sceneRetired &&
+        s.isCombatReady && s.currentRoomUID != null && String(s.currentRoomUID) === String(roomUID));
+}
+
+function broadcastToSceneRoom(roomUID, packet, excludeSocket = null) {
+    const targets = getSceneSocketsForRoom(roomUID);
+    for (const s of targets) {
+        if (s !== excludeSocket) {
+            s.write(packet);
+        }
+    }
+}
 
 function getRoomActivePlayersCount(room) {
+    if (!room || !room.players) return 0;
     let count = 0;
     for (let i = 0; i < 10; i++) {
         if (room.players[i]) count++;
@@ -248,6 +432,7 @@ function getRoomActivePlayersCount(room) {
 }
 
 function buildRoomData(room) {
+    if (!room) return '((),())';
     const one = utils.encodeInt(1);
     const zero = utils.encodeInt(0);
     
@@ -266,17 +451,17 @@ function buildRoomData(room) {
             // Build player's heroInfo
             const heroId = p.socket.currentHeroId || 1015;
             const heroIdEnc = utils.encodeInt(heroId);
-            const pProfile = dbPersistence.loadPlayer(p.socket.playerName);
+            const pProfile = dbPersistence.loadPlayer(p.socket.playerName || p.name);
             const pLevel = pProfile && pProfile.level ? pProfile.level : (p.socket.level || 1);
             const pLevelEnc = utils.encodeInt(pLevel);
-            const cust = getPlayerCustomizationData(p.socket.playerName, heroId);
+            const cust = getPlayerCustomizationData(p.socket.playerName || p.name, heroId);
             const userDataHeroInfo = `(${heroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
             
             const isCapOpt = utils.encodeInt(isCaptain);
-            const prerogativeLobby = `(${isCapOpt},${isCapOpt},${isCapOpt},${isCapOpt},'${p.socket.playerNameEnc}',${zero},'',${zero})`;
-            const uData = `('${p.socket.playerNameEnc}',${pLevelEnc},${one},${utils.encodeInt(force)},${utils.encodeInt(isReady)},${one},${heroIdEnc},${one},${one},${one},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${one},${zero},${zero},${utils.encodeInt(isCaptain)},${prerogativeLobby},())`;
+            const prerogativeLobby = `(${isCapOpt},${isCapOpt},${isCapOpt},${isCapOpt},'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${zero},'',${zero})`;
+            const uData = `('${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${pLevelEnc},${one},${utils.encodeInt(force)},${utils.encodeInt(isReady)},${one},${heroIdEnc},${one},${one},${one},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${one},${zero},${zero},${utils.encodeInt(isCaptain)},${prerogativeLobby},())`;
             
-            userListElements.push(`'${p.socket.playerNameEnc}',${uData}`);
+            userListElements.push(`'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${uData}`);
         } else {
             userListElements.push(`'',()`);
         }
@@ -287,6 +472,7 @@ function buildRoomData(room) {
 }
 
 function buildRoomUserList(room) {
+    if (!room) return '()';
     const one = utils.encodeInt(1);
     const zero = utils.encodeInt(0);
     const userListElements = [];
@@ -300,17 +486,17 @@ function buildRoomUserList(room) {
             // Build player's heroInfo
             const heroId = p.socket.currentHeroId || 1015;
             const heroIdEnc = utils.encodeInt(heroId);
-            const pProfile = dbPersistence.loadPlayer(p.socket.playerName);
+            const pProfile = dbPersistence.loadPlayer(p.socket.playerName || p.name);
             const pLevel = pProfile && pProfile.level ? pProfile.level : (p.socket.level || 1);
             const pLevelEnc = utils.encodeInt(pLevel);
-            const cust = getPlayerCustomizationData(p.socket.playerName, heroId);
+            const cust = getPlayerCustomizationData(p.socket.playerName || p.name, heroId);
             const userDataHeroInfo = `(${heroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
             
             const isCapOpt = utils.encodeInt(isCaptain);
-            const prerogativeLobby = `(${isCapOpt},${isCapOpt},${isCapOpt},${isCapOpt},'${p.socket.playerNameEnc}',${zero},'',${zero})`;
-            const uData = `('${p.socket.playerNameEnc}',${pLevelEnc},${one},${utils.encodeInt(force)},${utils.encodeInt(isReady)},${one},${heroIdEnc},${one},${one},${one},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${one},${zero},${zero},${utils.encodeInt(isCaptain)},${prerogativeLobby},())`;
+            const prerogativeLobby = `(${isCapOpt},${isCapOpt},${isCapOpt},${isCapOpt},'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${zero},'',${zero})`;
+            const uData = `('${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${pLevelEnc},${one},${utils.encodeInt(force)},${utils.encodeInt(isReady)},${one},${heroIdEnc},${one},${one},${one},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${one},${zero},${zero},${utils.encodeInt(isCaptain)},${prerogativeLobby},())`;
             
-            userListElements.push(`'${p.socket.playerNameEnc}',${uData}`);
+            userListElements.push(`'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${uData}`);
         } else {
             userListElements.push(`'',()`);
         }
@@ -319,6 +505,7 @@ function buildRoomUserList(room) {
 }
 
 function broadcastToRoom(room, packet) {
+    if (!room || !room.players) return;
     for (let i = 0; i < 10; i++) {
         const p = room.players[i];
         if (p && p.socket && !p.socket.destroyed) {
@@ -327,8 +514,241 @@ function broadcastToRoom(room, packet) {
     }
 }
 
+function removePlayerFromRoom(room, socket) {
+    if (!room || !room.players) return;
+    let pSlot = -1;
+    for (let i = 0; i < 10; i++) {
+        const p = room.players[i];
+        if (p && (p.socket === socket || (socket.playerName && p.name === socket.playerName))) {
+            pSlot = i;
+            break;
+        }
+    }
+    if (pSlot === -1) return;
+
+    const leavingPlayer = room.players[pSlot];
+    room.players[pSlot] = null;
+    socket.currentRoomUID = null;
+
+    const remainingCount = getRoomActivePlayersCount(room);
+    console.log(`[🏠 CONTAINER] Jogador ${leavingPlayer.name} saiu do slot ${pSlot} da Sala ${room.roomUID}. Restantes: ${remainingCount}`);
+
+    if (remainingCount === 0) {
+        // Se a sala estiver em combate (state === 4) ou com partida TDM ativa, concede tolerância de 45 segundos para reconexão
+        if (room.state === 4 || (room.tdmMatch && room.tdmMatch.state !== 'ended')) {
+            console.log(`[⏳ CONTAINER] Sala ${room.roomUID} ficou sem jogadores ativos, mas a partida continua ativa (state: ${room.state}). Aguardando reconexão (45s)...`);
+            if (!room.autoDestroyTimer) {
+                room.autoDestroyTimer = setTimeout(() => {
+                    if (getRoomActivePlayersCount(room) === 0) {
+                        roomContainers.delete(room.roomUID);
+                        if (room.tdmMatch) {
+                            gameLogic.endTdmMatch(room.tdmMatch);
+                        }
+                        if (currentRoom && currentRoom.roomUID === room.roomUID) {
+                            currentRoom = null;
+                        }
+                        console.log(`[🗑️ CONTAINER] Container da Sala ${room.roomUID} (${room.roomName}) auto-destruído após timeout de reconexão.`);
+                    }
+                }, 45000);
+            }
+        } else {
+            // 🗑️ AUTO-DESTRUIÇÃO: Quando não tem nenhum player no container e não está em jogo, ele para de existir!
+            roomContainers.delete(room.roomUID);
+            if (currentRoom && currentRoom.roomUID === room.roomUID) {
+                currentRoom = null;
+            }
+            console.log(`[🗑️ CONTAINER] Container da Sala ${room.roomUID} (${room.roomName}) foi DESTRUÍDO por estar vazio!`);
+        }
+    } else {
+        // 👑 INDEPENDÊNCIA DE HOST: Se quem saiu era capitão, promove automaticamente o próximo jogador
+        if (leavingPlayer.isCaptain) {
+            const nextPlayer = room.players.find(p => p !== null);
+            if (nextPlayer) {
+                nextPlayer.isCaptain = 1;
+                nextPlayer.isReady = 1;
+                room.creatorName = nextPlayer.name;
+                console.log(`[👑 CONTAINER] Novo capitão da Sala ${room.roomUID}: ${nextPlayer.name}!`);
+            }
+        }
+        broadcastToRoom(room, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(room)})))\n`);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 🎯 COORDENADOR DE FILA DE MATCHMAKING UNIFICADO
+// ---------------------------------------------------------------------------
+let matchmakingQueue = [];
+let matchmakingTimer = null;
+
+function matchmakingKey(entry) {
+    return entry.isPve ? `pve:${entry.pveType}:${entry.pveLv}:${entry.pveId}` : (entry.nType === 11 ? 'individual' : 'team');
+}
+
+function processMatchmakingQueue() {
+    if (matchmakingTimer) {
+        clearTimeout(matchmakingTimer);
+        matchmakingTimer = null;
+    }
+    
+    // Filtra sockets válidos, ativos e não destruídos
+    matchmakingQueue = matchmakingQueue.filter(entry => entry.socket && !entry.socket.destroyed && !entry.socket.inMatch);
+    if (matchmakingQueue.length === 0) return;
+    
+    const key = matchmakingKey(matchmakingQueue[0]);
+    const queuedEntries = matchmakingQueue.filter(e => matchmakingKey(e) === key).slice(0, key.startsWith('pve:') ? 4 : 10);
+    matchmakingQueue = matchmakingQueue.filter(e => !queuedEntries.includes(e));
+    if (matchmakingQueue.length) matchmakingTimer = setTimeout(processMatchmakingQueue, 0);
+    
+    console.log(`[🎯 MATCHMAKING COORD] Agrupando ${queuedEntries.length} jogador(es) no mesmo container de partida!`);
+    
+    const firstEntry = queuedEntries[0];
+    const isPve = firstEntry.isPve;
+    const pveType = firstEntry.pveType;
+    const pveLv = firstEntry.pveLv;
+    const pveId = firstEntry.pveId;
+    
+    const PVP_MAP_POOL = firstEntry.nType === 11 ? combat.mapIds : [5204, 5010, 5024, 5210, 5212];
+    const sharedMapId = isPve ? pveId : PVP_MAP_POOL[Math.floor(Math.random() * PVP_MAP_POOL.length)];
+    const mapConf = MAP_CONFIG[sharedMapId] || (isPve ? { name: (pveType === 12 ? 'hasd_qingshen' : 'shuijingkuangdong'), type: pveType } : { name: 'jiaodouchang_02_3', type: 7 });
+    
+    state.setLastMapId(sharedMapId);
+    lastMapName = mapConf.name;
+    lastFinalMapId = sharedMapId;
+    lastFinalMapName = mapConf.name;
+    
+    // All queued modes use the existing hero-selection scene before combat.
+    const stagingMapId = 5010;
+    const stagingMapConf = MAP_CONFIG[stagingMapId] || mapConf;
+    
+    // 🏠 Cria um Container dedicado para a partida de Matchmaking
+    nextRoomUID++;
+    const matchRoomUID = nextRoomUID;
+    const matchRoom = {
+        roomUID: matchRoomUID,
+        isMatchmaking: true,
+        roomName: `Match_${matchRoomUID}`,
+        password: '',
+        mapId: stagingMapId,
+        finalMapId: sharedMapId,
+        mapType: stagingMapConf.type,
+        maxPlayers: queuedEntries.length,
+        creatorName: firstEntry.socket.playerName || 'Matchmaker',
+        state: 4, // Em combate
+        createTime: utils.Fun.GetServerDate(),
+        players: new Array(10).fill(null)
+    };
+    
+    const one = utils.encodeInt(1);
+    const zero = utils.encodeInt(0);
+    const startTime = utils.Fun.GetServerDate();
+    const p80001 = utils.encodeInt(80001);
+    const s80011 = utils.encodeInt(80011);
+    const s90001 = utils.encodeInt(90001);
+    const s90002 = utils.encodeInt(90002);
+    const s90004 = utils.encodeInt(90004);
+    const p1304 = utils.encodeInt(1304);
+    
+    // Configura cada jogador na fila: alterna equipes (1=Azul, 2=Vermelho)
+    queuedEntries.forEach((entry, idx) => {
+        const s = entry.socket;
+        const assignedForce = isPve ? 1 : (idx % 2 === 0 ? 1 : 2);
+        const playerIndex = (global.userIndexes && s.playerName && global.userIndexes[s.playerName]) ? global.userIndexes[s.playerName] : (idx + 1);
+        
+        s.playerIndex = playerIndex;
+        s.playerId = String(playerIndex);
+        s.force = assignedForce;
+        s.currentRoomUID = matchRoomUID;
+        s.inMatch = true;
+        s.targetMapId = stagingMapId;
+        s.finalMapId = sharedMapId;
+        s.targetMapName = stagingMapConf.name;
+        s.isPveMatch = isPve;
+        s.pveFbType = pveType;
+        s.pveFbLv = pveLv;
+        s.pveFbId = pveId;
+        s.waitingForHeroLock = true;
+        s.hasConfirmedHero = false;
+        lifecycle.transition(s, 'selecting', 'queue-admission');
+        
+        matchRoom.players[isPve ? idx : Math.floor(idx / 2) + (assignedForce === 2 ? 5 : 0)] = {
+            socket: s,
+            name: s.playerName,
+            force: assignedForce,
+            isReady: 1,
+            isCaptain: idx === 0 ? 1 : 0
+        };
+        
+        if (s.playerName && playerSessions[s.playerName]) {
+            playerSessions[s.playerName].currentRoomUID = matchRoomUID;
+            playerSessions[s.playerName].finalMapId = sharedMapId;
+            playerSessions[s.playerName].targetMapId = stagingMapId;
+            playerSessions[s.playerName].targetMapName = stagingMapConf.name;
+            playerSessions[s.playerName].isPveMatch = isPve;
+            playerSessions[s.playerName].pveFbType = pveType;
+            playerSessions[s.playerName].pveFbLv = pveLv;
+            playerSessions[s.playerName].pveFbId = pveId;
+            playerSessions[s.playerName].force = assignedForce;
+        }
+        
+        const myHeroId = s.currentHeroId || 1015;
+        const myHeroIdEnc = utils.encodeInt(myHeroId);
+        const cust = getPlayerCustomizationData(s.playerName, myHeroId);
+        const profileMe = dbPersistence.loadPlayer(s.playerName);
+        const myLevel = profileMe && profileMe.level ? profileMe.level : (s.level || 1);
+        const myUserDataHeroInfo = `(${myHeroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
+        const isCapEnc = utils.encodeInt(idx === 0 ? 1 : 0);
+        const prerogativeLobbyMe = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${s.playerNameEnc}',${zero},'',${zero})`;
+        const netIdEnc = utils.encodeInt(s.playerIndex || 1);
+        s.userData = `('${s.playerNameEnc}',${utils.encodeInt(myLevel)},${one},${utils.encodeInt(assignedForce)},${one},${one},${myHeroIdEnc},${one},${one},${zero},${utils.encodeInt(cust.faceId)},'Local',${zero},${myUserDataHeroInfo},${netIdEnc},${zero},${zero},${isCapEnc},${prerogativeLobbyMe},())`;
+    });
+    
+    roomContainers.set(matchRoomUID, matchRoom);
+    
+    // Constrói a lista com TODOS os jogadores da fila juntos
+    let userListElements = [];
+    queuedEntries.forEach(entry => {
+        userListElements.push(`'${entry.socket.playerNameEnc}',${entry.socket.userData}`);
+    });
+    global.currentMatchBots = [];
+    const userList = userListElements.join(',');
+    
+    const isChangeHeroEnc = utils.encodeInt(1);
+    const matchMsg = `(${s90001},(${userList}),${utils.encodeInt(stagingMapId)},${utils.encodeInt(stagingMapConf.type)},'${stagingMapConf.name}',${utils.encodeInt(60)},${isChangeHeroEnc},'${startTime}',${zero},${zero})`;
+    
+    // 1. Avisa primeiro que a partida foi encontrada (80011 com flag=1)
+    queuedEntries.forEach(entry => {
+        const s = entry.socket;
+        s.write(`e1:SendMsgToHallClient,(${p80001},(${s80011},(1,${utils.encodeInt(queuedEntries.length)},${utils.encodeInt(queuedEntries.length)},())))\n`);
+    });
+    
+    // 2. Fecha a busca e transiciona para a seleção de heróis
+    queuedEntries.forEach(entry => {
+        const s = entry.socket;
+        const admissionCurrent = sceneScope.capture(s);
+        const activeAdmission = () => admissionCurrent() && s.inMatch && matchRoom.state === 4;
+        (async () => {
+            await utils.sleep(300);
+            if (!activeAdmission()) return;
+            s.write(`e1:SendMsgToHallClient,(${p80001},(${utils.encodeInt(80007)},()))\n`);
+            if (!activeAdmission()) return;
+            await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 400);
+            if (!activeAdmission()) return;
+            await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${s.playerNameEnc}',${s.userData}))\n`, 400);
+
+            setTimeout(() => {
+                if (activeAdmission()) {
+                    s.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(s.playerIndex || 1)},'${s.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${one}))\n`);
+                }
+            }, 1500);
+        })().catch(err => console.error('[🎯 ERRO no envio sincronizado do Quick Match]', err));
+    });
+}
+
 const tcpServer = net.createServer((socket) => {
+    lifecycle.attach(socket);
+    lifecycle.event(socket, 'CONNECTION_OPEN');
     socket.setNoDelay(true); // Desativa algoritmo de Nagle para latência mínima e zero jitter
+    socket.setKeepAlive(true, 15000); // Mantém conexões TCP ativas contra timeouts de NAT/firewall da nuvem
     activeSockets.push(socket);
     let socketType = "DESCONHECIDO";
     socket.isEncrypted = false;
@@ -351,17 +771,17 @@ const tcpServer = net.createServer((socket) => {
     // No Lobby (LOBBY), a UI do jogador sempre espera o prefixo "e1:" (pois mHallUser:1 é fixo).
     const originalWrite = socket.write;
     socket.write = function (data, encoding, callback) {
-        if (socket.socketType === "SCENE") {
+        if (socket.socketType === "SCENE" && !socket.bypassInterceptor) {
             if (typeof data === 'string') {
                 if (data.includes('SendMsgToHallClient') || data.includes('SendMsgToClient')) {
-                    const idxPrefix = `e${socket.playerIndex || 1}:`;
-                    data = data.replace(/^e\d+:/, idxPrefix);
+                    const idxPrefix = `e${utils.encodeInt(socket.playerIndex || 1)}:`;
+                    data = data.replace(/^e[0-9A-Z_`a-z]+:(?=SendMsgTo(?:Hall)?Client,)/gm, idxPrefix);
                 }
             } else if (Buffer.isBuffer(data)) {
                 let str = data.toString('utf8');
                 if (str.includes('SendMsgToHallClient') || str.includes('SendMsgToClient')) {
-                    const idxPrefix = `e${socket.playerIndex || 1}:`;
-                    str = str.replace(/^e\d+:/, idxPrefix);
+                    const idxPrefix = `e${utils.encodeInt(socket.playerIndex || 1)}:`;
+                    str = str.replace(/^e[0-9A-Z_`a-z]+:(?=SendMsgTo(?:Hall)?Client,)/gm, idxPrefix);
                     data = Buffer.from(str, 'utf8');
                 }
             }
@@ -394,22 +814,8 @@ const tcpServer = net.createServer((socket) => {
 
     socket.write("B1A_6CDA_GEMINI");
 
-    socket.on('data', (data) => {
-        let textoRecebido = "";
-
-        if (socket.isEncrypted) {
-            let decrypted = Buffer.alloc(data.length);
-            for (let i = 0; i < data.length; i++) {
-                let step1 = data[i] ^ 173;
-                let step2 = step1 - 37;
-                if (step2 < 0) step2 += 256;
-                decrypted[i] = step2 ^ 227;
-            }
-            textoRecebido = decrypted.toString('utf8');
-        } else {
-            textoRecebido = data.toString('utf8');
-        }
-
+    socket.on('data', data => clientStream.consume(socket, data, handleMessage));
+    function handleMessage(textoRecebido) {
         if (global.broadcastPacket) {
             try {
                 global.broadcastPacket({
@@ -444,6 +850,7 @@ const tcpServer = net.createServer((socket) => {
         else if (textoRecebido.includes("HallUser")) socketType = "LOBBY";
         else if (textoRecebido.includes("PlayerUser")) socketType = "SCENE";
         socket.socketType = socketType;
+        if (socketType === 'SCENE' && socket.sceneRetired) return;
 
         if (socketType === "LOBBY" && socket.playerIndex === undefined) {
             socket.playerIndex = ipIndexes[ip] || 1;
@@ -480,23 +887,46 @@ const tcpServer = net.createServer((socket) => {
                         targetMapId: lobbyMatch ? (lobbyMatch.targetMapId || 5202) : 5202,
                         targetMapName: lobbyMatch ? (lobbyMatch.targetMapName || 'bachang_baxi') : 'bachang_baxi',
                         currentHeroId: lobbyMatch ? (lobbyMatch.currentHeroId || 1015) : 1015,
+                        currentSkinId: lobbyMatch ? (lobbyMatch.currentSkinId || 1) : 1,
+                        currentWeaponId: lobbyMatch ? (lobbyMatch.currentWeaponId || 1) : 1,
                         waitingForHeroLock: lobbyMatch ? lobbyMatch.waitingForHeroLock : false,
                         hasConfirmedHero: lobbyMatch ? lobbyMatch.hasConfirmedHero : false,
-                        finalMapId: lobbyMatch ? lobbyMatch.finalMapId : null
+                        finalMapId: lobbyMatch ? lobbyMatch.finalMapId : null,
+                        currentRoomUID: lobbyMatch ? lobbyMatch.currentRoomUID : (socket.currentRoomUID || null)
                     };
                 }
                 
                 if (lobbyMatch) {
+                    if (lobbyMatch.playerIndex) playerSessions[extractedName].playerIndex = lobbyMatch.playerIndex;
+                    if (lobbyMatch.playerId) playerSessions[extractedName].playerId = lobbyMatch.playerId;
                     playerSessions[extractedName].finalMapId = lobbyMatch.finalMapId;
                     playerSessions[extractedName].targetMapId = lobbyMatch.targetMapId;
                     playerSessions[extractedName].targetMapName = lobbyMatch.targetMapName;
                     playerSessions[extractedName].force = lobbyMatch.force !== undefined ? lobbyMatch.force : 1;
                     playerSessions[extractedName].currentHeroId = lobbyMatch.currentHeroId || 1015;
+                    if (lobbyMatch.currentSkinId !== undefined) playerSessions[extractedName].currentSkinId = lobbyMatch.currentSkinId;
+                    if (lobbyMatch.currentWeaponId !== undefined) playerSessions[extractedName].currentWeaponId = lobbyMatch.currentWeaponId;
                     playerSessions[extractedName].waitingForHeroLock = lobbyMatch.waitingForHeroLock || false;
                     playerSessions[extractedName].hasConfirmedHero = lobbyMatch.hasConfirmedHero || false;
+                    if (lobbyMatch.currentRoomUID !== undefined) {
+                        playerSessions[extractedName].currentRoomUID = lobbyMatch.currentRoomUID;
+                        socket.currentRoomUID = lobbyMatch.currentRoomUID;
+                    }
                 }
                 
                 syncSocketFromSession(socket);
+                socket.inMatch = true;
+                socket.sceneRetired = false;
+                for (const old of activeSockets) {
+                    if (old !== socket && old.socketType === 'SCENE' && old.playerName === extractedName && !old.sceneRetired) {
+                        old.sceneRetired = true;
+                        lifecycle.transition(old, 'closed', 'scene-replaced');
+                        sceneScope.invalidate(old);
+                        const oldMatch = gameLogic.getTdmMatch(old, false);
+                        if (oldMatch) oldMatch.players = oldMatch.players.filter(p => p !== old);
+                        old.destroy();
+                    }
+                }
                 
                 if (lobbyMatch) {
                     socket.lobbySocket = lobbyMatch;
@@ -606,6 +1036,8 @@ const tcpServer = net.createServer((socket) => {
                             targetMapId: 5202,
                             targetMapName: 'bachang_baxi',
                             currentHeroId: 1015,
+                            currentSkinId: 1,
+                            currentWeaponId: 1,
                             finalMapId: null
                         };
                     }
@@ -613,6 +1045,7 @@ const tcpServer = net.createServer((socket) => {
                     socket.playerId = playerSessions[extractedName].playerId;
                 }
                 console.log(`[🏰 LOBBY] Identificado com sucesso: ${socket.playerName} (ID: ${socket.playerId})`);
+                lifecycle.transition(socket, 'lobby', 'hall-connected');
             }
             socket.isEncrypted = true;
             socket.write(`mHallUser:1\n`);
@@ -642,7 +1075,8 @@ const tcpServer = net.createServer((socket) => {
                 const levelEnc = utils.encodeInt(profile.level || 1);
                 const expEnc = utils.encodeInt(profile.exp || 0);
                 const regDate = profile.createdAt ? profile.createdAt.replace('T', ' ').substring(0, 19).replace(/-/g, '/') : '2024/01/01 12:00:00';
-                const arr0 = `(1,'${socket.playerNameEnc}',1,${faceIdEnc},1,1,${levelEnc},${expEnc},1,0,0,0,0,0,'${regDate}',0,0,0,0,0,0,0,0,-1,(),0,0,0,0,0,0)`;
+                const userCid = (global.userIndexes && socket.playerName && global.userIndexes[socket.playerName]) ? global.userIndexes[socket.playerName] : (socket.playerIndex || 1);
+                const arr0 = `(${userCid},'${socket.playerNameEnc}',1,${faceIdEnc},1,1,${levelEnc},${expEnc},1,0,0,0,0,0,'${regDate}',0,0,0,0,0,0,0,0,-1,(),0,0,0,0,0,0)`;
                 // Saldo real vindo do banco do jogador:
                 const inv = state.playerInventory[socket.playerName];
                 const goldEnc = utils.encodeInt(inv.gold);
@@ -813,16 +1247,31 @@ const tcpServer = net.createServer((socket) => {
                 // ==========================================
                 // 🚪 RETORNO AO LOBBY / SAÍDA (20002 / 20001 / 1310)
                 // ==========================================
-                if (cmdId === 20002 || cmdId === 20001) {
-                    console.log(`[🚪 LOBBY] Jogador ${socket.playerName || 'Jogador'} notificou retorno ao Lobby/Hall.`);
-                    socket.inMatch = false;
-                    socket.waitingForHeroLock = false;
-                    socket.hasConfirmedHero = false;
-                    return;
-                }
+                if (cmdId === 20002 || cmdId === 20001 || cmdId === 1310) {
+                    console.log(`[🚪 LOBBY] Jogador ${socket.playerName || 'Jogador'} retornou ao Lobby/Hall (Cmd: ${cmdId}). Limpando estado de partida...`);
 
-                if (cmdId === 1310) {
-                    // GMACTION / ACK retorno do Lobby
+                    // Remove o jogador do container de sala em que estava
+                    const targetRoom = getSocketRoom(socket);
+                    cleanPlayerMatchState(socket, socket.playerName, cmdId !== 1310);
+                    if (targetRoom) removePlayerFromRoom(targetRoom, socket);
+
+                    // Sincroniza dados frescos de saldo e nível no retorno ao Lobby (10025: SetMoneyData e 21002: EXP)
+                    if (socket.playerName) {
+                        const profile = dbPersistence.loadPlayer(socket.playerName);
+                        if (profile) {
+                            const gold = profile.gold !== undefined ? profile.gold : 999999;
+                            const diamonds = profile.diamonds !== undefined ? profile.diamonds : 999999;
+                            const goldEnc = utils.encodeInt(gold);
+                            const diaEnc = utils.encodeInt(diamonds);
+                            const szMoney = `(${goldEnc},${goldEnc},${diaEnc},0,${utils.encodeInt(10)},0,${goldEnc},${goldEnc},${goldEnc},0,${goldEnc},0,0,0)`;
+                            socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(10025)},(0,${szMoney}))\n`);
+
+                            const curExp = utils.encodeInt(profile.exp || 0);
+                            const curLvl = utils.encodeInt(profile.level || 1);
+                            socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(21002)},(0,0,${curExp},${curLvl},0))\n`);
+                            console.log(`[💰 SYNC LOBBY RETURN] Saldo sincronizado para ${socket.playerName}: ${gold} Ouro, Nível ${profile.level || 1}.`);
+                        }
+                    }
                     return;
                 }
 
@@ -857,114 +1306,174 @@ const tcpServer = net.createServer((socket) => {
                         const pveLv = isPve ? nFbLv : 0;
                         const pveId = isPve ? (nFbId || (pveType === 12 ? 5115 : 5105)) : 5204;
 
-                        // Pool de mapas PVP exclusiva para Team Deathmatch (TDM - Tipo 7)
-                        const PVP_MAP_POOL = [5204, 5010, 5024, 5210, 5212];
-                        const randomPvpMapId = PVP_MAP_POOL[Math.floor(Math.random() * PVP_MAP_POOL.length)];
-                        
-                        // Se já houver outro jogador na fila/partida com mapa definido, junta-se ao mesmo mapa. Caso contrário, sorteia um mapa Deathmatch novo!
-                        const existingMatchSocket = activeSockets.find(s => s.inMatch && s.finalMapId && !s.destroyed);
-                        const mapId = isPve ? pveId : (existingMatchSocket ? existingMatchSocket.finalMapId : randomPvpMapId);
-                        const mapConf = MAP_CONFIG[mapId] || (isPve ? { name: (pveType === 12 ? 'hasd_qingshen' : 'shuijingkuangdong'), type: pveType } : { name: 'jiaodouchang_02_3', type: 7 });
+                        // 🎯 BACKFILL INTELIGENTE: Se houver uma partida já rolando com vagas livres, entra direto nela!
+                        if (!isPve) {
+                            let activeMatchRoom = Array.from(roomContainers.values()).find(r => 
+                                r.isMatchmaking && 
+                                r.state === 4 &&
+                                Number(MAP_CONFIG[r.finalMapId || r.mapId]?.type) === nType &&
+                                (!r.ffaMatch || (r.ffaMatch.state === 'fight' && Date.now() - r.ffaMatch.startedAt < (r.ffaMatch.duration - 20) * 1000)) && 
+                                (!r.tdmMatch || (r.tdmMatch.state !== 'ended' && (r.tdmMatch.fightSeconds === undefined || r.tdmMatch.fightSeconds > 20))) &&
+                                getRoomActivePlayersCount(r) < 10
+                            );
 
-                        // Balanceamento dinâmico de equipes
-                        const activeSceneSockets = activeSockets.filter(s => s.socketType === "SCENE" && !s.destroyed);
-                        const blueCount = activeSceneSockets.filter(s => Number(s.force) === 1).length;
-                        const redCount = activeSceneSockets.filter(s => Number(s.force) === 2).length;
-                        const assignedForce = (blueCount > redCount) ? 2 : 1;
-
-                        socket.targetMapId = isPve ? pveId : 5010;
-                        socket.targetMapName = mapConf.name;
-                        socket.inMatch = true;
-                        socket.force = assignedForce;
-                        if (!socket.playerIndex) {
-                            socket.playerIndex = ipIndexes[socket.remoteAddress] || (activeSceneSockets.length + 1);
-                        }
-                        socket.playerId = String(socket.playerIndex);
-                        socket.isPveMatch = isPve;
-                        socket.pveFbType = pveType;
-                        socket.pveFbLv = pveLv;
-                        socket.pveFbId = pveId;
-                        socket.waitingForHeroLock = !isPve;
-                        socket.finalMapId = mapId;
-                        state.setLastMapId(mapId);
-                        lastMapName = mapConf.name;
-                        lastFinalMapId = mapId;
-                        lastFinalMapName = mapConf.name;
-                        
-                        console.log(`[🎯 MATCHMAKING] Jogador ${playerName} (Time ${assignedForce}) entrou na fila do modo ${isPve ? 'PVE (' + mapConf.name + ' - Nível ' + pveLv + ')' : 'PVP (' + mapConf.name + ' - Mapa ' + mapId + ')'}!`);
-                        
-                        // 1. Enviar pacote 80006: "Procurando Partida..."
-                        const searchArr = `(0,60,1,0,1,10,(),0,${pveType || matchType || 1})`;
-                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(80001)},(${utils.encodeInt(80006)},(1,${searchArr})))\n`);
-                        
-                        // 2. Esperar tempo curto de fila, depois enviar 80007 "Partida Encontrada!" e o 90001!
-                        const queueDelay = isPve ? 1200 : 2500;
-                        setTimeout(() => {
-                            // Envia 80007 para fechar a tela de busca
-                            socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(80001)},(${utils.encodeInt(80007)},()))\n`);
-                            
-                            const p80001 = utils.encodeInt(80001);
-                            const s90001 = utils.encodeInt(90001);
-                            const s90002 = utils.encodeInt(90002);
-                            const s90004 = utils.encodeInt(90004);
-                            const p1304 = utils.encodeInt(1304);
-                            
-                            const stagingMapId = isPve ? pveId : 5010;
-                            socket.targetMapId = stagingMapId;
-                            socket.finalMapId = mapId;
-                            socket.waitingForHeroLock = !isPve;
-                            socket.hasConfirmedHero = false;
-                            
-                            const mapIdEnc = utils.encodeInt(stagingMapId);
-                            const stagingMapConf = MAP_CONFIG[stagingMapId] || mapConf;
-                            
-                            // Sincroniza a sessão persistente com os novos mapas de partida
-                            if (socket.playerName && playerSessions[socket.playerName]) {
-                                playerSessions[socket.playerName].finalMapId = mapId;
-                                playerSessions[socket.playerName].targetMapId = stagingMapId;
-                                playerSessions[socket.playerName].targetMapName = stagingMapConf.name;
-                                playerSessions[socket.playerName].isPveMatch = isPve;
-                                playerSessions[socket.playerName].pveFbType = pveType;
-                                playerSessions[socket.playerName].pveFbLv = pveLv;
-                                playerSessions[socket.playerName].pveFbId = pveId;
-                                playerSessions[socket.playerName].force = assignedForce;
+                            if (!activeMatchRoom) {
+                                activeMatchRoom = Array.from(roomContainers.values()).find(r => 
+                                    !r.isMatchmaking && 
+                                    r.state === 4 &&
+                                Number(MAP_CONFIG[r.finalMapId || r.mapId]?.type) === nType &&
+                                (!r.ffaMatch || (r.ffaMatch.state === 'fight' && Date.now() - r.ffaMatch.startedAt < (r.ffaMatch.duration - 20) * 1000)) && 
+                                    (!r.password || r.password === '') &&
+                                    (!r.tdmMatch || (r.tdmMatch.state !== 'ended' && (r.tdmMatch.fightSeconds === undefined || r.tdmMatch.fightSeconds > 20))) &&
+                                    getRoomActivePlayersCount(r) < (r.maxPlayers || 10)
+                                );
                             }
-                            const mapTypeEnc = utils.encodeInt(stagingMapConf.type);
-                            const startTime = utils.Fun.GetServerDate();
-                            const zero = utils.encodeInt(0);
-                            const one = utils.encodeInt(1);
 
-                            const isCapEnc = utils.encodeInt(1);
-                            const myHeroId = socket.currentHeroId || 1015;
-                            const myHeroIdEnc = utils.encodeInt(myHeroId);
-                            const cust = getPlayerCustomizationData(socket.playerName, myHeroId);
-                            const profileMe = dbPersistence.loadPlayer(socket.playerName);
-                            const myLevel = profileMe && profileMe.level ? profileMe.level : (socket.level || 1);
-                            const myUserDataHeroInfo = `(${myHeroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
-                            const prerogativeLobbyMe = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${socket.playerNameEnc}',${zero},'',${zero})`;
-                            socket.hasConfirmedHero = false;
-                            const isChsOkEnc = zero;
-                            const netIdEnc = utils.encodeInt(socket.playerIndex || 1);
-                            const myUserData = `('${socket.playerNameEnc}',${utils.encodeInt(myLevel)},${one},${utils.encodeInt(assignedForce)},${one},${one},${myHeroIdEnc},${one},${one},${isChsOkEnc},${utils.encodeInt(cust.faceId)},'Local',${zero},${myUserDataHeroInfo},${netIdEnc},${zero},${zero},${isCapEnc},${prerogativeLobbyMe},())`;
-                            
-                            global.currentMatchBots = [];
-                            const userList = getFullMatchUserList();
-                            const isChangeHeroEnc = utils.encodeInt(1);
-                            const matchMsg = `(${s90001},(${userList}),${mapIdEnc},${mapTypeEnc},'${stagingMapConf.name}',${utils.encodeInt(isPve ? 1800 : 60)},${isChangeHeroEnc},'${startTime}',${zero},${zero})`;
-                            
-                            (async () => {
-                                await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 400);
-                                await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${socket.playerNameEnc}',${myUserData}))\n`, 400);
-                                if (isPve) {
-                                    await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},(${s90004}))\n`, 400);
+                            if (activeMatchRoom) {
+                                const existingSlot = activeMatchRoom.players.findIndex(p => p && p.name === socket.playerName);
+                                const joinSlot = existingSlot !== -1 ? existingSlot : findBalancedSlot(activeMatchRoom);
+
+                                if (joinSlot !== -1) {
+                                    const assignedForce = joinSlot < 5 ? 1 : 2;
+                                    const playerIndex = (global.userIndexes && socket.playerName && global.userIndexes[socket.playerName]) ? global.userIndexes[socket.playerName] : (joinSlot + 1);
+
+                                    socket.playerIndex = playerIndex;
+                                    socket.playerId = String(playerIndex);
+                                    socket.force = assignedForce;
+                                    socket.currentRoomUID = activeMatchRoom.roomUID;
+                                    socket.inMatch = true;
+                                    socket.targetMapId = activeMatchRoom.finalMapId || activeMatchRoom.mapId;
+                                    socket.finalMapId = socket.targetMapId;
+                                    const targetMapConf = MAP_CONFIG[socket.targetMapId] || { name: 'jiaodouchang_02_3', type: 7 };
+                                    socket.targetMapName = targetMapConf.name;
+                                    socket.waitingForHeroLock = true;
+                                    socket.hasConfirmedHero = false;
+                                    lifecycle.transition(socket, 'selecting', 'quick-backfill');
+
+                                    activeMatchRoom.players[joinSlot] = {
+                                        socket: socket,
+                                        name: socket.playerName,
+                                        force: assignedForce,
+                                        isReady: 1,
+                                        isCaptain: 0
+                                    };
+
+                                    if (socket.playerName && playerSessions[socket.playerName]) {
+                                        playerSessions[socket.playerName].currentRoomUID = activeMatchRoom.roomUID;
+                                        playerSessions[socket.playerName].finalMapId = socket.targetMapId;
+                                        playerSessions[socket.playerName].targetMapId = socket.targetMapId;
+                                        playerSessions[socket.playerName].targetMapName = targetMapConf.name;
+                                        playerSessions[socket.playerName].force = assignedForce;
+                                        playerSessions[socket.playerName].inMatch = true;
+                                    }
+
+                                    console.log(`[🎯 MATCHMAKING BACKFILL] Jogador ${socket.playerName} pareado imediatamente na partida ativa Sala ${activeMatchRoom.roomUID} (Time ${assignedForce}, Slot ${joinSlot})!`);
+
+                                    const one = utils.encodeInt(1);
+                                    const zero = utils.encodeInt(0);
+                                    const dateStr = utils.Fun.GetServerDate();
+                                    const p80001 = utils.encodeInt(80001);
+                                    const s80011 = utils.encodeInt(80011);
+                                    const s90001 = utils.encodeInt(90001);
+                                    const s90002 = utils.encodeInt(90002);
+                                    const p1304 = utils.encodeInt(1304);
+
+                                    const myHeroId = socket.currentHeroId || 1015;
+                                    const myHeroIdEnc = utils.encodeInt(myHeroId);
+                                    const cust = getPlayerCustomizationData(socket.playerName, myHeroId);
+                                    const profileMe = dbPersistence.loadPlayer(socket.playerName);
+                                    const myLevel = profileMe && profileMe.level ? profileMe.level : (socket.level || 1);
+                                    const myUserDataHeroInfo = `(${myHeroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
+                                    const isCapEnc = zero;
+                                    const prerogativeLobbyMe = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${socket.playerNameEnc}',${zero},'',${zero})`;
+                                    const netIdEnc = utils.encodeInt(socket.playerIndex || 1);
+                                    socket.userData = `('${socket.playerNameEnc}',${utils.encodeInt(myLevel)},${one},${utils.encodeInt(assignedForce)},${one},${one},${myHeroIdEnc},${one},${one},${zero},${utils.encodeInt(cust.faceId)},'Local',${zero},${myUserDataHeroInfo},${netIdEnc},${zero},${zero},${isCapEnc},${prerogativeLobbyMe},())`;
+
+                                    const userList = getFullMatchUserList(socket);
+
+                                    const isChangeHeroEnc = utils.encodeInt(1);
+                                    const matchMsg = `(${s90001},(${userList}),${utils.encodeInt(socket.targetMapId)},${utils.encodeInt(targetMapConf.type)},'${targetMapConf.name}',${utils.encodeInt(60)},${isChangeHeroEnc},'${dateStr}',${one},${zero})`;
+
+                                    socket.write(`e1:SendMsgToHallClient,(${p80001},(${s80011},(1,${one},${one},())))\n`);
+
+                                    const backfillIsCurrent = sceneScope.capture(socket);
+                                    (async () => {
+                                        await utils.sleep(300);
+                                        if (!backfillIsCurrent() || !socket.inMatch || activeMatchRoom.state !== 4) return;
+                                        socket.write(`e1:SendMsgToHallClient,(${p80001},(${utils.encodeInt(80007)},()))\n`);
+                                        await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 300);
+                                        if (!backfillIsCurrent() || !socket.inMatch || activeMatchRoom.state !== 4) return;
+                                        await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${socket.playerNameEnc}',${socket.userData}))\n`, 300);
+                                        setTimeout(() => {
+                                            if (backfillIsCurrent() && socket.inMatch && activeMatchRoom.state === 4) {
+                                                socket.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(socket.playerIndex || 1)},'${socket.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${one}))\n`);
+                                            }
+                                        }, 800);
+                                    })().catch(err => console.error('[❌ ERRO no Backfill do Matchmaking]', err));
+
+                                    return;
                                 }
-                                
-                                setTimeout(() => {
-                                    socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(1304)},(${utils.encodeInt(1)},'${socket.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${utils.encodeInt(1)}))\n`);
-                                }, 1500);
-                            })().catch(err => console.error('[🎯 ERRO no envio do Quick Match]', err));
-                            
-                        }, queueDelay);
+                            }
+                        }
+
+                        // 1. Envia pacote 80006: "Procurando Partida..."
+                        const targetMax = isPve ? 4 : 2;
+                        const requestKey = matchmakingKey({isPve, pveType, pveLv, pveId, nType});
+                        const currentCount = matchmakingQueue.filter(e => matchmakingKey(e) === requestKey && e.socket !== socket).length + 1;
+                        const searchArr = `(0,60,1,0,${currentCount},${targetMax},(),0,${pveType || matchType || 1})`;
+                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(80001)},(${utils.encodeInt(80006)},(1,${searchArr})))\n`);
+
+                        // 2. Insere na fila de matchmaking coordenada (evita duplicatas do mesmo socket)
+                        matchmakingQueue = matchmakingQueue.filter(entry => entry.socket !== socket);
+                        lifecycle.transition(socket, 'queued', 'matchmaking-request');
+                        matchmakingQueue.push({
+                            socket,
+                            playerName,
+                            matchType,
+                            nType,
+                            isPve,
+                            pveType,
+                            pveLv,
+                            pveId
+                        });
+
+                        console.log(`[🎯 FILA] Jogador ${playerName || socket.playerName} entrou na fila de matchmaking. Total na fila: ${matchmakingQueue.length}/${targetMax}`);
+
+                        // 3. Atualiza a contagem no MatchUI (80011) de TODOS os jogadores na fila
+                        const p80001 = utils.encodeInt(80001);
+                        const s80011 = utils.encodeInt(80011);
+                        matchmakingQueue.forEach(entry => {
+                            if (matchmakingKey(entry) === requestKey && entry.socket && !entry.socket.destroyed) {
+                                entry.socket.write(`e1:SendMsgToHallClient,(${p80001},(${s80011},(0,${utils.encodeInt(currentCount)},${utils.encodeInt(targetMax)},())))\n`);
+                            }
+                        });
+
+                        // 4. Temporizador de Pareamento:
+                        // Se atingiu o alvo (ex: 2 players em PVP ou 4 em PVE), inicia em 1.5s
+                        // Se for solo, dá 10s de janela para outro jogador entrar antes de iniciar com bots
+                        if (matchmakingTimer) clearTimeout(matchmakingTimer);
+
+                        if (currentCount >= targetMax) {
+                            matchmakingTimer = setTimeout(processMatchmakingQueue, 1500);
+                        } else {
+                            matchmakingTimer = setTimeout(processMatchmakingQueue, isPve ? 8000 : 10000);
+                        }
+                    }
+                    else if (subId === 80003) {
+                        // 🛑 Cancelar Matchmaking
+                        matchmakingQueue = matchmakingQueue.filter(entry => entry.socket !== socket);
+                        if (socket.matchPhase === 'queued') lifecycle.transition(socket, 'lobby', 'queue-cancelled');
+                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(80001)},(${utils.encodeInt(80007)},()))\n`);
+                        console.log(`[🎯 FILA] Jogador ${socket.playerName || 'Jogador'} cancelou a busca de partida. Restantes na fila: ${matchmakingQueue.length}`);
+                        
+                        // Atualiza a contagem (80011) para quem ainda está na fila
+                        const p80001 = utils.encodeInt(80001);
+                        const s80011 = utils.encodeInt(80011);
+                        matchmakingQueue.forEach(entry => {
+                            if (entry.socket && !entry.socket.destroyed) {
+                                entry.socket.write(`e1:SendMsgToHallClient,(${p80001},(${s80011},(0,${utils.encodeInt(matchmakingQueue.filter(e => matchmakingKey(e) === matchmakingKey(entry)).length)},${utils.encodeInt(entry.isPve ? 4 : 2)},())))\n`);
+                            }
+                        });
                     }
                     return;
                 }
@@ -983,7 +1492,7 @@ const tcpServer = net.createServer((socket) => {
                     
                     // Mapeia e prepara cada jogador com ID único e Equipes alternadas (TDM Blue vs Red)
                     lobbySockets.forEach((s, idx) => {
-                        const playerIndex = idx + 1;
+                        const playerIndex = (global.userIndexes && s.playerName && global.userIndexes[s.playerName]) ? global.userIndexes[s.playerName] : (idx + 1);
                         s.playerIndex = playerIndex;
                         s.playerId = String(playerIndex);
                         s.force = (idx % 2 === 0) ? 1 : 2; // Team 1 (Blue) vs Team 2 (Red)
@@ -1040,7 +1549,7 @@ const tcpServer = net.createServer((socket) => {
                             await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},(${s90004}))\n`, 400);
                             
                             setTimeout(() => {
-                                s.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(1)},'${s.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${utils.encodeInt(1)}))\n`);
+                                s.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(s.playerIndex || 1)},'${s.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${utils.encodeInt(1)}))\n`);
                             }, 1500);
                         })().catch(err => console.error('[❌ ERRO no envio do Lobby Match]', err));
                     });
@@ -1059,15 +1568,22 @@ const tcpServer = net.createServer((socket) => {
 
                     // 3301: Criar Sala
                     if (subCmd === 3301) {
-                        const roomUID = 999;
-                        const roomName = subArgs[0] || "Sala de Treino";
+                        nextRoomUID++;
+                        const roomUID = nextRoomUID;
+                        const roomName = subArgs[0] || `Sala ${roomUID}`;
                         const password = subArgs[1] || "";
                         const mapId = subArgs[2] || 5202; // Default to bachang_baxi
                         const mapType = subArgs[3] || 6;
                         const maxPlayers = subArgs[5] || 10;
-                        const creatorName = socket.playerName;
+                        const creatorName = socket.playerName || `Jogador_${socket.playerIndex || 1}`;
                         
-                        currentRoom = {
+                        // Se o socket já estava em alguma sala, sai dela primeiro
+                        const oldRoom = getSocketRoom(socket);
+                        if (oldRoom) {
+                            removePlayerFromRoom(oldRoom, socket);
+                        }
+                        
+                        const newRoom = {
                             roomUID: roomUID,
                             roomName: roomName,
                             password: password,
@@ -1077,21 +1593,21 @@ const tcpServer = net.createServer((socket) => {
                             creatorName: creatorName,
                             state: 0, // 0 = Esperando
                             createTime: utils.Fun.GetServerDate(),
-                            players: []
+                            players: new Array(10).fill(null)
                         };
                         
                         // Adiciona criador na vaga 0
-                        currentRoom.players[0] = {
+                        newRoom.players[0] = {
                             socket: socket,
-                            name: socket.playerName,
+                            name: creatorName,
                             force: 1,
                             isReady: 1,
                             isCaptain: 1
                         };
                         
-                        for (let i = 1; i < 10; i++) {
-                            currentRoom.players[i] = null;
-                        }
+                        socket.currentRoomUID = roomUID;
+                        roomContainers.set(roomUID, newRoom);
+                        currentRoom = newRoom; // Fallback para compatibilidade
                         
                         socket.targetMapId = mapId;
                         const mapConf = MAP_CONFIG[mapId] || { name: 'bachang_baxi', type: 6 };
@@ -1102,124 +1618,232 @@ const tcpServer = net.createServer((socket) => {
                         
                         // 2. Envia 3301 com (1) indicando sucesso
                         socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3301)},(${utils.encodeInt(1)})))\n`);
+                        console.log(`[🏠 CONTAINER] Nova Sala ${roomUID} criada por ${creatorName} (${roomName} - Mapa ${mapId})`);
                         return;
                     }
 
                     // 3307: Obter informações da sala
                     if (subCmd === 3307) {
-                        if (!currentRoom) {
+                        const targetUID = (subArgs && subArgs[0] !== undefined) ? Number(subArgs[0]) : null;
+                        const targetRoom = targetUID ? getRoom(targetUID) : getSocketRoom(socket);
+                        if (!targetRoom) {
                             socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3307)},(-1,())))\n`);
                             return;
                         }
-                        const rData = buildRoomData(currentRoom);
+                        const rData = buildRoomData(targetRoom);
                         socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3307)},(1,${rData})))\n`);
                         return;
                     }
 
                     // 3306: Lista de salas
                     if (subCmd === 3306) {
-                        if (!currentRoom) {
+                        // Limpa salas vazias que NÃO estejam em tolerância de reconexão
+                        for (const [uid, r] of roomContainers.entries()) {
+                            if (r.isMatchmaking) continue; // Matchmaking não entra na lista de salas do saguão
+                            if (getRoomActivePlayersCount(r) === 0 && !r.autoDestroyTimer && (!r.tdmMatch || r.tdmMatch.state === 'ended')) {
+                                roomContainers.delete(uid);
+                            }
+                        }
+                        // Salas criadas no saguão: aguardando (state === 0) OU em andamento (state === 4)
+                        const activeRooms = Array.from(roomContainers.values()).filter(r => 
+                            !r.isMatchmaking && 
+                            (r.state === 0 || r.state === 4) && 
+                            (getRoomActivePlayersCount(r) > 0 || r.autoDestroyTimer || (r.tdmMatch && r.tdmMatch.state !== 'ended'))
+                        );
+                        if (activeRooms.length === 0) {
                             socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3306)},(0,1,())))\n`);
                             return;
                         }
-                        const roomInfo = `(${utils.encodeInt(currentRoom.mapId)},'${utils.encodeHex(currentRoom.creatorName)}','${utils.encodeHex(currentRoom.roomName)}','${utils.encodeHex(currentRoom.password)}',${utils.encodeInt(currentRoom.mapId)},${utils.encodeInt(currentRoom.mapType)},0,${utils.encodeInt(currentRoom.maxPlayers)},0,0,0,${utils.encodeInt(getRoomActivePlayersCount(currentRoom))},0,${utils.encodeInt(currentRoom.state)},0,${utils.encodeInt(7777)},'${currentRoom.createTime}',${utils.encodeInt(currentRoom.roomUID)},0)`;
-                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3306)},(1,1,(${roomInfo}))))\n`);
+                        const roomInfoList = activeRooms.map(r => {
+                            return `(${utils.encodeInt(r.mapId)},'${utils.encodeHex(r.creatorName)}','${utils.encodeHex(r.roomName)}','${utils.encodeHex(r.password)}',${utils.encodeInt(r.mapId)},${utils.encodeInt(r.mapType)},0,${utils.encodeInt(r.maxPlayers)},0,0,0,${utils.encodeInt(getRoomActivePlayersCount(r))},0,${utils.encodeInt(r.state)},0,${utils.encodeInt(7777)},'${r.createTime}',${utils.encodeInt(r.roomUID)},0)`;
+                        }).join(',');
+                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3306)},(1,${utils.encodeInt(activeRooms.length)},(${roomInfoList}))))\n`);
                         return;
                     }
 
                     // 3303: Entrar na sala
                     if (subCmd === 3303) {
-                        if (!currentRoom) {
+                        const targetUID = (subArgs[1] !== undefined && subArgs[1] !== null && Number(subArgs[1]) > 0) ? Number(subArgs[1]) : null;
+                        const targetRoom = targetUID ? getRoom(targetUID) : (roomContainers.values().next().value || null);
+                        if (!targetRoom) {
                             socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},(-1,1)))\n`);
                             return;
                         }
+
+                        // Se a sala tem timer de auto-destruição pendente (tolerância de reconexão), cancela pois alguém entrou!
+                        if (targetRoom.autoDestroyTimer) {
+                            clearTimeout(targetRoom.autoDestroyTimer);
+                            targetRoom.autoDestroyTimer = null;
+                            console.log(`[⏳ CONTAINER] Timer de auto-destruição da Sala ${targetRoom.roomUID} cancelado por reconexão.`);
+                        }
+
+                        // Verificação de senha
+                        if (targetRoom.password && targetRoom.password !== '') {
+                            const providedPass = subArgs[0] ? utils.decodeHex(subArgs[0]) : '';
+                            if (providedPass !== targetRoom.password) {
+                                socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},(-2,1)))\n`);
+                                return;
+                            }
+                        }
+
                         let joinSlot = -1;
+                        // 1. Verifica se o jogador já possui um slot na sala (Reconexão!)
                         for (let i = 0; i < 10; i++) {
-                            if (!currentRoom.players[i]) {
+                            if (targetRoom.players[i] && (targetRoom.players[i].socket === socket || targetRoom.players[i].name === socket.playerName)) {
                                 joinSlot = i;
                                 break;
                             }
+                        }
+                        // Preserve explicit pre-match slots; balance late arrivals.
+                        if (joinSlot === -1) {
+                            joinSlot = targetRoom.state === 4 ? findBalancedSlot(targetRoom) : targetRoom.players.findIndex(p => !p);
                         }
                         if (joinSlot === -1) {
                             socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},(-2,1)))\n`);
                             return;
                         }
                         
-                        currentRoom.players[joinSlot] = {
+                        // Se já estava em outra sala, remove da antiga primeiro
+                        const prevRoom = getSocketRoom(socket);
+                        if (prevRoom && prevRoom.roomUID !== targetRoom.roomUID) {
+                            removePlayerFromRoom(prevRoom, socket);
+                        }
+                        
+                        const assignedForce = [9,12].includes(MAP_CONFIG[targetRoom.finalMapId || targetRoom.mapId]?.type) ? 1 : (joinSlot < 5 ? 1 : 2);
+                        const playerIndex = (global.userIndexes && socket.playerName && global.userIndexes[socket.playerName]) ? global.userIndexes[socket.playerName] : (joinSlot + 1);
+                        socket.playerIndex = playerIndex;
+                        socket.playerId = String(playerIndex);
+                        socket.force = assignedForce;
+                        socket.inMatch = true;
+                        socket.currentRoomUID = targetRoom.roomUID;
+                        const effectiveMapId = targetRoom.finalMapId || targetRoom.mapId;
+                        socket.targetMapId = effectiveMapId;
+                        socket.finalMapId = effectiveMapId;
+                        const mapConfJoin = MAP_CONFIG[effectiveMapId] || { name: 'bachang_baxi', type: 7 };
+                        socket.targetMapName = mapConfJoin.name;
+
+                        targetRoom.players[joinSlot] = {
                             socket: socket,
-                            name: socket.playerName,
-                            force: joinSlot < 5 ? 1 : 2,
-                            isReady: 0,
-                            isCaptain: 0
+                            name: socket.playerName || `Jogador_${playerIndex}`,
+                            force: assignedForce,
+                            isReady: 1,
+                            isCaptain: (joinSlot === 0 && !targetRoom.players.some((p, idx) => idx !== 0 && p && p.isCaptain)) ? 1 : 0
                         };
                         
-                        socket.targetMapId = currentRoom.mapId;
-                        const mapConfJoin = MAP_CONFIG[currentRoom.mapId] || { name: 'bachang_baxi', type: 6 };
-                        socket.targetMapName = mapConfJoin.name;
+                        if (socket.playerName && playerSessions[socket.playerName]) {
+                            playerSessions[socket.playerName].playerIndex = playerIndex;
+                            playerSessions[socket.playerName].playerId = String(playerIndex);
+                            playerSessions[socket.playerName].currentRoomUID = targetRoom.roomUID;
+                            playerSessions[socket.playerName].targetMapId = effectiveMapId;
+                            playerSessions[socket.playerName].finalMapId = effectiveMapId;
+                            playerSessions[socket.playerName].targetMapName = mapConfJoin.name;
+                            playerSessions[socket.playerName].force = assignedForce;
+                            playerSessions[socket.playerName].inMatch = true;
+                        }
+
+                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(3310)},(${utils.encodeInt(targetRoom.roomUID)}))\n`);
                         
-                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(3310)},(${utils.encodeInt(currentRoom.roomUID)}))\n`);
-                        
-                        const rDataJoin = buildRoomData(currentRoom);
-                        const joinSuccessMsg = `(1,(1,${rDataJoin},'${utils.encodeHex(currentRoom.creatorName)}'))`;
-                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},${joinSuccessMsg}))\n`);
-                        
-                        broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(currentRoom)})))\n`);
+                        const rDataJoin = buildRoomData(targetRoom);
+                        const joiningNameEnc = socket.playerNameEnc || utils.encodeHex(socket.playerName || `Jogador_${socket.playerIndex || 1}`);
+                        const joinSuccessMsg = `(1,(1,${rDataJoin},'${joiningNameEnc}'))`;
+
+                        // 🚀 SE A PARTIDA JÁ ESTIVER EM COMBATE (state === 4), TRANSIÇÃO DIRETA PARA A CENA (JIP / RECONNECT)!
+                        if (targetRoom.state === 4) {
+                            console.log(`[🚀 SALA JIP] ${socket.playerName} entrando diretamente na partida em combate da Sala ${targetRoom.roomUID} (${mapConfJoin.name})!`);
+                            
+                            socket.waitingForHeroLock = true;
+                            socket.hasConfirmedHero = false;
+                            lifecycle.transition(socket, 'selecting', 'room-admission');
+
+                            // Confirma entrada da sala no Hall para sincronizar dados
+                            socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},${joinSuccessMsg}))\n`);
+
+                            const one = utils.encodeInt(1);
+                            const zero = utils.encodeInt(0);
+                            const dateStr = utils.Fun.GetServerDate();
+                            const p80001 = utils.encodeInt(80001);
+                            const s90001 = utils.encodeInt(90001);
+                            const s90002 = utils.encodeInt(90002);
+                            const p1304 = utils.encodeInt(1304);
+
+                            const myHeroId = socket.currentHeroId || 1015;
+                            const myHeroIdEnc = utils.encodeInt(myHeroId);
+                            const cust = getPlayerCustomizationData(socket.playerName, myHeroId);
+                            const profileMe = dbPersistence.loadPlayer(socket.playerName);
+                            const myLevel = profileMe && profileMe.level ? profileMe.level : (socket.level || 1);
+                            const myUserDataHeroInfo = `(${myHeroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
+                            const isCapEnc = zero;
+                            const prerogativeLobbyMe = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${socket.playerNameEnc}',${zero},'',${zero})`;
+                            const netIdEnc = utils.encodeInt(socket.playerIndex || 1);
+                            socket.userData = `('${socket.playerNameEnc}',${utils.encodeInt(myLevel)},${one},${utils.encodeInt(assignedForce)},${one},${one},${myHeroIdEnc},${one},${one},${zero},${utils.encodeInt(cust.faceId)},'Local',${zero},${myUserDataHeroInfo},${netIdEnc},${zero},${zero},${isCapEnc},${prerogativeLobbyMe},())`;
+
+                            const userList = getFullMatchUserList(socket);
+
+                            const isChangeHeroEnc = utils.encodeInt(1);
+                            const matchMsg = `(${s90001},(${userList}),${utils.encodeInt(effectiveMapId)},${utils.encodeInt(mapConfJoin.type)},'${mapConfJoin.name}',${utils.encodeInt(60)},${isChangeHeroEnc},'${dateStr}',${one},${zero})`;
+
+                            const joinIsCurrent = sceneScope.capture(socket);
+                            (async () => {
+                                if (!joinIsCurrent() || !socket.inMatch) return;
+                                await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 300);
+                                if (!joinIsCurrent() || !socket.inMatch || targetRoom.state !== 4) return;
+                                await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${socket.playerNameEnc}',${socket.userData}))\n`, 300);
+                                setTimeout(() => {
+                                    if (joinIsCurrent() && socket.inMatch && targetRoom.state === 4) {
+                                        socket.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(socket.playerIndex || 1)},'${socket.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${one}))\n`);
+                                    }
+                                }, 800);
+                            })().catch(err => console.error('[❌ ERRO no JIP da Sala]', err));
+
+                            return;
+                        }
+
+                        // Envia 3303 para toda a sala: para quem entrou abre a sala (a == me), para os outros atualiza (a != me)
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3303)},${joinSuccessMsg}))\n`);
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(targetRoom)})))\n`);
+                        console.log(`[🏠 CONTAINER] ${socket.playerName} entrou no slot ${joinSlot} da Sala ${targetRoom.roomUID}`);
                         return;
                     }
 
                     // 3304: Sair da sala
                     if (subCmd === 3304) {
-                        if (!currentRoom) return;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
+                        
                         let pSlot = -1;
                         for (let i = 0; i < 10; i++) {
-                            if (currentRoom.players[i] && currentRoom.players[i].socket === socket) {
+                            if (targetRoom.players[i] && (targetRoom.players[i].socket === socket || (socket.playerName && targetRoom.players[i].name === socket.playerName))) {
                                 pSlot = i;
                                 break;
                             }
                         }
                         if (pSlot === -1) return;
                         
-                        const p = currentRoom.players[pSlot];
-                        if (p.isCaptain) {
-                            // Disparar disband
-                            const rDataDisband = buildRoomData(currentRoom);
-                            const disbandPacket = `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3304)},(1,${utils.encodeInt(currentRoom.roomUID)},${rDataDisband},'${p.socket.playerNameEnc}',0,3)))\n`;
-                            broadcastToRoom(currentRoom, disbandPacket);
-                            
-                            for (let i = 0; i < 10; i++) {
-                                const pl = currentRoom.players[i];
-                                if (pl && pl.socket) {
-                                    pl.socket.targetMapId = 5202;
-                                    pl.socket.targetMapName = 'bachang_baxi';
-                                }
-                            }
-                            currentRoom = null;
-                        } else {
-                            currentRoom.players[pSlot] = null;
-                            socket.targetMapId = 5202;
-                            socket.targetMapName = 'bachang_baxi';
-                            
-                            const rDataLeave = buildRoomData(currentRoom);
-                            socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3304)},(1,${utils.encodeInt(currentRoom.roomUID)},${rDataLeave},'${p.socket.playerNameEnc}',0,1)))\n`);
-                            
-                            broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(currentRoom)})))\n`);
-                        }
+                        const p = targetRoom.players[pSlot];
+                        const rDataLeave = buildRoomData(targetRoom);
+                        
+                        socket.targetMapId = 5202;
+                        socket.targetMapName = 'bachang_baxi';
+                        socket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3304)},(1,${utils.encodeInt(targetRoom.roomUID)},${rDataLeave},'${socket.playerNameEnc || utils.encodeHex(p.name)}',0,1)))\n`);
+                        
+                        removePlayerFromRoom(targetRoom, socket);
                         return;
                     }
 
                     // 3318: Mudar de Time (Swap Faction)
                     if (subCmd === 3318) {
-                        if (!currentRoom) return;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
                         let pSlot = -1;
                         for (let i = 0; i < 10; i++) {
-                            if (currentRoom.players[i] && currentRoom.players[i].socket === socket) {
+                            if (targetRoom.players[i] && (targetRoom.players[i].socket === socket || (socket.playerName && targetRoom.players[i].name === socket.playerName))) {
                                 pSlot = i;
                                 break;
                             }
                         }
                         if (pSlot === -1) return;
                         
-                        const p = currentRoom.players[pSlot];
+                        const p = targetRoom.players[pSlot];
                         const toTeam = (subArgs[1] !== undefined && subArgs[1] !== null) ? Number(subArgs[1]) : 0;
                         let toIdx = (subArgs[2] !== undefined && subArgs[2] !== null) ? Number(subArgs[2]) : -1;
                         
@@ -1233,36 +1857,31 @@ const tcpServer = net.createServer((socket) => {
                         } else if (toTeam === 1 || toTeam === '1') {
                             targetTeam = 2; // Red
                         } else {
-                            // Fallback: toggle to the opposite team
                             targetTeam = pSlot < 5 ? 2 : 1;
                         }
 
                         let absoluteIdx = -1;
                         if (toIdx !== -1) {
-                            // Client sends list index (0,2,4,6,8 = Blue team; 10,12,14,16,18 = Red team)
-                            // Convert to server slot by dividing by 2: 0-4 = Blue, 5-9 = Red
                             absoluteIdx = Math.floor(toIdx / 2);
                             if (absoluteIdx < 0 || absoluteIdx >= 10) absoluteIdx = -1;
                         } else {
-                            // Dynamically find first empty slot on the target team
                             const startSlot = targetTeam === 1 ? 0 : 5;
                             const endSlot = targetTeam === 1 ? 5 : 10;
                             for (let i = startSlot; i < endSlot; i++) {
-                                if (!currentRoom.players[i]) {
+                                if (!targetRoom.players[i]) {
                                     absoluteIdx = i;
                                     break;
                                 }
                             }
                         }
                         
-                        if (absoluteIdx !== -1 && absoluteIdx !== pSlot && absoluteIdx < 10 && !currentRoom.players[absoluteIdx]) {
-                            currentRoom.players[absoluteIdx] = p;
-                            currentRoom.players[pSlot] = null;
+                        if (absoluteIdx !== -1 && absoluteIdx !== pSlot && absoluteIdx < 10 && !targetRoom.players[absoluteIdx]) {
+                            targetRoom.players[absoluteIdx] = p;
+                            targetRoom.players[pSlot] = null;
                             p.force = absoluteIdx < 5 ? 1 : 2;
                             
                             console.log(`[🏠 SALA] Mudar de time bem-sucedida! ${p.name} agora está no slot ${absoluteIdx} (Time ${p.force})`);
-                            
-                            broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(currentRoom)})))\n`);
+                            broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(targetRoom)})))\n`);
                         } else {
                             console.log(`[⚠️ SALA] Mudança de time rejeitada. Slot ${absoluteIdx} ocupado ou inválido.`);
                         }
@@ -1271,98 +1890,116 @@ const tcpServer = net.createServer((socket) => {
 
                     // 3324: Alterar mapa / Configurações da sala
                     if (subCmd === 3324) {
-                        if (!currentRoom) return;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
                         const changes = subArgs[2] || [];
                         for (let i = 0; i < changes.length; i += 2) {
                             const idx = changes[i];
                             const val = changes[i + 1];
                             if (idx === 4) {
-                                currentRoom.mapId = val;
+                                targetRoom.mapId = val;
                                 const mapConfMod = MAP_CONFIG[val] || { name: 'bachang_baxi', type: 6 };
                                 for (let j = 0; j < 10; j++) {
-                                    const pl = currentRoom.players[j];
+                                    const pl = targetRoom.players[j];
                                     if (pl && pl.socket) {
                                         pl.socket.targetMapId = val;
                                         pl.socket.targetMapName = mapConfMod.name;
                                     }
                                 }
                             } else if (idx === 5) {
-                                currentRoom.mapType = val;
+                                targetRoom.mapType = val;
                             }
                         }
                         const changesStr = changes.map(v => typeof v === 'number' ? utils.encodeInt(v) : v).join(',');
-                        broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3324)},(${changesStr})))\n`);
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3324)},(${changesStr})))\n`);
                         return;
                     }
 
                     // 3308: Alternar Preparado (Ready) / Confirmar herói
                     if (subCmd === 3308) {
-                        if (!currentRoom) return;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
                         let pSlot = -1;
                         for (let i = 0; i < 10; i++) {
-                            if (currentRoom.players[i] && currentRoom.players[i].socket === socket) {
+                            if (targetRoom.players[i] && (targetRoom.players[i].socket === socket || (socket.playerName && targetRoom.players[i].name === socket.playerName))) {
                                 pSlot = i;
                                 break;
                             }
                         }
                         if (pSlot === -1) return;
                         
-                        const p = currentRoom.players[pSlot];
+                        const p = targetRoom.players[pSlot];
                         p.isReady = p.isReady ? 0 : 1;
                         
-                        const rDataReady = buildRoomData(currentRoom);
-                        broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3308)},(1,${rDataReady},'${p.socket.playerNameEnc}')))\n`);
+                        const rDataReady = buildRoomData(targetRoom);
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3308)},(1,${rDataReady},'${socket.playerNameEnc || utils.encodeHex(p.name)}')))\n`);
                         return;
                     }
 
                     // 3313: Expulsar jogador
                     if (subCmd === 3313) {
-                        if (!currentRoom) return;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
                         let senderSlot = -1;
                         for (let i = 0; i < 10; i++) {
-                            if (currentRoom.players[i] && currentRoom.players[i].socket === socket) {
+                            if (targetRoom.players[i] && (targetRoom.players[i].socket === socket || (socket.playerName && targetRoom.players[i].name === socket.playerName))) {
                                 senderSlot = i;
                                 break;
                             }
                         }
-                        if (senderSlot === -1 || !currentRoom.players[senderSlot].isCaptain) return;
+                        if (senderSlot === -1 || !targetRoom.players[senderSlot].isCaptain) return;
                         
                         const targetNameDec = utils.decodeHex(subArgs[1]);
                         let targetSlot = -1;
                         for (let i = 0; i < 10; i++) {
-                            if (currentRoom.players[i] && currentRoom.players[i].name === targetNameDec) {
+                            if (targetRoom.players[i] && targetRoom.players[i].name === targetNameDec) {
                                 targetSlot = i;
                                 break;
                             }
                         }
                         
                         if (targetSlot !== -1) {
-                            const targetSocket = currentRoom.players[targetSlot].socket;
-                            currentRoom.players[targetSlot] = null;
+                            const targetEntry = targetRoom.players[targetSlot];
+                            const targetSocket = targetEntry.socket;
+                            targetRoom.players[targetSlot] = null;
                             
                             if (targetSocket) {
+                                targetSocket.currentRoomUID = null;
                                 targetSocket.targetMapId = 5202;
                                 targetSocket.targetMapName = 'bachang_baxi';
-                                const rDataKick = buildRoomData(currentRoom);
-                                targetSocket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3304)},(1,${utils.encodeInt(currentRoom.roomUID)},${rDataKick},'${targetSocket.playerNameEnc}',0,1)))\n`);
+                                const rDataKick = buildRoomData(targetRoom);
+                                targetSocket.write(`e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3304)},(1,${utils.encodeInt(targetRoom.roomUID)},${rDataKick},'${targetSocket.playerNameEnc || utils.encodeHex(targetEntry.name)}',0,1)))\n`);
                             }
                             
-                            broadcastToRoom(currentRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(currentRoom)})))\n`);
+                            broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3318)},(1,${buildRoomUserList(targetRoom)})))\n`);
                         }
                         return;
                     }
 
                     // 3320: Iniciar Partida da Sala
                     if (subCmd === 3320) {
-                        if (!currentRoom) return;
-                        const mapId = currentRoom.mapId;
+                        const targetRoom = getSocketRoom(socket);
+                        if (!targetRoom) return;
+                        if (targetRoom.state === 4) {
+                            console.log(`[⚠️ SALA] Partida da Sala ${targetRoom.roomUID} já está em andamento! Ignorando 3320 duplicado.`);
+                            return;
+                        }
+
+                        const mapId = targetRoom.mapId;
                         const mapConf = MAP_CONFIG[mapId] || { name: 'bachang_baxi', type: 6 };
-                        currentRoom.state = 4; // Jogando
+                        targetRoom.ffaMatch = null; // A new round owns a new individual controller.
+                        targetRoom.state = 4; // Jogando
+                        targetRoom.finalMapId = mapId;
                         
                         state.setLastMapId(mapId);
                         lastMapName = mapConf.name;
                         
-                        const roomPlayers = currentRoom.players.filter(p => p !== null);
+                        // 1. Notifica a sala que o jogo iniciou (3320) e atualiza o estado para 4 (3324)
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3320)},()))\n`);
+                        broadcastToRoom(targetRoom, `e1:SendMsgToHallClient,(${utils.encodeInt(20013)},(${utils.encodeInt(3324)},(${utils.encodeInt(13)},${utils.encodeInt(4)})))\n`);
+                        
+                        const roomPlayers = targetRoom.players.filter(p => p !== null && p.socket && !p.socket.destroyed);
+                        if (roomPlayers.length === 0) return;
                         
                         const stagingMapId = 5010;
                         const stagingConf = MAP_CONFIG[stagingMapId];
@@ -1372,7 +2009,9 @@ const tcpServer = net.createServer((socket) => {
                             p.socket.targetMapId = stagingMapId; // STAGING MAP FOR SELECT HERO
                             p.socket.targetMapName = stagingConf.name;
                             p.socket.inMatch = true;
-                            p.socket.force = p.force; // 1 ou 2
+                            p.force = [9,12].includes(MAP_CONFIG[mapId]?.type) ? 1 : p.force;
+                            p.socket.force = p.force; // PvE is cooperative
+                            lifecycle.transition(p.socket, 'selecting', 'room-start');
                             p.socket.waitingForHeroLock = true; // ESPERA O LOCK DO HERÓI
                             p.socket.hasConfirmedHero = false;
                             
@@ -1391,41 +2030,31 @@ const tcpServer = net.createServer((socket) => {
                         const ninetyNine = utils.encodeInt(99);
                         
                         roomPlayers.forEach((p, idx) => {
-                            const playerIndex = idx + 1;
+                            const playerIndex = (global.userIndexes && p.socket.playerName && global.userIndexes[p.socket.playerName]) ? global.userIndexes[p.socket.playerName] : (idx + 1);
                             p.socket.playerIndex = playerIndex;
                             p.socket.playerId = String(playerIndex);
                             
                             const heroId = p.socket.currentHeroId || 1015;
-
-                            
                             const heroIdEnc = utils.encodeInt(heroId);
-
-                            
                             const profile = dbPersistence.loadPlayer(p.socket.playerName);
-
-                            
                             const playerEq = state.playerEquipment[p.socket.playerName] || (profile && profile.equipment) || {};
-
-                            
                             const eq = playerEq[heroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
-
-                            
                             const heroInfo = generateFullHeroData(heroId, eq.skin, eq.weapon, eq.emote, eq.pose, profile).split(',').slice(1).join(',');
                             
                             const cust = getPlayerCustomizationData(p.socket.playerName, heroId);
                             const userDataHeroInfo = `(${heroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
                             const isCaptain = p.isCaptain ? 1 : 0;
                             const isCaptainEnc = utils.encodeInt(isCaptain);
-                            const prerogativeLobby = `(${isCaptainEnc},${isCaptainEnc},${isCaptainEnc},${isCaptainEnc},'${p.socket.playerNameEnc}',${zero},'',${zero})`;
+                            const prerogativeLobby = `(${isCaptainEnc},${isCaptainEnc},${isCaptainEnc},${isCaptainEnc},'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${zero},'',${zero})`;
                             p.socket.hasConfirmedHero = false;
                             const isChsOkEnc = zero;
                             const netIdEnc = utils.encodeInt(p.socket.playerIndex || 1);
-                            p.socket.userData = `('${p.socket.playerNameEnc}',${ninetyNine},${one},${utils.encodeInt(p.force)},${one},${one},${heroIdEnc},${one},${one},${isChsOkEnc},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${netIdEnc},${zero},${zero},${isCaptainEnc},${prerogativeLobby},())`;
+                            p.socket.userData = `('${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${ninetyNine},${one},${utils.encodeInt(p.force)},${one},${one},${heroIdEnc},${one},${one},${isChsOkEnc},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${netIdEnc},${zero},${zero},${isCaptainEnc},${prerogativeLobby},())`;
                         });
                         
                         let userListElements = [];
                         roomPlayers.forEach(p => {
-                            userListElements.push(`'${p.socket.playerNameEnc}',${p.socket.userData}`);
+                            userListElements.push(`'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${p.socket.userData}`);
                         });
                         global.currentMatchBots = [];
                         const userList = userListElements.join(',');
@@ -1441,10 +2070,12 @@ const tcpServer = net.createServer((socket) => {
                         roomPlayers.forEach(p => {
                             (async () => {
                                 await utils.sendPacket(p.socket, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 400);
-                                await utils.sendPacket(p.socket, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${p.socket.playerNameEnc}',${p.socket.userData}))\n`, 400);
+                                await utils.sendPacket(p.socket, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${p.socket.playerNameEnc || utils.encodeHex(p.name)}',${p.socket.userData}))\n`, 400);
                                 
                                 setTimeout(() => {
-                                    p.socket.write(`e1:SendMsgToHallClient,(${p1304},(${one},'${p.socket.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${one}))\n`);
+                                    if (!p.socket.destroyed) {
+                                        p.socket.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(p.socket.playerIndex || 1)},'${p.socket.playerNameEnc || utils.encodeHex(p.name)}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${one}))\n`);
+                                    }
                                 }, 1500);
                             })().catch(err => console.error('[❌ ERRO no envio do Room Match]', err));
                         });
@@ -2543,7 +3174,7 @@ const tcpServer = net.createServer((socket) => {
 
                     // 4. Broadcast do novo spawn para todos os outros jogadores da cena
                     activeSockets.forEach(s => {
-                        if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                        if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                             s.bypassInterceptor = true;
                             s.write(gameLogic.getPlayerSpawnPacket(socket, s));
                             s.bypassInterceptor = false;
@@ -2554,7 +3185,7 @@ const tcpServer = net.createServer((socket) => {
                     const p20014 = utils.encodeInt(20014);
                     const s90008 = utils.encodeInt(90008);
                     const one = utils.encodeInt(1);
-                    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90008},(),${one}))\n`);
+                    socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90008},(),${one}))\n`);
                     return;
                 }
 
@@ -2562,7 +3193,7 @@ const tcpServer = net.createServer((socket) => {
                 // 🏃 MOVIMENTO (ID 20001 - SP/SN)
                 // ==========================================
                 if (textoRecebido.includes("SP") || textoRecebido.includes("SN")) {
-                    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(20058)},('${utils.Fun.GetServerDate()}',${utils.encodeInt(0)}))\n`);
+                    socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(20058)},('${utils.Fun.GetServerDate()}',${utils.encodeInt(0)}))\n`);
                     return;
                 }
 
@@ -2683,12 +3314,22 @@ const tcpServer = net.createServer((socket) => {
 
         // --- CENA 4: SERVIDOR DE CENA (PlayerUser) ---
         else if (socketType === "SCENE" && textoRecebido.includes("NGOL")) {
-            console.log(`[🌐 SCENE] Jogador conectando ao socket de cena e aguardando seleção de herói...`);
+            console.log(`[🌐 SCENE] Jogador conectando ao socket de cena...`);
             socket.isEncrypted = true;
-            socket.waitingForHeroLock = true; // Flag essencial para suspender CLoadScene até o Lock!
+            const stagingCheckId = socket.targetMapId || state.getLastMapId() || 5202;
+            socket.waitingForHeroLock = socket.waitingForHeroLock === true && !socket.hasConfirmedHero;
+            lifecycle.transition(socket, socket.waitingForHeroLock ? 'selecting' : 'loading', 'scene-connected');
+
+            // Late entry selection must not wait for a map that only loads after confirmation.
+            if (socket.waitingForHeroLock && Number(stagingCheckId) === Number(socket.finalMapId)) {
+                const selectionIsCurrent = sceneScope.capture(socket);
+                socket.heroLockTimeout = setTimeout(() => {
+                    if (selectionIsCurrent()) confirmInitialHero(socket, socket.currentHeroId || 1015);
+                }, 60000);
+            }
 
             // 1. Força o Unity a entrar no modo de Jogo (HeroPlayer)
-            socket.write(`mHeroPlayer:${socket.playerIndex || 1}\n`);
+            socket.write(`mHeroPlayer:${utils.encodeInt(socket.playerIndex || 1)}\n`);
 
             // 2. NÃO ENVIAR 80005 AQUI! O 80005 DEVE SER ENVIADO QUANDO O MAPA STAGING (5010) CARREGAR!
             // Para não corromper o fundo da tela com bachang_baxi, esperamos o SLoadMapOKMsg do 5010.
@@ -2701,11 +3342,14 @@ const tcpServer = net.createServer((socket) => {
             const startTime = utils.Fun.GetServerDate();
             const p20014 = utils.encodeInt(20014);
             const s90005 = utils.encodeInt(90005);
-            socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${startTime}')))\n`);
+            socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${startTime}')))\n`);
         }
-        else if (socketType === "SCENE" && (textoRecebido.includes("SLoadMapOKMsg") || textoRecebido.includes("loadmapok:True"))) {
+        else if (socketType === "SCENE" && (/(?:^|:)SLoadMapOKMsg(?:,|$)/.test(textoRecebido))) {
+            if (socket.sceneLoadPending || socket.isCombatReady || socket.sceneRetired) return;
+            lifecycle.event(socket, 'MAP_READY');
+            const readyRoom = socket.currentRoomUID == null ? null : roomContainers.get(Number(socket.currentRoomUID));
+            if (socket.currentRoomUID != null && (!readyRoom || readyRoom.state !== 4)) return;
             console.log(`[🚀 SCENE] Mapa pronto! Spawnando herói padrão e abrindo seleção...`);
-            global.activePaints = []; // Reset active sprays for the new map/match
 
             const p1306 = utils.encodeInt(1306);
             const p12002 = utils.encodeInt(12002);
@@ -2732,28 +3376,61 @@ const tcpServer = net.createServer((socket) => {
             // Determina as coordenadas do spawn baseadas no mapa e equipe (Usando o mapa original!)
             const originalMapId = socket.targetMapId || state.getLastMapId() || 5202;
             const currentMapId = gameLogic.getSafeMapId(originalMapId);
+            if ([9,12].includes(MAP_CONFIG[originalMapId]?.type)) socket.force = 1;
             const mapConf = MAP_CONFIG[currentMapId];
             const isChangeHero = (mapConf && (mapConf.type === 6 || mapConf.type === 7)) ? 1 : 0;
             const isChangeHeroEnc = utils.encodeInt(isChangeHero);
 
-            // SE AINDA ESTIVERMOS AGUARDANDO O LOCK DO HERÓI (Fase de Staging/Seleção), APENAS ABRA A UI (80005) E SUSPENDA O RESTO!
-            if (socket.waitingForHeroLock) {
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${dateStr}')))\n`);
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p5000},(${s80005},()))\n`);
-                console.log(`[🚀 ARENA UI] Mapa de Staging carregado. UI 80005 enviada com sucesso! Aguardando jogador dar Lock...`);
+            // SE AINDA ESTIVERMOS AGUARDANDO O LOCK DO HERÓI (Fase de Staging/Seleção 5010), APENAS ABRA A UI (80005) E SUSPENDA O RESTO!
+            const isStagingMap = (Number(originalMapId) === 5010 || Number(socket.targetMapId) === 5010);
+            if (socket.waitingForHeroLock && isStagingMap) {
+                socket.sceneLoadPending = true;
+                socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${dateStr}')))\n`);
+                socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p5000},(${s80005},()))\n`);
+                console.log(`[🚀 ARENA UI] Mapa de Staging (5010) carregado. UI 80005 enviada com sucesso! Aguardando jogador dar Lock...`);
+
+                // Auto-lock de segurança: Se o jogador não travar o herói em 25 segundos, o servidor trava automaticamente
+                if (socket.heroLockTimeout) clearTimeout(socket.heroLockTimeout);
+                socket.heroLockTimeout = setTimeout(() => {
+                    if (socket.waitingForHeroLock && !socket.destroyed) {
+                        console.log(`[⏰ AUTO-LOCK TIMEOUT] Jogador ${socket.playerName || socket.playerId} não travou herói a tempo. Travando automaticamente com herói atual...`);
+                        gameLogic.switchPlayerHero(socket, socket.currentHeroId || 1015);
+                        broadcastMatchUserList(socket);
+                    }
+                }, 25000);
+
                 return; // NÃO SPAWNA NINGUÉM AQUI!
             }
 
+            if (socket.waitingForHeroLock) return;
+
+            // Garante que o flag de espera esteja false ao carregar qualquer mapa de combate real
+            socket.waitingForHeroLock = false;
+            if (socket.heroLockTimeout) {
+                clearTimeout(socket.heroLockTimeout);
+                socket.heroLockTimeout = null;
+            }
+
             // SE NÃO FOR 5010 (Ex: É 5204), INICIA A PARTIDA NORMALMENTE!
-            const coords = gameLogic.getSpawnCoordinates(originalMapId, socket.force);
+            const coords = gameLogic.getPlayerSpawnCoordinates(socket);
             let sx = coords.sx, sy = coords.sy, sz = coords.sz;
             socket.lastX = sx;
             socket.lastY = sy;
             socket.lastZ = sz;
 
             // 1. Inicia a partida e libera o herói na memória (com delay seguro de 1500ms para inicialização estável dos componentes da Unity no cliente local)
-            setTimeout(() => {
-                if (socket.destroyed) return;
+            socket.sceneLoadPending = true;
+            const spawnIsCurrent = sceneScope.capture(socket);
+            socket.sceneSpawnTimeout = setTimeout(() => {
+                if (!spawnIsCurrent()) return;
+                socket.sceneLoadPending = false;
+                socket.sceneSpawnTimeout = null;
+                if (combat.isFreeForAll(socket)) {
+                    if (!gameLogic.prepareFreeForAll(socket)) return;
+                    const spawn = gameLogic.getPlayerSpawnCoordinates(socket);
+                    socket.lastX = spawn.sx; socket.lastY = spawn.sy; socket.lastZ = spawn.sz;
+                    socket.spawnYaw = spawn.yaw;
+                }
                 
                 const pName = socket.playerName || (socket.remoteAddress && ipNames[socket.remoteAddress]);
                 const profile = dbPersistence.loadPlayer(pName);
@@ -2763,8 +3440,8 @@ const tcpServer = net.createServer((socket) => {
                 const eq = playerEq[heroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
                 const heroInfo = generateFullHeroData(heroId, eq.skin, eq.weapon, eq.emote, eq.pose, profile);
 
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${dateStr}')))\n`);
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1306},(${p12002},(${heroIdEnc},${heroInfo.split(',').slice(1).join(',')})))\n`);
+                socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90005},(${isChangeHeroEnc},'${dateStr}')))\n`);
+                socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1306},(${p12002},(${heroIdEnc},${heroInfo.split(',').slice(1).join(',')})))\n`);
 
                 // 2. Envia MatchUserInfo (10094) para destruir a Lobby UI e fechar popups, e depois o Spawn (10001)
                 socket.bypassInterceptor = true;
@@ -2781,7 +3458,7 @@ const tcpServer = net.createServer((socket) => {
 
                 // Broadcast do spawn para todos os outros jogadores na cena (verão como oponente index 2)
                 activeSockets.forEach(s => {
-                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock) {
+                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
                         s.bypassInterceptor = true; // Protege o pacote
                         s.write(gameLogic.getPlayerSpawnPacket(socket, s));
                         s.bypassInterceptor = false; // Liga novamente
@@ -2790,7 +3467,7 @@ const tcpServer = net.createServer((socket) => {
 
                 // Proativamente envia os spawns de todos os outros jogadores conectados para o novo jogador
                 activeSockets.forEach(s => {
-                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock) {
+                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
                         socket.bypassInterceptor = true; // Protege o pacote
                         socket.write(gameLogic.getPlayerSpawnPacket(s, socket));
                         socket.bypassInterceptor = false; // Liga novamente
@@ -2801,6 +3478,7 @@ const tcpServer = net.createServer((socket) => {
                 if (state.activeBots) {
                     for (const botId in state.activeBots) {
                         const bot = state.activeBots[botId];
+                        if (!sceneScope.sameScene(socket, bot)) continue;
                         socket.bypassInterceptor = true;
                         socket.write(gameLogic.getPlayerSpawnPacket(bot, null));
                         socket.bypassInterceptor = false;
@@ -2808,35 +3486,36 @@ const tcpServer = net.createServer((socket) => {
                 }
 
                 // 4. Destrava tudo (90008) - Fecha telas de seleção e loading no cliente
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90008},(),${one}))\n`);
-                console.log(`[🚀 SCENE] Spawn concluído com delay de 1500ms para o jogador ${socket.playerName}`);
+                socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90008},(),${one}))\n`);
+                lifecycle.transition(socket, 'playing', 'spawn-complete'); // Ready after initial snapshot
+                console.log(`[🚀 SCENE] Spawn concluído com delay de 1500ms para o jogador ${socket.playerName} (NetID: ${socket.playerIndex})`);
+                if (originalMapId === 5202 || currentMapId === 5202) {
+                    gameLogic.spawnPracticeNpcs(socket, true);
+                }
                 
                 // Inicializa as barreiras e bases no mapa de forma genérica
-                gameLogic.spawnTdmBases(socket, originalMapId);
+                if (!combat.isFreeForAll(socket) && ![9,12].includes(MAP_CONFIG[originalMapId]?.type)) gameLogic.spawnTdmBases(socket, originalMapId);
 
                 // Inicializa a partida TDM, Control ou PVE garantindo que o jogador já recebeu seu spawn e time (m_nShili)
-                if (MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 7) {
+                if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 7) {
                     gameLogic.startTdmMatch(socket);
-                } else if (MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 3) {
+                } else if (combat.isFreeForAll(socket)) {
+                    gameLogic.startFreeForAll(socket);
+                } else if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 3) {
                     gameLogic.startControlMatch(socket);
-                } else if (MAP_CONFIG[originalMapId] && (MAP_CONFIG[originalMapId].type === 9 || MAP_CONFIG[originalMapId].type === 12)) {
+                } else if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && (MAP_CONFIG[originalMapId].type === 9 || MAP_CONFIG[originalMapId].type === 12)) {
                     gameLogic.startPveMatch(socket, originalMapId);
                 } else {
                     // Para todos os outros modos/mapas, abre a porta da base após um delay seguro de 5 segundos
-                    setTimeout(() => {
-                        if (socket.destroyed) return;
+                    socket.sceneDoorTimeout = setTimeout(() => {
+                        if (!spawnIsCurrent()) return;
                         const p1030000 = utils.encodeInt(1030000);
-                        socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1030000},(${utils.encodeInt(1)},'close_open'))\n`);
+                        socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1030000},(${utils.encodeInt(1)},'close_open'))\n`);
                         console.log(`[🚀 SCENE] Modo genérico: Portas da base abertas automaticamente (Mapa ID: ${originalMapId}, Tipo: ${MAP_CONFIG[originalMapId] ? MAP_CONFIG[originalMapId].type : 'unknown'})`);
                     }, 5000);
                 }
             }, 1500);
 
-            // Spawn/Atualização de NPCs na Arena de Treino se o mapa for bachang_baxi
-            const currentMapName = socket.targetMapName || lastMapName || 'bachang_baxi';
-            if (originalMapId === 5202 || currentMapId === 5202 || currentMapName === 'bachang_baxi') {
-                gameLogic.spawnPracticeNpcs(socket, true);
-            }
         }
         else if (socketType === "SCENE") {
             const lines = textoRecebido.split('\n');
@@ -2845,19 +3524,21 @@ const tcpServer = net.createServer((socket) => {
                 if (!line) continue;
 
                 // Extrai o playerId (como e1, e2, etc.) de forma global no escopo da linha
-                const idMatch = line.match(/^e(\w+):/);
+                const idMatch = line.match(/^e([0-9A-Z_`a-z]+):/);
                 const packetPlayerId = idMatch ? idMatch[1] : "1";
                 // CORREÇÃO CRÍTICA MULTIPLAYER: Não sobrescrever socket.playerId se já foi associado a partir do Lobby ou ipIndexes
                 if (!socket.playerId) {
                     socket.playerId = String(socket.playerIndex || ipIndexes[socket.remoteAddress] || 1);
                 }
                 const playerId = socket.playerId;
+                if (gameLogic.relayPveBot(socket, line)) continue;
 
                 // 1. Tratamento do Ping/Sync (SN->CN, SP->CP, ST->CT, SR->CR, SA->CA)
                 // Essencial para o anti-desync do cliente não ativar a flag 'isSleep' que trava a movimentação
                 const syncMatch = line.match(/:(S[NPTRVABW]),\((.+)\)/);
                 if (syncMatch) {
                     const syncType = syncMatch[1]; // SN, SP, ST, SR, SV, SA
+                    if (syncType !== 'SN' && (!socket.isCombatReady || socket.inMatch === false)) continue;
                     const syncArgs = syncMatch[2]; // ex: (Fkp,1c2,BNd),0,1c2 ou 0,0
                     
                     const clientType = "C" + syncType.charAt(1);
@@ -2891,18 +3572,21 @@ const tcpServer = net.createServer((socket) => {
                     }
 
                     // FAIL-SAFE: Se o jogador estiver em partida ativa mas não foi inicializado (devido a loading lento)
-                    if (global.activeControlMatch && !socket.controlInitialized) {
+                    if (global.activeControlMatch && !socket.controlInitialized && !socket.waitingForHeroLock && MAP_CONFIG[socket.targetMapId]?.type === 3) {
                         console.log(`[🏆 CONTROL FAIL-SAFE] Jogador ${socket.playerName} ativo em cena. Inicializando fluxo do HUD...`);
                         gameLogic.startControlMatch(socket);
-                    } else if (global.activeTdmMatch && !socket.tdmInitialized) {
-                        console.log(`[🏆 TDM FAIL-SAFE] Jogador ${socket.playerName} ativo em cena. Inicializando fluxo do TDM...`);
-                        gameLogic.startTdmMatch(socket);
+                    } else if (!socket.tdmInitialized && !socket.waitingForHeroLock && Number(socket.targetMapId) !== 5010) {
+                        const socketTdm = gameLogic.getTdmMatch ? gameLogic.getTdmMatch(socket, false) : global.activeTdmMatch;
+                        if (socketTdm && socketTdm.state === 'fight') {
+                            console.log(`[🏆 TDM FAIL-SAFE Sala ${socketTdm.roomUID}] Jogador ${socket.playerName} ativo em cena. Inicializando fluxo do TDM...`);
+                            gameLogic.startTdmMatch(socket);
+                        }
                     }
 
                     // A função C# public void CN(int no) recebe UM ÚNICO INT PURO (Sem parênteses)!
                     if (syncType === 'SN') {
                         const pingVal = syncArgs.split(',')[1] || "0";
-                        socket.write(`e${playerId}:CN,${pingVal}\n`);
+                        socket.write(`e${utils.encodeInt(Number(playerId))}:CN,${pingVal}\n`);
 
                         // Carregamento passivo por tempo da Ultimate conforme dazhao.xml (energyaddtime por segundo real)
                         try {
@@ -2929,15 +3613,22 @@ const tcpServer = net.createServer((socket) => {
                     else {
                         let packet;
                         if (syncType === 'SB') {
-                            const fixedArgs = utils.fixSbToCbArgs(syncArgs, socket.loadId || socket.playerId || 1);
+                            const shotBot = state.activeBots[utils.decodeInt(packetPlayerId)];
+                            if (shotBot?.isPveMonster && !gameLogic.pveOwnsBot(socket, shotBot)) continue;
+                            if (!shotBot && Number(socket.currentHeroId)===2000) {
+                                let shot=utils.parseArrayList(syncArgs);
+                                while(Array.isArray(shot) && shot.length===1 && Array.isArray(shot[0]))shot=shot[0];
+                                if(Number(shot[0])===2 && lamster.healAlly(socket,socket,2)) gameLogic.applyBuffToEntity(socket,socket.playerId,1007);
+                            }
+                            const fixedArgs = utils.fixSbToCbArgs(syncArgs, shotBot?.loadId || socket.loadId || socket.playerId || 1);
                             packet = `e${packetPlayerId}:CB,(${fixedArgs})\n`;
                         } else if (syncType === 'SW') {
                             packet = `e${packetPlayerId}:CW,((${syncArgs}))\n`;
                         } else {
-                            packet = `e${playerId}:${clientType},((${syncArgs}))\n`;
+                            packet = `e${utils.encodeInt(Number(playerId))}:${clientType},((${syncArgs}))\n`;
                         }
                         activeSockets.forEach(s => {
-                            if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                            if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && !s.waitingForHeroLock && s.isCombatReady && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
                                 s.write(packet);
                             }
                         });
@@ -2955,7 +3646,13 @@ const tcpServer = net.createServer((socket) => {
                     if (actionMatch) {
                         const cmdId = utils.decodeInt(actionMatch[1]);
                         const argsStr = actionMatch[2];
+                        if ((!socket.isCombatReady || socket.inMatch === false) && ![20001, 20002, 20014, 2110].includes(cmdId)) continue;
                         console.log(`[⚔️ AÇÃO DE BATALHA] ID: ${cmdId} (Base62: ${actionMatch[1]}) | DADOS: ${argsStr}`);
+
+                        if (cmdId === 19702 && combat.isFreeForAll(socket)) {
+                            gameLogic.respawnPlayer(socket);
+                            continue;
+                        }
 
                         // Se for 1000000 (SUICIDE / Slay Trigger - Espinhos, abismo ou queda fora do mapa)
                         if (cmdId === 1000000) {
@@ -3025,8 +3722,8 @@ const tcpServer = net.createServer((socket) => {
                                     return val;
                                 });
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
-                                        s.write(`e${s.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(5000)},(${subCmdEnc},(${argsListEnc.join(',')})))\n`);
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
+                                        s.write(`e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(5000)},(${subCmdEnc},(${argsListEnc.join(',')})))\n`);
                                     }
                                 });
                             } catch (e) {
@@ -3039,9 +3736,13 @@ const tcpServer = net.createServer((socket) => {
                             try {
                                 const parsed = utils.parseArrayList(argsStr);
                                 const botId = parsed[0];
+                                if (state.activeBots[botId]?.isPveMonster) {
+                                    gameLogic.selectPveBotAuthority(socket, botId);
+                                    continue;
+                                }
                                 const pIdx = socket.playerIndex || 1;
                                 console.log(`[🤖 ROBOT AI AUTORIDADE] Atribuindo autoridade do Bot NetID ${botId} ao jogador ${socket.playerName || 'Host'} (Slot ${pIdx})`);
-                                const resp = `e${pIdx}:SendMsgToClient,(${utils.encodeInt(4010001)},(${utils.encodeInt(botId)},${utils.encodeInt(0)},${utils.encodeInt(pIdx)}))\n`;
+                                const resp = `e${utils.encodeInt(pIdx)}:SendMsgToClient,(${utils.encodeInt(4010001)},(${utils.encodeInt(botId)},${utils.encodeInt(0)},${utils.encodeInt(pIdx)}))\n`;
                                 socket.write(resp);
                             } catch (e) {
                                 console.error("[⚠️ ERRO ao processar 4010002]:", e);
@@ -3061,29 +3762,35 @@ const tcpServer = net.createServer((socket) => {
                         // Opcode 20001 / 20002 (SVR_REV_GOTOHALL / SVR_RETURNHALLLOG): Jogador clica em "Voltar para o Hall" no menu ou encerra a partida
                         if (cmdId === 20001 || cmdId === 20002) {
                             console.log(`[🚪 RETORNO AO LOBBY] Jogador ${socket.playerName || 'Jogador'} (NetID ${socket.playerIndex || 1}) solicitou retorno ao Lobby.`);
-                            socket.inMatch = false;
-                            socket.waitingForHeroLock = false;
-                            socket.hasConfirmedHero = false;
-
-                            if (global.activeTdmMatch && global.activeTdmMatch.players) {
-                                global.activeTdmMatch.players = global.activeTdmMatch.players.filter(p => p !== socket);
-                                if (global.activeTdmMatch.players.length === 0) {
-                                    if (global.activeTdmMatch.interval) clearInterval(global.activeTdmMatch.interval);
-                                    global.activeTdmMatch = null;
+                            const tdm = gameLogic.getTdmMatch(socket, false);
+                            const leavingRoom = getSocketRoom(socket);
+                            cleanPlayerMatchState(socket, socket.playerName, true);
+                            if (leavingRoom) removePlayerFromRoom(leavingRoom, socket);
+                            if (tdm && tdm.players) {
+                                tdm.players = tdm.players.filter(p => p !== socket);
+                                if (tdm.players.length === 0) {
+                                    if (tdm.timer) clearInterval(tdm.timer);
+                                    tdm.timer = null;
+                                    if (tdm.endTimeout) clearTimeout(tdm.endTimeout);
+                                    tdm.state = 'ended';
+                                    if (tdm.roomUID && roomContainers.has(Number(tdm.roomUID))) {
+                                        const r = roomContainers.get(Number(tdm.roomUID));
+                                        if (r) r.tdmMatch = null;
+                                    }
+                                    if (global.activeTdmMatch === tdm) global.activeTdmMatch = null;
+                                    console.log(`[🏆 TDM Sala ${tdm.roomUID}] Todos os jogadores retornaram ao saguão. Partida limpa antecipadamente.`);
                                 }
                             }
                             if (global.activeControlMatch && global.activeControlMatch.players) {
                                 global.activeControlMatch.players = global.activeControlMatch.players.filter(p => p !== socket);
                                 if (global.activeControlMatch.players.length === 0) {
+                                    if (global.activeControlMatch.timer) clearInterval(global.activeControlMatch.timer);
                                     if (global.activeControlMatch.interval) clearInterval(global.activeControlMatch.interval);
                                     global.activeControlMatch = null;
                                 }
                             }
 
-                            const pIdx = socket.playerIndex || 1;
-                            const p20001 = utils.encodeInt(20001);
-                            const zero = utils.encodeInt(0);
-                            socket.write(`e${pIdx}:SendMsgToClient,(${p20001},(${zero},'',${zero}))\n`);
+                            return;
                         }
 
                         // Tabela oficial de durações de recarga por herói (em ms) para sincronizar com a animação
@@ -3129,7 +3836,7 @@ const tcpServer = net.createServer((socket) => {
                             socket.isReloading = true;
                             socket.reloadTimer = setTimeout(() => {
                                 if (!socket.destroyed && !socket.isDead) {
-                                    const fillBulletPacket = `e${playerId}:OnFillBullet,((${shootName},0,${utils.encodeInt(maxAmmo)},${utils.encodeInt(maxAmmo)}))\n`;
+                                    const fillBulletPacket = `e${utils.encodeInt(Number(playerId))}:OnFillBullet,((${shootName},0,${utils.encodeInt(maxAmmo)},${utils.encodeInt(maxAmmo)}))\n`;
                                     socket.write(fillBulletPacket);
                                     console.log(`[✅ RELOAD FINISHED]: ${fillBulletPacket.trim()}`);
                                 }
@@ -3170,7 +3877,7 @@ const tcpServer = net.createServer((socket) => {
                                         return `${utils.encodeInt(p.ownerCid)},${sprayDataTuple}`;
                                     }).join(',');
                                     
-                                    const response = `e${socket.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(10095)},(${cidEnc},(${activePaintsList}),${subtypeEnc}))\n`;
+                                    const response = `e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(10095)},(${cidEnc},(${activePaintsList}),${subtypeEnc}))\n`;
                                     socket.write(response);
                                     console.log(`[🎨 SPRAY/PAINT SYNC] Enviado ${global.activePaints.length} sprays ativos para o jogador.`);
                                 }
@@ -3217,8 +3924,8 @@ const tcpServer = net.createServer((socket) => {
                                         const sprayDataTuple = `(${pIdEnc},${pxEnc},${pyEnc},${pzEnc},${rxEnc},${ryEnc},${rzEnc},${parentIdEnc})`;
                                         
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
-                                                const broadcastPacket = `e${s.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(10095)},(${cidEnc},${sprayDataTuple},${subtypeEnc},${netIdEnc}))\n`;
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
+                                                const broadcastPacket = `e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(10095)},(${cidEnc},${sprayDataTuple},${subtypeEnc},${netIdEnc}))\n`;
                                                 s.write(broadcastPacket);
                                             }
                                         });
@@ -3245,9 +3952,9 @@ const tcpServer = net.createServer((socket) => {
                             try {
                                 const parsed = utils.parseArrayList(argsStr);
                                 const xingtai = parsed[0] || 0;
-                                const changeGroupPacket = `e${playerId}:ChangeWeaponGroupUpdate,((${utils.encodeInt(xingtai)}))\n`;
+                                const changeGroupPacket = `e${utils.encodeInt(Number(playerId))}:ChangeWeaponGroupUpdate,((${utils.encodeInt(xingtai)}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(changeGroupPacket);
                                     }
                                 });
@@ -3288,7 +3995,7 @@ const tcpServer = net.createServer((socket) => {
                                     }
                                     const cdValEnc = utils.encodeInt(cdVal);
                                     const skIdEnc = utils.encodeInt(1100);
-                                    const skillUpdatePacket = `e${playerId}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skIdEnc},0,0,0,${utils.encodeInt(1)},${cdValEnc},0,0,0,0,${cdValEnc})))\n`;
+                                    const skillUpdatePacket = `e${utils.encodeInt(Number(playerId))}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skIdEnc},0,0,0,${utils.encodeInt(1)},${cdValEnc},0,0,0,0,${cdValEnc})))\n`;
                                     socket.write(skillUpdatePacket);
                                     console.log(`[🔋 POST-TRANSFORMATION CD STARTED] Started CD of ${cdVal}ms for skill 1100 (Player: ${playerId})`);
                                 }
@@ -3301,7 +4008,7 @@ const tcpServer = net.createServer((socket) => {
                                 });
                                 const updatePacket = `e${netId}:SkillParmsUpdate,((${paramsEnc.join(',')}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed && s !== socket) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== socket) {
                                         s.write(updatePacket);
                                     }
                                 });
@@ -3343,9 +4050,19 @@ const tcpServer = net.createServer((socket) => {
                                  if (skillId === 1153 || skillId === 1122) {
                                      const casterForce = socket.force !== undefined ? socket.force : 1;
                                      targets = activeSockets
-                                         .filter(s => s.socketType === "SCENE" && !s.destroyed && Number(s.force) === Number(casterForce) && String(s.playerId) !== String(playerId))
+                                         .filter(s => sceneScope.canReceive(socket, s) && !s.destroyed && combat.sameSide(socket, s, Number(s.force) === Number(casterForce)) && String(s.playerId) !== String(playerId))
                                          .map(s => Number(s.playerId));
                                      console.log(`[🦊/🍃 GROUP SKILL FIX] Forçando alvos aliados (exceto caster) para a habilidade ${skillId}:`, targets);
+                                 }
+
+                                 // 🔮 CARMEN / TALIA (1021) — CUT-HEAL (Skill 1062) & CUT-DEATH / BEACON (Skill 1064)
+                                 // O cliente C# envia OverlapSphere de 40m adicionando todos os aliados/inimigos próximos em arrayList2.
+                                 // Para respeitar a regra oficial de maxbuffnumber=1, limitamos targets estritamente ao 1º alvo (o alvo mirado).
+                                 if (skillId === 1062 || skillId === 1064) {
+                                     if (Array.isArray(targets) && targets.length > 1) {
+                                         console.log(`[🔮 CARMEN SINGLE-TARGET] Habilidade ${skillId} limitando alvos de ${targets.length} para 1 único alvo (${targets[0]})`);
+                                         targets = targets.slice(0, 1);
+                                     }
                                  }
                                 
                                 const skillIdEnc = utils.encodeInt(skillId);
@@ -3399,9 +4116,9 @@ const tcpServer = net.createServer((socket) => {
                                 }
                                 
                                 // 1. Envia o SkillDo para o jogador e todos os clientes na cena
-                                const skillDoPacket = `e${playerId}:SkillDo,((${skillIdEnc},(${xEnc},${yEnc},${zEnc})),(${targetsStr}))\n`;
+                                const skillDoPacket = `e${utils.encodeInt(Number(playerId))}:SkillDo,((${skillIdEnc},(${xEnc},${yEnc},${zEnc})),(${targetsStr}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(skillDoPacket);
                                     }
                                 });
@@ -3423,20 +4140,21 @@ const tcpServer = net.createServer((socket) => {
 
                                  // 👼 ANGEL (1029) — SYLPH'S WIND (Skill 1122: Buff 1035 Speed Boost estritamente para si e aliados dentro da área de cura ~12m)
                                  if (skillId === 1122) {
-                                     const angelForce = (socket.nForce !== undefined) ? socket.nForce : ((socket.team !== undefined) ? socket.team : 1);
+                                     const angelForce = Number(socket.force !== undefined ? socket.force : (playerSessions[socket.playerName]?.force || 1));
                                      const aX = socket.lastX || 0;
                                      const aY = socket.lastY || 0;
                                      const aZ = socket.lastZ || 0;
                                      
                                      // 1. Aplica em si mesma (6s de speed boost)
                                      gameLogic.applyBuffToEntity(socket, playerId, 1035, 6000);
-                                     console.log(`[👼 ANGEL SPEED BOOST] Angel ${playerId} ativou Sylph's Wind (1122) em si mesma!`);
+                                     console.log(`[👼 ANGEL SPEED BOOST] Angel ${playerId} (Força ${angelForce}) ativou Sylph's Wind (1122) em si mesma!`);
 
                                      // 2. Aplica estritamente nos aliados humanos presentes dentro do raio de 12 metros (1200 unidades)
                                      activeSockets.forEach(s => {
-                                         if (s.socketType === "SCENE" && !s.destroyed && s !== socket && !s.isDead && (s.hp === undefined || s.hp > 0)) {
-                                             const sForce = (s.nForce !== undefined) ? s.nForce : ((s.team !== undefined) ? s.team : 1);
-                                             if (sForce === angelForce) {
+                                         if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== socket && !s.isDead && (s.hp === undefined || s.hp > 0)) {
+                                             const sForce = Number(s.force !== undefined ? s.force : (playerSessions[s.playerName]?.force || 1));
+                                             // Trava de segurança absoluta: apenas membros da mesma equipe (aliados)
+                                             if (combat.sameSide(socket, s, sForce === angelForce)) {
                                                  const sX = s.lastX || 0;
                                                  const sY = s.lastY || 0;
                                                  const sZ = s.lastZ || 0;
@@ -3444,7 +4162,7 @@ const tcpServer = net.createServer((socket) => {
                                                  // Estritamente dentro de 12 metros (1200 unidades) e posições válidas
                                                  if (dist <= 1200 && (aX !== 0 || aZ !== 0) && (sX !== 0 || sZ !== 0)) {
                                                      gameLogic.applyBuffToEntity(socket, s.playerId, 1035, 6000);
-                                                     console.log(`[👼 ANGEL SPEED BOOST] Aliado ${s.playerId} recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
+                                                     console.log(`[👼 ANGEL SPEED BOOST] Aliado ${s.playerId} (Força ${sForce}) recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
                                                  } else {
                                                      console.log(`[👼 ANGEL SPEED BOOST IGNORED] Aliado ${s.playerId} FORA da área de cura (${(dist/100).toFixed(1)}m > 12.0m). Não recebeu buff.`);
                                                  }
@@ -3456,14 +4174,15 @@ const tcpServer = net.createServer((socket) => {
                                      if (state.activeBots) {
                                          Object.keys(state.activeBots).forEach(botId => {
                                              const bot = state.activeBots[botId];
-                                             if (bot && !bot.isDead && (bot.team === angelForce || bot.nForce === angelForce)) {
+                                             const botForce = Number(bot && bot.force !== undefined ? bot.force : (bot && bot.team !== undefined ? bot.team : 2));
+                                             if (bot && !bot.isDead && combat.sameSide(socket, bot, botForce === angelForce)) {
                                                  const bX = (bot.lastX !== undefined) ? bot.lastX : 0;
                                                  const bY = (bot.lastY !== undefined) ? bot.lastY : 0;
                                                  const bZ = (bot.lastZ !== undefined) ? bot.lastZ : 0;
                                                  const dist = Math.hypot(bX - aX, bY - aY, bZ - aZ);
                                                  if (dist <= 1200 && (aX !== 0 || aZ !== 0) && (bX !== 0 || bZ !== 0)) {
                                                      gameLogic.applyBuffToEntity(socket, botId, 1035, 6000);
-                                                     console.log(`[👼 ANGEL SPEED BOOST] Bot aliado ${botId} recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
+                                                     console.log(`[👼 ANGEL SPEED BOOST] Bot aliado ${botId} (Força ${botForce}) recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
                                                  }
                                              }
                                          });
@@ -3520,8 +4239,40 @@ const tcpServer = net.createServer((socket) => {
 
                                      // --- 2. APLICAÇÃO DE BUFFS EM ALVOS (buff_idx) ---
                                      if (Array.isArray(skillConfig.buff_idx) && skillConfig.buff_idx.length > 0 && Array.isArray(targets) && targets.length > 0) {
-                                         skillConfig.buff_idx.forEach(buffId => {
-                                             targets.forEach(targetId => {
+                                          skillConfig.buff_idx.forEach(buffId => {
+                                              // 🔮 CARMEN (1021) — CUT-HEAL (Skill 1062 / Buff 1021: Marca em APENAS 1 aliado)
+                                              if (skillId === 1062 || buffId === 1021) {
+                                                  const tId = targets[0];
+                                                  if (tId !== undefined && tId !== null && Number(tId) !== Number(playerId)) {
+                                                      if (socket.carmenHealTargetId && String(socket.carmenHealTargetId) !== String(tId)) {
+                                                          console.log(`[🔮 CARMEN CUT-HEAL] Transferindo marca: removendo de ${socket.carmenHealTargetId} para ${tId}`);
+                                                          gameLogic.cleanupBuff(null, socket.carmenHealTargetId, 1021, true);
+                                                      }
+                                                      socket.carmenHealTargetId = String(tId);
+                                                      const dur = (buffsMap[buffId] && buffsMap[buffId].time > 0) ? buffsMap[buffId].time : (skillConfig.longtime || 15000);
+                                                      gameLogic.applyBuffToEntity(socket, tId, buffId, dur);
+                                                      console.log(`[🔮 CARMEN CUT-HEAL] Marca de cura aplicada no aliado ${tId} por ${dur}ms`);
+                                                  }
+                                                  return;
+                                              }
+
+                                              // 🔮 CARMEN (1021) — CUT-DEATH / BEACON (Skill 1064 / Buff 1005|1010: Marca em APENAS 1 inimigo)
+                                              if (skillId === 1064 || buffId === 1005 || buffId === 1010) {
+                                                  const tId = targets[0];
+                                                  if (tId !== undefined && tId !== null && Number(tId) !== Number(playerId)) {
+                                                      if (socket.carmenBeaconTargetId && String(socket.carmenBeaconTargetId) !== String(tId)) {
+                                                          console.log(`[🔮 CARMEN BEACON] Transferindo beacon: removendo de ${socket.carmenBeaconTargetId} para ${tId}`);
+                                                          gameLogic.cleanupBuff(null, socket.carmenBeaconTargetId, 1005, true);
+                                                          gameLogic.cleanupBuff(null, socket.carmenBeaconTargetId, 1010, true);
+                                                      }
+                                                      socket.carmenBeaconTargetId = String(tId);
+                                                      const dur = (buffsMap[buffId] && buffsMap[buffId].time > 0) ? buffsMap[buffId].time : (skillConfig.longtime || 10000);
+                                                      gameLogic.applyBuffToEntity(socket, tId, buffId, dur);
+                                                  }
+                                                  return;
+                                              }
+
+                                              targets.forEach(targetId => {
                                                 if (Number(targetId) === Number(playerId)) return; // Trava: buff_idx nunca afeta o próprio conjurador
                                                 // Determina a duração: prioritiza tempo do buff.xml, senão longtime do playerskill.xml
                                                  let duration = 0;
@@ -3542,24 +4293,7 @@ const tcpServer = net.createServer((socket) => {
                                      }
                                  }
 
-                                 // Intercepta Habilidades do Lamster (ID 2000) para aplicar o Buff 1007 (Inspiration)
-                                  const currentHeroForSkill = socket.currentHeroId || 1015;
-                                  if (currentHeroForSkill === 2000 && (skillId === 1121 || skillId === 1122)) {
-                                      const inspirationDuration = 6000; // 6 segundos
-                                      console.log(`[🔋 LAMSTER INSPIRATION] Aplicando Buff 1007 em si mesmo e nos alvos.`);
-                                      
-                                      // Aplica em si mesmo
-                                      gameLogic.applyBuffToEntity(socket, playerId, 1007, inspirationDuration);
-                                      
-                                      // Aplica nos aliados atingidos pela habilidade
-                                      if (Array.isArray(targets) && targets.length > 0) {
-                                          targets.forEach(targetId => {
-                                              gameLogic.applyBuffToEntity(socket, targetId, 1007, inspirationDuration);
-                                          });
-                                      }
-                                      
-                                      gameLogic.sendSystemChat(socket, `💪 [Inspiração] Buff "Inspiração" (+25% Dano) aplicado por 6 segundos!`);
-                                  }
+
 
                                   // 2. Envia o SkillDataUpdate para iniciar o cooldown e travar spam
                                   // 2. Envia o SkillDataUpdate para atualizar cargas e cooldown independente
@@ -3604,7 +4338,7 @@ const tcpServer = net.createServer((socket) => {
                                   const cdToSendEnc = utils.encodeInt(cdToSend);
                                   const skillLongTime = (skillConfig && skillConfig.longtime) ? skillConfig.longtime : 0;
                                    const longtimeEnc = utils.encodeInt(skillLongTime);
-                                   const skillUpdatePacket = `e${playerId}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${remainingChargesEnc},0,${utils.encodeInt(1)},${cdToSendEnc},0,0,0,${longtimeEnc},${actualCdEnc})))\n`;
+                                   const skillUpdatePacket = `e${utils.encodeInt(Number(playerId))}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${remainingChargesEnc},0,${utils.encodeInt(1)},${cdToSendEnc},0,0,0,${longtimeEnc},${actualCdEnc})))\n`;
                                  if (actualCd > 0) {
                                      // For Dragos Bat Skill (1100), we delay cooldown start until OneSkillFinish (handled in 31401)
                                      if (skillId === 1100 || String(skillId) === "1100") {
@@ -3616,7 +4350,7 @@ const tcpServer = net.createServer((socket) => {
                                  } else if (socket.nocd) {
                                      // Se noCD estiver ativo, enviamos o pacote com CD 0 e pronto para reuso imediato
                                      const zeroEnc = utils.encodeInt(0);
-                                     const nocdUpdatePacket = `e${playerId}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${utils.encodeInt(1)},0,${utils.encodeInt(1)},${zeroEnc},0,0,0,${longtimeEnc},${zeroEnc})))\n`;
+                                     const nocdUpdatePacket = `e${utils.encodeInt(Number(playerId))}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${utils.encodeInt(1)},0,${utils.encodeInt(1)},${zeroEnc},0,0,0,${longtimeEnc},${zeroEnc})))\n`;
                                      socket.write(nocdUpdatePacket);
                                      console.log(`[🔋 NOCD UPDATE SENT]: ${nocdUpdatePacket.trim()}`);
                                  }
@@ -3655,7 +4389,7 @@ const tcpServer = net.createServer((socket) => {
 
                                 const skillLongTime = (skillConfig && skillConfig.longtime) ? skillConfig.longtime : 0;
                                 const longtimeEnc = utils.encodeInt(skillLongTime);
-                                const skillUpdatePacket = `e${playerId}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${chargesEnc},0,${one},${nextCdEnc},0,0,0,${longtimeEnc},${actualTotalCdEnc})))\n`;
+                                const skillUpdatePacket = `e${utils.encodeInt(Number(playerId))}:SkillDataUpdate,(${utils.encodeInt(31102)},((${skillIdEnc},0,${chargesEnc},0,${one},${nextCdEnc},0,0,0,${longtimeEnc},${actualTotalCdEnc})))\n`;
                                 socket.write(skillUpdatePacket);
                                 console.log(`[🔋 SKILL CD END REFILLED]: Skill ${skillId} refilled charge ${newCharges}/${maxCharges} (Next CD: ${nextCd}ms): ${skillUpdatePacket.trim()}`);
                             } catch (e) {
@@ -3698,7 +4432,7 @@ const tcpServer = net.createServer((socket) => {
                                 // 💖 ANGEL / LOLITA / GUANYIN RESURRECTION ULTIMATE
                                 // ==========================================
                                 const currentHeroForRevive = socket.currentHeroId || 1015;
-                                if (currentHeroForRevive === 1029 || currentHeroForRevive === 2000 || currentHeroForRevive === 1019) {
+                                if (currentHeroForRevive === 1029 || currentHeroForRevive === 1019) {
                                     const reviveArgs = utils.parseArrayList(argsStr);
                                     console.log(`[💖 ANGEL REVIVE] Parsed szReliveId:`, JSON.stringify(reviveArgs));
                                     const casterForce = socket.force !== undefined ? socket.force : 1;
@@ -3717,7 +4451,7 @@ const tcpServer = net.createServer((socket) => {
                                             
                                             // Busca em jogadores
                                             const targetSocket = activeSockets.find(s => 
-                                                s.socketType === "SCENE" && !s.destroyed && 
+                                                sceneScope.canReceive(socket, s) && !s.destroyed && 
                                                 (s.playerId === reviveTargetId || String(s.playerId) === String(reviveTargetId) ||
                                                  s.playerIndex === reviveTargetId || String(s.playerIndex) === String(reviveTargetId))
                                             );
@@ -3742,7 +4476,7 @@ const tcpServer = net.createServer((socket) => {
                                                 const rz = utils.encodeInt(Math.round(targetSocket.lastY * 100));
                                                 const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${rx},${ry},${rz},${utils.encodeInt(180)},0,0,''))\n`;
                                                 activeSockets.forEach(s => {
-                                                    if (s.socketType === "SCENE" && !s.destroyed) s.write(revivePacket);
+                                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) s.write(revivePacket);
                                                 });
                                                 gameLogic.sendEntityHpUpdate(targetSocket, targetSocket.playerId || "1", targetSocket, true);
                                                 revivedCount++;
@@ -3755,9 +4489,9 @@ const tcpServer = net.createServer((socket) => {
                                                 if (bot && bot.isDead) {
                                                     bot.isDead = false;
                                                     bot.hp = bot.maxHp || 2000;
-                                                    const botRevivePacket = `e${bot.playerIndex || reviveTargetId}:OnRevive,((${utils.encodeInt(bot.lastX * 100 || 0)},${utils.encodeInt(bot.lastZ * 100 || 0)},${utils.encodeInt(bot.lastY * 100 || 0)},${utils.encodeInt(180)},0,0,''))\n`;
+                                                    const botRevivePacket = `e${utils.encodeInt(Number(bot.playerIndex || reviveTargetId))}:OnRevive,((${utils.encodeInt(bot.lastX * 100 || 0)},${utils.encodeInt(bot.lastZ * 100 || 0)},${utils.encodeInt(bot.lastY * 100 || 0)},${utils.encodeInt(180)},0,0,''))\n`;
                                                     activeSockets.forEach(s => {
-                                                        if (s.socketType === "SCENE" && !s.destroyed) s.write(botRevivePacket);
+                                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) s.write(botRevivePacket);
                                                     });
                                                     gameLogic.sendEntityHpUpdate(bot, bot.playerIndex || reviveTargetId, bot, true);
                                                     revivedCount++;
@@ -3771,7 +4505,7 @@ const tcpServer = net.createServer((socket) => {
                                     activeSockets.forEach(ally => {
                                         if (ally.socketType === "SCENE" && !ally.destroyed && ally.playerId !== playerId && ally.isDead) {
                                             const allyForce = ally.force !== undefined ? ally.force : 1;
-                                            if (Number(casterForce) === Number(allyForce)) {
+                                            if (combat.sameSide(socket, ally, Number(casterForce) === Number(allyForce))) {
                                                 const dist = Math.hypot((ally.lastX || 0) - angelX, (ally.lastZ || 0) - angelZ);
                                                 if (dist <= 2000) { // 20 metros
                                                     ally.isDead = false;
@@ -3787,7 +4521,7 @@ const tcpServer = net.createServer((socket) => {
                                                     const rz = utils.encodeInt(Math.round((ally.lastY || 0) * 100));
                                                     const revivePacket = `e${allyNetIdEnc}:OnRevive,((${rx},${ry},${rz},${utils.encodeInt(180)},0,0,''))\n`;
                                                     activeSockets.forEach(s => {
-                                                        if (s.socketType === "SCENE" && !s.destroyed) s.write(revivePacket);
+                                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) s.write(revivePacket);
                                                     });
                                                     gameLogic.sendEntityHpUpdate(ally, ally.playerId || "1", ally, true);
                                                     revivedCount++;
@@ -3800,14 +4534,14 @@ const tcpServer = net.createServer((socket) => {
                                     if (state.activeBots) {
                                         for (const botId in state.activeBots) {
                                             const bot = state.activeBots[botId];
-                                            if (bot && bot.isDead && Number(bot.force) === Number(casterForce)) {
+                                            if (bot && bot.isDead && combat.sameSide(socket, bot, Number(bot.force) === Number(casterForce))) {
                                                 const dist = Math.hypot((bot.lastX || 0) - angelX, (bot.lastZ || 0) - angelZ);
                                                 if (dist <= 2000) {
                                                     bot.isDead = false;
                                                     bot.hp = bot.maxHp || 2000;
-                                                    const botRevivePacket = `e${bot.playerIndex || botId}:OnRevive,((${utils.encodeInt(bot.lastX * 100 || 0)},${utils.encodeInt(bot.lastZ * 100 || 0)},${utils.encodeInt(bot.lastY * 100 || 0)},${utils.encodeInt(180)},0,0,''))\n`;
+                                                    const botRevivePacket = `e${utils.encodeInt(Number(bot.playerIndex || botId))}:OnRevive,((${utils.encodeInt(bot.lastX * 100 || 0)},${utils.encodeInt(bot.lastZ * 100 || 0)},${utils.encodeInt(bot.lastY * 100 || 0)},${utils.encodeInt(180)},0,0,''))\n`;
                                                     activeSockets.forEach(s => {
-                                                        if (s.socketType === "SCENE" && !s.destroyed) s.write(botRevivePacket);
+                                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) s.write(botRevivePacket);
                                                     });
                                                     gameLogic.sendEntityHpUpdate(bot, bot.playerIndex || botId, bot, true);
                                                     revivedCount++;
@@ -3823,9 +4557,9 @@ const tcpServer = net.createServer((socket) => {
                                     
                                     // Executa animação da ultimate no caster (SuperSkillUpdate)
                                     const zeroR = utils.encodeInt(0);
-                                    const ultExecuteRevive = `e${playerId}:SuperSkillUpdate,(${zeroR})\n`;
+                                    const ultExecuteRevive = `e${utils.encodeInt(Number(playerId))}:SuperSkillUpdate,(${zeroR})\n`;
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                             s.write(ultExecuteRevive);
                                         }
                                     });
@@ -3867,7 +4601,7 @@ const tcpServer = net.createServer((socket) => {
                                  const p50001_cast = utils.encodeInt(50001);
                                  const p50004_cast = utils.encodeInt(50004);
                                  const zero_cast = utils.encodeInt(0);
-                                 socket.write(`e${socket.playerId}:SendMsgToAllClient,(${p50001_cast},(${p50004_cast},(${zero_cast},${zero_cast},${zero_cast})))\n`);
+                                 socket.write(`e${utils.encodeInt(Number(socket.playerId))}:SendMsgToAllClient,(${p50001_cast},(${p50004_cast},(${zero_cast},${zero_cast},${zero_cast})))\n`);
 
                                     // ==========================================
                                  // 🚀 GERENCIADOR DINÂMICO DE BUFFS DE ULTIMATE (dazhao)
@@ -3896,9 +4630,9 @@ const tcpServer = net.createServer((socket) => {
                                           console.log(`[🎯 ALICE ULTIMATE ACTIVE] Applying Wallhack (Buff 1005) to all enemies for ${duration}ms!`);
                                           const casterForce = socket.force !== undefined ? socket.force : 1;
                                           activeSockets.forEach(s => {
-                                              if (s.socketType === "SCENE" && !s.destroyed && s.playerId !== playerId) {
+                                              if (sceneScope.canReceive(socket, s) && !s.destroyed && s.playerId !== playerId) {
                                                   const enemyForce = s.force !== undefined ? s.force : 1;
-                                                  if (Number(casterForce) !== Number(enemyForce)) {
+                                                  if (!combat.sameSide(socket, s, Number(casterForce) === Number(enemyForce))) {
                                                       gameLogic.applyBuffToEntity(socket, s.playerId, 1005, duration);
                                                   }
                                               }
@@ -3907,7 +4641,7 @@ const tcpServer = net.createServer((socket) => {
                                               const npc = spawnedNpcs[npcId];
                                               if (npc && !npc.destroyed) {
                                                   const enemyForce = npc.force !== undefined ? npc.force : 2;
-                                                  if (Number(casterForce) !== Number(enemyForce)) {
+                                                  if (!combat.sameSide(socket, npc, Number(casterForce) === Number(enemyForce))) {
                                                       gameLogic.applyBuffToEntity(socket, npcId, 1005, duration);
                                                   }
                                               }
@@ -3943,7 +4677,7 @@ const tcpServer = net.createServer((socket) => {
 
                                                // Curar aliados próximos no raio de 9 metros (900 unidades)
                                                activeSockets.forEach(ally => {
-                                                   if (ally.socketType === "SCENE" && !ally.destroyed && !ally.isDead && Number(ally.force) === Number(carmenForce) && ally !== socket && ally.playerId !== playerId) {
+                                                   if (ally.socketType === "SCENE" && !ally.destroyed && !ally.isDead && combat.sameSide(socket, ally, Number(ally.force) === Number(carmenForce)) && ally !== socket && ally.playerId !== playerId) {
                                                        const dist = Math.hypot((ally.lastX || 0) - carmenX, (ally.lastZ || 0) - carmenZ);
                                                        if (dist <= 900) {
                                                            ally.hp = Math.min(ally.maxHp || 2000, (ally.hp || 0) + healAmount);
@@ -3958,7 +4692,7 @@ const tcpServer = net.createServer((socket) => {
                                                if (state.activeBots) {
                                                    for (const bId in state.activeBots) {
                                                        const b = state.activeBots[bId];
-                                                       if (b && !b.isDead && Number(b.force) === Number(carmenForce)) {
+                                                       if (b && !b.isDead && combat.sameSide(socket, b, Number(b.force) === Number(carmenForce))) {
                                                            const dist = Math.hypot((b.lastX || 0) - carmenX, (b.lastZ || 0) - carmenZ);
                                                            if (dist <= 900) {
                                                                if (b.hp < (b.maxHp || 2000)) {
@@ -3983,7 +4717,7 @@ const tcpServer = net.createServer((socket) => {
                                            activeSockets.forEach(enemy => {
                                                if (enemy.socketType === "SCENE" && !enemy.destroyed && !enemy.isDead && enemy !== socket && enemy.playerId !== playerId) {
                                                    const enemyForceNum = (enemy.force !== undefined && enemy.force !== null) ? Number(enemy.force) : 2;
-                                                   if (enemyForceNum !== lilyForceNum) {
+                                                   if (!combat.sameSide(socket, enemy, enemyForceNum === lilyForceNum)) {
                                                        const dist = Math.hypot((enemy.lastX || 0) - lilyX, (enemy.lastZ || 0) - lilyZ);
                                                        if (dist <= 1500) {
                                                            // Aplica Silêncio (1041) por 5000ms com visual de correntes da alma
@@ -4001,7 +4735,7 @@ const tcpServer = net.createServer((socket) => {
                                                    const bot = state.activeBots[bId];
                                                    if (bot && !bot.isDead) {
                                                        const botForceNum = (bot.force !== undefined && bot.force !== null) ? Number(bot.force) : 2;
-                                                       if (botForceNum !== lilyForceNum) {
+                                                       if (!combat.sameSide(socket, bot, botForceNum === lilyForceNum)) {
                                                            const dist = Math.hypot((bot.lastX || 0) - lilyX, (bot.lastZ || 0) - lilyZ);
                                                            if (dist <= 1500) {
                                                                gameLogic.applyBuffToEntity(socket, bot.playerIndex || bId, 1041, 5000);
@@ -4034,7 +4768,7 @@ const tcpServer = net.createServer((socket) => {
                                           const venusForce = Number(socket.force !== undefined ? socket.force : 1);
                                           activeSockets.forEach(ally => {
                                               if (ally.socketType === "SCENE" && !ally.destroyed && !ally.isDead && ally.playerId !== playerId) {
-                                                  if (Number(ally.force) === venusForce) {
+                                                  if (combat.sameSide(socket, ally, Number(ally.force) === venusForce)) {
                                                       gameLogic.applyBuffToEntity(socket, ally.playerId, 1047, shieldDur);
                                                   }
                                               }
@@ -4061,7 +4795,7 @@ const tcpServer = net.createServer((socket) => {
                                           // Envia MSG_PLAYERSKILL_INIT (31101) para forçar o cliente Unity a limpar todos os CDs e reconstruir a UI instantaneamente com 3 cargas
                                           const s31101 = utils.encodeInt(31101);
                                           const fullSkillsData = db.generateHeroSkillsData(1030);
-                                          const resetSkillsPacket = `e${playerId}:SkillDataUpdate,(${s31101},${fullSkillsData})\n`;
+                                          const resetSkillsPacket = `e${utils.encodeInt(Number(playerId))}:SkillDataUpdate,(${s31101},${fullSkillsData})\n`;
                                           socket.write(resetSkillsPacket);
                                           console.log(`[🤺 VINCENT ULTIMATE - DUEL] Ativou Duel por ${duration}ms! Resetou cooldowns e restaurou 3 cargas de Shift via 31101: ${resetSkillsPacket.trim()}`);
                                       }
@@ -4083,7 +4817,7 @@ const tcpServer = net.createServer((socket) => {
                                                     activeSockets.forEach(ally => {
                                                         if (ally.socketType === "SCENE" && !ally.destroyed && !ally.isDead && ally.playerId !== playerId) {
                                                             const allyForce = Number(ally.force !== undefined ? ally.force : 1);
-                                                            if (allyForce === davidForce) {
+                                                            if (combat.sameSide(socket, ally, allyForce === davidForce)) {
                                                                 allyIds.push(Number(ally.playerIndex || ally.playerId));
                                                             }
                                                         }
@@ -4091,10 +4825,10 @@ const tcpServer = net.createServer((socket) => {
                                                     
                                                     if (allyIds.length > 0) {
                                                         const allyListEnc = allyIds.map(id => utils.encodeInt(id)).join(',');
-                                                        const promptPacket = `e${playerId}:SendMsgToAllClient,(${utils.encodeInt(2080001)},((${allyListEnc}),(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)}),${utils.encodeInt(playerId)},${utils.encodeInt(5)}))\n`;
+                                                        const promptPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${utils.encodeInt(2080001)},((${allyListEnc}),(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)}),${utils.encodeInt(playerId)},${utils.encodeInt(5)}))\n`;
                                                         
                                                         activeSockets.forEach(s => {
-                                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                                 s.write(promptPacket);
                                                             }
                                                         });
@@ -4110,18 +4844,18 @@ const tcpServer = net.createServer((socket) => {
                                 const durationEnc = utils.encodeInt(duration); 
                                 
                                 // 1. Mostra a barra de duração do Dazhao no cliente de todos
-                                const ultStartPacket = `e${playerId}:SendMsgToAllClient,(${d50001},(${d50005},(${one},'',${durationEnc})))\n`;
+                                const ultStartPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${d50001},(${d50005},(${one},'',${durationEnc})))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(ultStartPacket);
                                     }
                                 });
                                 
                                 // 2. Aciona a execução da Ultimate (SuperSkillUpdate) no cliente para animar e castar a habilidade!
                                 const zero = utils.encodeInt(0);
-                                const ultExecutePacket = `e${playerId}:SuperSkillUpdate,(${zero})\n`;
+                                const ultExecutePacket = `e${utils.encodeInt(Number(playerId))}:SuperSkillUpdate,(${zero})\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(ultExecutePacket);
                                     }
                                 });
@@ -4137,10 +4871,10 @@ const tcpServer = net.createServer((socket) => {
                                 socket.isVincentUltActive = false;
                                     socket.isVincentUltActive = false;
                                     if (!socket.destroyed) {
-                                        const ultEndPacket = `e${playerId}:SendMsgToAllClient,(${d50001},(${d50005},(${zero},'',${zero})))
+                                        const ultEndPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${d50001},(${d50005},(${zero},'',${zero})))
 `;
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                 s.write(ultEndPacket);
                                             }
                                         });
@@ -4152,10 +4886,10 @@ const tcpServer = net.createServer((socket) => {
                                             const jackIdEnc = utils.encodeInt(Number(socket.playerIndex || playerId || 1));
                                             const allPulled = Array.from(socket.jackPulledEnemies);
                                             const encReleaseIds = allPulled.map(id => utils.encodeInt(id)).join(",");
-                                            const endPullPacket = `e${playerId}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))
+                                            const endPullPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))
 `;
                                             activeSockets.forEach(s => {
-                                                if (s.socketType === "SCENE" && !s.destroyed) {
+                                                if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                     s.write(endPullPacket);
                                                 }
                                             });
@@ -4197,10 +4931,10 @@ const tcpServer = net.createServer((socket) => {
                                 const zero = utils.encodeInt(0);
                                 
                                 // CORREÇÃO DEFINITIVA: Usamos SendMsgToAllClient no lugar de SendMsgToClient, e tornamos o e1 dinâmico para e${playerId}
-                                const ultEndPacket = `e${playerId}:SendMsgToAllClient,(${d50001},(${d50005},(${zero},'',${zero})))
+                                const ultEndPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${d50001},(${d50005},(${zero},'',${zero})))
 `;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(ultEndPacket);
                                     }
                                 });
@@ -4212,10 +4946,10 @@ const tcpServer = net.createServer((socket) => {
                                     const jackIdEnc = utils.encodeInt(Number(socket.playerIndex || playerId || 1));
                                     const allPulled = Array.from(socket.jackPulledEnemies);
                                     const encReleaseIds = allPulled.map(id => utils.encodeInt(id)).join(",");
-                                    const endPullPacket = `e${playerId}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))
+                                    const endPullPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))
 `;
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                             s.write(endPullPacket);
                                         }
                                     });
@@ -4260,18 +4994,18 @@ const tcpServer = net.createServer((socket) => {
                                 const brPlayerIdEnc = utils.encodeInt(Number(socket.playerIndex || playerId || 1));
                                 
                                 // 1. Envia para o próprio jogador via SendMsgToClient (necessário para atualizar o Animator SheildState e exibir a barreira!)
-                                const respSelf = `e${playerId}:SendMsgToClient,(${p2010000},(${p2010002},(${stateEnc},${energyEnc},${maxEnergyEnc})))\n`;
+                                const respSelf = `e${utils.encodeInt(Number(playerId))}:SendMsgToClient,(${p2010000},(${p2010002},(${stateEnc},${energyEnc},${maxEnergyEnc})))\n`;
                                 socket.write(respSelf);
                                 console.log(`[🛡️ TAGALOA SHIELD SYNC SELF]: ${respSelf.trim()}`);
                                 
                                 // 2. Broadcast de animação para os outros jogadores (JvDun + SheildState)
                                 const isShieldUp = (state === 1) ? 1 : 0;
                                 const animStateVal = (state === 1) ? 1 : 0;
-                                const animJvDun = `e${playerId}:CA,((('JvDun',0,${isShieldUp}),1,${brPlayerIdEnc}))\n`;
-                                const animSheildState = `e${playerId}:CA,((('SheildState',2,${animStateVal}),1,${brPlayerIdEnc}))\n`;
+                                const animJvDun = `e${utils.encodeInt(Number(playerId))}:CA,((('JvDun',0,${isShieldUp}),1,${brPlayerIdEnc}))\n`;
+                                const animSheildState = `e${utils.encodeInt(Number(playerId))}:CA,((('SheildState',2,${animStateVal}),1,${brPlayerIdEnc}))\n`;
                                 
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed && s !== socket) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== socket) {
                                         s.write(animJvDun);
                                         s.write(animSheildState);
                                     }
@@ -4332,9 +5066,9 @@ const tcpServer = net.createServer((socket) => {
                                     const encodedHitIds = hitIds.map(id => utils.encodeInt(id)).join(",");
                                     
                                     // Broadcast para todos os clientes executarem HitByShawangSuper("start", jackId, hitIds)
-                                    const pullPacket = `e${playerId}:SendMsgToAllClient,(${p2030002},('start',${jackIdEnc},(${encodedHitIds})))\n`;
+                                    const pullPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2030002},('start',${jackIdEnc},(${encodedHitIds})))\n`;
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                             s.write(pullPacket);
                                         }
                                     });
@@ -4346,9 +5080,9 @@ const tcpServer = net.createServer((socket) => {
                                         if (socket.jackPulledEnemies && socket.jackPulledEnemies.size > 0) {
                                             const allPulled = Array.from(socket.jackPulledEnemies);
                                             const encReleaseIds = allPulled.map(id => utils.encodeInt(id)).join(",");
-                                            const endPullPacket = `e${playerId}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))\n`;
+                                            const endPullPacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2030002},('end',${jackIdEnc},(${encReleaseIds})))\n`;
                                             activeSockets.forEach(s => {
-                                                if (s.socketType === "SCENE" && !s.destroyed) {
+                                                if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                     s.write(endPullPacket);
                                                 }
                                             });
@@ -4413,9 +5147,9 @@ const tcpServer = net.createServer((socket) => {
                                 const posEnc = `(${utils.encodeInt(curPos[0])},${utils.encodeInt(curPos[1])},${utils.encodeInt(curPos[2])})`;
                                 const relesPosEnc = `(${utils.encodeInt(curReles[0])},${utils.encodeInt(curReles[1])},${utils.encodeInt(curReles[2])})`;
                                 
-                                const resp = `e${playerId}:SendMsgToAllClient,(${p2010002},(${playerIdEnc},(${typeEnc},${energyEnc},${maxEnergyEnc}),${posEnc},${relesPosEnc}))\n`;
+                                const resp = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2010002},(${playerIdEnc},(${typeEnc},${energyEnc},${maxEnergyEnc}),${posEnc},${relesPosEnc}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(resp);
                                     }
                                 });
@@ -4444,13 +5178,13 @@ const tcpServer = net.createServer((socket) => {
                                     // 1. Verifica se o alvo é um Jogador
                                     let targetSocket = null;
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && !s.destroyed && (Number(s.playerId) === targetNetId || s.playerIndex === targetNetId)) {
+                                        if (sceneScope.canReceive(socket, s) && !s.destroyed && (Number(s.playerId) === targetNetId || s.playerIndex === targetNetId)) {
                                             targetSocket = s;
                                         }
                                     });
                                     
                                     if (targetSocket && !targetSocket.isDead) {
-                                        const isEnemy = Number(targetSocket.force) !== Number(casterForce);
+                                        const isEnemy = !combat.sameSide(socket, targetSocket, Number(targetSocket.force) === Number(casterForce));
                                         if (isEnemy) {
                                             const dmg = 5; // Dano de colisão do escudo = 5 HP
                                             targetSocket.hp = Math.max(0, (targetSocket.hp !== undefined ? targetSocket.hp : (targetSocket.maxHp || 2000)) - dmg);
@@ -4475,7 +5209,7 @@ const tcpServer = net.createServer((socket) => {
                                         for (const bId in state.activeBots) {
                                             const bot = state.activeBots[bId];
                                             if (bot && !bot.isDead && (Number(bot.playerIndex) === targetNetId || Number(bId) === targetNetId)) {
-                                                const isEnemy = Number(bot.force) !== Number(casterForce);
+                                                const isEnemy = !combat.sameSide(socket, bot, Number(bot.force) === Number(casterForce));
                                                 if (isEnemy) {
                                                     const dmg = 5; // Dano de colisão do escudo = 5 HP
                                                     bot.hp = Math.max(0, (bot.hp !== undefined ? bot.hp : (bot.maxHp || 2000)) - dmg);
@@ -4543,9 +5277,9 @@ const tcpServer = net.createServer((socket) => {
                                                 const ryEnc = utils.encodeInt(0);
                                                 const rzEnc = utils.encodeInt(0);
 
-                                                const expirePacket = `e${playerId}:SendMsgToAllClient,(${p2210001},(${targetIdEnc},(${shieldIdEnc},${zero},${maxHpEnc},${dateStr},${creatorIdEnc},(${xEnc},${yEnc},${zEnc}),(${rxEnc},${ryEnc},${rzEnc})))))\n`;
+                                                const expirePacket = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2210001},(${targetIdEnc},(${shieldIdEnc},${zero},${maxHpEnc},${dateStr},${creatorIdEnc},(${xEnc},${yEnc},${zEnc}),(${rxEnc},${ryEnc},${rzEnc})))))\n`;
                                                 activeSockets.forEach(s => {
-                                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                         s.write(expirePacket);
                                                     }
                                                 });
@@ -4565,9 +5299,9 @@ const tcpServer = net.createServer((socket) => {
                                     // 1. Dano em Inimigos que passam pelo escudo (320 de dano) e Cura em Aliados (+300 HP)
                                     // Raio aumentado para 650 (6.5m) para cobrir a largura total do escudo e movimentação rápida
                                     activeSockets.forEach(other => {
-                                        if (other.socketType === "SCENE" && !other.destroyed && !other.isDead && other !== socket) {
-                                            const isEnemy = (Number(other.force) !== Number(lilyForce));
-                                            const isAlly = (Number(other.force) === Number(lilyForce));
+                                        if (sceneScope.canReceive(socket, other) && !other.isDead && other !== socket) {
+                                            const isEnemy = (!combat.sameSide(socket, other, Number(other.force) === Number(lilyForce)));
+                                            const isAlly = !isEnemy;
                                             const dist = Math.hypot((other.lastX || 0) - shieldX, (other.lastZ || 0) - shieldZ);
                                             
                                             if (dist <= 650) {
@@ -4612,8 +5346,8 @@ const tcpServer = net.createServer((socket) => {
                                             if (bot && !bot.isDead) {
                                                 const dist = Math.hypot((bot.lastX || 0) - shieldX, (bot.lastZ || 0) - shieldZ);
                                                 if (dist <= 650) {
-                                                    const isEnemy = (Number(bot.force) !== Number(lilyForce));
-                                                    const isAlly = (Number(bot.force) === Number(lilyForce));
+                                                    const isEnemy = (!combat.sameSide(socket, bot, Number(bot.force) === Number(lilyForce)));
+                                                    const isAlly = !isEnemy;
                                                     const botKey = "bot_" + (bot.playerIndex || bId);
                                                     if (isEnemy && !socket.lilyShieldHitEnemies.has(botKey)) {
                                                         socket.lilyShieldHitEnemies.add(botKey);
@@ -4656,9 +5390,9 @@ const tcpServer = net.createServer((socket) => {
                                 const ryEnc = utils.encodeInt(socket.lilyBarrierRot ? socket.lilyBarrierRot[1] : 0);
                                 const rzEnc = utils.encodeInt(socket.lilyBarrierRot ? socket.lilyBarrierRot[2] : 0);
                                 
-                                const resp = `e${playerId}:SendMsgToAllClient,(${p2210001},(${targetIdEnc},(${shieldIdEnc},${hpEnc},${maxHpEnc},${dateStr},${creatorIdEnc},(${xEnc},${yEnc},${zEnc}),(${rxEnc},${ryEnc},${rzEnc})))))\n`;
+                                const resp = `e${utils.encodeInt(Number(playerId))}:SendMsgToAllClient,(${p2210001},(${targetIdEnc},(${shieldIdEnc},${hpEnc},${maxHpEnc},${dateStr},${creatorIdEnc},(${xEnc},${yEnc},${zEnc}),(${rxEnc},${ryEnc},${rzEnc})))))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                         s.write(resp);
                                     }
                                 });
@@ -4696,7 +5430,7 @@ const tcpServer = net.createServer((socket) => {
                                 const npcId = global.nextNpcId++;
 
                                 // Resolvendo a força real baseada no time do jogador criador
-                                const masterSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === momId || String(s.playerId) === String(momId) || s.playerIndex === momId || String(s.playerIndex) === String(momId)));
+                                const masterSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === momId || String(s.playerId) === String(momId) || s.playerIndex === momId || String(s.playerIndex) === String(momId)));
                                 const masterNetId = masterSocket ? (masterSocket.playerIndex !== undefined ? masterSocket.playerIndex : momId) : momId;
                                 const npcForce = masterSocket ? (masterSocket.force !== undefined ? masterSocket.force : force) : force;
 
@@ -4719,7 +5453,7 @@ const tcpServer = net.createServer((socket) => {
                                         delete spawnedNpcs[oldestSentry.id];
                                         const destPacket = `d${utils.encodeInt(oldestSentry.id)}\n`;
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                 s.write(destPacket);
                                             }
                                         });
@@ -4739,7 +5473,7 @@ const tcpServer = net.createServer((socket) => {
                                         delete spawnedNpcs[oldestTurret.id];
                                         const destPacket = `d${utils.encodeInt(oldestTurret.id)}\n`;
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                 s.write(destPacket);
                                             }
                                         });
@@ -4757,7 +5491,7 @@ const tcpServer = net.createServer((socket) => {
                                         delete spawnedNpcs[oldTp.id];
                                         const destPacket = `d${utils.encodeInt(oldTp.id)}\n`;
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                 s.write(destPacket);
                                             }
                                         });
@@ -4777,7 +5511,7 @@ const tcpServer = net.createServer((socket) => {
                                          delete spawnedNpcs[oldestClaymore.id];
                                          const destPacket = `d${utils.encodeInt(oldestClaymore.id)}\n`;
                                          activeSockets.forEach(s => {
-                                             if (s.socketType === "SCENE" && !s.destroyed) {
+                                             if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                  s.write(destPacket);
                                              }
                                          });
@@ -4797,7 +5531,7 @@ const tcpServer = net.createServer((socket) => {
                                         delete spawnedNpcs[oldestTrap.id];
                                         const destPacket = `d${utils.encodeInt(oldestTrap.id)}\n`;
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                 s.write(destPacket);
                                             }
                                         });
@@ -4818,6 +5552,7 @@ const tcpServer = net.createServer((socket) => {
                                     force: npcForce,
                                     weaponIndex: npcConf.weaponIndex || 0
                                 };
+                                sceneScope.tagEntity(spawnedNpcs[npcId], socket);
 
                                 global.npcHistory = global.npcHistory || {};
                                 global.npcHistory[npcId] = spawnedNpcs[npcId];
@@ -4825,7 +5560,7 @@ const tcpServer = net.createServer((socket) => {
                                 // Envia a inicialização da entidade diretamente para todos os clientes ativos
                                 const className = getEntityClassName(npcIndex);
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         const spawnPacket = `c${className}:${utils.encodeInt(npcId)},("Initialize",(${utils.encodeInt(masterNetId)},${utils.encodeInt(npcId)},${utils.encodeInt(npcIndex)},${utils.encodeInt(npcForce)},(${utils.encodeInt(x)},${utils.encodeInt(y)},${utils.encodeInt(z)}),(${utils.encodeInt(rx)},${utils.encodeInt(ry)},${utils.encodeInt(rz)}),(${utils.encodeInt(sx)},${utils.encodeInt(sy)},${utils.encodeInt(sz)}),(${utils.encodeInt(fx)},${utils.encodeInt(fy)},${utils.encodeInt(fz)}),${utils.encodeInt(targetId)},${utils.encodeInt(maxHp)},${utils.encodeInt(npcTime)},${utils.encodeInt(1)},${utils.encodeInt(momType)},'${colliderName}'),((),()),0)\n`;
                                         s.write(spawnPacket);
                                     }
@@ -4853,11 +5588,12 @@ const tcpServer = net.createServer((socket) => {
                                         pairedNpcId: npcId
                                     };
                                     spawnedNpcs[baseNpcId] = baseNpc;
+                                    sceneScope.tagEntity(baseNpc, socket);
                                     spawnedNpcs[npcId].pairedNpcId = baseNpcId;
 
                                     const baseClass = getEntityClassName(1017);
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                             const baseSpawnPacket = `c${baseClass}:${utils.encodeInt(baseNpcId)},("Initialize",(${utils.encodeInt(masterNetId)},${utils.encodeInt(baseNpcId)},${utils.encodeInt(1017)},${utils.encodeInt(npcForce)},(${utils.encodeInt(baseCoords.sx)},${utils.encodeInt(baseCoords.sy)},${utils.encodeInt(baseCoords.sz)}),(${utils.encodeInt(0)},${utils.encodeInt(0)},${utils.encodeInt(0)}),(${utils.encodeInt(100)},${utils.encodeInt(100)},${utils.encodeInt(100)}),(${utils.encodeInt(0)},${utils.encodeInt(0)},${utils.encodeInt(0)}),${utils.encodeInt(-1)},${utils.encodeInt(maxHp)},${utils.encodeInt(baseNpcTime)},${utils.encodeInt(1)},${utils.encodeInt(momType)},''),((),()),0)\n`;
                                             s.write(baseSpawnPacket);
                                         }
@@ -4872,7 +5608,7 @@ const tcpServer = net.createServer((socket) => {
                                         }
                                         const portals = [spawnedNpcs[npcId], spawnedNpcs[baseNpcId]].filter(Boolean);
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed && !s.isDead && Number(s.force) === Number(npcForce)) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed && !s.isDead && combat.sameSide(masterSocket || socket, s, Number(s.force) === Number(npcForce))) {
                                                 const px = s.lastX || 0;
                                                 const py = s.lastY || 0;
                                                 const pz = s.lastZ || 0;
@@ -4921,7 +5657,7 @@ const tcpServer = net.createServer((socket) => {
                                         }
                                         
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed && !s.isDead && Number(s.force) !== Number(npcForce)) {
+                                            if (sceneScope.canReceive(socket, s) && !s.destroyed && !s.isDead && !combat.sameSide(masterSocket || socket, s, Number(s.force) === Number(npcForce))) {
                                                 const px = s.lastX || 0;
                                                 const py = s.lastY || 0;
                                                 const pz = s.lastZ || 0;
@@ -4947,7 +5683,7 @@ const tcpServer = net.createServer((socket) => {
                                         
                                         if (state.activeBots) {
                                             Object.values(state.activeBots).forEach(b => {
-                                                if (b && !b.isDead && Number(b.force) !== Number(npcForce)) {
+                                                if (b && !b.isDead && !combat.sameSide(masterSocket || socket, b, Number(b.force) === Number(npcForce))) {
                                                     const bx = b.lastX || 0;
                                                     const by = b.lastY || 0;
                                                     const bz = b.lastZ || 0;
@@ -4998,7 +5734,7 @@ const tcpServer = net.createServer((socket) => {
                                             delete spawnedNpcs[npcId];
                                             const destPacket = `d${utils.encodeInt(npcId)}\n`;
                                             activeSockets.forEach(s => {
-                                                if (s.socketType === "SCENE" && !s.destroyed) {
+                                                if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                     s.write(destPacket);
                                                 }
                                             });
@@ -5006,11 +5742,11 @@ const tcpServer = net.createServer((socket) => {
                                             
                                             // Scarlett (1022) Ultimate snowball (1013) camera tracking reset upon lifetime expiration
                                             if (targetNpc.index === 1013) {
-                                                const creatorSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (Number(s.playerId) === Number(targetNpc.masterId) || Number(s.playerIndex) === Number(targetNpc.masterId)));
+                                                const creatorSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (Number(s.playerId) === Number(targetNpc.masterId) || Number(s.playerIndex) === Number(targetNpc.masterId)));
                                                 if (creatorSocket) {
-                                                    creatorSocket.write(`e${creatorSocket.playerId}:SuperSkillFinish\n`);
-                                                    creatorSocket.write(`e${creatorSocket.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(20014)},(${utils.encodeInt(90008)},(),${utils.encodeInt(1)}))\n`);
-                                                    console.log(`[❄️ SNOWBALL RESET] Scarlett Camera reset: e${creatorSocket.playerId}:SuperSkillFinish`);
+                                                    creatorSocket.write(`e${utils.encodeInt(Number(creatorSocket.playerId))}:SuperSkillFinish\n`);
+                                                    creatorSocket.write(`e${utils.encodeInt(Number(creatorSocket.playerIndex || 1))}:SendMsgToClient,(${utils.encodeInt(20014)},(${utils.encodeInt(90008)},(),${utils.encodeInt(1)}))\n`);
+                                                    console.log(`[❄️ SNOWBALL RESET] Scarlett Camera reset: e${utils.encodeInt(Number(creatorSocket.playerId))}:SuperSkillFinish`);
                                                 }
                                             }
                                         }
@@ -5042,7 +5778,7 @@ const tcpServer = net.createServer((socket) => {
                                     socket.lastZ = destZ;
 
                                     // Envia comando de teletransporte para o cliente C# (Hero_Message_Handle.cs:33)
-                                    const telePacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(1010000)},(${utils.encodeInt(1010100)},(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)})))\n`;
+                                    const telePacket = `e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(1010000)},(${utils.encodeInt(1010100)},(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)})))\n`;
                                     socket.write(telePacket);
                                     console.log(`[🌀 TELEPORT EXECUTED] Jogador ${socket.playerName || socket.playerId} teleportado para (${destX}, ${destY}, ${destZ})`);
 
@@ -5062,7 +5798,7 @@ const tcpServer = net.createServer((socket) => {
                                     socket.lastY = destY;
                                     socket.lastZ = destZ;
 
-                                    const telePacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${utils.encodeInt(1010000)},(${utils.encodeInt(1010100)},(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)})))\n`;
+                                    const telePacket = `e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(1010000)},(${utils.encodeInt(1010100)},(${utils.encodeInt(destX)},${utils.encodeInt(destY)},${utils.encodeInt(destZ)})))\n`;
                                     socket.write(telePacket);
                                     console.log(`[🌀 TELEPORT BASE FALLBACK] Jogador ${socket.playerName || socket.playerId} teleportado para a base (${destX}, ${destY}, ${destZ})`);
                                 }
@@ -5082,11 +5818,11 @@ const tcpServer = net.createServer((socket) => {
                                 if (spawnedNpcs[npcId] !== undefined) {
                                     const targetNpc = spawnedNpcs[npcId];
                                     if (targetNpc.index === 1013) {
-                                        const creatorSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (Number(s.playerId) === Number(targetNpc.masterId) || Number(s.playerIndex) === Number(targetNpc.masterId)));
+                                        const creatorSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (Number(s.playerId) === Number(targetNpc.masterId) || Number(s.playerIndex) === Number(targetNpc.masterId)));
                                         if (creatorSocket) {
-                                            creatorSocket.write(`e${creatorSocket.playerId}:SuperSkillFinish\n`);
+                                            creatorSocket.write(`e${utils.encodeInt(Number(creatorSocket.playerId))}:SuperSkillFinish\n`);
                                             creatorSocket.write(`e1:SendMsgToClient,(${utils.encodeInt(20014)},(${utils.encodeInt(90008)},(),${utils.encodeInt(1)}))\n`);
-                                            console.log(`[❄️ SNOWBALL RESET] Scarlett Camera reset on suicide: e${creatorSocket.playerId}:SuperSkillFinish`);
+                                            console.log(`[❄️ SNOWBALL RESET] Scarlett Camera reset on suicide: e${utils.encodeInt(Number(creatorSocket.playerId))}:SuperSkillFinish`);
                                         }
                                     }
                                     delete spawnedNpcs[npcId];
@@ -5095,7 +5831,7 @@ const tcpServer = net.createServer((socket) => {
                                 // Envia a destruição da entidade diretamente para todos os clientes ativos
                                 const destPacket = `d${utils.encodeInt(npcId)}\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(destPacket);
                                     }
                                 });
@@ -5116,9 +5852,9 @@ const tcpServer = net.createServer((socket) => {
                                 const p1020000 = utils.encodeInt(1020000);
                                 const p1020002 = utils.encodeInt(1020002);
                                 const npcIdEnc = utils.encodeInt(npcId);
-                                const resp = `e${socket.playerIndex || playerId}:SendMsgToClient,(${p1020000},(${p1020002},(${npcIdEnc})))\n`;
+                                const resp = `e${utils.encodeInt(Number(socket.playerIndex || playerId))}:SendMsgToClient,(${p1020000},(${p1020002},(${npcIdEnc})))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         s.write(resp);
                                     }
                                 });
@@ -5155,18 +5891,29 @@ const tcpServer = net.createServer((socket) => {
                         if (cmdId === 20014) {
                             try {
                                 const parsed = utils.parseArrayList(argsStr);
-                                const subCmd = parsed[0]; // 90002
+                                const subCmd = parsed[0];
+                                // The selection countdown calls OnEnterGame, which sends 90004.
+                                if (subCmd === 90004 && socket.waitingForHeroLock) {
+                                    confirmInitialHero(socket, socket.currentHeroId || 1015);
+                                }
                                 if (subCmd === 90002) {
                                     const selectedHeroId = parsed[1];
                                     const isLocked = parsed[2] || 0; // 0 = preview, 1 = locked
+                                    lifecycle.event(socket, 'HERO_SELECTION', { hero: selectedHeroId, locked: isLocked });
                                     
                                     console.log(`[🎭 SELEÇÃO DE HERÓI] Jogador ${socket.playerNameEnc} selecionou HeroID ${selectedHeroId} (Locked: ${isLocked})`);
                                     
                                     if (isLocked === 1) {
-                                        socket.hasConfirmedHero = true;
-                                        gameLogic.switchPlayerHero(socket, selectedHeroId);
-                                        broadcastMatchUserList();
+                                        if (socket.waitingForHeroLock) {
+                                            confirmInitialHero(socket, selectedHeroId);
+                                        } else if (socket.isCombatReady) {
+                                            socket.hasConfirmedHero = true;
+                                            gameLogic.switchPlayerHero(socket, selectedHeroId);
+                                            broadcastMatchUserList(socket);
+                                        }
                                     } else {
+                                        if (!socket.waitingForHeroLock && !socket.isCombatReady) return;
+                                        socket.hasConfirmedHero = false;
                                         // Apenas atualiza a visualização/preview do herói na tela
                                         socket.currentHeroId = selectedHeroId;
                                         
@@ -5182,13 +5929,13 @@ const tcpServer = net.createServer((socket) => {
                                         const prerogativeLobby = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${socket.playerNameEnc}',${zero},'',${zero})`;
                                         const cust = getPlayerCustomizationData(socket.playerName, selectedHeroId);
                                         const userDataHeroInfo = `(${heroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
-                                        const myUserData = `('${socket.playerNameEnc}',${utils.encodeInt(99)},${one},${forceEnc},${isReadyEnc},${one},${heroIdEnc},${one},${one},${zero},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${one},${zero},${zero},${isCapEnc},${prerogativeLobby},())`;
+                                        const myUserData = `('${socket.playerNameEnc}',${utils.encodeInt(99)},${one},${forceEnc},${isReadyEnc},${one},${heroIdEnc},${one},${one},${zero},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${utils.encodeInt(socket.playerIndex || 1)},${zero},${zero},${isCapEnc},${prerogativeLobby},())`;
                                         
-                                        const resp = `e${playerId}:SendMsgToClient,(${p20014},(${s90002},'${socket.playerNameEnc}',${myUserData}))\n`;
+                                        const resp = `e${utils.encodeInt(Number(playerId))}:SendMsgToClient,(${p20014},(${s90002},'${socket.playerNameEnc}',${myUserData}))\n`;
                                         
                                         // Broadcast para todos os jogadores na cena verem o preview do herói
                                         activeSockets.forEach(s => {
-                                            if (s.socketType === "SCENE" && !s.destroyed) {
+                                            if ((s === socket || sceneScope.canReceive(socket, s)) && !s.destroyed && !s.sceneRetired) {
                                                 s.write(resp);
                                             }
                                         });
@@ -5210,7 +5957,7 @@ const tcpServer = net.createServer((socket) => {
                                 console.log(`[🏰 BASE SPAWN TDM] Jogador NetID ${playerNetId} ${state === 1 ? 'ENTROU na' : 'SAIU da'} base spawn (BaseNetID: ${baseNetId})`);
                                 
                                 // Atualiza o estado InJidi do socket associado na cena
-                                const targetSocket = activeSockets.find(s => s.socketType === "SCENE" && s.playerIndex === playerNetId && !s.destroyed);
+                                const targetSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && s.playerIndex === playerNetId && !s.destroyed);
                                 if (targetSocket) {
                                     targetSocket.inJidi = state;
                                 }
@@ -5220,9 +5967,9 @@ const tcpServer = net.createServer((socket) => {
                                 const stateEnc = utils.encodeInt(state);
                                 
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         const playerNetIdEnc = utils.encodeInt(playerNetId);
-                                        const resp = `e${s.playerIndex || 1}:SendMsgToClient,(${p52002},(${playerNetIdEnc},${stateEnc}))\n`;
+                                        const resp = `e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${p52002},(${playerNetIdEnc},${stateEnc}))\n`;
                                         s.write(resp);
                                     }
                                 });
@@ -5268,9 +6015,9 @@ const tcpServer = net.createServer((socket) => {
                                 const szNetMsg = `(${utils.encodeInt(nPinDao)},'${parsed[1] || ""}','${parsed[2] || ""}',(),${msgList},${valList},${ucpList})`;
 
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                         const szData = `(${szNetMsg},'${sound}','${anim}',${utils.encodeInt(type)},${utils.encodeInt(type)},${forceEnc},${netId},'${ico}',${utils.encodeInt(cdReady)},${utils.encodeInt(onGround)},${utils.encodeInt(bePlayActive)},${utils.encodeInt(nHuDongState)})`;
-                                        const broadcastPacket = `e${s.playerIndex || 1}:SendMsgToClient,(${p2000},(${p2001},${szData}))\n`;
+                                        const broadcastPacket = `e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${p2000},(${p2001},${szData}))\n`;
                                         s.write(broadcastPacket);
                                     }
                                 });
@@ -5300,8 +6047,8 @@ const tcpServer = net.createServer((socket) => {
                                 const szNetMsg = `(${pPinDao},'[mi]${senderNameHex}[/mi]','[mi]${msgHex}[/mi]','${targetUser}',(),(),${pCid},${ucpList},())`;
 
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && !s.destroyed) {
-                                        const broadcastPacket = `e${s.playerIndex || 1}:SendMsgToClient,(${p1006},${szNetMsg})\n`;
+                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
+                                        const broadcastPacket = `e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${p1006},${szNetMsg})\n`;
                                         s.write(broadcastPacket);
                                     }
                                 });
@@ -5404,7 +6151,7 @@ const tcpServer = net.createServer((socket) => {
                                                  const rz = utils.encodeInt(Math.round(socket.lastY || 0));
                                                  const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${rx},${ry},${rz},${utils.encodeInt(180)},0,0,''))\n`;
                                                  activeSockets.forEach(s => {
-                                                     if (s.socketType === "SCENE" && !s.destroyed) {
+                                                     if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                          s.write(revivePacket);
                                                      }
                                                  });
@@ -5451,7 +6198,7 @@ const tcpServer = net.createServer((socket) => {
                                               const rz = utils.encodeInt(Math.round(socket.lastY || 0));
                                               const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${rx},${ry},${rz},${utils.encodeInt(180)},0,0,''))\n`;
                                               activeSockets.forEach(s => {
-                                                  if (s.socketType === "SCENE" && !s.destroyed) {
+                                                  if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                       s.write(revivePacket);
                                                   }
                                               });
@@ -5467,7 +6214,7 @@ const tcpServer = net.createServer((socket) => {
                                                   const pDuration = utils.encodeInt(9999);
                                                   const deadPacket = `e${targetPlayerIdEnc}:OnDeath,(0,${pDuration},(${zero},${zero},${zero}),${zero},${zero},${zero},${zero},(),${zero},())\n`;
                                                   activeSockets.forEach(s => {
-                                                      if (s.socketType === "SCENE" && !s.destroyed) {
+                                                      if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                           s.write(deadPacket);
                                                       }
                                                   });
@@ -5478,7 +6225,7 @@ const tcpServer = net.createServer((socket) => {
                                                   const rz = utils.encodeInt(Math.round(socket.lastY || 0));
                                                   const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${rx},${ry},${rz},${utils.encodeInt(180)},0,0,''))\n`;
                                                   activeSockets.forEach(s => {
-                                                      if (s.socketType === "SCENE" && !s.destroyed) {
+                                                      if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                           s.write(revivePacket);
                                                       }
                                                   });
@@ -5602,28 +6349,20 @@ const tcpServer = net.createServer((socket) => {
                         }
                     }
                 } else if (line.includes(":SDG,")) {
-                    const sdgMatch = line.match(/^e(\w+):(?:.*?:)?SDG,\((.+)\)/);
+                    const sdgMatch = line.match(/^e([0-9A-Z_`a-z]+):(?:.*?:)?SDG,\((.+)\)/);
                     if (sdgMatch) {
                         try {
-                            const playerId = sdgMatch[1];
+                            const playerId = String(utils.decodeInt(sdgMatch[1]));
                             const argsStr = sdgMatch[2];
-                            const parsed = utils.parseArrayList(argsStr);
-                            
-                            // Safe dynamic hit extraction to handle any level of nested array wrapping
-                            let hits = [];
-                            function extractHits(arr) {
-                                if (!Array.isArray(arr)) return;
-                                if (arr.length >= 3 && !Array.isArray(arr[0]) && !Array.isArray(arr[1])) {
-                                    hits.push(arr);
-                                    return;
-                                }
-                                for (const item of arr) {
-                                    if (Array.isArray(item)) {
-                                        extractHits(item);
-                                    }
-                                }
+                            const decoded = decodeDamageEnvelope(utils.parseArrayList(argsStr));
+                            if (!decoded) {
+                                lifecycle.event(socket, 'DAMAGE_REJECTED', { reason: 'invalid-envelope' });
+                                continue;
                             }
-                            extractHits(parsed);
+                            const parsed = decoded.payload;
+                            const hits = decoded.hits;
+                            if (Number(socket.currentHeroId) === 2000 &&
+                                (!sceneScope.canReceive(socket, socket) || socket.isDead || socket.hp <= 0)) continue;
                             console.log(`[🔬 SDG] parsed.slice(0,15)=${JSON.stringify(parsed.slice(0,15))} hits=${hits.length}`);
 
                             // Decodifica a ID da arma/herói e o shootname correspondente usando a base64 real
@@ -5635,7 +6374,7 @@ const tcpServer = net.createServer((socket) => {
 
                             // Fallback robusto se resolvedWeaponId não for encontrado na base de dados
                             if (!resolvedWeaponId || !weaponsMap[resolvedWeaponId]) {
-                                const attackerSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === playerId || String(s.playerId) === String(playerId)));
+                                const attackerSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === playerId || String(s.playerId) === String(playerId)));
                                 if (attackerSocket && attackerSocket.currentHeroId) {
                                     resolvedWeaponId = attackerSocket.currentHeroId;
                                 }
@@ -5737,7 +6476,7 @@ const tcpServer = net.createServer((socket) => {
                                  const distance = rawDistance !== undefined ? utils.decodeInt(rawDistance) : 0;
                                  
                                  // Diagnóstico detalhado de cada hit
-                                 const _dbgPlayerTarget = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === targetId || String(s.playerId) === String(targetId)));
+                                 const _dbgPlayerTarget = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === targetId || String(s.playerId) === String(targetId)));
                                  const _dbgNpcTarget = spawnedNpcs[targetId] || spawnedNpcs[String(targetId)];
                                  const _dbgAttackerNpc = spawnedNpcs[attackerId] || spawnedNpcs[String(attackerId)];
                                  console.log(`[🔍 HIT DETAIL] raw=[${rawAttackerId},${rawTargetId}] decoded=attackerId:${attackerId} targetId:${targetId} boomHead:${boomHead} dist:${distance} | playerTarget:${!!_dbgPlayerTarget} npcTarget:${!!_dbgNpcTarget} attackerNpc:${!!_dbgAttackerNpc} | spawnedNpcKeys=[${Object.keys(spawnedNpcs).slice(0,10).join(',')}]`);
@@ -5787,15 +6526,26 @@ const tcpServer = net.createServer((socket) => {
                                  // 🪤 JOHNNY TRAP (NPC 1021 / Arma 9988) - Timer de 6s e Rate Limit de 660ms
                                   if (loopWeaponId === 9988 || (attackerNpc && (attackerNpc.index === 1021 || String(attackerNpc.index) === "1021"))) {
                                       if (attackerNpc) {
-                                          if (!attackerNpc.isActivated) {
-                                              attackerNpc.isActivated = true;
-                                              console.log(`[🪤 JOHNNY TRAP ACTIVATED] Trap ${attackerId} iniciou contagem de 6000ms para autodestruição!`);
-                                              setTimeout(() => {
+                                           if (!attackerNpc.isActivated) {
+                                               attackerNpc.isActivated = true;
+                                               console.log(`[🪤 JOHNNY TRAP ACTIVATED] Trap ${attackerId} iniciou contagem de 6000ms para autodestruição!`);
+
+                                               // 🌀 Sincroniza animação de giro para TODOS os clientes da sala (especialmente inimigos)
+                                               const ncasPacket = `e${utils.encodeInt(attackerId)}:NCAS,()\n`;
+                                               const caPacket = `e${utils.encodeInt(attackerId)}:CA,(('Attack',0,1),1)\n`;
+                                               activeSockets.forEach(s => {
+                                                   if (sceneScope.canReceive(socket, s) && !s.destroyed) {
+                                                       s.write(ncasPacket);
+                                                       s.write(caPacket);
+                                                   }
+                                               });
+
+                                               setTimeout(() => {
                                                   if (spawnedNpcs[attackerId]) {
                                                       delete spawnedNpcs[attackerId];
                                                       const destPacket = `d${utils.encodeInt(attackerId)}\n`;
                                                       activeSockets.forEach(s => {
-                                                          if (s.socketType === "SCENE" && !s.destroyed) {
+                                                          if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                               s.write(destPacket);
                                                           }
                                                       });
@@ -5827,7 +6577,7 @@ const tcpServer = net.createServer((socket) => {
                                          delete spawnedNpcs[attackerId];
                                          const destPacket = `d${utils.encodeInt(attackerId)}\n`;
                                          activeSockets.forEach(s => {
-                                             if (s.socketType === "SCENE" && !s.destroyed) {
+                                             if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                  s.write(destPacket);
                                              }
                                          });
@@ -5840,7 +6590,7 @@ const tcpServer = net.createServer((socket) => {
                                 let isPlayerTarget = false;
                                 
                                 // 1. Procurar em activeSockets para PvP e suporte a hits em outros jogadores
-                                let foundPlayer = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === targetId || String(s.playerId) === String(targetId)));
+                                let foundPlayer = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === targetId || String(s.playerId) === String(targetId)));
                                 if (foundPlayer) {
                                     target = foundPlayer;
                                     isPlayerTarget = true;
@@ -5852,20 +6602,22 @@ const tcpServer = net.createServer((socket) => {
                                 }
 
                                     if (target) {
+                                        if (!sceneScope.sameScene(socket, target)) continue;
 
                                         if (target.isDead) {
                                         console.log(`[🛡️ HIT BLOCKED] Alvo ${targetId} está morto e não pode ser afetado.`);
                                         continue;
                                     }
                                     // Resolvendo o Hero ID do atacante (suportando jogadores ativos, NPCs e bots)
-                                    let attackerSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === attackerId || String(s.playerId) === String(attackerId)));
+                                    let attackerSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === attackerId || String(s.playerId) === String(attackerId)));
                                     if (!attackerSocket && state.activeBots && state.activeBots[attackerId]) {
                                         attackerSocket = state.activeBots[attackerId];
+                                        if (attackerSocket.isPveMonster && !gameLogic.pveOwnsBot(socket, attackerSocket)) continue;
                                     }
                                     let attackerHeroId = attackerSocket ? attackerSocket.currentHeroId : null;
                                     if (!attackerHeroId && spawnedNpcs[attackerId]) {
                                         const masterId = spawnedNpcs[attackerId].masterId;
-                                        const masterSocket = activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (s.playerId === masterId || String(s.playerId) === String(masterId)));
+                                        const masterSocket = activeSockets.find(s => sceneScope.canReceive(socket, s) && !s.destroyed && (s.playerId === masterId || String(s.playerId) === String(masterId)));
                                         if (masterSocket) {
                                             attackerHeroId = masterSocket.currentHeroId;
                                         }
@@ -5903,7 +6655,7 @@ const tcpServer = net.createServer((socket) => {
                                      }
 
                                      if (isLilyHeal) {
-                                          if (Number(attackerForce) === Number(targetForce)) {
+                                          if (combat.sameSide(attackerSocket || attackerNpc, target, Number(attackerForce) === Number(targetForce))) {
                                               const isShield = ((loopWeaponId === 1033 || String(loopWeaponId) === "1033") && String(loopShootname) === "3");
                                               const healAmount = isShield ? 300 : 250;
                                               target.hp = Math.min(target.maxHp || 2000, (target.hp !== undefined ? target.hp : (target.maxHp || 2000)) + healAmount);
@@ -5925,9 +6677,27 @@ const tcpServer = net.createServer((socket) => {
                                       }
 
                                     // Verifica se é Cura da Guanyin (Healing Beam - shootname 1)
+                                    const isLamsterWeapon = Number(loopWeaponId) === 2000 || Number(resolvedWeaponId) === 2000;
+                                    if (isLamsterWeapon) {
+                                        if (!lamster.isLamsterWeapon(attackerSocket, loopWeaponId, loopShootname)) continue;
+                                        if (['1','2'].includes(String(loopShootname)) && combat.sameSide(attackerSocket, target)) {
+                                            const result = isPlayerTarget ? lamster.healAlly(attackerSocket, target, loopShootname) : null;
+                                            if (result && String(loopShootname)==='2') gameLogic.applyBuffToEntity(attackerSocket, targetId, 1007);
+                                            if (result && result.healed > 0) {
+                                                gameLogic.sendEntityHpUpdate(target, targetId, target, true);
+                                                if (result.selfHealed > 0) gameLogic.sendEntityHpUpdate(attackerSocket, attackerId, attackerSocket, true);
+                                                attackerSocket.matchHeal = (attackerSocket.matchHeal || 0) + result.healed + result.selfHealed;
+                                                gameLogic.sendTabScoreboard(attackerSocket);
+                                            }
+                                            continue; // Aliados recebem cura; secundário também aplica inspiração.
+                                        }
+                                    }
+                                    if (isLamsterWeapon && !lamster.canStrikeEnemy(attackerSocket, target, loopShootname)) {
+                                        if (String(loopShootname)==='2') console.log('[LAMSTER SECONDARY REJECT] '+JSON.stringify({attackerId,targetId,force:attackerSocket?.force,targetForce:target.force,ready:attackerSocket?.isCombatReady,hp:attackerSocket?.hp,targetHp:target.hp,source:[attackerSocket?.lastX,attackerSocket?.lastY,attackerSocket?.lastZ],target:[target.lastX ?? target.x,target.lastY ?? target.y,target.lastZ ?? target.z]}));
+                                        continue;
+                                    }
                                     const isGuanyinHeal = (
-                                        ((loopWeaponId === 2000 || String(loopWeaponId) === "2000" || loopWeaponId === 1019 || String(loopWeaponId) === "1019") && String(loopShootname) === "1") ||
-                                        ((resolvedWeaponId === 2000 || String(resolvedWeaponId) === "2000" || resolvedWeaponId === 1019 || String(resolvedWeaponId) === "1019") && String(loopShootname) === "1")
+                                        (Number(loopWeaponId) === 1019 || Number(resolvedWeaponId) === 1019) && String(loopShootname) === "1"
                                     );
 
                                     if (isGuanyinHeal) {
@@ -5942,33 +6712,7 @@ const tcpServer = net.createServer((socket) => {
                                         continue;
                                     }
 
-                                    // Verifica se é Cura/Ataque Básico do Lamster (ID 2000)
-                                    const isLamsterBasicHeal = (
-                                        (loopWeaponId === 2000 || String(loopWeaponId) === "2000" || resolvedWeaponId === 2000 || String(resolvedWeaponId) === "2000") && 
-                                        String(loopShootname) === "1"
-                                    );
 
-                                    if (isLamsterBasicHeal) {
-                                        if (Number(attackerForce) === Number(targetForce)) {
-                                            // Se atingir um aliado, cura ele!
-                                            const healAmount = 150;
-                                            target.hp = Math.min(target.maxHp || 2000, (target.hp !== undefined ? target.hp : (target.maxHp || 2000)) + healAmount);
-                                            gameLogic.sendEntityHpUpdate(target, targetId, target, isPlayerTarget);
-                                            if (attackerSocket && healAmount > 0) {
-                                                attackerSocket.matchHeal = (attackerSocket.matchHeal || 0) + healAmount;
-                                                gameLogic.sendTabScoreboard(attackerSocket);
-                                            }
-                                            
-                                            // E aplica o Buff 1007 (Inspiração) por 3 segundos (3000ms) no aliado curado!
-                                            gameLogic.applyBuffToEntity(socket, targetId, 1007, 3000);
-                                            
-                                            console.log(`[💖 LAMSTER HEAL & BUFF] Curou o Aliado: ${targetId} em +${healAmount} HP e aplicou Inspiração. Novo HP: ${target.hp}`);
-                                            continue;
-                                        } else {
-                                            // Se atingir um inimigo, o fluxo continua e aplica o dano normal do XML (120 de dano)!
-                                            console.log(`[💥 LAMSTER DAMAGE] Atingiu Inimigo: ${targetId}. Causando 120 de dano.`);
-                                        }
-                                    }
 
                                     // 0. Detecção de Armas/Ataques Melee (Nenhum falloff em área ou distância)
                                     const isMeleeAttack = (
@@ -6041,6 +6785,9 @@ const tcpServer = net.createServer((socket) => {
                                     } else {
                                         damageAmount = Math.round(finalDamage);
                                     }
+
+                                    // Inspiração1007: bônus ofensivo nativo; pulso simbólico mantém250.
+                                    if(attackerSocket?.activeBuffs?.[1007] && !(Number(loopWeaponId)===2000 && String(loopShootname)==='2')) damageAmount=Math.round(damageAmount*1.25);
 
                                     // 🔮 Multiplicador de Debuff do Beacon da Carmen (Buff 1010 ou 1005: +20% dano no alvo marcado)
                                     if (target && target.activeBuffs && (target.activeBuffs[1010] || target.activeBuffs[1005])) {
@@ -6153,7 +6900,7 @@ const tcpServer = net.createServer((socket) => {
                                     );
 
                                     if (isAngelActiveHeal) {
-                                        if (Number(attackerForce) === Number(targetForce)) {
+                                        if (combat.sameSide(attackerSocket || attackerNpc, target, Number(attackerForce) === Number(targetForce))) {
                                             const healAmount = String(loopShootname) === "3" ? 400 : 75;
                                             target.hp = Math.min(target.maxHp || 2000, (target.hp !== undefined ? target.hp : (target.maxHp || 2000)) + healAmount);
                                             gameLogic.sendEntityHpUpdate(target, targetId, target, isPlayerTarget);
@@ -6183,7 +6930,7 @@ const tcpServer = net.createServer((socket) => {
                                           Number(launcherNo) === 1
                                       );
 
-                                      if (Number(attackerForce) === Number(targetForce) && !isShogunSelfJump) {
+                                      if (combat.sameSide(attackerSocket || attackerNpc, target, Number(attackerForce) === Number(targetForce)) && !isShogunSelfJump) {
                                           console.log(`[🛡️ FOGO AMIGO NEGADO] Alvo ${targetId} é aliado do Atacante ${attackerId} (Time ${attackerForce})! Dano bloqueado.`);
                                           continue;
                                       }
@@ -6213,6 +6960,12 @@ const tcpServer = net.createServer((socket) => {
                                       const isTargetInvincible = target.godMode || target.isInvincible || (target.activeBuffs && (target.activeBuffs[1015] || target.activeBuffs[1045]));
                                        if (isTargetInvincible) {
                                           console.log(`[🛡️ HIT NEGADO] Alvo ${targetId} está invencível / no Casulo de Fogo (Buff 1015)!`);
+                                          continue;
+                                      }
+
+                                      // 🪤 Invulnerabilidade da Claymore Mine do Johnny durante a rotação ativada (6s)
+                                      if (target && (target.index === 1021 || String(target.index) === "1021") && target.isActivated) {
+                                          console.log(`[🛡️ JOHNNY TRAP INVULNERABLE] Trap ${targetId} está girando ativada (6s) e é imune a danos! Dano bloqueado.`);
                                           continue;
                                       }
 
@@ -6308,7 +7061,7 @@ const tcpServer = net.createServer((socket) => {
                                                              const animJvDun = `e${targetId}:CA,((('JvDun',0,0),1,${brPlayerIdEnc}))\n`;
                                                              const animSheildState = `e${targetId}:CA,((('SheildState',2,0),1,${brPlayerIdEnc}))\n`;
                                                              activeSockets.forEach(s => {
-                                                                 if (s.socketType === "SCENE" && !s.destroyed && s !== target) {
+                                                                 if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== target) {
                                                                      s.write(animJvDun);
                                                                      s.write(animSheildState);
                                                                  }
@@ -6336,7 +7089,7 @@ const tcpServer = net.createServer((socket) => {
                                                        const relesPosEnc = "(" + utils.encodeInt(relesPos[0]) + "," + utils.encodeInt(relesPos[1]) + "," + utils.encodeInt(relesPos[2]) + ")";
                                                        const resp = "e" + targetId + ":SendMsgToAllClient,(" + p2010002 + ",(" + playerIdEnc + ",(" + typeEnc + "," + energyEnc + "," + maxEnergyEnc + ")," + posEnc + "," + relesPosEnc + "))\n";
                                                        activeSockets.forEach(s => {
-                                                           if (s.socketType === "SCENE" && !s.destroyed) {
+                                                           if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                                s.write(resp);
                                                            }
                                                        });
@@ -6358,7 +7111,7 @@ const tcpServer = net.createServer((socket) => {
                                                        
                                                        const resp = "e" + targetId + ":SendMsgToAllClient,(" + p2210001 + ",(" + targetIdEnc + ",(" + shieldIdEnc + "," + hpEnc + "," + maxHpEnc + "," + dateStr + "," + creatorIdEnc + ",(" + xEnc + "," + yEnc + "," + zEnc + "),(" + rxEnc + "," + ryEnc + "," + rzEnc + "))))\n";
                                                        activeSockets.forEach(s => {
-                                                           if (s.socketType === "SCENE" && !s.destroyed) {
+                                                           if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                                                                s.write(resp);
                                                            }
                                                        });
@@ -6390,7 +7143,7 @@ const tcpServer = net.createServer((socket) => {
                                                const buffInfo = buffsMap[buffId];
                                                if (buffInfo) {
                                                    const isDebuff = buffInfo.isdebuff === 1;
-                                                   const isSameTeam = Number(attackerForce) === Number(targetForce);
+                                                   const isSameTeam = combat.sameSide(attackerSocket || attackerNpc, target, Number(attackerForce) === Number(targetForce));
                                                    if ((isDebuff && !isSameTeam) || (!isDebuff && isSameTeam)) {
                                                        const buffDuration = buffInfo.time || 5000;
                                                        gameLogic.applyBuffToEntity(socket, targetId, buffId, buffDuration);
@@ -6455,10 +7208,13 @@ const tcpServer = net.createServer((socket) => {
                                             if (attackerSocket && (Number(attackerSocket.currentHeroId) === 1026 || Number(attackerHeroId) === 1026)) {
                                                 const isDragosUlt = attackerSocket.isDragosUltActive || (attackerSocket.activeBuffs && attackerSocket.activeBuffs[1023]) || String(loopShootname) === "4";
                                                 if (isDragosUlt && originalDamage > 0) {
-                                                   gameLogic.sendEntityHpUpdate(attackerSocket, attackerSocket.playerId || "1", attackerSocket, true);
-                                                   console.log(`[🩸 JACK BLOODTHIRSTY LIFESTEAL] Jack ${attackerId} roubou +${healAmt} HP! Novo HP: ${attackerSocket.hp}`);
-                                               }
-                                           }
+                                                    const healAmt = Math.round(originalDamage * 0.35);
+                                                    const maxHp = attackerSocket.maxHp || 2000;
+                                                    attackerSocket.hp = Math.min(maxHp, (attackerSocket.hp || 0) + healAmt);
+                                                    gameLogic.sendEntityHpUpdate(attackerSocket, attackerSocket.playerId || "1", attackerSocket, true);
+                                                    console.log(`[🩸 DRAGOS BLOODTHIRSTY LIFESTEAL] Dragos ${attackerId} roubou +${healAmt} HP! Novo HP: ${attackerSocket.hp}/${maxHp}`);
+                                                }
+                                            }
 
                                            // 5. Aplica Repulsão Calibrada por Categoria
                                            let forceDir = null;
@@ -6528,7 +7284,7 @@ const tcpServer = net.createServer((socket) => {
                                                 forceMagnitude = 0;
                                             }
                                            // 5. Envia HaveDamage para feedbacks ricos e física de knockback
-                                           gameLogic.sendEntityDamageUpdate(targetId, target, originalDamage, attackerId, place, weaponId, forceDir, forceMagnitude);
+                                           gameLogic.sendEntityDamageUpdate(targetId, target, originalDamage, attackerId, place, loopWeaponId, forceDir, forceMagnitude, launcherNo, Number(loopShootname));
 
                                            // 5b. Acumula dano no atacante para estatísticas
                                            if (attackerSocket && originalDamage > 0) {
@@ -6580,7 +7336,7 @@ const tcpServer = net.createServer((socket) => {
                                     }
                                     // Retransmite SCP para outros clientes humanos na partida
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                             s.write(`e${utils.encodeInt(decodedBotId)}:SCP,(((${bx},${by},${bz}),${isDead || 0}))\n`);
                                         }
                                     });
@@ -6616,7 +7372,7 @@ const tcpServer = net.createServer((socket) => {
 
                                 const nspPacket = `e${utils.encodeInt(npcId)}:NSP,((${utils.encodeInt(posX)},${utils.encodeInt(posY)},${utils.encodeInt(posZ)}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                         s.write(nspPacket);
                                     }
                                 });
@@ -6648,7 +7404,7 @@ const tcpServer = net.createServer((socket) => {
 
                                 const nsrPacket = `e${utils.encodeInt(npcId)}:NSR,((${utils.encodeInt(rotX)},${utils.encodeInt(rotY)},${utils.encodeInt(rotZ)}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                         s.write(nsrPacket);
                                     }
                                 });
@@ -6674,7 +7430,7 @@ const tcpServer = net.createServer((socket) => {
 
                                 const nssPacket = `e${utils.encodeInt(npcId)}:NSS,((${utils.encodeInt(sx)},${utils.encodeInt(sy)},${utils.encodeInt(sz)}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                         s.write(nssPacket);
                                     }
                                 });
@@ -6701,7 +7457,7 @@ const tcpServer = net.createServer((socket) => {
 
                                 const nstpPacket = `e${utils.encodeInt(npcId)}:NSTP,(${utils.encodeInt(targetNetId)},(${utils.encodeInt(tx)},${utils.encodeInt(ty)},${utils.encodeInt(tz)}))\n`;
                                 activeSockets.forEach(s => {
-                                    if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                         s.write(nstpPacket);
                                     }
                                 });
@@ -6729,7 +7485,7 @@ const tcpServer = net.createServer((socket) => {
                                     const parm = aniData[2];
                                     const caPacket = `e${utils.encodeInt(npcNetId)}:CA,(('${ani}',${type},${parm}),${sendtype})\n`;
                                     activeSockets.forEach(s => {
-                                        if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+                                        if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
                                             s.write(caPacket);
                                         }
                                     });
@@ -6746,44 +7502,74 @@ const tcpServer = net.createServer((socket) => {
             }
             updateSessionFromSocket(socket);
         }
-    });
+    }
 
     socket.on('close', () => {
+        lifecycle.event(socket, 'CONNECTION_CLOSE');
+        lifecycle.transition(socket, 'closed', 'tcp-close');
+        const departingRoomUID = socket.currentRoomUID;
+        const departingMatch = !socket.sceneRetired ? gameLogic.getTdmMatch(socket, false) : null;
+        const departingPeers = activeSockets.filter(s => s !== socket && sceneScope.canReceive(socket, s));
         const socketIdx = activeSockets.indexOf(socket);
         if (socketIdx !== -1) {
             activeSockets.splice(socketIdx, 1);
         }
+
+        // Remove da fila de matchmaking se desconectar
+        matchmakingQueue = matchmakingQueue.filter(entry => entry.socket !== socket);
+
+        // Remove do container de sala se desconectar
+        const currentContainerRoom = !socket.sceneRetired ? getSocketRoom(socket) : null;
+        if (currentContainerRoom) {
+            removePlayerFromRoom(currentContainerRoom, socket);
+        }
+
         if (socket.csharpBridge) {
             try { socket.csharpBridge.destroy(); } catch (e) {}
             socket.csharpBridge = null;
         }
-        if (socketType === 'SCENE') {
+        if (socketType === 'SCENE' && !socket.sceneRetired) {
             socket.inMatch = false;
             
-            // Broadcast to other players in the scene to destroy this player's entity
-            const disconnectedIndex = socket.playerIndex || 1;
-            activeSockets.forEach(s => {
-                if (s.socketType === "SCENE" && s !== socket && !s.destroyed) {
+            // Broadcast to other players in the same scene container to destroy this player's entity
+            const disconnectedIndex = socket.playerIndex || (global.userIndexes && global.userIndexes[socket.playerName]) || (Number(socket.playerId) || 1);
+            const roomUID = departingRoomUID;
+            const sceneTargets = departingPeers;
+            sceneTargets.forEach(s => {
+                if (s !== socket && !s.destroyed) {
+                    // Segurança absoluta: Nunca enviar destroy com o índice do próprio socket destinatário!
+                    if (s.playerIndex && s.playerIndex === disconnectedIndex) return;
                     s.write(`d${utils.encodeInt(disconnectedIndex)}\n`);
-                    console.log(`[🌐 SCENE] Sent destroy signal d${disconnectedIndex} (Player Disconnected: ${socket.playerName}) to ${s.playerName}`);
+                    console.log(`[🌐 SCENE Room ${roomUID || 'Global'}] Sent destroy signal d${disconnectedIndex} (Player Disconnected: ${socket.playerName}) to ${s.playerName}`);
                 }
             });
             
-            const lobbyMatch = activeSockets.find(s => s.socketType === "LOBBY" && s.playerName === socket.playerName && !s.destroyed) ||
-                               activeSockets.find(s => s.socketType === "LOBBY" && s.remoteAddress === socket.remoteAddress && !s.destroyed);
+            const lobbyMatch = activeSockets.find(s => s.socketType === "LOBBY" && s.playerName === socket.playerName && !s.destroyed);
             if (lobbyMatch) {
                 lobbyMatch.inMatch = false;
             }
 
             // Remove da partida TDM ativa
-            if (global.activeTdmMatch) {
-                const match = global.activeTdmMatch;
-                const pIdx = match.players.indexOf(socket);
+            const tdm = departingMatch;
+            if (tdm && tdm.players) {
+                const pIdx = tdm.players.indexOf(socket);
                 if (pIdx !== -1) {
-                    match.players.splice(pIdx, 1);
-                    console.log(`[🏆 TDM] Jogador ${socket.playerName || 'Jogador'} desconectou e foi removido do TDM.`);
+                    tdm.players.splice(pIdx, 1);
+                    console.log(`[🏆 TDM Sala ${tdm.roomUID}] Jogador ${socket.playerName || 'Jogador'} desconectou e foi removido do TDM.`);
+                }
+                if (tdm.players.length === 0 && !(currentContainerRoom && currentContainerRoom.autoDestroyTimer)) {
+                    if (tdm.timer) clearInterval(tdm.timer);
+                    tdm.timer = null;
+                    if (tdm.endTimeout) clearTimeout(tdm.endTimeout);
+                    tdm.state = 'ended';
+                    if (tdm.roomUID && roomContainers.has(Number(tdm.roomUID))) {
+                        const r = roomContainers.get(Number(tdm.roomUID));
+                        if (r) r.tdmMatch = null;
+                    }
+                    if (global.activeTdmMatch === tdm) global.activeTdmMatch = null;
                 }
             }
+            cleanPlayerMatchState(socket, socket.playerName);
         }
         if (socket.activeBuffs) {
             for (const buffId in socket.activeBuffs) {
@@ -6794,6 +7580,16 @@ const tcpServer = net.createServer((socket) => {
             socket.activeBuffs = null;
         }
         socket.activeUltimateBuffs = null;
+
+        if (socket.carmenHealTargetId) {
+            gameLogic.cleanupBuff(null, socket.carmenHealTargetId, 1021, true);
+            socket.carmenHealTargetId = null;
+        }
+        if (socket.carmenBeaconTargetId) {
+            gameLogic.cleanupBuff(null, socket.carmenBeaconTargetId, 1005, true);
+            gameLogic.cleanupBuff(null, socket.carmenBeaconTargetId, 1010, true);
+            socket.carmenBeaconTargetId = null;
+        }
 
         if (socket.activeTargetBuffs) {
             for (const key in socket.activeTargetBuffs) {
@@ -6818,6 +7614,7 @@ const tcpServer = net.createServer((socket) => {
         }
     });
     socket.on('error', (err) => {
+        lifecycle.event(socket, 'CONNECTION_ERROR', { code: err.code, message: err.message });
         console.log(`[⚠️ ERRO]:`, err.message);
     });
 });
@@ -6830,7 +7627,7 @@ tcpServer.listen(config.tcpPort, () => {
 setInterval(() => {
     const now = Date.now();
     activeSockets.forEach(socket => {
-        if (socket.socketType !== "SCENE" || socket.destroyed) return;
+        if (socket.socketType !== "SCENE" || socket.destroyed || socket.sceneRetired || !socket.isCombatReady) return;
 
         // 1. Regeneração de Escudo do Tagaloa (1006)
         if (socket.currentHeroId === 1006 || String(socket.currentHeroId) === "1006") {
@@ -6849,7 +7646,7 @@ setInterval(() => {
                     const stEnc = utils.encodeInt(socket.tagaloaShieldActive ? 1 : 0);
                     const enEnc = utils.encodeInt(socket.tagaloaShieldHp);
                     const mxEnc = utils.encodeInt(8000);
-                    const regenResp = `e${socket.playerId}:SendMsgToClient,(${p2010000},(${p2010002},(${stEnc},${enEnc},${mxEnc})))\n`;
+                    const regenResp = `e${utils.encodeInt(Number(socket.playerId))}:SendMsgToClient,(${p2010000},(${p2010002},(${stEnc},${enEnc},${mxEnc})))\n`;
                     socket.write(regenResp);
                     console.log(`[🛡️ TAGALOA BARREIRA REGEN] HP da barreira: ${socket.tagaloaShieldHp}/8000 (+350 HP/s)`);
                 }
@@ -6859,6 +7656,7 @@ setInterval(() => {
         // 2. Cura passiva da Angel (1029)
         if (socket.currentHeroId === 1029 || String(socket.currentHeroId) === "1029") {
             if (socket.angelAuraTargets && socket.angelAuraTargets.length > 0) {
+                const angelForce = Number(socket.force !== undefined ? socket.force : (playerSessions[socket.playerName]?.force || 1));
                 socket.angelAuraTargets.forEach(targetId => {
                     let target = null;
                     let isPlayerTarget = false;
@@ -6872,6 +7670,11 @@ setInterval(() => {
                     }
                     
                     if (target && !target.destroyed && (target.hp !== undefined && target.hp > 0)) {
+                        const targetForce = Number(target.force !== undefined ? target.force : (playerSessions[target.playerName]?.force || (target.nForce !== undefined ? target.nForce : 1)));
+                        // Garante estritamente que a cura só se aplica a aliados
+                        if (!combat.sameSide(socket, target, targetForce === angelForce)) {
+                            return;
+                        }
                         const healAmount = 40;
                         target.hp = Math.min(target.maxHp || 2000, target.hp + healAmount);
                         gameLogic.sendEntityHpUpdate(target, targetId, target, isPlayerTarget);

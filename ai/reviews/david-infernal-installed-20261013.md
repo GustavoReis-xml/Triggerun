@@ -1,0 +1,24 @@
+# Passagem de trabalho — SKIN-036
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA / 13/10/2026 11:34BRT (14:34UTC).
+- Objetivo: adaptar o GLB Tripo ao David1037 e publicar Colosso do Abismo como skin5 gratuita independente.
+- Estado: implementada, testes automatizados/simulados aprovados e instalada; teste com cliente Unity pendente. Reserva liberada.
+- Base: original `dawei_tps.mo` SHA256e2ed32f90556b6f6d50530a787b126390c6f3f573be7e9c9eafc04b94e8fbccf; GLB preservado em `candidate-assets/david-infernal/source-tripo.glb` e igual ao Downloads.
+- Arquivos: TPSnovo `dawei_tps_infernal.mo`, public/baxi/herounlock.xml, zh/herounlock.xml e files_dir.xml. Sem alterações Assembly/servidor de gameplay.
+- Geometria: Tripo26634v/20992tri sem rig, 58componentes; adaptada26826v/20992tri,62bones. Altura1,97669 nativa, braçosT→pose nativa e alcance das mãos, joelhos/tornozelos ajustados aos pivôs David.
+- Placas: partes desconectadas seguem ossos rígidos; 3277tri do chassis/toe cover divididos por domínio rígido, com vértices duplicados somente nas fronteiras. Triângulos/UVs originais preservados via sourceIndices.
+- Auxiliares: Bone005/007+mirrors controlam placas frontais, Bone008+mirror ombreiras, Bone001/003+mirrors calcanhar/ponta. Cabeça/neck rígidos separados; pesos de mãos/fingers amostrados do nativo e limitados ao ramo correspondente.
+- Textura: albedoTripo4096 reduzido2048DXT5/mips12, shaderToon nativo; sem conversão PBR completa. Material/textura clones e CAB exclusivos.
+- Preservados: hierarquia/Avatar/Transforms/IK/controllers/física; duas meshes/renderers de arma nativos; `body2_dun` e seus10BoxCollider. Portal `dawei_csm.mo` externo e FPS `dawei_fps` nativos, sem alteração.
+- Cadastro: David1037/skin5, default0, qual4, unlockdata6|0, szattr vazio; nomeColosso do Abismo, TPSexclusivo, controllers/FPS/ícone `dawei_1` do original. Não substitui skin1–4.
+- Validação: `scratch/david-infernal-adapt/verify.py`,1029objetos comparados; apenas meshcorporal/11SMR/metadadosBundle mudam,2objetos adicionados. Índices/pesos/normais/UV/source e integridade escudo/arma/hierarquia aprovados.
+- Simulação:20poses com hierarquia completa, incluindo2gripsIK, cabeça±45°, peito/ombreiras/pés. Todas finitas; áreas de placas conservadas, maxEdgeStretch≈1,000027. Não decodifica/reproduz os clips reais doDavid.
+- Inspeção visual: repouso frontal/perfil/costas, corrida/agachamento/reload/grips e auxiliares conferidos. Modelo mecânico apresenta aberturas de juntas; rotações sintéticas fortes podem expor interior das ombreiras/cortes das placas do peito. Medir com animações reais antes de refinar por suposição.
+- Limites: LODs corporais usam meshcompleta20992tri; LODs da arma nativos. Ícone/FPS originais para esta primeira versão. Não há teste Unity nem duas contas nesta tarefa.
+- Catálogo: Python compara semântica antes/depois retirando só skin5; Nodecarrega5560entradas/preço1037_1_5=gold0/diamond0 e versão1.1.1. Scripts de catálogo/instalação conferidos.
+- Oracle: instalada13/10 14:34:30UTC, CRC26101304; zero conexões ao reiniciar, PM2triggerun onlinePID711369 e TCP7777 escutando. OitoHTTP SHA256 nas rotas1.1.1/1.3.5 aprovados e cópia local sincronizada com guarda de hashes.
+- Backups: local `backups/david036-before/` (3XML); remoto `/home/ubuntu/backups/david-infernal-skin036-20261013T143430Z/runtime.tar.gz`. Recurso novo não existia previamente.
+- Evidências: candidate-assets/david-infernal/adapted/{report,validation,pose-metrics}.json + previews; scratch/david-infernal-release/{base,new}.sha256 e http-validation.json.
+- HashTPS instalado:108b51477724dc5b3fcae589bb34709b88829a619779b87db98db8b66d9bf531; arquivos/manifesto inteiros em new.sha256.
+- Próximo passo: reabrir cliente, equipar DavidColosso do Abismo; testar seleção, andar/correr, tiro/reload, escudo, portal e visão remota. Se houver abertura excessiva de ombreiras/peito, registrar pose e captura antes de alterar pivôs.
+- Bloqueio: nenhum de instalação; validação real das animações depende do teste do usuário.

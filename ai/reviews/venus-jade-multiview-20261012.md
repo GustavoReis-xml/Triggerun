@@ -1,0 +1,11 @@
+# Passagem de trabalho — SKIN-024 multivistas
+- Responsável: Codex; 12/10/2026 BRT.
+- Objetivo: quatro referências separadas para Tripo multivistas; manter Venusjade aprovada.
+- Implementação: frente v2 preservada; costas geradas usando frente, esquerda usando frente/costas, direita usando frente/esquerda/costas; ferramenta image_gen.
+- Arquivos: candidate-assets/venus-jade/multiview/01-frente.png,02-esquerda.png,03-direita.png,04-costas.png; ZIP venus-jade-multiview.zip; prompts separados e validation.json.
+- Conferência visual: loiro curto/orelhasrosadas/olhosroxos/roupajada/uma cauda; costas mostram raíz central, laterais ligação sacro e volume atrás. Esquerda olha para esquerda; direita para direita. Braços em T ficam sobrepostos/end-on nos perfis.
+- Validação automatizada: quatroPNG1024x1536RGBA; transparência real, bounds e fração transparente registrados.
+- Limite: vistas produzidas por IA são aproximações; pequenas variações de ornamentos/cabelo/volume existem, não prometer geometria idêntica como render de modelo3D. Avaliar cauda/olhos/mãos no GLB antes de instalar.
+- Cliente/Oracle: intactos; não há GLB nem instalação.
+- Próximo passo: preencher slotsTripo com arquivos correspondentes, gerar modelo/textura, exportarGLB para adaptar rig nativo79bones/caudaBone001–005.
+- Reserva liberada; aguarda exportação do usuário.

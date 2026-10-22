@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,24 +53,48 @@ public class FbNanDuCon : Window
 	// Token: 0x06000AA0 RID: 2720 RVA: 0x00061734 File Offset: 0x0005F934
 	private void Start()
 	{
-		string format = string.Empty;
-		format = ((this.m_nFbType != 9) ? "pveIco/heian/nd{0}.txt" : "pveIco/king/nd{0}.txt");
-		fUIManager.GetInstance().GetIconAsset(string.Format(format, 0), this.pNanDuIco);
+		if (!fGameManager.mloadConfig.FbData.ContainsKey(this.m_nScnId))
+		{
+			return;
+		}
 		FbXmlData fbXmlData = fGameManager.mloadConfig.FbData[this.m_nScnId];
+		if (!fGameManager.mloadConfig.FbModeData.ContainsKey(fbXmlData.nstartplotid))
+		{
+			return;
+		}
 		FbModelXmlData fbModelXmlData = fGameManager.mloadConfig.FbModeData[fbXmlData.nstartplotid];
-		this.RewardData = fGameManager.mloadConfig.AllPveRewardData[this.m_nScnId];
+		if (fGameManager.mloadConfig.AllPveRewardData.ContainsKey(this.m_nScnId))
+		{
+			this.RewardData = fGameManager.mloadConfig.AllPveRewardData[this.m_nScnId];
+		}
+		string format = (this.m_nFbType != 9) ? "pveIco/heian/nd{0}.txt" : "pveIco/king/nd{0}.txt";
+		fUIManager.GetInstance().GetIconAsset(string.Format(format, 0), this.pNanDuIco);
 		this.InitShowXingXing();
 		this.OnShowDropItemList(fbModelXmlData.m_szShowItem);
 		this.OnShowFbInfo(fbXmlData);
 		this.ShowBuffList(fbXmlData.m_szPveLevel);
-		this.OnShowXiaoHaoItemPic();
-		PveUICon.inst.GetFb_Con(this.m_nFbNum).OnAddRawImage(this.pNanDuIco);
+		if (this.RewardData != null)
+		{
+			this.OnShowXiaoHaoItemPic();
+		}
+		if (PveUICon.inst != null && PveUICon.inst.GetFb_Con(this.m_nFbNum) != null)
+		{
+			PveUICon.inst.GetFb_Con(this.m_nFbNum).OnAddRawImage(this.pNanDuIco);
+		}
 	}
 
 	// Token: 0x06000AA1 RID: 2721 RVA: 0x00061810 File Offset: 0x0005FA10
 	public void OnShowXiaoHaoItemPic()
 	{
+		if (this.RewardData == null)
+		{
+			return;
+		}
 		int nSdItem = this.RewardData.m_nSdItem;
+		if (!fGameManager.mloadConfig.AllItemData.ContainsKey(nSdItem))
+		{
+			return;
+		}
 		ItemData itemData = fGameManager.mloadConfig.AllItemData[nSdItem];
 		string icoPath = ShopManager.GetIcoPath(itemData.m_nType);
 		fUIManager.GetInstance().GetIconAsset(string.Format(icoPath, itemData.m_sIco), this.rCaiLiaoIco);
@@ -78,12 +102,19 @@ public class FbNanDuCon : Window
 		this.rCaiLiaoIco.name = itemData.m_nItemId.ToString();
 		EventTriggerListener.Get(this.rCaiLiaoIco.gameObject).onEnter = new EventTriggerListener.VoidDelegate(this.OnEnterObj);
 		EventTriggerListener.Get(this.rCaiLiaoIco.gameObject).onExit = new EventTriggerListener.VoidDelegate(this.OnExitObj);
-		PveUICon.inst.GetFb_Con(this.m_nFbNum).OnAddRawImage(this.rCaiLiaoIco);
+		if (PveUICon.inst != null && PveUICon.inst.GetFb_Con(this.m_nFbNum) != null)
+		{
+			PveUICon.inst.GetFb_Con(this.m_nFbNum).OnAddRawImage(this.rCaiLiaoIco);
+		}
 	}
 
 	// Token: 0x06000AA2 RID: 2722 RVA: 0x000618F0 File Offset: 0x0005FAF0
 	public void UpdateShow()
 	{
+		if (!fGameManager.mloadConfig.FbData.ContainsKey(this.m_nScnId))
+		{
+			return;
+		}
 		FbXmlData fbdata = fGameManager.mloadConfig.FbData[this.m_nScnId];
 		this.OnShowFbInfo(fbdata);
 	}
@@ -91,93 +122,97 @@ public class FbNanDuCon : Window
 	// Token: 0x06000AA3 RID: 2723 RVA: 0x0006191C File Offset: 0x0005FB1C
 	public void OnShowFbInfo(FbXmlData fbdata)
 	{
-		bool flag = !fGameManager.mloadConfig.FbModeData.ContainsKey(fbdata.nstartplotid);
-		if (!flag)
+		if (fbdata == null || !fGameManager.mloadConfig.FbModeData.ContainsKey(fbdata.nstartplotid))
 		{
-			FbModelXmlData fbModelXmlData = fGameManager.mloadConfig.FbModeData[fbdata.nstartplotid];
-			PveRewardData pveRewardData = fGameManager.mloadConfig.AllPveRewardData[fbdata.nId];
-			int nNanDu = fbModelXmlData.m_nNanDu;
-			int num = (int)PveManager.GetInstance().GetPveDataByFbType(this.m_nFbType)[0];
-			this.TNanDuText.text = pveRewardData.sName;
-			this.tTjZdl.text = Language.GetLang(26019, new object[]
+			return;
+		}
+		FbModelXmlData fbModelXmlData = fGameManager.mloadConfig.FbModeData[fbdata.nstartplotid];
+		if (!fGameManager.mloadConfig.AllPveRewardData.ContainsKey(fbdata.nId))
+		{
+			return;
+		}
+		PveRewardData pveRewardData = fGameManager.mloadConfig.AllPveRewardData[fbdata.nId];
+		int nNanDu = fbModelXmlData.m_nNanDu;
+		int num = (int)PveManager.GetInstance().GetPveDataByFbType(this.m_nFbType)[0];
+		this.TNanDuText.text = pveRewardData.sName;
+		this.tTjZdl.text = Language.GetLang(26019, new object[]
+		{
+			fbModelXmlData.m_nZdl
+		});
+		this.tzdZdl.text = Language.GetLang(26065, new object[]
+		{
+			fbModelXmlData.m_nMinZdl
+		});
+		this.tXiaoHaoTiLi.text = Language.GetLang(26020, new object[]
+		{
+			PveManager.GetInstance().GetTili(nNanDu)
+		});
+		this.tMaxScore.GetComponent<Text>().text = string.Empty;
+		int num2 = (this.m_nFbType != 9) ? (nNanDu * 60 + 180) : (nNanDu * 60 + 60);
+		this.firstRewardTxt.text = Language.GetLang(26022, new object[]
+		{
+			num2
+		});
+		bool flag2 = num < nNanDu;
+		if (flag2)
+		{
+			this.pTongGuan.SetActive(false);
+			this.pWeiTongGuan.SetActive(true);
+			int nPreFbId = pveRewardData.m_nPreFbId;
+			bool flag3 = fGameManager.mloadConfig.AllPveRewardData.ContainsKey(nPreFbId);
+			if (flag3)
 			{
-				fbModelXmlData.m_nZdl
-			});
-			this.tzdZdl.text = Language.GetLang(26065, new object[]
-			{
-				fbModelXmlData.m_nMinZdl
-			});
-			this.tXiaoHaoTiLi.text = Language.GetLang(26020, new object[]
-			{
-				PveManager.GetInstance().GetTili(nNanDu)
-			});
-			this.tMaxScore.GetComponent<Text>().text = string.Empty;
-			int num2 = (this.m_nFbType != 9) ? (nNanDu * 60 + 180) : (nNanDu * 60 + 60);
-			this.firstRewardTxt.text = Language.GetLang(26022, new object[]
-			{
-				num2
-			});
-			bool flag2 = num < nNanDu;
-			if (flag2)
-			{
-				this.pTongGuan.SetActive(false);
-				this.pWeiTongGuan.SetActive(true);
-				int nPreFbId = pveRewardData.m_nPreFbId;
-				bool flag3 = fGameManager.mloadConfig.AllPveRewardData.ContainsKey(nPreFbId);
-				if (flag3)
+				PveRewardData pveRewardData2 = fGameManager.mloadConfig.AllPveRewardData[nPreFbId];
+				this.pWeiTongGuan.transform.FindChild("Text").GetComponent<Text>().text = Language.GetLang(26021, new object[]
 				{
-					PveRewardData pveRewardData2 = fGameManager.mloadConfig.AllPveRewardData[nPreFbId];
+					pveRewardData2.sName
+				});
+			}
+			else
+			{
+				bool flag4 = this.m_nFbType == 12;
+				if (flag4)
+				{
 					this.pWeiTongGuan.transform.FindChild("Text").GetComponent<Text>().text = Language.GetLang(26021, new object[]
 					{
-						pveRewardData2.sName
+						Language.GetLang(26060, new object[0])
 					});
 				}
 				else
 				{
-					bool flag4 = this.m_nFbType == 12;
-					if (flag4)
+					this.pWeiTongGuan.transform.FindChild("Text").GetComponent<Text>().text = Language.GetLang(26021, new object[]
 					{
-						this.pWeiTongGuan.transform.FindChild("Text").GetComponent<Text>().text = Language.GetLang(26021, new object[]
-						{
-							Language.GetLang(26060, new object[0])
-						});
-					}
-					else
-					{
-						this.pWeiTongGuan.transform.FindChild("Text").GetComponent<Text>().text = Language.GetLang(26021, new object[]
-						{
-							string.Empty
-						});
-					}
+						string.Empty
+					});
 				}
+			}
+		}
+		else
+		{
+			int maxScore = this.GetMaxScore(nNanDu);
+			bool flag5 = num == nNanDu && maxScore < 1;
+			if (flag5)
+			{
+				this.pTongGuan.SetActive(false);
+				this.pWeiTongGuan.SetActive(false);
 			}
 			else
 			{
-				int maxScore = this.GetMaxScore(nNanDu);
-				bool flag5 = num == nNanDu && maxScore < 1;
-				if (flag5)
+				this.pTongGuan.SetActive(true);
+				this.pWeiTongGuan.SetActive(false);
+				bool flag6 = maxScore >= 3;
+				if (flag6)
 				{
-					this.pTongGuan.SetActive(false);
-					this.pWeiTongGuan.SetActive(false);
+					this.pSaoDangBtn.SetActive(true);
+					this.pSaoDangDesc.SetActive(false);
+					this.OnUpdateSaoDangData();
 				}
 				else
 				{
-					this.pTongGuan.SetActive(true);
-					this.pWeiTongGuan.SetActive(false);
-					bool flag6 = maxScore >= 3;
-					if (flag6)
-					{
-						this.pSaoDangBtn.SetActive(true);
-						this.pSaoDangDesc.SetActive(false);
-						this.OnUpdateSaoDangData();
-					}
-					else
-					{
-						this.pSaoDangBtn.SetActive(false);
-						this.pSaoDangDesc.SetActive(true);
-					}
-					this.SerXingXingLv(maxScore);
+					this.pSaoDangBtn.SetActive(false);
+					this.pSaoDangDesc.SetActive(true);
 				}
+				this.SerXingXingLv(maxScore);
 			}
 		}
 	}

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<root>
-	<i id="0" msg="Prepare para defender" />
-	<i id="1" msg="Prepare para ataque" />
-	<i id="2" msg="Ataque o alvo {0}" />
-	<i id="3" msg="Ataque o alvo {0}" />
-</root>

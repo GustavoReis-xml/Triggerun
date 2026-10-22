@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "objectsCompared": 1209,
+  "bones": 62,
+  "bodyLODs": 1,
+  "poses": {
+    "aim": {
+      "p99EdgeStretch": 1.423201560974121,
+      "maxEdgeStretch": 4.924041271209717
+    },
+    "run": {
+      "p99EdgeStretch": 1.3027609586715698,
+      "maxEdgeStretch": 2.69394850730896
+    },
+    "turn": {
+      "p99EdgeStretch": 1.2418137788772583,
+      "maxEdgeStretch": 2.425621747970581
+    }
+  },
+  "UnityTested": false,
+  "correctedGLBAccessorsUnchanged": 4
+}

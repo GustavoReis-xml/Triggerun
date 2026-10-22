@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "objectsCompared": 804,
+  "bones": 62,
+  "bodyRenderers": 11,
+  "auxiliaryUltimateUnchanged": true,
+  "physicsHierarchyUnchanged": true,
+  "sourceGLBPreserved": true,
+  "correctedGLBAccessorsUnchanged": 4,
+  "outsideFaceMaskUnchanged": true,
+  "faceUVPixels": 5275,
+  "rigidPauldrons": true,
+  "headGeometryAndBodyUVsUnchanged": true,
+  "poses": {
+    "aim": {
+      "p99EdgeStretch": 1.0335522890090942,
+      "maxEdgeStretch": 1.8554586172103882
+    },
+    "run": {
+      "p99EdgeStretch": 1.139741063117981,
+      "maxEdgeStretch": 2.6345443725585938
+    },
+    "turn": {
+      "p99EdgeStretch": 1.0847578048706055,
+      "maxEdgeStretch": 2.301619291305542
+    },
+    "neck": {
+      "p99EdgeStretch": 1.165535807609558,
+      "maxEdgeStretch": 2.6845543384552
+    },
+    "shoulders": {
+      "p99EdgeStretch": 1.0730706453323364,
+      "maxEdgeStretch": 3.161461114883423
+    },
+    "scarf": {
+      "p99EdgeStretch": 1.0089671611785889,
+      "maxEdgeStretch": 2.5883212089538574
+    },
+    "shoot": {
+      "p99EdgeStretch": 1.100892424583435,
+      "maxEdgeStretch": 3.3279635906219482
+    }
+  },
+  "UnityTested": false
+}

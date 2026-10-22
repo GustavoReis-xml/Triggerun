@@ -1,0 +1,122 @@
+{
+  "images": [
+    {
+      "file": "01-frente.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1254,
+        1236
+      ],
+      "alphaAbove127Bounds": [
+        8,
+        1,
+        1248,
+        1229
+      ],
+      "edgeMaxAlpha": 25,
+      "noSolidAlphaOnEdge": true,
+      "bytes": 966413,
+      "sha256": "19e5e5048c1335962e43683ad4368be256c7155c22d7a450a0b9271d1500fcf1"
+    },
+    {
+      "file": "02-esquerda.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        113,
+        0,
+        1216,
+        1227
+      ],
+      "alphaAbove127Bounds": [
+        460,
+        1,
+        830,
+        1224
+      ],
+      "edgeMaxAlpha": 79,
+      "noSolidAlphaOnEdge": true,
+      "bytes": 601153,
+      "sha256": "faf7b06fee2a2a5d7525ea705613eebd948c920f9703a23fa06412d2133e7597"
+    },
+    {
+      "file": "03-direita.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        81,
+        0,
+        1182,
+        1254
+      ],
+      "alphaAbove127Bounds": [
+        462,
+        0,
+        806,
+        1223
+      ],
+      "edgeMaxAlpha": 157,
+      "noSolidAlphaOnEdge": true,
+      "bytes": 548820,
+      "sha256": "21320ac5db22904166d92a02bd86e3db1b29f158c04c18614dfc975242e738c7"
+    },
+    {
+      "file": "04-costas.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1254,
+        1236
+      ],
+      "alphaAbove127Bounds": [
+        9,
+        1,
+        1245,
+        1229
+      ],
+      "edgeMaxAlpha": 89,
+      "noSolidAlphaOnEdge": true,
+      "bytes": 883901,
+      "sha256": "e0f918bb20bb40e9af2eb3c622462b854c260a08579ba82e43d4166d799b5445"
+    }
+  ],
+  "zip": "shogun-corvo-vinho-tripo.zip",
+  "zipIntact": true,
+  "tool": "built-in image_gen",
+  "gameModified": false,
+  "UnityTested": false,
+  "notCalibratedProjections": true
+}

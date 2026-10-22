@@ -1,0 +1,604 @@
+{
+  "source": "{'m_FileID': 0, 'm_PathID': -9199640676240608002}",
+  "source_sha256": "fcfabedbe51bf26582956be5e36d28ff589787b15fa2e5afe3454efb802cfbb7",
+  "targetBones": [
+    "Bip001 L UpperArm",
+    "Bip001 L ForeTwist",
+    "Bip001 Head",
+    "Bip001 Neck",
+    "Bip001 Spine2",
+    "Bone019",
+    "Bip001 L Clavicle",
+    "Bip001 Pelvis",
+    "Bip001 Spine",
+    "Bip001 L Thigh",
+    "Bip001 Spine1",
+    "Bone013",
+    "Bone009",
+    "Bip001 R Thigh",
+    "Bip001 R Calf",
+    "Bone017",
+    "Bone015",
+    "Bip001 R Clavicle",
+    "Bip001 R UpperArm",
+    "Bip001 R ForeTwist",
+    "Bip001 R Foot",
+    "Bip001 R Toe0",
+    "Bone001",
+    "Bip001 L Calf",
+    "Bip001 L Foot",
+    "Bip001 L Toe0",
+    "Bip001 L Hand",
+    "Bip001 L Finger2",
+    "Bip001 L Finger1",
+    "Bip001 L Finger3",
+    "Bip001 L Finger4",
+    "Bip001 L Finger41",
+    "Bip001 L Finger42",
+    "Bip001 L Finger31",
+    "Bip001 L Finger32",
+    "Bip001 L Finger21",
+    "Bip001 L Finger22",
+    "Bip001 L Finger11",
+    "Bip001 L Finger12",
+    "Bip001 L Finger0",
+    "Bip001 L Finger01",
+    "Bip001 L Finger02",
+    "Bip001 R Hand",
+    "Bip001 R Finger2",
+    "Bip001 R Finger1",
+    "Bip001 R Finger3",
+    "Bip001 R Finger4",
+    "Bip001 R Finger41",
+    "Bip001 R Finger42",
+    "Bip001 R Finger31",
+    "Bip001 R Finger32",
+    "Bip001 R Finger21",
+    "Bip001 R Finger22",
+    "Bip001 R Finger11",
+    "Bip001 R Finger12",
+    "Bip001 R Finger0",
+    "Bip001 R Finger01",
+    "Bip001 R Finger02",
+    "Bone004",
+    "Bone003",
+    "Bone006",
+    "Bone007"
+  ],
+  "mapping": [
+    {
+      "source": "_rootJoint",
+      "target": "Bip001 Pelvis",
+      "transformSource": "root.x_01"
+    },
+    {
+      "source": "root.x_01",
+      "target": "Bip001 Pelvis",
+      "transformSource": "root.x_01"
+    },
+    {
+      "source": "c_tail_00_dupli_002.x_02",
+      "target": "Bip001 Pelvis",
+      "transformSource": "root.x_01"
+    },
+    {
+      "source": "spine_01.x_03",
+      "target": "Bip001 Spine",
+      "transformSource": "spine_01.x_03"
+    },
+    {
+      "source": "spine_02.x_04",
+      "target": "Bip001 Spine1",
+      "transformSource": "spine_02.x_04"
+    },
+    {
+      "source": "spine_03.x_05",
+      "target": "Bip001 Spine2",
+      "transformSource": "spine_03.x_05"
+    },
+    {
+      "source": "neck.x_06",
+      "target": "Bip001 Neck",
+      "transformSource": "neck.x_06"
+    },
+    {
+      "source": "head.x_07",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_ear_01.l_08",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_ear_02.l_09",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_ear_01.r_010",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_ear_02.r_011",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eye.l_012",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eye.r_013",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eye_offset.l_014",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eye_offset.r_015",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_full.l_016",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_01.l_017",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_01_end.l_018",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_02.l_019",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_03.l_020",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_full.r_021",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_01.r_022",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_01_end.r_023",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_02.r_024",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_eyebrow_03.r_025",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_jawbone.x_026",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_00.x_027",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_01.x_028",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_02.x_029",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_03.x_00",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_00_dupli_001.x_030",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_01_dupli_001.x_031",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_02_dupli_001.x_032",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "c_tail_03_dupli_001.x_033",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "eyelid_bot.l_034",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "eyelid_bot.r_035",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "eyelid_top.l_036",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "eyelid_top.r_037",
+      "target": "Bip001 Head",
+      "transformSource": "head.x_07"
+    },
+    {
+      "source": "shoulder.l_038",
+      "target": "Bip001 L Clavicle",
+      "transformSource": "shoulder.l_038"
+    },
+    {
+      "source": "arm_stretch.l_039",
+      "target": "Bip001 L UpperArm",
+      "transformSource": "arm_stretch.l_039"
+    },
+    {
+      "source": "arm_twist.l_040",
+      "target": "Bip001 L UpperArm",
+      "transformSource": "arm_stretch.l_039"
+    },
+    {
+      "source": "forearm_stretch.l_041",
+      "target": "Bip001 L ForeTwist",
+      "transformSource": "forearm_stretch.l_041"
+    },
+    {
+      "source": "forearm_twist.l_042",
+      "target": "Bip001 L ForeTwist",
+      "transformSource": "forearm_stretch.l_041"
+    },
+    {
+      "source": "hand.l_043",
+      "target": "Bip001 L Hand",
+      "transformSource": "hand.l_043"
+    },
+    {
+      "source": "c_index1.l_044",
+      "target": "Bip001 L Finger1",
+      "transformSource": "c_index1.l_044"
+    },
+    {
+      "source": "c_index2.l_045",
+      "target": "Bip001 L Finger11",
+      "transformSource": "c_index2.l_045"
+    },
+    {
+      "source": "c_index3.l_046",
+      "target": "Bip001 L Finger12",
+      "transformSource": "c_index3.l_046"
+    },
+    {
+      "source": "c_middle1.l_047",
+      "target": "Bip001 L Finger2",
+      "transformSource": "c_middle1.l_047"
+    },
+    {
+      "source": "c_middle2.l_048",
+      "target": "Bip001 L Finger21",
+      "transformSource": "c_middle2.l_048"
+    },
+    {
+      "source": "c_middle3.l_049",
+      "target": "Bip001 L Finger22",
+      "transformSource": "c_middle3.l_049"
+    },
+    {
+      "source": "c_pinky1.l_050",
+      "target": "Bip001 L Finger4",
+      "transformSource": "c_pinky1.l_050"
+    },
+    {
+      "source": "c_pinky2.l_051",
+      "target": "Bip001 L Finger41",
+      "transformSource": "c_pinky2.l_051"
+    },
+    {
+      "source": "c_pinky3.l_052",
+      "target": "Bip001 L Finger42",
+      "transformSource": "c_pinky3.l_052"
+    },
+    {
+      "source": "c_ring1.l_053",
+      "target": "Bip001 L Finger3",
+      "transformSource": "c_ring1.l_053"
+    },
+    {
+      "source": "c_ring2.l_054",
+      "target": "Bip001 L Finger31",
+      "transformSource": "c_ring2.l_054"
+    },
+    {
+      "source": "c_ring3.l_055",
+      "target": "Bip001 L Finger32",
+      "transformSource": "c_ring3.l_055"
+    },
+    {
+      "source": "c_thumb1.l_056",
+      "target": "Bip001 L Finger0",
+      "transformSource": "c_thumb1.l_056"
+    },
+    {
+      "source": "c_thumb2.l_057",
+      "target": "Bip001 L Finger01",
+      "transformSource": "c_thumb2.l_057"
+    },
+    {
+      "source": "c_thumb3.l_058",
+      "target": "Bip001 L Finger02",
+      "transformSource": "c_thumb3.l_058"
+    },
+    {
+      "source": "shoulder.r_059",
+      "target": "Bip001 R Clavicle",
+      "transformSource": "shoulder.r_059"
+    },
+    {
+      "source": "arm_stretch.r_060",
+      "target": "Bip001 R UpperArm",
+      "transformSource": "arm_stretch.r_060"
+    },
+    {
+      "source": "arm_twist.r_061",
+      "target": "Bip001 R UpperArm",
+      "transformSource": "arm_stretch.r_060"
+    },
+    {
+      "source": "forearm_stretch.r_062",
+      "target": "Bip001 R ForeTwist",
+      "transformSource": "forearm_stretch.r_062"
+    },
+    {
+      "source": "forearm_twist.r_063",
+      "target": "Bip001 R ForeTwist",
+      "transformSource": "forearm_stretch.r_062"
+    },
+    {
+      "source": "hand.r_064",
+      "target": "Bip001 R Hand",
+      "transformSource": "hand.r_064"
+    },
+    {
+      "source": "c_index1.r_065",
+      "target": "Bip001 R Finger1",
+      "transformSource": "c_index1.r_065"
+    },
+    {
+      "source": "c_index2.r_066",
+      "target": "Bip001 R Finger11",
+      "transformSource": "c_index2.r_066"
+    },
+    {
+      "source": "c_index3.r_067",
+      "target": "Bip001 R Finger12",
+      "transformSource": "c_index3.r_067"
+    },
+    {
+      "source": "c_middle1.r_068",
+      "target": "Bip001 R Finger2",
+      "transformSource": "c_middle1.r_068"
+    },
+    {
+      "source": "c_middle2.r_069",
+      "target": "Bip001 R Finger21",
+      "transformSource": "c_middle2.r_069"
+    },
+    {
+      "source": "c_middle3.r_070",
+      "target": "Bip001 R Finger22",
+      "transformSource": "c_middle3.r_070"
+    },
+    {
+      "source": "c_pinky1.r_071",
+      "target": "Bip001 R Finger4",
+      "transformSource": "c_pinky1.r_071"
+    },
+    {
+      "source": "c_pinky2.r_072",
+      "target": "Bip001 R Finger41",
+      "transformSource": "c_pinky2.r_072"
+    },
+    {
+      "source": "c_pinky3.r_073",
+      "target": "Bip001 R Finger42",
+      "transformSource": "c_pinky3.r_073"
+    },
+    {
+      "source": "c_ring1.r_074",
+      "target": "Bip001 R Finger3",
+      "transformSource": "c_ring1.r_074"
+    },
+    {
+      "source": "c_ring2.r_075",
+      "target": "Bip001 R Finger31",
+      "transformSource": "c_ring2.r_075"
+    },
+    {
+      "source": "c_ring3.r_076",
+      "target": "Bip001 R Finger32",
+      "transformSource": "c_ring3.r_076"
+    },
+    {
+      "source": "c_thumb1.r_077",
+      "target": "Bip001 R Finger0",
+      "transformSource": "c_thumb1.r_077"
+    },
+    {
+      "source": "c_thumb2.r_078",
+      "target": "Bip001 R Finger01",
+      "transformSource": "c_thumb2.r_078"
+    },
+    {
+      "source": "c_thumb3.r_079",
+      "target": "Bip001 R Finger02",
+      "transformSource": "c_thumb3.r_079"
+    },
+    {
+      "source": "thigh_stretch.l_080",
+      "target": "Bip001 L Thigh",
+      "transformSource": "thigh_stretch.l_080"
+    },
+    {
+      "source": "leg_stretch.l_081",
+      "target": "Bip001 L Calf",
+      "transformSource": "leg_stretch.l_081"
+    },
+    {
+      "source": "foot.l_082",
+      "target": "Bip001 L Foot",
+      "transformSource": "foot.l_082"
+    },
+    {
+      "source": "toes_01.l_083",
+      "target": "Bip001 L Toe0",
+      "transformSource": "toes_01.l_083"
+    },
+    {
+      "source": "leg_twist.l_084",
+      "target": "Bip001 L Calf",
+      "transformSource": "leg_stretch.l_081"
+    },
+    {
+      "source": "thigh_twist.l_085",
+      "target": "Bip001 L Thigh",
+      "transformSource": "thigh_stretch.l_080"
+    },
+    {
+      "source": "thigh_stretch.r_086",
+      "target": "Bip001 R Thigh",
+      "transformSource": "thigh_stretch.r_086"
+    },
+    {
+      "source": "leg_stretch.r_087",
+      "target": "Bip001 R Calf",
+      "transformSource": "leg_stretch.r_087"
+    },
+    {
+      "source": "foot.r_088",
+      "target": "Bip001 R Foot",
+      "transformSource": "foot.r_088"
+    },
+    {
+      "source": "toes_01.r_089",
+      "target": "Bip001 R Toe0",
+      "transformSource": "toes_01.r_089"
+    },
+    {
+      "source": "leg_twist.r_090",
+      "target": "Bip001 R Calf",
+      "transformSource": "leg_stretch.r_087"
+    },
+    {
+      "source": "thigh_twist.r_091",
+      "target": "Bip001 R Thigh",
+      "transformSource": "thigh_stretch.r_086"
+    }
+  ],
+  "segmentScale": {
+    "root.x_01": 0.4995014882399541,
+    "spine_01.x_03": 0.964698683752767,
+    "spine_02.x_04": 1.6808664262041337,
+    "spine_03.x_05": 1.5194382444876737,
+    "neck.x_06": 1.1230850738225353,
+    "shoulder.l_038": 1.1084678935007413,
+    "arm_stretch.l_039": 1.3046582231302197,
+    "forearm_stretch.l_041": 0.7042028613996465,
+    "hand.l_043": 0.723910312089927,
+    "c_index1.l_044": 1.6901248608989758,
+    "c_index2.l_045": 1.0815298789649959,
+    "c_middle1.l_047": 1.6634673468806385,
+    "c_middle2.l_048": 1.0250044376121479,
+    "c_pinky1.l_050": 2.1387020414165416,
+    "c_pinky2.l_051": 1.079536546648604,
+    "c_ring1.l_053": 1.8537339659936356,
+    "c_ring2.l_054": 1.2325038545654454,
+    "c_thumb1.l_056": 1.2596473287135672,
+    "c_thumb2.l_057": 1.2377965009634027,
+    "shoulder.r_059": 1.108468345847968,
+    "arm_stretch.r_060": 1.302850260240258,
+    "forearm_stretch.r_062": 0.8279827587216568,
+    "hand.r_064": 0.6619563326858383,
+    "c_index1.r_065": 1.6901343388513739,
+    "c_index2.r_066": 1.0815322330003097,
+    "c_middle1.r_068": 1.6634685860158824,
+    "c_middle2.r_069": 1.0250046347482102,
+    "c_pinky1.r_071": 2.1989517050535876,
+    "c_pinky2.r_072": 0.9709839611369038,
+    "c_ring1.r_074": 1.853727355997188,
+    "c_ring2.r_075": 1.232469895838788,
+    "c_thumb1.r_077": 1.3920479675969244,
+    "c_thumb2.r_078": 0.9295102683926695,
+    "thigh_stretch.l_080": 0.9446316310894896,
+    "leg_stretch.l_081": 1.122482060517235,
+    "foot.l_082": 1.581758022632471,
+    "thigh_stretch.r_086": 0.9331602588205548,
+    "leg_stretch.r_087": 1.130089230001375,
+    "foot.r_088": 1.5829773393788964
+  },
+  "parts": [
+    {
+      "name": "Main_Body_KJ_Mat.002_0",
+      "vertices": 14616,
+      "triangles": 23686
+    },
+    {
+      "name": "Hair_Hair_0",
+      "vertices": 2878,
+      "triangles": 3509
+    }
+  ],
+  "modified": [
+    1,
+    -8205472470706242037,
+    3917059602639850445,
+    5244958689840648268,
+    3620261032801300316
+  ],
+  "added": [
+    900000000000001201,
+    900000000000001203,
+    900000000000001202,
+    900000000000001204
+  ],
+  "sha256": "1d966d2d5982dcfc43463a8da0f574b6eb8c832a8af475548e6e75109c20e8e8",
+  "materials": "original Celina toon shader + Scarlet diffuse; normal/emission not yet reproduced",
+  "installed": false
+}

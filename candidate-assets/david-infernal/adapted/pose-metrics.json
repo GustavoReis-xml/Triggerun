@@ -1,0 +1,82 @@
+{
+  "aim": {
+    "p99EdgeStretch": 1.0000033378601074,
+    "maxEdgeStretch": 1.0000137090682983
+  },
+  "run": {
+    "p99EdgeStretch": 1.0000046491622925,
+    "maxEdgeStretch": 1.0000272989273071
+  },
+  "turn": {
+    "p99EdgeStretch": 1.0000025033950806,
+    "maxEdgeStretch": 1.0000085830688477
+  },
+  "neck": {
+    "p99EdgeStretch": 1.0000017881393433,
+    "maxEdgeStretch": 1.0000156164169312
+  },
+  "shoulders": {
+    "p99EdgeStretch": 1.0000051259994507,
+    "maxEdgeStretch": 1.0000190734863281
+  },
+  "shoot": {
+    "p99EdgeStretch": 1.0000052452087402,
+    "maxEdgeStretch": 1.0000193119049072
+  },
+  "reload": {
+    "p99EdgeStretch": 1.0000052452087402,
+    "maxEdgeStretch": 1.0000194311141968
+  },
+  "crouch": {
+    "p99EdgeStretch": 1.0000051259994507,
+    "maxEdgeStretch": 1.0000154972076416
+  },
+  "chestOpen": {
+    "p99EdgeStretch": 1.0,
+    "maxEdgeStretch": 1.0000073909759521
+  },
+  "shoulderShells": {
+    "p99EdgeStretch": 1.0000003576278687,
+    "maxEdgeStretch": 1.0000123977661133
+  },
+  "heelMechanics": {
+    "p99EdgeStretch": 1.000000238418579,
+    "maxEdgeStretch": 1.000002145767212
+  },
+  "headYaw-45": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.000001072883606
+  },
+  "headYaw-30": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.0000005960464478
+  },
+  "headYaw-15": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.0000007152557373
+  },
+  "headYaw0": {
+    "p99EdgeStretch": 1.0,
+    "maxEdgeStretch": 1.0
+  },
+  "headYaw15": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.000001072883606
+  },
+  "headYaw30": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.0000007152557373
+  },
+  "headYaw45": {
+    "p99EdgeStretch": 1.0000001192092896,
+    "maxEdgeStretch": 1.0000011920928955
+  },
+  "grip": {
+    "p99EdgeStretch": 1.0000053644180298,
+    "maxEdgeStretch": 1.0000159740447998
+  },
+  "gripHigh": {
+    "p99EdgeStretch": 1.000004768371582,
+    "maxEdgeStretch": 1.0000158548355103
+  }
+}

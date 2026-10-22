@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -70,7 +70,16 @@ public class CBulletBezierMe : CBulletMe
 					float maxDistance = Vector3.Distance(vector, base.transform.localPosition);
 					Ray ray = new Ray(base.transform.localPosition, normalized);
 					RaycastHit hitGameObject;
-					bool flag5 = Physics.Raycast(ray, out hitGameObject, maxDistance, base.bulletLayer);
+					bool flag5 = TriggerunHitCollision.Raycast(ray, out hitGameObject, maxDistance, base.bulletLayer);
+					if (flag5 && hitGameObject.collider != null && hitGameObject.collider.transform.name.Contains("_IgnoreDamge"))
+					{
+						Ray ray2 = new Ray(hitGameObject.point + normalized * 0.1f, normalized);
+						RaycastHit hitGameObject2;
+						if (TriggerunHitCollision.Raycast(ray2, out hitGameObject2, maxDistance, base.bulletLayer))
+						{
+							hitGameObject = hitGameObject2;
+						}
+					}
 					if (flag5)
 					{
 						base.transform.localPosition = hitGameObject.point;

@@ -1,0 +1,893 @@
+{
+  "totalCalls": 94,
+  "uniqueOpcodesCount": 43,
+  "uniqueOps": {
+    "1006": [
+      "ChatManager.cs:544",
+      "ChatManager.cs:555"
+    ],
+    "1310": [
+      "GMUICon.cs:413"
+    ],
+    "1501": [
+      "FPS.cs:593",
+      "FPS.cs:600"
+    ],
+    "2110": [
+      "CCheckDelay.cs:60",
+      "CCheckDelay.cs:120",
+      "CCheckDelay.cs:158",
+      "CCheckDelay.cs:199",
+      "CPlayerRexx.cs:87",
+      "FunManager.cs:162",
+      "FunManager.cs:202",
+      "HackLogMemo.cs:78",
+      "HackLogMemo.cs:87",
+      "PreLoadManager.cs:667",
+      "UserSocket.cs:302"
+    ],
+    "5016": [
+      "ZhanDianCon.cs:2813",
+      "ZhanDianCon.cs:2826",
+      "ZhanDianCon.cs:2839",
+      "ZhanDianCon.cs:2852"
+    ],
+    "5030": [
+      "MainUICon.cs:1443",
+      "MatchManager.cs:883"
+    ],
+    "5032": [
+      "MatchManager.cs:961"
+    ],
+    "6001": [
+      "fGameManager.cs:654",
+      "fGameManager.cs:658"
+    ],
+    "9004": [
+      "HeroPlayer.cs:1218"
+    ],
+    "16100": [
+      "ActivityManager.cs:297"
+    ],
+    "20013": [
+      "RoomManage.cs:906"
+    ],
+    "31103": [
+      "CPlayerSkill.cs:584"
+    ],
+    "31105": [
+      "SkillBaseMe.cs:75",
+      "SkillFlyToMe.cs:177",
+      "SkillRopeMe.cs:123",
+      "SkillTransportMe.cs:102"
+    ],
+    "31208": [
+      "HeroPlayer.cs:1045"
+    ],
+    "31211": [
+      "HeroBaseMe.cs:608"
+    ],
+    "31213": [
+      "HeroPlayer.cs:1064"
+    ],
+    "31216": [
+      "RobotAI.cs:1299"
+    ],
+    "31401": [
+      "HeroPlayer.cs:136"
+    ],
+    "41001": [
+      "FlyShiledSkill.cs:328"
+    ],
+    "41003": [
+      "CBulletMe.cs:64"
+    ],
+    "50006": [
+      "FPS.cs:491"
+    ],
+    "50007": [
+      "HeroLeiZhenZiMe.cs:483",
+      "HeroLeiZhenZiMe.cs:516"
+    ],
+    "60000": [
+      "easy_tipCon.cs:646",
+      "easy_tipCon.cs:676",
+      "easy_tipCon.cs:705",
+      "LookingTeamCon.cs:46",
+      "LookingTeamCon.cs:100",
+      "LookingTeamCon.cs:296",
+      "LookingTeamCon.cs:370",
+      "LookingTeamCon.cs:385",
+      "OneLookingteamdata.cs:153",
+      "OneLookingteamdata.cs:167",
+      "ScnMsgManager.cs:96",
+      "TeamManager.cs:41",
+      "TeamManager.cs:190",
+      "TeamManager.cs:625",
+      "TeamManager.cs:654",
+      "TeamManager.cs:683",
+      "TeamManager.cs:692",
+      "TeamManager.cs:749"
+    ],
+    "60100": [
+      "FriendManager.cs:653",
+      "MatchManager.cs:342"
+    ],
+    "80001": [
+      "MainUICon.cs:1350",
+      "MainUICon.cs:3331",
+      "MatchManager.cs:762",
+      "PveManager.cs:953"
+    ],
+    "1000000": [
+      "Slay.cs:33"
+    ],
+    "1000001": [
+      "HeroBaseMe.cs:479",
+      "HeroBaseMe.cs:507"
+    ],
+    "1010004": [
+      "Npc_Entity.cs:1317"
+    ],
+    "1010006": [
+      "Landmine_Controller.cs:63"
+    ],
+    "1010100": [
+      "HeroBaseMe.cs:492"
+    ],
+    "1020001": [
+      "Npc_Handle.cs:125",
+      "Npc_Handle.cs:143"
+    ],
+    "1030000": [
+      "Chariot_Controller.cs:513",
+      "Chariot_Controller.cs:538"
+    ],
+    "2010001": [
+      "SkillShieldMe.cs:38"
+    ],
+    "2030001": [
+      "SkillSandstormDashMe.cs:156",
+      "SkillSandstormDashMe.cs:235"
+    ],
+    "2030003": [
+      "HeroShawangMe.cs:202"
+    ],
+    "2060001": [
+      "SkillJingKeShiftMe.cs:168"
+    ],
+    "2070001": [
+      "HeroLuoLiMe.cs:165"
+    ],
+    "2100001": [
+      "SkillDaJiHudunMe.cs:261"
+    ],
+    "2210002": [
+      "FlyShiledSkill.cs:291"
+    ],
+    "3010000": [
+      "Setting_Entity.cs:763"
+    ],
+    "3030000": [
+      "Process_Detector.cs:482"
+    ],
+    "nNetID": [
+      "DtsBatteManager.cs:215",
+      "fGameManager.cs:84",
+      "fGameManager.cs:98",
+      "GuildManager.cs:889",
+      "MatchManager.cs:77",
+      "RobotAI.cs:1143"
+    ],
+    "_NetID": [
+      "Npc_Entity.cs:1482"
+    ]
+  },
+  "clientSent": [
+    {
+      "file": "ActivityManager.cs",
+      "line": 297,
+      "type": "Hall",
+      "opcode": 16100,
+      "encoded": "3v_",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(16100, arrayList);"
+    },
+    {
+      "file": "CBulletMe.cs",
+      "line": 64,
+      "opcode": 41003,
+      "encoded": "A0f",
+      "snippet": "base.muzzle.launcher.NetObject.SendMessageToServer(41003, arrayList);"
+    },
+    {
+      "file": "CCheckDelay.cs",
+      "line": 60,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "CCheckDelay.cs",
+      "line": 120,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "CCheckDelay.cs",
+      "line": 158,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "CCheckDelay.cs",
+      "line": 199,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "Chariot_Controller.cs",
+      "line": 513,
+      "opcode": 1030000,
+      "encoded": "3vTk",
+      "snippet": "fGameManager.GetInstance().getPlayer().SendMessageToServer(1030000, arrayList);"
+    },
+    {
+      "file": "Chariot_Controller.cs",
+      "line": 538,
+      "opcode": 1030000,
+      "encoded": "3vTk",
+      "snippet": "fGameManager.GetInstance().getPlayer().SendMessageToServer(1030000, arrayList);"
+    },
+    {
+      "file": "ChatManager.cs",
+      "line": 544,
+      "type": "Hall",
+      "opcode": 1006,
+      "encoded": "Fi",
+      "snippet": "fGameManager.SendMsgToHallServer(1006, szNetMsg);"
+    },
+    {
+      "file": "ChatManager.cs",
+      "line": 555,
+      "type": "Hall",
+      "opcode": 1006,
+      "encoded": "Fi",
+      "snippet": "fGameManager.SendMsgToHallServer(1006, szNetMsg);"
+    },
+    {
+      "file": "CPlayerRexx.cs",
+      "line": 87,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "CPlayerSkill.cs",
+      "line": 584,
+      "opcode": 31103,
+      "encoded": "7`z",
+      "snippet": "this.hero.SendMessageToServer(31103, arrayList3);"
+    },
+    {
+      "file": "DtsBatteManager.cs",
+      "line": 215,
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "fGameManager.Heroplayer.SendMessageToServer(nNetID, arr);"
+    },
+    {
+      "file": "easy_tipCon.cs",
+      "line": 646,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "easy_tipCon.cs",
+      "line": 676,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "easy_tipCon.cs",
+      "line": 705,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "fGameManager.cs",
+      "line": 84,
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "fGameManager.m_Heroplayer.SendMessageToServer(nNetID, szNetMsg);"
+    },
+    {
+      "file": "fGameManager.cs",
+      "line": 98,
+      "type": "Hall",
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "fGameManager.m_LobbyPlayer.SendMsgToHallServer(nNetID, szNetMsg);"
+    },
+    {
+      "file": "fGameManager.cs",
+      "line": 654,
+      "opcode": 6001,
+      "encoded": "1Tl",
+      "snippet": "fGameManager.Heroplayer.SendMessageToServer(6001, arr);"
+    },
+    {
+      "file": "fGameManager.cs",
+      "line": 658,
+      "type": "Hall",
+      "opcode": 6001,
+      "encoded": "1Tl",
+      "snippet": "fGameManager.SendMsgToHallServer(6001, arr);"
+    },
+    {
+      "file": "FlyShiledSkill.cs",
+      "line": 291,
+      "opcode": 2210002,
+      "encoded": "8RZI",
+      "snippet": "this._NetLiving.SendMessageToServer(2210002, szData);"
+    },
+    {
+      "file": "FlyShiledSkill.cs",
+      "line": 328,
+      "opcode": 41001,
+      "encoded": "A0d",
+      "snippet": "this._NetLiving.SendMessageToServer(41001, arrayList);"
+    },
+    {
+      "file": "FPS.cs",
+      "line": 491,
+      "opcode": 50006,
+      "encoded": "CDM",
+      "snippet": "player.SendMessageToServer(50006, new ArrayList());"
+    },
+    {
+      "file": "FPS.cs",
+      "line": 593,
+      "opcode": 1501,
+      "encoded": "NT",
+      "snippet": "player.SendMessageToServer(1501, arrayList);"
+    },
+    {
+      "file": "FPS.cs",
+      "line": 600,
+      "type": "Hall",
+      "opcode": 1501,
+      "encoded": "NT",
+      "snippet": "fGameManager.SendMsgToHallServer(1501, arrayList);"
+    },
+    {
+      "file": "FriendManager.cs",
+      "line": 653,
+      "type": "Hall",
+      "opcode": 60100,
+      "encoded": "Ef4",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60100, arr);"
+    },
+    {
+      "file": "FunManager.cs",
+      "line": 162,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "FunManager.cs",
+      "line": 202,
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "hero.SendMessageToServer(2110, arrayList);"
+    },
+    {
+      "file": "GMUICon.cs",
+      "line": 413,
+      "type": "Hall",
+      "opcode": 1310,
+      "encoded": "KU",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(1310, arrayList);"
+    },
+    {
+      "file": "GuildManager.cs",
+      "line": 889,
+      "type": "Hall",
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "fGameManager.SendMsgToHallServer(nNetID, szNetMsg);"
+    },
+    {
+      "file": "HackLogMemo.cs",
+      "line": 78,
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "this.hero.SendMessageToServer(2110, arrayList);"
+    },
+    {
+      "file": "HackLogMemo.cs",
+      "line": 87,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "HeroBaseMe.cs",
+      "line": 479,
+      "opcode": 1000001,
+      "encoded": "3o91",
+      "snippet": "this._hero.SendMessageToServer(1000001, arrayList);"
+    },
+    {
+      "file": "HeroBaseMe.cs",
+      "line": 492,
+      "opcode": 1010100,
+      "encoded": "3qao",
+      "snippet": "this._hero.SendMessageToServer(1010100, arrayList);"
+    },
+    {
+      "file": "HeroBaseMe.cs",
+      "line": 507,
+      "opcode": 1000001,
+      "encoded": "3o91",
+      "snippet": "this._hero.SendMessageToServer(1000001, arrayList);"
+    },
+    {
+      "file": "HeroBaseMe.cs",
+      "line": 608,
+      "opcode": 31211,
+      "encoded": "7bf",
+      "snippet": "this.hero.SendMessageToServer(31211, new ArrayList());"
+    },
+    {
+      "file": "HeroLeiZhenZiMe.cs",
+      "line": 483,
+      "opcode": 50007,
+      "encoded": "CDN",
+      "snippet": "base.hero.SendMessageToServer(50007, arrayList);"
+    },
+    {
+      "file": "HeroLeiZhenZiMe.cs",
+      "line": 516,
+      "opcode": 50007,
+      "encoded": "CDN",
+      "snippet": "base.hero.SendMessageToServer(50007, arrayList2);"
+    },
+    {
+      "file": "HeroLuoLiMe.cs",
+      "line": 165,
+      "opcode": 2070001,
+      "encoded": "7tNl",
+      "snippet": "base.hero.SendMessageToServer(2070001, this.trueAddHP);"
+    },
+    {
+      "file": "HeroPlayer.cs",
+      "line": 136,
+      "opcode": 31401,
+      "encoded": "7ed",
+      "snippet": "this.SendMessageToServer(31401, list);"
+    },
+    {
+      "file": "HeroPlayer.cs",
+      "line": 1045,
+      "opcode": 31208,
+      "encoded": "7bc",
+      "snippet": "this.SendMessageToServer(31208, arr);"
+    },
+    {
+      "file": "HeroPlayer.cs",
+      "line": 1064,
+      "opcode": 31213,
+      "encoded": "7bh",
+      "snippet": "this.SendMessageToServer(31213, arr);"
+    },
+    {
+      "file": "HeroPlayer.cs",
+      "line": 1218,
+      "opcode": 9004,
+      "encoded": "2Cg",
+      "snippet": "this.SendMessageToServer(9004, arrayList);"
+    },
+    {
+      "file": "HeroShawangMe.cs",
+      "line": 202,
+      "opcode": 2030003,
+      "encoded": "7jan",
+      "snippet": "base.hero.SendMessageToServer(2030003, this.newAddedEnemeyIDs);"
+    },
+    {
+      "file": "Landmine_Controller.cs",
+      "line": 63,
+      "opcode": 1010006,
+      "encoded": "3q`M",
+      "snippet": "base.Entity_Component.Synchronization_Object.SendMessageToServer(1010006, _ArrayList);"
+    },
+    {
+      "file": "LookingTeamCon.cs",
+      "line": 46,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "LookingTeamCon.cs",
+      "line": 100,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "LookingTeamCon.cs",
+      "line": 296,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "LookingTeamCon.cs",
+      "line": 370,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList3);"
+    },
+    {
+      "file": "LookingTeamCon.cs",
+      "line": 385,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, szMsg);"
+    },
+    {
+      "file": "MainUICon.cs",
+      "line": 1350,
+      "type": "Hall",
+      "opcode": 80001,
+      "encoded": "JY1",
+      "snippet": "fGameManager.SendMsgToHallServer(80001, arrayList);"
+    },
+    {
+      "file": "MainUICon.cs",
+      "line": 1443,
+      "type": "Hall",
+      "opcode": 5030,
+      "encoded": "1Ea",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(5030, new ArrayList());"
+    },
+    {
+      "file": "MainUICon.cs",
+      "line": 3331,
+      "type": "Hall",
+      "opcode": 80001,
+      "encoded": "JY1",
+      "snippet": "fGameManager.SendMsgToHallServer(80001, arrayList);"
+    },
+    {
+      "file": "MatchManager.cs",
+      "line": 77,
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "fGameManager.Heroplayer.SendMessageToServer(nNetID, arr);"
+    },
+    {
+      "file": "MatchManager.cs",
+      "line": 342,
+      "type": "Hall",
+      "opcode": 60100,
+      "encoded": "Ef4",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60100, arr);"
+    },
+    {
+      "file": "MatchManager.cs",
+      "line": 762,
+      "type": "Hall",
+      "opcode": 80001,
+      "encoded": "JY1",
+      "snippet": "fGameManager.SendMsgToHallServer(80001, arrayList);"
+    },
+    {
+      "file": "MatchManager.cs",
+      "line": 883,
+      "type": "Hall",
+      "opcode": 5030,
+      "encoded": "1Ea",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(5030, new ArrayList());"
+    },
+    {
+      "file": "MatchManager.cs",
+      "line": 961,
+      "type": "Hall",
+      "opcode": 5032,
+      "encoded": "1Ec",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(5032, new ArrayList());"
+    },
+    {
+      "file": "Npc_Entity.cs",
+      "line": 1317,
+      "opcode": 1010004,
+      "encoded": "3q`K",
+      "snippet": "this.Synchronization_Object.SendMessageToServer(1010004, arrayList);"
+    },
+    {
+      "file": "Npc_Entity.cs",
+      "line": 1482,
+      "opcode": "_NetID",
+      "encoded": "?",
+      "snippet": "this.Synchronization_Object.SendMessageToServer(_NetID, _Parameters);"
+    },
+    {
+      "file": "Npc_Handle.cs",
+      "line": 125,
+      "opcode": 1020001,
+      "encoded": "3t1X",
+      "snippet": "this.Hero_Player_Component.SendMessageToServer(1020001, arrayList);"
+    },
+    {
+      "file": "Npc_Handle.cs",
+      "line": 143,
+      "opcode": 1020001,
+      "encoded": "3t1X",
+      "snippet": "this.Hero_Player_Component.SendMessageToServer(1020001, arrayList);"
+    },
+    {
+      "file": "OneLookingteamdata.cs",
+      "line": 153,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "OneLookingteamdata.cs",
+      "line": 167,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, szMsg);"
+    },
+    {
+      "file": "PreLoadManager.cs",
+      "line": 667,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "Process_Detector.cs",
+      "line": 482,
+      "type": "Hall",
+      "opcode": 3030000,
+      "encoded": "BZjk",
+      "snippet": "this.User.SendMsgToHallServer(3030000, arrayList);"
+    },
+    {
+      "file": "PveManager.cs",
+      "line": 953,
+      "type": "Hall",
+      "opcode": 80001,
+      "encoded": "JY1",
+      "snippet": "fGameManager.SendMsgToHallServer(80001, arrayList);"
+    },
+    {
+      "file": "RobotAI.cs",
+      "line": 1143,
+      "opcode": "nNetID",
+      "encoded": "?",
+      "snippet": "this.SyncNetObj.SendMessageToServer(nNetID, szNetMsg);"
+    },
+    {
+      "file": "RobotAI.cs",
+      "line": 1299,
+      "opcode": 31216,
+      "encoded": "7bk",
+      "snippet": "this.SyncNetObj.SendMessageToServer(31216, arr);"
+    },
+    {
+      "file": "RoomManage.cs",
+      "line": 906,
+      "type": "Hall",
+      "opcode": 20013,
+      "encoded": "4sh",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(20013, arrayList);"
+    },
+    {
+      "file": "ScnMsgManager.cs",
+      "line": 96,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "Setting_Entity.cs",
+      "line": 763,
+      "type": "Hall",
+      "opcode": 3010000,
+      "encoded": "BUrG",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(3010000, arrayList);"
+    },
+    {
+      "file": "SkillBaseMe.cs",
+      "line": 75,
+      "opcode": 31105,
+      "encoded": "7a1",
+      "snippet": "this.hero.SendMessageToServer(31105, arrayList);"
+    },
+    {
+      "file": "SkillDaJiHudunMe.cs",
+      "line": 261,
+      "opcode": 2100001,
+      "encoded": "80gX",
+      "snippet": "base.hero.SendMessageToServer(2100001, arrayList);"
+    },
+    {
+      "file": "SkillFlyToMe.cs",
+      "line": 177,
+      "opcode": 31105,
+      "encoded": "7a1",
+      "snippet": "base.hero.SendMessageToServer(31105, arrayList);"
+    },
+    {
+      "file": "SkillJingKeShiftMe.cs",
+      "line": 168,
+      "opcode": 2060001,
+      "encoded": "7qvX",
+      "snippet": "base.hero.SendMessageToServer(2060001, arrayList);"
+    },
+    {
+      "file": "SkillRopeMe.cs",
+      "line": 123,
+      "opcode": 31105,
+      "encoded": "7a1",
+      "snippet": "base.hero.SendMessageToServer(31105, arrayList);"
+    },
+    {
+      "file": "SkillSandstormDashMe.cs",
+      "line": 156,
+      "opcode": 2030001,
+      "encoded": "7jal",
+      "snippet": "base.hero.SendMessageToServer(2030001, arrayList);"
+    },
+    {
+      "file": "SkillSandstormDashMe.cs",
+      "line": 235,
+      "opcode": 2030001,
+      "encoded": "7jal",
+      "snippet": "base.hero.SendMessageToServer(2030001, arrayList);"
+    },
+    {
+      "file": "SkillShieldMe.cs",
+      "line": 38,
+      "opcode": 2010001,
+      "encoded": "7eiH",
+      "snippet": "base.hero.SendMessageToServer(2010001, arrayList);"
+    },
+    {
+      "file": "SkillTransportMe.cs",
+      "line": 102,
+      "opcode": 31105,
+      "encoded": "7a1",
+      "snippet": "base.hero.SendMessageToServer(31105, arrayList);"
+    },
+    {
+      "file": "Slay.cs",
+      "line": 33,
+      "opcode": 1000000,
+      "encoded": "3o90",
+      "snippet": "player.SendMessageToServer(1000000, new ArrayList());"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 41,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 190,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 625,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList2);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 654,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList3);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 683,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 692,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "TeamManager.cs",
+      "line": 749,
+      "type": "Hall",
+      "opcode": 60000,
+      "encoded": "EdW",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(60000, arrayList);"
+    },
+    {
+      "file": "UserSocket.cs",
+      "line": 302,
+      "type": "Hall",
+      "opcode": 2110,
+      "encoded": "Wy",
+      "snippet": "fGameManager.LobbyPlayer.SendMsgToHallServer(2110, arrayList);"
+    },
+    {
+      "file": "ZhanDianCon.cs",
+      "line": 2813,
+      "opcode": 5016,
+      "encoded": "1EO",
+      "snippet": "hero.SendMessageToServer(5016, arrayList);"
+    },
+    {
+      "file": "ZhanDianCon.cs",
+      "line": 2826,
+      "opcode": 5016,
+      "encoded": "1EO",
+      "snippet": "hero.SendMessageToServer(5016, arrayList);"
+    },
+    {
+      "file": "ZhanDianCon.cs",
+      "line": 2839,
+      "opcode": 5016,
+      "encoded": "1EO",
+      "snippet": "hero.SendMessageToServer(5016, arrayList);"
+    },
+    {
+      "file": "ZhanDianCon.cs",
+      "line": 2852,
+      "opcode": 5016,
+      "encoded": "1EO",
+      "snippet": "hero.SendMessageToServer(5016, arrayList);"
+    }
+  ]
+}

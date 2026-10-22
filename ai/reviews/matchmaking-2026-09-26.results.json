@@ -1,0 +1,173 @@
+{
+  "capturedAt": "2026-09-26T20:00:47.046Z",
+  "scope": "local mocked connections; real JS handlers; no Unity execution",
+  "checks": 17,
+  "violatedInvariants": 16,
+  "results": [
+    {
+      "id": "queued-then-jip",
+      "invariant": "Room entry must remove an earlier pending search",
+      "passes": false,
+      "observed": {
+        "requestedRoom": 1000,
+        "roomAfterQueueRuns": 1001,
+        "oldRoomStillContainsPlayer": true
+      }
+    },
+    {
+      "id": "queue-redirect-after-leave",
+      "invariant": "Pending queue redirect must stop after returning to lobby",
+      "passes": false,
+      "observed": {
+        "redirectsAfterLeave": 1
+      }
+    },
+    {
+      "id": "duplicate-backfill",
+      "invariant": "One room slot per player after repeated search",
+      "passes": false,
+      "observed": {
+        "slots": 2
+      }
+    },
+    {
+      "id": "cross-mode-backfill",
+      "invariant": "PVP search must not enter a PVE room",
+      "passes": false,
+      "observed": {
+        "requestedMode": 7,
+        "assignedMap": 5105,
+        "assignedRoom": 1000
+      }
+    },
+    {
+      "id": "mixed-queue",
+      "invariant": "PVP and PVE requests must not share a match",
+      "passes": false,
+      "observed": {
+        "pvpRoom": 1001,
+        "pveRoom": 1001,
+        "pveAssignedAsPve": false
+      }
+    },
+    {
+      "id": "team-slot-mismatch",
+      "invariant": "Slot team and actual force must agree",
+      "passes": false,
+      "observed": [
+        {
+          "slot": 1,
+          "force": 2,
+          "slotForce": 1
+        }
+      ]
+    },
+    {
+      "id": "ended-during-load",
+      "invariant": "No player spawn into a match that ended while loading",
+      "passes": false,
+      "observed": {
+        "roomState": 5,
+        "matchState": "warmup",
+        "isCombatReady": true,
+        "recreatedController": true
+      }
+    },
+    {
+      "id": "leave-ghost",
+      "invariant": "Explicit leave must destroy the entity in remaining clients",
+      "passes": false,
+      "observed": {
+        "peerPackets": 0,
+        "sceneRetired": true
+      }
+    },
+    {
+      "id": "hall-return-1310",
+      "invariant": "Client return-to-Hall notification must reconcile match membership",
+      "passes": false,
+      "observed": {
+        "inMatch": true,
+        "room": 1000,
+        "slotRetained": true
+      }
+    },
+    {
+      "id": "dead-snapshot",
+      "invariant": "Snapshot life state must agree with HP and isDead",
+      "passes": false,
+      "observed": {
+        "hp": 0,
+        "clientLifeState": 1,
+        "serverIsDead": true
+      }
+    },
+    {
+      "id": "late-tdm-retry",
+      "invariant": "TDM retry must stop after leaving",
+      "passes": false,
+      "observed": {
+        "packetsAfterRetirement": 2
+      }
+    },
+    {
+      "id": "diagnostic-as-ready",
+      "invariant": "Diagnostic text must not count as a map-ready command",
+      "passes": false,
+      "observed": {
+        "sceneLoadPending": true,
+        "spawnTimers": 1
+      }
+    },
+    {
+      "id": "incumbent-roster",
+      "invariant": "Existing client gets refreshed roster before new remote player",
+      "passes": false,
+      "observed": {
+        "rosterPacketIndex": -1,
+        "remoteSpawnIndex": 0
+      }
+    },
+    {
+      "id": "normal-tdm-preserves-match",
+      "invariant": "Ordinary TDM entry preserves incumbent match and sends no restart",
+      "passes": true,
+      "observed": {
+        "sameMatch": true,
+        "blueScore": 12,
+        "fightSeconds": 321,
+        "incumbentRestartPackets": 0
+      }
+    },
+    {
+      "id": "hero-lock-before-load",
+      "invariant": "Initial hero choice must wait for map ready before publishing remote spawn",
+      "passes": false,
+      "observed": {
+        "isCombatReady": false,
+        "remoteSpawnsBeforeMapReady": 1,
+        "enterGamePacketsBeforeMapReady": 1
+      }
+    },
+    {
+      "id": "pve-jip-reset",
+      "invariant": "Late PVE entry preserves crystal HP and does not restart incumbent HUD",
+      "passes": false,
+      "observed": {
+        "crystalHp": 10000,
+        "gameStartPacketsForHost": 1
+      }
+    },
+    {
+      "id": "control-room-isolation",
+      "invariant": "Different Control rooms must have separate match controllers",
+      "passes": false,
+      "observed": {
+        "controllerRooms": [
+          1000,
+          1001
+        ]
+      }
+    }
+  ]
+}

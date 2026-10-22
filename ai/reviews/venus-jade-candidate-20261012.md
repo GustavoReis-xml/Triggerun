@@ -1,0 +1,13 @@
+# Passagem de trabalho — SKIN-024 candidata Tripo
+- Responsável: Codex; 12/10/2026 BRT.
+- Fonte: fantasy fox girl 3d model.glb copiado sem modificar para candidate-assets/venus-jade/source-tripo.glb.
+- Inspeção: 13582v/21759tri, um material e texturaJPEG4096, semrig/animação. Olhos/orelhas definidos; cauda é componente separado658v (components.npy id10869).
+- Implementação candidata: daji_tps_jade.mo no bundle nativo Venus; corpo principal79bones, braços adaptados à pose nativa, orelhasBone023/024 e cadeia da caudaBone001–005.
+- Ajuste cauda: rotação inteira+escalauniforme0,90 e deslocamento para raiz lombar; preserva volume. Recentrar seções foi descartado após rendermostrar achatamento/ponta lateral; não reutilizar essa abordagem.
+- Testes: objetos comparados e alterações delimitadas; pesos/índices/bones/serialização conferidos. Quatro poses sintéticas: aim p99stretch2,30/max6,31;run1,30/3,88;turn1,19/2,84;tail1,026/1,269. Testes não comprovam animação real; aim tem estiramentos localizados a revisar antes de instalar.
+- Prévia: view-0.png/view-90.png/view-180.png; render mostra mãos sem artefato inicial e cauda preservada. poses-preview.png da iteração anterior: não usar como prova da última cauda; regenerar ao validar próximo estágio.
+- Candidata altera somente mesh principal/renderers respectivos, clonesTexture/Material e AssetBundle. LODs distantes originais ainda intactos: precisam adaptação antes da instalação; não publicar este bundle como skin pronta.
+- Evidências: scratch/venus-jade-inspection/report.json; candidate-assets/venus-jade/report.json,validation.json,geometry.npz; scripts scratch/venus-jade-adapt.
+- Cliente/Oracle: não alterados; nenhum cadastro/ícone/FPS ainda.
+- Próximo passo: avaliar visual candidata, revisar pesos localizados de braços, adaptar LODs, preparar retrato/cadastro e testar cliente após instalação autorizada com backups.
+- Reserva candidata mantida para continuidade; sem arquivosruntime reservados neste estágio.

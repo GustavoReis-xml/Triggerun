@@ -1,0 +1,62 @@
+[
+  {
+    "file": "01-frente.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "transparent_pixels": 1163571,
+    "subject_bbox": [
+      5,
+      30,
+      1019,
+      1475
+    ],
+    "sha256": "9f4e30a43cbb8e9618e04a1f665a773e21102774c1deff48634514b4822bf7da"
+  },
+  {
+    "file": "02-esquerda.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "transparent_pixels": 1281378,
+    "subject_bbox": [
+      351,
+      15,
+      671,
+      1490
+    ],
+    "sha256": "c46693462823112348ab6d0cfdcf84ba1cded5fef491cdbc54268832ea851869"
+  },
+  {
+    "file": "03-direita.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "transparent_pixels": 1309978,
+    "subject_bbox": [
+      358,
+      17,
+      716,
+      1466
+    ],
+    "sha256": "6b673424cb764f6f5a304ec1cc13f11b765e7dc874a1317cb3c7d51611455341"
+  },
+  {
+    "file": "04-costas.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "transparent_pixels": 1166359,
+    "subject_bbox": [
+      5,
+      27,
+      1019,
+      1471
+    ],
+    "sha256": "d578193308423ba86c8c0ed6d964d7c648f4a5789ede4051c0f50d28cb8f2b94"
+  }
+]

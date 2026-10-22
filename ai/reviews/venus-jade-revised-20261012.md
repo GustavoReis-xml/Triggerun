@@ -1,0 +1,11 @@
+# Passagem de trabalho — SKIN-024 revisão Venus
+- Responsável: Codex; 12/10/2026 BRT.
+- Correção do usuário: identidade kitsune humanoide com orelhas e cauda; primeira referência humana descartada como base de geração.
+- Inspeção real: daji_tps_body original renderizado frente/lado/costas em scratch/venus-native-inspection/view-{0,90,180}.png; textura daji2.png. Cabelo loiro curto, olhos arroxeados, duas orelhas triangulares rosadas, uma cauda grande rosada curvada para baixo, raiz lombar.
+- Rig confirmado por pesos/posição: Bone001→Bone005 distribuem vértices da cauda; Bone023/Bone024 e mirrored influenciam orelhas. accessory-bones.json contém bounds/índices/posições. Paleta principal79bones.
+- Nova referência: candidate-assets/venus-jade/venus-jade-tpose-v2.png; ferramenta image_gen com conceito anterior + renders nativos como referências; prompt-v2.txt. Temajade/branco/dourado com identidade restaurada, uma cauda visível lateralmente para Tripo.
+- Implementação: somente conceito, nenhum modelo de execução alterado.
+- Testes: render nativo/inspeção pesos; referência visual conferida. ModeloTripo e animações pendentes.
+- Cliente/Oracle: intactos. Próximo passo: gerarGLBtexturizado usando v2, depois adaptar cauda à cadeia nativa e verificar todas as LODs/poses; não fixar cauda inteira ao pelvis.
+- Limite: a cauda deslocada lateralmente na referência facilita visibilidade, mas precisará ajustar à pose nativa ao adaptar.
+- Reserva de código liberada; aguarda GLB.

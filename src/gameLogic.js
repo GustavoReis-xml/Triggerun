@@ -6,9 +6,129 @@ const db = require('./database');
 const dbPersistence = require('./dbPersistence');
 const bots = require('../bots');
 const logger = require('./logger');
+const sceneScope = require('./sceneScope');
+const lifecycle = require('./matchLifecycle');
+const combat = require('./combatRules');
+const ffaMaps = require('./ffaMaps.json');
+
+function getFreeForAllMatch(socket) {
+    if (!combat.isFreeForAll(socket)) return null;
+    return global.roomContainers?.get(Number(socket.currentRoomUID))?.ffaMatch || null;
+}
+
+function prepareFreeForAll(socket) {
+    if (!combat.isFreeForAll(socket)) return null;
+    const room = global.roomContainers?.get(Number(socket.currentRoomUID));
+    if (!room || room.state !== 4) return null;
+    let match = room.ffaMatch;
+    if (!match) {
+        match = room.ffaMatch = { roomUID: room.roomUID, mapId: Number(socket.targetMapId),
+            state: 'fight', players: [], startedAt: Date.now(), startDate: Fun.GetServerDate(),
+            duration: ffaMaps[socket.targetMapId].duration, targetScore: 20 };
+        match.timer = setInterval(() => tickFreeForAll(match), 1000);
+    }
+    if (match.state !== 'fight') return null;
+    if (!match.players.includes(socket)) {
+        resetMatchStats(socket);
+        socket.isDead = false;
+        socket.ffaDeathHandled = false;
+        match.players.push(socket);
+    }
+    return match;
+}
+
+function startFreeForAll(socket) {
+    const match = prepareFreeForAll(socket);
+    if (!match) return;
+    const id = encodeInt(socket.playerIndex || 1);
+    socket.write(`e${id}:SendMsgToClient,(${encodeInt(20014)},(${encodeInt(90005)},(0,'${match.startDate}')))\n`);
+    socket.write(`e${id}:SendMsgToClient,(${encodeInt(19700)},(${encodeInt(19701)},(${encodeInt(match.duration)},${encodeInt(match.targetScore)})))\n`);
+}
+
+function freeForAllPlayers(match) {
+    return match.players.filter(p => !p.destroyed && !p.sceneRetired && p.inMatch !== false &&
+        Number(p.currentRoomUID) === Number(match.roomUID) && Number(p.targetMapId) === match.mapId);
+}
+
+function tickFreeForAll(match) {
+    if (match.state !== 'fight') return;
+    match.players = freeForAllPlayers(match);
+    const winner = match.players.find(p => (p.matchKills || 0) >= match.targetScore);
+    if (!match.players.length || winner || Date.now() - match.startedAt >= match.duration * 1000) {
+        endFreeForAll(match, winner);
+    }
+}
+
+function endFreeForAll(match, winner = null) {
+    if (!match || match.state !== 'fight') return;
+    match.state = 'ended';
+    clearInterval(match.timer);
+    match.timer = null;
+    const players = freeForAllPlayers(match);
+    // Same ordering as PersonListDataSort: kills descending, deaths ascending,
+    // then stable player ID (sent as the third aryWarData field).
+    const ranked = [...players].sort((a, b) => (b.matchKills || 0) - (a.matchKills || 0) ||
+        (a.matchDeaths || 0) - (b.matchDeaths || 0) || Number(a.playerIndex) - Number(b.playerIndex));
+    if (!winner && ranked.length && (ranked[0].matchKills || 0) > 0) winner = ranked[0];
+    match.winner = winner;
+    const room = global.roomContainers?.get(Number(match.roomUID));
+    if (room?.ffaMatch === match) {
+        room.state = 5;
+        if (room.isMatchmaking) global.roomContainers.delete(Number(match.roomUID));
+    }
+    const current = new Map();
+    // Includes participants still selecting/loading: no pending callback may
+    // resurrect an ended room. Persistent lobby connections are matched by name.
+    for (const p of state.activeSockets) {
+        if (Number(p.currentRoomUID) !== Number(match.roomUID)) continue;
+        if (p.socketType === 'SCENE') {
+            sceneScope.invalidate(p);
+            lifecycle.transition(p, 'ended', 'ffa-ended');
+            current.set(p, sceneScope.capture(p));
+        }
+        p.inMatch = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+        const session = state.playerSessions[p.playerName];
+        if (session && Number(session.currentRoomUID) === Number(match.roomUID)) {
+            session.inMatch = false;
+            session.waitingForHeroLock = false;
+            session.hasConfirmedHero = false;
+            session.finalMapId = null;
+        }
+    }
+    for (const p of players) {
+        p.write(`e${encodeInt(p.playerIndex || 1)}:SendMsgToClient,(${encodeInt(19700)},(${encodeInt(19703)},(${winner ? 1 : 0},'${encodeHex(winner?.playerName || '')}')))\n`);
+    }
+    setTimeout(() => {
+        const eligible = players.filter(p => current.get(p)?.());
+        sendGameResult(eligible, winner ? 1 : 0, winner);
+    }, 3000);
+    setTimeout(() => {
+        for (const [p, stillCurrent] of current) if (stillCurrent()) {
+            p.write(`e${encodeInt(p.playerIndex || 1)}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
+        }
+    }, 35000);
+}
+
+function getPlayerSpawnCoordinates(socket) {
+    const config = ffaMaps[socket.targetMapId];
+    if (!config) return getSpawnCoordinates(socket.targetMapId, socket.force);
+    const peers = state.activeSockets.filter(p => p !== socket && sceneScope.canReceive(socket, p) && !p.isDead);
+    const points = config.spawns;
+    // Randomize equal candidates, then maximize distance to the closest player.
+    let best = points[Math.floor(Math.random() * points.length)];
+    let distance = -1;
+    for (const point of [best, ...points]) {
+        const nearest = Math.min(...peers.map(p => Math.hypot(point.sx - p.lastX, point.sy - p.lastY, point.sz - p.lastZ)));
+        if (nearest > distance) { best = point; distance = nearest; }
+    }
+    return { ...best };
+}
 
 // Envia HaveDamage para feedbacks ricos na UI/crosshair (hit markers / sons)
-function sendEntityDamageUpdate(targetId, target, damage, attackerId, nPlace = 0, weaponId = 0, forceDir = null, forceMagnitude = 0) {
+function sendEntityDamageUpdate(targetId, target, damage, attackerId, nPlace = 0, weaponId = 0, forceDir = null, forceMagnitude = 0, launcherNo = 0, attackName = 0) {
     const hpEnc = encodeInt(target.hp !== undefined ? target.hp : (target.maxHp || 2000));
     const maxHpEnc = encodeInt(target.maxHp || 2000);
     const shieldEnc = encodeInt(target.shield || 0);
@@ -36,12 +156,13 @@ function sendEntityDamageUpdate(targetId, target, damage, attackerId, nPlace = 0
     }
     const baVal = (target && target.bloodAnger) ? target.bloodAnger : 0;
     const baEnc = encodeInt(baVal);
-    const szDamageStr = `(${dmgEnc},(${fxEnc},${fyEnc},${fzEnc}),${forceEnc},${encodeInt(attackerId)},${encodeInt(targetId)},${encodeInt(nPlace)},${zero},${zero},${encodeInt(weaponId)},${zero},(${zero},${zero},${zero}),${zero},${encodeInt(1)},${encodeInt(weaponId)},${zero},(${zero},${baEnc}))`;
+    // CWeaponControl usa shootname (1/2/3/4), não o ID do herói, para falas.
+    const szDamageStr = `(${dmgEnc},(${fxEnc},${fyEnc},${fzEnc}),${forceEnc},${encodeInt(attackerId)},${encodeInt(targetId)},${encodeInt(nPlace)},${zero},${zero},${encodeInt(weaponId)},${zero},(${zero},${zero},${zero}),${zero},${encodeInt(1)},${encodeInt(attackName)},${encodeInt(launcherNo)},(${zero},${baEnc}))`;
     const szHpStr = `(${hpEnc},${maxHpEnc},${shieldEnc},${maxShieldEnc},${zero},${zero},${zero},(${dmgEnc},${zero},${zero},${zero}),${encodeInt(2)},${zero})`;
 
     const damagePacket = `e${encodeInt(targetId)}:HaveDamage,(${szDamageStr},${szHpStr})\n`;
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(target, s) && !s.destroyed) {
             s.write(damagePacket);
         }
     });
@@ -49,16 +170,20 @@ function sendEntityDamageUpdate(targetId, target, damage, attackerId, nPlace = 0
     // Registra o último atacante e o timestamp do dano para atribuição de kills ambientais (quedas/abismo/espinhos)
     if (target && attackerId) {
         const attSocket = state.activeSockets.find(s => s.socketType === "SCENE" && !s.destroyed && (Number(s.playerId) === Number(attackerId) || Number(s.playerIndex) === Number(attackerId)));
-        if (attSocket && Number(attSocket.force) !== Number(target.force)) {
+        if (attSocket && !combat.sameSide(attSocket, target)) {
             target.lastAttackerSocket = attSocket;
             target.lastAttackerTime = Date.now();
             target.lastAttackerWeapon = weaponId;
+            target.lastAttackerAttack = attackName;
+            target.lastAttackerLauncher = launcherNo;
         } else if (state.activeBots && state.activeBots[attackerId]) {
             const botAtt = state.activeBots[attackerId];
-            if (Number(botAtt.force) !== Number(target.force)) {
+            if (!combat.sameSide(botAtt, target)) {
                 target.lastAttackerSocket = botAtt;
                 target.lastAttackerTime = Date.now();
                 target.lastAttackerWeapon = weaponId;
+                target.lastAttackerAttack = attackName;
+                target.lastAttackerLauncher = launcherNo;
             }
         }
     }
@@ -68,6 +193,13 @@ function sendEntityDamageUpdate(targetId, target, damage, attackerId, nPlace = 0
 function handleNpcHurt(socket, npcId, damage, attackerId = 0, nPlace = 0, weaponId = 0) {
     const npc = state.spawnedNpcs[npcId];
     if (!npc) return;
+    if (socket && !sceneScope.sameScene(socket, npc)) return;
+
+    // 🪤 Se for a Trap do Johnny ativada (girando), é imune a danos durante seus 6s
+    if ((npc.index === 1021 || String(npc.index) === "1021") && npc.isActivated) {
+        console.log(`[🛡️ JOHNNY TRAP INVULNERABLE] NPC Trap ${npcId} está em rotação ativada (6s) e é imune a danos!`);
+        return;
+    }
     
     let place = nPlace;
     let shieldAbsorbed = 0;
@@ -97,7 +229,7 @@ function handleNpcHurt(socket, npcId, damage, attackerId = 0, nPlace = 0, weapon
         const zero = encodeInt(0);
         const setHpPacket = `e${encodeInt(npcId)}:SetHp,((${hpEnc},${maxHpEnc},${shieldEnc},${maxShieldEnc},${zero},${zero},${zero},(),${zero},${zero}))\n`;
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
+            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                 s.write(setHpPacket);
             }
         });
@@ -116,35 +248,14 @@ function handleNpcHurt(socket, npcId, damage, attackerId = 0, nPlace = 0, weapon
             }, 3000);
         } else if (npc.isCrystal) {
             console.log(`[💥 PVE CRISTAL DESTRUÍDO] O Cristal foi destruído! Missão falhou.`);
-            sendGlobalSystemChat("💥 [MODO AVENTURA] O CRISTAL FOI DESTRUÍDO! MISSÃO FALHOU!");
-            setTimeout(() => {
-                endPveMatch();
-            }, 4000);
-        } else if (npc.isPveMonster) {
-            console.log(`[⚔️ PVE MONSTRO DERROTADO] Monstro PVE #${npcId} (${npc.name || 'Invasor'}) derrotado.`);
-            delete state.spawnedNpcs[npcId];
-            if (global.activePveMatch && global.activePveMatch.monsters && global.activePveMatch.monsters[npcId]) {
-                delete global.activePveMatch.monsters[npcId];
-                global.activePveMatch.monsterNum = Object.keys(global.activePveMatch.monsters).length;
-                updatePveMonsterCount(global.activePveMatch);
-
-                console.log(`[⚔️ PVE] Monstros restantes na onda: ${global.activePveMatch.monsterNum}`);
-                if (global.activePveMatch.monsterNum === 0 && global.activePveMatch.state === 'fight') {
-                    handlePveWaveCleared(global.activePveMatch);
-                }
-            }
-            const destroyPacket = `d${encodeInt(npcId)}\n`;
-            state.activeSockets.forEach(s => {
-                if (s.socketType === "SCENE" && !s.destroyed) {
-                    s.write(destroyPacket);
-                }
-            });
+            sendGlobalSystemChat("💥 [MODO AVENTURA] O CRISTAL FOI DESTRUÍDO! MISSÃO FALHOU!", npc.currentRoomUID);
+            finishPveMatch(npc.pveMatch, false);
         } else {
             // Remove dos NPCs spawnados
             delete state.spawnedNpcs[npcId];
             const destroyPacket = `d${encodeInt(npcId)}\n`;
             state.activeSockets.forEach(s => {
-                if (s.socketType === "SCENE" && !s.destroyed) {
+                if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                     s.write(destroyPacket);
                 }
             });
@@ -185,6 +296,7 @@ function applyBuffToEntity(socket, targetId, buffId, customDuration) {
         console.log(`[⚠️ BUFF ENGINE] Entidade alvo ${targetId} não encontrada.`);
         return;
     }
+    if (socket && !sceneScope.sameScene(socket, target)) return;
 
     if (isPlayer && target.isDead) {
         console.log(`[🚫 BUFF ENGINE] Não é possível aplicar buff em jogador morto ${targetId}`);
@@ -232,7 +344,7 @@ function applyBuffToEntity(socket, targetId, buffId, customDuration) {
             
             const addBuffPacket = `e${encodeInt(targetId)}:AddBuff,(('${buffDateStr}',${encodeInt(buffId)},${encodeInt(playerId)}))\n`;
             state.activeSockets.forEach(s => {
-                if (s.socketType === "SCENE" && !s.destroyed) {
+                if (sceneScope.canReceive(target, s) && !s.destroyed) {
                     s.write(addBuffPacket);
                 }
             });
@@ -245,7 +357,7 @@ function applyBuffToEntity(socket, targetId, buffId, customDuration) {
     // Envia o pacote de AddBuff para todos os clientes na cena
     const addBuffPacket = `e${encodeInt(targetId)}:AddBuff,(('${buffDateStr}',${encodeInt(buffId)},${encodeInt(playerId)}))\n`;
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(target, s) && !s.destroyed) {
             s.write(addBuffPacket);
         }
     });
@@ -261,7 +373,7 @@ function applyBuffToEntity(socket, targetId, buffId, customDuration) {
     if (buffId === 1015 && isPlayer && target.currentHeroId === 1023) {
         const targetIdEnc = encodeInt(Number(targetId));
         const enterCocoonPacket = `e${encodeInt(targetId)}:CA,((('SkillE',0,1),1,${targetIdEnc}))\n`;
-        state.activeSockets.forEach(s => { if (s.socketType === "SCENE" && !s.destroyed) s.write(enterCocoonPacket); });
+        state.activeSockets.forEach(s => { if (sceneScope.canReceive(target, s) && !s.destroyed) s.write(enterCocoonPacket); });
         console.log(`[🛡️ COCOON ENTER] Brigit ${targetId} visual casulo ativado: ${enterCocoonPacket.trim()}`);
     }
 
@@ -425,11 +537,28 @@ function cleanupBuff(targetSocketOrNpc, targetId, buffId, isPlayer) {
 
     const delBuffPacket = `e${encodeInt(targetId)}:DeleteBuff,((${encodeInt(buffId)},${encodeInt(0)},${encodeInt(casterId)}))\n`;
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(target, s) && !s.destroyed) {
             s.write(delBuffPacket);
         }
     });
     console.log(`[🛡️ BUFF ENGINE] Expira/Remove Buff ${buffId} de ${isPlayer ? 'Jogador' : 'NPC'} ${targetId}`);
+
+    // Notifica reset de alvo único para Carmen (Heal 1021 / Beacon 1005|1010)
+    if (buffId === 1021) {
+        state.activeSockets.forEach(s => {
+            if (s.carmenHealTargetId && String(s.carmenHealTargetId) === String(targetId)) {
+                console.log(`[🔮 CARMEN CUT-HEAL] Resetando carmenHealTargetId da Carmen ${s.playerId} pois Buff 1021 foi removido do alvo ${targetId}`);
+                s.carmenHealTargetId = null;
+            }
+        });
+    }
+    if (buffId === 1005 || buffId === 1010) {
+        state.activeSockets.forEach(s => {
+            if (s.carmenBeaconTargetId && String(s.carmenBeaconTargetId) === String(targetId)) {
+                s.carmenBeaconTargetId = null;
+            }
+        });
+    }
 
     // Se for o Buff de Casulo da Brigit expirando, garante reset visual
     if (buffId === 1015 && isPlayer) {
@@ -439,7 +568,7 @@ function cleanupBuff(targetSocketOrNpc, targetId, buffId, isPlayer) {
             const targetIdEnc = encodeInt(Number(targetId));
             const exitCocoonPacket = `e${encodeInt(targetId)}:CA,((('SkillE',0,0),1,${targetIdEnc}))\n`;
             state.activeSockets.forEach(s => {
-                if (s.socketType === "SCENE" && !s.destroyed) {
+                if (sceneScope.canReceive(target, s) && !s.destroyed) {
                     s.write(exitCocoonPacket);
                 }
             });
@@ -456,7 +585,7 @@ function sendEntityHpUpdate(socket, targetId, target, isPlayer) {
     
     const setHpPacket = `e${encodeInt(targetId)}:SetHp,((${hpEnc},${maxHpEnc},${shieldEnc},${maxShieldEnc},${zero},${zero},${zero},(),${zero},${zero}))\n`;
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(target, s) && !s.destroyed) {
             s.write(setHpPacket);
         }
     });
@@ -468,12 +597,13 @@ function sendSystemChat(socket, text) {
     const pCid = encodeInt(1);
     const hexMsg = Buffer.from(text).toString('hex');
     const sysNetMsg = `(${encodeInt(8)},'','[mi]${hexMsg}[/mi]','',(),(),${pCid},('','',0),())`;
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1006},${sysNetMsg})\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1006},${sysNetMsg})\n`);
 }
 
-function sendGlobalSystemChat(text) {
+function sendGlobalSystemChat(text, roomUID = null) {
     state.activeSockets.forEach(s => {
         if (s.socketType === "SCENE" && !s.destroyed) {
+            if (roomUID !== null && roomUID !== undefined && s.currentRoomUID !== roomUID) return;
             sendSystemChat(s, text);
         }
     });
@@ -568,7 +698,8 @@ function handleEntityDeath(target, targetId, attackerSocket, attackerId, weaponI
 }
 
 function handlePlayerDeath(socket, attackerSocket = null) {
-    if (!socket || socket.destroyed) return;
+    if (!socket || socket.destroyed || socket.sceneRetired) return;
+    if (combat.isFreeForAll(socket) && (socket.ffaDeathHandled || !socket.isCombatReady || getFreeForAllMatch(socket)?.state !== 'fight')) return;
     
     // Auto-revive para bonecos de treino
     if (socket.isPracticeDummy) {
@@ -590,7 +721,7 @@ function handlePlayerDeath(socket, attackerSocket = null) {
                 const pIdxEnc = encodeInt(socket.playerIndex);
                 const reviveAnim = `e${pIdxEnc}:CA,((('Dead',2,0)))\n`;
                 state.activeSockets.forEach(s => {
-                    if (s.socketType === "SCENE" && !s.destroyed) {
+                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                         s.write(reviveAnim);
                     }
                 });
@@ -610,22 +741,12 @@ function handlePlayerDeath(socket, attackerSocket = null) {
         const pIdxEnc = encodeInt(socket.playerIndex);
         const deathAnim = `e${pIdxEnc}:CA,((('Dead',1,0)))\n`;
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
+            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                 s.write(deathAnim);
             }
         });
 
-        if (global.activePveMatch && global.activePveMatch.monsters && global.activePveMatch.monsters[socket.playerIndex]) {
-            delete global.activePveMatch.monsters[socket.playerIndex];
-            if (state.activeBots) delete state.activeBots[socket.playerIndex];
-            global.activePveMatch.monsterNum = Object.keys(global.activePveMatch.monsters).length;
-            updatePveMonsterCount(global.activePveMatch);
-
-            console.log(`[⚔️ PVE] Monstros restantes na onda: ${global.activePveMatch.monsterNum}`);
-            if (global.activePveMatch.monsterNum === 0 && global.activePveMatch.state === 'fight') {
-                handlePveWaveCleared(global.activePveMatch);
-            }
-        }
+        removePveMonster(socket);
         return;
     }
 
@@ -650,16 +771,16 @@ function handlePlayerDeath(socket, attackerSocket = null) {
         const yEnc = encodeInt(socket.lastY || 0);
         const zEnc = encodeInt(socket.lastZ || 0);
         const targetIdEnc = encodeInt(Number(playerId));
-        const skillDoPacket = `e${playerId}:SkillDo,((${skillIdEnc},(${xEnc},${yEnc},${zEnc})),(${targetIdEnc}))\n`;
+        const skillDoPacket = `e${encodeInt(Number(playerId))}:SkillDo,((${skillIdEnc},(${xEnc},${yEnc},${zEnc})),(${targetIdEnc}))\n`;
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
+            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                 s.write(skillDoPacket);
             }
         });
 
-        const enterCocoonPacket = `e${playerId}:CA,((('SkillE',0,1),1,${targetIdEnc}))\n`;
+        const enterCocoonPacket = `e${encodeInt(Number(playerId))}:CA,((('SkillE',0,1),1,${targetIdEnc}))\n`;
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
+            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                 s.write(enterCocoonPacket);
             }
         });
@@ -672,7 +793,7 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     let isEnvironmentalKill = false;
     if (!attackerSocket && socket.lastAttackerSocket && (Date.now() - (socket.lastAttackerTime || 0)) <= 10000) {
         const recentAttacker = socket.lastAttackerSocket;
-        if (!recentAttacker.destroyed && Number(recentAttacker.force) !== Number(socket.force)) {
+        if (!recentAttacker.destroyed && sceneScope.canReceive(socket, recentAttacker) && !combat.sameSide(recentAttacker, socket)) {
             attackerSocket = recentAttacker;
             isEnvironmentalKill = true;
         }
@@ -680,6 +801,7 @@ function handlePlayerDeath(socket, attackerSocket = null) {
 
     console.log(`[💀 PLAYER DEAD] O jogador ${socket.playerName || 'Jogador'} morreu! (${isEnvironmentalKill ? 'Atribuição Ambiental/Abismo' : (attackerSocket ? 'Morto por Inimigo' : 'Suicídio')}) Entrando em estado de morte por 10 segundos...\n`);
     socket.isDead = true;
+    if (combat.isFreeForAll(socket)) socket.ffaDeathHandled = true;
     socket.hp = 0;
     socket.shield = 0;
     socket.maxShield = 0;
@@ -692,6 +814,24 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     socket.lilyBarrierActive = false;
     socket.isInvincible = false;
     socket.godMode = false;
+
+    // Limpa a marca de cura e beacon da Carmen caso a própria Carmen morra
+    if (socket.carmenHealTargetId) {
+        cleanupBuff(null, socket.carmenHealTargetId, 1021, true);
+        socket.carmenHealTargetId = null;
+    }
+    if (socket.carmenBeaconTargetId) {
+        cleanupBuff(null, socket.carmenBeaconTargetId, 1005, true);
+        cleanupBuff(null, socket.carmenBeaconTargetId, 1010, true);
+        socket.carmenBeaconTargetId = null;
+    }
+
+    // Limpa todos os buffs do jogador que acabou de morrer
+    if (socket.activeBuffs) {
+        Object.keys(socket.activeBuffs).forEach(bId => {
+            cleanupBuff(socket, socket.playerId, parseInt(bId), true);
+        });
+    }
     
     sendEntityHpUpdate(socket, socket.playerId || "1", socket, true);
 
@@ -746,6 +886,7 @@ function handlePlayerDeath(socket, attackerSocket = null) {
         fmax = 1500;
     }
 
+    if (combat.isFreeForAll(socket) && attackerSocket && (attackerSocket === socket || !sceneScope.canReceive(socket, attackerSocket))) attackerSocket = null;
     const targetNetId = Number(socket.playerId || socket.playerIndex || 1);
     const attackerNetId = attackerSocket ? Number(attackerSocket.playerId || attackerSocket.playerIndex || 0) : 0;
     const targetPlayerIdEnc = encodeInt(targetNetId);
@@ -760,15 +901,16 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     }
 
     // Monta aryWarData oficial para atualizar o TAB Scoreboard no cliente C# (NetLiving.cs:966)
-    const warDataTarget = `(${encodeInt(socket.matchKills || 0)},${encodeInt(socket.matchDeaths || 0)},${encodeInt(socket.matchDamage || 0)})`;
-    const warDataAttacker = `(${encodeInt(attackerSocket ? (attackerSocket.matchKills || 0) : 0)},${encodeInt(attackerSocket ? (attackerSocket.matchDeaths || 0) : 0)},${encodeInt(attackerSocket ? (attackerSocket.matchDamage || 0) : 0)})`;
+    const warDataTarget = `(${encodeInt(socket.matchKills || 0)},${encodeInt(socket.matchDeaths || 0)},${encodeInt(combat.isFreeForAll(socket) ? Number(socket.playerIndex || socket.playerId) : (socket.matchDamage || 0))})`;
+    const warDataAttacker = `(${encodeInt(attackerSocket ? (attackerSocket.matchKills || 0) : 0)},${encodeInt(attackerSocket ? (attackerSocket.matchDeaths || 0) : 0)},${encodeInt(attackerSocket ? (combat.isFreeForAll(socket) ? Number(attackerSocket.playerIndex || attackerSocket.playerId) : (attackerSocket.matchDamage || 0)) : 0)})`;
     const warDataParam = `(${warDataTarget},${warDataAttacker})`;
 
-    const weaponIdEnc = encodeInt(socket.lastAttackerWeapon || 1000);
-    const deadPacket = `e${targetPlayerIdEnc}:OnDeath,(${attackerPlayerIdEnc},${p10},(${encodeInt(fx)},${encodeInt(fy)},${encodeInt(fz)}),${encodeInt(fmax)},${weaponIdEnc},${zero},${zero},(),${zero},${warDataParam})\n`;
+    const weaponIdEnc = encodeInt(attackerSocket ? (socket.lastAttackerAttack || 0) : 0);
+    const launcherEnc = encodeInt(attackerSocket ? (socket.lastAttackerLauncher || 0) : 0);
+    const deadPacket = `e${targetPlayerIdEnc}:OnDeath,(${attackerPlayerIdEnc},${p10},(${encodeInt(fx)},${encodeInt(fy)},${encodeInt(fz)}),${encodeInt(fmax)},${weaponIdEnc},${launcherEnc},${zero},(),${zero},${warDataParam})\n`;
     
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
             s.write(deadPacket);
             sendTabScoreboard(s);
         }
@@ -776,31 +918,34 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     
     const sysMsgHex = Buffer.from("[Sistema] Você morreu! Aguardando ressurreição ou renascendo em 10 segundos...").toString('hex');
     const sysNetMsg = `(${encodeInt(8)},'','[mi]${sysMsgHex}[/mi]','',(),(),${encodeInt(1)},('','',0),())`;
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${encodeInt(1006)},${sysNetMsg})\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${encodeInt(1006)},${sysNetMsg})\n`);
+
+    const match = getTdmMatch(socket);
+    const matchRoomUID = match ? match.roomUID : (combat.isFreeForAll(socket) ? socket.currentRoomUID : null);
 
     if (attackerSocket) {
         if (isEnvironmentalKill) {
-            sendGlobalSystemChat(`💀 [Combate] ${attackerSocket.playerName || 'Inimigo'} derrubou ${socket.playerName || 'Jogador'} no abismo / perigos do mapa!`);
+            sendGlobalSystemChat(`💀 [Combate] ${attackerSocket.playerName || 'Inimigo'} derrubou ${socket.playerName || 'Jogador'} no abismo / perigos do mapa!`, matchRoomUID);
         } else {
-            sendGlobalSystemChat(`💀 [Combate] ${attackerSocket.playerName || 'Inimigo'} derrotou ${socket.playerName || 'Jogador'}!`);
+            sendGlobalSystemChat(`💀 [Combate] ${attackerSocket.playerName || 'Inimigo'} derrotou ${socket.playerName || 'Jogador'}!`, matchRoomUID);
         }
         
-        if (global.activeTdmMatch && global.activeTdmMatch.state === 'fight') {
+        if (match && match.state === 'fight') {
             const killerForce = Number(attackerSocket.force);
             if (killerForce === 1 || killerForce === 2) {
-                incrementTdmScore(killerForce, 1);
+                incrementTdmScore(attackerSocket, killerForce, 1);
             }
         }
     } else {
         // Suicídio puro (se jogou no abismo ou nos espinhos sem combate recente)
-        sendGlobalSystemChat(`💀 [Combate] ${socket.playerName || 'Jogador'} se suicidou no mapa!`);
+        sendGlobalSystemChat(`💀 [Combate] ${socket.playerName || 'Jogador'} se suicidou no mapa!`, matchRoomUID);
         
         // REGRA COMPETITIVA DE TDM: Suicídio não nega ponto para o time adversário! O time inimigo recebe o ponto da eliminação.
-        if (global.activeTdmMatch && global.activeTdmMatch.state === 'fight') {
+        if (match && match.state === 'fight') {
             const victimForce = Number(socket.force);
             const enemyForce = victimForce === 1 ? 2 : 1;
-            incrementTdmScore(enemyForce, 1);
-            sendGlobalSystemChat(`🚩 [TDM] +1 ponto para a Equipe ${enemyForce === 1 ? 'Azul' : 'Vermelha'} por suicídio do adversário!`);
+            incrementTdmScore(socket, enemyForce, 1);
+            sendGlobalSystemChat(`🚩 [TDM] +1 ponto para a Equipe ${enemyForce === 1 ? 'Azul' : 'Vermelha'} por suicídio do adversário!`, matchRoomUID);
         }
     }
 
@@ -808,11 +953,18 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     socket.lastAttackerSocket = null;
     socket.lastAttackerTime = 0;
 
+    const ffa = getFreeForAllMatch(socket);
+    if (ffa) {
+        tickFreeForAll(ffa);
+        if (ffa.state !== 'fight') return;
+        socket.ffaRespawnAt = Date.now() + 10000;
+    }
+    const deathIsCurrent = sceneScope.capture(socket);
     if (socket.respawnTimeout) {
         clearTimeout(socket.respawnTimeout);
     }
     socket.respawnTimeout = setTimeout(() => {
-        if (!socket || socket.destroyed) return;
+        if (!deathIsCurrent()) return;
         if (socket.isDead) {
             respawnPlayer(socket);
         }
@@ -820,9 +972,11 @@ function handlePlayerDeath(socket, attackerSocket = null) {
 }
 
 function respawnPlayer(socket) {
-    if (!socket || socket.destroyed) return;
+    if (!socket || socket.destroyed || socket.sceneRetired) return;
+    if (combat.isFreeForAll(socket) && (!socket.isDead || !socket.isCombatReady || getFreeForAllMatch(socket)?.state !== 'fight' || Date.now() < (socket.ffaRespawnAt || 0))) return;
     
     socket.isDead = false;
+    socket.ffaDeathHandled = false;
     if (socket.respawnTimeout) {
         clearTimeout(socket.respawnTimeout);
         socket.respawnTimeout = null;
@@ -842,38 +996,38 @@ function respawnPlayer(socket) {
     socket.godMode = false;
     
     const currentMapId = socket.targetMapId || state.getLastMapId() || 5202;
-    const coords = getSpawnCoordinates(currentMapId, socket.force);
+    const coords = combat.isFreeForAll(socket) ? getPlayerSpawnCoordinates(socket) : getSpawnCoordinates(currentMapId, socket.force);
     let sx = coords.sx, sy = coords.sy, sz = coords.sz;
     
     socket.lastX = sx;
     socket.lastY = sy;
     socket.lastZ = sz;
+    socket.spawnYaw = coords.yaw;
     
-    // Envia OnRevive para limpar o estado de morte e fechar a UI de morte
+    // Restaura HP antes do evento que reativa o personagem e toca sua fala.
+    sendEntityHpUpdate(socket, socket.playerId || "1", socket, true);
+
+    // O cliente já restaura modelo, colisores e câmera em OnRevive.
     const targetPlayerIdEnc = encodeInt(Number(socket.playerId || 1));
     const sxEnc = encodeInt(Math.round(sx));
     const syEnc = encodeInt(Math.round(sy));
     const szEnc = encodeInt(Math.round(sz));
-    const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${sxEnc},${szEnc},${syEnc},${encodeInt(180)},0,0,''))\n`;
+    const revivePacket = `e${targetPlayerIdEnc}:OnRevive,((${sxEnc},${szEnc},${syEnc},${encodeInt(coords.yaw ?? 180)},0,0,''))\n`;
     state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
+        if (sceneScope.canReceive(socket, s) && !s.destroyed) {
             s.write(revivePacket);
         }
     });
 
-    sendEntityHpUpdate(socket, socket.playerId || "1", socket, true);
+    // Não reenviar PlayerCreate/PlayerSelect: recriam áudio/HUD após reviver.
+    // Reabastece pela mensagem nativa sem reconstruir o personagem.
+    const weapon = db.weaponsMap[socket.currentHeroId || 1015];
+    const maxAmmo = weapon?.cartridgePublic ?? 30;
+    socket.write(`e${targetPlayerIdEnc}:OnFillBullet,((0,0,${encodeInt(maxAmmo)},${encodeInt(maxAmmo)}))\n`);
     
-    state.activeSockets.forEach(s => {
-        if (s.socketType === "SCENE" && !s.destroyed) {
-            s.bypassInterceptor = true;
-            s.write(getPlayerSpawnPacket(socket, s));
-            s.bypassInterceptor = false;
-        }
-    });
-    
-    const sysMsgHex = Buffer.from("[Sistema] Você renasceu na base da sua equipe!").toString('hex');
+    const sysMsgHex = Buffer.from(combat.isFreeForAll(socket) ? "[Sistema] Você renasceu!" : "[Sistema] Você renasceu na base da sua equipe!").toString('hex');
     const sysNetMsg = `(${encodeInt(8)},'','[mi]${sysMsgHex}[/mi]','',(),(),${encodeInt(1)},('','',0),())`;
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${encodeInt(1006)},${sysNetMsg})\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${encodeInt(1006)},${sysNetMsg})\n`);
     
     console.log(`[🌱 PLAYER RESPAWN] Jogador ${socket.playerName || 'Jogador'} renasceu na base.`);
 }
@@ -914,12 +1068,13 @@ function getValidRobotCreateIndex(heroId, mapId) {
 }
 
 function getPlayerSpawnPacket(s, receiverSocket) {
+    if (receiverSocket && s !== receiverSocket && !sceneScope.sameScene(s, receiverSocket)) return '';
     const heroId = s.currentHeroId || 1015;
     const actualHeroId = (heroId === 1018 || heroId === 1019) ? 1015 : heroId;
     const heroIdEnc = encodeInt(actualHeroId);
     const one = encodeInt(1);
     const zero = encodeInt(0);
-    const forceEnc = encodeInt(s.force || 1);
+    const forceEnc = encodeInt(combat.visibleForce(s, receiverSocket));
     const profile = dbPersistence.loadPlayer(s.playerName);
     const playerEq = state.playerEquipment[s.playerName] || (profile && profile.equipment) || {};
     const eq = playerEq[actualHeroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
@@ -932,7 +1087,7 @@ function getPlayerSpawnPacket(s, receiverSocket) {
         profile
     ).split(',').slice(1).join(',');
     
-    const pIdx = s.playerIndex || 1;
+    const pIdx = s.playerIndex || (global.userIndexes && s.playerName && global.userIndexes[s.playerName]) || 1;
     const faceId = profile && profile.face ? profile.face : 2009;
     const paintId = profile && profile.paint ? profile.paint : 1019;
     const playerLevel = profile && profile.level ? profile.level : (s.level || 1);
@@ -954,29 +1109,29 @@ function getPlayerSpawnPacket(s, receiverSocket) {
     
     const maxHp = s.maxHp || db.getHeroMaxHp(actualHeroId);
     const maxHpEnc = encodeInt(maxHp);
-    const battleAttr = `(${one},${maxHpEnc},${maxHpEnc},${one},${one},${one},${one},${one},${one},${encodeInt(10000)},${one},${one},${one},${one},${one},${one},${one},${one},${one},${one})`;
+    const battleAttr = `(${one},${encodeInt(s.hp ?? maxHp)},${maxHpEnc},${one},${one},${one},${one},${one},${one},${encodeInt(10000)},${one},${one},${one},${one},${one},${one},${one},${one},${one},${one})`;
     
     const currentMapId = s.targetMapId || state.getLastMapId() || 5202;
     const defaultCoords = getSpawnCoordinates(currentMapId, s.force);
-    let sx = s.lastX || defaultCoords.sx;
-    let sy = s.lastY || defaultCoords.sy;
-    let sz = s.lastZ || defaultCoords.sz;
-    const scnInfo = `(${encodeInt(getSafeMapId(currentMapId))},${encodeInt(sx)},${encodeInt(sz)},${encodeInt(sy)},${zero},${zero},${zero},${encodeInt(180)})`;
+    let sx = s.lastX ?? defaultCoords.sx;
+    let sy = s.lastY ?? defaultCoords.sy;
+    let sz = s.lastZ ?? defaultCoords.sz;
+    const scnInfo = `(${encodeInt(getSafeMapId(currentMapId))},${encodeInt(sx)},${encodeInt(sz)},${encodeInt(sy)},${zero},${zero},${zero},${encodeInt(s.spawnYaw ?? 180)})`;
     const geneDataEnc = '()';
     const msg_part1 = `(${baseInfo},${battleAttr},scnInfo,(),(),('Local',${one},${one},${one},${one},${zero},'',${one}),(),${geneDataEnc})`;
     
     const finalMsgPart1 = msg_part1.replace('scnInfo', scnInfo);
     
     const arySkillServerData = db.generateHeroSkillsData(actualHeroId);
-    const heroDazhaoData = db.generateHeroDazhaoData(actualHeroId);
+    const heroDazhaoData = db.generateHeroDazhaoData(actualHeroId, s.ultEnergy || 0);
     
     const maxAmmo = db.weaponsMap[actualHeroId] && db.weaponsMap[actualHeroId].cartridgePublic !== undefined ? db.weaponsMap[actualHeroId].cartridgePublic : 30;
-    const superData = (actualHeroId === 1005) ? `(${encodeInt(s.force || 1)},'',${zero},(${encodeInt(7000)}))` : `()`;
-    const msg_part2 = `(${one},zero,((0),(),(${encodeInt(maxAmmo)})),${encodeInt(actualHeroId)},${heroDazhaoData},${arySkillServerData},${superData},())`.replace('zero', zero);
+    const superData = (actualHeroId === 1005) ? `(${forceEnc},'',${zero},(${encodeInt(7000)}))` : `()`;
+    const msg_part2 = `(${one},zero,((0),(),(${encodeInt(maxAmmo)})),${encodeInt(actualHeroId)},${heroDazhaoData},${arySkillServerData},${superData},${combat.isFreeForAll(s) ? `(${encodeInt(s.matchKills || 0)},${encodeInt(s.matchDeaths || 0)},${encodeInt(pIdx)})` : '()'})`.replace('zero', zero);
     
     let packet = '';
-    if (receiverSocket && typeof receiverSocket === 'object' && s.playerName === receiverSocket.playerName) {
-        packet = `e${pIdx}:SendMsgToClient,(${encodeInt(10001)},(${finalMsgPart1},${msg_part2}))\n`;
+    if (receiverSocket === s) {
+        packet = `e${encodeInt(pIdx)}:SendMsgToClient,(${encodeInt(10001)},(${finalMsgPart1},${msg_part2}))\n`;
         // Envia Tab inicial (5025) com stats zerados para que szTabWinInfo nunca seja null
         const p5000 = encodeInt(5000);
         const p5025 = encodeInt(5025);
@@ -994,7 +1149,7 @@ function getPlayerSpawnPacket(s, receiverSocket) {
         const heroStats = `(${heroIdForTab},${kills},${assists},${timeSec},${damage},${heal},${deaths})`;
         // [2] rankList: 5 medals (0=gold)
         const rankList  = `(${zero},${zero},${zero},${zero},${zero})`;
-        packet += `e${pIdx}:SendMsgToClient,(${p5000},(${p5025},(${userStats},${heroStats},${rankList})))\n`;
+        packet += `e${encodeInt(pIdx)}:SendMsgToClient,(${p5000},(${p5025},(${userStats},${heroStats},${rankList})))\n`;
     } else {
         if (s.isBot) {
             const xEnc = encodeInt(Math.round(sx));
@@ -1003,7 +1158,7 @@ function getPlayerSpawnPacket(s, receiverSocket) {
             const rxEnc = zero;
             const ryEnc = encodeInt(180);
             const rzEnc = zero;
-            const createIndex = getValidRobotCreateIndex(actualHeroId, currentMapId);
+            const createIndex = s.createIndex || getValidRobotCreateIndex(actualHeroId, currentMapId);
             const createIndexEnc = encodeInt(createIndex);
             packet = `d${encodeInt(pIdx)}\ncRobotAI:${encodeInt(pIdx)},("RobotCreate",(${xEnc},${zEnc},${yEnc}),(${rxEnc},${ryEnc},${rzEnc}),${heroIdEnc},${finalMsgPart1},${msg_part2},${one},${createIndexEnc})\n`;
             logger.logTelemetry('BOT_SPAWN_PACKET', {
@@ -1021,16 +1176,27 @@ function getPlayerSpawnPacket(s, receiverSocket) {
 
     if (s.visualHeroId) {
         const vIdEnc = encodeInt(s.visualHeroId);
-        packet += `e${pIdx}:NVM,((${vIdEnc}))\n`;
+        packet += `e${encodeInt(pIdx)}:NVM,((${vIdEnc}))\n`;
     }
     return packet;
 }
 
 function switchPlayerHero(socket, selectedHeroId) {
-    if (!socket || socket.destroyed) return;
+    if (!socket || socket.destroyed || socket.sceneRetired) return;
     socket.visualHeroId = null;
+    if (socket.carmenHealTargetId) {
+        cleanupBuff(null, socket.carmenHealTargetId, 1021, true);
+        socket.carmenHealTargetId = null;
+    }
+    if (socket.carmenBeaconTargetId) {
+        cleanupBuff(null, socket.carmenBeaconTargetId, 1005, true);
+        cleanupBuff(null, socket.carmenBeaconTargetId, 1010, true);
+        socket.carmenBeaconTargetId = null;
+    }
     try {
         if (socket.waitingForHeroLock) {
+            sceneScope.invalidate(socket);
+            lifecycle.transition(socket, 'loading', 'hero-confirmed');
             console.log(`[🎭 SCENE HERO LOCK] Jogador ${socket.playerName || 'Jogador'} confirmou o herói inicial: ${selectedHeroId}. Iniciando carregamento de mapa...`);
             
             socket.waitingForHeroLock = false;
@@ -1039,14 +1205,24 @@ function switchPlayerHero(socket, selectedHeroId) {
 
             // Reset estatísticas da partida
             resetMatchStats(socket);
+
+            const profile = dbPersistence.loadPlayer(socket.playerName);
+            const playerEq = state.playerEquipment[socket.playerName] || (profile && profile.equipment) || {};
+            const eq = playerEq[selectedHeroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
+            socket.currentSkinId = eq.skin || 1;
+            socket.currentWeaponId = eq.weapon || 1;
             
-            // Sincroniza herói selecionado na sessão persistente e no lobby socket
+            // Sincroniza herói e cosméticos selecionados na sessão persistente e no lobby socket
             if (state.playerSessions && state.playerSessions[socket.playerName]) {
                 state.playerSessions[socket.playerName].currentHeroId = selectedHeroId;
+                state.playerSessions[socket.playerName].currentSkinId = socket.currentSkinId;
+                state.playerSessions[socket.playerName].currentWeaponId = socket.currentWeaponId;
                 state.playerSessions[socket.playerName].hasConfirmedHero = true;
             }
             if (socket.lobbySocket) {
                 socket.lobbySocket.currentHeroId = selectedHeroId;
+                socket.lobbySocket.currentSkinId = socket.currentSkinId;
+                socket.lobbySocket.currentWeaponId = socket.currentWeaponId;
                 socket.lobbySocket.hasConfirmedHero = true;
             }
             
@@ -1062,17 +1238,22 @@ function switchPlayerHero(socket, selectedHeroId) {
             // Envia o pacote de loading screen (s90004) antes de iniciar a transição de mapa
             const p20014 = encodeInt(20014);
             const s90004 = encodeInt(90004);
-            socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p20014},(${s90004}))\n`);
+            const destination = Number(socket.finalMapId || socket.targetMapId);
+            if (ffaMaps[destination] || [9,12].includes(db.MAP_CONFIG[destination]?.type)) {
+                // 90004 only opens the loading UI; CLoadScene only swaps assets.
+                // 90009 updates MatchManager.m_pFbData from staging to the destination mode
+                // before GamePlayer.setHeroForce chooses collision layers.
+                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${encodeInt(90009)},(${encodeInt(destination)},'${db.MAP_CONFIG[destination].name}')))\n`);
+            } else {
+                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90004}))\n`);
+            }
             
             // 1. Envia 12002 para carregar o novo herói na memória do cliente
             const prefix = `e${socket.playerIndex || 1}`;
             const p1306 = encodeInt(1306);
             const p12002 = encodeInt(12002);
             const heroIdEnc = encodeInt(selectedHeroId);
-            const profile = dbPersistence.loadPlayer(socket.playerName);
-            const playerEq = state.playerEquipment[socket.playerName] || (profile && profile.equipment) || {};
-            const eq = playerEq[selectedHeroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
-            const heroInfo = db.generateFullHeroData(selectedHeroId, eq.skin, eq.weapon, eq.emote, eq.pose, profile);
+            const heroInfo = db.generateFullHeroData(selectedHeroId, socket.currentSkinId, socket.currentWeaponId, eq.emote || 1, eq.pose || 0, profile);
             socket.write(`${prefix}:SendMsgToClient,(${p1306},(${p12002},(${heroIdEnc},${heroInfo.split(',').slice(1).join(',')})))\n`);
             
             // 2. Agora sim, envia o CLoadScene para carregar o mapa de combate real!
@@ -1084,7 +1265,9 @@ function switchPlayerHero(socket, selectedHeroId) {
             }
             const scnId = getSafeMapId(socket.targetMapId || state.getLastMapId() || 5202);
             const scnName = socket.targetMapName || global.lastMapName || 'bachang_baxi';
-            setTimeout(() => {
+            const loadIsCurrent = sceneScope.capture(socket);
+            socket.sceneLoadTimeout = setTimeout(() => {
+                if (!loadIsCurrent()) return;
                 socket.write(`e:CLoadScene,((0,'${scnName}',0,${encodeInt(scnId)}))\n`);
             }, 1000);
             return;
@@ -1134,14 +1317,14 @@ function switchPlayerHero(socket, selectedHeroId) {
 
         // Ao trocar de herói em jogo, resetar coordenadas para a base de spawn correspondente
         const resetMapId = socket.targetMapId || state.getLastMapId() || 5202;
-        const coords = getSpawnCoordinates(resetMapId, socket.force);
+        const coords = combat.isFreeForAll(socket) ? getPlayerSpawnCoordinates(socket) : getSpawnCoordinates(resetMapId, socket.force);
         socket.lastX = coords.sx;
         socket.lastY = coords.sy;
         socket.lastZ = coords.sz;
 
         // 2. Envia 10001 (Spawn/Update do Herói com a nova classe/habilidades)
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
+            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
                 s.write(getPlayerSpawnPacket(socket, s));
             }
         });
@@ -1284,10 +1467,57 @@ function spawnTdmBases(socket, mapId) {
     }
 }
 
+function createTdmMatchInstance(roomUID, mapId) {
+    return {
+        roomUID: roomUID,
+        mapId: mapId,
+        state: 'warmup',
+        warmupSeconds: 15,
+        fightSeconds: 900,
+        targetScore: 50,
+        blueScore: 0,
+        redScore: 0,
+        players: [],
+        timer: null,
+        botInterval: null,
+        endTimeout: null
+    };
+}
+
+function getTdmMatch(source, createIfMissing = true) {
+    let roomUID = null;
+    if (source && typeof source === 'object') {
+        if (source.roomUID !== undefined && source.state !== undefined) {
+            return source; // Já é uma instância válida de match
+        }
+        roomUID = source.currentRoomUID;
+    } else if (source !== undefined && source !== null) {
+        roomUID = source;
+    }
+
+    if (roomUID != null && global.roomContainers && global.roomContainers.has(Number(roomUID))) {
+        const room = global.roomContainers.get(Number(roomUID));
+        if (room) {
+            if (db.MAP_CONFIG[room.finalMapId || room.mapId]?.type !== 7) return null;
+            if (!room.tdmMatch && createIfMissing) {
+                room.tdmMatch = createTdmMatchInstance(room.roomUID, room.mapId);
+            }
+            if (room.tdmMatch) {
+                global.activeTdmMatch = room.tdmMatch; // Atualiza ponte de compatibilidade
+            }
+            return room.tdmMatch || null;
+        }
+    }
+    // Only the admin's explicit no-source calls may use the compatibility pointer.
+    // A missing/stale room must never select a different running match.
+    if (source == null) return global.activeTdmMatch || null;
+    return null;
+}
+
 function initializeTdmClient(socket) {
     if (socket.tdmInitialized) return;
     
-    const match = global.activeTdmMatch;
+    const match = getTdmMatch(socket);
     if (!match) return;
 
     socket.tdmInitialized = true;
@@ -1297,20 +1527,20 @@ function initializeTdmClient(socket) {
     const p110301 = encodeInt(110301);
     const p110307 = encodeInt(110307);
     
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110301},()))\n`);
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110307},(${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110300},(${p110301},()))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110300},(${p110307},(${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
 
     spawnTdmBases(socket, currentMapId);
 
     if (match.state === 'fight') {
         const p110303 = encodeInt(110303);
         const p1030000 = encodeInt(1030000);
-        socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
-        socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
+        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
         setTimeout(() => {
             if (!socket.destroyed) {
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
-                socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
+                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
             }
         }, 500);
     }
@@ -1318,42 +1548,26 @@ function initializeTdmClient(socket) {
 
 function startTdmMatch(socket) {
     const currentMapId = socket.targetMapId || state.getLastMapId() || 5202;
-    console.log(`[🏆 TDM] startTdmMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId}`);
+    const match = getTdmMatch(socket);
+    if (!match || socket.sceneRetired || !socket.isCombatReady) return;
+    console.log(`[🏆 TDM Sala ${match.roomUID}] startTdmMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId}`);
 
-    if (!global.activeTdmMatch) {
-        global.activeTdmMatch = {
-            state: 'warmup',
-            warmupSeconds: 15,
-            fightSeconds: 900, 
-            targetScore: 50,   
-            blueScore: 0,
-            redScore: 0,
-            players: [],
-            timer: null,
-            botInterval: null
-        };
-        console.log(`[🏆 TDM] Nova sessão TDM inicializada para o mapa ${currentMapId} (Duração: 15 min / 900s, Alvo: 50 pontos).`);
-        state.activeBots = {};
-    }
-
-    const match = global.activeTdmMatch;
     if (!match.players.includes(socket)) {
         match.players.push(socket);
-        console.log(`[🏆 TDM] Jogador ${socket.playerName || 'Jogador'} registrado na partida TDM.`);
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Jogador ${socket.playerName || 'Jogador'} registrado na partida TDM.`);
     }
 
     initializeTdmClient(socket);
 
     if (!match.timer) {
-        console.log(`[🏆 TDM] Iniciando timer de atualização periódica...`);
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Iniciando timer de atualização periódica...`);
         match.timer = setInterval(() => {
-            tickTdmMatch();
+            tickTdmMatch(match);
         }, 1000);
     }
 }
 
-function tickTdmMatch() {
-    const match = global.activeTdmMatch;
+function tickTdmMatch(match) {
     if (!match) return;
 
     const p110300 = encodeInt(110300);
@@ -1362,9 +1576,16 @@ function tickTdmMatch() {
 
     match.players = match.players.filter(p => !p.destroyed);
     if (match.players.length === 0) {
-        console.log(`[🏆 TDM] Nenhum jogador na partida. Encerrando sessão TDM.`);
+        const waitingRoom = global.roomContainers && global.roomContainers.get(Number(match.roomUID));
+        if (waitingRoom && waitingRoom.autoDestroyTimer) return;
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Nenhum jogador na partida. Encerrando sessão TDM.`);
         if (match.timer) clearInterval(match.timer);
-        global.activeTdmMatch = null;
+        match.timer = null;
+        if (match.roomUID && global.roomContainers && global.roomContainers.has(Number(match.roomUID))) {
+            const room = global.roomContainers.get(Number(match.roomUID));
+            if (room) room.tdmMatch = null;
+        }
+        if (global.activeTdmMatch === match) global.activeTdmMatch = null;
         return;
     }
 
@@ -1372,63 +1593,75 @@ function tickTdmMatch() {
         match.warmupSeconds--;
         
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110305},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110305},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
         });
 
         if (match.warmupSeconds <= 0) {
             match.state = 'fight';
-            console.log(`[🏆 TDM] Luta Iniciada! Abrindo portas.`);
+            console.log(`[🏆 TDM Sala ${match.roomUID}] Luta Iniciada! Abrindo portas.`);
             
             const p1030000 = encodeInt(1030000);
             match.players.forEach(p => {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110303},()))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
             });
             
-            sendGlobalSystemChat("🟢 [TDM] A PARTIDA COMEÇOU! AS PORTAS DA BASE FORAM ABERTAS!");
+            sendGlobalSystemChat("🟢 [TDM] A PARTIDA COMEÇOU! AS PORTAS DA BASE FORAM ABERTAS!", match.roomUID);
         }
     } else if (match.state === 'fight') {
         match.fightSeconds--;
 
         if (!match.botInterval) {
-            console.log(`[🏆 TDM] Bots controlados nativamente via Unity NavMesh (Opcode 4010001/4010002).`);
+            console.log(`[🏆 TDM Sala ${match.roomUID}] Bots controlados nativamente via Unity NavMesh (Opcode 4010001/4010002).`);
             match.botInterval = true;
         }
 
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110305},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110305},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
         });
 
         if (match.fightSeconds <= 0) {
-            console.log(`[🏆 TDM] Tempo limite esgotado!`);
-            endTdmMatch();
+            console.log(`[🏆 TDM Sala ${match.roomUID}] Tempo limite esgotado!`);
+            endTdmMatch(match);
         }
     }
 }
 
-function incrementTdmScore(killerForce, amount = 1) {
-    const match = global.activeTdmMatch;
-    if (!match || match.state !== 'fight') return;
+function incrementTdmScore(source, killerForce, amount = 1) {
+    let match = null;
+    let actualForce = killerForce;
+    let actualAmount = amount;
 
-    if (killerForce === 1) {
-        match.blueScore += amount;
-    } else if (killerForce === 2) {
-        match.redScore += amount;
+    // Compatibilidade com chamada legada (force, amount)
+    if (source === 1 || source === 2) {
+        actualForce = source;
+        actualAmount = typeof killerForce === 'number' ? killerForce : 1;
+        match = getTdmMatch(null, false);
+    } else {
+        match = getTdmMatch(source, false);
     }
 
-    console.log(`[🏆 TDM] Placar Atualizado: Blue ${match.blueScore} - Red ${match.redScore} (Alvo: ${match.targetScore})`);
+    if (!match || match.state !== 'fight') return;
+
+    if (actualForce === 1) {
+        match.blueScore += actualAmount;
+    } else if (actualForce === 2) {
+        match.redScore += actualAmount;
+    }
+
+    console.log(`[🏆 TDM Sala ${match.roomUID}] Placar Atualizado: Blue ${match.blueScore} - Red ${match.redScore} (Alvo: ${match.targetScore})`);
 
     const p110300 = encodeInt(110300);
     const p110302 = encodeInt(110302);
     match.players.forEach(p => {
-        p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110302},(${encodeInt(1)},${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
+        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110302},(${encodeInt(1)},${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
         // Atualiza o Tab (5025) de cada jogador com seus stats atuais
         sendTabScoreboard(p);
     });
 
     if (match.blueScore >= match.targetScore || match.redScore >= match.targetScore) {
-        console.log(`[🏆 TDM] Equipe atingiu a pontuação máxima! Encerrando...`);
-        endTdmMatch();
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Equipe atingiu a pontuação máxima! Encerrando...`);
+        endTdmMatch(match);
     }
 }
 
@@ -1453,7 +1686,10 @@ function sendTabScoreboard(socket) {
     const heroStats = `(${heroId},${kills},${assists},${timeSec},${damage},${heal},${deaths})`;
 
     // Ranking de medalhas da partida (0=Ouro, 1=Prata, 2=Bronze, -1=Sem medalha)
-    const allPlayers = (state.activeSockets || []).filter(s => s.socketType === "SCENE" && !s.destroyed);
+    const match = getTdmMatch(socket);
+    const allPlayers = (match && match.players && match.players.length > 0)
+        ? match.players.filter(s => !s.destroyed)
+        : (state.activeSockets || []).filter(s => sceneScope.canReceive(socket, s));
     const maxKills = Math.max(...allPlayers.map(p => p.matchKills || 0), 0);
     const maxAssists = Math.max(...allPlayers.map(p => p.matchAssists || 0), 0);
     const maxDamage = Math.max(...allPlayers.map(p => p.matchDamage || 0), 0);
@@ -1469,24 +1705,34 @@ function sendTabScoreboard(socket) {
     const rankList  = `(${killRank},${astRank},${timeRank},${dmgRank},${healRank})`;
 
     const tabData = `(${userStats},${heroStats},${rankList})`;
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p5000},(${p5025},${tabData}))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p5000},(${p5025},${tabData}))\n`);
 }
 
 // ─── END-GAME RESULT SCREEN (5026) ───────────────────────────────────────────
-function sendGameResult(players, winnerForce) {
+function sendGameResult(players, winnerForce, individualWinner = undefined) {
     if (!players || players.length === 0) return;
     const p5000 = encodeInt(5000);
     const p5026 = encodeInt(5026);
     const zero  = encodeInt(0);
 
-    // Determina MVP (quem tem mais kills, ou maior dano em caso de empate)
-    let mvpSocket = players.reduce((best, p) => {
-        const pKills = p.matchKills || 0;
-        const bKills = best.matchKills || 0;
-        if (pKills > bKills) return p;
-        if (pKills === bKills && (p.matchDamage || 0) > (best.matchDamage || 0)) return p;
-        return best;
-    }, players[0]);
+    // Determina MVP (melhor da equipe vencedora) e ACE (melhor da equipe derrotada)
+    const won = p => individualWinner !== undefined ? p === individualWinner : p.force === winnerForce;
+    const winPlayers = players.filter(p => winnerForce === 0 || won(p));
+    const losePlayers = players.filter(p => winnerForce !== 0 && !won(p));
+
+    const getBestPlayer = (plist) => {
+        if (!plist || plist.length === 0) return null;
+        return plist.reduce((best, p) => {
+            const pKills = p.matchKills || 0;
+            const bKills = best.matchKills || 0;
+            if (pKills > bKills) return p;
+            if (pKills === bKills && (p.matchDamage || 0) > (best.matchDamage || 0)) return p;
+            return best;
+        }, plist[0]);
+    };
+
+    const mvpSocket = getBestPlayer(winPlayers);
+    const aceSocket = getBestPlayer(losePlayers);
 
     // Calcula valores máximos da partida para cálculo de medalhas (Ouro/Prata/Bronze)
     const maxKills = Math.max(...players.map(p => p.matchKills || 0), 0);
@@ -1506,7 +1752,7 @@ function sendGameResult(players, winnerForce) {
         let nFail = 0;
         if (winnerForce === 0) {
             nDraw = 1;
-        } else if (p.force === winnerForce) {
+        } else if (won(p)) {
             nResult = 1;
         } else {
             nFail = 1;
@@ -1514,12 +1760,18 @@ function sendGameResult(players, winnerForce) {
 
         const isWin   = (nResult === 1);
         const isDraw  = (nDraw === 1);
-        const isMvp   = (p === mvpSocket) ? 1 : 0;
-        const mvpKill = encodeInt(nResult);
-        const ace     = encodeInt(nDraw);
-        const mvpAst  = encodeInt(nFail);
+        const isMvp   = (mvpSocket && p === mvpSocket) ? 1 : 0;
+        const isAce   = (aceSocket && p === aceSocket) ? 1 : 0;
+
+        // Conforme OneGameResultCon.cs linhas 206-222:
+        // Se szData[9] == 1 (hasBadge):
+        //   Se szData[5] == 1 || szData[7] == 1 -> Badge "mvp" com particulas animadas
+        //   Se szData[6] == 1 -> Badge "ace"
+        const mvpKill = encodeInt(isMvp);
+        const ace     = encodeInt(isAce);
+        const mvpAst  = zero;
         const unk8    = zero;
-        const showMvp = encodeInt(isMvp);
+        const showMvp = encodeInt((isMvp || isAce) ? 1 : 0);
         const kills   = encodeInt(p.matchKills   || 0);
         const assists = encodeInt(p.matchAssists || 0);
         const timeSec = encodeInt(Math.floor((Date.now() - (p.matchStartTime || Date.now())) / 1000));
@@ -1579,9 +1831,26 @@ function sendGameResult(players, winnerForce) {
                 lvlUp      = encodeInt(res.numLvlUp);
                 nowExp     = encodeInt(res.originalExp);
 
-                // Envia atualização de EXP e Level em tempo real (21002) para o Lobby
-                if (global.lastLobbySocket && !global.lastLobbySocket.destroyed) {
-                    global.lastLobbySocket.write(`e1:SendMsgToHallClient,(${encodeInt(21002)},(0,0,${encodeInt(res.newExp)},${encodeInt(res.newLevel)},0))\n`);
+                p.lastExpGained   = res.expGained;
+                p.lastLvlUp       = res.numLvlUp;
+                p.lastOriginalExp = res.originalExp;
+
+                // Roteamento direcionado: envia 21002 (EXP/Level) e 10025 (Saldo de Ouro) para o Lobby específico deste jogador
+                const targetLobbySocket = state.activeSockets.find(s => 
+                    s.socketType === "LOBBY" && 
+                    ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && 
+                    !s.destroyed
+                );
+
+                if (targetLobbySocket) {
+                    targetLobbySocket.write(`e1:SendMsgToHallClient,(${encodeInt(21002)},(0,0,${encodeInt(res.newExp)},${encodeInt(res.newLevel)},0))\n`);
+
+                    // Atualiza saldo em tempo real na UI do Saguão (10025: SetMoneyData)
+                    const goldEnc = encodeInt(res.newGold);
+                    const diaEnc = encodeInt(res.diamonds !== undefined ? res.diamonds : 999999);
+                    const szMoney = `(${goldEnc},${goldEnc},${diaEnc},0,${encodeInt(10)},0,${goldEnc},${goldEnc},${goldEnc},0,${goldEnc},0,0,0)`;
+                    targetLobbySocket.write(`e1:SendMsgToHallClient,(${encodeInt(10025)},(0,${szMoney}))\n`);
+                    console.log(`[💰 SYNC LOBBY] Atualização enviada ao Lobby de ${p.playerName}: Nível ${res.newLevel}, +${res.expGained} EXP, Saldo ${res.newGold} Ouro.`);
                 }
             }
         }
@@ -1601,23 +1870,40 @@ function sendGameResult(players, winnerForce) {
 
     // ResultUserList: pares intercalados [nameHex, userData, nameHex, userData, ...]
     const resultUserList = `(${userListParts.join(',')})`;
-    const resultHeroList = `()`; // lista de heróis
+
+    // ResultHeroList: lista de cartões dos heróis jogados (conforme OneResultHeroCon.cs)
+    const heroListParts = players.map(p => {
+        const hId    = encodeInt(p.currentHeroId || 1015);
+        const k      = encodeInt(p.matchKills || 0);
+        const d      = encodeInt(p.matchDeaths || 0);
+        const a      = encodeInt(p.matchAssists || 0);
+        const dmg    = encodeInt(p.matchDamage || 0);
+        const addExp = encodeInt(p.lastExpGained || 150);
+        const addLvl = encodeInt(p.lastLvlUp || 0);
+        const oldExp = encodeInt(p.lastOriginalExp || 0);
+        return `(${zero},${hId},${k},${d},${a},${dmg},${addExp},${addLvl},${oldExp})`;
+    });
+    const resultHeroList = `(${heroListParts.join(',')})`;
 
     const szNetMsg = `(${resultUserList},${resultHeroList})`;
 
     players.forEach(p => {
         if (!p.destroyed) {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${p5026},${szNetMsg}))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${p5026},${szNetMsg}))\n`);
         }
     });
     console.log(`[🏆 RESULT] Tela de resultado 5026 enviada para ${players.length} jogador(es). Vencedor: força ${winnerForce}`);
 }
 
-function endTdmMatch() {
-    const match = global.activeTdmMatch;
+function endTdmMatch(source = null) {
+    const match = getTdmMatch(source, false);
     if (!match || match.state === 'ended') return;
 
     match.state = 'ended';
+    for (const pending of state.activeSockets.filter(p => p.currentRoomUID != null && String(p.currentRoomUID) === String(match.roomUID))) {
+        sceneScope.invalidate(pending);
+        lifecycle.transition(pending, 'ended', 'tdm-ended');
+    }
     if (match.timer) {
         clearInterval(match.timer);
         match.timer = null;
@@ -1626,20 +1912,77 @@ function endTdmMatch() {
     if (match.botInterval) {
         clearInterval(match.botInterval);
         match.botInterval = null;
-        console.log(`[🏆 TDM] Interval de IA dos bots cancelado.`);
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Interval de IA dos bots cancelado.`);
     }
-    state.activeBots = {};
+
+    // Limpa apenas bots pertencentes a este roomUID
+    if (state.activeBots) {
+        for (const bId in state.activeBots) {
+            if (state.activeBots[bId].currentRoomUID === match.roomUID) {
+                delete state.activeBots[bId];
+            }
+        }
+    }
+
+    // Marca imediatamente todos os jogadores desta partida como fora da partida para que o matchmaking e listas fiquem limpos
+    match.players.forEach(p => {
+        p.inMatch = false;
+        p.tdmInitialized = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+
+        if (p.playerName && state.playerSessions[p.playerName]) {
+            state.playerSessions[p.playerName].inMatch = false;
+            state.playerSessions[p.playerName].finalMapId = null;
+            state.playerSessions[p.playerName].targetMapId = 5202;
+            state.playerSessions[p.playerName].targetMapName = 'bachang_baxi';
+            state.playerSessions[p.playerName].waitingForHeroLock = false;
+            state.playerSessions[p.playerName].hasConfirmedHero = false;
+        }
+
+        const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && !s.destroyed);
+        if (lobbyMatch) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.finalMapId = null;
+            lobbyMatch.waitingForHeroLock = false;
+            lobbyMatch.hasConfirmedHero = false;
+        }
+    });
+
+    // 🏠 CONTÊINERES DE SALA: Restaura o estado para 5 (Encerrada) ou auto-destrói salas de matchmaking / vazias
+    if (match.roomUID && global.roomContainers && global.roomContainers.has(Number(match.roomUID))) {
+        const r = global.roomContainers.get(Number(match.roomUID));
+        if (r) {
+            let activeCount = 0;
+            if (r.players) {
+                for (let i = 0; i < 10; i++) {
+                    if (r.players[i] && r.players[i].socket && !r.players[i].socket.destroyed) {
+                        activeCount++;
+                    }
+                }
+            }
+            if (activeCount === 0 || r.isMatchmaking) {
+                global.roomContainers.delete(Number(match.roomUID));
+                console.log(`[🗑️ CONTAINER] Container ${match.roomUID} (${r.roomName}) auto-destruído no término da partida.`);
+            } else if (r.state === 4) {
+                r.state = 5; // Estado 5 = Encerrada
+                console.log(`[🏠 CONTAINER] Sala ${match.roomUID} (${r.roomName}) marcada como encerrada.`);
+            }
+            r.tdmMatch = null;
+        }
+    }
 
     let winnerForce = 0;
     if (match.blueScore > match.redScore) {
         winnerForce = 1;
-        sendGlobalSystemChat("🏆 [TDM] FIM DE PARTIDA! A EQUIPE AZUL VENCEU!");
+        sendGlobalSystemChat("🏆 [TDM] FIM DE PARTIDA! A EQUIPE AZUL VENCEU!", match.roomUID);
     } else if (match.redScore > match.blueScore) {
         winnerForce = 2;
-        sendGlobalSystemChat("🏆 [TDM] FIM DE PARTIDA! A EQUIPE VERMELHA VENCEU!");
+        sendGlobalSystemChat("🏆 [TDM] FIM DE PARTIDA! A EQUIPE VERMELHA VENCEU!", match.roomUID);
     } else {
         winnerForce = 0;
-        sendGlobalSystemChat("🤝 [TDM] FIM DE PARTIDA! A PARTIDA TERMINOU EM EMPATE!");
+        sendGlobalSystemChat("🤝 [TDM] FIM DE PARTIDA! A PARTIDA TERMINOU EM EMPATE!", match.roomUID);
     }
 
     const p110300 = encodeInt(110300);
@@ -1648,29 +1991,27 @@ function endTdmMatch() {
     const p110304 = encodeInt(110304);
 
     match.players.forEach(p => {
-        p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110302},(${encodeInt(0)},${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
-        p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110306},(${encodeInt(winnerForce)})))\n`);
+        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110302},(${encodeInt(0)},${encodeInt(match.targetScore)},${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
+        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110306},(${encodeInt(winnerForce)})))\n`);
     });
 
     // Envia tela de resultado (5026) após 3s para dar tempo do 110306 aparecer
     setTimeout(() => sendGameResult(match.players, winnerForce), 3000);
 
-    setTimeout(() => {
+    // Timeout confortável de tolerância (35s) para o jogador ver suas estatísticas ou fechar no próprio ritmo
+    match.endTimeout = setTimeout(() => {
         match.players.forEach(p => {
-            if (!p.destroyed) {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110300},(${p110304},()))\n`);
-                p.inMatch = false;
-                p.tdmInitialized = false;
-                
-                const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && s.remoteAddress === p.remoteAddress);
-                if (lobbyMatch) {
-                    lobbyMatch.inMatch = false;
+            if (p && !p.destroyed) {
+                try {
+                    p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110304},()))\n`);
+                } catch (err) {
+                    // Socket já desconectado/fechado pelo jogador
                 }
             }
         });
-        global.activeTdmMatch = null;
-        console.log(`[🏆 TDM] Partida limpa com sucesso.`);
-    }, 10000);
+        if (global.activeTdmMatch === match) global.activeTdmMatch = null;
+        console.log(`[🏆 TDM Sala ${match.roomUID}] Partida finalizada e limpa com sucesso após timeout.`);
+    }, 35000);
 }
 
 function handleControlZonePlayersUpdate(socket, parsed) {
@@ -1756,7 +2097,7 @@ function spawnControlPoint(socket, mapId) {
     
     // Liga o jogador local ao MapEffect para o MapEffectBox detectar colisões
     const p40001 = encodeInt(40001);
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p40001},(${netIdEnc}))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p40001},(${netIdEnc}))\n`);
     console.log(`[🏆 CONTROL CP BIND] Enviado BeginEffectForUser (40001) do MapEffect ${netId} para jogador ${socket.playerIndex}`);
 }
 
@@ -1815,9 +2156,9 @@ function initializeControlClient(socket) {
     const p110104 = encodeInt(110104); 
     const p110106 = encodeInt(110106); 
 
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110101},()))\n`);
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110106},()))\n`);
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110104},(${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110101},()))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110106},()))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110104},(${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
 
     spawnTdmBases(socket, currentMapId);
     spawnControlPoint(socket, currentMapId);
@@ -1852,14 +2193,14 @@ function initializeControlClient(socket) {
         encodeInt(0),                           // 22
         encodeInt(0)                            // 23: general door handle
     ];
-    socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5001},((${arrayList.join(',')}),0,0))))\n`);
+    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p5000},(${subCmd5001},((${arrayList.join(',')}),0,0))))\n`);
     console.log(`[🏆 CONTROL HUD INIT] Enviado subcomando 5001 para inicializar o HUD ZhanDian do jogador ${socket.playerIndex}`);
 
     if (match.state === 'fight') {
         const p110107 = encodeInt(110107); 
         const p1030000 = encodeInt(1030000);
-        socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
-        socket.write(`e${socket.playerIndex || 1}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
+        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
     }
 }
 
@@ -1895,6 +2236,9 @@ function startControlMatch(socket) {
                 state.activeBots[bot.playerIndex] = {
                     playerIndex: bot.playerIndex,
                     playerId: bot.playerIndex,
+                    currentRoomUID: socket.currentRoomUID,
+                    targetMapId: currentMapId,
+                    sceneOwnerName: socket.playerName,
                     playerName: bot.playerName,
                     playerNameEnc: bot.playerNameEnc,
                     force: bot.force,
@@ -1962,7 +2306,7 @@ function tickControlMatch() {
         match.warmupSeconds--;
         
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
         });
 
         if (match.warmupSeconds <= 0) {
@@ -1972,8 +2316,8 @@ function tickControlMatch() {
             const p110107 = encodeInt(110107); 
             const p1030000 = encodeInt(1030000);
             match.players.forEach(p => {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
             });
 
             // Transiciona o HUD ZhanDian para o estado de luta (subcomando 5002)
@@ -2006,7 +2350,7 @@ function tickControlMatch() {
                 encodeInt(0)                            // 23
             ];
             match.players.forEach(p => {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5002},(${startArray.join(',')}))))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5002},(${startArray.join(',')}))))\n`);
             });
             console.log(`[🏆 CONTROL HUD START] Enviado subcomando 5002 para transição para o modo combate.`);
             
@@ -2068,7 +2412,7 @@ function tickControlMatch() {
                         const p5000 = encodeInt(5000);
                         const subCmd5019 = encodeInt(5019);
                         match.players.forEach(p => {
-                            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(1)})))\n`);
+                            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(1)})))\n`);
                         });
                     }
                 }
@@ -2099,7 +2443,7 @@ function tickControlMatch() {
                         const p5000 = encodeInt(5000);
                         const subCmd5019 = encodeInt(5019);
                         match.players.forEach(p => {
-                            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(2)})))\n`);
+                            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(2)})))\n`);
                         });
                     }
                 }
@@ -2131,7 +2475,7 @@ function tickControlMatch() {
 
         // Envia atualização de timer/countdown
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
         });
 
         // Envia os placares e progresso atualizados via subcomando 5008
@@ -2172,7 +2516,7 @@ function tickControlMatch() {
         ];
         
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5008},(${updateArray.join(',')}))))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5008},(${updateArray.join(',')}))))\n`);
         });
 
         // Envia sincronização de captura (case 5022) se houver progresso ativo (ou drenando/parado)
@@ -2191,7 +2535,7 @@ function tickControlMatch() {
         ];
         
         match.players.forEach(p => {
-            p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5022},(${syncProgressArray.join(',')}))))\n`);
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5022},(${syncProgressArray.join(',')}))))\n`);
         });
 
         // Toca som de contagem regressiva se atingir 85% de porcentagem de vitória de qualquer time
@@ -2205,7 +2549,7 @@ function tickControlMatch() {
                 encodeInt(match.owningForce)            // 11
             ];
             match.players.forEach(p => {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5027},(${countdownArray.join(',')}))))\n`);
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5027},(${countdownArray.join(',')}))))\n`);
             });
         }
 
@@ -2233,6 +2577,32 @@ function endControlMatch() {
     }
     state.activeBots = {};
 
+    // Marca imediatamente todos os jogadores como fora da partida para que o matchmaking e listas fiquem limpos
+    match.players.forEach(p => {
+        p.inMatch = false;
+        p.controlInitialized = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+
+        if (p.playerName && state.playerSessions[p.playerName]) {
+            state.playerSessions[p.playerName].inMatch = false;
+            state.playerSessions[p.playerName].finalMapId = null;
+            state.playerSessions[p.playerName].targetMapId = 5202;
+            state.playerSessions[p.playerName].targetMapName = 'bachang_baxi';
+            state.playerSessions[p.playerName].waitingForHeroLock = false;
+            state.playerSessions[p.playerName].hasConfirmedHero = false;
+        }
+
+        const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && !s.destroyed);
+        if (lobbyMatch) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.finalMapId = null;
+            lobbyMatch.waitingForHeroLock = false;
+            lobbyMatch.hasConfirmedHero = false;
+        }
+    });
+
     let winnerForce = 0;
     if (match.blueScore > match.redScore) {
         winnerForce = 1;
@@ -2250,7 +2620,7 @@ function endControlMatch() {
     const p110109 = encodeInt(110109); 
 
     match.players.forEach(p => {
-        p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110108},(${encodeInt(winnerForce)})))\n`);
+        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110108},(${encodeInt(winnerForce)})))\n`);
     });
 
     // Transiciona o HUD ZhanDian para o estado final de GameOver (subcomando 5006)
@@ -2283,7 +2653,7 @@ function endControlMatch() {
         encodeInt(0)                            // 23
     ];
     match.players.forEach(p => {
-        p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p5000},(${subCmd5006},(${endArray.join(',')}))))\n`);
+        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5006},(${endArray.join(',')}))))\n`);
     });
     console.log(`[🏆 CONTROL HUD END] Enviado subcomando 5006 para encerrar o HUD ZhanDian.`);
 
@@ -2293,14 +2663,7 @@ function endControlMatch() {
     setTimeout(() => {
         match.players.forEach(p => {
             if (!p.destroyed) {
-                p.write(`e${p.playerIndex || 1}:SendMsgToClient,(${p110100},(${p110109},()))\n`);
-                p.inMatch = false;
-                p.controlInitialized = false;
-                
-                const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && s.remoteAddress === p.remoteAddress);
-                if (lobbyMatch) {
-                    lobbyMatch.inMatch = false;
-                }
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110109},()))\n`);
             }
         });
         global.activeControlMatch = null;
@@ -2351,7 +2714,7 @@ function spawnBot(socket, botId, heroId, name, sx, sy, sz, force, lastMapId) {
         const superData = (heroId === 1005) ? `(${encodeInt(force || 1)},'',${zero},(${encodeInt(7000)}))` : `()`;
         const msg_part2 = `(${one},${zero},((0),(),(${encodeInt(maxAmmo)})),${heroIdEnc},${heroDazhaoData},${arySkillServerData},${superData},())`;
 
-        const spawnPacket = `e${botId}:SendMsgToClient,(${encodeInt(10001)},(${msg_part1},${msg_part2}))\n// `;
+        const spawnPacket = `e${encodeInt(Number(botId))}:SendMsgToClient,(${encodeInt(10001)},(${msg_part1},${msg_part2}))\n// `;
         socket.write(spawnPacket);
         console.log(`[🤖 BOT SPAWNED] Spawned Bot ${name} (NetID: ${botId}, HeroID: ${heroId})`);
     } catch (e) {
@@ -2369,12 +2732,19 @@ function spawnPracticeNpcs(socket, force = false) {
     console.log(`[🤖 SCENE] Enviando/Atualizando NPCs de treino no mapa bachang_baxi...`);
     
     const dummyForce = (socket.force === 1) ? 2 : 1;
-    state.spawnedNpcs[2001] = { id: 2001, index: 1121, hp: 10, maxHp: 10, x: 50000, y: 20104, z: 26000, force: dummyForce, isPracticeDummy: true };
-    state.spawnedNpcs[2002] = { id: 2002, index: 1122, hp: 1000, maxHp: 1000, x: 50500, y: 20104, z: 26000, force: dummyForce, isPracticeDummy: true };
-    state.spawnedNpcs[2003] = { id: 2003, index: 1101, hp: 1500, maxHp: 1500, x: 49500, y: 20104, z: 26000, force: dummyForce, isPracticeDummy: true };
+    for (const id of socket.practiceNpcIds || []) delete state.spawnedNpcs[id];
+    socket.practiceNpcIds = [];
+    for (const [index, hp, x] of [[1121, 10, 50000], [1122, 1000, 50500], [1101, 1500, 49500]]) {
+        global.nextNpcId = Math.max(global.nextNpcId || 0, 100000);
+        const id = global.nextNpcId++;
+        socket.practiceNpcIds.push(id);
+        state.spawnedNpcs[id] = sceneScope.tagEntity({ id, index, hp, maxHp: hp, x, y: 20104,
+            z: 26000, force: dummyForce, isPracticeDummy: true }, socket);
+    }
     
     for (const key in state.spawnedNpcs) {
         const npc = state.spawnedNpcs[key];
+        if (!sceneScope.sameScene(socket, npc)) continue;
         const className = db.getEntityClassName(npc.index);
         const npcForce = npc.force || 2;
         const spawnPacket = `c${className}:${encodeInt(npc.id)},("Initialize",(${encodeInt(1)},${encodeInt(npc.id)},${encodeInt(npc.index)},${encodeInt(npcForce)},(${encodeInt(npc.x)},${encodeInt(npc.y)},${encodeInt(npc.z)}),(0,0,0),(${encodeInt(100)},${encodeInt(100)},${encodeInt(100)}),(0,0,0),${encodeInt(-1)},${encodeInt(npc.maxHp)},${encodeInt(0)},${encodeInt(1)},${encodeInt(0)},""),((),()),0)\n`;
@@ -2429,7 +2799,7 @@ function spawnPracticeHeroBot(initiatorSocket, options = {}) {
         }
         
         let dummyIndex = 801;
-        while (state.activeBots && state.activeBots[dummyIndex]) {
+        while (state.activeBots[dummyIndex] || state.spawnedNpcs[dummyIndex] || state.activeSockets.some(p=>Number(p.playerId)===dummyIndex)) {
             dummyIndex++;
         }
         
@@ -2456,6 +2826,7 @@ function spawnPracticeHeroBot(initiatorSocket, options = {}) {
             playerNameEnc: dummyNameEnc,
             force: botTeam,
             currentHeroId: heroId,
+            createIndex: options.createIndex,
             currentSkinId: 1,
             currentWeaponId: 1,
             hp: maxHp,
@@ -2484,11 +2855,11 @@ function spawnPracticeHeroBot(initiatorSocket, options = {}) {
         
         state.activeBots = state.activeBots || {};
         state.activeBots[dummyIndex] = dummyBot;
+        sceneScope.tagEntity(dummyBot, initiatorSocket);
         
-        const botPacket = getPlayerSpawnPacket(dummyBot, initiatorSocket);
         state.activeSockets.forEach(s => {
-            if (s.socketType === "SCENE" && !s.destroyed) {
-                s.write(botPacket);
+            if (sceneScope.canReceive(dummyBot, s)) {
+                s.write(getPlayerSpawnPacket(dummyBot, s));
             }
         });
         
@@ -2522,416 +2893,240 @@ function clearPracticeHeroBots() {
     return count;
 }
 
+// Adventure uses RobotAI/robot.xml, not the unrelated training Npc.xml IDs.
+const pveRobots = require('./pveRobots.json');
+const { PacketBuilder } = require('./utils');
+const pveMatches = new Set();
+let nextPveEntityId = 600000;
+function pveId() {
+    while (state.activeBots[nextPveEntityId] || state.spawnedNpcs[nextPveEntityId] || state.activeSockets.some(s => Number(s.playerIndex) === nextPveEntityId)) nextPveEntityId++;
+    return nextPveEntityId++;
+}
+function getPveMatch(socket) {
+    return [...pveMatches].find(m => !m.isAdmin && m.state !== 'ended' && sceneScope.sameScene(m, socket)) || null;
+}
+function pvePeers(match) { return match.players.filter(p => sceneScope.canReceive(match, p)); }
+function pveMessage(player, opcode, data) {
+    player.write(PacketBuilder.rpc(player.playerIndex, 'SendMsgToClient', [19000, [opcode, data]]));
+}
+function pveBroadcast(match, opcode, data) { pvePeers(match).forEach(p => pveMessage(p, opcode, data)); }
+function pveDate(time) {
+    const d = new Date(time), pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+function pveInfo(m) {
+    const info = [1, m.state === 'fight' ? 1 : 0, 0, pveDate(m.deadline), 0, pveDate(m.readyAt), m.round, m.maxRound,
+        m.monsterNum, pveDate(m.deadline), m.crystal?.id || 0, m.pveType];
+    // Preserve the existing three-wave prototype; all Dark Land doors remain open.
+    if (m.pveType === 12) info.push([1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9]);
+    info.push(pveDate(m.startTime));
+    return info;
+}
+function pveUser(p) { return [p.playerIndex, p.playerNameEnc || encodeHex(p.playerName), 0, 1, 0, p.playerIndex, [], 1000]; }
+function crystalPacket(c) {
+    return PacketBuilder.create(db.getEntityClassName(1130), c.id, 'Initialize',
+        [[1,c.id,1130,1,[c.x,c.y,c.z],[0,0,0],[150,150,150],[0,0,0],-1,c.hp,0,1,0,''],[[],[]],0]);
+}
 function spawnPveCrystal(match) {
-    const crystalX = 11665;
-    const crystalY = 10776;
-    const crystalZ = 2461;
-    const crystalMaxHp = 10000;
-    
-    state.spawnedNpcs[1130] = {
-        id: 1130,
-        index: 1130,
-        hp: crystalMaxHp,
-        maxHp: crystalMaxHp,
-        x: crystalX,
-        y: crystalY,
-        z: crystalZ,
-        force: 1,
-        isCrystal: true
-    };
-    
-    const className = db.getEntityClassName(1130);
-    const crystalPacket = `c${className}:${encodeInt(1130)},("Initialize",(${encodeInt(1)},${encodeInt(1130)},${encodeInt(1130)},${encodeInt(1)},(${encodeInt(crystalX)},${encodeInt(crystalY)},${encodeInt(crystalZ)}),(0,0,0),(${encodeInt(150)},${encodeInt(150)},${encodeInt(150)}),(0,0,0),${encodeInt(-1)},${encodeInt(crystalMaxHp)},${encodeInt(0)},${encodeInt(1)},${encodeInt(0)},""),((),()),0)\n`;
-    
-    if (match && match.players) {
-        match.crystal = state.spawnedNpcs[1130];
-        match.players.forEach(p => {
-            if (!p.destroyed) p.write(crystalPacket);
-        });
+    if (!match.crystal) {
+        match.crystal = sceneScope.tagEntity({id:pveId(), index:1130, hp:10000, maxHp:10000,
+            x:11665,y:10776,z:2461,force:1,isCrystal:true,pveMatch:match},match);
+        state.spawnedNpcs[match.crystal.id] = match.crystal;
     }
-    console.log(`[🏰 PVE CRISTAL] Cristal central (NPC 1130) spawnado em (${crystalX}, ${crystalY}, ${crystalZ}) com ${crystalMaxHp} HP via ${className}.`);
+    return match.crystal;
 }
-
 function spawnPveWave(match, round) {
-    if (!match) return;
+    if (!match || match.state === 'ended') return;
     match.round = round;
-    match.monsters = {};
-
-    const pveLv = match.pveLv || 0;
-    const floorY = 10776;
-    // Spawns nos túneis da caverna marchando em direção ao cristal central (z: 2461)
-    const spawnPoints = [
-        { x: 11665, y: floorY, z: 1200 },
-        { x: 11200, y: floorY, z: 1000 },
-        { x: 12100, y: floorY, z: 1000 },
-        { x: 11665, y: floorY, z: 500 },
-        { x: 10800, y: floorY, z: 0 },
-        { x: 12500, y: floorY, z: 0 },
-        { x: 11665, y: floorY, z: -500 },
-        { x: 11200, y: floorY, z: -1000 },
-        { x: 12100, y: floorY, z: -1000 },
-        { x: 10500, y: floorY, z: -1500 },
-        { x: 12800, y: floorY, z: -1500 },
-        { x: 11665, y: floorY, z: -2000 }
-    ];
-
-    let monsterDefs = [];
-    if (round === 1) {
-        // Onda 1: 8 Mutantes Bípedes (Index 1105, monsterbq_tps)
-        for (let i = 0; i < 8; i++) {
-            monsterDefs.push({
-                name: `Mutante #${i + 1}`,
-                npcIndex: 1105,
-                scale: 150,
-                hp: 750 + pveLv * 150,
-                damage: 30 + pveLv * 5,
-                isBoss: false
-            });
-        }
-        sendGlobalSystemChat("⚔️ [MODO AVENTURA] ONDA 1 INICIADA! DEFENDA O CRISTAL!");
-    } else if (round === 2) {
-        // Onda 2: 12 Invasores (6 Blindados e 6 Fuzileiros)
-        for (let i = 0; i < 12; i++) {
-            const isHeavy = (i % 2 === 0);
-            monsterDefs.push({
-                name: (isHeavy ? `Blindado #${i + 1}` : `Fuzileiro #${i + 1}`),
-                npcIndex: isHeavy ? 1106 : 1109,
-                scale: isHeavy ? 170 : 150,
-                hp: isHeavy ? (1400 + pveLv * 250) : (1000 + pveLv * 200),
-                damage: isHeavy ? (45 + pveLv * 10) : (40 + pveLv * 10),
-                isBoss: false
-            });
-        }
-        sendGlobalSystemChat("⚔️ [MODO AVENTURA] ONDA 2 INICIADA! INVASORES PESADOS SE APROXIMAM!");
-    } else {
-        // Onda 3 (Final): 6 Guardas Blindados + 1 GRANDE BOSS (Index 1111, monsterbp_tps_boos)
-        for (let i = 0; i < 6; i++) {
-            monsterDefs.push({
-                name: `Guarda #${i + 1}`,
-                npcIndex: 1110,
-                scale: 160,
-                hp: 1800 + pveLv * 300,
-                damage: 50 + pveLv * 10,
-                isBoss: false
-            });
-        }
-        monsterDefs.push({
-            name: "Lorde das Trevas (BOSS)",
-            npcIndex: 1111,
-            scale: 250,
-            hp: 15500 + pveLv * 3500,
-            damage: 120 + pveLv * 20,
-            isBoss: true
-        });
-        sendGlobalSystemChat("🔥 [MODO AVENTURA] ONDA FINAL! O CHEFE SURGIU NA ARENA!");
+    logger.logTelemetry('PVE_WAVE', {roomUID:match.currentRoomUID,mapId:match.mapId,round});
+    const lv = match.pveLv;
+    const base = match.pveType === 9 ? ([1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,4000,4100][lv]) : 2100 + lv*100;
+    const offsets = match.pveType === 9
+        ? (round===1 ? [1,2,3,4,1,2,3,4] : round===2 ? [5,9,6,10,7,11,8,12,5,9,6,10] : [5,6,7,8,13,14,17])
+        : (round===1 ? [4,5,2,7,8,9,10,11] : round===2 ? [6,12,21,2] : [13,14,15,16,17,18,19]);
+    for (const offset of offsets) {
+        const createIndex = base+offset, def = pveRobots[createIndex];
+        if (!def) throw new Error(`Missing native PvE robot ${createIndex}`);
+        // Stationary native AI has no route; place it at a patrol origin in the current zone.
+        const pos = def.pos || pveRobots[base + (round===1 ? 4 : round===2 ? 6 : 18)].pos;
+        const id = pveId(), hp = def.boss ? 15500+lv*3500 : 750+lv*150+(round-1)*250;
+        const bot = sceneScope.tagEntity({playerIndex:id,playerId:String(id),playerName:`PVE-${id}`,
+            playerNameEnc:encodeHex(def.boss ? 'Chefe' : 'Invasor'),currentHeroId:def.hero,createIndex,
+            lastX:pos[0],lastY:pos[1],lastZ:pos[2],force:2,hp,maxHp:hp,
+            isBot:true,isPveMonster:true,isDead:false,inMatch:true,pveMatch:match,loadId:1,
+            authority:null,readyClients:new Set(),write() {}}, match);
+        match.monsters[id] = bot;
+        state.activeBots[id] = bot;
+        pvePeers(match).forEach(p => p.write(getPlayerSpawnPacket(bot,p)));
     }
-
-    monsterDefs.forEach((monDef, idx) => {
-        const monId = 3001 + idx;
-        const pt = spawnPoints[idx % spawnPoints.length];
-        const sx = pt.x + Math.floor((Math.random() - 0.5) * 200);
-        const sy = pt.y; // Altura exata do chão 10776
-        const sz = pt.z + Math.floor((Math.random() - 0.5) * 200); // Profundidade nos túneis
-
-        const monster = {
-            id: monId,
-            index: monDef.npcIndex,
-            name: monDef.name,
-            hp: monDef.hp,
-            maxHp: monDef.hp,
-            damage: monDef.damage,
-            scale: monDef.scale,
-            isBoss: monDef.isBoss,
-            x: sx,
-            y: sy,
-            z: sz,
-            force: 2, // Inimigo
-            lastAttackTime: 0,
-            isPveMonster: true
-        };
-
-        match.monsters[monId] = monster;
-        state.spawnedNpcs[monId] = monster;
-
-        const className = db.getEntityClassName(monDef.npcIndex);
-        const spawnPacket = `d${encodeInt(monId)}\nc${className}:${encodeInt(monId)},("Initialize",(${encodeInt(1)},${encodeInt(monId)},${encodeInt(monDef.npcIndex)},${encodeInt(2)},(${encodeInt(sx)},${encodeInt(sy)},${encodeInt(sz)}),(0,0,0),(${encodeInt(monDef.scale)},${encodeInt(monDef.scale)},${encodeInt(monDef.scale)}),(0,0,0),${encodeInt(-1)},${encodeInt(monDef.hp)},${encodeInt(0)},${encodeInt(1)},${encodeInt(0)},""),((),()),0)\n`;
-
-        match.players.forEach(p => {
-            if (!p.destroyed) {
-                p.write(spawnPacket);
-            }
-        });
-    });
-
-    match.monsterNum = Object.keys(match.monsters).length;
     updatePveMonsterCount(match);
-    console.log(`[🏰 PVE ONDA ${round}] Spawnados ${match.monsterNum} monstros PVE na masmorra.`);
 }
-
 function updatePveMonsterCount(match) {
-    if (!match || !match.players) return;
-    const p19000 = encodeInt(19000);
-    const p19008 = encodeInt(19008);
-    const countEnc = encodeInt(match.monsterNum || 0);
-    const packet = `e${socket.playerIndex || 1}:SendMsgToClient,(${p19000},(${p19008},(${countEnc})))\n`;
-    match.players.forEach(p => {
-        if (!p.destroyed) {
-            p.write(packet);
-        }
-    });
+    match.monsterNum = Object.keys(match.monsters).length;
+    if (match.isAdmin) return;
+    pveBroadcast(match,19008,[match.monsterNum]);
 }
-
+function beginPveWave(match) {
+    if (match.state === 'ended' || match.state === 'victory' || match.state === 'defeat') return;
+    match.state='fight';
+    pveBroadcast(match,19003,pveInfo(match));
+    spawnPveWave(match,match.round);
+}
 function handlePveWaveCleared(match) {
+    if (!match || match.isAdmin || match.state !== 'fight') return;
+    pveBroadcast(match,19004,[1,match.round,1000,1,match.crystal?.hp>0 || match.pveType===12 ? 1 : 0]);
+    if (match.round >= match.maxRound) { sendPveVictory(match); return; }
+    match.state='round_cleared';
+    match.readyAt=Date.now()+5000;
+    match.timer=setTimeout(()=>{ if(match.state!=='round_cleared')return; match.round++; beginPveWave(match); },5000);
+}
+function finishPveMatch(match, won) {
+    if (!match || ['ended','victory','defeat'].includes(match.state)) return;
+    match.state=won?'victory':'defeat';
+    clearTimeout(match.timer);
+    clearInterval(match.tickInterval);
+    pveBroadcast(match,19002,[0,won?1:0]);
+    match.timer=setTimeout(()=>endPveMatch(match),8000);
+}
+function sendPveVictory(match) { finishPveMatch(match,true); }
+function pveOwnsBot(socket,bot) {
+    return !!(bot?.isPveMonster && !bot.isDead && bot.authority===socket && sceneScope.canReceive(bot,socket));
+}
+function pveAuthorityMessage(bot,player) {
+    player.write(PacketBuilder.rpc(player.playerIndex,'SendMsgToClient',[4010001,[bot.playerIndex,0,bot.authority.playerIndex]]));
+}
+function selectPveBotAuthority(socket,id) {
+    const bot=state.activeBots[Number(id)];
+    if (!bot?.isPveMonster || bot.isDead || socket.isDead || !sceneScope.canReceive(bot,socket)) return false;
+    bot.readyClients.add(socket);
+    if (!bot.authority || !sceneScope.canReceive(bot,bot.authority)) {
+        bot.authority=socket;
+        logger.logTelemetry('PVE_BOT_AUTHORITY',{roomUID:bot.currentRoomUID,botId:bot.playerIndex,player:socket.playerName});
+        bot.readyClients.forEach(p=>{ if(sceneScope.canReceive(bot,p)) pveAuthorityMessage(bot,p); });
+    } else pveAuthorityMessage(bot,socket);
+    return true;
+}
+function tickPveMatch(match) {
+    if (!match) { [...pveMatches].forEach(tickPveMatch); return; }
+    if (['ended','victory','defeat'].includes(match.state)) return;
+    if (match.isAdmin) match.players=state.activeSockets.filter(p=>sceneScope.canReceive(match,p));
+    if (!pvePeers(match).length) { endPveMatch(match); return; }
+    if (Date.now()>=match.deadline) { finishPveMatch(match,false); return; }
+    for (const bot of Object.values(match.monsters)) {
+        if (bot.authority && (bot.authority.isDead || !sceneScope.canReceive(bot,bot.authority))) {
+            if (sceneScope.canReceive(bot,bot.authority)) bot.authority.write(PacketBuilder.rpc(bot.authority.playerIndex,'SendMsgToClient',[4010004,[bot.playerIndex]]));
+            bot.authority=null;
+        }
+        // CheckPlayer responds only once the model has loaded. Never poll an
+        // established owner: the native method clears SyncNetObj on every call.
+        for (const p of pvePeers(match)) {
+            if (!p.isDead && (!bot.readyClients.has(p) || !bot.authority))
+                p.write(PacketBuilder.rpc(bot.playerIndex,'CheckPlayer',[]));
+        }
+    }
+}
+function relayPveBot(socket,line) {
+    const m=line.match(/^e(\w+):(SSP|RST|RCR|SA_Robot),\((.*)\)$/);
+    if (!m) return false;
+    let args=require('./utils').parseArrayList(`(${m[3]})`);
+    if (args.length===1 && Array.isArray(args[0])) args=args[0];
+    const bot=state.activeBots[Number(args[2])];
+    if (!bot?.isPveMonster) return false;
+    if (!pveOwnsBot(socket,bot)) return true;
+    const data=args.slice(0,2);
+    if (m[2]==='SSP') {
+        if(!Array.isArray(data[0]) || data[0].length!==3 || !data[0].every(Number.isFinite))return true;
+        [bot.lastX,bot.lastY,bot.lastZ]=data[0];
+    }
+    const method={SSP:'SCP',RST:'RCT',RCR:'RCR',SA_Robot:'CA'}[m[2]];
+    const packet=PacketBuilder.rpc(bot.playerIndex,method,[data]);
+    pvePeers(bot.pveMatch).forEach(p=>{if(p!==socket)p.write(packet);});
+    return true;
+}
+function removePveMonster(bot) {
+    const match=bot.pveMatch;
+    if (!match || !match.monsters[bot.playerIndex]) return;
+    delete match.monsters[bot.playerIndex];
+    delete state.activeBots[bot.playerIndex];
+    pvePeers(match).forEach(p=>p.write(PacketBuilder.destroy(bot.playerIndex)));
+    updatePveMonsterCount(match);
+    if (!match.monsterNum) handlePveWaveCleared(match);
+}
+function leavePveMatch(socket) {
+    const match=getPveMatch(socket);
     if (!match) return;
-    if (match.round < match.maxRound) {
-        match.state = 'round_cleared';
-        sendGlobalSystemChat(`🛡️ [MODO AVENTURA] ONDA ${match.round} CONCLUÍDA! PRÓXIMA ONDA EM 5 SEGUNDOS...`);
-        
-        setTimeout(() => {
-            if (!global.activePveMatch || global.activePveMatch !== match) return;
-            match.round++;
-            match.state = 'fight';
-
-            // Atualiza HUD com o novo round (19003)
-            const p19000 = encodeInt(19000);
-            const p19003 = encodeInt(19003);
-            const zero = encodeInt(0);
-            const now = new Date();
-            const pad = (n) => n.toString().padStart(2, '0');
-            const formatDate = (d) => `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-            const roundEndTime = formatDate(new Date(now.getTime() + 1800 * 1000));
-            const gameEndTime = formatDate(new Date(now.getTime() + 1800 * 1000));
-            const dateStr = Fun.GetServerDate();
-            const npcServerIdEnc = encodeInt(match.pveType === 9 ? 1130 : 0);
-
-            let kingGameInfoFight;
-            if (match.pveType === 12) {
-                const openDoorData = "(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)";
-                kingGameInfoFight = `(${encodeInt(1)},${encodeInt(1)},${zero},'${roundEndTime}',${zero},'${dateStr}',${encodeInt(match.round)},${encodeInt(match.maxRound)},${encodeInt(0)},'${gameEndTime}',${npcServerIdEnc},${encodeInt(match.pveType)},${openDoorData},'${dateStr}')`;
-            } else {
-                kingGameInfoFight = `(${encodeInt(1)},${encodeInt(1)},${zero},'${roundEndTime}',${zero},'${dateStr}',${encodeInt(match.round)},${encodeInt(match.maxRound)},${encodeInt(0)},'${gameEndTime}',${npcServerIdEnc},${encodeInt(match.pveType)},'${dateStr}')`;
-            }
-            const pveFightStartPacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${p19000},(${p19003},${kingGameInfoFight}))\n`;
-            match.players.forEach(p => {
-                if (!p.destroyed) p.write(pveFightStartPacket);
-            });
-
-            spawnPveWave(match, match.round);
-        }, 5000);
-    } else {
-        sendPveVictory(match);
+    match.players=match.players.filter(p=>p!==socket);
+    pveBroadcast(match,19011,[socket.playerIndex]);
+    for(const bot of Object.values(match.monsters)) {
+        bot.readyClients.delete(socket);
+        if(bot.authority===socket) {
+            bot.authority=null;
+            const next=pvePeers(match).find(p=>bot.readyClients.has(p));
+            if(next)selectPveBotAuthority(next,bot.playerIndex);
+        }
     }
+    if (!match.players.length) endPveMatch(match);
+}
+function startPveMatch(socket,mapId) {
+    const id=Number(mapId||socket.targetMapId), type=Number(db.MAP_CONFIG[id]?.type);
+    if(![9,12].includes(type))return;
+    let match=getPveMatch(socket);
+    if(!match) {
+        const maps=type===9 ? [5105,5106,5107,5108,5109,5110,5111,5112,5113,5114,5310,5311] : Array.from({length:12},(_,i)=>5115+i);
+        const now=Date.now();
+        match=sceneScope.tagEntity({mapId:id,pveType:type,pveLv:Math.max(0,maps.indexOf(id)),state:'ready',
+            round:1,maxRound:3,monsterNum:0,monsters:{},players:[],startTime:now,readyAt:now+8000,deadline:now+1800000},socket);
+        pveMatches.add(match);
+        if(type===9)spawnPveCrystal(match);
+        match.timer=setTimeout(()=>beginPveWave(match),8000);
+        match.tickInterval=setInterval(()=>tickPveMatch(match),2000);
+    }
+    if(match.players.includes(socket))return match;
+    match.players.push(socket);
+    if(match.crystal)socket.write(crystalPacket(match.crystal));
+    const users=pvePeers(match).flatMap(p=>[p.playerIndex,pveUser(p)]);
+    pveMessage(socket,19001,[pveInfo(match),users]);
+    pvePeers(match).forEach(p=>{if(p!==socket)pveMessage(p,19013,pveUser(socket));});
+    return match;
+}
+function endPveMatch(match) {
+    if(!match) { [...pveMatches].forEach(endPveMatch); return; }
+    clearTimeout(match.timer); clearInterval(match.tickInterval);
+    for(const bot of Object.values(match.monsters)) {
+        pvePeers(match).forEach(p=>p.write(PacketBuilder.destroy(bot.playerIndex)));
+        delete state.activeBots[bot.playerIndex];
+    }
+    if(match.crystal) {
+        pvePeers(match).forEach(p=>p.write(PacketBuilder.destroy(match.crystal.id)));
+        delete state.spawnedNpcs[match.crystal.id];
+    }
+    match.state='ended'; match.monsters={}; match.players=[];
+    pveMatches.delete(match);
 }
 
-function sendPveVictory(match) {
-    if (!match) return;
-    match.state = 'victory';
-    console.log(`[🏆 PVE VITÓRIA] Todas as ${match.maxRound} ondas de monstros foram derrotadas!`);
-    sendGlobalSystemChat("🎉 [MODO AVENTURA] PARABÉNS! VOCÊ DERROTOU O CHEFE E COMPLETOU A MISSÃO!");
 
-    // Fecha UI de combate e exibe resultado
-    const p19000 = encodeInt(19000);
-    const p19004 = encodeInt(19004); // KING_MSG_ROUNDEND
-    const victoryMsg = `(${encodeInt(1)},${encodeInt(3)},${encodeInt(1000)})`;
-    const roundEndPacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${p19000},(${p19004},${victoryMsg}))\n`;
-
-    match.players.forEach(p => {
-        if (!p.destroyed) {
-            p.write(roundEndPacket);
-        }
-    });
-
-    setTimeout(() => {
-        endPveMatch();
-    }, 8000);
-}
-
-function tickPveMatch() {
-    const match = global.activePveMatch;
-    if (!match || match.state !== 'fight') return;
-
-    const crystal = state.spawnedNpcs[1130];
-    const targetX = 11665;
-    const targetY = 10776;
-    const targetZ = 2461;
-    const now = Date.now();
-
-    if (match.monsters) {
-        for (const monId in match.monsters) {
-            const monster = match.monsters[monId];
-            if (!monster || monster.hp <= 0) continue;
-
-            const curX = monster.x || targetX;
-            const curZ = monster.z || (targetZ + 1200);
-            const dx = targetX - curX;
-            const dz = targetZ - curZ;
-            const dist = Math.hypot(dx, dz);
-
-            if (dist > 300) {
-                // Avança suavemente em direção ao cristal
-                const moveSpeed = monster.isBoss ? 70 : 100;
-                const step = Math.min(dist - 250, moveSpeed);
-                monster.x = Math.round(curX + (dx / dist) * step);
-                monster.z = Math.round(curZ + (dz / dist) * step);
-
-                // Envia pacote NSP de sincronização de posição para todos os clientes
-                const nspPacket = `cNpc_Entity:${encodeInt(monId)},("NSP",(${encodeInt(monster.x)},${encodeInt(10776)},${encodeInt(monster.z)}))\n`;
-                match.players.forEach(p => {
-                    if (!p.destroyed) {
-                        p.write(nspPacket);
-                    }
-                });
-            } else {
-                // Monstro está no alcance do cristal e desfere ataques
-                if (crystal && crystal.hp > 0 && now - (monster.lastAttackTime || 0) >= 1500) {
-                    monster.lastAttackTime = now;
-                    const dmg = monster.damage || 30;
-                    handleNpcHurt(null, 1130, dmg, Number(monId));
-                    console.log(`[⚔️ PVE MONSTER HIT] Monstro #${monId} atacou o Cristal! Dano: ${dmg}, HP restante: ${crystal.hp}`);
-                }
-            }
-        }
+function spawnAdminRobot(player, createIndex, pos, def) {
+    if(!def)return null;
+    let match=[...pveMatches].find(m=>m.isAdmin&&sceneScope.sameScene(m,player));
+    if(!match) {
+        match=sceneScope.tagEntity({isAdmin:true,state:'fight',monsters:{},players:[],deadline:Infinity},player);
+        pveMatches.add(match);match.tickInterval=setInterval(()=>tickPveMatch(match),2000);
     }
-}
-
-function startPveMatch(socket, mapId) {
-    const currentMapId = mapId || socket.targetMapId || state.getLastMapId() || 5105;
-    const pveType = socket.pveFbType || (db.MAP_CONFIG[currentMapId] ? db.MAP_CONFIG[currentMapId].type : 9);
-    const pveLv = socket.pveFbLv !== undefined ? socket.pveFbLv : 0;
-    
-    console.log(`[🏰 PVE MATCH] startPveMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId} (Tipo: ${pveType}, Lv: ${pveLv})`);
-
-    if (!global.activePveMatch) {
-        global.activePveMatch = {
-            mapId: currentMapId,
-            pveType: pveType,
-            pveLv: pveLv,
-            state: 'ready',
-            round: 1,
-            maxRound: 3,
-            monsterNum: 0,
-            monsters: {},
-            crystal: null,
-            players: [],
-            timer: null,
-            tickInterval: null,
-            startTime: Date.now()
-        };
-        console.log(`[🏰 PVE MATCH] Nova sessão PVE inicializada para o mapa ${currentMapId}.`);
-    }
-
-    const match = global.activePveMatch;
-    if (!match.players.includes(socket)) {
-        match.players.push(socket);
-        console.log(`[🏰 PVE MATCH] Jogador ${socket.playerName || 'Jogador'} registrado na sessão PVE.`);
-    }
-
-    // Se for Mina de Cristal, spawna o cristal de defesa
-    if (pveType === 9) {
-        spawnPveCrystal(match);
-    }
-
-    const now = new Date();
-    const pad = (n) => n.toString().padStart(2, '0');
-    const formatDate = (d) => `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-
-    const readyEndTime = formatDate(new Date(now.getTime() + 8 * 1000)); // 8s countdown
-    const roundEndTime = formatDate(new Date(now.getTime() + 1800 * 1000)); // 30min
-    const gameEndTime = formatDate(new Date(now.getTime() + 1800 * 1000));
-    const dateStr = Fun.GetServerDate();
-
-    const p19000 = encodeInt(19000);
-    const p19001 = encodeInt(19001);
-    const zero = encodeInt(0);
-    const one = encodeInt(1);
-    const gameTypeEnc = encodeInt(pveType);
-    const gameStateEnc = encodeInt(1); // 1 = in progress
-    const fightStateEnc = encodeInt(0); // 0 = ready / countdown
-    const roundEnc = encodeInt(match.round);
-    const maxRoundEnc = encodeInt(match.maxRound);
-    const monsterNumEnc = encodeInt(match.monsterNum);
-    const npcServerIdEnc = encodeInt(pveType === 9 ? 1130 : 0);
-
-    let kingGameInfo;
-    if (pveType === 12) {
-        const openDoorData = "(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)";
-        kingGameInfo = `(${gameStateEnc},${fightStateEnc},${zero},'${roundEndTime}',${zero},'${readyEndTime}',${roundEnc},${maxRoundEnc},${monsterNumEnc},'${gameEndTime}',${npcServerIdEnc},${gameTypeEnc},${openDoorData},'${dateStr}')`;
-    } else {
-        kingGameInfo = `(${gameStateEnc},${fightStateEnc},${zero},'${roundEndTime}',${zero},'${readyEndTime}',${roundEnc},${maxRoundEnc},${monsterNumEnc},'${gameEndTime}',${npcServerIdEnc},${gameTypeEnc},'${dateStr}')`;
-    }
-
-    const userListItems = match.players.map(p => {
-        const pIdx = p.playerIndex || 1;
-        const pIdxEnc = encodeInt(pIdx);
-        const userDetails = `(${pIdxEnc},'${p.playerNameEnc || encodeHex(p.playerName || "Jogador")}',${zero},${one},${zero},${pIdxEnc},(),${encodeInt(1000)})`;
-        return `${pIdxEnc},${userDetails}`;
-    });
-    const allUserList = `(${userListItems.join(',')})`;
-
-    // Envia 19001 (GameStart) para inicializar a KingCon UI
-    const pveGameStartPacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${p19000},(${p19001},(${kingGameInfo},${allUserList})))\n`;
-    match.players.forEach(p => {
-        if (!p.destroyed) {
-            p.write(pveGameStartPacket);
-        }
-    });
-    console.log(`[🏰 PVE HUD] Pacote 19001 enviado! Interface KingCon aberta no cliente.`);
-
-    // Inicia timer para transição de Contagem Regressiva -> Combate (19003) e Spawn da Onda 1
-    if (!match.timer) {
-        match.timer = setTimeout(() => {
-            if (match.state === 'ready') {
-                match.state = 'fight';
-                const fightStateActiveEnc = encodeInt(1); // 1 = luta iniciada
-                let kingGameInfoFight;
-                if (pveType === 12) {
-                    const openDoorData = "(1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)";
-                    kingGameInfoFight = `(${gameStateEnc},${fightStateActiveEnc},${zero},'${roundEndTime}',${zero},'${readyEndTime}',${roundEnc},${maxRoundEnc},${monsterNumEnc},'${gameEndTime}',${npcServerIdEnc},${gameTypeEnc},${openDoorData},'${dateStr}')`;
-                } else {
-                    kingGameInfoFight = `(${gameStateEnc},${fightStateActiveEnc},${zero},'${roundEndTime}',${zero},'${readyEndTime}',${roundEnc},${maxRoundEnc},${monsterNumEnc},'${gameEndTime}',${npcServerIdEnc},${gameTypeEnc},'${dateStr}')`;
-                }
-                const p19003 = encodeInt(19003);
-                const pveFightStartPacket = `e${socket.playerIndex || 1}:SendMsgToClient,(${p19000},(${p19003},${kingGameInfoFight}))\n`;
-                match.players.forEach(p => {
-                    if (!p.destroyed) {
-                        p.write(pveFightStartPacket);
-                    }
-                });
-                console.log(`[🏰 PVE FIGHT START] Contagem regressiva concluída! Combate iniciado (19003).`);
-                
-                // Spawna Onda 1
-                spawnPveWave(match, 1);
-
-                // Inicia loop de IA de monstros
-                if (!match.tickInterval) {
-                    match.tickInterval = setInterval(() => tickPveMatch(), 400);
-                }
-            }
-        }, 8000);
-    }
-}
-
-function endPveMatch() {
-    if (global.activePveMatch) {
-        if (global.activePveMatch.timer) {
-            clearTimeout(global.activePveMatch.timer);
-        }
-        if (global.activePveMatch.tickInterval) {
-            clearInterval(global.activePveMatch.tickInterval);
-        }
-        // Limpa bots/monstros ativos da memória
-        if (global.activePveMatch.monsters && state.activeBots) {
-            for (const monId in global.activePveMatch.monsters) {
-                delete state.activeBots[monId];
-            }
-        }
-        delete state.spawnedNpcs[1130];
-        global.activePveMatch = null;
-        console.log(`[🏰 PVE MATCH] Sessão PVE finalizada e limpa.`);
-    }
+    match.players=state.activeSockets.filter(p=>sceneScope.canReceive(match,p));
+    const id=pveId(),hp=db.getHeroMaxHp(def.heroId);
+    const bot=sceneScope.tagEntity({playerIndex:id,playerId:String(id),playerName:'Admin-'+id,playerNameEnc:encodeHex(def.name),
+        currentHeroId:def.heroId,createIndex,lastX:pos.x,lastY:pos.y,lastZ:pos.z,force:2,hp,maxHp:hp,
+        isBot:true,isPveMonster:true,isAdminSpawn:true,inMatch:true,isDead:false,pveMatch:match,loadId:1,
+        authority:null,readyClients:new Set(),write(){}},player);
+    state.activeBots[id]=bot;match.monsters[id]=bot;
+    pvePeers(match).forEach(p=>p.write(getPlayerSpawnPacket(bot,p)));
+    return bot;
 }
 
 module.exports = {
+    spawnAdminRobot,
+    getPveMatch, leavePveMatch, selectPveBotAuthority, pveOwnsBot, relayPveBot,
+    getFreeForAllMatch, prepareFreeForAll, startFreeForAll, tickFreeForAll, endFreeForAll, getPlayerSpawnCoordinates,
     sendEntityDamageUpdate,
     handleNpcHurt,
     applyBuffToEntity,
@@ -2948,6 +3143,8 @@ module.exports = {
     switchPlayerHero,
     getPlayersSnapshot,
     spawnTdmBases,
+    createTdmMatchInstance,
+    getTdmMatch,
     startTdmMatch,
     tickTdmMatch,
     incrementTdmScore,

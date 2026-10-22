@@ -1,0 +1,12 @@
+# Passagem de trabalho — SKIN-023
+- Responsável: Codex; 13/10/2026 00:50 UTC (12/10 BRT).
+- Objetivo: substituir FPS022 rejeitado por braços nativos skin3 sem pulseira; Executiva8 apenas.
+- Relato real022: braços invisíveis, mãos visíveis. Causa das mangas não comprovada; não reutilizar reconstrução/submeshes/material adicionados de022.
+- Implementação: bundle original mulan_fps_sz2; somente índices do mesh mlsz2_first removem componentes acessórios2–5. Uma submesh/material nativos; nenhum relógio ou manga extra.
+- Validação: 203 objetos comparados; apenas Mesh e metadados AssetBundle alterados. Vértices/normais/UVs/pesos/bindposes/40bones/renderers/materiais intactos. 4992→2580 triângulos desenhados, sem reduzir vertex buffer.
+- Oracle: recurso xingjilieren_fps_red.mo e files_dir.xml CRC26101203 instalados; catálogo existente preservado. Reinício com zero conexões, PM2 online PID699385.
+- Verificação: 4 HTTP hashes (manifesto/recurso nas duas versões), TCP7777 OK; local sincronizado após conferir base.
+- Backups: backups/celina023-before; /home/ubuntu/backups/celina-fps-skin023-20261013T005002Z/runtime.tar.gz.
+- Evidências: scratch/celina-fps-simple/{validation.json,http-validation.json}; candidata candidate-assets/celina-fps-simple/xingjilieren_fps_red.mo.
+- Cliente real: nova versão não testada. Próximo passo reabrir/equipar Executiva, conferir braços, mira, tiro e recarga.
+- Sem DLL nova; outras skins e diagnóstico020 intactos; reserva liberada.

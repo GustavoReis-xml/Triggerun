@@ -1,0 +1,379 @@
+{
+  "bones": [
+    "Bip001 Head",
+    "Bip001 Neck",
+    "Bip001 L Thigh",
+    "Bip001 Pelvis",
+    "Bip001 Spine2",
+    "Bip001 L Clavicle",
+    "Bip001 LUpArmTwist",
+    "Bip001 Spine1",
+    "Bip001 Spine",
+    "Bip001 R Clavicle",
+    "Bip001 RUpArmTwist",
+    "Bip001 L Calf",
+    "Bip001 L Foot",
+    "Bip001 R Thigh",
+    "Bip001 R Calf",
+    "Bip001 R Foot",
+    "Bip001 L Toe0",
+    "Bip001 R Toe0",
+    "Bip001 L Forearm",
+    "Bip001 L ForeTwist",
+    "Bip001 L Finger41",
+    "Bip001 L Finger4",
+    "Bip001 L Finger42",
+    "Bip001 L Finger11",
+    "Bip001 L Finger12",
+    "Bip001 L Finger1",
+    "Bip001 L Finger21",
+    "Bip001 L Finger2",
+    "Bip001 L Finger22",
+    "Bip001 L Finger31",
+    "Bip001 L Finger32",
+    "Bip001 L Finger3",
+    "Bip001 L Finger02",
+    "Bip001 L Finger01",
+    "Bip001 L Hand",
+    "Bip001 L Finger0",
+    "Bip001 R Forearm",
+    "Bip001 R ForeTwist",
+    "Bip001 R Finger41",
+    "Bip001 R Finger4",
+    "Bip001 R Finger42",
+    "Bip001 R Finger11",
+    "Bip001 R Finger12",
+    "Bip001 R Finger1",
+    "Bip001 R Finger21",
+    "Bip001 R Finger2",
+    "Bip001 R Finger22",
+    "Bip001 R Finger31",
+    "Bip001 R Finger32",
+    "Bip001 R Finger3",
+    "Bip001 R Finger02",
+    "Bip001 R Finger01",
+    "Bip001 R Hand",
+    "Bip001 R Finger0"
+  ],
+  "boneRefs": [
+    {
+      "m_FileID": 0,
+      "m_PathID": 707002472035467281
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3063286621429847262
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2004674864121569218
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3337891288736050529
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2632731294272500430
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2281926868892207746
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2897436171281632151
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5133523422530161042
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8717776375862775542
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1041933505618588005
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8112388155675889251
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3574447428986656560
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4291661017922643140
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1210333424573994709
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7618947820003062272
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3490539900427924866
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7574192338558759889
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3233584369914984182
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4285780120377302266
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4215181121289049781
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6509609059359955665
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7931758140538564410
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2058509058460469083
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -48010500124439398
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7706390658157903473
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4587342453048422281
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1863424901539766406
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1332774925189104667
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -807085712239538308
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3282709740498698131
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8676677505711744952
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8566263884584913839
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4860784837727656271
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2685023626030569177
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 906666079040303371
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3443528262381169225
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6701908384389855435
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8308729509276828525
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3452705239289934027
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8145339906333774279
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6431421641234127195
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7915519323824742560
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6023984109414824720
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5081628688032024161
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3327392021677838986
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6119064239256631501
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2410811904852976534
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4650956528959744169
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7696751300606181515
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7676541836153590795
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7797269923047359061
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8961188877658116515
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6125676377354257425
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8306585132217340933
+    }
+  ],
+  "modified": [
+    -6516226370109915942,
+    -4764687994228384753,
+    -4332833544884833975,
+    -3511817732906235467,
+    -1377934667995487719,
+    -953683624367729057,
+    -160805117760420849,
+    1,
+    2758688548841082431,
+    3167837614707726850,
+    3312078527959215714,
+    4686558602237272378,
+    5694292045284045437
+  ],
+  "added": [
+    900000000000003201,
+    900000000000003202
+  ],
+  "meshIds": [
+    3312078527959215714
+  ],
+  "vertices": 25678,
+  "triangles": 21270,
+  "originalObjects": 472,
+  "armLandmarks": {
+    "L": {
+      "sourceShoulder": [
+        -0.215,
+        0.065,
+        1.515
+      ],
+      "sourceElbow": [
+        -0.535,
+        0.055,
+        1.495
+      ],
+      "sourceWrist": [
+        -0.8,
+        0.01,
+        1.48
+      ],
+      "nativeShoulder": [
+        -0.19010680375173097,
+        0.07781347488452611,
+        1.5366151113812572
+      ],
+      "nativeElbow": [
+        -0.410792991896925,
+        0.10537587882111686,
+        1.30706775984139
+      ],
+      "nativeWrist": [
+        -0.5661518838385633,
+        0.07654356878188906,
+        1.157833715175952
+      ],
+      "upperLengthRatio": 0.9963688512461619,
+      "forearmLengthRatio": 0.807335184394863
+    },
+    "R": {
+      "sourceShoulder": [
+        0.215,
+        0.065,
+        1.515
+      ],
+      "sourceElbow": [
+        0.535,
+        0.055,
+        1.495
+      ],
+      "sourceWrist": [
+        0.8,
+        0.01,
+        1.48
+      ],
+      "nativeShoulder": [
+        0.19010690366245442,
+        0.07781294730193307,
+        1.5366150851514615
+      ],
+      "nativeElbow": [
+        0.4107932837373964,
+        0.10537476447767233,
+        1.3070677631280734
+      ],
+      "nativeWrist": [
+        0.56615207360923,
+        0.07654203823940556,
+        1.1578337551288036
+      ],
+      "upperLengthRatio": 0.9963690405483612,
+      "forearmLengthRatio": 0.8073350249526623
+    }
+  },
+  "handScale": 0.95,
+  "bodyRenderers": 11,
+  "LODStrategy": "full adapted body in existing LOD renderers",
+  "installed": true,
+  "UnityTested": false,
+  "installedAtUTC": "2026-10-13T13:00:08Z",
+  "installedCRC": "26101301",
+  "remoteBackup": "/home/ubuntu/backups/johnny-solar-skin032-20261013T130008Z/runtime.tar.gz"
+}

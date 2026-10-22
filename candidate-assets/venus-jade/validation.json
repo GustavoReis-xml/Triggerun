@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "objectsCompared": 722,
+  "bones": 79,
+  "bodyLODs": 1,
+  "poses": {
+    "aim": {
+      "p99EdgeStretch": 1.2214009761810303,
+      "maxEdgeStretch": 1.5574448108673096
+    },
+    "run": {
+      "p99EdgeStretch": 1.3022655248641968,
+      "maxEdgeStretch": 3.8750078678131104
+    },
+    "turn": {
+      "p99EdgeStretch": 1.1702040433883667,
+      "maxEdgeStretch": 2.4400241374969482
+    },
+    "neck": {
+      "p99EdgeStretch": 1.080532431602478,
+      "maxEdgeStretch": 1.7856502532958984
+    },
+    "shoulders": {
+      "p99EdgeStretch": 1.3566539287567139,
+      "maxEdgeStretch": 2.9200918674468994
+    },
+    "tail": {
+      "p99EdgeStretch": 1.0230571031570435,
+      "maxEdgeStretch": 1.2823185920715332
+    }
+  },
+  "UnityTested": false
+}

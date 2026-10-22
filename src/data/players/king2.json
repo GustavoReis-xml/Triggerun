@@ -1,0 +1,258 @@
+{
+    "username": "king2",
+    "password": "123456",
+    "createdAt": "2026-08-16T00:06:14.931Z",
+    "lastLogin": "2026-09-30T01:25:08.836Z",
+    "gold": 1003139,
+    "diamonds": 998473,
+    "level": 6,
+    "exp": 2372,
+    "face": 2009,
+    "paint": 1019,
+    "runes": {
+        "step": 0,
+        "star": 0
+    },
+    "parts": {
+        "1": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "2": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "3": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "4": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "5": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "6": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "7": {
+            "lvl": 1,
+            "exp": 0
+        },
+        "8": {
+            "lvl": 1,
+            "exp": 0
+        }
+    },
+    "weaponParts": {},
+    "items": {
+        "1001": 3,
+        "1002": 1,
+        "1005": 1
+    },
+    "unlockedHeroes": [
+        1015,
+        1035,
+        1033
+    ],
+    "unlockedFaces": [
+        2009
+    ],
+    "unlockedSprays": [
+        1019
+    ],
+    "unlockedCosmetics": {
+        "1015": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1033": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        },
+        "1035": {
+            "skins": [
+                1
+            ],
+            "weapons": [
+                1
+            ],
+            "emotes": [
+                1
+            ],
+            "poses": [
+                0
+            ]
+        }
+    },
+    "equipment": {
+        "1015": {
+            "skin": 1,
+            "weapon": 1,
+            "emote": 1,
+            "pose": 0
+        }
+    },
+    "career": {
+        "totalMatches": 32,
+        "wins": 5,
+        "mvps": 9,
+        "kills": 28,
+        "deaths": 80,
+        "assists": 0,
+        "damage": 56838,
+        "healing": 1250,
+        "playTimeSeconds": 12540,
+        "goldMedals": 16,
+        "silverMedals": 0,
+        "bronzeMedals": 0,
+        "rankName": "Bronze",
+        "rankSmallIcon": 1,
+        "maxRankName": "Bronze",
+        "maxRankSmallIcon": 1,
+        "heroes": {
+            "1015": {
+                "matches": 11,
+                "wins": 0,
+                "kills": 5,
+                "deaths": 29,
+                "assists": 0,
+                "damage": 13759,
+                "healing": 0,
+                "playTimeSeconds": 4400,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 110,
+                "maxKills": 3,
+                "maxDamage": 5130,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 3
+            },
+            "1016": {
+                "matches": 1,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 0,
+                "damage": 375,
+                "healing": 0,
+                "playTimeSeconds": 323,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 0,
+                "maxDamage": 375,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "1024": {
+                "matches": 9,
+                "wins": 3,
+                "kills": 16,
+                "deaths": 20,
+                "assists": 0,
+                "damage": 28553,
+                "healing": 0,
+                "playTimeSeconds": 3612,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 90,
+                "maxKills": 12,
+                "maxDamage": 19690,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 12
+            },
+            "1025": {
+                "matches": 7,
+                "wins": 1,
+                "kills": 3,
+                "deaths": 12,
+                "assists": 0,
+                "damage": 9391,
+                "healing": 1250,
+                "playTimeSeconds": 2413,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 70,
+                "maxKills": 1,
+                "maxDamage": 4300,
+                "maxHealing": 1250,
+                "maxAssists": 0,
+                "maxKillStreak": 1
+            },
+            "1027": {
+                "matches": 1,
+                "wins": 0,
+                "kills": 0,
+                "deaths": 3,
+                "assists": 0,
+                "damage": 900,
+                "healing": 0,
+                "playTimeSeconds": 804,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 10,
+                "maxKills": 0,
+                "maxDamage": 900,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 0
+            },
+            "1031": {
+                "matches": 3,
+                "wins": 1,
+                "kills": 4,
+                "deaths": 14,
+                "assists": 0,
+                "damage": 3860,
+                "healing": 0,
+                "playTimeSeconds": 988,
+                "headshots": 0,
+                "critKills": 0,
+                "totalShots": 30,
+                "maxKills": 3,
+                "maxDamage": 2130,
+                "maxHealing": 0,
+                "maxAssists": 0,
+                "maxKillStreak": 3
+            }
+        },
+        "totalDamage": 56838,
+        "totalHealing": 1250,
+        "losses": 17,
+        "draws": 10
+    },
+    "settings": [
+        "",
+        "",
+        "",
+        "",
+        ""
+    ]
+}

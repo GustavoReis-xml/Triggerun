@@ -1,0 +1,6 @@
+PSP - Fate Unlimited Codes - Rider (2)
+Model upload: pve771309
+Source: https://sketchfab.com/3d-models/psp-fate-unlimited-codes-rider-2-a7ace135df8146958854f01c0b5c9484
+License declared in GLB metadata: CC-BY-4.0
+Adaptation: Gaya skeleton/weights, independent bundle, atlas and model-rendered portrait.
+Original character/game: Fate / Fate Unlimited Codes.

@@ -72,9 +72,11 @@ const MAP_CONFIG = {
     5303: { name: 'persian_3_xiugai', type: 11 },
     5304: { name: 'degulagubao_3_xiugai', type: 11 },
     5305: { name: 'fengducheng_3_xgjg', type: 11 },
+    5306: { name: 'husong01_new_03', type: 11 },
+    5307: { name: 'husong02', type: 11 },
 
     // PVE 冒险模式 - 水晶矿洞 / Mina de Cristal (Type 9)
-    5105: { name: 'shuijingkuangdong', type: 7 },
+    5105: { name: 'shuijingkuangdong', type: 9 },
     5106: { name: 'shuijingkuangdong', type: 9 },
     5107: { name: 'shuijingkuangdong', type: 9 },
     5108: { name: 'shuijingkuangdong', type: 9 },
@@ -88,7 +90,7 @@ const MAP_CONFIG = {
     5311: { name: 'shuijingkuangdong', type: 9 },
 
     // PVE 冒险模式 - 黑暗之地 / Terra das Trevas (Type 12)
-    5115: { name: 'hasd_qingshen', type: 7 },
+    5115: { name: 'hasd_qingshen', type: 12 },
     5116: { name: 'hasd_qingshen', type: 12 },
     5117: { name: 'hasd_qingshen', type: 12 },
     5118: { name: 'hasd_qingshen', type: 12 },
@@ -268,10 +270,12 @@ function initializeDatabase() {
                     const buffMe = getAttr(b, 'buff_idx_me');
                     const buffTarget = getAttr(b, 'buff_idx');
                     const maxSkillNumber = getAttr(b, 'maxskillnumber') || getAttr(b, 'maxSkillNumber');
+                    const maxBuffNumber = getAttr(b, 'maxbuffnumber') || getAttr(b, 'maxBuffNumber');
                     playerSkillsMap[skillId] = {
                         cd: cd ? parseInt(cd) : 0,
                         longtime: longtime ? parseInt(longtime) : 0,
                         maxSkillNumber: maxSkillNumber ? parseInt(maxSkillNumber) : 1,
+                        maxBuffNumber: maxBuffNumber ? parseInt(maxBuffNumber) : 0,
                         buff_idx_me: (buffMe && buffMe !== "0") ? buffMe.split('|').map(x => parseInt(x)) : [],
                         buff_idx: (buffTarget && buffTarget !== "0") ? buffTarget.split('|').map(x => parseInt(x)) : []
                     };
@@ -746,17 +750,18 @@ const getHeroMaxHp = (heroId) => {
         1034: 2200, // Khan / Huangzhong
         1035: 1250, // Nezha
         1036: 1000, // Gaya / Medusa
-        1037: 2500  // David
+        1037: 2500, // David
+        2000: require('./lamster').MAX_HP // Lamster: suporte de cura em área
     };
     return hpMap[heroId] || 2000;
 };
 
-const generateHeroDazhaoData = (heroId) => {
+const generateHeroDazhaoData = (heroId, currentEnergy = 0) => {
     const list = heroDazhaoMap[heroId] || [];
     if (list.length === 0) {
         return '()';
     }
-    const elements = list.map(dz => `(${encodeInt(dz.id)},${encodeInt(dz.maxEnergy)})`);
+    const elements = list.map(dz => `(${encodeInt(dz.id)},${encodeInt(currentEnergy)})`);
     return `(0,(${elements.join(',')}))`;
 };
 

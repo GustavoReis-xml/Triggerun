@@ -1,0 +1,487 @@
+{
+  "bones": [
+    "Bip001 R Clavicle",
+    "Bip001 Spine2",
+    "Bip001 Spine1",
+    "Bip001 Spine",
+    "Bip001 R UpperArm",
+    "Bip001 Pelvis",
+    "Bip001 Head",
+    "Bip001 Neck",
+    "Bip001 L Clavicle",
+    "Bip001 L UpperArm",
+    "Bip001 R Thigh",
+    "Bip001 L Thigh",
+    "Bip001 R Forearm",
+    "Bip001 R Finger01",
+    "Bip001 R Finger0",
+    "Bip001 R Hand",
+    "Bip001 R Finger1",
+    "Bip001 R Finger02",
+    "Bip001 R Finger4",
+    "Bip001 R Finger2",
+    "Bip001 R Finger3",
+    "Bone008",
+    "Bip001 R Finger11",
+    "Bip001 R Finger12",
+    "Bip001 R Finger22",
+    "Bip001 R Finger21",
+    "Bip001 R Finger32",
+    "Bip001 R Finger31",
+    "Bip001 R Finger41",
+    "Bip001 R Finger42",
+    "Bip001 L Forearm",
+    "Bip001 L Finger01",
+    "Bip001 L Finger0",
+    "Bip001 L Hand",
+    "Bip001 L Finger1",
+    "Bip001 L Finger02",
+    "Bip001 L Finger4",
+    "Bip001 L Finger2",
+    "Bip001 L Finger3",
+    "Bone008(mirrored)",
+    "Bip001 L Finger11",
+    "Bip001 L Finger12",
+    "Bip001 L Finger22",
+    "Bip001 L Finger21",
+    "Bip001 L Finger32",
+    "Bip001 L Finger31",
+    "Bip001 L Finger41",
+    "Bip001 L Finger42",
+    "Bip001 L Calf",
+    "Bone001(mirrored)",
+    "Bone003(mirrored)",
+    "Bip001 L Foot",
+    "Bip001 L Toe0",
+    "Bip001 R Calf",
+    "Bone001",
+    "Bone003",
+    "Bip001 R Foot",
+    "Bip001 R Toe0",
+    "Bone007(mirrored)",
+    "Bone005(mirrored)",
+    "Bone007",
+    "Bone005"
+  ],
+  "boneRefs": [
+    {
+      "m_FileID": 0,
+      "m_PathID": -4829899829983642396
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6486533991039189939
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6889370313847703460
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5311276187521422996
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4945791749124421722
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1003704427244622358
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2575190242533166551
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 744397040453096816
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4848500813994328841
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5613614647658088274
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3667534925156992868
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2331716945125192394
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3515043559077547177
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2625069032759371518
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4276978695314339793
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5445246136915251586
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6673337592098287725
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2218744462937914903
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1607494506028081624
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -221894934541257969
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1756697974795691320
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -9009439540754918626
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4361658307266753665
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1610228517571133291
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1545461586031614950
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5744390780045199880
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2077236890626789382
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1782038064864820025
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5541875885289995044
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1774131143274066482
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2572957902857561084
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 23206699871803480
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8625511313084155297
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2761987602833635738
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7256587475800174045
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6166806701578481660
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6214590710111446140
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3859374739654523921
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 367662711131803480
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8506247665013316606
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6690684215705625688
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1852377476274224315
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -984107481768824263
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8958035806217460299
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6228417434825694138
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1847165755593681324
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1682381242227045192
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5204110175687283126
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4919348064896391765
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7032782190686155824
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8483562175407997584
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8039954055344120557
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3363696979819055562
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6587817283324907666
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8947568598294512188
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1176165969738982622
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1497242699469736267
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7762502026379878223
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5258951261065905479
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3716616748126931600
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7045668330475565206
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3678678190146958183
+    }
+  ],
+  "modified": [
+    -6118952533607581308,
+    -4823042375599844913,
+    -2242627629011654367,
+    -2100805990282422852,
+    -1415450259537509334,
+    1,
+    117696012610781501,
+    136737362381944253,
+    670758064099816899,
+    2121526148006987132,
+    7216991121196882521,
+    7491925440513160440,
+    7974980097542005084
+  ],
+  "added": [
+    900000000000003601,
+    900000000000003602
+  ],
+  "meshIds": [
+    7974980097542005084
+  ],
+  "vertices": 26826,
+  "triangles": 20992,
+  "originalObjects": 1029,
+  "armLandmarks": {
+    "L": {
+      "sourceShoulder": [
+        -0.324,
+        0.082,
+        1.594
+      ],
+      "sourceElbow": [
+        -0.575,
+        0.077,
+        1.565
+      ],
+      "sourceWrist": [
+        -0.867,
+        0.087,
+        1.525
+      ],
+      "nativeShoulder": [
+        -0.32815860133561015,
+        0.0029264708114512842,
+        1.6154359256800819
+      ],
+      "nativeElbow": [
+        -0.477485919266124,
+        0.03589925168403352,
+        1.3318387057341259
+      ],
+      "nativeWrist": [
+        -0.6084385934503538,
+        -0.07508983381897351,
+        1.0794172357295877
+      ],
+      "upperLengthRatio": 1.2749351788751693,
+      "forearmLengthRatio": 1.0351431311043788
+    },
+    "R": {
+      "sourceShoulder": [
+        0.324,
+        0.082,
+        1.594
+      ],
+      "sourceElbow": [
+        0.575,
+        0.077,
+        1.565
+      ],
+      "sourceWrist": [
+        0.867,
+        0.087,
+        1.525
+      ],
+      "nativeShoulder": [
+        0.3281585304778006,
+        0.0029255728190240274,
+        1.6154358797541555
+      ],
+      "nativeElbow": [
+        0.4774860630465914,
+        0.035897911816698554,
+        1.33183873260542
+      ],
+      "nativeWrist": [
+        0.6084384257424756,
+        -0.07509153087802818,
+        1.079417257600114
+      ],
+      "upperLengthRatio": 1.2749351400246633,
+      "forearmLengthRatio": 1.0351431323992435
+    }
+  },
+  "rigidSourceParts": {
+    "1831": "Bip001 L UpperArm",
+    "1376": "Bip001 L UpperArm",
+    "1097": "Bip001 L UpperArm",
+    "911": "Bip001 L Forearm",
+    "883": "Bip001 L Forearm",
+    "1575": "Bone008(mirrored)",
+    "159": "hand-transfer-L",
+    "240": "hand-transfer-L",
+    "341": "hand-transfer-L",
+    "363": "hand-transfer-L",
+    "722": "hand-transfer-L",
+    "2427": "Bip001 L Thigh",
+    "3980": "Bip001 L Calf",
+    "3656": "Bip001 L Calf",
+    "2263": "Bip001 L Calf",
+    "3276": "Bip001 L Foot",
+    "2998": "Bone001(mirrored)",
+    "9622": "Bip001 R UpperArm",
+    "9851": "Bip001 R UpperArm",
+    "9997": "Bip001 R UpperArm",
+    "9956": "Bip001 R Forearm",
+    "10184": "Bip001 R Forearm",
+    "9680": "Bone008",
+    "10308": "hand-transfer-R",
+    "10359": "hand-transfer-R",
+    "10470": "hand-transfer-R",
+    "10486": "hand-transfer-R",
+    "10792": "hand-transfer-R",
+    "10799": "hand-transfer-R",
+    "11017": "hand-transfer-R",
+    "8570": "Bip001 R Thigh",
+    "7371": "Bip001 R Calf",
+    "6868": "Bip001 R Calf",
+    "7786": "Bip001 R Calf",
+    "7779": "Bip001 R Foot",
+    "7588": "Bone001",
+    "7006": "Bip001 Head",
+    "4731": "Bip001 Neck",
+    "4745": "Bip001 Spine2",
+    "4816": "Bip001 Spine2",
+    "4909": "Bip001 Spine2",
+    "4989": "Bip001 Spine2",
+    "5042": "Bip001 Spine2",
+    "5166": "Bip001 Spine2",
+    "5227": "Bip001 Spine2",
+    "5230": "Bip001 Spine2",
+    "5386": "Bip001 Spine2",
+    "5413": "Bip001 Spine2",
+    "5416": "Bip001 Spine2",
+    "5751": "Bip001 Spine2",
+    "5811": "Bip001 Spine2",
+    "5937": "Bip001 Spine2",
+    "6041": "Bip001 Spine2",
+    "6110": "Bip001 Spine2",
+    "6168": "Bip001 Spine2",
+    "6204": "Bip001 Spine2",
+    "7073": "Bip001 Spine2"
+  },
+  "rigidPlateTriangles": 3277,
+  "bodyRenderers": 11,
+  "LODStrategy": "full adapted body in native existing body LOD renderers; weapon LODs unchanged",
+  "nativeWeaponMeshesPreserved": [
+    2221897446212992416,
+    9117325694907160839
+  ],
+  "installed": true,
+  "UnityTested": false,
+  "installedUTC": "2026-10-13T14:34:30Z",
+  "installedBRT": "2026-10-13 11:34",
+  "CRC": "26101304",
+  "hero": 1037,
+  "skin": 5,
+  "pm2PID": 711369,
+  "connectionsAtRestart": 0,
+  "remoteBackup": "/home/ubuntu/backups/david-infernal-skin036-20261013T143430Z/runtime.tar.gz"
+}

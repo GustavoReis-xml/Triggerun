@@ -1,3 +1,3 @@
 <root>
-	<i id="101" name="高级符文箱买赠" buyitems="2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315,2316,2317,2318,2319,2320,2321,2322,2323" giftitem="1029" maxnum="1" rate="1:1" bgimg="libao_multibogo_ditu" stitle1="您已购买{0}个高级符文箱" stitle2="您尚未购买高级符文箱或已领取过赠品" desc1="可以获得以下赠品" desc2="无法获得赠品" sbottom1="请领取赠品" sbottom2="再购买{0}个，可以继续领取赠品"/>
+	<i id="101" name="Sale de Superior Rune Box com gifts" buyitems="2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315,2316,2317,2318,2319,2320,2321,2322,2323" giftitem="1029" maxnum="1" rate="1:1" bgimg="libao_multibogo_ditu" stitle1="Você comprou {0} Superior Rune Box" stitle2="Você não comprou Superior Rune Box ou coletou os gifts." desc1="Gifts below can be gained" desc2="Cannot gain the gifts" sbottom1="Please collect the gifts" sbottom2="You can collect more gifts after purchase of {0} more"/>
 </root>

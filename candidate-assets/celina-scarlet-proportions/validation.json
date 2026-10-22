@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "objectsCompared": 1209,
+  "vertices": 17494,
+  "triangles": 30704,
+  "tinyTriangleCount": 0,
+  "poses": {
+    "arms_raised": {
+      "p99EdgeStretch": 1.1156348538293386,
+      "maxDisplacement": 0.46229644039608586
+    },
+    "elbows_bent": {
+      "p99EdgeStretch": 1.051666743645437,
+      "maxDisplacement": 0.415038242644476
+    },
+    "aim_pose": {
+      "p99EdgeStretch": 1.112805119867824,
+      "maxDisplacement": 0.5523953885996434
+    }
+  },
+  "runtimeFilesUnchanged": true,
+  "UnityTested": false
+}

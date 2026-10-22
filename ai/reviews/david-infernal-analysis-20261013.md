@@ -1,0 +1,21 @@
+# Passagem de trabalho — SKIN-035
+
+- Responsável / destinatário / data: Codex / usuário e próxima IA / 13/10/2026 BRT.
+- Objetivo: iniciar skin infernalDavid1037; usuário escolheu autômato demoníaco de metal negro e bronze.
+- Estado: análise nativa + quatro referênciasTripo entregues; aguardaGLB. Sem nova mesh/cadastro/instalação.
+- Base: nove bundles locais inspecionados/default+OptimusTPS/FPS+StarryTPS+controllers+portal+projétil; SHA256 em `scratch/david-inspection/inventory.json` e fontes conferidas intactas.
+- Corpo: `dawei_tps`, mesh7974980097542005084,7100v/7960tri/62bones; LODs37/20bones. Corpo alto~1,977 na mesh, peito largo/antebraços grandes/pés mecânicos.
+- Auxiliares: Bone005/007 e mirrors influenciam placas frontais dopeito; Bone008/mirror ombreiras; Bone001/003 e mirrors peças depés/calcanhar. Classificação porvértices ponderados, não por suposição donome.
+- Arma: `daweiwuqi_4500` mesh2221897446212992416,2769v/1994tri/20bones; LOD8bones. FPSarma mesh4107081217497377879,8828v/8466tri/20bones.
+- FPScorpo padrão: mesh3469136907937197247,3554v/3736tri/43bones. Não trocar porpalette62 automaticamente.
+- Controllers:24clipsTPS/15FPS; corpo humanoide com peças auxiliares. Clipes inventariados, não decodificados/reproduzidos noUnity.
+- Assembly: `HeroDaWeiMe.ShieldSearch` requer `model_tps/body2_dun` semnullguard; object existe com10BoxCollider, sem mesh visível própria. Preservar nome/estrutura para não quebrar escudo/renascimento.
+- Ultimate: `HeroDaWeiMe/It.LoadDoorPrefeb` carrega `HeroAnimator/dawei_csm.mo` separado, instanciado àfrente doherói; não está contido noGLB corporal. `TBCharAnimationDaWeiTps` herdaThirdIK.
+- Conceito escolhido: DavidColosso doAbismo, metal negro/bronze/crimson/ventosbrasa, elmo demoníaco, chifres compactos, torso emplacas/juntas livres, semflesh/armas/portal/capas fundidos.
+- Referências: `candidate-assets/david-infernal/multiview/` quatroPNG1254×1254RGBA + ZIP. Ferramenta integradaimage_gen; frente usa corpo nativo como guia, costas/perfis derivados; traseira inferior corrigida emedição separada.
+- Inspeção: identidade/traje/proporções gerais consistentes; pequenas diferenças de contornos/detalhes e foreshortening dosbraços nosperfis. Não são projeções calibradas deuma mesh3D. Frente é autoritativa.
+- Testes: extração/meshes/rig/pesos originais normalizados/hashes preservados; quatroPNG/transparência/tamanho<20MB/ZIP íntegro validados. Semtestes de candidata/Unity nesta etapa.
+- Oracle/cliente: intactos. Não há recurso runtime novo, preço/skinID ainda não cadastrados.
+- Próximo passo: usuário gerar e enviarGLBTripo; analisar componentes/UV/cabeça/mãos, adaptarporplacas rígidas e ossos auxiliares, preservar arma20bones/escudo/portal/IK. Aprovar poses mecânicas antes deinstalar.
+- RegistroJohnny: usuário relatou034 apenasmelhora parcial; queixo033 segue aprovado. Não abrir nova intervenção nele sempedido.
+- Bloqueio: aguarda modeloTripo para adaptação; tarefa de análise/referências concluída, reserva liberada.

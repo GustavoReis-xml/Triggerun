@@ -1,31 +1,31 @@
 // Ponto de entrada unificador do servidor Trigger Run
-const fs = require('fs');
+const { createRotatingLog } = require('./rotatingLog');
+const logger = require('./logger');
+const { format } = require('util');
 const config = require('./config');
 
 const logFile = config.logFile;
-fs.writeFileSync(logFile, `=== SERVER RESTART AT ${new Date().toISOString()} ===\n`, 'utf8');
+const appendLog = createRotatingLog(logFile, { maxBytes: 50 * 1024 * 1024, backups: 3 });
+appendLog(`=== SERVER RESTART ${logger.runId} AT ${new Date().toISOString()} ===\n`);
 
 const originalLog = console.log;
 const originalError = console.error;
 
 console.log = function(...args) {
     originalLog.apply(console, args);
-    const msg = args.map(x => typeof x === 'object' ? JSON.stringify(x) : String(x)).join(' ');
-    fs.appendFileSync(logFile, msg + '\n', 'utf8');
+    const msg = format(...args);
+    appendLog(msg.slice(0, 65536) + '\n');
 };
 
 console.error = function(...args) {
     originalError.apply(console, args);
-    const msg = args.map(x => {
-        if (x instanceof Error) return x.stack || x.message;
-        return typeof x === 'object' ? JSON.stringify(x) : String(x);
-    }).join(' ');
-    fs.appendFileSync(logFile, `[⚠️ ERRO] ${msg}\n`, 'utf8');
+    const msg = format(...args);
+    appendLog(`[⚠️ ERRO] ${msg.slice(0, 65536)}\n`);
 };
 
 global.crashLogs = [];
-global.lastMapId = 5205;
-global.lastMapName = 'xinshouyindao_3';
+global.lastMapId = null;
+global.lastMapName = null;
 global.lastFinalMapName = 'jiaodouchang_02_3';
 global.lastFinalMapId = 5204;
 global.lastLobbySocket = null;
@@ -39,13 +39,9 @@ global.SERVER_IP = config.SERVER_IP;
 const originalConsoleError = console.error;
 console.error = function (...args) {
     originalConsoleError.apply(console, args);
-    const msg = args.map(arg => {
-        if (arg instanceof Error) {
-            return `${arg.message}\n${arg.stack}`;
-        }
-        return typeof arg === 'object' ? JSON.stringify(arg) : String(arg);
-    }).join(' ');
+    const msg = format(...args);
     
+    logger.logTelemetry('SERVER_ERROR', { message: msg });
     global.crashLogs.push({
         timestamp: new Date().toLocaleTimeString(),
         message: msg,

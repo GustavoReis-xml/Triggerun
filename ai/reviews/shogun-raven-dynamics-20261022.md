@@ -1,0 +1,27 @@
+# Passagem de trabalho — SKIN-040
+
+- Responsável: Codex; instalação 22/10/2026 22:03 UTC (19:03 BRT).
+- Objetivo: reduzir pernas finas em poses e dar balanço controlado ao sobretudo/asas do Corvo Noturno, Shogun1024 skin7.
+- Estado: implementação e instalação concluídas; validação visual no cliente real pendente.
+- Base: SKIN-039 funcional segundo usuário, porém com defeitos visuais; preservada em `backups/shogun040-before/`.
+- Causa confirmada na malha: difusão global dos pesos039 misturou tronco/roupa/coxa. Separação por coordenadas também pegava a parte posterior da coxa; corte de conectividade abaixo da cintura separa calça e casaco corretamente.
+- Alteração: pesos das pernas por ramo próprio, transição estreita nos joelhos e pelve só no quadril; mesma geometria30598v/21611tri, UV, textura, pupila e cabeça/mãos039.
+- Roupa:24Transforms adicionais em6cadeias de4ossos, total80bones; duas asas e quatro abas. Pesos contínuos e costuras UV soldadas, sem transferir a paleta das coxas para as penas.
+- Física:6DynamicBone nativos no GO raiz do modelo, para receber o proprietário em CAiming e o controle da seleção. Não anexar os componentes apenas aos filhos.
+- Cliente: `client-patches/RavenDynamics.cs` compilado .NET3.5; prefixo em apenas `DynamicBone.UpdateDynamicBones(float)`. Só raízes `TRRaven040_` recebem ajuda; demais heróis seguem o código original.
+- Auxiliar: quatro volumes DynamicBoneCollider exclusivos do próprio ator, sem UnityCollider/Rigidbody; reset no primeiro tick, teleporte>2,5m, salto de rotação>110°, dt>120ms, pausa>200ms ou reativação; leve força periódica para repouso.
+- Sem cache global de atores nem busca de colisores da cena: aproximação de outros jogadores não compartilha estado/volumes.
+- Preservados:56bones nativos (só listas de filhos dos dois pontos de ancoragem recebem adições), Avatar/Animator/IK/arco/flechas/ultimate/partículas/colisores e gameplay. FPS e catálogo intactos.
+- Testes de asset:679objetos039 comparados;54 novos objetos; hierarquia/bind novos com erro máximo6,85e-8;7DynamicBone no root incluindo o original.
+- Poses:22simulações passaram; P99 de esticamento máximo1,367 e extremo4,759. Proxy de compressão (determinante da mistura de rotações, P05 na amostra da coxa) passou de0,515 para1 no agachamento e0,548 para1 na escalada; não é medição física do volume completo do corpo.
+- Física automatizada: fonte real de DynamicBone/Collider + auxiliar, usando substitutos matemáticos do Unity;235227asserções a30/60/120FPS, comprimento, reset, colisão e isolamento de três instâncias (duas sobrepostas). Movimento das pontas≤27,4cm incluindo animação da coluna no ensaio.
+- Malha sob solver: dois quadros simulados completos; P99≤1,119/extremo≤3,274. Pré-visualizações de arco/agachar/escalar/corrida inspecionadas. Nenhum desses testes executa o Unity Player.
+- DLL:14780métodos comparados, apenas1alterado. Assembly anterior `AFF3000E...26B0`; instalado `CDBAF1B3EBD342C059B9825E7B4481D270B647AD55D2A806D8DC3BD7F439AFA7`; auxiliar `DDD7A5223636D3EC49BB80E8B27D3DA806B346CE2C13E7A4F6FF2E96069B585B`.
+- Cliente instalado após usuário confirmar fechamento; ambos DLLs em `C:/trig2/GAME/TRIG_Data/Managed`, hashes conferidos. Backup do Assembly em `backups/shogun040-before/Assembly-CSharp.install.dll`.
+- Oracle: TPS no mesmo caminho/versão1.1.1 e manifesto CRC26102202; sem reinício, PM2 PID886212 preservado.4HTTP com hashes exatos nas versões1.1.1/1.3.5 e TCP7777 aprovados; cópia local sincronizada.
+- Backup remoto: `/home/ubuntu/backups/shogun-raven-skin040-20261022T220301Z/runtime.tar.gz`.
+- Hash TPS: `6d0f15a0cb820557ea6f41098c91994509e4f9ccaeee41761e5c8c198c370a92`; manifesto: `d643916c675ba36d398651c7fd2e97f1726513e81d2e0c79ebc2d50e6504dbdf`.
+- Reprodução/evidências: `scratch/shogun040/{classify.py,segment.py,build.py,verify.py,export-test.py,PhysicsHarness.cs,physics-mesh.py,patch.ps1}`; assets em `candidate-assets/shogun-raven/dynamic/`; registros de cliente/física/release em `scratch/shogun040/`.
+- Próximo passo: abrir novamente o TRIG e testar Corvo selecionando, mirando, correndo, agachando, saltando/respawn e com outro jogador perto. Observar joelho/cavalo, penetração das abas nas pernas e intensidade do balanço.
+- Limite: movimento secundário decorativo, asas não abrem nem voam; modelo Tripo fundido e skinning linear ainda podem ter pequenas deformações/atravessamentos em poses extremas. Outros computadores devem receber o auxiliar junto com o Assembly atualizado para usar os resets/volumes adicionais.
+- Retorno real posterior22/10: usuário aprovou aparência/movimento (“ficou realmente muito bom”). Não implica execução dos cenários automatizados completos no Unity. Direção futura solicitada: auxiliar universal de skins com configurações por modelo, preservando isolamento de ator/reset/culling; não generalizado nesta tarefa.

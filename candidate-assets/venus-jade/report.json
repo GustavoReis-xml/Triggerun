@@ -1,0 +1,432 @@
+{
+  "bones": [
+    "Bip001 Spine2",
+    "Bip001 R Clavicle",
+    "Bone022(mirrored)",
+    "Bone022",
+    "Bip001 L Clavicle",
+    "Bip001 Neck",
+    "Bip001 L UpperArm",
+    "Bip001 Spine",
+    "Bip001 Pelvis",
+    "Bip001 Spine1",
+    "Bip001 R UpperArm",
+    "Bip001 R Thigh",
+    "Bip001 L Thigh",
+    "Bone010",
+    "Bone017",
+    "Bone018",
+    "Bone011",
+    "Bip001 RUpArmTwist",
+    "Bip001 LUpArmTwist",
+    "Bip001 Head",
+    "Bone025",
+    "Bone025(mirrored)",
+    "Bip001 R Forearm",
+    "Bip001 R ForeTwist",
+    "Bip001 R Hand",
+    "Bip001 R Finger0",
+    "Bip001 R Finger01",
+    "Bip001 R Finger02",
+    "Bip001 R Finger4",
+    "Bip001 R Finger2",
+    "Bip001 R Finger1",
+    "Bip001 R Finger11",
+    "Bip001 R Finger12",
+    "Bip001 R Finger3",
+    "Bip001 R Finger21",
+    "Bip001 R Finger22",
+    "Bip001 R Finger31",
+    "Bip001 R Finger32",
+    "Bip001 R Finger41",
+    "Bip001 R Finger42",
+    "Bip001 L Forearm",
+    "Bip001 L ForeTwist",
+    "Bip001 L Hand",
+    "Bip001 L Finger0",
+    "Bip001 L Finger01",
+    "Bip001 L Finger02",
+    "Bip001 L Finger4",
+    "Bip001 L Finger2",
+    "Bip001 L Finger1",
+    "Bip001 L Finger11",
+    "Bip001 L Finger12",
+    "Bip001 L Finger3",
+    "Bip001 L Finger21",
+    "Bip001 L Finger22",
+    "Bip001 L Finger31",
+    "Bip001 L Finger32",
+    "Bip001 L Finger41",
+    "Bip001 L Finger42",
+    "Bone006(mirrored)",
+    "Bone006",
+    "Bone007(mirrored)",
+    "Bone007",
+    "Bip001 L Foot",
+    "Bip001 L Toe0",
+    "Bip001 L Calf",
+    "Bip001 R Foot",
+    "Bip001 R Calf",
+    "Bip001 R Toe0",
+    "Point004",
+    "Bone020",
+    "Bone001",
+    "Bone002",
+    "Bone003",
+    "Bone004",
+    "Bone005",
+    "Bone024(mirrored)",
+    "Bone023(mirrored)",
+    "Bone024",
+    "Bone023"
+  ],
+  "boneRefs": [
+    {
+      "m_FileID": 0,
+      "m_PathID": 1830534394938500213
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7080152696619294178
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8563686822936883604
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8597164651938198457
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3073644219743832822
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5199704986319600088
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3219712118693597255
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8429109753848785293
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3608537191493773049
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8385891718696138814
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8521907785679165140
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7775567621108672626
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 715885070152837368
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6414854675803693470
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2297263150641945057
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3427177412700445623
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6261883330673152103
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8639237552860272303
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3162121274817102022
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3630919451343182509
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6624149602193899184
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8948519701540961380
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 9016624272337894917
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7527981082741512076
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5624445502758021903
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2298263798088136588
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6255713383975477672
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1846249930899525092
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2337306285539856395
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7603472052963375011
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7753612557023845664
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3944351460113199453
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2509032539068091654
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6144022974551745591
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4897344133487938247
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3178847198892526149
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -1751540767081866792
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4969230293864263576
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6177001937780754594
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -3376182056363832685
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5114807510391147245
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8976559999922387636
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8500673931936325196
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3859324740966762204
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4097702447042754867
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5031693017181824215
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -9074556669247071127
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8916361888474646479
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5890761235117784544
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2295208454740600339
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7478338638317056899
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3458371115754844864
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8864161174415027168
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -5464599980460383553
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7876718333261689235
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1886678051707613142
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 5566982759401045353
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6619928544873558931
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -6762947379771485163
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 475057560411577000
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 1943791700029890625
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7916224897448720346
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 2047570365945856419
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 7618496610438558475
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -7637823756030001188
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -508169524617507501
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8611729550503836985
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -717501683646122934
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -4576531341668609542
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 6090683576407046675
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8729315598626414516
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 4852766001499403976
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 9088990677272556753
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3848949703694477504
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -2664461125085933377
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 8821319822105774972
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 3896262930111908547
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": 510960735122205782
+    },
+    {
+      "m_FileID": 0,
+      "m_PathID": -8993409180443882397
+    }
+  ],
+  "modified": [
+    -1293920691700927776,
+    -7040031837292216444,
+    1,
+    -2805626401150648188,
+    -6134328015322087512,
+    8944717885056475077,
+    -499622691081708759,
+    1025175497735817609,
+    2355481578807724040,
+    -424011073949761076,
+    8623538431996915174,
+    -3244841293067359631,
+    1659731603018511199
+  ],
+  "added": [
+    900000000000002401,
+    900000000000002402
+  ],
+  "meshIds": [
+    -3244841293067359631
+  ],
+  "vertices": 13582,
+  "triangles": 21759,
+  "originalObjects": 722,
+  "tailRootUVFixed": 148,
+  "bodyRenderers": 11,
+  "LODStrategy": "same adapted full mesh in all distance levels",
+  "upperBodyWeights": "analytic smooth clavicle/upperarm/forearm/hand and spine/neck/head",
+  "installed": false,
+  "UnityTested": false
+}

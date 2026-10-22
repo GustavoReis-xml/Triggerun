@@ -1,0 +1,15 @@
+# Passagem de trabalho — SKIN-027 análise Nezha
+- Responsável: Codex;12/10/2026BRT.
+- Objetivo: avaliar nova skin Nezha1035 baseada no retratoRPG anexado; nenhuma autorização de instalação necessária neste estágio, pois não há candidata.
+- Fonte: retrato copiado sem modificar para candidate-assets/nezha-rpg/reference-rpg.webp. Referência cobre cabeça/torso; pernas e costas precisam desenho complementar consistente.
+- Inspeção:nezha_tps corpo principalpolySurface10 pathIDs no inventory.json,3397v/4724tri/62bones, altura~1,762m;LOD1743v/31bones e702v/20bones. Renderfrente/lado/costas emscratch/nezha-inspection.
+- Identidade original:cabelo branco com mecha vermelha, cachecol vermelho, roupaescura/dourado e assimetria braço/ombro. RetratoRPG amplia identidade com tatuagensvermelhas, olhoslaranja e armadurapreta/bronze ígnea.
+- Tecido:Bone002–007 influenciam cachecol/faixa nas costas; preservar se houver peça longa. Não fixar tudo à cabeça/pescoço.
+- FPS: malha braços951v/43bones; outra malha951v/8bones para ultimate. TPS tambémtem braços951v/8bones scale100 sob dsrc_dazhao/santouliubi e santouliubi_1. NomesdeMeshpolySurface10 duplicados: não selecionar por nomeapenas nem trocar todas pelas malhascorpóreas. IDs/hierarchies.json confirmam.
+- Lógica:TBCharAnimationNeZhaTps herda TBCharAnimationThirdIK; LateUpdate ajusta corpo/ombros/mãos quando personagem inclinado. Skill_NeZhaTuTuMe controla salto/avanço, trocaarma5 e habilitatriggerNeZhaShiftObj. HeroNeZhaMe.SuperSkillDo usa skill_Q/1183; playerskill.xml1183 três-cabeças/seis-braços.
+- Plano: adaptar corpo ao rig62bones mantendo armas/pontos/IK/efeitos; braçoextra eFPS em etapa própria. Armadurapeitoral ligada ao torso, ombreiras rígidas separadas comfolga, tecido comcadeiaoriginal. Preservar volumeanatomia/pivôs de ombro e profundidadepescoço antes de pesos.
+- Restriçõesvisuais: referências de armadura gigantes perto de cabeça/ombros elevam risco de clipping; reduzir volume dos dragõessem perder rosto/chifres. Lenço curto juntoao peito e pernastotalmente livres, semcapagrande no primeiroprotótipo. Detalhesfinos de correntes/gravuras preferir textura.
+- Limites: olhos/joias brilhosreais requerem canalemissivo, não basta JPEGcomluzpintada. Retrato não garante modelogerado compatível; checarposes reais repouso/mira/giro/salto/avanço/ultimate/FPS, não só estatísticassintéticas.
+- Estado: análiseconcluída. Cliente/Oracleintactos; somenteinventário/renders/documentação.
+- Próximo passo: preparar designcorpo inteiro usando retrato e anatomia nativa como referências; gerar vistas consistentes para Tripo, receberGLB e delimitar modelosafetados porIDs.
+- Reserva análise liberada; aguarda preparação visual/modelo.

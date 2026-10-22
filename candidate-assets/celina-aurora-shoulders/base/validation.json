@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "objectsCompared": 1209,
+  "totalVertices": 9916,
+  "newVertices": 7008,
+  "newTriangles": 12654,
+  "minTriangleDoubleArea": 3.2474843915245985e-06,
+  "poses": {
+    "arms_raised": {
+      "p99EdgeStretch": 2.2001701314624706,
+      "maxVertexDisplacement": 0.4437394544397234
+    },
+    "elbows_bent": {
+      "p99EdgeStretch": 1.52835188293551,
+      "maxVertexDisplacement": 0.38541700869411005
+    },
+    "aim_pose": {
+      "p99EdgeStretch": 1.9263252277541105,
+      "maxVertexDisplacement": 0.5184521794813464
+    }
+  },
+  "actualUnityAnimationTested": false
+}

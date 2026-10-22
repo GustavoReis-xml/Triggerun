@@ -1,5 +1,0 @@
-<root>
-	<i id="101" name="Recarga diária acumulada" desc="&lt;size=26&gt;Regras:&lt;/size&gt;    &lt;size=22&gt;1 - Prêmios obtidos após caxh diário ter acumulado a quantidade.   2 - O prazo é meia noite, e os prêmios serão enviados para email depois disso.&lt;/size&gt;">
-		<w id="1" name="9.30" title="&lt;size=22&gt;recarga acumulada {0}&lt;/size&gt;" reward="100,libao_tu1,Moedas *200,1020|200#500,libao_tu14,Partes de Acessórios *33,1032|33#1000,libao_tu2,Pontos Ranking *1200,1019|1200#2000,libao_tu14,Partes de Acessórios *70,1032|70#3000,libao_tu1,Moedas *1000,1020|1000#5000,libao_tu14,Partes de Acessórios *80,1032|80#7000,libao_tu1,Moedas *2000,1020|2000#10000,libao_tu14,Partes de Acessórios *130,1032|130"/>
-	</i>
-</root>

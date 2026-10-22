@@ -1,0 +1,223 @@
+{
+  "status": "passed",
+  "objectsCompared": 677,
+  "bones": 56,
+  "bodyRenderers": 11,
+  "originalGLBPreserved": true,
+  "originalSourceTrianglesUVsPreserved": true,
+  "pupilAddedTriangles": 32,
+  "nativeArrowsBowParticlesRigPhysicsIKPreserved": true,
+  "hiddenHumanFaceGlassesQuiverRenderers": [
+    -7706362323323388817,
+    -7172048776374066671,
+    -6660122726082779909,
+    -6528990615135330549,
+    -3907681671477591246,
+    -857891794861303194,
+    1776737270869160751,
+    9213075779315855470
+  ],
+  "headAndPupilRigid": true,
+  "backFeathersNotDrivenByLegsOrArms": true,
+  "poses": {
+    "run": {
+      "p99EdgeStretch": 1.1069028430063195,
+      "maxEdgeStretch": 2.4574568844235407,
+      "nativeP99": 1.1357712931390642,
+      "nativeMax": 4.264651492181466,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    },
+    "turn": {
+      "p99EdgeStretch": 1.120382319191973,
+      "maxEdgeStretch": 1.8926159234906617,
+      "nativeP99": 1.1585436504092754,
+      "nativeMax": 2.258459553671178,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "shoulders": {
+      "p99EdgeStretch": 1.1737573233995273,
+      "maxEdgeStretch": 3.493516219069155,
+      "nativeP99": 1.1111781429898948,
+      "nativeMax": 7.20445507613743,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    },
+    "crouch": {
+      "p99EdgeStretch": 1.2223940020049175,
+      "maxEdgeStretch": 4.365310854769697,
+      "nativeP99": 1.1453259025473441,
+      "nativeMax": 3.5723704852081353,
+      "edgesAbove3_5": 6,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    },
+    "climb": {
+      "p99EdgeStretch": 1.310811148717856,
+      "maxEdgeStretch": 4.666539088551808,
+      "nativeP99": 1.3373767695293188,
+      "nativeMax": 9.986711869643658,
+      "edgesAbove3_5": 20,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    },
+    "headYaw-45": {
+      "p99EdgeStretch": 1.1089666052892413,
+      "maxEdgeStretch": 2.697129689995475,
+      "nativeP99": 1.0000046163707674,
+      "nativeMax": 2.785038186585012,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 4.177557279877518
+    },
+    "headYaw-30": {
+      "p99EdgeStretch": 1.0704654081242635,
+      "maxEdgeStretch": 2.030156245111323,
+      "nativeP99": 1.0000045853769508,
+      "nativeMax": 2.1717091061266345,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headYaw-15": {
+      "p99EdgeStretch": 1.0334739603938194,
+      "maxEdgeStretch": 1.4863794677338182,
+      "nativeP99": 1.000004353642263,
+      "nativeMax": 1.5743931472444552,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headYaw0": {
+      "p99EdgeStretch": 1.0000000000000209,
+      "maxEdgeStretch": 1.0000000000001186,
+      "nativeP99": 1.0000033153610788,
+      "nativeMax": 1.0000102862726128,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headYaw15": {
+      "p99EdgeStretch": 1.0344719251182724,
+      "maxEdgeStretch": 1.818050147342468,
+      "nativeP99": 1.000004353642263,
+      "nativeMax": 1.5743947040877986,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headYaw30": {
+      "p99EdgeStretch": 1.0702841320339251,
+      "maxEdgeStretch": 2.7700737235427355,
+      "nativeP99": 1.0000045853769508,
+      "nativeMax": 2.1717121051213004,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headYaw45": {
+      "p99EdgeStretch": 1.1063719028011334,
+      "maxEdgeStretch": 3.7156875760051156,
+      "nativeP99": 1.0000046163707674,
+      "nativeMax": 2.7850417216058583,
+      "edgesAbove3_5": 2,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 4.177562582408788
+    },
+    "headPitch-30": {
+      "p99EdgeStretch": 1.0842610415419422,
+      "maxEdgeStretch": 1.7551809076374605,
+      "nativeP99": 1.0000040146954832,
+      "nativeMax": 2.400448696684975,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.600673045027462
+    },
+    "headPitch-15": {
+      "p99EdgeStretch": 1.0418102280526735,
+      "maxEdgeStretch": 1.339482108459202,
+      "nativeP99": 1.0000039937647673,
+      "nativeMax": 1.6566533351108272,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headPitch0": {
+      "p99EdgeStretch": 1.0000000000000209,
+      "maxEdgeStretch": 1.0000000000001186,
+      "nativeP99": 1.0000033153610788,
+      "nativeMax": 1.0000102862726128,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headPitch15": {
+      "p99EdgeStretch": 1.0113371421124424,
+      "maxEdgeStretch": 1.3458140298111116,
+      "nativeP99": 1.0000039366475537,
+      "nativeMax": 1.2710393195780523,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "headPitch30": {
+      "p99EdgeStretch": 1.023505635975753,
+      "maxEdgeStretch": 1.8268339998317913,
+      "nativeP99": 1.0000040264015817,
+      "nativeMax": 1.5599497666367235,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "twist-45": {
+      "p99EdgeStretch": 1.0430187359342715,
+      "maxEdgeStretch": 1.9468113550892534,
+      "nativeP99": 1.0114635294502097,
+      "nativeMax": 1.2925646484825382,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "twist0": {
+      "p99EdgeStretch": 1.0000000000000209,
+      "maxEdgeStretch": 1.0000000000001186,
+      "nativeP99": 1.0000033153610788,
+      "nativeMax": 1.0000102862726128,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "twist45": {
+      "p99EdgeStretch": 1.0486953670411598,
+      "maxEdgeStretch": 1.7489303422504467,
+      "nativeP99": 1.0112610029420783,
+      "nativeMax": 1.4450460623553536,
+      "edgesAbove3_5": 0,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 3.5
+    },
+    "bowDraw": {
+      "p99EdgeStretch": 1.2126669449951382,
+      "maxEdgeStretch": 4.168045820805637,
+      "nativeP99": 1.22942918842091,
+      "nativeMax": 10.962864852976708,
+      "edgesAbove3_5": 4,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    },
+    "bowLow": {
+      "p99EdgeStretch": 1.2185021057306975,
+      "maxEdgeStretch": 3.7645953699462353,
+      "nativeP99": 1.2433222719279007,
+      "nativeMax": 10.218374101565498,
+      "edgesAbove3_5": 4,
+      "edgeCount": 61115,
+      "maxAllowedWithNativeControl": 5.0
+    }
+  },
+  "UnityTested": false
+}

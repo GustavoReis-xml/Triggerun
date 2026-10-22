@@ -71,7 +71,6 @@
 	<i id="1037" name="大卫" type="0" >
 	   <skill id="37" name="Teleport Panel" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1203" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="80" energyaddcure="1" xingtai="0" icon="daweiQTCS" continuestime="5000"/>
 	</i>
-	<i id="2000" name="Lamster" type="0" >
-	   <skill id="16" name="Revive" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="0" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="55" energyaddcure="1" xingtai="0" icon="LuoshenFH" continuestime="0"/>
+<i id="2000" name="Lamster" type="0">
 	</i>
 </root>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RootMotion.FinalIK;
 using UnityEngine;
 
@@ -115,7 +115,7 @@ public class CAiming : MonoBehaviour
 		bool flag = !this.inited || this.hero.isDead || this.hero.haveDestroy || !this.hero.playerHaveCreate;
 		if (!flag)
 		{
-			bool flag2 = (this.hero.disCameraNow > this.footDisCheckMax || this.hero.publicInfo.eyeBlock || !this.hero.tChar.onGround || QualitySettings.GetQualityLevel() == 0 || !this.nowGroundIKEnable || this.hero.nHuDongState >= 200) && !this.b_closeDisCheck;
+			bool flag2 = (this.hero.disCameraNow > this.footDisCheckMax || this.hero.publicInfo.eyeBlock || !this.hero.tChar.onGround || !this.nowGroundIKEnable || this.hero.nHuDongState >= 200) && !this.b_closeDisCheck;
 			if (flag2)
 			{
 				bool flag3 = this.groundIk.weight > 0.001f;

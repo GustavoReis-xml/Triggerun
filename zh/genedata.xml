@@ -1,613 +1,603 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>		
 <root>		
 	<i step="0" name="0" genemap="9,12,15,18,21,24,27,30,33,37">	
-		<s star="1" name="0阶1星" rate="100" cost="7,5" attrdata="1,1,10,1" effect="12" stip="0阶1星|攻击等级+1\n韧性+1|需要基因碎片5"/>
-		<s star="2" name="0阶2星" rate="100" cost="7,10" attrdata="2,1,9,1" effect="12" stip="0阶2星|防御等级+1\n暴击+1|需要基因碎片10"/>
-		<s star="3" name="0阶3星" rate="100" cost="7,15" attrdata="1,2,3,19" effect="23" stip="0阶3星|攻击等级+2\n生命上限+19|需要基因碎片15"/>
-		<s star="4" name="0阶4星" rate="100" cost="7,20" attrdata="9,2,10,2" effect="24" stip="0阶4星|暴击+2\n韧性+2|需要基因碎片20"/>
-		<s star="5" name="0阶5星" rate="100" cost="7,25" attrdata="2,2,3,20" effect="24" stip="0阶5星|防御等级+2\n生命上限+20|需要基因碎片25"/>
-		<s star="6" name="0阶6星" rate="100" cost="7,30" attrdata="1,2,9,2" effect="24" stip="0阶6星|攻击等级+2\n暴击+2|需要基因碎片30"/>
-		<s star="7" name="0阶7星" rate="100" cost="7,35" attrdata="2,2,10,2" effect="24" stip="0阶7星|防御等级+2\n韧性+2|需要基因碎片35"/>
-		<s star="8" name="0阶8星" rate="100" cost="7,40" attrdata="3,20,9,3" effect="30" stip="0阶8星|生命上限+20\n暴击+3|需要基因碎片40"/>
-		<s star="9" name="0阶9星" rate="100" cost="7,45" attrdata="2,3,10,3" effect="36" stip="0阶9星|防御等级+3\n韧性+3|需要基因碎片45"/>
-		<s star="10" name="0阶10星" rate="100" cost="7,50" attrdata="1,3,3,21,11,1020,12,1180" effect="75" stip="1阶10星|攻击等级+3\n生命上限+21\n噬魂触发几率+1020\n噬魂恢复量+1180|需要基因碎片50"/>
+		<s star="1" name="0 Level1 Star" rate="100" cost="7,5" attrdata="1,1,10,1" effect="12" stip="0 Level1 Star|Attack Level +1\nPersistência +1| Precisa Partes de Genes *5"/>
+		<s star="2" name="0 Level2 Star" rate="100" cost="7,10" attrdata="2,1,9,1" effect="12" stip="0 Level2 Star|Level Defesa +1\nStrike Crítico +1| Precisa Partes de Genes *10"/>
+		<s star="3" name="0 Level3 Star" rate="100" cost="7,15" attrdata="1,2,3,19" effect="23" stip="0 Level3 Star|Attack Level +2\nHealth Máxima +19| Precisa Partes de Genes *15"/>
+		<s star="4" name="0 Level4 Star" rate="100" cost="7,20" attrdata="9,2,10,2" effect="24" stip="0 Level4 Star|Strike Crítico +2\nPersistência +2| Precisa Partes de Genes *20"/>
+		<s star="5" name="0 Level5 Star" rate="100" cost="7,25" attrdata="2,2,3,20" effect="24" stip="0 Level5 Star|Level Defesa +2\nHealth Máxima +20| Precisa Partes de Genes *25"/>
+		<s star="6" name="0 Level6 Star" rate="100" cost="7,30" attrdata="1,2,9,2" effect="24" stip="0 Level6 Star|Attack Level +2\nStrike Crítico +2| Precisa Partes de Genes *30"/>
+		<s star="7" name="0 Level7 Star" rate="100" cost="7,35" attrdata="2,2,10,2" effect="24" stip="0 Level7 Star|Level Defesa +2\nPersistência +2| Precisa Partes de Genes *35"/>
+		<s star="8" name="0 Level8 Star" rate="100" cost="7,40" attrdata="3,20,9,3" effect="30" stip="0 Level8 Star|Health Máxima +20\nStrike Crítico +3| Precisa Partes de Genes *40"/>
+		<s star="9" name="0 Level9 Star" rate="100" cost="7,45" attrdata="2,3,10,3" effect="36" stip="0 Level9 Star|Level Defesa +3\nPersistência +3| Precisa Partes de Genes *45"/>
+		<s star="10" name="0 Level10 Star" rate="100" cost="7,50" attrdata="1,3,3,21,11,1020,12,1180" effect="75" stip="1 Level10 Star|Attack Level +3\nHealth Máxima +21\nSoul Eater proc chance +1020\nSoul Eater quantia recuperada +1180| Precisa Partes de Genes *50"/>
 	</i>	
 	<i step="1" name="1" genemap="7,10,13,16,19,22,25,28,31,35">	
-		<s star="1" name="1阶1星" rate="100" cost="7,65" attrdata="1,5,10,5" effect="61" stip="1阶1星|攻击等级+5\n韧性+5|需要基因碎片65"/>
-		<s star="2" name="1阶2星" rate="100" cost="7,70" attrdata="2,5,9,5" effect="61" stip="1阶2星|防御等级+5\n暴击+5|需要基因碎片70"/>
-		<s star="3" name="1阶3星" rate="100" cost="7,75" attrdata="1,6,3,59" effect="72" stip="1阶3星|攻击等级+6\n生命上限+59|需要基因碎片75"/>
-		<s star="4" name="1阶4星" rate="100" cost="7,80" attrdata="9,6,10,6" effect="73" stip="1阶4星|暴击+6\n韧性+6|需要基因碎片80"/>
-		<s star="5" name="1阶5星" rate="100" cost="7,85" attrdata="2,6,3,60" effect="73" stip="1阶5星|防御等级+6\n生命上限+60|需要基因碎片85"/>
-		<s star="6" name="1阶6星" rate="100" cost="7,90" attrdata="1,6,9,6" effect="73" stip="1阶6星|攻击等级+6\n暴击+6|需要基因碎片90"/>
-		<s star="7" name="1阶7星" rate="100" cost="7,95" attrdata="2,6,10,6" effect="73" stip="1阶7星|防御等级+6\n韧性+6|需要基因碎片95"/>
-		<s star="8" name="1阶8星" rate="100" cost="7,100" attrdata="3,60,9,7" effect="79" stip="1阶8星|生命上限+60\n暴击+7|需要基因碎片100"/>
-		<s star="9" name="1阶9星" rate="100" cost="7,105" attrdata="2,7,10,7" effect="85" stip="1阶9星|防御等级+7\n韧性+7|需要基因碎片105"/>
-		<s star="10" name="1阶10星" rate="100" cost="7,110" attrdata="1,7,3,61,11,20,12,180" effect="84" stip="2阶10星|攻击等级+7\n生命上限+61\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片110"/>
+		<s star="1" name="1 Level1 Star" rate="100" cost="7,65" attrdata="1,5,10,5" effect="61" stip="1 Level1 Star|Attack Level +5\nPersistência +5| Precisa Partes de Genes *65"/>
+		<s star="2" name="1 Level2 Star" rate="100" cost="7,70" attrdata="2,5,9,5" effect="61" stip="1 Level2 Star|Level Defesa +5\nStrike Crítico +5| Precisa Partes de Genes *70"/>
+		<s star="3" name="1 Level3 Star" rate="100" cost="7,75" attrdata="1,6,3,59" effect="72" stip="1 Level3 Star|Attack Level +6\nHealth Máxima +59| Precisa Partes de Genes *75"/>
+		<s star="4" name="1 Level4 Star" rate="100" cost="7,80" attrdata="9,6,10,6" effect="73" stip="1 Level4 Star|Strike Crítico +6\nPersistência +6| Precisa Partes de Genes *80"/>
+		<s star="5" name="1 Level5 Star" rate="100" cost="7,85" attrdata="2,6,3,60" effect="73" stip="1 Level5 Star|Level Defesa +6\nHealth Máxima +60| Precisa Partes de Genes *85"/>
+		<s star="6" name="1 Level6 Star" rate="100" cost="7,90" attrdata="1,6,9,6" effect="73" stip="1 Level6 Star|Attack Level +6\nStrike Crítico +6| Precisa Partes de Genes *90"/>
+		<s star="7" name="1 Level7 Star" rate="100" cost="7,95" attrdata="2,6,10,6" effect="73" stip="1 Level7 Star|Level Defesa +6\nPersistência +6| Precisa Partes de Genes *95"/>
+		<s star="8" name="1 Level8 Star" rate="100" cost="7,100" attrdata="3,60,9,7" effect="79" stip="1 Level8 Star|Health Máxima +60\nStrike Crítico +7| Precisa Partes de Genes *100"/>
+		<s star="9" name="1 Level9 Star" rate="100" cost="7,105" attrdata="2,7,10,7" effect="85" stip="1 Level9 Star|Level Defesa +7\nPersistência +7| Precisa Partes de Genes *105"/>
+		<s star="10" name="1 Level10 Star" rate="100" cost="7,110" attrdata="1,7,3,61,11,20,12,180" effect="84" stip="2 Level10 Star|Attack Level +7\nHealth Máxima +61\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *110"/>
 	</i>	
 	<i step="2" name="2" genemap="2,5,8,11,14,17,20,23,26,30">	
-		<s star="1" name="2阶1星" rate="100" cost="7,145" attrdata="1,9,10,9" effect="110" stip="2阶1星|攻击等级+9\n韧性+9|需要基因碎片145"/>
-		<s star="2" name="2阶2星" rate="100" cost="7,150" attrdata="2,9,9,9" effect="110" stip="2阶2星|防御等级+9\n暴击+9|需要基因碎片150"/>
-		<s star="3" name="2阶3星" rate="100" cost="7,155" attrdata="1,10,3,99" effect="121" stip="2阶3星|攻击等级+10\n生命上限+99|需要基因碎片155"/>
-		<s star="4" name="2阶4星" rate="100" cost="7,160" attrdata="9,10,10,10" effect="122" stip="2阶4星|暴击+10\n韧性+10|需要基因碎片160"/>
-		<s star="5" name="2阶5星" rate="100" cost="7,165" attrdata="2,10,3,100" effect="122" stip="2阶5星|防御等级+10\n生命上限+100|需要基因碎片165"/>
-		<s star="6" name="2阶6星" rate="100" cost="7,170" attrdata="1,10,9,10" effect="122" stip="2阶6星|攻击等级+10\n暴击+10|需要基因碎片170"/>
-		<s star="7" name="2阶7星" rate="100" cost="7,175" attrdata="2,10,10,10" effect="122" stip="2阶7星|防御等级+10\n韧性+10|需要基因碎片175"/>
-		<s star="8" name="2阶8星" rate="100" cost="7,180" attrdata="3,100,9,11" effect="128" stip="2阶8星|生命上限+100\n暴击+11|需要基因碎片180"/>
-		<s star="9" name="2阶9星" rate="100" cost="7,185" attrdata="2,11,10,11" effect="134" stip="2阶9星|防御等级+11\n韧性+11|需要基因碎片185"/>
-		<s star="10" name="2阶10星" rate="100" cost="7,190" attrdata="1,11,3,101,11,20,12,180" effect="133" stip="3阶10星|攻击等级+11\n生命上限+101\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片190"/>
+		<s star="1" name="2 Level1 Star" rate="100" cost="7,145" attrdata="1,9,10,9" effect="110" stip="2 Level1 Star|Attack Level +9\nPersistência +9| Precisa Partes de Genes *145"/>
+		<s star="2" name="2 Level2 Star" rate="100" cost="7,150" attrdata="2,9,9,9" effect="110" stip="2 Level2 Star|Level Defesa +9\nStrike Crítico +9| Precisa Partes de Genes *150"/>
+		<s star="3" name="2 Level3 Star" rate="100" cost="7,155" attrdata="1,10,3,99" effect="121" stip="2 Level3 Star|Attack Level +10\nHealth Máxima +99| Precisa Partes de Genes *155"/>
+		<s star="4" name="2 Level4 Star" rate="100" cost="7,160" attrdata="9,10,10,10" effect="122" stip="2 Level4 Star|Strike Crítico +10\nPersistência +10| Precisa Partes de Genes *160"/>
+		<s star="5" name="2 Level5 Star" rate="100" cost="7,165" attrdata="2,10,3,100" effect="122" stip="2 Level5 Star|Level Defesa +10\nHealth Máxima +100| Precisa Partes de Genes *165"/>
+		<s star="6" name="2 Level6 Star" rate="100" cost="7,170" attrdata="1,10,9,10" effect="122" stip="2 Level6 Star|Attack Level +10\nStrike Crítico +10| Precisa Partes de Genes *170"/>
+		<s star="7" name="2 Level7 Star" rate="100" cost="7,175" attrdata="2,10,10,10" effect="122" stip="2 Level7 Star|Level Defesa +10\nPersistência +10| Precisa Partes de Genes *175"/>
+		<s star="8" name="2 Level8 Star" rate="100" cost="7,180" attrdata="3,100,9,11" effect="128" stip="2 Level8 Star|Health Máxima +100\nStrike Crítico +11| Precisa Partes de Genes *180"/>
+		<s star="9" name="2 Level9 Star" rate="100" cost="7,185" attrdata="2,11,10,11" effect="134" stip="2 Level9 Star|Level Defesa +11\nPersistência +11| Precisa Partes de Genes *185"/>
+		<s star="10" name="2 Level10 Star" rate="100" cost="7,190" attrdata="1,11,3,101,11,20,12,180" effect="133" stip="3 Level10 Star|Attack Level +11\nHealth Máxima +101\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *190"/>
 	</i>	
 	<i step="3" name="3" genemap="10,13,16,19,22,25,28,31,34,38">	
-		<s star="1" name="3阶1星" rate="100" cost="7,265" attrdata="1,13,10,13" effect="158" stip="3阶1星|攻击等级+13\n韧性+13|需要基因碎片265"/>
-		<s star="2" name="3阶2星" rate="100" cost="7,270" attrdata="2,13,9,13" effect="158" stip="3阶2星|防御等级+13\n暴击+13|需要基因碎片270"/>
-		<s star="3" name="3阶3星" rate="100" cost="7,275" attrdata="1,14,3,138" effect="169" stip="3阶3星|攻击等级+14\n生命上限+138|需要基因碎片275"/>
-		<s star="4" name="3阶4星" rate="100" cost="7,280" attrdata="9,14,10,14" effect="171" stip="3阶4星|暴击+14\n韧性+14|需要基因碎片280"/>
-		<s star="5" name="3阶5星" rate="100" cost="7,285" attrdata="2,14,3,140" effect="171" stip="3阶5星|防御等级+14\n生命上限+140|需要基因碎片285"/>
-		<s star="6" name="3阶6星" rate="100" cost="7,290" attrdata="1,14,9,14" effect="171" stip="3阶6星|攻击等级+14\n暴击+14|需要基因碎片290"/>
-		<s star="7" name="3阶7星" rate="100" cost="7,295" attrdata="2,14,10,14" effect="171" stip="3阶7星|防御等级+14\n韧性+14|需要基因碎片295"/>
-		<s star="8" name="3阶8星" rate="100" cost="7,300" attrdata="3,140,9,15" effect="177" stip="3阶8星|生命上限+140\n暴击+15|需要基因碎片300"/>
-		<s star="9" name="3阶9星" rate="100" cost="7,305" attrdata="2,15,10,15" effect="183" stip="3阶9星|防御等级+15\n韧性+15|需要基因碎片305"/>
-		<s star="10" name="3阶10星" rate="100" cost="7,310" attrdata="1,15,3,142,11,20,12,180" effect="182" stip="4阶10星|攻击等级+15\n生命上限+142\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片310"/>
+		<s star="1" name="3 Level1 Star" rate="100" cost="7,265" attrdata="1,13,10,13" effect="158" stip="3 Level1 Star|Attack Level +13\nPersistência +13| Precisa Partes de Genes *265"/>
+		<s star="2" name="3 Level2 Star" rate="100" cost="7,270" attrdata="2,13,9,13" effect="158" stip="3 Level2 Star|Level Defesa +13\nStrike Crítico +13| Precisa Partes de Genes *270"/>
+		<s star="3" name="3 Level3 Star" rate="100" cost="7,275" attrdata="1,14,3,138" effect="169" stip="3 Level3 Star|Attack Level +14\nHealth Máxima +138| Precisa Partes de Genes *275"/>
+		<s star="4" name="3 Level4 Star" rate="100" cost="7,280" attrdata="9,14,10,14" effect="171" stip="3 Level4 Star|Strike Crítico +14\nPersistência +14| Precisa Partes de Genes *280"/>
+		<s star="5" name="3 Level5 Star" rate="100" cost="7,285" attrdata="2,14,3,140" effect="171" stip="3 Level5 Star|Level Defesa +14\nHealth Máxima +140| Precisa Partes de Genes *285"/>
+		<s star="6" name="3 Level6 Star" rate="100" cost="7,290" attrdata="1,14,9,14" effect="171" stip="3 Level6 Star|Attack Level +14\nStrike Crítico +14| Precisa Partes de Genes *290"/>
+		<s star="7" name="3 Level7 Star" rate="100" cost="7,295" attrdata="2,14,10,14" effect="171" stip="3 Level7 Star|Level Defesa +14\nPersistência +14| Precisa Partes de Genes *295"/>
+		<s star="8" name="3 Level8 Star" rate="100" cost="7,300" attrdata="3,140,9,15" effect="177" stip="3 Level8 Star|Health Máxima +140\nStrike Crítico +15| Precisa Partes de Genes *300"/>
+		<s star="9" name="3 Level9 Star" rate="100" cost="7,305" attrdata="2,15,10,15" effect="183" stip="3 Level9 Star|Level Defesa +15\nPersistência +15| Precisa Partes de Genes *305"/>
+		<s star="10" name="3 Level10 Star" rate="100" cost="7,310" attrdata="1,15,3,142,11,20,12,180" effect="182" stip="4 Level10 Star|Attack Level +15\nHealth Máxima +142\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *310"/>
 	</i>	
 	<i step="4" name="4" genemap="5,8,11,14,17,20,23,26,29,33">	
-		<s star="1" name="4阶1星" rate="100" cost="7,425" attrdata="1,17,10,17" effect="207" stip="4阶1星|攻击等级+17\n韧性+17|需要基因碎片425"/>
-		<s star="2" name="4阶2星" rate="100" cost="7,430" attrdata="2,17,9,17" effect="207" stip="4阶2星|防御等级+17\n暴击+17|需要基因碎片430"/>
-		<s star="3" name="4阶3星" rate="100" cost="7,435" attrdata="1,18,3,178" effect="218" stip="4阶3星|攻击等级+18\n生命上限+178|需要基因碎片435"/>
-		<s star="4" name="4阶4星" rate="100" cost="7,440" attrdata="9,18,10,18" effect="220" stip="4阶4星|暴击+18\n韧性+18|需要基因碎片440"/>
-		<s star="5" name="4阶5星" rate="100" cost="7,445" attrdata="2,18,3,180" effect="220" stip="4阶5星|防御等级+18\n生命上限+180|需要基因碎片445"/>
-		<s star="6" name="4阶6星" rate="100" cost="7,450" attrdata="1,18,9,18" effect="220" stip="4阶6星|攻击等级+18\n暴击+18|需要基因碎片450"/>
-		<s star="7" name="4阶7星" rate="100" cost="7,455" attrdata="2,18,10,18" effect="220" stip="4阶7星|防御等级+18\n韧性+18|需要基因碎片455"/>
-		<s star="8" name="4阶8星" rate="100" cost="7,460" attrdata="3,180,9,19" effect="226" stip="4阶8星|生命上限+180\n暴击+19|需要基因碎片460"/>
-		<s star="9" name="4阶9星" rate="100" cost="7,465" attrdata="2,19,10,19" effect="232" stip="4阶9星|防御等级+19\n韧性+19|需要基因碎片465"/>
-		<s star="10" name="4阶10星" rate="100" cost="7,470" attrdata="1,19,3,182,11,20,12,180" effect="231" stip="5阶10星|攻击等级+19\n生命上限+182\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片470"/>
+		<s star="1" name="4 Level1 Star" rate="100" cost="7,425" attrdata="1,17,10,17" effect="207" stip="4 Level1 Star|Attack Level +17\nPersistência +17| Precisa Partes de Genes *425"/>
+		<s star="2" name="4 Level2 Star" rate="100" cost="7,430" attrdata="2,17,9,17" effect="207" stip="4 Level2 Star|Level Defesa +17\nStrike Crítico +17| Precisa Partes de Genes *430"/>
+		<s star="3" name="4 Level3 Star" rate="100" cost="7,435" attrdata="1,18,3,178" effect="218" stip="4 Level3 Star|Attack Level +18\nHealth Máxima +178| Precisa Partes de Genes *435"/>
+		<s star="4" name="4 Level4 Star" rate="100" cost="7,440" attrdata="9,18,10,18" effect="220" stip="4 Level4 Star|Strike Crítico +18\nPersistência +18| Precisa Partes de Genes *440"/>
+		<s star="5" name="4 Level5 Star" rate="100" cost="7,445" attrdata="2,18,3,180" effect="220" stip="4 Level5 Star|Level Defesa +18\nHealth Máxima +180| Precisa Partes de Genes *445"/>
+		<s star="6" name="4 Level6 Star" rate="100" cost="7,450" attrdata="1,18,9,18" effect="220" stip="4 Level6 Star|Attack Level +18\nStrike Crítico +18| Precisa Partes de Genes *450"/>
+		<s star="7" name="4 Level7 Star" rate="100" cost="7,455" attrdata="2,18,10,18" effect="220" stip="4 Level7 Star|Level Defesa +18\nPersistência +18| Precisa Partes de Genes *455"/>
+		<s star="8" name="4 Level8 Star" rate="100" cost="7,460" attrdata="3,180,9,19" effect="226" stip="4 Level8 Star|Health Máxima +180\nStrike Crítico +19| Precisa Partes de Genes *460"/>
+		<s star="9" name="4 Level9 Star" rate="100" cost="7,465" attrdata="2,19,10,19" effect="232" stip="4 Level9 Star|Level Defesa +19\nPersistência +19| Precisa Partes de Genes *465"/>
+		<s star="10" name="4 Level10 Star" rate="100" cost="7,470" attrdata="1,19,3,182,11,20,12,180" effect="231" stip="5 Level10 Star|Attack Level +19\nHealth Máxima +182\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *470"/>
 	</i>	
 	<i step="5" name="5" genemap="6,9,12,15,18,21,24,27,30,34">	
-		<s star="1" name="5阶1星" rate="95" cost="7,625" attrdata="1,21,10,21" effect="256" stip="5阶1星|攻击等级+21\n韧性+21|需要基因碎片625"/>
-		<s star="2" name="5阶2星" rate="95" cost="7,630" attrdata="2,21,9,21" effect="256" stip="5阶2星|防御等级+21\n暴击+21|需要基因碎片630"/>
-		<s star="3" name="5阶3星" rate="95" cost="7,635" attrdata="1,22,3,217" effect="267" stip="5阶3星|攻击等级+22\n生命上限+217|需要基因碎片635"/>
-		<s star="4" name="5阶4星" rate="95" cost="7,640" attrdata="9,22,10,22" effect="268" stip="5阶4星|暴击+22\n韧性+22|需要基因碎片640"/>
-		<s star="5" name="5阶5星" rate="95" cost="7,645" attrdata="2,22,3,220" effect="268" stip="5阶5星|防御等级+22\n生命上限+220|需要基因碎片645"/>
-		<s star="6" name="5阶6星" rate="95" cost="7,650" attrdata="1,22,9,22" effect="268" stip="5阶6星|攻击等级+22\n暴击+22|需要基因碎片650"/>
-		<s star="7" name="5阶7星" rate="95" cost="7,655" attrdata="2,22,10,22" effect="268" stip="5阶7星|防御等级+22\n韧性+22|需要基因碎片655"/>
-		<s star="8" name="5阶8星" rate="95" cost="7,660" attrdata="3,220,9,23" effect="275" stip="5阶8星|生命上限+220\n暴击+23|需要基因碎片660"/>
-		<s star="9" name="5阶9星" rate="95" cost="7,665" attrdata="2,23,10,23" effect="281" stip="5阶9星|防御等级+23\n韧性+23|需要基因碎片665"/>
-		<s star="10" name="5阶10星" rate="95" cost="7,670" attrdata="1,23,3,223,11,20,12,180" effect="280" stip="6阶10星|攻击等级+23\n生命上限+223\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片670"/>
+		<s star="1" name="5 Level1 Star" rate="95" cost="7,625" attrdata="1,21,10,21" effect="256" stip="5 Level1 Star|Attack Level +21\nPersistência +21| Precisa Partes de Genes *625"/>
+		<s star="2" name="5 Level2 Star" rate="95" cost="7,630" attrdata="2,21,9,21" effect="256" stip="5 Level2 Star|Level Defesa +21\nStrike Crítico +21| Precisa Partes de Genes *630"/>
+		<s star="3" name="5 Level3 Star" rate="95" cost="7,635" attrdata="1,22,3,217" effect="267" stip="5 Level3 Star|Attack Level +22\nHealth Máxima +217| Precisa Partes de Genes *635"/>
+		<s star="4" name="5 Level4 Star" rate="95" cost="7,640" attrdata="9,22,10,22" effect="268" stip="5 Level4 Star|Strike Crítico +22\nPersistência +22| Precisa Partes de Genes *640"/>
+		<s star="5" name="5 Level5 Star" rate="95" cost="7,645" attrdata="2,22,3,220" effect="268" stip="5 Level5 Star|Level Defesa +22\nHealth Máxima +220| Precisa Partes de Genes *645"/>
+		<s star="6" name="5 Level6 Star" rate="95" cost="7,650" attrdata="1,22,9,22" effect="268" stip="5 Level6 Star|Attack Level +22\nStrike Crítico +22| Precisa Partes de Genes *650"/>
+		<s star="7" name="5 Level7 Star" rate="95" cost="7,655" attrdata="2,22,10,22" effect="268" stip="5 Level7 Star|Level Defesa +22\nPersistência +22| Precisa Partes de Genes *655"/>
+		<s star="8" name="5 Level8 Star" rate="95" cost="7,660" attrdata="3,220,9,23" effect="275" stip="5 Level8 Star|Health Máxima +220\nStrike Crítico +23| Precisa Partes de Genes *660"/>
+		<s star="9" name="5 Level9 Star" rate="95" cost="7,665" attrdata="2,23,10,23" effect="281" stip="5 Level9 Star|Level Defesa +23\nPersistência +23| Precisa Partes de Genes *665"/>
+		<s star="10" name="5 Level10 Star" rate="95" cost="7,670" attrdata="1,23,3,223,11,20,12,180" effect="280" stip="6 Level10 Star|Attack Level +23\nHealth Máxima +223\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *670"/>
 	</i>	
 	<i step="6" name="6" genemap="4,7,10,13,16,19,22,25,28,32">	
-		<s star="1" name="6阶1星" rate="95" cost="7,875" attrdata="1,25,10,25" effect="305" stip="6阶1星|攻击等级+25\n韧性+25|需要基因碎片875"/>
-		<s star="2" name="6阶2星" rate="95" cost="7,880" attrdata="2,25,9,25" effect="305" stip="6阶2星|防御等级+25\n暴击+25|需要基因碎片880"/>
-		<s star="3" name="6阶3星" rate="95" cost="7,885" attrdata="1,26,3,257" effect="315" stip="6阶3星|攻击等级+26\n生命上限+257|需要基因碎片885"/>
-		<s star="4" name="6阶4星" rate="95" cost="7,890" attrdata="9,26,10,26" effect="317" stip="6阶4星|暴击+26\n韧性+26|需要基因碎片890"/>
-		<s star="5" name="6阶5星" rate="95" cost="7,895" attrdata="2,26,3,260" effect="317" stip="6阶5星|防御等级+26\n生命上限+260|需要基因碎片895"/>
-		<s star="6" name="6阶6星" rate="95" cost="7,900" attrdata="1,26,9,26" effect="317" stip="6阶6星|攻击等级+26\n暴击+26|需要基因碎片900"/>
-		<s star="7" name="6阶7星" rate="95" cost="7,905" attrdata="2,26,10,26" effect="317" stip="6阶7星|防御等级+26\n韧性+26|需要基因碎片905"/>
-		<s star="8" name="6阶8星" rate="95" cost="7,910" attrdata="3,260,9,27" effect="323" stip="6阶8星|生命上限+260\n暴击+27|需要基因碎片910"/>
-		<s star="9" name="6阶9星" rate="95" cost="7,915" attrdata="2,27,10,27" effect="330" stip="6阶9星|防御等级+27\n韧性+27|需要基因碎片915"/>
-		<s star="10" name="6阶10星" rate="95" cost="7,920" attrdata="1,27,3,263,11,20,12,180" effect="329" stip="7阶10星|攻击等级+27\n生命上限+263\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片920"/>
+		<s star="1" name="6 Level1 Star" rate="95" cost="7,875" attrdata="1,25,10,25" effect="305" stip="6 Level1 Star|Attack Level +25\nPersistência +25| Precisa Partes de Genes *875"/>
+		<s star="2" name="6 Level2 Star" rate="95" cost="7,880" attrdata="2,25,9,25" effect="305" stip="6 Level2 Star|Level Defesa +25\nStrike Crítico +25| Precisa Partes de Genes *880"/>
+		<s star="3" name="6 Level3 Star" rate="95" cost="7,885" attrdata="1,26,3,257" effect="315" stip="6 Level3 Star|Attack Level +26\nHealth Máxima +257| Precisa Partes de Genes *885"/>
+		<s star="4" name="6 Level4 Star" rate="95" cost="7,890" attrdata="9,26,10,26" effect="317" stip="6 Level4 Star|Strike Crítico +26\nPersistência +26| Precisa Partes de Genes *890"/>
+		<s star="5" name="6 Level5 Star" rate="95" cost="7,895" attrdata="2,26,3,260" effect="317" stip="6 Level5 Star|Level Defesa +26\nHealth Máxima +260| Precisa Partes de Genes *895"/>
+		<s star="6" name="6 Level6 Star" rate="95" cost="7,900" attrdata="1,26,9,26" effect="317" stip="6 Level6 Star|Attack Level +26\nStrike Crítico +26| Precisa Partes de Genes *900"/>
+		<s star="7" name="6 Level7 Star" rate="95" cost="7,905" attrdata="2,26,10,26" effect="317" stip="6 Level7 Star|Level Defesa +26\nPersistência +26| Precisa Partes de Genes *905"/>
+		<s star="8" name="6 Level8 Star" rate="95" cost="7,910" attrdata="3,260,9,27" effect="323" stip="6 Level8 Star|Health Máxima +260\nStrike Crítico +27| Precisa Partes de Genes *910"/>
+		<s star="9" name="6 Level9 Star" rate="95" cost="7,915" attrdata="2,27,10,27" effect="330" stip="6 Level9 Star|Level Defesa +27\nPersistência +27| Precisa Partes de Genes *915"/>
+		<s star="10" name="6 Level10 Star" rate="95" cost="7,920" attrdata="1,27,3,263,11,20,12,180" effect="329" stip="7 Level10 Star|Attack Level +27\nHealth Máxima +263\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *920"/>
 	</i>	
 	<i step="7" name="7" genemap="3,6,9,12,15,18,21,24,27,31">	
-		<s star="1" name="7阶1星" rate="95" cost="7,1185" attrdata="1,29,10,29" effect="354" stip="7阶1星|攻击等级+29\n韧性+29|需要基因碎片1185"/>
-		<s star="2" name="7阶2星" rate="95" cost="7,1190" attrdata="2,29,9,29" effect="354" stip="7阶2星|防御等级+29\n暴击+29|需要基因碎片1190"/>
-		<s star="3" name="7阶3星" rate="95" cost="7,1195" attrdata="1,30,3,297" effect="364" stip="7阶3星|攻击等级+30\n生命上限+297|需要基因碎片1195"/>
-		<s star="4" name="7阶4星" rate="95" cost="7,1200" attrdata="9,30,10,30" effect="366" stip="7阶4星|暴击+30\n韧性+30|需要基因碎片1200"/>
-		<s star="5" name="7阶5星" rate="95" cost="7,1205" attrdata="2,30,3,300" effect="366" stip="7阶5星|防御等级+30\n生命上限+300|需要基因碎片1205"/>
-		<s star="6" name="7阶6星" rate="95" cost="7,1210" attrdata="1,30,9,30" effect="366" stip="7阶6星|攻击等级+30\n暴击+30|需要基因碎片1210"/>
-		<s star="7" name="7阶7星" rate="95" cost="7,1215" attrdata="2,30,10,30" effect="366" stip="7阶7星|防御等级+30\n韧性+30|需要基因碎片1215"/>
-		<s star="8" name="7阶8星" rate="95" cost="7,1220" attrdata="3,300,9,31" effect="372" stip="7阶8星|生命上限+300\n暴击+31|需要基因碎片1220"/>
-		<s star="9" name="7阶9星" rate="95" cost="7,1225" attrdata="2,31,10,31" effect="378" stip="7阶9星|防御等级+31\n韧性+31|需要基因碎片1225"/>
-		<s star="10" name="7阶10星" rate="95" cost="7,1230" attrdata="1,31,3,303,11,20,12,180" effect="378" stip="8阶10星|攻击等级+31\n生命上限+303\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片1230"/>
+		<s star="1" name="7 Level1 Star" rate="95" cost="7,1185" attrdata="1,29,10,29" effect="354" stip="7 Level1 Star|Attack Level +29\nPersistência +29| Precisa Partes de Genes *1185"/>
+		<s star="2" name="7 Level2 Star" rate="95" cost="7,1190" attrdata="2,29,9,29" effect="354" stip="7 Level2 Star|Level Defesa +29\nStrike Crítico +29| Precisa Partes de Genes *1190"/>
+		<s star="3" name="7 Level3 Star" rate="95" cost="7,1195" attrdata="1,30,3,297" effect="364" stip="7 Level3 Star|Attack Level +30\nHealth Máxima +297| Precisa Partes de Genes *1195"/>
+		<s star="4" name="7 Level4 Star" rate="95" cost="7,1200" attrdata="9,30,10,30" effect="366" stip="7 Level4 Star|Strike Crítico +30\nPersistência +30| Precisa Partes de Genes *1200"/>
+		<s star="5" name="7 Level5 Star" rate="95" cost="7,1205" attrdata="2,30,3,300" effect="366" stip="7 Level5 Star|Level Defesa +30\nHealth Máxima +300| Precisa Partes de Genes *1205"/>
+		<s star="6" name="7 Level6 Star" rate="95" cost="7,1210" attrdata="1,30,9,30" effect="366" stip="7 Level6 Star|Attack Level +30\nStrike Crítico +30| Precisa Partes de Genes *1210"/>
+		<s star="7" name="7 Level7 Star" rate="95" cost="7,1215" attrdata="2,30,10,30" effect="366" stip="7 Level7 Star|Level Defesa +30\nPersistência +30| Precisa Partes de Genes *1215"/>
+		<s star="8" name="7 Level8 Star" rate="95" cost="7,1220" attrdata="3,300,9,31" effect="372" stip="7 Level8 Star|Health Máxima +300\nStrike Crítico +31| Precisa Partes de Genes *1220"/>
+		<s star="9" name="7 Level9 Star" rate="95" cost="7,1225" attrdata="2,31,10,31" effect="378" stip="7 Level9 Star|Level Defesa +31\nPersistência +31| Precisa Partes de Genes *1225"/>
+		<s star="10" name="7 Level10 Star" rate="95" cost="7,1230" attrdata="1,31,3,303,11,20,12,180" effect="378" stip="8 Level10 Star|Attack Level +31\nHealth Máxima +303\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *1230"/>
 	</i>	
 	<i step="8" name="8" genemap="8,11,14,17,20,23,26,29,32,36">	
-		<s star="1" name="8阶1星" rate="95" cost="7,1555" attrdata="1,33,10,33" effect="403" stip="8阶1星|攻击等级+33\n韧性+33|需要基因碎片1555"/>
-		<s star="2" name="8阶2星" rate="95" cost="7,1560" attrdata="2,33,9,33" effect="403" stip="8阶2星|防御等级+33\n暴击+33|需要基因碎片1560"/>
-		<s star="3" name="8阶3星" rate="95" cost="7,1565" attrdata="1,34,3,336" effect="413" stip="8阶3星|攻击等级+34\n生命上限+336|需要基因碎片1565"/>
-		<s star="4" name="8阶4星" rate="95" cost="7,1570" attrdata="9,34,10,34" effect="415" stip="8阶4星|暴击+34\n韧性+34|需要基因碎片1570"/>
-		<s star="5" name="8阶5星" rate="95" cost="7,1575" attrdata="2,34,3,340" effect="415" stip="8阶5星|防御等级+34\n生命上限+340|需要基因碎片1575"/>
-		<s star="6" name="8阶6星" rate="95" cost="7,1580" attrdata="1,34,9,34" effect="415" stip="8阶6星|攻击等级+34\n暴击+34|需要基因碎片1580"/>
-		<s star="7" name="8阶7星" rate="95" cost="7,1585" attrdata="2,34,10,34" effect="415" stip="8阶7星|防御等级+34\n韧性+34|需要基因碎片1585"/>
-		<s star="8" name="8阶8星" rate="95" cost="7,1590" attrdata="3,340,9,35" effect="421" stip="8阶8星|生命上限+340\n暴击+35|需要基因碎片1590"/>
-		<s star="9" name="8阶9星" rate="95" cost="7,1595" attrdata="2,35,10,35" effect="427" stip="8阶9星|防御等级+35\n韧性+35|需要基因碎片1595"/>
-		<s star="10" name="8阶10星" rate="95" cost="7,1600" attrdata="1,35,3,344,11,20,12,180" effect="428" stip="9阶10星|攻击等级+35\n生命上限+344\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片1600"/>
+		<s star="1" name="8 Level1 Star" rate="95" cost="7,1555" attrdata="1,33,10,33" effect="403" stip="8 Level1 Star|Attack Level +33\nPersistência +33| Precisa Partes de Genes *1555"/>
+		<s star="2" name="8 Level2 Star" rate="95" cost="7,1560" attrdata="2,33,9,33" effect="403" stip="8 Level2 Star|Level Defesa +33\nStrike Crítico +33| Precisa Partes de Genes *1560"/>
+		<s star="3" name="8 Level3 Star" rate="95" cost="7,1565" attrdata="1,34,3,336" effect="413" stip="8 Level3 Star|Attack Level +34\nHealth Máxima +336| Precisa Partes de Genes *1565"/>
+		<s star="4" name="8 Level4 Star" rate="95" cost="7,1570" attrdata="9,34,10,34" effect="415" stip="8 Level4 Star|Strike Crítico +34\nPersistência +34| Precisa Partes de Genes *1570"/>
+		<s star="5" name="8 Level5 Star" rate="95" cost="7,1575" attrdata="2,34,3,340" effect="415" stip="8 Level5 Star|Level Defesa +34\nHealth Máxima +340| Precisa Partes de Genes *1575"/>
+		<s star="6" name="8 Level6 Star" rate="95" cost="7,1580" attrdata="1,34,9,34" effect="415" stip="8 Level6 Star|Attack Level +34\nStrike Crítico +34| Precisa Partes de Genes *1580"/>
+		<s star="7" name="8 Level7 Star" rate="95" cost="7,1585" attrdata="2,34,10,34" effect="415" stip="8 Level7 Star|Level Defesa +34\nPersistência +34| Precisa Partes de Genes *1585"/>
+		<s star="8" name="8 Level8 Star" rate="95" cost="7,1590" attrdata="3,340,9,35" effect="421" stip="8 Level8 Star|Health Máxima +340\nStrike Crítico +35| Precisa Partes de Genes *1590"/>
+		<s star="9" name="8 Level9 Star" rate="95" cost="7,1595" attrdata="2,35,10,35" effect="427" stip="8 Level9 Star|Level Defesa +35\nPersistência +35| Precisa Partes de Genes *1595"/>
+		<s star="10" name="8 Level10 Star" rate="95" cost="7,1600" attrdata="1,35,3,344,11,20,12,180" effect="428" stip="9 Level10 Star|Attack Level +35\nHealth Máxima +344\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *1600"/>
 	</i>	
 	<i step="9" name="9" genemap="1,4,7,10,13,16,19,22,25,29">	
-		<s star="1" name="9阶1星" rate="95" cost="7,1985" attrdata="1,37,10,37" effect="452" stip="9阶1星|攻击等级+37\n韧性+37|需要基因碎片1985"/>
-		<s star="2" name="9阶2星" rate="95" cost="7,1990" attrdata="2,37,9,37" effect="452" stip="9阶2星|防御等级+37\n暴击+37|需要基因碎片1990"/>
-		<s star="3" name="9阶3星" rate="95" cost="7,1995" attrdata="1,38,3,376" effect="462" stip="9阶3星|攻击等级+38\n生命上限+376|需要基因碎片1995"/>
-		<s star="4" name="9阶4星" rate="95" cost="7,2000" attrdata="9,38,10,38" effect="464" stip="9阶4星|暴击+38\n韧性+38|需要基因碎片2000"/>
-		<s star="5" name="9阶5星" rate="95" cost="7,2005" attrdata="2,38,3,380" effect="464" stip="9阶5星|防御等级+38\n生命上限+380|需要基因碎片2005"/>
-		<s star="6" name="9阶6星" rate="95" cost="7,2010" attrdata="1,38,9,38" effect="464" stip="9阶6星|攻击等级+38\n暴击+38|需要基因碎片2010"/>
-		<s star="7" name="9阶7星" rate="95" cost="7,2015" attrdata="2,38,10,38" effect="464" stip="9阶7星|防御等级+38\n韧性+38|需要基因碎片2015"/>
-		<s star="8" name="9阶8星" rate="95" cost="7,2020" attrdata="3,380,9,39" effect="470" stip="9阶8星|生命上限+380\n暴击+39|需要基因碎片2020"/>
-		<s star="9" name="9阶9星" rate="95" cost="7,2025" attrdata="2,39,10,39" effect="476" stip="9阶9星|防御等级+39\n韧性+39|需要基因碎片2025"/>
-		<s star="10" name="9阶10星" rate="95" cost="7,2030" attrdata="1,39,3,384,11,20,12,180" effect="477" stip="10阶10星|攻击等级+39\n生命上限+384\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片2030"/>
+		<s star="1" name="9 Level1 Star" rate="95" cost="7,1985" attrdata="1,37,10,37" effect="452" stip="9 Level1 Star|Attack Level +37\nPersistência +37| Precisa Partes de Genes *1985"/>
+		<s star="2" name="9 Level2 Star" rate="95" cost="7,1990" attrdata="2,37,9,37" effect="452" stip="9 Level2 Star|Level Defesa +37\nStrike Crítico +37| Precisa Partes de Genes *1990"/>
+		<s star="3" name="9 Level3 Star" rate="95" cost="7,1995" attrdata="1,38,3,376" effect="462" stip="9 Level3 Star|Attack Level +38\nHealth Máxima +376| Precisa Partes de Genes *1995"/>
+		<s star="4" name="9 Level4 Star" rate="95" cost="7,2000" attrdata="9,38,10,38" effect="464" stip="9 Level4 Star|Strike Crítico +38\nPersistência +38| Precisa Partes de Genes *2000"/>
+		<s star="5" name="9 Level5 Star" rate="95" cost="7,2005" attrdata="2,38,3,380" effect="464" stip="9 Level5 Star|Level Defesa +38\nHealth Máxima +380| Precisa Partes de Genes *2005"/>
+		<s star="6" name="9 Level6 Star" rate="95" cost="7,2010" attrdata="1,38,9,38" effect="464" stip="9 Level6 Star|Attack Level +38\nStrike Crítico +38| Precisa Partes de Genes *2010"/>
+		<s star="7" name="9 Level7 Star" rate="95" cost="7,2015" attrdata="2,38,10,38" effect="464" stip="9 Level7 Star|Level Defesa +38\nPersistência +38| Precisa Partes de Genes *2015"/>
+		<s star="8" name="9 Level8 Star" rate="95" cost="7,2020" attrdata="3,380,9,39" effect="470" stip="9 Level8 Star|Health Máxima +380\nStrike Crítico +39| Precisa Partes de Genes *2020"/>
+		<s star="9" name="9 Level9 Star" rate="95" cost="7,2025" attrdata="2,39,10,39" effect="476" stip="9 Level9 Star|Level Defesa +39\nPersistência +39| Precisa Partes de Genes *2025"/>
+		<s star="10" name="9 Level10 Star" rate="95" cost="7,2030" attrdata="1,39,3,384,11,20,12,180" effect="477" stip="10 Level10 Star|Attack Level +39\nHealth Máxima +384\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *2030"/>
 	</i>	
 	<i step="10" name="10" genemap="9,12,15,18,21,24,27,30,33,37">	
-		<s star="1" name="10阶1星" rate="90" cost="7,2505" attrdata="1,41,10,41" effect="501" stip="10阶1星|攻击等级+41\n韧性+41|需要基因碎片2505"/>
-		<s star="2" name="10阶2星" rate="90" cost="7,2510" attrdata="2,41,9,41" effect="501" stip="10阶2星|防御等级+41\n暴击+41|需要基因碎片2510"/>
-		<s star="3" name="10阶3星" rate="90" cost="7,2515" attrdata="1,42,3,415" effect="510" stip="10阶3星|攻击等级+42\n生命上限+415|需要基因碎片2515"/>
-		<s star="4" name="10阶4星" rate="90" cost="7,2520" attrdata="9,42,10,42" effect="513" stip="10阶4星|暴击+42\n韧性+42|需要基因碎片2520"/>
-		<s star="5" name="10阶5星" rate="90" cost="7,2525" attrdata="2,42,3,420" effect="513" stip="10阶5星|防御等级+42\n生命上限+420|需要基因碎片2525"/>
-		<s star="6" name="10阶6星" rate="90" cost="7,2530" attrdata="1,42,9,42" effect="513" stip="10阶6星|攻击等级+42\n暴击+42|需要基因碎片2530"/>
-		<s star="7" name="10阶7星" rate="90" cost="7,2535" attrdata="2,42,10,42" effect="513" stip="10阶7星|防御等级+42\n韧性+42|需要基因碎片2535"/>
-		<s star="8" name="10阶8星" rate="90" cost="7,2540" attrdata="3,420,9,43" effect="519" stip="10阶8星|生命上限+420\n暴击+43|需要基因碎片2540"/>
-		<s star="9" name="10阶9星" rate="90" cost="7,2545" attrdata="2,43,10,43" effect="525" stip="10阶9星|防御等级+43\n韧性+43|需要基因碎片2545"/>
-		<s star="10" name="10阶10星" rate="90" cost="7,2550" attrdata="1,43,3,425,11,20,12,180" effect="526" stip="11阶10星|攻击等级+43\n生命上限+425\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片2550"/>
+		<s star="1" name="10 Level1 Star" rate="90" cost="7,2505" attrdata="1,41,10,41" effect="501" stip="10 Level1 Star|Attack Level +41\nPersistência +41| Precisa Partes de Genes *2505"/>
+		<s star="2" name="10 Level2 Star" rate="90" cost="7,2510" attrdata="2,41,9,41" effect="501" stip="10 Level2 Star|Level Defesa +41\nStrike Crítico +41| Precisa Partes de Genes *2510"/>
+		<s star="3" name="10 Level3 Star" rate="90" cost="7,2515" attrdata="1,42,3,415" effect="510" stip="10 Level3 Star|Attack Level +42\nHealth Máxima +415| Precisa Partes de Genes *2515"/>
+		<s star="4" name="10 Level4 Star" rate="90" cost="7,2520" attrdata="9,42,10,42" effect="513" stip="10 Level4 Star|Strike Crítico +42\nPersistência +42| Precisa Partes de Genes *2520"/>
+		<s star="5" name="10 Level5 Star" rate="90" cost="7,2525" attrdata="2,42,3,420" effect="513" stip="10 Level5 Star|Level Defesa +42\nHealth Máxima +420| Precisa Partes de Genes *2525"/>
+		<s star="6" name="10 Level6 Star" rate="90" cost="7,2530" attrdata="1,42,9,42" effect="513" stip="10 Level6 Star|Attack Level +42\nStrike Crítico +42| Precisa Partes de Genes *2530"/>
+		<s star="7" name="10 Level7 Star" rate="90" cost="7,2535" attrdata="2,42,10,42" effect="513" stip="10 Level7 Star|Level Defesa +42\nPersistência +42| Precisa Partes de Genes *2535"/>
+		<s star="8" name="10 Level8 Star" rate="90" cost="7,2540" attrdata="3,420,9,43" effect="519" stip="10 Level8 Star|Health Máxima +420\nStrike Crítico +43| Precisa Partes de Genes *2540"/>
+		<s star="9" name="10 Level9 Star" rate="90" cost="7,2545" attrdata="2,43,10,43" effect="525" stip="10 Level9 Star|Level Defesa +43\nPersistência +43| Precisa Partes de Genes *2545"/>
+		<s star="10" name="10 Level10 Star" rate="90" cost="7,2550" attrdata="1,43,3,425,11,20,12,180" effect="526" stip="11 Level10 Star|Attack Level +43\nHealth Máxima +425\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *2550"/>
 	</i>	
 	<i step="11" name="11" genemap="7,10,13,16,19,22,25,28,31,35">	
-		<s star="1" name="11阶1星" rate="90" cost="7,3095" attrdata="1,45,10,45" effect="550" stip="11阶1星|攻击等级+45\n韧性+45|需要基因碎片3095"/>
-		<s star="2" name="11阶2星" rate="90" cost="7,3100" attrdata="2,45,9,45" effect="550" stip="11阶2星|防御等级+45\n暴击+45|需要基因碎片3100"/>
-		<s star="3" name="11阶3星" rate="90" cost="7,3105" attrdata="1,46,3,455" effect="559" stip="11阶3星|攻击等级+46\n生命上限+455|需要基因碎片3105"/>
-		<s star="4" name="11阶4星" rate="90" cost="7,3110" attrdata="9,46,10,46" effect="562" stip="11阶4星|暴击+46\n韧性+46|需要基因碎片3110"/>
-		<s star="5" name="11阶5星" rate="90" cost="7,3115" attrdata="2,46,3,460" effect="562" stip="11阶5星|防御等级+46\n生命上限+460|需要基因碎片3115"/>
-		<s star="6" name="11阶6星" rate="90" cost="7,3120" attrdata="1,46,9,46" effect="562" stip="11阶6星|攻击等级+46\n暴击+46|需要基因碎片3120"/>
-		<s star="7" name="11阶7星" rate="90" cost="7,3125" attrdata="2,46,10,46" effect="562" stip="11阶7星|防御等级+46\n韧性+46|需要基因碎片3125"/>
-		<s star="8" name="11阶8星" rate="90" cost="7,3130" attrdata="3,460,9,47" effect="568" stip="11阶8星|生命上限+460\n暴击+47|需要基因碎片3130"/>
-		<s star="9" name="11阶9星" rate="90" cost="7,3135" attrdata="2,47,10,47" effect="574" stip="11阶9星|防御等级+47\n韧性+47|需要基因碎片3135"/>
-		<s star="10" name="11阶10星" rate="90" cost="7,3140" attrdata="1,47,3,465,11,20,12,180" effect="575" stip="12阶10星|攻击等级+47\n生命上限+465\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片3140"/>
+		<s star="1" name="11 Level1 Star" rate="90" cost="7,3095" attrdata="1,45,10,45" effect="550" stip="11 Level1 Star|Attack Level +45\nPersistência +45| Precisa Partes de Genes *3095"/>
+		<s star="2" name="11 Level2 Star" rate="90" cost="7,3100" attrdata="2,45,9,45" effect="550" stip="11 Level2 Star|Level Defesa +45\nStrike Crítico +45| Precisa Partes de Genes *3100"/>
+		<s star="3" name="11 Level3 Star" rate="90" cost="7,3105" attrdata="1,46,3,455" effect="559" stip="11 Level3 Star|Attack Level +46\nHealth Máxima +455| Precisa Partes de Genes *3105"/>
+		<s star="4" name="11 Level4 Star" rate="90" cost="7,3110" attrdata="9,46,10,46" effect="562" stip="11 Level4 Star|Strike Crítico +46\nPersistência +46| Precisa Partes de Genes *3110"/>
+		<s star="5" name="11 Level5 Star" rate="90" cost="7,3115" attrdata="2,46,3,460" effect="562" stip="11 Level5 Star|Level Defesa +46\nHealth Máxima +460| Precisa Partes de Genes *3115"/>
+		<s star="6" name="11 Level6 Star" rate="90" cost="7,3120" attrdata="1,46,9,46" effect="562" stip="11 Level6 Star|Attack Level +46\nStrike Crítico +46| Precisa Partes de Genes *3120"/>
+		<s star="7" name="11 Level7 Star" rate="90" cost="7,3125" attrdata="2,46,10,46" effect="562" stip="11 Level7 Star|Level Defesa +46\nPersistência +46| Precisa Partes de Genes *3125"/>
+		<s star="8" name="11 Level8 Star" rate="90" cost="7,3130" attrdata="3,460,9,47" effect="568" stip="11 Level8 Star|Health Máxima +460\nStrike Crítico +47| Precisa Partes de Genes *3130"/>
+		<s star="9" name="11 Level9 Star" rate="90" cost="7,3135" attrdata="2,47,10,47" effect="574" stip="11 Level9 Star|Level Defesa +47\nPersistência +47| Precisa Partes de Genes *3135"/>
+		<s star="10" name="11 Level10 Star" rate="90" cost="7,3140" attrdata="1,47,3,465,11,20,12,180" effect="575" stip="12 Level10 Star|Attack Level +47\nHealth Máxima +465\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *3140"/>
 	</i>	
 	<i step="12" name="12" genemap="2,5,8,11,14,17,20,23,26,30">	
-		<s star="1" name="12阶1星" rate="90" cost="7,3765" attrdata="1,49,10,49" effect="598" stip="12阶1星|攻击等级+49\n韧性+49|需要基因碎片3765"/>
-		<s star="2" name="12阶2星" rate="90" cost="7,3770" attrdata="2,49,9,49" effect="598" stip="12阶2星|防御等级+49\n暴击+49|需要基因碎片3770"/>
-		<s star="3" name="12阶3星" rate="90" cost="7,3775" attrdata="1,50,3,495" effect="608" stip="12阶3星|攻击等级+50\n生命上限+495|需要基因碎片3775"/>
-		<s star="4" name="12阶4星" rate="90" cost="7,3780" attrdata="9,50,10,50" effect="611" stip="12阶4星|暴击+50\n韧性+50|需要基因碎片3780"/>
-		<s star="5" name="12阶5星" rate="90" cost="7,3785" attrdata="2,50,3,500" effect="611" stip="12阶5星|防御等级+50\n生命上限+500|需要基因碎片3785"/>
-		<s star="6" name="12阶6星" rate="90" cost="7,3790" attrdata="1,50,9,50" effect="611" stip="12阶6星|攻击等级+50\n暴击+50|需要基因碎片3790"/>
-		<s star="7" name="12阶7星" rate="90" cost="7,3795" attrdata="2,50,10,50" effect="611" stip="12阶7星|防御等级+50\n韧性+50|需要基因碎片3795"/>
-		<s star="8" name="12阶8星" rate="90" cost="7,3800" attrdata="3,500,9,51" effect="617" stip="12阶8星|生命上限+500\n暴击+51|需要基因碎片3800"/>
-		<s star="9" name="12阶9星" rate="90" cost="7,3805" attrdata="2,51,10,51" effect="623" stip="12阶9星|防御等级+51\n韧性+51|需要基因碎片3805"/>
-		<s star="10" name="12阶10星" rate="90" cost="7,3810" attrdata="1,51,3,505,11,20,12,180" effect="624" stip="13阶10星|攻击等级+51\n生命上限+505\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片3810"/>
+		<s star="1" name="12 Level1 Star" rate="90" cost="7,3765" attrdata="1,49,10,49" effect="598" stip="12 Level1 Star|Attack Level +49\nPersistência +49| Precisa Partes de Genes *3765"/>
+		<s star="2" name="12 Level2 Star" rate="90" cost="7,3770" attrdata="2,49,9,49" effect="598" stip="12 Level2 Star|Level Defesa +49\nStrike Crítico +49| Precisa Partes de Genes *3770"/>
+		<s star="3" name="12 Level3 Star" rate="90" cost="7,3775" attrdata="1,50,3,495" effect="608" stip="12 Level3 Star|Attack Level +50\nHealth Máxima +495| Precisa Partes de Genes *3775"/>
+		<s star="4" name="12 Level4 Star" rate="90" cost="7,3780" attrdata="9,50,10,50" effect="611" stip="12 Level4 Star|Strike Crítico +50\nPersistência +50| Precisa Partes de Genes *3780"/>
+		<s star="5" name="12 Level5 Star" rate="90" cost="7,3785" attrdata="2,50,3,500" effect="611" stip="12 Level5 Star|Level Defesa +50\nHealth Máxima +500| Precisa Partes de Genes *3785"/>
+		<s star="6" name="12 Level6 Star" rate="90" cost="7,3790" attrdata="1,50,9,50" effect="611" stip="12 Level6 Star|Attack Level +50\nStrike Crítico +50| Precisa Partes de Genes *3790"/>
+		<s star="7" name="12 Level7 Star" rate="90" cost="7,3795" attrdata="2,50,10,50" effect="611" stip="12 Level7 Star|Level Defesa +50\nPersistência +50| Precisa Partes de Genes *3795"/>
+		<s star="8" name="12 Level8 Star" rate="90" cost="7,3800" attrdata="3,500,9,51" effect="617" stip="12 Level8 Star|Health Máxima +500\nStrike Crítico +51| Precisa Partes de Genes *3800"/>
+		<s star="9" name="12 Level9 Star" rate="90" cost="7,3805" attrdata="2,51,10,51" effect="623" stip="12 Level9 Star|Level Defesa +51\nPersistência +51| Precisa Partes de Genes *3805"/>
+		<s star="10" name="12 Level10 Star" rate="90" cost="7,3810" attrdata="1,51,3,505,11,20,12,180" effect="624" stip="13 Level10 Star|Attack Level +51\nHealth Máxima +505\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *3810"/>
 	</i>	
 	<i step="13" name="13" genemap="10,13,16,19,22,25,28,31,34,38">	
-		<s star="1" name="13阶1星" rate="90" cost="7,4535" attrdata="1,53,10,53" effect="647" stip="13阶1星|攻击等级+53\n韧性+53|需要基因碎片4535"/>
-		<s star="2" name="13阶2星" rate="90" cost="7,4540" attrdata="2,53,9,53" effect="647" stip="13阶2星|防御等级+53\n暴击+53|需要基因碎片4540"/>
-		<s star="3" name="13阶3星" rate="90" cost="7,4545" attrdata="1,54,3,534" effect="656" stip="13阶3星|攻击等级+54\n生命上限+534|需要基因碎片4545"/>
-		<s star="4" name="13阶4星" rate="90" cost="7,4550" attrdata="9,54,10,54" effect="660" stip="13阶4星|暴击+54\n韧性+54|需要基因碎片4550"/>
-		<s star="5" name="13阶5星" rate="90" cost="7,4555" attrdata="2,54,3,540" effect="660" stip="13阶5星|防御等级+54\n生命上限+540|需要基因碎片4555"/>
-		<s star="6" name="13阶6星" rate="90" cost="7,4560" attrdata="1,54,9,54" effect="660" stip="13阶6星|攻击等级+54\n暴击+54|需要基因碎片4560"/>
-		<s star="7" name="13阶7星" rate="90" cost="7,4565" attrdata="2,54,10,54" effect="660" stip="13阶7星|防御等级+54\n韧性+54|需要基因碎片4565"/>
-		<s star="8" name="13阶8星" rate="90" cost="7,4570" attrdata="3,540,9,55" effect="666" stip="13阶8星|生命上限+540\n暴击+55|需要基因碎片4570"/>
-		<s star="9" name="13阶9星" rate="90" cost="7,4575" attrdata="2,55,10,55" effect="672" stip="13阶9星|防御等级+55\n韧性+55|需要基因碎片4575"/>
-		<s star="10" name="13阶10星" rate="90" cost="7,4580" attrdata="1,55,3,546,11,20,12,180" effect="673" stip="14阶10星|攻击等级+55\n生命上限+546\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片4580"/>
+		<s star="1" name="13 Level1 Star" rate="90" cost="7,4535" attrdata="1,53,10,53" effect="647" stip="13 Level1 Star|Attack Level +53\nPersistência +53| Precisa Partes de Genes *4535"/>
+		<s star="2" name="13 Level2 Star" rate="90" cost="7,4540" attrdata="2,53,9,53" effect="647" stip="13 Level2 Star|Level Defesa +53\nStrike Crítico +53| Precisa Partes de Genes *4540"/>
+		<s star="3" name="13 Level3 Star" rate="90" cost="7,4545" attrdata="1,54,3,534" effect="656" stip="13 Level3 Star|Attack Level +54\nHealth Máxima +534| Precisa Partes de Genes *4545"/>
+		<s star="4" name="13 Level4 Star" rate="90" cost="7,4550" attrdata="9,54,10,54" effect="660" stip="13 Level4 Star|Strike Crítico +54\nPersistência +54| Precisa Partes de Genes *4550"/>
+		<s star="5" name="13 Level5 Star" rate="90" cost="7,4555" attrdata="2,54,3,540" effect="660" stip="13 Level5 Star|Level Defesa +54\nHealth Máxima +540| Precisa Partes de Genes *4555"/>
+		<s star="6" name="13 Level6 Star" rate="90" cost="7,4560" attrdata="1,54,9,54" effect="660" stip="13 Level6 Star|Attack Level +54\nStrike Crítico +54| Precisa Partes de Genes *4560"/>
+		<s star="7" name="13 Level7 Star" rate="90" cost="7,4565" attrdata="2,54,10,54" effect="660" stip="13 Level7 Star|Level Defesa +54\nPersistência +54| Precisa Partes de Genes *4565"/>
+		<s star="8" name="13 Level8 Star" rate="90" cost="7,4570" attrdata="3,540,9,55" effect="666" stip="13 Level8 Star|Health Máxima +540\nStrike Crítico +55| Precisa Partes de Genes *4570"/>
+		<s star="9" name="13 Level9 Star" rate="90" cost="7,4575" attrdata="2,55,10,55" effect="672" stip="13 Level9 Star|Level Defesa +55\nPersistência +55| Precisa Partes de Genes *4575"/>
+		<s star="10" name="13 Level10 Star" rate="90" cost="7,4580" attrdata="1,55,3,546,11,20,12,180" effect="673" stip="14 Level10 Star|Attack Level +55\nHealth Máxima +546\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *4580"/>
 	</i>	
 	<i step="14" name="14" genemap="5,8,11,14,17,20,23,26,29,33">	
-		<s star="1" name="14阶1星" rate="90" cost="7,5405" attrdata="1,57,10,57" effect="696" stip="14阶1星|攻击等级+57\n韧性+57|需要基因碎片5405"/>
-		<s star="2" name="14阶2星" rate="90" cost="7,5410" attrdata="2,57,9,57" effect="696" stip="14阶2星|防御等级+57\n暴击+57|需要基因碎片5410"/>
-		<s star="3" name="14阶3星" rate="90" cost="7,5415" attrdata="1,58,3,574" effect="705" stip="14阶3星|攻击等级+58\n生命上限+574|需要基因碎片5415"/>
-		<s star="4" name="14阶4星" rate="90" cost="7,5420" attrdata="9,58,10,58" effect="708" stip="14阶4星|暴击+58\n韧性+58|需要基因碎片5420"/>
-		<s star="5" name="14阶5星" rate="90" cost="7,5425" attrdata="2,58,3,580" effect="708" stip="14阶5星|防御等级+58\n生命上限+580|需要基因碎片5425"/>
-		<s star="6" name="14阶6星" rate="90" cost="7,5430" attrdata="1,58,9,58" effect="708" stip="14阶6星|攻击等级+58\n暴击+58|需要基因碎片5430"/>
-		<s star="7" name="14阶7星" rate="90" cost="7,5435" attrdata="2,58,10,58" effect="708" stip="14阶7星|防御等级+58\n韧性+58|需要基因碎片5435"/>
-		<s star="8" name="14阶8星" rate="90" cost="7,5440" attrdata="3,580,9,59" effect="715" stip="14阶8星|生命上限+580\n暴击+59|需要基因碎片5440"/>
-		<s star="9" name="14阶9星" rate="90" cost="7,5445" attrdata="2,59,10,59" effect="721" stip="14阶9星|防御等级+59\n韧性+59|需要基因碎片5445"/>
-		<s star="10" name="14阶10星" rate="90" cost="7,5450" attrdata="1,59,3,586,11,20,12,180" effect="722" stip="15阶10星|攻击等级+59\n生命上限+586\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片5450"/>
+		<s star="1" name="14 Level1 Star" rate="90" cost="7,5405" attrdata="1,57,10,57" effect="696" stip="14 Level1 Star|Attack Level +57\nPersistência +57| Precisa Partes de Genes *5405"/>
+		<s star="2" name="14 Level2 Star" rate="90" cost="7,5410" attrdata="2,57,9,57" effect="696" stip="14 Level2 Star|Level Defesa +57\nStrike Crítico +57| Precisa Partes de Genes *5410"/>
+		<s star="3" name="14 Level3 Star" rate="90" cost="7,5415" attrdata="1,58,3,574" effect="705" stip="14 Level3 Star|Attack Level +58\nHealth Máxima +574| Precisa Partes de Genes *5415"/>
+		<s star="4" name="14 Level4 Star" rate="90" cost="7,5420" attrdata="9,58,10,58" effect="708" stip="14 Level4 Star|Strike Crítico +58\nPersistência +58| Precisa Partes de Genes *5420"/>
+		<s star="5" name="14 Level5 Star" rate="90" cost="7,5425" attrdata="2,58,3,580" effect="708" stip="14 Level5 Star|Level Defesa +58\nHealth Máxima +580| Precisa Partes de Genes *5425"/>
+		<s star="6" name="14 Level6 Star" rate="90" cost="7,5430" attrdata="1,58,9,58" effect="708" stip="14 Level6 Star|Attack Level +58\nStrike Crítico +58| Precisa Partes de Genes *5430"/>
+		<s star="7" name="14 Level7 Star" rate="90" cost="7,5435" attrdata="2,58,10,58" effect="708" stip="14 Level7 Star|Level Defesa +58\nPersistência +58| Precisa Partes de Genes *5435"/>
+		<s star="8" name="14 Level8 Star" rate="90" cost="7,5440" attrdata="3,580,9,59" effect="715" stip="14 Level8 Star|Health Máxima +580\nStrike Crítico +59| Precisa Partes de Genes *5440"/>
+		<s star="9" name="14 Level9 Star" rate="90" cost="7,5445" attrdata="2,59,10,59" effect="721" stip="14 Level9 Star|Level Defesa +59\nPersistência +59| Precisa Partes de Genes *5445"/>
+		<s star="10" name="14 Level10 Star" rate="90" cost="7,5450" attrdata="1,59,3,586,11,20,12,180" effect="722" stip="15 Level10 Star|Attack Level +59\nHealth Máxima +586\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *5450"/>
 	</i>	
 	<i step="15" name="15" genemap="6,9,12,15,18,21,24,27,30,34">	
-		<s star="1" name="15阶1星" rate="85" cost="7,6375" attrdata="1,61,10,61" effect="745" stip="15阶1星|攻击等级+61\n韧性+61|需要基因碎片6375"/>
-		<s star="2" name="15阶2星" rate="85" cost="7,6380" attrdata="2,61,9,61" effect="745" stip="15阶2星|防御等级+61\n暴击+61|需要基因碎片6380"/>
-		<s star="3" name="15阶3星" rate="85" cost="7,6385" attrdata="1,62,3,613" effect="753" stip="15阶3星|攻击等级+62\n生命上限+613|需要基因碎片6385"/>
-		<s star="4" name="15阶4星" rate="85" cost="7,6390" attrdata="9,62,10,62" effect="757" stip="15阶4星|暴击+62\n韧性+62|需要基因碎片6390"/>
-		<s star="5" name="15阶5星" rate="85" cost="7,6395" attrdata="2,62,3,620" effect="757" stip="15阶5星|防御等级+62\n生命上限+620|需要基因碎片6395"/>
-		<s star="6" name="15阶6星" rate="85" cost="7,6400" attrdata="1,62,9,62" effect="757" stip="15阶6星|攻击等级+62\n暴击+62|需要基因碎片6400"/>
-		<s star="7" name="15阶7星" rate="85" cost="7,6405" attrdata="2,62,10,62" effect="757" stip="15阶7星|防御等级+62\n韧性+62|需要基因碎片6405"/>
-		<s star="8" name="15阶8星" rate="85" cost="7,6410" attrdata="3,620,9,63" effect="763" stip="15阶8星|生命上限+620\n暴击+63|需要基因碎片6410"/>
-		<s star="9" name="15阶9星" rate="85" cost="7,6415" attrdata="2,63,10,63" effect="770" stip="15阶9星|防御等级+63\n韧性+63|需要基因碎片6415"/>
-		<s star="10" name="15阶10星" rate="85" cost="7,6420" attrdata="1,63,3,627,11,20,12,180" effect="772" stip="16阶10星|攻击等级+63\n生命上限+627\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片6420"/>
+		<s star="1" name="15 Level1 Star" rate="85" cost="7,6375" attrdata="1,61,10,61" effect="745" stip="15 Level1 Star|Attack Level +61\nPersistência +61| Precisa Partes de Genes *6375"/>
+		<s star="2" name="15 Level2 Star" rate="85" cost="7,6380" attrdata="2,61,9,61" effect="745" stip="15 Level2 Star|Level Defesa +61\nStrike Crítico +61| Precisa Partes de Genes *6380"/>
+		<s star="3" name="15 Level3 Star" rate="85" cost="7,6385" attrdata="1,62,3,613" effect="753" stip="15 Level3 Star|Attack Level +62\nHealth Máxima +613| Precisa Partes de Genes *6385"/>
+		<s star="4" name="15 Level4 Star" rate="85" cost="7,6390" attrdata="9,62,10,62" effect="757" stip="15 Level4 Star|Strike Crítico +62\nPersistência +62| Precisa Partes de Genes *6390"/>
+		<s star="5" name="15 Level5 Star" rate="85" cost="7,6395" attrdata="2,62,3,620" effect="757" stip="15 Level5 Star|Level Defesa +62\nHealth Máxima +620| Precisa Partes de Genes *6395"/>
+		<s star="6" name="15 Level6 Star" rate="85" cost="7,6400" attrdata="1,62,9,62" effect="757" stip="15 Level6 Star|Attack Level +62\nStrike Crítico +62| Precisa Partes de Genes *6400"/>
+		<s star="7" name="15 Level7 Star" rate="85" cost="7,6405" attrdata="2,62,10,62" effect="757" stip="15 Level7 Star|Level Defesa +62\nPersistência +62| Precisa Partes de Genes *6405"/>
+		<s star="8" name="15 Level8 Star" rate="85" cost="7,6410" attrdata="3,620,9,63" effect="763" stip="15 Level8 Star|Health Máxima +620\nStrike Crítico +63| Precisa Partes de Genes *6410"/>
+		<s star="9" name="15 Level9 Star" rate="85" cost="7,6415" attrdata="2,63,10,63" effect="770" stip="15 Level9 Star|Level Defesa +63\nPersistência +63| Precisa Partes de Genes *6415"/>
+		<s star="10" name="15 Level10 Star" rate="85" cost="7,6420" attrdata="1,63,3,627,11,20,12,180" effect="772" stip="16 Level10 Star|Attack Level +63\nHealth Máxima +627\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *6420"/>
 	</i>	
 	<i step="16" name="16" genemap="4,7,10,13,16,19,22,25,28,32">	
-		<s star="1" name="16阶1星" rate="85" cost="7,7455" attrdata="1,65,10,65" effect="794" stip="16阶1星|攻击等级+65\n韧性+65|需要基因碎片7455"/>
-		<s star="2" name="16阶2星" rate="85" cost="7,7460" attrdata="2,65,9,65" effect="794" stip="16阶2星|防御等级+65\n暴击+65|需要基因碎片7460"/>
-		<s star="3" name="16阶3星" rate="85" cost="7,7465" attrdata="1,66,3,653" effect="802" stip="16阶3星|攻击等级+66\n生命上限+653|需要基因碎片7465"/>
-		<s star="4" name="16阶4星" rate="85" cost="7,7470" attrdata="9,66,10,66" effect="806" stip="16阶4星|暴击+66\n韧性+66|需要基因碎片7470"/>
-		<s star="5" name="16阶5星" rate="85" cost="7,7475" attrdata="2,66,3,660" effect="806" stip="16阶5星|防御等级+66\n生命上限+660|需要基因碎片7475"/>
-		<s star="6" name="16阶6星" rate="85" cost="7,7480" attrdata="1,66,9,66" effect="806" stip="16阶6星|攻击等级+66\n暴击+66|需要基因碎片7480"/>
-		<s star="7" name="16阶7星" rate="85" cost="7,7485" attrdata="2,66,10,66" effect="806" stip="16阶7星|防御等级+66\n韧性+66|需要基因碎片7485"/>
-		<s star="8" name="16阶8星" rate="85" cost="7,7490" attrdata="3,660,9,67" effect="812" stip="16阶8星|生命上限+660\n暴击+67|需要基因碎片7490"/>
-		<s star="9" name="16阶9星" rate="85" cost="7,7495" attrdata="2,67,10,67" effect="818" stip="16阶9星|防御等级+67\n韧性+67|需要基因碎片7495"/>
-		<s star="10" name="16阶10星" rate="85" cost="7,7500" attrdata="1,67,3,667,11,20,12,180" effect="821" stip="17阶10星|攻击等级+67\n生命上限+667\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片7500"/>
+		<s star="1" name="16 Level1 Star" rate="85" cost="7,7455" attrdata="1,65,10,65" effect="794" stip="16 Level1 Star|Attack Level +65\nPersistência +65| Precisa Partes de Genes *7455"/>
+		<s star="2" name="16 Level2 Star" rate="85" cost="7,7460" attrdata="2,65,9,65" effect="794" stip="16 Level2 Star|Level Defesa +65\nStrike Crítico +65| Precisa Partes de Genes *7460"/>
+		<s star="3" name="16 Level3 Star" rate="85" cost="7,7465" attrdata="1,66,3,653" effect="802" stip="16 Level3 Star|Attack Level +66\nHealth Máxima +653| Precisa Partes de Genes *7465"/>
+		<s star="4" name="16 Level4 Star" rate="85" cost="7,7470" attrdata="9,66,10,66" effect="806" stip="16 Level4 Star|Strike Crítico +66\nPersistência +66| Precisa Partes de Genes *7470"/>
+		<s star="5" name="16 Level5 Star" rate="85" cost="7,7475" attrdata="2,66,3,660" effect="806" stip="16 Level5 Star|Level Defesa +66\nHealth Máxima +660| Precisa Partes de Genes *7475"/>
+		<s star="6" name="16 Level6 Star" rate="85" cost="7,7480" attrdata="1,66,9,66" effect="806" stip="16 Level6 Star|Attack Level +66\nStrike Crítico +66| Precisa Partes de Genes *7480"/>
+		<s star="7" name="16 Level7 Star" rate="85" cost="7,7485" attrdata="2,66,10,66" effect="806" stip="16 Level7 Star|Level Defesa +66\nPersistência +66| Precisa Partes de Genes *7485"/>
+		<s star="8" name="16 Level8 Star" rate="85" cost="7,7490" attrdata="3,660,9,67" effect="812" stip="16 Level8 Star|Health Máxima +660\nStrike Crítico +67| Precisa Partes de Genes *7490"/>
+		<s star="9" name="16 Level9 Star" rate="85" cost="7,7495" attrdata="2,67,10,67" effect="818" stip="16 Level9 Star|Level Defesa +67\nPersistência +67| Precisa Partes de Genes *7495"/>
+		<s star="10" name="16 Level10 Star" rate="85" cost="7,7500" attrdata="1,67,3,667,11,20,12,180" effect="821" stip="17 Level10 Star|Attack Level +67\nHealth Máxima +667\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *7500"/>
 	</i>	
 	<i step="17" name="17" genemap="3,6,9,12,15,18,21,24,27,31">	
-		<s star="1" name="17阶1星" rate="85" cost="7,8655" attrdata="1,69,10,69" effect="843" stip="17阶1星|攻击等级+69\n韧性+69|需要基因碎片8655"/>
-		<s star="2" name="17阶2星" rate="85" cost="7,8660" attrdata="2,69,9,69" effect="843" stip="17阶2星|防御等级+69\n暴击+69|需要基因碎片8660"/>
-		<s star="3" name="17阶3星" rate="85" cost="7,8665" attrdata="1,70,3,693" effect="851" stip="17阶3星|攻击等级+70\n生命上限+693|需要基因碎片8665"/>
-		<s star="4" name="17阶4星" rate="85" cost="7,8670" attrdata="9,70,10,70" effect="855" stip="17阶4星|暴击+70\n韧性+70|需要基因碎片8670"/>
-		<s star="5" name="17阶5星" rate="85" cost="7,8675" attrdata="2,70,3,700" effect="855" stip="17阶5星|防御等级+70\n生命上限+700|需要基因碎片8675"/>
-		<s star="6" name="17阶6星" rate="85" cost="7,8680" attrdata="1,70,9,70" effect="855" stip="17阶6星|攻击等级+70\n暴击+70|需要基因碎片8680"/>
-		<s star="7" name="17阶7星" rate="85" cost="7,8685" attrdata="2,70,10,70" effect="855" stip="17阶7星|防御等级+70\n韧性+70|需要基因碎片8685"/>
-		<s star="8" name="17阶8星" rate="85" cost="7,8690" attrdata="3,700,9,71" effect="861" stip="17阶8星|生命上限+700\n暴击+71|需要基因碎片8690"/>
-		<s star="9" name="17阶9星" rate="85" cost="7,8695" attrdata="2,71,10,71" effect="867" stip="17阶9星|防御等级+71\n韧性+71|需要基因碎片8695"/>
-		<s star="10" name="17阶10星" rate="85" cost="7,8700" attrdata="1,71,3,707,11,20,12,180" effect="870" stip="18阶10星|攻击等级+71\n生命上限+707\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片8700"/>
+		<s star="1" name="17 Level1 Star" rate="85" cost="7,8655" attrdata="1,69,10,69" effect="843" stip="17 Level1 Star|Attack Level +69\nPersistência +69| Precisa Partes de Genes *8655"/>
+		<s star="2" name="17 Level2 Star" rate="85" cost="7,8660" attrdata="2,69,9,69" effect="843" stip="17 Level2 Star|Level Defesa +69\nStrike Crítico +69| Precisa Partes de Genes *8660"/>
+		<s star="3" name="17 Level3 Star" rate="85" cost="7,8665" attrdata="1,70,3,693" effect="851" stip="17 Level3 Star|Attack Level +70\nHealth Máxima +693| Precisa Partes de Genes *8665"/>
+		<s star="4" name="17 Level4 Star" rate="85" cost="7,8670" attrdata="9,70,10,70" effect="855" stip="17 Level4 Star|Strike Crítico +70\nPersistência +70| Precisa Partes de Genes *8670"/>
+		<s star="5" name="17 Level5 Star" rate="85" cost="7,8675" attrdata="2,70,3,700" effect="855" stip="17 Level5 Star|Level Defesa +70\nHealth Máxima +700| Precisa Partes de Genes *8675"/>
+		<s star="6" name="17 Level6 Star" rate="85" cost="7,8680" attrdata="1,70,9,70" effect="855" stip="17 Level6 Star|Attack Level +70\nStrike Crítico +70| Precisa Partes de Genes *8680"/>
+		<s star="7" name="17 Level7 Star" rate="85" cost="7,8685" attrdata="2,70,10,70" effect="855" stip="17 Level7 Star|Level Defesa +70\nPersistência +70| Precisa Partes de Genes *8685"/>
+		<s star="8" name="17 Level8 Star" rate="85" cost="7,8690" attrdata="3,700,9,71" effect="861" stip="17 Level8 Star|Health Máxima +700\nStrike Crítico +71| Precisa Partes de Genes *8690"/>
+		<s star="9" name="17 Level9 Star" rate="85" cost="7,8695" attrdata="2,71,10,71" effect="867" stip="17 Level9 Star|Level Defesa +71\nPersistência +71| Precisa Partes de Genes *8695"/>
+		<s star="10" name="17 Level10 Star" rate="85" cost="7,8700" attrdata="1,71,3,707,11,20,12,180" effect="870" stip="18 Level10 Star|Attack Level +71\nHealth Máxima +707\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *8700"/>
 	</i>	
 	<i step="18" name="18" genemap="8,11,14,17,20,23,26,29,32,36">	
-		<s star="1" name="18阶1星" rate="85" cost="7,9975" attrdata="1,73,10,73" effect="892" stip="18阶1星|攻击等级+73\n韧性+73|需要基因碎片9975"/>
-		<s star="2" name="18阶2星" rate="85" cost="7,9980" attrdata="2,73,9,73" effect="892" stip="18阶2星|防御等级+73\n暴击+73|需要基因碎片9980"/>
-		<s star="3" name="18阶3星" rate="85" cost="7,9985" attrdata="1,74,3,732" effect="899" stip="18阶3星|攻击等级+74\n生命上限+732|需要基因碎片9985"/>
-		<s star="4" name="18阶4星" rate="85" cost="7,9990" attrdata="9,74,10,74" effect="904" stip="18阶4星|暴击+74\n韧性+74|需要基因碎片9990"/>
-		<s star="5" name="18阶5星" rate="85" cost="7,9995" attrdata="2,74,3,740" effect="904" stip="18阶5星|防御等级+74\n生命上限+740|需要基因碎片9995"/>
-		<s star="6" name="18阶6星" rate="85" cost="7,10000" attrdata="1,74,9,74" effect="904" stip="18阶6星|攻击等级+74\n暴击+74|需要基因碎片10000"/>
-		<s star="7" name="18阶7星" rate="85" cost="7,10005" attrdata="2,74,10,74" effect="904" stip="18阶7星|防御等级+74\n韧性+74|需要基因碎片10005"/>
-		<s star="8" name="18阶8星" rate="85" cost="7,10010" attrdata="3,740,9,75" effect="910" stip="18阶8星|生命上限+740\n暴击+75|需要基因碎片10010"/>
-		<s star="9" name="18阶9星" rate="85" cost="7,10015" attrdata="2,75,10,75" effect="916" stip="18阶9星|防御等级+75\n韧性+75|需要基因碎片10015"/>
-		<s star="10" name="18阶10星" rate="85" cost="7,10020" attrdata="1,75,3,748,11,20,12,180" effect="919" stip="19阶10星|攻击等级+75\n生命上限+748\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片10020"/>
+		<s star="1" name="18 Level1 Star" rate="85" cost="7,9975" attrdata="1,73,10,73" effect="892" stip="18 Level1 Star|Attack Level +73\nPersistência +73| Precisa Partes de Genes *9975"/>
+		<s star="2" name="18 Level2 Star" rate="85" cost="7,9980" attrdata="2,73,9,73" effect="892" stip="18 Level2 Star|Level Defesa +73\nStrike Crítico +73| Precisa Partes de Genes *9980"/>
+		<s star="3" name="18 Level3 Star" rate="85" cost="7,9985" attrdata="1,74,3,732" effect="899" stip="18 Level3 Star|Attack Level +74\nHealth Máxima +732| Precisa Partes de Genes *9985"/>
+		<s star="4" name="18 Level4 Star" rate="85" cost="7,9990" attrdata="9,74,10,74" effect="904" stip="18 Level4 Star|Strike Crítico +74\nPersistência +74| Precisa Partes de Genes *9990"/>
+		<s star="5" name="18 Level5 Star" rate="85" cost="7,9995" attrdata="2,74,3,740" effect="904" stip="18 Level5 Star|Level Defesa +74\nHealth Máxima +740| Precisa Partes de Genes *9995"/>
+		<s star="6" name="18 Level6 Star" rate="85" cost="7,10000" attrdata="1,74,9,74" effect="904" stip="18 Level6 Star|Attack Level +74\nStrike Crítico +74| Precisa Partes de Genes *10000"/>
+		<s star="7" name="18 Level7 Star" rate="85" cost="7,10005" attrdata="2,74,10,74" effect="904" stip="18 Level7 Star|Level Defesa +74\nPersistência +74| Precisa Partes de Genes *10005"/>
+		<s star="8" name="18 Level8 Star" rate="85" cost="7,10010" attrdata="3,740,9,75" effect="910" stip="18 Level8 Star|Health Máxima +740\nStrike Crítico +75| Precisa Partes de Genes *10010"/>
+		<s star="9" name="18 Level9 Star" rate="85" cost="7,10015" attrdata="2,75,10,75" effect="916" stip="18 Level9 Star|Level Defesa +75\nPersistência +75| Precisa Partes de Genes *10015"/>
+		<s star="10" name="18 Level10 Star" rate="85" cost="7,10020" attrdata="1,75,3,748,11,20,12,180" effect="919" stip="19 Level10 Star|Attack Level +75\nHealth Máxima +748\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *10020"/>
 	</i>	
 	<i step="19" name="19" genemap="1,4,7,10,13,16,19,22,25,29">	
-		<s star="1" name="19阶1星" rate="85" cost="7,11415" attrdata="1,77,10,77" effect="941" stip="19阶1星|攻击等级+77\n韧性+77|需要基因碎片11415"/>
-		<s star="2" name="19阶2星" rate="85" cost="7,11420" attrdata="2,77,9,77" effect="941" stip="19阶2星|防御等级+77\n暴击+77|需要基因碎片11420"/>
-		<s star="3" name="19阶3星" rate="85" cost="7,11425" attrdata="1,78,3,772" effect="948" stip="19阶3星|攻击等级+78\n生命上限+772|需要基因碎片11425"/>
-		<s star="4" name="19阶4星" rate="85" cost="7,11430" attrdata="9,78,10,78" effect="953" stip="19阶4星|暴击+78\n韧性+78|需要基因碎片11430"/>
-		<s star="5" name="19阶5星" rate="85" cost="7,11435" attrdata="2,78,3,780" effect="953" stip="19阶5星|防御等级+78\n生命上限+780|需要基因碎片11435"/>
-		<s star="6" name="19阶6星" rate="85" cost="7,11440" attrdata="1,78,9,78" effect="953" stip="19阶6星|攻击等级+78\n暴击+78|需要基因碎片11440"/>
-		<s star="7" name="19阶7星" rate="85" cost="7,11445" attrdata="2,78,10,78" effect="953" stip="19阶7星|防御等级+78\n韧性+78|需要基因碎片11445"/>
-		<s star="8" name="19阶8星" rate="85" cost="7,11450" attrdata="3,780,9,79" effect="959" stip="19阶8星|生命上限+780\n暴击+79|需要基因碎片11450"/>
-		<s star="9" name="19阶9星" rate="85" cost="7,11455" attrdata="2,79,10,79" effect="965" stip="19阶9星|防御等级+79\n韧性+79|需要基因碎片11455"/>
-		<s star="10" name="19阶10星" rate="85" cost="7,11460" attrdata="1,79,3,788,11,20,12,180" effect="968" stip="20阶10星|攻击等级+79\n生命上限+788\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片11460"/>
+		<s star="1" name="19 Level1 Star" rate="85" cost="7,11415" attrdata="1,77,10,77" effect="941" stip="19 Level1 Star|Attack Level +77\nPersistência +77| Precisa Partes de Genes *11415"/>
+		<s star="2" name="19 Level2 Star" rate="85" cost="7,11420" attrdata="2,77,9,77" effect="941" stip="19 Level2 Star|Level Defesa +77\nStrike Crítico +77| Precisa Partes de Genes *11420"/>
+		<s star="3" name="19 Level3 Star" rate="85" cost="7,11425" attrdata="1,78,3,772" effect="948" stip="19 Level3 Star|Attack Level +78\nHealth Máxima +772| Precisa Partes de Genes *11425"/>
+		<s star="4" name="19 Level4 Star" rate="85" cost="7,11430" attrdata="9,78,10,78" effect="953" stip="19 Level4 Star|Strike Crítico +78\nPersistência +78| Precisa Partes de Genes *11430"/>
+		<s star="5" name="19 Level5 Star" rate="85" cost="7,11435" attrdata="2,78,3,780" effect="953" stip="19 Level5 Star|Level Defesa +78\nHealth Máxima +780| Precisa Partes de Genes *11435"/>
+		<s star="6" name="19 Level6 Star" rate="85" cost="7,11440" attrdata="1,78,9,78" effect="953" stip="19 Level6 Star|Attack Level +78\nStrike Crítico +78| Precisa Partes de Genes *11440"/>
+		<s star="7" name="19 Level7 Star" rate="85" cost="7,11445" attrdata="2,78,10,78" effect="953" stip="19 Level7 Star|Level Defesa +78\nPersistência +78| Precisa Partes de Genes *11445"/>
+		<s star="8" name="19 Level8 Star" rate="85" cost="7,11450" attrdata="3,780,9,79" effect="959" stip="19 Level8 Star|Health Máxima +780\nStrike Crítico +79| Precisa Partes de Genes *11450"/>
+		<s star="9" name="19 Level9 Star" rate="85" cost="7,11455" attrdata="2,79,10,79" effect="965" stip="19 Level9 Star|Level Defesa +79\nPersistência +79| Precisa Partes de Genes *11455"/>
+		<s star="10" name="19 Level10 Star" rate="85" cost="7,11460" attrdata="1,79,3,788,11,20,12,180" effect="968" stip="20 Level10 Star|Attack Level +79\nHealth Máxima +788\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *11460"/>
 	</i>	
 	<i step="20" name="20" genemap="9,12,15,18,21,24,27,30,33,37">	
-		<s star="1" name="20阶1星" rate="80" cost="7,13005" attrdata="1,81,10,81" effect="990" stip="20阶1星|攻击等级+81\n韧性+81|需要基因碎片13005"/>
-		<s star="2" name="20阶2星" rate="80" cost="7,13010" attrdata="2,81,9,81" effect="990" stip="20阶2星|防御等级+81\n暴击+81|需要基因碎片13010"/>
-		<s star="3" name="20阶3星" rate="80" cost="7,13015" attrdata="1,82,3,811" effect="996" stip="20阶3星|攻击等级+82\n生命上限+811|需要基因碎片13015"/>
-		<s star="4" name="20阶4星" rate="80" cost="7,13020" attrdata="9,82,10,82" effect="1002" stip="20阶4星|暴击+82\n韧性+82|需要基因碎片13020"/>
-		<s star="5" name="20阶5星" rate="80" cost="7,13025" attrdata="2,82,3,820" effect="1002" stip="20阶5星|防御等级+82\n生命上限+820|需要基因碎片13025"/>
-		<s star="6" name="20阶6星" rate="80" cost="7,13030" attrdata="1,82,9,82" effect="1002" stip="20阶6星|攻击等级+82\n暴击+82|需要基因碎片13030"/>
-		<s star="7" name="20阶7星" rate="80" cost="7,13035" attrdata="2,82,10,82" effect="1002" stip="20阶7星|防御等级+82\n韧性+82|需要基因碎片13035"/>
-		<s star="8" name="20阶8星" rate="80" cost="7,13040" attrdata="3,820,9,83" effect="1008" stip="20阶8星|生命上限+820\n暴击+83|需要基因碎片13040"/>
-		<s star="9" name="20阶9星" rate="80" cost="7,13045" attrdata="2,83,10,83" effect="1014" stip="20阶9星|防御等级+83\n韧性+83|需要基因碎片13045"/>
-		<s star="10" name="20阶10星" rate="80" cost="7,13050" attrdata="1,83,3,829,11,20,12,180" effect="1017" stip="21阶10星|攻击等级+83\n生命上限+829\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片13050"/>
+		<s star="1" name="20 Level1 Star" rate="80" cost="7,13005" attrdata="1,81,10,81" effect="990" stip="20 Level1 Star|Attack Level +81\nPersistência +81| Precisa Partes de Genes *13005"/>
+		<s star="2" name="20 Level2 Star" rate="80" cost="7,13010" attrdata="2,81,9,81" effect="990" stip="20 Level2 Star|Level Defesa +81\nStrike Crítico +81| Precisa Partes de Genes *13010"/>
+		<s star="3" name="20 Level3 Star" rate="80" cost="7,13015" attrdata="1,82,3,811" effect="996" stip="20 Level3 Star|Attack Level +82\nHealth Máxima +811| Precisa Partes de Genes *13015"/>
+		<s star="4" name="20 Level4 Star" rate="80" cost="7,13020" attrdata="9,82,10,82" effect="1002" stip="20 Level4 Star|Strike Crítico +82\nPersistência +82| Precisa Partes de Genes *13020"/>
+		<s star="5" name="20 Level5 Star" rate="80" cost="7,13025" attrdata="2,82,3,820" effect="1002" stip="20 Level5 Star|Level Defesa +82\nHealth Máxima +820| Precisa Partes de Genes *13025"/>
+		<s star="6" name="20 Level6 Star" rate="80" cost="7,13030" attrdata="1,82,9,82" effect="1002" stip="20 Level6 Star|Attack Level +82\nStrike Crítico +82| Precisa Partes de Genes *13030"/>
+		<s star="7" name="20 Level7 Star" rate="80" cost="7,13035" attrdata="2,82,10,82" effect="1002" stip="20 Level7 Star|Level Defesa +82\nPersistência +82| Precisa Partes de Genes *13035"/>
+		<s star="8" name="20 Level8 Star" rate="80" cost="7,13040" attrdata="3,820,9,83" effect="1008" stip="20 Level8 Star|Health Máxima +820\nStrike Crítico +83| Precisa Partes de Genes *13040"/>
+		<s star="9" name="20 Level9 Star" rate="80" cost="7,13045" attrdata="2,83,10,83" effect="1014" stip="20 Level9 Star|Level Defesa +83\nPersistência +83| Precisa Partes de Genes *13045"/>
+		<s star="10" name="20 Level10 Star" rate="80" cost="7,13050" attrdata="1,83,3,829,11,20,12,180" effect="1017" stip="21 Level10 Star|Attack Level +83\nHealth Máxima +829\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *13050"/>
 	</i>	
 	<i step="21" name="21" genemap="7,10,13,16,19,22,25,28,31,35">	
-		<s star="1" name="21阶1星" rate="80" cost="7,14725" attrdata="1,85,10,85" effect="1038" stip="21阶1星|攻击等级+85\n韧性+85|需要基因碎片14725"/>
-		<s star="2" name="21阶2星" rate="80" cost="7,14730" attrdata="2,85,9,85" effect="1038" stip="21阶2星|防御等级+85\n暴击+85|需要基因碎片14730"/>
-		<s star="3" name="21阶3星" rate="80" cost="7,14735" attrdata="1,86,3,851" effect="1045" stip="21阶3星|攻击等级+86\n生命上限+851|需要基因碎片14735"/>
-		<s star="4" name="21阶4星" rate="80" cost="7,14740" attrdata="9,86,10,86" effect="1051" stip="21阶4星|暴击+86\n韧性+86|需要基因碎片14740"/>
-		<s star="5" name="21阶5星" rate="80" cost="7,14745" attrdata="2,86,3,860" effect="1051" stip="21阶5星|防御等级+86\n生命上限+860|需要基因碎片14745"/>
-		<s star="6" name="21阶6星" rate="80" cost="7,14750" attrdata="1,86,9,86" effect="1051" stip="21阶6星|攻击等级+86\n暴击+86|需要基因碎片14750"/>
-		<s star="7" name="21阶7星" rate="80" cost="7,14755" attrdata="2,86,10,86" effect="1051" stip="21阶7星|防御等级+86\n韧性+86|需要基因碎片14755"/>
-		<s star="8" name="21阶8星" rate="80" cost="7,14760" attrdata="3,860,9,87" effect="1057" stip="21阶8星|生命上限+860\n暴击+87|需要基因碎片14760"/>
-		<s star="9" name="21阶9星" rate="80" cost="7,14765" attrdata="2,87,10,87" effect="1063" stip="21阶9星|防御等级+87\n韧性+87|需要基因碎片14765"/>
-		<s star="10" name="21阶10星" rate="80" cost="7,14770" attrdata="1,87,3,869,11,20,12,180" effect="1066" stip="22阶10星|攻击等级+87\n生命上限+869\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片14770"/>
+		<s star="1" name="21 Level1 Star" rate="80" cost="7,14725" attrdata="1,85,10,85" effect="1038" stip="21 Level1 Star|Attack Level +85\nPersistência +85| Precisa Partes de Genes *14725"/>
+		<s star="2" name="21 Level2 Star" rate="80" cost="7,14730" attrdata="2,85,9,85" effect="1038" stip="21 Level2 Star|Level Defesa +85\nStrike Crítico +85| Precisa Partes de Genes *14730"/>
+		<s star="3" name="21 Level3 Star" rate="80" cost="7,14735" attrdata="1,86,3,851" effect="1045" stip="21 Level3 Star|Attack Level +86\nHealth Máxima +851| Precisa Partes de Genes *14735"/>
+		<s star="4" name="21 Level4 Star" rate="80" cost="7,14740" attrdata="9,86,10,86" effect="1051" stip="21 Level4 Star|Strike Crítico +86\nPersistência +86| Precisa Partes de Genes *14740"/>
+		<s star="5" name="21 Level5 Star" rate="80" cost="7,14745" attrdata="2,86,3,860" effect="1051" stip="21 Level5 Star|Level Defesa +86\nHealth Máxima +860| Precisa Partes de Genes *14745"/>
+		<s star="6" name="21 Level6 Star" rate="80" cost="7,14750" attrdata="1,86,9,86" effect="1051" stip="21 Level6 Star|Attack Level +86\nStrike Crítico +86| Precisa Partes de Genes *14750"/>
+		<s star="7" name="21 Level7 Star" rate="80" cost="7,14755" attrdata="2,86,10,86" effect="1051" stip="21 Level7 Star|Level Defesa +86\nPersistência +86| Precisa Partes de Genes *14755"/>
+		<s star="8" name="21 Level8 Star" rate="80" cost="7,14760" attrdata="3,860,9,87" effect="1057" stip="21 Level8 Star|Health Máxima +860\nStrike Crítico +87| Precisa Partes de Genes *14760"/>
+		<s star="9" name="21 Level9 Star" rate="80" cost="7,14765" attrdata="2,87,10,87" effect="1063" stip="21 Level9 Star|Level Defesa +87\nPersistência +87| Precisa Partes de Genes *14765"/>
+		<s star="10" name="21 Level10 Star" rate="80" cost="7,14770" attrdata="1,87,3,869,11,20,12,180" effect="1066" stip="22 Level10 Star|Attack Level +87\nHealth Máxima +869\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *14770"/>
 	</i>	
 	<i step="22" name="22" genemap="2,5,8,11,14,17,20,23,26,30">	
-		<s star="1" name="22阶1星" rate="80" cost="7,16585" attrdata="1,89,10,89" effect="1087" stip="22阶1星|攻击等级+89\n韧性+89|需要基因碎片16585"/>
-		<s star="2" name="22阶2星" rate="80" cost="7,16590" attrdata="2,89,9,89" effect="1087" stip="22阶2星|防御等级+89\n暴击+89|需要基因碎片16590"/>
-		<s star="3" name="22阶3星" rate="80" cost="7,16595" attrdata="1,90,3,891" effect="1094" stip="22阶3星|攻击等级+90\n生命上限+891|需要基因碎片16595"/>
-		<s star="4" name="22阶4星" rate="80" cost="7,16600" attrdata="9,90,10,90" effect="1100" stip="22阶4星|暴击+90\n韧性+90|需要基因碎片16600"/>
-		<s star="5" name="22阶5星" rate="80" cost="7,16605" attrdata="2,90,3,900" effect="1100" stip="22阶5星|防御等级+90\n生命上限+900|需要基因碎片16605"/>
-		<s star="6" name="22阶6星" rate="80" cost="7,16610" attrdata="1,90,9,90" effect="1100" stip="22阶6星|攻击等级+90\n暴击+90|需要基因碎片16610"/>
-		<s star="7" name="22阶7星" rate="80" cost="7,16615" attrdata="2,90,10,90" effect="1100" stip="22阶7星|防御等级+90\n韧性+90|需要基因碎片16615"/>
-		<s star="8" name="22阶8星" rate="80" cost="7,16620" attrdata="3,900,9,91" effect="1106" stip="22阶8星|生命上限+900\n暴击+91|需要基因碎片16620"/>
-		<s star="9" name="22阶9星" rate="80" cost="7,16625" attrdata="2,91,10,91" effect="1112" stip="22阶9星|防御等级+91\n韧性+91|需要基因碎片16625"/>
-		<s star="10" name="22阶10星" rate="80" cost="7,16630" attrdata="1,91,3,909,11,20,12,180" effect="1115" stip="23阶10星|攻击等级+91\n生命上限+909\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片16630"/>
+		<s star="1" name="22 Level1 Star" rate="80" cost="7,16585" attrdata="1,89,10,89" effect="1087" stip="22 Level1 Star|Attack Level +89\nPersistência +89| Precisa Partes de Genes *16585"/>
+		<s star="2" name="22 Level2 Star" rate="80" cost="7,16590" attrdata="2,89,9,89" effect="1087" stip="22 Level2 Star|Level Defesa +89\nStrike Crítico +89| Precisa Partes de Genes *16590"/>
+		<s star="3" name="22 Level3 Star" rate="80" cost="7,16595" attrdata="1,90,3,891" effect="1094" stip="22 Level3 Star|Attack Level +90\nHealth Máxima +891| Precisa Partes de Genes *16595"/>
+		<s star="4" name="22 Level4 Star" rate="80" cost="7,16600" attrdata="9,90,10,90" effect="1100" stip="22 Level4 Star|Strike Crítico +90\nPersistência +90| Precisa Partes de Genes *16600"/>
+		<s star="5" name="22 Level5 Star" rate="80" cost="7,16605" attrdata="2,90,3,900" effect="1100" stip="22 Level5 Star|Level Defesa +90\nHealth Máxima +900| Precisa Partes de Genes *16605"/>
+		<s star="6" name="22 Level6 Star" rate="80" cost="7,16610" attrdata="1,90,9,90" effect="1100" stip="22 Level6 Star|Attack Level +90\nStrike Crítico +90| Precisa Partes de Genes *16610"/>
+		<s star="7" name="22 Level7 Star" rate="80" cost="7,16615" attrdata="2,90,10,90" effect="1100" stip="22 Level7 Star|Level Defesa +90\nPersistência +90| Precisa Partes de Genes *16615"/>
+		<s star="8" name="22 Level8 Star" rate="80" cost="7,16620" attrdata="3,900,9,91" effect="1106" stip="22 Level8 Star|Health Máxima +900\nStrike Crítico +91| Precisa Partes de Genes *16620"/>
+		<s star="9" name="22 Level9 Star" rate="80" cost="7,16625" attrdata="2,91,10,91" effect="1112" stip="22 Level9 Star|Level Defesa +91\nPersistência +91| Precisa Partes de Genes *16625"/>
+		<s star="10" name="22 Level10 Star" rate="80" cost="7,16630" attrdata="1,91,3,909,11,20,12,180" effect="1115" stip="23 Level10 Star|Attack Level +91\nHealth Máxima +909\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *16630"/>
 	</i>	
 	<i step="23" name="23" genemap="10,13,16,19,22,25,28,31,34,38">	
-		<s star="1" name="23阶1星" rate="80" cost="7,18605" attrdata="1,93,10,93" effect="1136" stip="23阶1星|攻击等级+93\n韧性+93|需要基因碎片18605"/>
-		<s star="2" name="23阶2星" rate="80" cost="7,18610" attrdata="2,93,9,93" effect="1136" stip="23阶2星|防御等级+93\n暴击+93|需要基因碎片18610"/>
-		<s star="3" name="23阶3星" rate="80" cost="7,18615" attrdata="1,94,3,930" effect="1142" stip="23阶3星|攻击等级+94\n生命上限+930|需要基因碎片18615"/>
-		<s star="4" name="23阶4星" rate="80" cost="7,18620" attrdata="9,94,10,94" effect="1148" stip="23阶4星|暴击+94\n韧性+94|需要基因碎片18620"/>
-		<s star="5" name="23阶5星" rate="80" cost="7,18625" attrdata="2,94,3,940" effect="1148" stip="23阶5星|防御等级+94\n生命上限+940|需要基因碎片18625"/>
-		<s star="6" name="23阶6星" rate="80" cost="7,18630" attrdata="1,94,9,94" effect="1148" stip="23阶6星|攻击等级+94\n暴击+94|需要基因碎片18630"/>
-		<s star="7" name="23阶7星" rate="80" cost="7,18635" attrdata="2,94,10,94" effect="1148" stip="23阶7星|防御等级+94\n韧性+94|需要基因碎片18635"/>
-		<s star="8" name="23阶8星" rate="80" cost="7,18640" attrdata="3,940,9,95" effect="1155" stip="23阶8星|生命上限+940\n暴击+95|需要基因碎片18640"/>
-		<s star="9" name="23阶9星" rate="80" cost="7,18645" attrdata="2,95,10,95" effect="1161" stip="23阶9星|防御等级+95\n韧性+95|需要基因碎片18645"/>
-		<s star="10" name="23阶10星" rate="80" cost="7,18650" attrdata="1,95,3,950,11,20,12,180" effect="1165" stip="24阶10星|攻击等级+95\n生命上限+950\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片18650"/>
+		<s star="1" name="23 Level1 Star" rate="80" cost="7,18605" attrdata="1,93,10,93" effect="1136" stip="23 Level1 Star|Attack Level +93\nPersistência +93| Precisa Partes de Genes *18605"/>
+		<s star="2" name="23 Level2 Star" rate="80" cost="7,18610" attrdata="2,93,9,93" effect="1136" stip="23 Level2 Star|Level Defesa +93\nStrike Crítico +93| Precisa Partes de Genes *18610"/>
+		<s star="3" name="23 Level3 Star" rate="80" cost="7,18615" attrdata="1,94,3,930" effect="1142" stip="23 Level3 Star|Attack Level +94\nHealth Máxima +930| Precisa Partes de Genes *18615"/>
+		<s star="4" name="23 Level4 Star" rate="80" cost="7,18620" attrdata="9,94,10,94" effect="1148" stip="23 Level4 Star|Strike Crítico +94\nPersistência +94| Precisa Partes de Genes *18620"/>
+		<s star="5" name="23 Level5 Star" rate="80" cost="7,18625" attrdata="2,94,3,940" effect="1148" stip="23 Level5 Star|Level Defesa +94\nHealth Máxima +940| Precisa Partes de Genes *18625"/>
+		<s star="6" name="23 Level6 Star" rate="80" cost="7,18630" attrdata="1,94,9,94" effect="1148" stip="23 Level6 Star|Attack Level +94\nStrike Crítico +94| Precisa Partes de Genes *18630"/>
+		<s star="7" name="23 Level7 Star" rate="80" cost="7,18635" attrdata="2,94,10,94" effect="1148" stip="23 Level7 Star|Level Defesa +94\nPersistência +94| Precisa Partes de Genes *18635"/>
+		<s star="8" name="23 Level8 Star" rate="80" cost="7,18640" attrdata="3,940,9,95" effect="1155" stip="23 Level8 Star|Health Máxima +940\nStrike Crítico +95| Precisa Partes de Genes *18640"/>
+		<s star="9" name="23 Level9 Star" rate="80" cost="7,18645" attrdata="2,95,10,95" effect="1161" stip="23 Level9 Star|Level Defesa +95\nPersistência +95| Precisa Partes de Genes *18645"/>
+		<s star="10" name="23 Level10 Star" rate="80" cost="7,18650" attrdata="1,95,3,950,11,20,12,180" effect="1165" stip="24 Level10 Star|Attack Level +95\nHealth Máxima +950\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *18650"/>
 	</i>	
 	<i step="24" name="24" genemap="5,8,11,14,17,20,23,26,29,33">	
-		<s star="1" name="24阶1星" rate="80" cost="7,20785" attrdata="1,97,10,97" effect="1185" stip="24阶1星|攻击等级+97\n韧性+97|需要基因碎片20785"/>
-		<s star="2" name="24阶2星" rate="80" cost="7,20790" attrdata="2,97,9,97" effect="1185" stip="24阶2星|防御等级+97\n暴击+97|需要基因碎片20790"/>
-		<s star="3" name="24阶3星" rate="80" cost="7,20795" attrdata="1,98,3,970" effect="1191" stip="24阶3星|攻击等级+98\n生命上限+970|需要基因碎片20795"/>
-		<s star="4" name="24阶4星" rate="80" cost="7,20800" attrdata="9,98,10,98" effect="1197" stip="24阶4星|暴击+98\n韧性+98|需要基因碎片20800"/>
-		<s star="5" name="24阶5星" rate="80" cost="7,20805" attrdata="2,98,3,980" effect="1197" stip="24阶5星|防御等级+98\n生命上限+980|需要基因碎片20805"/>
-		<s star="6" name="24阶6星" rate="80" cost="7,20810" attrdata="1,98,9,98" effect="1197" stip="24阶6星|攻击等级+98\n暴击+98|需要基因碎片20810"/>
-		<s star="7" name="24阶7星" rate="80" cost="7,20815" attrdata="2,98,10,98" effect="1197" stip="24阶7星|防御等级+98\n韧性+98|需要基因碎片20815"/>
-		<s star="8" name="24阶8星" rate="80" cost="7,20820" attrdata="3,980,9,99" effect="1203" stip="24阶8星|生命上限+980\n暴击+99|需要基因碎片20820"/>
-		<s star="9" name="24阶9星" rate="80" cost="7,20825" attrdata="2,99,10,99" effect="1210" stip="24阶9星|防御等级+99\n韧性+99|需要基因碎片20825"/>
-		<s star="10" name="24阶10星" rate="80" cost="7,20830" attrdata="1,99,3,990,11,20,12,180" effect="1214" stip="25阶10星|攻击等级+99\n生命上限+990\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片20830"/>
+		<s star="1" name="24 Level1 Star" rate="80" cost="7,20785" attrdata="1,97,10,97" effect="1185" stip="24 Level1 Star|Attack Level +97\nPersistência +97| Precisa Partes de Genes *20785"/>
+		<s star="2" name="24 Level2 Star" rate="80" cost="7,20790" attrdata="2,97,9,97" effect="1185" stip="24 Level2 Star|Level Defesa +97\nStrike Crítico +97| Precisa Partes de Genes *20790"/>
+		<s star="3" name="24 Level3 Star" rate="80" cost="7,20795" attrdata="1,98,3,970" effect="1191" stip="24 Level3 Star|Attack Level +98\nHealth Máxima +970| Precisa Partes de Genes *20795"/>
+		<s star="4" name="24 Level4 Star" rate="80" cost="7,20800" attrdata="9,98,10,98" effect="1197" stip="24 Level4 Star|Strike Crítico +98\nPersistência +98| Precisa Partes de Genes *20800"/>
+		<s star="5" name="24 Level5 Star" rate="80" cost="7,20805" attrdata="2,98,3,980" effect="1197" stip="24 Level5 Star|Level Defesa +98\nHealth Máxima +980| Precisa Partes de Genes *20805"/>
+		<s star="6" name="24 Level6 Star" rate="80" cost="7,20810" attrdata="1,98,9,98" effect="1197" stip="24 Level6 Star|Attack Level +98\nStrike Crítico +98| Precisa Partes de Genes *20810"/>
+		<s star="7" name="24 Level7 Star" rate="80" cost="7,20815" attrdata="2,98,10,98" effect="1197" stip="24 Level7 Star|Level Defesa +98\nPersistência +98| Precisa Partes de Genes *20815"/>
+		<s star="8" name="24 Level8 Star" rate="80" cost="7,20820" attrdata="3,980,9,99" effect="1203" stip="24 Level8 Star|Health Máxima +980\nStrike Crítico +99| Precisa Partes de Genes *20820"/>
+		<s star="9" name="24 Level9 Star" rate="80" cost="7,20825" attrdata="2,99,10,99" effect="1210" stip="24 Level9 Star|Level Defesa +99\nPersistência +99| Precisa Partes de Genes *20825"/>
+		<s star="10" name="24 Level10 Star" rate="80" cost="7,20830" attrdata="1,99,3,990,11,20,12,180" effect="1214" stip="25 Level10 Star|Attack Level +99\nHealth Máxima +990\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *20830"/>
 	</i>	
 	<i step="25" name="25" genemap="6,9,12,15,18,21,24,27,30,34">	
-		<s star="1" name="25阶1星" rate="75" cost="7,23125" attrdata="1,100,10,100" effect="1222" stip="25阶1星|攻击等级+100\n韧性+100|需要基因碎片23125"/>
-		<s star="2" name="25阶2星" rate="75" cost="7,23130" attrdata="2,100,9,100" effect="1222" stip="25阶2星|防御等级+100\n暴击+100|需要基因碎片23130"/>
-		<s star="3" name="25阶3星" rate="75" cost="7,23135" attrdata="1,102,3,1009" effect="1239" stip="25阶3星|攻击等级+102\n生命上限+1009|需要基因碎片23135"/>
-		<s star="4" name="25阶4星" rate="75" cost="7,23140" attrdata="9,102,10,102" effect="1246" stip="25阶4星|暴击+102\n韧性+102|需要基因碎片23140"/>
-		<s star="5" name="25阶5星" rate="75" cost="7,23145" attrdata="2,102,3,1020" effect="1246" stip="25阶5星|防御等级+102\n生命上限+1020|需要基因碎片23145"/>
-		<s star="6" name="25阶6星" rate="75" cost="7,23150" attrdata="1,102,9,102" effect="1246" stip="25阶6星|攻击等级+102\n暴击+102|需要基因碎片23150"/>
-		<s star="7" name="25阶7星" rate="75" cost="7,23155" attrdata="2,102,10,102" effect="1246" stip="25阶7星|防御等级+102\n韧性+102|需要基因碎片23155"/>
-		<s star="8" name="25阶8星" rate="75" cost="7,23160" attrdata="3,1020,9,104" effect="1258" stip="25阶8星|生命上限+1020\n暴击+104|需要基因碎片23160"/>
-		<s star="9" name="25阶9星" rate="75" cost="7,23165" attrdata="2,104,10,104" effect="1271" stip="25阶9星|防御等级+104\n韧性+104|需要基因碎片23165"/>
-		<s star="10" name="25阶10星" rate="75" cost="7,23170" attrdata="1,104,3,1031,11,20,12,180" effect="1269" stip="26阶10星|攻击等级+104\n生命上限+1031\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片23170"/>
+		<s star="1" name="25 Level1 Star" rate="75" cost="7,23125" attrdata="1,100,10,100" effect="1222" stip="25 Level1 Star|Attack Level +100\nPersistência +100| Precisa Partes de Genes *23125"/>
+		<s star="2" name="25 Level2 Star" rate="75" cost="7,23130" attrdata="2,100,9,100" effect="1222" stip="25 Level2 Star|Level Defesa +100\nStrike Crítico +100| Precisa Partes de Genes *23130"/>
+		<s star="3" name="25 Level3 Star" rate="75" cost="7,23135" attrdata="1,102,3,1009" effect="1239" stip="25 Level3 Star|Attack Level +102\nHealth Máxima +1009| Precisa Partes de Genes *23135"/>
+		<s star="4" name="25 Level4 Star" rate="75" cost="7,23140" attrdata="9,102,10,102" effect="1246" stip="25 Level4 Star|Strike Crítico +102\nPersistência +102| Precisa Partes de Genes *23140"/>
+		<s star="5" name="25 Level5 Star" rate="75" cost="7,23145" attrdata="2,102,3,1020" effect="1246" stip="25 Level5 Star|Level Defesa +102\nHealth Máxima +1020| Precisa Partes de Genes *23145"/>
+		<s star="6" name="25 Level6 Star" rate="75" cost="7,23150" attrdata="1,102,9,102" effect="1246" stip="25 Level6 Star|Attack Level +102\nStrike Crítico +102| Precisa Partes de Genes *23150"/>
+		<s star="7" name="25 Level7 Star" rate="75" cost="7,23155" attrdata="2,102,10,102" effect="1246" stip="25 Level7 Star|Level Defesa +102\nPersistência +102| Precisa Partes de Genes *23155"/>
+		<s star="8" name="25 Level8 Star" rate="75" cost="7,23160" attrdata="3,1020,9,104" effect="1258" stip="25 Level8 Star|Health Máxima +1020\nStrike Crítico +104| Precisa Partes de Genes *23160"/>
+		<s star="9" name="25 Level9 Star" rate="75" cost="7,23165" attrdata="2,104,10,104" effect="1271" stip="25 Level9 Star|Level Defesa +104\nPersistência +104| Precisa Partes de Genes *23165"/>
+		<s star="10" name="25 Level10 Star" rate="75" cost="7,23170" attrdata="1,104,3,1031,11,20,12,180" effect="1269" stip="26 Level10 Star|Attack Level +104\nHealth Máxima +1031\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *23170"/>
 	</i>	
 	<i step="26" name="26" genemap="4,7,10,13,16,19,22,25,28,32">	
-		<s star="1" name="26阶1星" rate="75" cost="7,25635" attrdata="1,104,10,104" effect="1271" stip="26阶1星|攻击等级+104\n韧性+104|需要基因碎片25635"/>
-		<s star="2" name="26阶2星" rate="75" cost="7,25640" attrdata="2,104,9,104" effect="1271" stip="26阶2星|防御等级+104\n暴击+104|需要基因碎片25640"/>
-		<s star="3" name="26阶3星" rate="75" cost="7,25645" attrdata="1,106,3,1049" effect="1288" stip="26阶3星|攻击等级+106\n生命上限+1049|需要基因碎片25645"/>
-		<s star="4" name="26阶4星" rate="75" cost="7,25650" attrdata="9,106,10,106" effect="1295" stip="26阶4星|暴击+106\n韧性+106|需要基因碎片25650"/>
-		<s star="5" name="26阶5星" rate="75" cost="7,25655" attrdata="2,106,3,1060" effect="1295" stip="26阶5星|防御等级+106\n生命上限+1060|需要基因碎片25655"/>
-		<s star="6" name="26阶6星" rate="75" cost="7,25660" attrdata="1,106,9,106" effect="1295" stip="26阶6星|攻击等级+106\n暴击+106|需要基因碎片25660"/>
-		<s star="7" name="26阶7星" rate="75" cost="7,25665" attrdata="2,106,10,106" effect="1295" stip="26阶7星|防御等级+106\n韧性+106|需要基因碎片25665"/>
-		<s star="8" name="26阶8星" rate="75" cost="7,25670" attrdata="3,1060,9,108" effect="1307" stip="26阶8星|生命上限+1060\n暴击+108|需要基因碎片25670"/>
-		<s star="9" name="26阶9星" rate="75" cost="7,25675" attrdata="2,108,10,108" effect="1320" stip="26阶9星|防御等级+108\n韧性+108|需要基因碎片25675"/>
-		<s star="10" name="26阶10星" rate="75" cost="7,25680" attrdata="1,108,3,1071,11,20,12,180" effect="1318" stip="27阶10星|攻击等级+108\n生命上限+1071\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片25680"/>
+		<s star="1" name="26 Level1 Star" rate="75" cost="7,25635" attrdata="1,104,10,104" effect="1271" stip="26 Level1 Star|Attack Level +104\nPersistência +104| Precisa Partes de Genes *25635"/>
+		<s star="2" name="26 Level2 Star" rate="75" cost="7,25640" attrdata="2,104,9,104" effect="1271" stip="26 Level2 Star|Level Defesa +104\nStrike Crítico +104| Precisa Partes de Genes *25640"/>
+		<s star="3" name="26 Level3 Star" rate="75" cost="7,25645" attrdata="1,106,3,1049" effect="1288" stip="26 Level3 Star|Attack Level +106\nHealth Máxima +1049| Precisa Partes de Genes *25645"/>
+		<s star="4" name="26 Level4 Star" rate="75" cost="7,25650" attrdata="9,106,10,106" effect="1295" stip="26 Level4 Star|Strike Crítico +106\nPersistência +106| Precisa Partes de Genes *25650"/>
+		<s star="5" name="26 Level5 Star" rate="75" cost="7,25655" attrdata="2,106,3,1060" effect="1295" stip="26 Level5 Star|Level Defesa +106\nHealth Máxima +1060| Precisa Partes de Genes *25655"/>
+		<s star="6" name="26 Level6 Star" rate="75" cost="7,25660" attrdata="1,106,9,106" effect="1295" stip="26 Level6 Star|Attack Level +106\nStrike Crítico +106| Precisa Partes de Genes *25660"/>
+		<s star="7" name="26 Level7 Star" rate="75" cost="7,25665" attrdata="2,106,10,106" effect="1295" stip="26 Level7 Star|Level Defesa +106\nPersistência +106| Precisa Partes de Genes *25665"/>
+		<s star="8" name="26 Level8 Star" rate="75" cost="7,25670" attrdata="3,1060,9,108" effect="1307" stip="26 Level8 Star|Health Máxima +1060\nStrike Crítico +108| Precisa Partes de Genes *25670"/>
+		<s star="9" name="26 Level9 Star" rate="75" cost="7,25675" attrdata="2,108,10,108" effect="1320" stip="26 Level9 Star|Level Defesa +108\nPersistência +108| Precisa Partes de Genes *25675"/>
+		<s star="10" name="26 Level10 Star" rate="75" cost="7,25680" attrdata="1,108,3,1071,11,20,12,180" effect="1318" stip="27 Level10 Star|Attack Level +108\nHealth Máxima +1071\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *25680"/>
 	</i>	
 	<i step="27" name="27" genemap="3,6,9,12,15,18,21,24,27,31">	
-		<s star="1" name="27阶1星" rate="75" cost="7,28325" attrdata="1,108,10,108" effect="1320" stip="27阶1星|攻击等级+108\n韧性+108|需要基因碎片28325"/>
-		<s star="2" name="27阶2星" rate="75" cost="7,28330" attrdata="2,108,9,108" effect="1320" stip="27阶2星|防御等级+108\n暴击+108|需要基因碎片28330"/>
-		<s star="3" name="27阶3星" rate="75" cost="7,28335" attrdata="1,110,3,1089" effect="1337" stip="27阶3星|攻击等级+110\n生命上限+1089|需要基因碎片28335"/>
-		<s star="4" name="27阶4星" rate="75" cost="7,28340" attrdata="9,110,10,110" effect="1344" stip="27阶4星|暴击+110\n韧性+110|需要基因碎片28340"/>
-		<s star="5" name="27阶5星" rate="75" cost="7,28345" attrdata="2,110,3,1100" effect="1344" stip="27阶5星|防御等级+110\n生命上限+1100|需要基因碎片28345"/>
-		<s star="6" name="27阶6星" rate="75" cost="7,28350" attrdata="1,110,9,110" effect="1344" stip="27阶6星|攻击等级+110\n暴击+110|需要基因碎片28350"/>
-		<s star="7" name="27阶7星" rate="75" cost="7,28355" attrdata="2,110,10,110" effect="1344" stip="27阶7星|防御等级+110\n韧性+110|需要基因碎片28355"/>
-		<s star="8" name="27阶8星" rate="75" cost="7,28360" attrdata="3,1100,9,112" effect="1356" stip="27阶8星|生命上限+1100\n暴击+112|需要基因碎片28360"/>
-		<s star="9" name="27阶9星" rate="75" cost="7,28365" attrdata="2,112,10,112" effect="1368" stip="27阶9星|防御等级+112\n韧性+112|需要基因碎片28365"/>
-		<s star="10" name="27阶10星" rate="75" cost="7,28370" attrdata="1,112,3,1111,11,20,12,180" effect="1367" stip="28阶10星|攻击等级+112\n生命上限+1111\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片28370"/>
+		<s star="1" name="27 Level1 Star" rate="75" cost="7,28325" attrdata="1,108,10,108" effect="1320" stip="27 Level1 Star|Attack Level +108\nPersistência +108| Precisa Partes de Genes *28325"/>
+		<s star="2" name="27 Level2 Star" rate="75" cost="7,28330" attrdata="2,108,9,108" effect="1320" stip="27 Level2 Star|Level Defesa +108\nStrike Crítico +108| Precisa Partes de Genes *28330"/>
+		<s star="3" name="27 Level3 Star" rate="75" cost="7,28335" attrdata="1,110,3,1089" effect="1337" stip="27 Level3 Star|Attack Level +110\nHealth Máxima +1089| Precisa Partes de Genes *28335"/>
+		<s star="4" name="27 Level4 Star" rate="75" cost="7,28340" attrdata="9,110,10,110" effect="1344" stip="27 Level4 Star|Strike Crítico +110\nPersistência +110| Precisa Partes de Genes *28340"/>
+		<s star="5" name="27 Level5 Star" rate="75" cost="7,28345" attrdata="2,110,3,1100" effect="1344" stip="27 Level5 Star|Level Defesa +110\nHealth Máxima +1100| Precisa Partes de Genes *28345"/>
+		<s star="6" name="27 Level6 Star" rate="75" cost="7,28350" attrdata="1,110,9,110" effect="1344" stip="27 Level6 Star|Attack Level +110\nStrike Crítico +110| Precisa Partes de Genes *28350"/>
+		<s star="7" name="27 Level7 Star" rate="75" cost="7,28355" attrdata="2,110,10,110" effect="1344" stip="27 Level7 Star|Level Defesa +110\nPersistência +110| Precisa Partes de Genes *28355"/>
+		<s star="8" name="27 Level8 Star" rate="75" cost="7,28360" attrdata="3,1100,9,112" effect="1356" stip="27 Level8 Star|Health Máxima +1100\nStrike Crítico +112| Precisa Partes de Genes *28360"/>
+		<s star="9" name="27 Level9 Star" rate="75" cost="7,28365" attrdata="2,112,10,112" effect="1368" stip="27 Level9 Star|Level Defesa +112\nPersistência +112| Precisa Partes de Genes *28365"/>
+		<s star="10" name="27 Level10 Star" rate="75" cost="7,28370" attrdata="1,112,3,1111,11,20,12,180" effect="1367" stip="28 Level10 Star|Attack Level +112\nHealth Máxima +1111\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *28370"/>
 	</i>	
 	<i step="28" name="28" genemap="8,11,14,17,20,23,26,29,32,36">	
-		<s star="1" name="28阶1星" rate="75" cost="7,31195" attrdata="1,112,10,112" effect="1368" stip="28阶1星|攻击等级+112\n韧性+112|需要基因碎片31195"/>
-		<s star="2" name="28阶2星" rate="75" cost="7,31200" attrdata="2,112,9,112" effect="1368" stip="28阶2星|防御等级+112\n暴击+112|需要基因碎片31200"/>
-		<s star="3" name="28阶3星" rate="75" cost="7,31205" attrdata="1,114,3,1128" effect="1386" stip="28阶3星|攻击等级+114\n生命上限+1128|需要基因碎片31205"/>
-		<s star="4" name="28阶4星" rate="75" cost="7,31210" attrdata="9,114,10,114" effect="1393" stip="28阶4星|暴击+114\n韧性+114|需要基因碎片31210"/>
-		<s star="5" name="28阶5星" rate="75" cost="7,31215" attrdata="2,114,3,1140" effect="1393" stip="28阶5星|防御等级+114\n生命上限+1140|需要基因碎片31215"/>
-		<s star="6" name="28阶6星" rate="75" cost="7,31220" attrdata="1,114,9,114" effect="1393" stip="28阶6星|攻击等级+114\n暴击+114|需要基因碎片31220"/>
-		<s star="7" name="28阶7星" rate="75" cost="7,31225" attrdata="2,114,10,114" effect="1393" stip="28阶7星|防御等级+114\n韧性+114|需要基因碎片31225"/>
-		<s star="8" name="28阶8星" rate="75" cost="7,31230" attrdata="3,1140,9,116" effect="1405" stip="28阶8星|生命上限+1140\n暴击+116|需要基因碎片31230"/>
-		<s star="9" name="28阶9星" rate="75" cost="7,31235" attrdata="2,116,10,116" effect="1417" stip="28阶9星|防御等级+116\n韧性+116|需要基因碎片31235"/>
-		<s star="10" name="28阶10星" rate="75" cost="7,31240" attrdata="1,116,3,1152,11,20,12,180" effect="1416" stip="29阶10星|攻击等级+116\n生命上限+1152\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片31240"/>
+		<s star="1" name="28 Level1 Star" rate="75" cost="7,31195" attrdata="1,112,10,112" effect="1368" stip="28 Level1 Star|Attack Level +112\nPersistência +112| Precisa Partes de Genes *31195"/>
+		<s star="2" name="28 Level2 Star" rate="75" cost="7,31200" attrdata="2,112,9,112" effect="1368" stip="28 Level2 Star|Level Defesa +112\nStrike Crítico +112| Precisa Partes de Genes *31200"/>
+		<s star="3" name="28 Level3 Star" rate="75" cost="7,31205" attrdata="1,114,3,1128" effect="1386" stip="28 Level3 Star|Attack Level +114\nHealth Máxima +1128| Precisa Partes de Genes *31205"/>
+		<s star="4" name="28 Level4 Star" rate="75" cost="7,31210" attrdata="9,114,10,114" effect="1393" stip="28 Level4 Star|Strike Crítico +114\nPersistência +114| Precisa Partes de Genes *31210"/>
+		<s star="5" name="28 Level5 Star" rate="75" cost="7,31215" attrdata="2,114,3,1140" effect="1393" stip="28 Level5 Star|Level Defesa +114\nHealth Máxima +1140| Precisa Partes de Genes *31215"/>
+		<s star="6" name="28 Level6 Star" rate="75" cost="7,31220" attrdata="1,114,9,114" effect="1393" stip="28 Level6 Star|Attack Level +114\nStrike Crítico +114| Precisa Partes de Genes *31220"/>
+		<s star="7" name="28 Level7 Star" rate="75" cost="7,31225" attrdata="2,114,10,114" effect="1393" stip="28 Level7 Star|Level Defesa +114\nPersistência +114| Precisa Partes de Genes *31225"/>
+		<s star="8" name="28 Level8 Star" rate="75" cost="7,31230" attrdata="3,1140,9,116" effect="1405" stip="28 Level8 Star|Health Máxima +1140\nStrike Crítico +116| Precisa Partes de Genes *31230"/>
+		<s star="9" name="28 Level9 Star" rate="75" cost="7,31235" attrdata="2,116,10,116" effect="1417" stip="28 Level9 Star|Level Defesa +116\nPersistência +116| Precisa Partes de Genes *31235"/>
+		<s star="10" name="28 Level10 Star" rate="75" cost="7,31240" attrdata="1,116,3,1152,11,20,12,180" effect="1416" stip="29 Level10 Star|Attack Level +116\nHealth Máxima +1152\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *31240"/>
 	</i>	
 	<i step="29" name="29" genemap="1,4,7,10,13,16,19,22,25,29">	
-		<s star="1" name="29阶1星" rate="75" cost="7,34245" attrdata="1,116,10,116" effect="1417" stip="29阶1星|攻击等级+116\n韧性+116|需要基因碎片34245"/>
-		<s star="2" name="29阶2星" rate="75" cost="7,34250" attrdata="2,116,9,116" effect="1417" stip="29阶2星|防御等级+116\n暴击+116|需要基因碎片34250"/>
-		<s star="3" name="29阶3星" rate="75" cost="7,34255" attrdata="1,118,3,1168" effect="1434" stip="29阶3星|攻击等级+118\n生命上限+1168|需要基因碎片34255"/>
-		<s star="4" name="29阶4星" rate="75" cost="7,34260" attrdata="9,118,10,118" effect="1442" stip="29阶4星|暴击+118\n韧性+118|需要基因碎片34260"/>
-		<s star="5" name="29阶5星" rate="75" cost="7,34265" attrdata="2,118,3,1180" effect="1442" stip="29阶5星|防御等级+118\n生命上限+1180|需要基因碎片34265"/>
-		<s star="6" name="29阶6星" rate="75" cost="7,34270" attrdata="1,118,9,118" effect="1442" stip="29阶6星|攻击等级+118\n暴击+118|需要基因碎片34270"/>
-		<s star="7" name="29阶7星" rate="75" cost="7,34275" attrdata="2,118,10,118" effect="1442" stip="29阶7星|防御等级+118\n韧性+118|需要基因碎片34275"/>
-		<s star="8" name="29阶8星" rate="75" cost="7,34280" attrdata="3,1180,9,120" effect="1454" stip="29阶8星|生命上限+1180\n暴击+120|需要基因碎片34280"/>
-		<s star="9" name="29阶9星" rate="75" cost="7,34285" attrdata="2,120,10,120" effect="1466" stip="29阶9星|防御等级+120\n韧性+120|需要基因碎片34285"/>
-		<s star="10" name="29阶10星" rate="75" cost="7,34290" attrdata="1,120,3,1192,11,20,12,180" effect="1465" stip="30阶10星|攻击等级+120\n生命上限+1192\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片34290"/>
+		<s star="1" name="29 Level1 Star" rate="75" cost="7,34245" attrdata="1,116,10,116" effect="1417" stip="29 Level1 Star|Attack Level +116\nPersistência +116| Precisa Partes de Genes *34245"/>
+		<s star="2" name="29 Level2 Star" rate="75" cost="7,34250" attrdata="2,116,9,116" effect="1417" stip="29 Level2 Star|Level Defesa +116\nStrike Crítico +116| Precisa Partes de Genes *34250"/>
+		<s star="3" name="29 Level3 Star" rate="75" cost="7,34255" attrdata="1,118,3,1168" effect="1434" stip="29 Level3 Star|Attack Level +118\nHealth Máxima +1168| Precisa Partes de Genes *34255"/>
+		<s star="4" name="29 Level4 Star" rate="75" cost="7,34260" attrdata="9,118,10,118" effect="1442" stip="29 Level4 Star|Strike Crítico +118\nPersistência +118| Precisa Partes de Genes *34260"/>
+		<s star="5" name="29 Level5 Star" rate="75" cost="7,34265" attrdata="2,118,3,1180" effect="1442" stip="29 Level5 Star|Level Defesa +118\nHealth Máxima +1180| Precisa Partes de Genes *34265"/>
+		<s star="6" name="29 Level6 Star" rate="75" cost="7,34270" attrdata="1,118,9,118" effect="1442" stip="29 Level6 Star|Attack Level +118\nStrike Crítico +118| Precisa Partes de Genes *34270"/>
+		<s star="7" name="29 Level7 Star" rate="75" cost="7,34275" attrdata="2,118,10,118" effect="1442" stip="29 Level7 Star|Level Defesa +118\nPersistência +118| Precisa Partes de Genes *34275"/>
+		<s star="8" name="29 Level8 Star" rate="75" cost="7,34280" attrdata="3,1180,9,120" effect="1454" stip="29 Level8 Star|Health Máxima +1180\nStrike Crítico +120| Precisa Partes de Genes *34280"/>
+		<s star="9" name="29 Level9 Star" rate="75" cost="7,34285" attrdata="2,120,10,120" effect="1466" stip="29 Level9 Star|Level Defesa +120\nPersistência +120| Precisa Partes de Genes *34285"/>
+		<s star="10" name="29 Level10 Star" rate="75" cost="7,34290" attrdata="1,120,3,1192,11,20,12,180" effect="1465" stip="30 Level10 Star|Attack Level +120\nHealth Máxima +1192\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *34290"/>
 	</i>	
 	<i step="30" name="30" genemap="9,12,15,18,21,24,27,30,33,37">	
-		<s star="1" name="30阶1星" rate="70" cost="7,37505" attrdata="1,120,10,120" effect="1466" stip="30阶1星|攻击等级+120\n韧性+120|需要基因碎片37505"/>
-		<s star="2" name="30阶2星" rate="70" cost="7,37510" attrdata="2,120,9,120" effect="1466" stip="30阶2星|防御等级+120\n暴击+120|需要基因碎片37510"/>
-		<s star="3" name="30阶3星" rate="70" cost="7,37515" attrdata="1,122,3,1207" effect="1483" stip="30阶3星|攻击等级+122\n生命上限+1207|需要基因碎片37515"/>
-		<s star="4" name="30阶4星" rate="70" cost="7,37520" attrdata="9,122,10,122" effect="1491" stip="30阶4星|暴击+122\n韧性+122|需要基因碎片37520"/>
-		<s star="5" name="30阶5星" rate="70" cost="7,37525" attrdata="2,122,3,1220" effect="1491" stip="30阶5星|防御等级+122\n生命上限+1220|需要基因碎片37525"/>
-		<s star="6" name="30阶6星" rate="70" cost="7,37530" attrdata="1,122,9,122" effect="1491" stip="30阶6星|攻击等级+122\n暴击+122|需要基因碎片37530"/>
-		<s star="7" name="30阶7星" rate="70" cost="7,37535" attrdata="2,122,10,122" effect="1491" stip="30阶7星|防御等级+122\n韧性+122|需要基因碎片37535"/>
-		<s star="8" name="30阶8星" rate="70" cost="7,37540" attrdata="3,1220,9,124" effect="1503" stip="30阶8星|生命上限+1220\n暴击+124|需要基因碎片37540"/>
-		<s star="9" name="30阶9星" rate="70" cost="7,37545" attrdata="2,124,10,124" effect="1515" stip="30阶9星|防御等级+124\n韧性+124|需要基因碎片37545"/>
-		<s star="10" name="30阶10星" rate="70" cost="7,37550" attrdata="1,124,3,1233,11,20,12,180" effect="1515" stip="31阶10星|攻击等级+124\n生命上限+1233\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片37550"/>
+		<s star="1" name="30 Level1 Star" rate="70" cost="7,37505" attrdata="1,120,10,120" effect="1466" stip="30 Level1 Star|Attack Level +120\nPersistência +120| Precisa Partes de Genes *37505"/>
+		<s star="2" name="30 Level2 Star" rate="70" cost="7,37510" attrdata="2,120,9,120" effect="1466" stip="30 Level2 Star|Level Defesa +120\nStrike Crítico +120| Precisa Partes de Genes *37510"/>
+		<s star="3" name="30 Level3 Star" rate="70" cost="7,37515" attrdata="1,122,3,1207" effect="1483" stip="30 Level3 Star|Attack Level +122\nHealth Máxima +1207| Precisa Partes de Genes *37515"/>
+		<s star="4" name="30 Level4 Star" rate="70" cost="7,37520" attrdata="9,122,10,122" effect="1491" stip="30 Level4 Star|Strike Crítico +122\nPersistência +122| Precisa Partes de Genes *37520"/>
+		<s star="5" name="30 Level5 Star" rate="70" cost="7,37525" attrdata="2,122,3,1220" effect="1491" stip="30 Level5 Star|Level Defesa +122\nHealth Máxima +1220| Precisa Partes de Genes *37525"/>
+		<s star="6" name="30 Level6 Star" rate="70" cost="7,37530" attrdata="1,122,9,122" effect="1491" stip="30 Level6 Star|Attack Level +122\nStrike Crítico +122| Precisa Partes de Genes *37530"/>
+		<s star="7" name="30 Level7 Star" rate="70" cost="7,37535" attrdata="2,122,10,122" effect="1491" stip="30 Level7 Star|Level Defesa +122\nPersistência +122| Precisa Partes de Genes *37535"/>
+		<s star="8" name="30 Level8 Star" rate="70" cost="7,37540" attrdata="3,1220,9,124" effect="1503" stip="30 Level8 Star|Health Máxima +1220\nStrike Crítico +124| Precisa Partes de Genes *37540"/>
+		<s star="9" name="30 Level9 Star" rate="70" cost="7,37545" attrdata="2,124,10,124" effect="1515" stip="30 Level9 Star|Level Defesa +124\nPersistência +124| Precisa Partes de Genes *37545"/>
+		<s star="10" name="30 Level10 Star" rate="70" cost="7,37550" attrdata="1,124,3,1233,11,20,12,180" effect="1515" stip="31 Level10 Star|Attack Level +124\nHealth Máxima +1233\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *37550"/>
 	</i>	
 	<i step="31" name="31" genemap="7,10,13,16,19,22,25,28,31,35">	
-		<s star="1" name="31阶1星" rate="70" cost="7,40955" attrdata="1,124,10,124" effect="1515" stip="31阶1星|攻击等级+124\n韧性+124|需要基因碎片40955"/>
-		<s star="2" name="31阶2星" rate="70" cost="7,40960" attrdata="2,124,9,124" effect="1515" stip="31阶2星|防御等级+124\n暴击+124|需要基因碎片40960"/>
-		<s star="3" name="31阶3星" rate="70" cost="7,40965" attrdata="1,126,3,1247" effect="1532" stip="31阶3星|攻击等级+126\n生命上限+1247|需要基因碎片40965"/>
-		<s star="4" name="31阶4星" rate="70" cost="7,40970" attrdata="9,126,10,126" effect="1540" stip="31阶4星|暴击+126\n韧性+126|需要基因碎片40970"/>
-		<s star="5" name="31阶5星" rate="70" cost="7,40975" attrdata="2,126,3,1260" effect="1540" stip="31阶5星|防御等级+126\n生命上限+1260|需要基因碎片40975"/>
-		<s star="6" name="31阶6星" rate="70" cost="7,40980" attrdata="1,126,9,126" effect="1540" stip="31阶6星|攻击等级+126\n暴击+126|需要基因碎片40980"/>
-		<s star="7" name="31阶7星" rate="70" cost="7,40985" attrdata="2,126,10,126" effect="1540" stip="31阶7星|防御等级+126\n韧性+126|需要基因碎片40985"/>
-		<s star="8" name="31阶8星" rate="70" cost="7,40990" attrdata="3,1260,9,128" effect="1552" stip="31阶8星|生命上限+1260\n暴击+128|需要基因碎片40990"/>
-		<s star="9" name="31阶9星" rate="70" cost="7,40995" attrdata="2,128,10,128" effect="1564" stip="31阶9星|防御等级+128\n韧性+128|需要基因碎片40995"/>
-		<s star="10" name="31阶10星" rate="70" cost="7,41000" attrdata="1,128,3,1273,11,20,12,180" effect="1564" stip="32阶10星|攻击等级+128\n生命上限+1273\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片41000"/>
+		<s star="1" name="31 Level1 Star" rate="70" cost="7,40955" attrdata="1,124,10,124" effect="1515" stip="31 Level1 Star|Attack Level +124\nPersistência +124| Precisa Partes de Genes *40955"/>
+		<s star="2" name="31 Level2 Star" rate="70" cost="7,40960" attrdata="2,124,9,124" effect="1515" stip="31 Level2 Star|Level Defesa +124\nStrike Crítico +124| Precisa Partes de Genes *40960"/>
+		<s star="3" name="31 Level3 Star" rate="70" cost="7,40965" attrdata="1,126,3,1247" effect="1532" stip="31 Level3 Star|Attack Level +126\nHealth Máxima +1247| Precisa Partes de Genes *40965"/>
+		<s star="4" name="31 Level4 Star" rate="70" cost="7,40970" attrdata="9,126,10,126" effect="1540" stip="31 Level4 Star|Strike Crítico +126\nPersistência +126| Precisa Partes de Genes *40970"/>
+		<s star="5" name="31 Level5 Star" rate="70" cost="7,40975" attrdata="2,126,3,1260" effect="1540" stip="31 Level5 Star|Level Defesa +126\nHealth Máxima +1260| Precisa Partes de Genes *40975"/>
+		<s star="6" name="31 Level6 Star" rate="70" cost="7,40980" attrdata="1,126,9,126" effect="1540" stip="31 Level6 Star|Attack Level +126\nStrike Crítico +126| Precisa Partes de Genes *40980"/>
+		<s star="7" name="31 Level7 Star" rate="70" cost="7,40985" attrdata="2,126,10,126" effect="1540" stip="31 Level7 Star|Level Defesa +126\nPersistência +126| Precisa Partes de Genes *40985"/>
+		<s star="8" name="31 Level8 Star" rate="70" cost="7,40990" attrdata="3,1260,9,128" effect="1552" stip="31 Level8 Star|Health Máxima +1260\nStrike Crítico +128| Precisa Partes de Genes *40990"/>
+		<s star="9" name="31 Level9 Star" rate="70" cost="7,40995" attrdata="2,128,10,128" effect="1564" stip="31 Level9 Star|Level Defesa +128\nPersistência +128| Precisa Partes de Genes *40995"/>
+		<s star="10" name="31 Level10 Star" rate="70" cost="7,41000" attrdata="1,128,3,1273,11,20,12,180" effect="1564" stip="32 Level10 Star|Attack Level +128\nHealth Máxima +1273\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *41000"/>
 	</i>	
 	<i step="32" name="32" genemap="2,5,8,11,14,17,20,23,26,30">	
-		<s star="1" name="32阶1星" rate="70" cost="7,44605" attrdata="1,128,10,128" effect="1564" stip="32阶1星|攻击等级+128\n韧性+128|需要基因碎片44605"/>
-		<s star="2" name="32阶2星" rate="70" cost="7,44610" attrdata="2,128,9,128" effect="1564" stip="32阶2星|防御等级+128\n暴击+128|需要基因碎片44610"/>
-		<s star="3" name="32阶3星" rate="70" cost="7,44615" attrdata="1,130,3,1287" effect="1580" stip="32阶3星|攻击等级+130\n生命上限+1287|需要基因碎片44615"/>
-		<s star="4" name="32阶4星" rate="70" cost="7,44620" attrdata="9,130,10,130" effect="1588" stip="32阶4星|暴击+130\n韧性+130|需要基因碎片44620"/>
-		<s star="5" name="32阶5星" rate="70" cost="7,44625" attrdata="2,130,3,1300" effect="1588" stip="32阶5星|防御等级+130\n生命上限+1300|需要基因碎片44625"/>
-		<s star="6" name="32阶6星" rate="70" cost="7,44630" attrdata="1,130,9,130" effect="1588" stip="32阶6星|攻击等级+130\n暴击+130|需要基因碎片44630"/>
-		<s star="7" name="32阶7星" rate="70" cost="7,44635" attrdata="2,130,10,130" effect="1588" stip="32阶7星|防御等级+130\n韧性+130|需要基因碎片44635"/>
-		<s star="8" name="32阶8星" rate="70" cost="7,44640" attrdata="3,1300,9,132" effect="1601" stip="32阶8星|生命上限+1300\n暴击+132|需要基因碎片44640"/>
-		<s star="9" name="32阶9星" rate="70" cost="7,44645" attrdata="2,132,10,132" effect="1613" stip="32阶9星|防御等级+132\n韧性+132|需要基因碎片44645"/>
-		<s star="10" name="32阶10星" rate="70" cost="7,44650" attrdata="1,132,3,1313,11,20,12,180" effect="1613" stip="33阶10星|攻击等级+132\n生命上限+1313\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片44650"/>
+		<s star="1" name="32 Level1 Star" rate="70" cost="7,44605" attrdata="1,128,10,128" effect="1564" stip="32 Level1 Star|Attack Level +128\nPersistência +128| Precisa Partes de Genes *44605"/>
+		<s star="2" name="32 Level2 Star" rate="70" cost="7,44610" attrdata="2,128,9,128" effect="1564" stip="32 Level2 Star|Level Defesa +128\nStrike Crítico +128| Precisa Partes de Genes *44610"/>
+		<s star="3" name="32 Level3 Star" rate="70" cost="7,44615" attrdata="1,130,3,1287" effect="1580" stip="32 Level3 Star|Attack Level +130\nHealth Máxima +1287| Precisa Partes de Genes *44615"/>
+		<s star="4" name="32 Level4 Star" rate="70" cost="7,44620" attrdata="9,130,10,130" effect="1588" stip="32 Level4 Star|Strike Crítico +130\nPersistência +130| Precisa Partes de Genes *44620"/>
+		<s star="5" name="32 Level5 Star" rate="70" cost="7,44625" attrdata="2,130,3,1300" effect="1588" stip="32 Level5 Star|Level Defesa +130\nHealth Máxima +1300| Precisa Partes de Genes *44625"/>
+		<s star="6" name="32 Level6 Star" rate="70" cost="7,44630" attrdata="1,130,9,130" effect="1588" stip="32 Level6 Star|Attack Level +130\nStrike Crítico +130| Precisa Partes de Genes *44630"/>
+		<s star="7" name="32 Level7 Star" rate="70" cost="7,44635" attrdata="2,130,10,130" effect="1588" stip="32 Level7 Star|Level Defesa +130\nPersistência +130| Precisa Partes de Genes *44635"/>
+		<s star="8" name="32 Level8 Star" rate="70" cost="7,44640" attrdata="3,1300,9,132" effect="1601" stip="32 Level8 Star|Health Máxima +1300\nStrike Crítico +132| Precisa Partes de Genes *44640"/>
+		<s star="9" name="32 Level9 Star" rate="70" cost="7,44645" attrdata="2,132,10,132" effect="1613" stip="32 Level9 Star|Level Defesa +132\nPersistência +132| Precisa Partes de Genes *44645"/>
+		<s star="10" name="32 Level10 Star" rate="70" cost="7,44650" attrdata="1,132,3,1313,11,20,12,180" effect="1613" stip="33 Level10 Star|Attack Level +132\nHealth Máxima +1313\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *44650"/>
 	</i>	
 	<i step="33" name="33" genemap="10,13,16,19,22,25,28,31,34,38">	
-		<s star="1" name="33阶1星" rate="70" cost="7,48475" attrdata="1,132,10,132" effect="1613" stip="33阶1星|攻击等级+132\n韧性+132|需要基因碎片48475"/>
-		<s star="2" name="33阶2星" rate="70" cost="7,48480" attrdata="2,132,9,132" effect="1613" stip="33阶2星|防御等级+132\n暴击+132|需要基因碎片48480"/>
-		<s star="3" name="33阶3星" rate="70" cost="7,48485" attrdata="1,134,3,1326" effect="1629" stip="33阶3星|攻击等级+134\n生命上限+1326|需要基因碎片48485"/>
-		<s star="4" name="33阶4星" rate="70" cost="7,48490" attrdata="9,134,10,134" effect="1637" stip="33阶4星|暴击+134\n韧性+134|需要基因碎片48490"/>
-		<s star="5" name="33阶5星" rate="70" cost="7,48495" attrdata="2,134,3,1340" effect="1637" stip="33阶5星|防御等级+134\n生命上限+1340|需要基因碎片48495"/>
-		<s star="6" name="33阶6星" rate="70" cost="7,48500" attrdata="1,134,9,134" effect="1637" stip="33阶6星|攻击等级+134\n暴击+134|需要基因碎片48500"/>
-		<s star="7" name="33阶7星" rate="70" cost="7,48505" attrdata="2,134,10,134" effect="1637" stip="33阶7星|防御等级+134\n韧性+134|需要基因碎片48505"/>
-		<s star="8" name="33阶8星" rate="70" cost="7,48510" attrdata="3,1340,9,136" effect="1650" stip="33阶8星|生命上限+1340\n暴击+136|需要基因碎片48510"/>
-		<s star="9" name="33阶9星" rate="70" cost="7,48515" attrdata="2,136,10,136" effect="1662" stip="33阶9星|防御等级+136\n韧性+136|需要基因碎片48515"/>
-		<s star="10" name="33阶10星" rate="70" cost="7,48520" attrdata="1,136,3,1354,11,20,12,180" effect="1662" stip="34阶10星|攻击等级+136\n生命上限+1354\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片48520"/>
+		<s star="1" name="33 Level1 Star" rate="70" cost="7,48475" attrdata="1,132,10,132" effect="1613" stip="33 Level1 Star|Attack Level +132\nPersistência +132| Precisa Partes de Genes *48475"/>
+		<s star="2" name="33 Level2 Star" rate="70" cost="7,48480" attrdata="2,132,9,132" effect="1613" stip="33 Level2 Star|Level Defesa +132\nStrike Crítico +132| Precisa Partes de Genes *48480"/>
+		<s star="3" name="33 Level3 Star" rate="70" cost="7,48485" attrdata="1,134,3,1326" effect="1629" stip="33 Level3 Star|Attack Level +134\nHealth Máxima +1326| Precisa Partes de Genes *48485"/>
+		<s star="4" name="33 Level4 Star" rate="70" cost="7,48490" attrdata="9,134,10,134" effect="1637" stip="33 Level4 Star|Strike Crítico +134\nPersistência +134| Precisa Partes de Genes *48490"/>
+		<s star="5" name="33 Level5 Star" rate="70" cost="7,48495" attrdata="2,134,3,1340" effect="1637" stip="33 Level5 Star|Level Defesa +134\nHealth Máxima +1340| Precisa Partes de Genes *48495"/>
+		<s star="6" name="33 Level6 Star" rate="70" cost="7,48500" attrdata="1,134,9,134" effect="1637" stip="33 Level6 Star|Attack Level +134\nStrike Crítico +134| Precisa Partes de Genes *48500"/>
+		<s star="7" name="33 Level7 Star" rate="70" cost="7,48505" attrdata="2,134,10,134" effect="1637" stip="33 Level7 Star|Level Defesa +134\nPersistência +134| Precisa Partes de Genes *48505"/>
+		<s star="8" name="33 Level8 Star" rate="70" cost="7,48510" attrdata="3,1340,9,136" effect="1650" stip="33 Level8 Star|Health Máxima +1340\nStrike Crítico +136| Precisa Partes de Genes *48510"/>
+		<s star="9" name="33 Level9 Star" rate="70" cost="7,48515" attrdata="2,136,10,136" effect="1662" stip="33 Level9 Star|Level Defesa +136\nPersistência +136| Precisa Partes de Genes *48515"/>
+		<s star="10" name="33 Level10 Star" rate="70" cost="7,48520" attrdata="1,136,3,1354,11,20,12,180" effect="1662" stip="34 Level10 Star|Attack Level +136\nHealth Máxima +1354\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *48520"/>
 	</i>	
 	<i step="34" name="34" genemap="5,8,11,14,17,20,23,26,29,33">	
-		<s star="1" name="34阶1星" rate="70" cost="7,52565" attrdata="1,136,10,136" effect="1662" stip="34阶1星|攻击等级+136\n韧性+136|需要基因碎片52565"/>
-		<s star="2" name="34阶2星" rate="70" cost="7,52570" attrdata="2,136,9,136" effect="1662" stip="34阶2星|防御等级+136\n暴击+136|需要基因碎片52570"/>
-		<s star="3" name="34阶3星" rate="70" cost="7,52575" attrdata="1,138,3,1366" effect="1678" stip="34阶3星|攻击等级+138\n生命上限+1366|需要基因碎片52575"/>
-		<s star="4" name="34阶4星" rate="70" cost="7,52580" attrdata="9,138,10,138" effect="1686" stip="34阶4星|暴击+138\n韧性+138|需要基因碎片52580"/>
-		<s star="5" name="34阶5星" rate="70" cost="7,52585" attrdata="2,138,3,1380" effect="1686" stip="34阶5星|防御等级+138\n生命上限+1380|需要基因碎片52585"/>
-		<s star="6" name="34阶6星" rate="70" cost="7,52590" attrdata="1,138,9,138" effect="1686" stip="34阶6星|攻击等级+138\n暴击+138|需要基因碎片52590"/>
-		<s star="7" name="34阶7星" rate="70" cost="7,52595" attrdata="2,138,10,138" effect="1686" stip="34阶7星|防御等级+138\n韧性+138|需要基因碎片52595"/>
-		<s star="8" name="34阶8星" rate="70" cost="7,52600" attrdata="3,1380,9,140" effect="1698" stip="34阶8星|生命上限+1380\n暴击+140|需要基因碎片52600"/>
-		<s star="9" name="34阶9星" rate="70" cost="7,52605" attrdata="2,140,10,140" effect="1711" stip="34阶9星|防御等级+140\n韧性+140|需要基因碎片52605"/>
-		<s star="10" name="34阶10星" rate="70" cost="7,52610" attrdata="1,140,3,1394,11,20,12,180" effect="1711" stip="35阶10星|攻击等级+140\n生命上限+1394\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片52610"/>
+		<s star="1" name="34 Level1 Star" rate="70" cost="7,52565" attrdata="1,136,10,136" effect="1662" stip="34 Level1 Star|Attack Level +136\nPersistência +136| Precisa Partes de Genes *52565"/>
+		<s star="2" name="34 Level2 Star" rate="70" cost="7,52570" attrdata="2,136,9,136" effect="1662" stip="34 Level2 Star|Level Defesa +136\nStrike Crítico +136| Precisa Partes de Genes *52570"/>
+		<s star="3" name="34 Level3 Star" rate="70" cost="7,52575" attrdata="1,138,3,1366" effect="1678" stip="34 Level3 Star|Attack Level +138\nHealth Máxima +1366| Precisa Partes de Genes *52575"/>
+		<s star="4" name="34 Level4 Star" rate="70" cost="7,52580" attrdata="9,138,10,138" effect="1686" stip="34 Level4 Star|Strike Crítico +138\nPersistência +138| Precisa Partes de Genes *52580"/>
+		<s star="5" name="34 Level5 Star" rate="70" cost="7,52585" attrdata="2,138,3,1380" effect="1686" stip="34 Level5 Star|Level Defesa +138\nHealth Máxima +1380| Precisa Partes de Genes *52585"/>
+		<s star="6" name="34 Level6 Star" rate="70" cost="7,52590" attrdata="1,138,9,138" effect="1686" stip="34 Level6 Star|Attack Level +138\nStrike Crítico +138| Precisa Partes de Genes *52590"/>
+		<s star="7" name="34 Level7 Star" rate="70" cost="7,52595" attrdata="2,138,10,138" effect="1686" stip="34 Level7 Star|Level Defesa +138\nPersistência +138| Precisa Partes de Genes *52595"/>
+		<s star="8" name="34 Level8 Star" rate="70" cost="7,52600" attrdata="3,1380,9,140" effect="1698" stip="34 Level8 Star|Health Máxima +1380\nStrike Crítico +140| Precisa Partes de Genes *52600"/>
+		<s star="9" name="34 Level9 Star" rate="70" cost="7,52605" attrdata="2,140,10,140" effect="1711" stip="34 Level9 Star|Level Defesa +140\nPersistência +140| Precisa Partes de Genes *52605"/>
+		<s star="10" name="34 Level10 Star" rate="70" cost="7,52610" attrdata="1,140,3,1394,11,20,12,180" effect="1711" stip="35 Level10 Star|Attack Level +140\nHealth Máxima +1394\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *52610"/>
 	</i>	
 	<i step="35" name="35" genemap="6,9,12,15,18,21,24,27,30,34">	
-		<s star="1" name="35阶1星" rate="65" cost="7,56875" attrdata="1,140,10,140" effect="1711" stip="35阶1星|攻击等级+140\n韧性+140|需要基因碎片56875"/>
-		<s star="2" name="35阶2星" rate="65" cost="7,56880" attrdata="2,140,9,140" effect="1711" stip="35阶2星|防御等级+140\n暴击+140|需要基因碎片56880"/>
-		<s star="3" name="35阶3星" rate="65" cost="7,56885" attrdata="1,142,3,1405" effect="1726" stip="35阶3星|攻击等级+142\n生命上限+1405|需要基因碎片56885"/>
-		<s star="4" name="35阶4星" rate="65" cost="7,56890" attrdata="9,142,10,142" effect="1735" stip="35阶4星|暴击+142\n韧性+142|需要基因碎片56890"/>
-		<s star="5" name="35阶5星" rate="65" cost="7,56895" attrdata="2,142,3,1420" effect="1735" stip="35阶5星|防御等级+142\n生命上限+1420|需要基因碎片56895"/>
-		<s star="6" name="35阶6星" rate="65" cost="7,56900" attrdata="1,142,9,142" effect="1735" stip="35阶6星|攻击等级+142\n暴击+142|需要基因碎片56900"/>
-		<s star="7" name="35阶7星" rate="65" cost="7,56905" attrdata="2,142,10,142" effect="1735" stip="35阶7星|防御等级+142\n韧性+142|需要基因碎片56905"/>
-		<s star="8" name="35阶8星" rate="65" cost="7,56910" attrdata="3,1420,9,144" effect="1747" stip="35阶8星|生命上限+1420\n暴击+144|需要基因碎片56910"/>
-		<s star="9" name="35阶9星" rate="65" cost="7,56915" attrdata="2,144,10,144" effect="1760" stip="35阶9星|防御等级+144\n韧性+144|需要基因碎片56915"/>
-		<s star="10" name="35阶10星" rate="65" cost="7,56920" attrdata="1,144,3,1435,11,20,12,180" effect="1761" stip="36阶10星|攻击等级+144\n生命上限+1435\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片56920"/>
+		<s star="1" name="35 Level1 Star" rate="65" cost="7,56875" attrdata="1,140,10,140" effect="1711" stip="35 Level1 Star|Attack Level +140\nPersistência +140| Precisa Partes de Genes *56875"/>
+		<s star="2" name="35 Level2 Star" rate="65" cost="7,56880" attrdata="2,140,9,140" effect="1711" stip="35 Level2 Star|Level Defesa +140\nStrike Crítico +140| Precisa Partes de Genes *56880"/>
+		<s star="3" name="35 Level3 Star" rate="65" cost="7,56885" attrdata="1,142,3,1405" effect="1726" stip="35 Level3 Star|Attack Level +142\nHealth Máxima +1405| Precisa Partes de Genes *56885"/>
+		<s star="4" name="35 Level4 Star" rate="65" cost="7,56890" attrdata="9,142,10,142" effect="1735" stip="35 Level4 Star|Strike Crítico +142\nPersistência +142| Precisa Partes de Genes *56890"/>
+		<s star="5" name="35 Level5 Star" rate="65" cost="7,56895" attrdata="2,142,3,1420" effect="1735" stip="35 Level5 Star|Level Defesa +142\nHealth Máxima +1420| Precisa Partes de Genes *56895"/>
+		<s star="6" name="35 Level6 Star" rate="65" cost="7,56900" attrdata="1,142,9,142" effect="1735" stip="35 Level6 Star|Attack Level +142\nStrike Crítico +142| Precisa Partes de Genes *56900"/>
+		<s star="7" name="35 Level7 Star" rate="65" cost="7,56905" attrdata="2,142,10,142" effect="1735" stip="35 Level7 Star|Level Defesa +142\nPersistência +142| Precisa Partes de Genes *56905"/>
+		<s star="8" name="35 Level8 Star" rate="65" cost="7,56910" attrdata="3,1420,9,144" effect="1747" stip="35 Level8 Star|Health Máxima +1420\nStrike Crítico +144| Precisa Partes de Genes *56910"/>
+		<s star="9" name="35 Level9 Star" rate="65" cost="7,56915" attrdata="2,144,10,144" effect="1760" stip="35 Level9 Star|Level Defesa +144\nPersistência +144| Precisa Partes de Genes *56915"/>
+		<s star="10" name="35 Level10 Star" rate="65" cost="7,56920" attrdata="1,144,3,1435,11,20,12,180" effect="1761" stip="36 Level10 Star|Attack Level +144\nHealth Máxima +1435\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *56920"/>
 	</i>	
 	<i step="36" name="36" genemap="4,7,10,13,16,19,22,25,28,32">	
-		<s star="1" name="36阶1星" rate="65" cost="7,61415" attrdata="1,144,10,144" effect="1760" stip="36阶1星|攻击等级+144\n韧性+144|需要基因碎片61415"/>
-		<s star="2" name="36阶2星" rate="65" cost="7,61420" attrdata="2,144,9,144" effect="1760" stip="36阶2星|防御等级+144\n暴击+144|需要基因碎片61420"/>
-		<s star="3" name="36阶3星" rate="65" cost="7,61425" attrdata="1,146,3,1445" effect="1775" stip="36阶3星|攻击等级+146\n生命上限+1445|需要基因碎片61425"/>
-		<s star="4" name="36阶4星" rate="65" cost="7,61430" attrdata="9,146,10,146" effect="1784" stip="36阶4星|暴击+146\n韧性+146|需要基因碎片61430"/>
-		<s star="5" name="36阶5星" rate="65" cost="7,61435" attrdata="2,146,3,1460" effect="1784" stip="36阶5星|防御等级+146\n生命上限+1460|需要基因碎片61435"/>
-		<s star="6" name="36阶6星" rate="65" cost="7,61440" attrdata="1,146,9,146" effect="1784" stip="36阶6星|攻击等级+146\n暴击+146|需要基因碎片61440"/>
-		<s star="7" name="36阶7星" rate="65" cost="7,61445" attrdata="2,146,10,146" effect="1784" stip="36阶7星|防御等级+146\n韧性+146|需要基因碎片61445"/>
-		<s star="8" name="36阶8星" rate="65" cost="7,61450" attrdata="3,1460,9,148" effect="1796" stip="36阶8星|生命上限+1460\n暴击+148|需要基因碎片61450"/>
-		<s star="9" name="36阶9星" rate="65" cost="7,61455" attrdata="2,148,10,148" effect="1808" stip="36阶9星|防御等级+148\n韧性+148|需要基因碎片61455"/>
-		<s star="10" name="36阶10星" rate="65" cost="7,61460" attrdata="1,148,3,1475,11,20,12,180" effect="1809" stip="37阶10星|攻击等级+148\n生命上限+1475\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片61460"/>
+		<s star="1" name="36 Level1 Star" rate="65" cost="7,61415" attrdata="1,144,10,144" effect="1760" stip="36 Level1 Star|Attack Level +144\nPersistência +144| Precisa Partes de Genes *61415"/>
+		<s star="2" name="36 Level2 Star" rate="65" cost="7,61420" attrdata="2,144,9,144" effect="1760" stip="36 Level2 Star|Level Defesa +144\nStrike Crítico +144| Precisa Partes de Genes *61420"/>
+		<s star="3" name="36 Level3 Star" rate="65" cost="7,61425" attrdata="1,146,3,1445" effect="1775" stip="36 Level3 Star|Attack Level +146\nHealth Máxima +1445| Precisa Partes de Genes *61425"/>
+		<s star="4" name="36 Level4 Star" rate="65" cost="7,61430" attrdata="9,146,10,146" effect="1784" stip="36 Level4 Star|Strike Crítico +146\nPersistência +146| Precisa Partes de Genes *61430"/>
+		<s star="5" name="36 Level5 Star" rate="65" cost="7,61435" attrdata="2,146,3,1460" effect="1784" stip="36 Level5 Star|Level Defesa +146\nHealth Máxima +1460| Precisa Partes de Genes *61435"/>
+		<s star="6" name="36 Level6 Star" rate="65" cost="7,61440" attrdata="1,146,9,146" effect="1784" stip="36 Level6 Star|Attack Level +146\nStrike Crítico +146| Precisa Partes de Genes *61440"/>
+		<s star="7" name="36 Level7 Star" rate="65" cost="7,61445" attrdata="2,146,10,146" effect="1784" stip="36 Level7 Star|Level Defesa +146\nPersistência +146| Precisa Partes de Genes *61445"/>
+		<s star="8" name="36 Level8 Star" rate="65" cost="7,61450" attrdata="3,1460,9,148" effect="1796" stip="36 Level8 Star|Health Máxima +1460\nStrike Crítico +148| Precisa Partes de Genes *61450"/>
+		<s star="9" name="36 Level9 Star" rate="65" cost="7,61455" attrdata="2,148,10,148" effect="1808" stip="36 Level9 Star|Level Defesa +148\nPersistência +148| Precisa Partes de Genes *61455"/>
+		<s star="10" name="36 Level10 Star" rate="65" cost="7,61460" attrdata="1,148,3,1475,11,20,12,180" effect="1809" stip="37 Level10 Star|Attack Level +148\nHealth Máxima +1475\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *61460"/>
 	</i>	
 	<i step="37" name="37" genemap="3,6,9,12,15,18,21,24,27,31">	
-		<s star="1" name="37阶1星" rate="65" cost="7,66195" attrdata="1,148,10,148" effect="1808" stip="37阶1星|攻击等级+148\n韧性+148|需要基因碎片66195"/>
-		<s star="2" name="37阶2星" rate="65" cost="7,66200" attrdata="2,148,9,148" effect="1808" stip="37阶2星|防御等级+148\n暴击+148|需要基因碎片66200"/>
-		<s star="3" name="37阶3星" rate="65" cost="7,66205" attrdata="1,150,3,1485" effect="1824" stip="37阶3星|攻击等级+150\n生命上限+1485|需要基因碎片66205"/>
-		<s star="4" name="37阶4星" rate="65" cost="7,66210" attrdata="9,150,10,150" effect="1833" stip="37阶4星|暴击+150\n韧性+150|需要基因碎片66210"/>
-		<s star="5" name="37阶5星" rate="65" cost="7,66215" attrdata="2,150,3,1500" effect="1833" stip="37阶5星|防御等级+150\n生命上限+1500|需要基因碎片66215"/>
-		<s star="6" name="37阶6星" rate="65" cost="7,66220" attrdata="1,150,9,150" effect="1833" stip="37阶6星|攻击等级+150\n暴击+150|需要基因碎片66220"/>
-		<s star="7" name="37阶7星" rate="65" cost="7,66225" attrdata="2,150,10,150" effect="1833" stip="37阶7星|防御等级+150\n韧性+150|需要基因碎片66225"/>
-		<s star="8" name="37阶8星" rate="65" cost="7,66230" attrdata="3,1500,9,152" effect="1845" stip="37阶8星|生命上限+1500\n暴击+152|需要基因碎片66230"/>
-		<s star="9" name="37阶9星" rate="65" cost="7,66235" attrdata="2,152,10,152" effect="1857" stip="37阶9星|防御等级+152\n韧性+152|需要基因碎片66235"/>
-		<s star="10" name="37阶10星" rate="65" cost="7,66240" attrdata="1,152,3,1515,11,20,12,180" effect="1858" stip="38阶10星|攻击等级+152\n生命上限+1515\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片66240"/>
+		<s star="1" name="37 Level1 Star" rate="65" cost="7,66195" attrdata="1,148,10,148" effect="1808" stip="37 Level1 Star|Attack Level +148\nPersistência +148| Precisa Partes de Genes *66195"/>
+		<s star="2" name="37 Level2 Star" rate="65" cost="7,66200" attrdata="2,148,9,148" effect="1808" stip="37 Level2 Star|Level Defesa +148\nStrike Crítico +148| Precisa Partes de Genes *66200"/>
+		<s star="3" name="37 Level3 Star" rate="65" cost="7,66205" attrdata="1,150,3,1485" effect="1824" stip="37 Level3 Star|Attack Level +150\nHealth Máxima +1485| Precisa Partes de Genes *66205"/>
+		<s star="4" name="37 Level4 Star" rate="65" cost="7,66210" attrdata="9,150,10,150" effect="1833" stip="37 Level4 Star|Strike Crítico +150\nPersistência +150| Precisa Partes de Genes *66210"/>
+		<s star="5" name="37 Level5 Star" rate="65" cost="7,66215" attrdata="2,150,3,1500" effect="1833" stip="37 Level5 Star|Level Defesa +150\nHealth Máxima +1500| Precisa Partes de Genes *66215"/>
+		<s star="6" name="37 Level6 Star" rate="65" cost="7,66220" attrdata="1,150,9,150" effect="1833" stip="37 Level6 Star|Attack Level +150\nStrike Crítico +150| Precisa Partes de Genes *66220"/>
+		<s star="7" name="37 Level7 Star" rate="65" cost="7,66225" attrdata="2,150,10,150" effect="1833" stip="37 Level7 Star|Level Defesa +150\nPersistência +150| Precisa Partes de Genes *66225"/>
+		<s star="8" name="37 Level8 Star" rate="65" cost="7,66230" attrdata="3,1500,9,152" effect="1845" stip="37 Level8 Star|Health Máxima +1500\nStrike Crítico +152| Precisa Partes de Genes *66230"/>
+		<s star="9" name="37 Level9 Star" rate="65" cost="7,66235" attrdata="2,152,10,152" effect="1857" stip="37 Level9 Star|Level Defesa +152\nPersistência +152| Precisa Partes de Genes *66235"/>
+		<s star="10" name="37 Level10 Star" rate="65" cost="7,66240" attrdata="1,152,3,1515,11,20,12,180" effect="1858" stip="38 Level10 Star|Attack Level +152\nHealth Máxima +1515\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *66240"/>
 	</i>	
 	<i step="38" name="38" genemap="8,11,14,17,20,23,26,29,32,36">	
-		<s star="1" name="38阶1星" rate="65" cost="7,71215" attrdata="1,152,10,152" effect="1857" stip="38阶1星|攻击等级+152\n韧性+152|需要基因碎片71215"/>
-		<s star="2" name="38阶2星" rate="65" cost="7,71220" attrdata="2,152,9,152" effect="1857" stip="38阶2星|防御等级+152\n暴击+152|需要基因碎片71220"/>
-		<s star="3" name="38阶3星" rate="65" cost="7,71225" attrdata="1,154,3,1524" effect="1872" stip="38阶3星|攻击等级+154\n生命上限+1524|需要基因碎片71225"/>
-		<s star="4" name="38阶4星" rate="65" cost="7,71230" attrdata="9,154,10,154" effect="1882" stip="38阶4星|暴击+154\n韧性+154|需要基因碎片71230"/>
-		<s star="5" name="38阶5星" rate="65" cost="7,71235" attrdata="2,154,3,1540" effect="1882" stip="38阶5星|防御等级+154\n生命上限+1540|需要基因碎片71235"/>
-		<s star="6" name="38阶6星" rate="65" cost="7,71240" attrdata="1,154,9,154" effect="1882" stip="38阶6星|攻击等级+154\n暴击+154|需要基因碎片71240"/>
-		<s star="7" name="38阶7星" rate="65" cost="7,71245" attrdata="2,154,10,154" effect="1882" stip="38阶7星|防御等级+154\n韧性+154|需要基因碎片71245"/>
-		<s star="8" name="38阶8星" rate="65" cost="7,71250" attrdata="3,1540,9,156" effect="1894" stip="38阶8星|生命上限+1540\n暴击+156|需要基因碎片71250"/>
-		<s star="9" name="38阶9星" rate="65" cost="7,71255" attrdata="2,156,10,156" effect="1906" stip="38阶9星|防御等级+156\n韧性+156|需要基因碎片71255"/>
-		<s star="10" name="38阶10星" rate="65" cost="7,71260" attrdata="1,156,3,1556,11,20,12,180" effect="1908" stip="39阶10星|攻击等级+156\n生命上限+1556\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片71260"/>
+		<s star="1" name="38 Level1 Star" rate="65" cost="7,71215" attrdata="1,152,10,152" effect="1857" stip="38 Level1 Star|Attack Level +152\nPersistência +152| Precisa Partes de Genes *71215"/>
+		<s star="2" name="38 Level2 Star" rate="65" cost="7,71220" attrdata="2,152,9,152" effect="1857" stip="38 Level2 Star|Level Defesa +152\nStrike Crítico +152| Precisa Partes de Genes *71220"/>
+		<s star="3" name="38 Level3 Star" rate="65" cost="7,71225" attrdata="1,154,3,1524" effect="1872" stip="38 Level3 Star|Attack Level +154\nHealth Máxima +1524| Precisa Partes de Genes *71225"/>
+		<s star="4" name="38 Level4 Star" rate="65" cost="7,71230" attrdata="9,154,10,154" effect="1882" stip="38 Level4 Star|Strike Crítico +154\nPersistência +154| Precisa Partes de Genes *71230"/>
+		<s star="5" name="38 Level5 Star" rate="65" cost="7,71235" attrdata="2,154,3,1540" effect="1882" stip="38 Level5 Star|Level Defesa +154\nHealth Máxima +1540| Precisa Partes de Genes *71235"/>
+		<s star="6" name="38 Level6 Star" rate="65" cost="7,71240" attrdata="1,154,9,154" effect="1882" stip="38 Level6 Star|Attack Level +154\nStrike Crítico +154| Precisa Partes de Genes *71240"/>
+		<s star="7" name="38 Level7 Star" rate="65" cost="7,71245" attrdata="2,154,10,154" effect="1882" stip="38 Level7 Star|Level Defesa +154\nPersistência +154| Precisa Partes de Genes *71245"/>
+		<s star="8" name="38 Level8 Star" rate="65" cost="7,71250" attrdata="3,1540,9,156" effect="1894" stip="38 Level8 Star|Health Máxima +1540\nStrike Crítico +156| Precisa Partes de Genes *71250"/>
+		<s star="9" name="38 Level9 Star" rate="65" cost="7,71255" attrdata="2,156,10,156" effect="1906" stip="38 Level9 Star|Level Defesa +156\nPersistência +156| Precisa Partes de Genes *71255"/>
+		<s star="10" name="38 Level10 Star" rate="65" cost="7,71260" attrdata="1,156,3,1556,11,20,12,180" effect="1908" stip="39 Level10 Star|Attack Level +156\nHealth Máxima +1556\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *71260"/>
 	</i>	
 	<i step="39" name="39" genemap="1,4,7,10,13,16,19,22,25,29">	
-		<s star="1" name="39阶1星" rate="65" cost="7,76475" attrdata="1,156,10,156" effect="1906" stip="39阶1星|攻击等级+156\n韧性+156|需要基因碎片76475"/>
-		<s star="2" name="39阶2星" rate="65" cost="7,76480" attrdata="2,156,9,156" effect="1906" stip="39阶2星|防御等级+156\n暴击+156|需要基因碎片76480"/>
-		<s star="3" name="39阶3星" rate="65" cost="7,76485" attrdata="1,158,3,1564" effect="1921" stip="39阶3星|攻击等级+158\n生命上限+1564|需要基因碎片76485"/>
-		<s star="4" name="39阶4星" rate="65" cost="7,76490" attrdata="9,158,10,158" effect="1931" stip="39阶4星|暴击+158\n韧性+158|需要基因碎片76490"/>
-		<s star="5" name="39阶5星" rate="65" cost="7,76495" attrdata="2,158,3,1580" effect="1931" stip="39阶5星|防御等级+158\n生命上限+1580|需要基因碎片76495"/>
-		<s star="6" name="39阶6星" rate="65" cost="7,76500" attrdata="1,158,9,158" effect="1931" stip="39阶6星|攻击等级+158\n暴击+158|需要基因碎片76500"/>
-		<s star="7" name="39阶7星" rate="65" cost="7,76505" attrdata="2,158,10,158" effect="1931" stip="39阶7星|防御等级+158\n韧性+158|需要基因碎片76505"/>
-		<s star="8" name="39阶8星" rate="65" cost="7,76510" attrdata="3,1580,9,160" effect="1943" stip="39阶8星|生命上限+1580\n暴击+160|需要基因碎片76510"/>
-		<s star="9" name="39阶9星" rate="65" cost="7,76515" attrdata="2,160,10,160" effect="1955" stip="39阶9星|防御等级+160\n韧性+160|需要基因碎片76515"/>
-		<s star="10" name="39阶10星" rate="65" cost="7,76520" attrdata="1,160,3,1596,11,20,12,180" effect="1957" stip="40阶10星|攻击等级+160\n生命上限+1596\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片76520"/>
+		<s star="1" name="39 Level1 Star" rate="65" cost="7,76475" attrdata="1,156,10,156" effect="1906" stip="39 Level1 Star|Attack Level +156\nPersistência +156| Precisa Partes de Genes *76475"/>
+		<s star="2" name="39 Level2 Star" rate="65" cost="7,76480" attrdata="2,156,9,156" effect="1906" stip="39 Level2 Star|Level Defesa +156\nStrike Crítico +156| Precisa Partes de Genes *76480"/>
+		<s star="3" name="39 Level3 Star" rate="65" cost="7,76485" attrdata="1,158,3,1564" effect="1921" stip="39 Level3 Star|Attack Level +158\nHealth Máxima +1564| Precisa Partes de Genes *76485"/>
+		<s star="4" name="39 Level4 Star" rate="65" cost="7,76490" attrdata="9,158,10,158" effect="1931" stip="39 Level4 Star|Strike Crítico +158\nPersistência +158| Precisa Partes de Genes *76490"/>
+		<s star="5" name="39 Level5 Star" rate="65" cost="7,76495" attrdata="2,158,3,1580" effect="1931" stip="39 Level5 Star|Level Defesa +158\nHealth Máxima +1580| Precisa Partes de Genes *76495"/>
+		<s star="6" name="39 Level6 Star" rate="65" cost="7,76500" attrdata="1,158,9,158" effect="1931" stip="39 Level6 Star|Attack Level +158\nStrike Crítico +158| Precisa Partes de Genes *76500"/>
+		<s star="7" name="39 Level7 Star" rate="65" cost="7,76505" attrdata="2,158,10,158" effect="1931" stip="39 Level7 Star|Level Defesa +158\nPersistência +158| Precisa Partes de Genes *76505"/>
+		<s star="8" name="39 Level8 Star" rate="65" cost="7,76510" attrdata="3,1580,9,160" effect="1943" stip="39 Level8 Star|Health Máxima +1580\nStrike Crítico +160| Precisa Partes de Genes *76510"/>
+		<s star="9" name="39 Level9 Star" rate="65" cost="7,76515" attrdata="2,160,10,160" effect="1955" stip="39 Level9 Star|Level Defesa +160\nPersistência +160| Precisa Partes de Genes *76515"/>
+		<s star="10" name="39 Level10 Star" rate="65" cost="7,76520" attrdata="1,160,3,1596,11,20,12,180" effect="1957" stip="40 Level10 Star|Attack Level +160\nHealth Máxima +1596\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *76520"/>
 	</i>	
 	<i step="40" name="40" genemap="9,12,15,18,21,24,27,30,33,37">	
-		<s star="1" name="40阶1星" rate="60" cost="7,82005" attrdata="1,160,10,160" effect="1955" stip="40阶1星|攻击等级+160\n韧性+160|需要基因碎片82005"/>
-		<s star="2" name="40阶2星" rate="60" cost="7,82010" attrdata="2,160,9,160" effect="1955" stip="40阶2星|防御等级+160\n暴击+160|需要基因碎片82010"/>
-		<s star="3" name="40阶3星" rate="60" cost="7,82015" attrdata="1,162,3,1603" effect="1969" stip="40阶3星|攻击等级+162\n生命上限+1603|需要基因碎片82015"/>
-		<s star="4" name="40阶4星" rate="60" cost="7,82020" attrdata="9,162,10,162" effect="1980" stip="40阶4星|暴击+162\n韧性+162|需要基因碎片82020"/>
-		<s star="5" name="40阶5星" rate="60" cost="7,82025" attrdata="2,162,3,1620" effect="1980" stip="40阶5星|防御等级+162\n生命上限+1620|需要基因碎片82025"/>
-		<s star="6" name="40阶6星" rate="60" cost="7,82030" attrdata="1,162,9,162" effect="1980" stip="40阶6星|攻击等级+162\n暴击+162|需要基因碎片82030"/>
-		<s star="7" name="40阶7星" rate="60" cost="7,82035" attrdata="2,162,10,162" effect="1980" stip="40阶7星|防御等级+162\n韧性+162|需要基因碎片82035"/>
-		<s star="8" name="40阶8星" rate="60" cost="7,82040" attrdata="3,1620,9,164" effect="1992" stip="40阶8星|生命上限+1620\n暴击+164|需要基因碎片82040"/>
-		<s star="9" name="40阶9星" rate="60" cost="7,82045" attrdata="2,164,10,164" effect="2004" stip="40阶9星|防御等级+164\n韧性+164|需要基因碎片82045"/>
-		<s star="10" name="40阶10星" rate="60" cost="7,82050" attrdata="1,164,3,1637,11,20,12,180" effect="2006" stip="41阶10星|攻击等级+164\n生命上限+1637\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片82050"/>
+		<s star="1" name="40 Level1 Star" rate="60" cost="7,82005" attrdata="1,160,10,160" effect="1955" stip="40 Level1 Star|Attack Level +160\nPersistência +160| Precisa Partes de Genes *82005"/>
+		<s star="2" name="40 Level2 Star" rate="60" cost="7,82010" attrdata="2,160,9,160" effect="1955" stip="40 Level2 Star|Level Defesa +160\nStrike Crítico +160| Precisa Partes de Genes *82010"/>
+		<s star="3" name="40 Level3 Star" rate="60" cost="7,82015" attrdata="1,162,3,1603" effect="1969" stip="40 Level3 Star|Attack Level +162\nHealth Máxima +1603| Precisa Partes de Genes *82015"/>
+		<s star="4" name="40 Level4 Star" rate="60" cost="7,82020" attrdata="9,162,10,162" effect="1980" stip="40 Level4 Star|Strike Crítico +162\nPersistência +162| Precisa Partes de Genes *82020"/>
+		<s star="5" name="40 Level5 Star" rate="60" cost="7,82025" attrdata="2,162,3,1620" effect="1980" stip="40 Level5 Star|Level Defesa +162\nHealth Máxima +1620| Precisa Partes de Genes *82025"/>
+		<s star="6" name="40 Level6 Star" rate="60" cost="7,82030" attrdata="1,162,9,162" effect="1980" stip="40 Level6 Star|Attack Level +162\nStrike Crítico +162| Precisa Partes de Genes *82030"/>
+		<s star="7" name="40 Level7 Star" rate="60" cost="7,82035" attrdata="2,162,10,162" effect="1980" stip="40 Level7 Star|Level Defesa +162\nPersistência +162| Precisa Partes de Genes *82035"/>
+		<s star="8" name="40 Level8 Star" rate="60" cost="7,82040" attrdata="3,1620,9,164" effect="1992" stip="40 Level8 Star|Health Máxima +1620\nStrike Crítico +164| Precisa Partes de Genes *82040"/>
+		<s star="9" name="40 Level9 Star" rate="60" cost="7,82045" attrdata="2,164,10,164" effect="2004" stip="40 Level9 Star|Level Defesa +164\nPersistência +164| Precisa Partes de Genes *82045"/>
+		<s star="10" name="40 Level10 Star" rate="60" cost="7,82050" attrdata="1,164,3,1637,11,20,12,180" effect="2006" stip="41 Level10 Star|Attack Level +164\nHealth Máxima +1637\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *82050"/>
 	</i>	
 	<i step="41" name="41" genemap="7,10,13,16,19,22,25,28,31,35">	
-		<s star="1" name="41阶1星" rate="60" cost="7,87785" attrdata="1,164,10,164" effect="2004" stip="41阶1星|攻击等级+164\n韧性+164|需要基因碎片87785"/>
-		<s star="2" name="41阶2星" rate="60" cost="7,87790" attrdata="2,164,9,164" effect="2004" stip="41阶2星|防御等级+164\n暴击+164|需要基因碎片87790"/>
-		<s star="3" name="41阶3星" rate="60" cost="7,87795" attrdata="1,166,3,1643" effect="2018" stip="41阶3星|攻击等级+166\n生命上限+1643|需要基因碎片87795"/>
-		<s star="4" name="41阶4星" rate="60" cost="7,87800" attrdata="9,166,10,166" effect="2028" stip="41阶4星|暴击+166\n韧性+166|需要基因碎片87800"/>
-		<s star="5" name="41阶5星" rate="60" cost="7,87805" attrdata="2,166,3,1660" effect="2028" stip="41阶5星|防御等级+166\n生命上限+1660|需要基因碎片87805"/>
-		<s star="6" name="41阶6星" rate="60" cost="7,87810" attrdata="1,166,9,166" effect="2028" stip="41阶6星|攻击等级+166\n暴击+166|需要基因碎片87810"/>
-		<s star="7" name="41阶7星" rate="60" cost="7,87815" attrdata="2,166,10,166" effect="2028" stip="41阶7星|防御等级+166\n韧性+166|需要基因碎片87815"/>
-		<s star="8" name="41阶8星" rate="60" cost="7,87820" attrdata="3,1660,9,168" effect="2041" stip="41阶8星|生命上限+1660\n暴击+168|需要基因碎片87820"/>
-		<s star="9" name="41阶9星" rate="60" cost="7,87825" attrdata="2,168,10,168" effect="2053" stip="41阶9星|防御等级+168\n韧性+168|需要基因碎片87825"/>
-		<s star="10" name="41阶10星" rate="60" cost="7,87830" attrdata="1,168,3,1677,11,20,12,180" effect="2055" stip="42阶10星|攻击等级+168\n生命上限+1677\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片87830"/>
+		<s star="1" name="41 Level1 Star" rate="60" cost="7,87785" attrdata="1,164,10,164" effect="2004" stip="41 Level1 Star|Attack Level +164\nPersistência +164| Precisa Partes de Genes *87785"/>
+		<s star="2" name="41 Level2 Star" rate="60" cost="7,87790" attrdata="2,164,9,164" effect="2004" stip="41 Level2 Star|Level Defesa +164\nStrike Crítico +164| Precisa Partes de Genes *87790"/>
+		<s star="3" name="41 Level3 Star" rate="60" cost="7,87795" attrdata="1,166,3,1643" effect="2018" stip="41 Level3 Star|Attack Level +166\nHealth Máxima +1643| Precisa Partes de Genes *87795"/>
+		<s star="4" name="41 Level4 Star" rate="60" cost="7,87800" attrdata="9,166,10,166" effect="2028" stip="41 Level4 Star|Strike Crítico +166\nPersistência +166| Precisa Partes de Genes *87800"/>
+		<s star="5" name="41 Level5 Star" rate="60" cost="7,87805" attrdata="2,166,3,1660" effect="2028" stip="41 Level5 Star|Level Defesa +166\nHealth Máxima +1660| Precisa Partes de Genes *87805"/>
+		<s star="6" name="41 Level6 Star" rate="60" cost="7,87810" attrdata="1,166,9,166" effect="2028" stip="41 Level6 Star|Attack Level +166\nStrike Crítico +166| Precisa Partes de Genes *87810"/>
+		<s star="7" name="41 Level7 Star" rate="60" cost="7,87815" attrdata="2,166,10,166" effect="2028" stip="41 Level7 Star|Level Defesa +166\nPersistência +166| Precisa Partes de Genes *87815"/>
+		<s star="8" name="41 Level8 Star" rate="60" cost="7,87820" attrdata="3,1660,9,168" effect="2041" stip="41 Level8 Star|Health Máxima +1660\nStrike Crítico +168| Precisa Partes de Genes *87820"/>
+		<s star="9" name="41 Level9 Star" rate="60" cost="7,87825" attrdata="2,168,10,168" effect="2053" stip="41 Level9 Star|Level Defesa +168\nPersistência +168| Precisa Partes de Genes *87825"/>
+		<s star="10" name="41 Level10 Star" rate="60" cost="7,87830" attrdata="1,168,3,1677,11,20,12,180" effect="2055" stip="42 Level10 Star|Attack Level +168\nHealth Máxima +1677\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *87830"/>
 	</i>	
 	<i step="42" name="42" genemap="2,5,8,11,14,17,20,23,26,30">	
-		<s star="1" name="42阶1星" rate="60" cost="7,93825" attrdata="1,168,10,168" effect="2053" stip="42阶1星|攻击等级+168\n韧性+168|需要基因碎片93825"/>
-		<s star="2" name="42阶2星" rate="60" cost="7,93830" attrdata="2,168,9,168" effect="2053" stip="42阶2星|防御等级+168\n暴击+168|需要基因碎片93830"/>
-		<s star="3" name="42阶3星" rate="60" cost="7,93835" attrdata="1,170,3,1683" effect="2067" stip="42阶3星|攻击等级+170\n生命上限+1683|需要基因碎片93835"/>
-		<s star="4" name="42阶4星" rate="60" cost="7,93840" attrdata="9,170,10,170" effect="2077" stip="42阶4星|暴击+170\n韧性+170|需要基因碎片93840"/>
-		<s star="5" name="42阶5星" rate="60" cost="7,93845" attrdata="2,170,3,1700" effect="2077" stip="42阶5星|防御等级+170\n生命上限+1700|需要基因碎片93845"/>
-		<s star="6" name="42阶6星" rate="60" cost="7,93850" attrdata="1,170,9,170" effect="2077" stip="42阶6星|攻击等级+170\n暴击+170|需要基因碎片93850"/>
-		<s star="7" name="42阶7星" rate="60" cost="7,93855" attrdata="2,170,10,170" effect="2077" stip="42阶7星|防御等级+170\n韧性+170|需要基因碎片93855"/>
-		<s star="8" name="42阶8星" rate="60" cost="7,93860" attrdata="3,1700,9,172" effect="2090" stip="42阶8星|生命上限+1700\n暴击+172|需要基因碎片93860"/>
-		<s star="9" name="42阶9星" rate="60" cost="7,93865" attrdata="2,172,10,172" effect="2102" stip="42阶9星|防御等级+172\n韧性+172|需要基因碎片93865"/>
-		<s star="10" name="42阶10星" rate="60" cost="7,93870" attrdata="1,172,3,1717,11,20,12,180" effect="2104" stip="43阶10星|攻击等级+172\n生命上限+1717\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片93870"/>
+		<s star="1" name="42 Level1 Star" rate="60" cost="7,93825" attrdata="1,168,10,168" effect="2053" stip="42 Level1 Star|Attack Level +168\nPersistência +168| Precisa Partes de Genes *93825"/>
+		<s star="2" name="42 Level2 Star" rate="60" cost="7,93830" attrdata="2,168,9,168" effect="2053" stip="42 Level2 Star|Level Defesa +168\nStrike Crítico +168| Precisa Partes de Genes *93830"/>
+		<s star="3" name="42 Level3 Star" rate="60" cost="7,93835" attrdata="1,170,3,1683" effect="2067" stip="42 Level3 Star|Attack Level +170\nHealth Máxima +1683| Precisa Partes de Genes *93835"/>
+		<s star="4" name="42 Level4 Star" rate="60" cost="7,93840" attrdata="9,170,10,170" effect="2077" stip="42 Level4 Star|Strike Crítico +170\nPersistência +170| Precisa Partes de Genes *93840"/>
+		<s star="5" name="42 Level5 Star" rate="60" cost="7,93845" attrdata="2,170,3,1700" effect="2077" stip="42 Level5 Star|Level Defesa +170\nHealth Máxima +1700| Precisa Partes de Genes *93845"/>
+		<s star="6" name="42 Level6 Star" rate="60" cost="7,93850" attrdata="1,170,9,170" effect="2077" stip="42 Level6 Star|Attack Level +170\nStrike Crítico +170| Precisa Partes de Genes *93850"/>
+		<s star="7" name="42 Level7 Star" rate="60" cost="7,93855" attrdata="2,170,10,170" effect="2077" stip="42 Level7 Star|Level Defesa +170\nPersistência +170| Precisa Partes de Genes *93855"/>
+		<s star="8" name="42 Level8 Star" rate="60" cost="7,93860" attrdata="3,1700,9,172" effect="2090" stip="42 Level8 Star|Health Máxima +1700\nStrike Crítico +172| Precisa Partes de Genes *93860"/>
+		<s star="9" name="42 Level9 Star" rate="60" cost="7,93865" attrdata="2,172,10,172" effect="2102" stip="42 Level9 Star|Level Defesa +172\nPersistência +172| Precisa Partes de Genes *93865"/>
+		<s star="10" name="42 Level10 Star" rate="60" cost="7,93870" attrdata="1,172,3,1717,11,20,12,180" effect="2104" stip="43 Level10 Star|Attack Level +172\nHealth Máxima +1717\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *93870"/>
 	</i>	
 	<i step="43" name="43" genemap="10,13,16,19,22,25,28,31,34,38">	
-		<s star="1" name="43阶1星" rate="60" cost="7,100145" attrdata="1,172,10,172" effect="2102" stip="43阶1星|攻击等级+172\n韧性+172|需要基因碎片100145"/>
-		<s star="2" name="43阶2星" rate="60" cost="7,100150" attrdata="2,172,9,172" effect="2102" stip="43阶2星|防御等级+172\n暴击+172|需要基因碎片100150"/>
-		<s star="3" name="43阶3星" rate="60" cost="7,100155" attrdata="1,174,3,1722" effect="2115" stip="43阶3星|攻击等级+174\n生命上限+1722|需要基因碎片100155"/>
-		<s star="4" name="43阶4星" rate="60" cost="7,100160" attrdata="9,174,10,174" effect="2126" stip="43阶4星|暴击+174\n韧性+174|需要基因碎片100160"/>
-		<s star="5" name="43阶5星" rate="60" cost="7,100165" attrdata="2,174,3,1740" effect="2126" stip="43阶5星|防御等级+174\n生命上限+1740|需要基因碎片100165"/>
-		<s star="6" name="43阶6星" rate="60" cost="7,100170" attrdata="1,174,9,174" effect="2126" stip="43阶6星|攻击等级+174\n暴击+174|需要基因碎片100170"/>
-		<s star="7" name="43阶7星" rate="60" cost="7,100175" attrdata="2,174,10,174" effect="2126" stip="43阶7星|防御等级+174\n韧性+174|需要基因碎片100175"/>
-		<s star="8" name="43阶8星" rate="60" cost="7,100180" attrdata="3,1740,9,176" effect="2138" stip="43阶8星|生命上限+1740\n暴击+176|需要基因碎片100180"/>
-		<s star="9" name="43阶9星" rate="60" cost="7,100185" attrdata="2,176,10,176" effect="2151" stip="43阶9星|防御等级+176\n韧性+176|需要基因碎片100185"/>
-		<s star="10" name="43阶10星" rate="60" cost="7,100190" attrdata="1,176,3,1758,11,20,12,180" effect="2153" stip="44阶10星|攻击等级+176\n生命上限+1758\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片100190"/>
+		<s star="1" name="43 Level1 Star" rate="60" cost="7,100145" attrdata="1,172,10,172" effect="2102" stip="43 Level1 Star|Attack Level +172\nPersistência +172| Precisa Partes de Genes *100145"/>
+		<s star="2" name="43 Level2 Star" rate="60" cost="7,100150" attrdata="2,172,9,172" effect="2102" stip="43 Level2 Star|Level Defesa +172\nStrike Crítico +172| Precisa Partes de Genes *100150"/>
+		<s star="3" name="43 Level3 Star" rate="60" cost="7,100155" attrdata="1,174,3,1722" effect="2115" stip="43 Level3 Star|Attack Level +174\nHealth Máxima +1722| Precisa Partes de Genes *100155"/>
+		<s star="4" name="43 Level4 Star" rate="60" cost="7,100160" attrdata="9,174,10,174" effect="2126" stip="43 Level4 Star|Strike Crítico +174\nPersistência +174| Precisa Partes de Genes *100160"/>
+		<s star="5" name="43 Level5 Star" rate="60" cost="7,100165" attrdata="2,174,3,1740" effect="2126" stip="43 Level5 Star|Level Defesa +174\nHealth Máxima +1740| Precisa Partes de Genes *100165"/>
+		<s star="6" name="43 Level6 Star" rate="60" cost="7,100170" attrdata="1,174,9,174" effect="2126" stip="43 Level6 Star|Attack Level +174\nStrike Crítico +174| Precisa Partes de Genes *100170"/>
+		<s star="7" name="43 Level7 Star" rate="60" cost="7,100175" attrdata="2,174,10,174" effect="2126" stip="43 Level7 Star|Level Defesa +174\nPersistência +174| Precisa Partes de Genes *100175"/>
+		<s star="8" name="43 Level8 Star" rate="60" cost="7,100180" attrdata="3,1740,9,176" effect="2138" stip="43 Level8 Star|Health Máxima +1740\nStrike Crítico +176| Precisa Partes de Genes *100180"/>
+		<s star="9" name="43 Level9 Star" rate="60" cost="7,100185" attrdata="2,176,10,176" effect="2151" stip="43 Level9 Star|Level Defesa +176\nPersistência +176| Precisa Partes de Genes *100185"/>
+		<s star="10" name="43 Level10 Star" rate="60" cost="7,100190" attrdata="1,176,3,1758,11,20,12,180" effect="2153" stip="44 Level10 Star|Attack Level +176\nHealth Máxima +1758\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *100190"/>
 	</i>	
 	<i step="44" name="44" genemap="5,8,11,14,17,20,23,26,29,33">	
-		<s star="1" name="44阶1星" rate="60" cost="7,106745" attrdata="1,176,10,176" effect="2151" stip="44阶1星|攻击等级+176\n韧性+176|需要基因碎片106745"/>
-		<s star="2" name="44阶2星" rate="60" cost="7,106750" attrdata="2,176,9,176" effect="2151" stip="44阶2星|防御等级+176\n暴击+176|需要基因碎片106750"/>
-		<s star="3" name="44阶3星" rate="60" cost="7,106755" attrdata="1,178,3,1762" effect="2164" stip="44阶3星|攻击等级+178\n生命上限+1762|需要基因碎片106755"/>
-		<s star="4" name="44阶4星" rate="60" cost="7,106760" attrdata="9,178,10,178" effect="2175" stip="44阶4星|暴击+178\n韧性+178|需要基因碎片106760"/>
-		<s star="5" name="44阶5星" rate="60" cost="7,106765" attrdata="2,178,3,1780" effect="2175" stip="44阶5星|防御等级+178\n生命上限+1780|需要基因碎片106765"/>
-		<s star="6" name="44阶6星" rate="60" cost="7,106770" attrdata="1,178,9,178" effect="2175" stip="44阶6星|攻击等级+178\n暴击+178|需要基因碎片106770"/>
-		<s star="7" name="44阶7星" rate="60" cost="7,106775" attrdata="2,178,10,178" effect="2175" stip="44阶7星|防御等级+178\n韧性+178|需要基因碎片106775"/>
-		<s star="8" name="44阶8星" rate="60" cost="7,106780" attrdata="3,1780,9,180" effect="2187" stip="44阶8星|生命上限+1780\n暴击+180|需要基因碎片106780"/>
-		<s star="9" name="44阶9星" rate="60" cost="7,106785" attrdata="2,180,10,180" effect="2200" stip="44阶9星|防御等级+180\n韧性+180|需要基因碎片106785"/>
-		<s star="10" name="44阶10星" rate="60" cost="7,106790" attrdata="1,180,3,1798,11,20,12,180" effect="2202" stip="45阶10星|攻击等级+180\n生命上限+1798\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片106790"/>
+		<s star="1" name="44 Level1 Star" rate="60" cost="7,106745" attrdata="1,176,10,176" effect="2151" stip="44 Level1 Star|Attack Level +176\nPersistência +176| Precisa Partes de Genes *106745"/>
+		<s star="2" name="44 Level2 Star" rate="60" cost="7,106750" attrdata="2,176,9,176" effect="2151" stip="44 Level2 Star|Level Defesa +176\nStrike Crítico +176| Precisa Partes de Genes *106750"/>
+		<s star="3" name="44 Level3 Star" rate="60" cost="7,106755" attrdata="1,178,3,1762" effect="2164" stip="44 Level3 Star|Attack Level +178\nHealth Máxima +1762| Precisa Partes de Genes *106755"/>
+		<s star="4" name="44 Level4 Star" rate="60" cost="7,106760" attrdata="9,178,10,178" effect="2175" stip="44 Level4 Star|Strike Crítico +178\nPersistência +178| Precisa Partes de Genes *106760"/>
+		<s star="5" name="44 Level5 Star" rate="60" cost="7,106765" attrdata="2,178,3,1780" effect="2175" stip="44 Level5 Star|Level Defesa +178\nHealth Máxima +1780| Precisa Partes de Genes *106765"/>
+		<s star="6" name="44 Level6 Star" rate="60" cost="7,106770" attrdata="1,178,9,178" effect="2175" stip="44 Level6 Star|Attack Level +178\nStrike Crítico +178| Precisa Partes de Genes *106770"/>
+		<s star="7" name="44 Level7 Star" rate="60" cost="7,106775" attrdata="2,178,10,178" effect="2175" stip="44 Level7 Star|Level Defesa +178\nPersistência +178| Precisa Partes de Genes *106775"/>
+		<s star="8" name="44 Level8 Star" rate="60" cost="7,106780" attrdata="3,1780,9,180" effect="2187" stip="44 Level8 Star|Health Máxima +1780\nStrike Crítico +180| Precisa Partes de Genes *106780"/>
+		<s star="9" name="44 Level9 Star" rate="60" cost="7,106785" attrdata="2,180,10,180" effect="2200" stip="44 Level9 Star|Level Defesa +180\nPersistência +180| Precisa Partes de Genes *106785"/>
+		<s star="10" name="44 Level10 Star" rate="60" cost="7,106790" attrdata="1,180,3,1798,11,20,12,180" effect="2202" stip="45 Level10 Star|Attack Level +180\nHealth Máxima +1798\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *106790"/>
 	</i>	
 	<i step="45" name="45" genemap="6,9,12,15,18,21,24,27,30,34">	
-		<s star="1" name="45阶1星" rate="55" cost="7,113625" attrdata="1,180,10,180" effect="2200" stip="45阶1星|攻击等级+180\n韧性+180|需要基因碎片113625"/>
-		<s star="2" name="45阶2星" rate="55" cost="7,113630" attrdata="2,180,9,180" effect="2200" stip="45阶2星|防御等级+180\n暴击+180|需要基因碎片113630"/>
-		<s star="3" name="45阶3星" rate="55" cost="7,113635" attrdata="1,182,3,1801" effect="2212" stip="45阶3星|攻击等级+182\n生命上限+1801|需要基因碎片113635"/>
-		<s star="4" name="45阶4星" rate="55" cost="7,113640" attrdata="9,182,10,182" effect="2224" stip="45阶4星|暴击+182\n韧性+182|需要基因碎片113640"/>
-		<s star="5" name="45阶5星" rate="55" cost="7,113645" attrdata="2,182,3,1820" effect="2224" stip="45阶5星|防御等级+182\n生命上限+1820|需要基因碎片113645"/>
-		<s star="6" name="45阶6星" rate="55" cost="7,113650" attrdata="1,182,9,182" effect="2224" stip="45阶6星|攻击等级+182\n暴击+182|需要基因碎片113650"/>
-		<s star="7" name="45阶7星" rate="55" cost="7,113655" attrdata="2,182,10,182" effect="2224" stip="45阶7星|防御等级+182\n韧性+182|需要基因碎片113655"/>
-		<s star="8" name="45阶8星" rate="55" cost="7,113660" attrdata="3,1820,9,184" effect="2236" stip="45阶8星|生命上限+1820\n暴击+184|需要基因碎片113660"/>
-		<s star="9" name="45阶9星" rate="55" cost="7,113665" attrdata="2,184,10,184" effect="2248" stip="45阶9星|防御等级+184\n韧性+184|需要基因碎片113665"/>
-		<s star="10" name="45阶10星" rate="55" cost="7,113670" attrdata="1,184,3,1839,11,20,12,180" effect="2252" stip="46阶10星|攻击等级+184\n生命上限+1839\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片113670"/>
+		<s star="1" name="45 Level1 Star" rate="55" cost="7,113625" attrdata="1,180,10,180" effect="2200" stip="45 Level1 Star|Attack Level +180\nPersistência +180| Precisa Partes de Genes *113625"/>
+		<s star="2" name="45 Level2 Star" rate="55" cost="7,113630" attrdata="2,180,9,180" effect="2200" stip="45 Level2 Star|Level Defesa +180\nStrike Crítico +180| Precisa Partes de Genes *113630"/>
+		<s star="3" name="45 Level3 Star" rate="55" cost="7,113635" attrdata="1,182,3,1801" effect="2212" stip="45 Level3 Star|Attack Level +182\nHealth Máxima +1801| Precisa Partes de Genes *113635"/>
+		<s star="4" name="45 Level4 Star" rate="55" cost="7,113640" attrdata="9,182,10,182" effect="2224" stip="45 Level4 Star|Strike Crítico +182\nPersistência +182| Precisa Partes de Genes *113640"/>
+		<s star="5" name="45 Level5 Star" rate="55" cost="7,113645" attrdata="2,182,3,1820" effect="2224" stip="45 Level5 Star|Level Defesa +182\nHealth Máxima +1820| Precisa Partes de Genes *113645"/>
+		<s star="6" name="45 Level6 Star" rate="55" cost="7,113650" attrdata="1,182,9,182" effect="2224" stip="45 Level6 Star|Attack Level +182\nStrike Crítico +182| Precisa Partes de Genes *113650"/>
+		<s star="7" name="45 Level7 Star" rate="55" cost="7,113655" attrdata="2,182,10,182" effect="2224" stip="45 Level7 Star|Level Defesa +182\nPersistência +182| Precisa Partes de Genes *113655"/>
+		<s star="8" name="45 Level8 Star" rate="55" cost="7,113660" attrdata="3,1820,9,184" effect="2236" stip="45 Level8 Star|Health Máxima +1820\nStrike Crítico +184| Precisa Partes de Genes *113660"/>
+		<s star="9" name="45 Level9 Star" rate="55" cost="7,113665" attrdata="2,184,10,184" effect="2248" stip="45 Level9 Star|Level Defesa +184\nPersistência +184| Precisa Partes de Genes *113665"/>
+		<s star="10" name="45 Level10 Star" rate="55" cost="7,113670" attrdata="1,184,3,1839,11,20,12,180" effect="2252" stip="46 Level10 Star|Attack Level +184\nHealth Máxima +1839\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *113670"/>
 	</i>	
 	<i step="46" name="46" genemap="4,7,10,13,16,19,22,25,28,32">	
-		<s star="1" name="46阶1星" rate="55" cost="7,120795" attrdata="1,184,10,184" effect="2248" stip="46阶1星|攻击等级+184\n韧性+184|需要基因碎片120795"/>
-		<s star="2" name="46阶2星" rate="55" cost="7,120800" attrdata="2,184,9,184" effect="2248" stip="46阶2星|防御等级+184\n暴击+184|需要基因碎片120800"/>
-		<s star="3" name="46阶3星" rate="55" cost="7,120805" attrdata="1,186,3,1841" effect="2261" stip="46阶3星|攻击等级+186\n生命上限+1841|需要基因碎片120805"/>
-		<s star="4" name="46阶4星" rate="55" cost="7,120810" attrdata="9,186,10,186" effect="2273" stip="46阶4星|暴击+186\n韧性+186|需要基因碎片120810"/>
-		<s star="5" name="46阶5星" rate="55" cost="7,120815" attrdata="2,186,3,1860" effect="2273" stip="46阶5星|防御等级+186\n生命上限+1860|需要基因碎片120815"/>
-		<s star="6" name="46阶6星" rate="55" cost="7,120820" attrdata="1,186,9,186" effect="2273" stip="46阶6星|攻击等级+186\n暴击+186|需要基因碎片120820"/>
-		<s star="7" name="46阶7星" rate="55" cost="7,120825" attrdata="2,186,10,186" effect="2273" stip="46阶7星|防御等级+186\n韧性+186|需要基因碎片120825"/>
-		<s star="8" name="46阶8星" rate="55" cost="7,120830" attrdata="3,1860,9,188" effect="2285" stip="46阶8星|生命上限+1860\n暴击+188|需要基因碎片120830"/>
-		<s star="9" name="46阶9星" rate="55" cost="7,120835" attrdata="2,188,10,188" effect="2297" stip="46阶9星|防御等级+188\n韧性+188|需要基因碎片120835"/>
-		<s star="10" name="46阶10星" rate="55" cost="7,120840" attrdata="1,188,3,1879,11,20,12,180" effect="2301" stip="47阶10星|攻击等级+188\n生命上限+1879\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片120840"/>
+		<s star="1" name="46 Level1 Star" rate="55" cost="7,120795" attrdata="1,184,10,184" effect="2248" stip="46 Level1 Star|Attack Level +184\nPersistência +184| Precisa Partes de Genes *120795"/>
+		<s star="2" name="46 Level2 Star" rate="55" cost="7,120800" attrdata="2,184,9,184" effect="2248" stip="46 Level2 Star|Level Defesa +184\nStrike Crítico +184| Precisa Partes de Genes *120800"/>
+		<s star="3" name="46 Level3 Star" rate="55" cost="7,120805" attrdata="1,186,3,1841" effect="2261" stip="46 Level3 Star|Attack Level +186\nHealth Máxima +1841| Precisa Partes de Genes *120805"/>
+		<s star="4" name="46 Level4 Star" rate="55" cost="7,120810" attrdata="9,186,10,186" effect="2273" stip="46 Level4 Star|Strike Crítico +186\nPersistência +186| Precisa Partes de Genes *120810"/>
+		<s star="5" name="46 Level5 Star" rate="55" cost="7,120815" attrdata="2,186,3,1860" effect="2273" stip="46 Level5 Star|Level Defesa +186\nHealth Máxima +1860| Precisa Partes de Genes *120815"/>
+		<s star="6" name="46 Level6 Star" rate="55" cost="7,120820" attrdata="1,186,9,186" effect="2273" stip="46 Level6 Star|Attack Level +186\nStrike Crítico +186| Precisa Partes de Genes *120820"/>
+		<s star="7" name="46 Level7 Star" rate="55" cost="7,120825" attrdata="2,186,10,186" effect="2273" stip="46 Level7 Star|Level Defesa +186\nPersistência +186| Precisa Partes de Genes *120825"/>
+		<s star="8" name="46 Level8 Star" rate="55" cost="7,120830" attrdata="3,1860,9,188" effect="2285" stip="46 Level8 Star|Health Máxima +1860\nStrike Crítico +188| Precisa Partes de Genes *120830"/>
+		<s star="9" name="46 Level9 Star" rate="55" cost="7,120835" attrdata="2,188,10,188" effect="2297" stip="46 Level9 Star|Level Defesa +188\nPersistência +188| Precisa Partes de Genes *120835"/>
+		<s star="10" name="46 Level10 Star" rate="55" cost="7,120840" attrdata="1,188,3,1879,11,20,12,180" effect="2301" stip="47 Level10 Star|Attack Level +188\nHealth Máxima +1879\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *120840"/>
 	</i>	
 	<i step="47" name="47" genemap="3,6,9,12,15,18,21,24,27,31">	
-		<s star="1" name="47阶1星" rate="55" cost="7,128265" attrdata="1,188,10,188" effect="2297" stip="47阶1星|攻击等级+188\n韧性+188|需要基因碎片128265"/>
-		<s star="2" name="47阶2星" rate="55" cost="7,128270" attrdata="2,188,9,188" effect="2297" stip="47阶2星|防御等级+188\n暴击+188|需要基因碎片128270"/>
-		<s star="3" name="47阶3星" rate="55" cost="7,128275" attrdata="1,190,3,1881" effect="2310" stip="47阶3星|攻击等级+190\n生命上限+1881|需要基因碎片128275"/>
-		<s star="4" name="47阶4星" rate="55" cost="7,128280" attrdata="9,190,10,190" effect="2322" stip="47阶4星|暴击+190\n韧性+190|需要基因碎片128280"/>
-		<s star="5" name="47阶5星" rate="55" cost="7,128285" attrdata="2,190,3,1900" effect="2322" stip="47阶5星|防御等级+190\n生命上限+1900|需要基因碎片128285"/>
-		<s star="6" name="47阶6星" rate="55" cost="7,128290" attrdata="1,190,9,190" effect="2322" stip="47阶6星|攻击等级+190\n暴击+190|需要基因碎片128290"/>
-		<s star="7" name="47阶7星" rate="55" cost="7,128295" attrdata="2,190,10,190" effect="2322" stip="47阶7星|防御等级+190\n韧性+190|需要基因碎片128295"/>
-		<s star="8" name="47阶8星" rate="55" cost="7,128300" attrdata="3,1900,9,192" effect="2334" stip="47阶8星|生命上限+1900\n暴击+192|需要基因碎片128300"/>
-		<s star="9" name="47阶9星" rate="55" cost="7,128305" attrdata="2,192,10,192" effect="2346" stip="47阶9星|防御等级+192\n韧性+192|需要基因碎片128305"/>
-		<s star="10" name="47阶10星" rate="55" cost="7,128310" attrdata="1,192,3,1919,11,20,12,180" effect="2350" stip="48阶10星|攻击等级+192\n生命上限+1919\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片128310"/>
+		<s star="1" name="47 Level1 Star" rate="55" cost="7,128265" attrdata="1,188,10,188" effect="2297" stip="47 Level1 Star|Attack Level +188\nPersistência +188| Precisa Partes de Genes *128265"/>
+		<s star="2" name="47 Level2 Star" rate="55" cost="7,128270" attrdata="2,188,9,188" effect="2297" stip="47 Level2 Star|Level Defesa +188\nStrike Crítico +188| Precisa Partes de Genes *128270"/>
+		<s star="3" name="47 Level3 Star" rate="55" cost="7,128275" attrdata="1,190,3,1881" effect="2310" stip="47 Level3 Star|Attack Level +190\nHealth Máxima +1881| Precisa Partes de Genes *128275"/>
+		<s star="4" name="47 Level4 Star" rate="55" cost="7,128280" attrdata="9,190,10,190" effect="2322" stip="47 Level4 Star|Strike Crítico +190\nPersistência +190| Precisa Partes de Genes *128280"/>
+		<s star="5" name="47 Level5 Star" rate="55" cost="7,128285" attrdata="2,190,3,1900" effect="2322" stip="47 Level5 Star|Level Defesa +190\nHealth Máxima +1900| Precisa Partes de Genes *128285"/>
+		<s star="6" name="47 Level6 Star" rate="55" cost="7,128290" attrdata="1,190,9,190" effect="2322" stip="47 Level6 Star|Attack Level +190\nStrike Crítico +190| Precisa Partes de Genes *128290"/>
+		<s star="7" name="47 Level7 Star" rate="55" cost="7,128295" attrdata="2,190,10,190" effect="2322" stip="47 Level7 Star|Level Defesa +190\nPersistência +190| Precisa Partes de Genes *128295"/>
+		<s star="8" name="47 Level8 Star" rate="55" cost="7,128300" attrdata="3,1900,9,192" effect="2334" stip="47 Level8 Star|Health Máxima +1900\nStrike Crítico +192| Precisa Partes de Genes *128300"/>
+		<s star="9" name="47 Level9 Star" rate="55" cost="7,128305" attrdata="2,192,10,192" effect="2346" stip="47 Level9 Star|Level Defesa +192\nPersistência +192| Precisa Partes de Genes *128305"/>
+		<s star="10" name="47 Level10 Star" rate="55" cost="7,128310" attrdata="1,192,3,1919,11,20,12,180" effect="2350" stip="48 Level10 Star|Attack Level +192\nHealth Máxima +1919\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *128310"/>
 	</i>	
 	<i step="48" name="48" genemap="8,11,14,17,20,23,26,29,32,36">	
-		<s star="1" name="48阶1星" rate="55" cost="7,136035" attrdata="1,192,10,192" effect="2346" stip="48阶1星|攻击等级+192\n韧性+192|需要基因碎片136035"/>
-		<s star="2" name="48阶2星" rate="55" cost="7,136040" attrdata="2,192,9,192" effect="2346" stip="48阶2星|防御等级+192\n暴击+192|需要基因碎片136040"/>
-		<s star="3" name="48阶3星" rate="55" cost="7,136045" attrdata="1,194,3,1920" effect="2358" stip="48阶3星|攻击等级+194\n生命上限+1920|需要基因碎片136045"/>
-		<s star="4" name="48阶4星" rate="55" cost="7,136050" attrdata="9,194,10,194" effect="2371" stip="48阶4星|暴击+194\n韧性+194|需要基因碎片136050"/>
-		<s star="5" name="48阶5星" rate="55" cost="7,136055" attrdata="2,194,3,1940" effect="2371" stip="48阶5星|防御等级+194\n生命上限+1940|需要基因碎片136055"/>
-		<s star="6" name="48阶6星" rate="55" cost="7,136060" attrdata="1,194,9,194" effect="2371" stip="48阶6星|攻击等级+194\n暴击+194|需要基因碎片136060"/>
-		<s star="7" name="48阶7星" rate="55" cost="7,136065" attrdata="2,194,10,194" effect="2371" stip="48阶7星|防御等级+194\n韧性+194|需要基因碎片136065"/>
-		<s star="8" name="48阶8星" rate="55" cost="7,136070" attrdata="3,1940,9,196" effect="2383" stip="48阶8星|生命上限+1940\n暴击+196|需要基因碎片136070"/>
-		<s star="9" name="48阶9星" rate="55" cost="7,136075" attrdata="2,196,10,196" effect="2395" stip="48阶9星|防御等级+196\n韧性+196|需要基因碎片136075"/>
-		<s star="10" name="48阶10星" rate="55" cost="7,136080" attrdata="1,196,3,1960,11,20,12,180" effect="2399" stip="49阶10星|攻击等级+196\n生命上限+1960\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片136080"/>
+		<s star="1" name="48 Level1 Star" rate="55" cost="7,136035" attrdata="1,192,10,192" effect="2346" stip="48 Level1 Star|Attack Level +192\nPersistência +192| Precisa Partes de Genes *136035"/>
+		<s star="2" name="48 Level2 Star" rate="55" cost="7,136040" attrdata="2,192,9,192" effect="2346" stip="48 Level2 Star|Level Defesa +192\nStrike Crítico +192| Precisa Partes de Genes *136040"/>
+		<s star="3" name="48 Level3 Star" rate="55" cost="7,136045" attrdata="1,194,3,1920" effect="2358" stip="48 Level3 Star|Attack Level +194\nHealth Máxima +1920| Precisa Partes de Genes *136045"/>
+		<s star="4" name="48 Level4 Star" rate="55" cost="7,136050" attrdata="9,194,10,194" effect="2371" stip="48 Level4 Star|Strike Crítico +194\nPersistência +194| Precisa Partes de Genes *136050"/>
+		<s star="5" name="48 Level5 Star" rate="55" cost="7,136055" attrdata="2,194,3,1940" effect="2371" stip="48 Level5 Star|Level Defesa +194\nHealth Máxima +1940| Precisa Partes de Genes *136055"/>
+		<s star="6" name="48 Level6 Star" rate="55" cost="7,136060" attrdata="1,194,9,194" effect="2371" stip="48 Level6 Star|Attack Level +194\nStrike Crítico +194| Precisa Partes de Genes *136060"/>
+		<s star="7" name="48 Level7 Star" rate="55" cost="7,136065" attrdata="2,194,10,194" effect="2371" stip="48 Level7 Star|Level Defesa +194\nPersistência +194| Precisa Partes de Genes *136065"/>
+		<s star="8" name="48 Level8 Star" rate="55" cost="7,136070" attrdata="3,1940,9,196" effect="2383" stip="48 Level8 Star|Health Máxima +1940\nStrike Crítico +196| Precisa Partes de Genes *136070"/>
+		<s star="9" name="48 Level9 Star" rate="55" cost="7,136075" attrdata="2,196,10,196" effect="2395" stip="48 Level9 Star|Level Defesa +196\nPersistência +196| Precisa Partes de Genes *136075"/>
+		<s star="10" name="48 Level10 Star" rate="55" cost="7,136080" attrdata="1,196,3,1960,11,20,12,180" effect="2399" stip="49 Level10 Star|Attack Level +196\nHealth Máxima +1960\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *136080"/>
 	</i>	
 	<i step="49" name="49" genemap="1,4,7,10,13,16,19,22,25,29">	
-		<s star="1" name="49阶1星" rate="55" cost="7,144105" attrdata="1,196,10,196" effect="2395" stip="49阶1星|攻击等级+196\n韧性+196|需要基因碎片144105"/>
-		<s star="2" name="49阶2星" rate="55" cost="7,144110" attrdata="2,196,9,196" effect="2395" stip="49阶2星|防御等级+196\n暴击+196|需要基因碎片144110"/>
-		<s star="3" name="49阶3星" rate="55" cost="7,144115" attrdata="1,198,3,1960" effect="2407" stip="49阶3星|攻击等级+198\n生命上限+1960|需要基因碎片144115"/>
-		<s star="4" name="49阶4星" rate="55" cost="7,144120" attrdata="9,198,10,198" effect="2420" stip="49阶4星|暴击+198\n韧性+198|需要基因碎片144120"/>
-		<s star="5" name="49阶5星" rate="55" cost="7,144125" attrdata="2,198,3,1980" effect="2420" stip="49阶5星|防御等级+198\n生命上限+1980|需要基因碎片144125"/>
-		<s star="6" name="49阶6星" rate="55" cost="7,144130" attrdata="1,198,9,198" effect="2420" stip="49阶6星|攻击等级+198\n暴击+198|需要基因碎片144130"/>
-		<s star="7" name="49阶7星" rate="55" cost="7,144135" attrdata="2,198,10,198" effect="2420" stip="49阶7星|防御等级+198\n韧性+198|需要基因碎片144135"/>
-		<s star="8" name="49阶8星" rate="55" cost="7,144140" attrdata="3,1980,9,200" effect="2432" stip="49阶8星|生命上限+1980\n暴击+200|需要基因碎片144140"/>
-		<s star="9" name="49阶9星" rate="55" cost="7,144145" attrdata="2,200,10,200" effect="2444" stip="49阶9星|防御等级+200\n韧性+200|需要基因碎片144145"/>
-		<s star="10" name="49阶10星" rate="55" cost="7,144150" attrdata="1,200,3,2000,11,20,12,180" effect="2448" stip="50阶10星|攻击等级+200\n生命上限+2000\n噬魂触发几率+20\n噬魂恢复量+180|需要基因碎片144150"/>
+		<s star="1" name="49 Level1 Star" rate="55" cost="7,144105" attrdata="1,196,10,196" effect="2395" stip="49 Level1 Star|Attack Level +196\nPersistência +196| Precisa Partes de Genes *144105"/>
+		<s star="2" name="49 Level2 Star" rate="55" cost="7,144110" attrdata="2,196,9,196" effect="2395" stip="49 Level2 Star|Level Defesa +196\nStrike Crítico +196| Precisa Partes de Genes *144110"/>
+		<s star="3" name="49 Level3 Star" rate="55" cost="7,144115" attrdata="1,198,3,1960" effect="2407" stip="49 Level3 Star|Attack Level +198\nHealth Máxima +1960| Precisa Partes de Genes *144115"/>
+		<s star="4" name="49 Level4 Star" rate="55" cost="7,144120" attrdata="9,198,10,198" effect="2420" stip="49 Level4 Star|Strike Crítico +198\nPersistência +198| Precisa Partes de Genes *144120"/>
+		<s star="5" name="49 Level5 Star" rate="55" cost="7,144125" attrdata="2,198,3,1980" effect="2420" stip="49 Level5 Star|Level Defesa +198\nHealth Máxima +1980| Precisa Partes de Genes *144125"/>
+		<s star="6" name="49 Level6 Star" rate="55" cost="7,144130" attrdata="1,198,9,198" effect="2420" stip="49 Level6 Star|Attack Level +198\nStrike Crítico +198| Precisa Partes de Genes *144130"/>
+		<s star="7" name="49 Level7 Star" rate="55" cost="7,144135" attrdata="2,198,10,198" effect="2420" stip="49 Level7 Star|Level Defesa +198\nPersistência +198| Precisa Partes de Genes *144135"/>
+		<s star="8" name="49 Level8 Star" rate="55" cost="7,144140" attrdata="3,1980,9,200" effect="2432" stip="49 Level8 Star|Health Máxima +1980\nStrike Crítico +200| Precisa Partes de Genes *144140"/>
+		<s star="9" name="49 Level9 Star" rate="55" cost="7,144145" attrdata="2,200,10,200" effect="2444" stip="49 Level9 Star|Level Defesa +200\nPersistência +200| Precisa Partes de Genes *144145"/>
+		<s star="10" name="49 Level10 Star" rate="55" cost="7,144150" attrdata="1,200,3,2000,11,20,12,180" effect="2448" stip="50 Level10 Star|Attack Level +200\nHealth Máxima +2000\nSoul Eater proc chance +20\nSoul Eater quantia recuperada +180| Precisa Partes de Genes *144150"/>
 	</i>	
 	</root>	
-	<!--	
-	step：阶数	
-	star：星数	
-	name：基因名	
-	rate：升星成功率	
-	cost：消耗	货币类型7为基因碎片	
-	attrdata：升星添加属性1-攻击等级2-防御等级3-生命上限4-生命恢复5-技能冷却6-充能速度7-技能强度8-移动速度9-暴击10-韧性11-噬魂	
-	genemap：1~38个，蓝在前紫在后	
-	effect：战斗力		-->
-	

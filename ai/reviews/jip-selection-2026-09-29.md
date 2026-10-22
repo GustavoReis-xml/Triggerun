@@ -1,0 +1,23 @@
+# Passagem de trabalho — TDM-002 (seleção no JIP)
+
+- Responsável / destinatário / horário UTC: Codex / usuário e Antigravity / 2026-09-29; registro após teste local.
+- Objetivo: quem entra em partida iniciada consegue selecionar e carregar, inclusive ao expirar contador; preservar partida existente.
+- Estado: revisão; implementação e testes automatizados concluídos, validação Unity pendente.
+- Base: arquivos locais iguais aos hashes da auditoria de 26/09 antes da edição. Não houve nova consulta à Oracle.
+- Arquivos alterados: src/socketServer.js, tests/match-lifecycle.test.js, ai/STATE.md, ai/TASKS.md e esta passagem. gameLogic.js não precisou de alteração.
+- Relato atual substitui o anterior: é o ENTRANTE que fica preso na seleção, não os jogadores já presentes.
+- Assembly: SelectHeroUICon.OnSelectHeroOk só envia prévia se m_nMySelectStat==0; JIP enviava m_nIsChsok=1 prematuramente. OnQueDingBut pode enviar desbloqueio (0), cuja resposta o servidor filtrava porque o entrante ainda não estava pronto.
+- Assembly: OnGameDjsTime chama MatchManager.OnEnterGame; envia 20014/90004, ignorado anteriormente pelo servidor.
+- Assembly: MatchManager.OnShowLoad usa o roster para carregar modelos; 90001 apenas pré-carrega mapa. Confirmar com waitingForHeroLock=false caía em troca de herói em combate, sem CLoadScene.
+- Alteração: ambos os JIPs começam waitingForHeroLock=true / hasConfirmedHero=false, com campo de confirmação do roster em zero.
+- Alteração: prévia responde ao próprio jogador mesmo antes de pronto, preserva NetID correto; confirmação inicial atualiza roster antes de OnShowLoad e reutiliza switchPlayerHero inicial existente.
+- Alteração: 90004 durante seleção confirma herói atual; fallback de 60s começa na conexão de cena para entrada direta no mapa final. Saída/invalidação e sala encerrada impedem confirmação tardia.
+- Alteração: confirmação duplicada durante carregamento não vira troca em combate; mapa pronto antes da confirmação não provoca spawn de combate.
+- Testes: node --check src/socketServer.js; node --test tests/lamster.test.js tests/match-lifecycle.test.js — 29/29 aprovados em 29/09.
+- Cobertura nova: 2 entradas x 3 confirmações (manual, contador do cliente, fallback), prévia sem mapa pronto, loading solicitado antes de simular SLoadMapOKMsg, duplicatas, partida existente preservada, saída/encerramento antes do fallback.
+- Controle negativo: executar a suíte de ciclo com socketServer.js do backup anterior falha em 10 verificações (2 expectativas de admissão atualizadas + 8 testes novos); 14 verificações passam. Não substituiu arquivos de execução.
+- Cliente real: não testado; não declarar travamento resolvido definitivamente. Ainda pode haver diferença entre Assembly disponível e binário dos jogadores.
+- Oracle: não alterada; nenhum reinício nesta tarefa.
+- Backup local: backups/jip-selection-20260929-190708/ (socketServer.js, gameLogic.js e teste anterior).
+- Próximo passo: instalar a correção com backup remoto e comparação contra versão concorrente, preservar logs antes de reiniciar; testar dois clientes (lista e matchmaking), confirmar manualmente e deixar contador expirar.
+- Outros achados da auditoria continuam abertos, incluindo fila antiga, saída simétrica, diagnóstico loadmapok:True confundido com pronto e encerramento DURANTE carregamento; não confundir os testes de fallback antes da confirmação com esses cenários.

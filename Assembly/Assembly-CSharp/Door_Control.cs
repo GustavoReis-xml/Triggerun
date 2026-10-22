@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -258,6 +258,18 @@ public class Door_Control : MonoBehaviour
 		}
 		else
 		{
+			if (_Country <= 0 && fGameManager.Heroplayer != null && fGameManager.Heroplayer.nForce > 0)
+			{
+				_Country = fGameManager.Heroplayer.nForce;
+			}
+			if (_Country <= 0 && PlayerDataManager.getInstance() != null && PlayerDataManager.getInstance().playercom != null && PlayerDataManager.getInstance().playercom.m_nShili > 0)
+			{
+				_Country = PlayerDataManager.getInstance().playercom.m_nShili;
+			}
+			if (_Country <= 0)
+			{
+				_Country = 1;
+			}
 			for (int i = 0; i < this.Effect_Door_Object_Array_List.Count; i++)
 			{
 				GameObject gameObject = this.Effect_Door_Object_Array_List[i];

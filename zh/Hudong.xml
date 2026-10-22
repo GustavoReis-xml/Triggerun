@@ -1,455 +1,455 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root>
 	<hero heroid="1003" name="狄安娜" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_dianna_1#hello_dianna_2#hello_dianna_3" msgtxt="你好！#嗨！#怎么又是你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_dianna" msgtxt="终极技能还在充能。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_dianna" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_dianna" msgtxt="给我治疗!" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_dianna" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_dianna" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_dianna_1#thank_dianna_2#thank_dianna_3" msgtxt="谢谢！#不用说不客气了!#谢啦!" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_dianna_1#roger_dianna_2#roger_dianna_3" msgtxt="明白。#收到。#没问题。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_dianna" msgtxt="快点过来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_dianna_1|hello_dianna_2|hello_dianna_3|ultimateing_dianna|ultimateready_dianna|treatment_dianna|thank_dianna_1|thank_dianna_2|thank_dianna_3|roger_dianna_1|roger_dianna_2|roger_dianna_3|assembled_dianna"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_dianna_1|hello_dianna_2|hello_dianna_3|thank_dianna_1|thank_dianna_2|thank_dianna_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_dianna_1_bx#hello_dianna_2_bx#hello_dianna_3_bx" msgtxt=" Olá!# Oi!# Você de novo?" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_dianna_bx" msgtxt=" Ult Skill recarregando" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_dianna_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_dianna_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_dianna_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_dianna_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_dianna_1_bx#thank_dianna_2_bx#thank_dianna_3_bx" msgtxt=" Obrigado!# Não fale de nada!# Valeuu!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_dianna_1_bx#roger_dianna_2_bx#roger_dianna_3_bx" msgtxt=" OK.# Recebido.# Sem problemas." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_dianna_bx" msgtxt=" Vem para cá rapido!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_dianna_1_bx|hello_dianna_2_bx|hello_dianna_3_bx|Ultimateing_dianna_bx|Ultimateready_dianna_bx|treatment_dianna_bx|thank_dianna_1_bx|thank_dianna_2_bx|thank_dianna_3_bx|roger_dianna_1_bx|roger_dianna_2|roger_dianna_3_bx|assembled_dianna_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_dianna_1_bx|hello_dianna_2_bx|hello_dianna_3_bx|thank_dianna_1_bx|thank_dianna_2_bx|thank_dianna_3_bx"  />
 	</hero>
 	<hero heroid="1005" name="雷震子" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_leizhenzi_1#hello_leizhenzi_2#hello_leizhenzi_3" msgtxt="你好，伙计！#嗨！又见面了！#你好！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_leizhenzi" msgtxt="终极技能还在充能！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_leizhenzi" msgtxt="终极技能准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_leizhenzi" msgtxt="请求治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_leizhenzi" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_leizhenzi" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_leizhenzi_1#thank_leizhenzi_2#thank_leizhenzi_3" msgtxt="多谢！#谢谢你，伙计！#嘿，谢了!" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_leizhenzi_1#roger_leizhenzi_2#roger_leizhenzi_3" msgtxt="我知道了。#放心吧！#明白！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_leizhenzi" msgtxt="集合！伙计们！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	yinxiao="zhandou_baotou|zhandou_jiaxue|hello_leizhenzi_1|hello_leizhenzi_2|hello_leizhenzi_3|ultimateing_leizhenzi|ultimateready_leizhenzi|treatment_leizhenzi|thank_leizhenzi_1|thank_leizhenzi_2|thank_leizhenzi_3|roger_leizhenzi_1|roger_leizhenzi_2|roger_leizhenzi_3|assembled_leizhenzi"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_leizhenzi_1|hello_leizhenzi_2|hello_leizhenzi_3|thank_leizhenzi_1|thank_leizhenzi_2|thank_leizhenzi_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_leizhenzi_1_bx#hello_leizhenzi_2_bx#hello_leizhenzi_3_bx" msgtxt=" E ai, parceiro!# Oi! Olá de novo!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_leizhenzi_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_leizhenzi_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_leizhenzi_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_leizhenzi_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_leizhenzi_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_leizhenzi_1_bx#thank_leizhenzi_2_bx#thank_leizhenzi_3_bx" msgtxt=" Muito Obrigado!#Valeu, parceiro!#hey, obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_leizhenzi_1_bx#roger_leizhenzi_2_bx#roger_leizhenzi_3_bx" msgtxt=" Eu sei.# Tá tranquilo!# Confirmado!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_leizhenzi_bx" msgtxt=" Monte! parceiro!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	yinxiao="zhandou_baotou|zhandou_jiaxue|hello_leizhenzi_1_bx|hello_leizhenzi_2_bx|hello_leizhenzi_3_bx|Ultimateing_leizhenzi_bx|Ultimateready_leizhenzi_bx|treatment_leizhenzi_bx|thank_leizhenzi_1_bx|thank_leizhenzi_2_bx|thank_leizhenzi_3_bx|roger_leizhenzi_1_bx|roger_leizhenzi_2_bx|roger_leizhenzi_3_bx|assembled_leizhenzi_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_leizhenzi_1_bx|hello_leizhenzi_2_bx|hello_leizhenzi_3_bx|thank_leizhenzi_1_bx|thank_leizhenzi_2_bx|thank_leizhenzi_3_bx"  />
 	</hero>
 	<hero heroid="1006" name="刑天" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_xingtian_1#hello_xingtian_2#hello_xingtian_3" msgtxt="你好！#你好，朋友。#很荣幸见到你。" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_xingtian" msgtxt="终极技能还在充能！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_xingtian" msgtxt="终极技能准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_xingtian" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_xingtian" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_xingtian" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_xingtian_1#thank_xingtian_2#thank_xingtian_3" msgtxt="多谢了！#谢谢！#非常感谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_xingtian_1#roger_xingtian_2#roger_xingtian_3" msgtxt="收到!#遵命！#明白！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_xingtian" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_xingtian_1|hello_xingtian_2|hello_xingtian_3|ultimateing_xingtian|ultimateready_xingtian|treatment_xingtian|thank_xingtian_1|thank_xingtian_2|thank_xingtian_3|roger_xingtian_1|roger_xingtian_2|roger_xingtian_3|assembled_xingtian"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_xingtian_1|hello_xingtian_2|hello_xingtian_3|thank_xingtian_1|thank_xingtian_2|thank_xingtian_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_xingtian_1_bx#hello_xingtian_2_bx#hello_xingtian_3_bx" msgtxt=" Olá!# Olá, meu amigo.# Prazer." dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_xingtian_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_xingtian_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_xingtian_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_xingtian_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_xingtian_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_xingtian_1_bx#thank_xingtian_2_bx#thank_xingtian_3_bx" msgtxt=" Muito Obrigado!# Valeu!# Muito Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_xingtian_1_bx#roger_xingtian_2_bx#roger_xingtian_3_bx" msgtxt=" Recebido!# Como voce diz!# Positivo!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_xingtian_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_xingtian_1_bx|hello_xingtian_2_bx|hello_xingtian_3_bx|ultimateing_xingtian_bx|ultimateready_xingtian_bx|treatment_xingtian_bx|thank_xingtian_1_bx|thank_xingtian_2_bx|thank_xingtian_3_bx|roger_xingtian_1_bx|roger_xingtian_2_bx|roger_xingtian_3_bx|assembled_xingtian_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_xingtian_1_bx|hello_xingtian_2_bx|hello_xingtian_3_bx|thank_xingtian_1_bx|thank_xingtian_2_bx|thank_xingtian_3_bx"  />
 	</hero>
 	<hero heroid="1015" name="终结者" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_zhongjiezhe_1#hello_zhongjiezhe_2#hello_zhongjiezhe_3" msgtxt="你好！#嘿！#很高兴见到你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_zhongjiezhe" msgtxt="终极技能还在充能中！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_zhongjiezhe" msgtxt="终极技能已准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_zhongjiezhe" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_zhongjiezhe" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_zhongjiezhe" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_zhongjiezhe_1#thank_zhongjiezhe_2#thank_zhongjiezhe_3" msgtxt="谢谢你！#多谢了。#十分感谢。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_zhongjiezhe" msgtxt="收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_zhongjiezhe" msgtxt="在我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_zhongjiezhe_1|hello_zhongjiezhe_2|hello_zhongjiezhe_3|ultimateing_zhongjiezhe|ultimateready_zhongjiezhe|treatment_zhongjiezhe|thank_zhongjiezhe_1|thank_zhongjiezhe_2|thank_zhongjiezhe_3|roger_zhongjiezhe|assembled_zhongjiezhe"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_zhongjiezhe_1|hello_zhongjiezhe_2|hello_zhongjiezhe_3|thank_zhongjiezhe_1|thank_zhongjiezhe_2|thank_zhongjiezhe_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_zhongjiezhe_1_bx#hello_zhongjiezhe_2_bx#hello_zhongjiezhe_3_bx" msgtxt=" Olá!# Hey!# Prazer em conhecê-lo!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_zhongjiezhe_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_zhongjiezhe_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_zhongjiezhe_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_zhongjiezhe_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_zhongjiezhe_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_zhongjiezhe_1_bx#thank_zhongjiezhe_2_bx#thank_zhongjiezhe_3_bx" msgtxt=" Obrigado!# Muito Obrigado.# Várias Vezes Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_zhongjiezhe_bx" msgtxt=" Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_zhongjiezhe_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_zhongjiezhe_1_bx|hello_zhongjiezhe_2_bx|hello_zhongjiezhe_3_bx|Ultimateing_zhongjiezhe_bx|Ultimateready_zhongjiezhe_bx|treatment_zhongjiezhe_bx|thank_zhongjiezhe_1_bx|thank_zhongjiezhe_2_bx|thank_zhongjiezhe_3_bx|roger_zhongjiezhe_bx|assembled_zhongjiezhe_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_zhongjiezhe_1_bx|hello_zhongjiezhe_2_bx|hello_zhongjiezhe_3_bx|thank_zhongjiezhe_1_bx|thank_zhongjiezhe_2_bx|thank_zhongjiezhe_3_bx"  />
 	</hero>
 	<hero heroid="1016" name="瓦尔基里" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_waerjili_1#hello_waerjili_2#hello_waerjili_3" msgtxt="你好！#你好啊！#Hi！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_waerjili" msgtxt="终极技能还在充能！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_waerjili" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_waerjili" msgtxt="医生在哪？" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_waerjili" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_waerjili" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_waerjili_1#thank_waerjili_2#thank_waerjili_3" msgtxt="谢谢！#谢了！#多谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_waerjili_1#roger_waerjili_2" msgtxt="明白。#知道了！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_waerjili" msgtxt="快点过来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_waerjili_1|hello_waerjili_2|hello_waerjili_3|ultimateing_waerjili|ultimateready_waerjili|treatment_waerjili|thank_waerjili_1|thank_waerjili_2|thank_waerjili_3|roger_waerjili_1|assembled_waerjili|roger_waerjili_2"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_waerjili_1|hello_waerjili_2|hello_waerjili_3|thank_waerjili_1|thank_waerjili_2|thank_waerjili_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_waerjili_1_bx#hello_waerjili_2_bx#hello_waerjili_3_bx" msgtxt=" Olá!# Olá!# Oi!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_waerjili_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_waerjili_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_waerjili_bx" msgtxt=" Onde está o médico?" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_waerjili_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_waerjili_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_waerjili_1_bx#thank_waerjili_2_bx#thank_waerjili_3_bx" msgtxt=" Obrigado!# valeu!# Muito Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_waerjili_1_bx#roger_waerjili_2_bx" msgtxt=" Positivo.# Confirmado!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_waerjili_bx" msgtxt=" Vem para cá rapido!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_waerjili_1_bx|hello_waerjili_2_bx|hello_waerjili_3_bx|Ultimateing_waerjili_bx|Ultimateready_waerjili_bx|treatment_waerjili_bx|thank_waerjili_1_bx|thank_waerjili_2_bx|thank_waerjili_3_bx|roger_waerjili_1_bx|assembled_waerjili_bx|roger_waerjili_2_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_waerjili_1_bx|hello_waerjili_2_bx|hello_waerjili_3_bx|thank_waerjili_1_bx|thank_waerjili_2_bx|thank_waerjili_3_bx"  />
 	</hero>
 	<hero heroid="1017" name="木兰" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_mulan_1#hello_mulan_2#hello_mulan_3" msgtxt="你好！#你好啊！#嗨！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_mulan" msgtxt="终极技能还要在等一会！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_mulan" msgtxt="终极技能已经准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_mulan" msgtxt="我需要医生！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_mulan" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_mulan" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_mulan_1#thank_mulan_2#thank_mulan_3" msgtxt="谢谢！#谢谢你。#非常感谢!" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_mulan_1#roger_mulan_2" msgtxt="收到。#明白。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_mulan" msgtxt="快到我这来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_mulan_1|hello_mulan_2|hello_mulan_3|ultimateing_mulan|ultimateready_mulan|treatment_mulan|thank_mulan_1|thank_mulan_2|thank_mulan_3|roger_mulan_1|roger_mulan_2|assembled_mulan"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_mulan_1|hello_mulan_2|hello_mulan_3|thank_mulan_1|thank_mulan_2|thank_mulan_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_mulan_1_bx#hello_mulan_2_bx#hello_mulan_3_bx" msgtxt=" Olá!# Olá!# Oi!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_mulan_bx" msgtxt=" Ult Skill estará OK em breve!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_mulan_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_mulan_bx" msgtxt=" Eu preciso de um médico!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_mulan_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_mulan_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_mulan_1_bx#thank_mulan_2_bx#thank_mulan_3_bx" msgtxt=" Obrigado!# Valeu.# Muito Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_mulan_1_bx#roger_mulan_2_bx" msgtxt=" Recebido.# Positivo." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_mulan_bx" msgtxt=" Monte aqui rapidamente!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_mulan_1_bx|hello_mulan_2_bx|hello_mulan_3_bx|Ultimateing_mulan_bx|Ultimateready_mulan_bx|treatment_mulan_bx|thank_mulan_1_bx|thank_mulan_2_bx|thank_mulan_3_bx|roger_mulan_1_bx|roger_mulan_2_bx|assembled_mulan_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_mulan_1_bx|hello_mulan_2_bx|hello_mulan_3_bx|thank_mulan_1_bx|thank_mulan_2_bx|thank_mulan_3_bx"  />
 	</hero>
 	<hero heroid="1021" name="塔利亚" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_taliya_1#hello_taliya_2#hello_taliya_3" msgtxt="你好！#你好！#嗨！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_taliya" msgtxt="终极技能还在充能中！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_taliya" msgtxt="终极技能准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_taliya" msgtxt="我需要治疗。" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_taliya" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_taliya" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_taliya_1#thank_taliya_2#thank_taliya_3" msgtxt="谢谢你！#多谢啦！#感激不尽。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_taliya" msgtxt="知道啦！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_taliya" msgtxt="在我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_taliya_1|hello_taliya_2|hello_taliya_3|ultimateing_taliya|ultimateready_taliya|treatment_taliya|thank_taliya_1|thank_taliya_2|thank_taliya_3|roger_taliya|assembled_taliya"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_taliya_1|hello_taliya_2|hello_taliya_3|thank_taliya_1|thank_taliya_2|thank_taliya_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_taliya_1_bx#hello_taliya_2_bx#hello_taliya_3_bx" msgtxt=" Olá!# Olá!# Oi!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_taliya_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_taliya_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_taliya_bx" msgtxt=" Me Heal." dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_taliya_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_taliya_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_taliya_1_bx#thank_taliya_2_bx#thank_taliya_3_bx" msgtxt=" Obrigado!# Valeu mesmo!# Grato." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_taliya_bx" msgtxt=" Positivo!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_taliya_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_taliya_1_bx|hello_taliya_2_bx|hello_taliya_3_bx|Ultimateing_taliya_bx|Ultimateready_taliya_bx|treatment_taliya_bx|thank_taliya_1_bx|thank_taliya_2_bx|thank_taliya_3_bx|roger_taliya_bx|assembled_taliya_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_taliya_1_bx|hello_taliya_2_bx|hello_taliya_3_bx|thank_taliya_1_bx|thank_taliya_2_bx|thank_taliya_3_bx"  />
 	</hero>
 	<hero heroid="1022" name="雪女" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_xuenv_1#hello_xuenv_2#hello_xuenv_3" msgtxt="你好！#请多关照！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_xuenv" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_xuenv" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_xuenv" msgtxt="快治疗我。" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_xuenv" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_xuenv" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_xuenv_1#thank_xuenv_2#thank_xuenv_3" msgtxt="谢谢！#十分感谢。#谢谢你。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_xuenv_1#roger_xuenv_2#roger_xuenv_3" msgtxt="明白了。#知道了#好的。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_xuenv" msgtxt="都到我这里来" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_xuenv_1|hello_xuenv_2|hello_xuenv_3|ultimateing_xuenv|ultimateready_xuenv|treatment_xuenv|thank_xuenv_1|thank_xuenv_2|thank_xuenv_3|roger_xuenv_1|roger_xuenv_2|roger_xuenv_3|assembled_xuenv"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_xuenv_1|hello_xuenv_2|hello_xuenv_3|thank_xuenv_1|thank_xuenv_2|thank_xuenv_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_xuenv_1_bx#hello_xuenv_2_bx#hello_xuenv_3_bx" msgtxt=" Olá!# Prazer!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_xuenv_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_xuenv_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_xuenv_bx" msgtxt=" Me Heal." dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_xuenv_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_xuenv_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_xuenv_1_bx#thank_xuenv_2_bx#thank_xuenv_3_bx" msgtxt=" Obrigado!# Muito mesmo.# Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_xuenv_1_bx#roger_xuenv_2_bx#roger_xuenv_3_bx" msgtxt=" Positivo.# Positivo# Ok." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_xuenv_bx" msgtxt=" Monte aqui, tudo" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_xuenv_1_bx|hello_xuenv_2_bx|hello_xuenv_3_bx|Ultimateing_xuenv_bx|Ultimateready_xuenv_bx|treatment_xuenv_bx|thank_xuenv_1_bx|thank_xuenv_2_bx|thank_xuenv_3_bx|roger_xuenv_1_bx|roger_xuenv_2_bx|roger_xuenv_3_bx|assembled_xuenv_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_xuenv_1_bx|hello_xuenv_2_bx|hello_xuenv_3_bx|thank_xuenv_1_bx|thank_xuenv_2_bx|thank_xuenv_3_bx"  />
 	</hero>
 	<hero heroid="1023" name="祝融" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="2" sound="hello_zhurong_1#hello_zhurong_2" msgtxt="你好！#嗨！" dongzuo="1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_zhurong" msgtxt="终极技能还没准备好！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_zhurong" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_zhurong" msgtxt="我需要治疗。" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="zhandou_jiaxue" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="zhandou_baotou" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="2" sound="thank_zhurong_1#thank_zhurong_2#thank_zhurong_3" msgtxt="谢谢！#...多谢。#感谢你" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_zhurong_1#roger_zhurong_2#roger_zhurong_3" msgtxt="知道了。#好的。#明白。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="2" sound="assembled_zhurong" msgtxt="快到我这来！" dongzuo="0" ico="jh"/>
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="2" sound="hello_zhurong_1_bx#hello_zhurong_2_bx" msgtxt=" Olá!# Oi!" dongzuo="1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_zhurong_bx" msgtxt=" Ult Skill não foi preparada!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_zhurong_bx" msgtxt=" Ult Skill está carregada! " dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_zhurong_bx" msgtxt=" Me Heal." dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="zhandou_jiaxue" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="zhandou_baotou" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="2" sound="thank_zhurong_1_bx#thank_zhurong_2_bx#thank_zhurong_3_bx" msgtxt=" Obrigado!# ...Muito Obrigado.# Valeu" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="2" sound="roger_zhurong_1_bx#roger_zhurong_2_bx#roger_zhurong_3_bx" msgtxt=" Positivo.# Ok.# QAP." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="2" sound="assembled_zhurong_bx" msgtxt=" Monte aqui rapidamente!" dongzuo="0" ico="jh"/>
 		<r id="1" name="友方听见音效"	 
-		yinxiao="hello_zhurong_1|hello_zhurong_2|ultimateing_zhurong|ultimateready_zhurong|treatment_zhurong|thank_zhurong_1|thank_zhurong_2|thank_zhurong_3|roger_zhurong_1|roger_zhurong_2|roger_zhurong_3|assembled_zhurong"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_zhurong_1|hello_zhurong_2|thank_zhurong_1|thank_zhurong_2|thank_zhurong_3"  />
+		yinxiao="hello_zhurong_1_bx|hello_zhurong_2_bx|ultimateing_zhurong_bx|ultimateready_zhurong_bx|treatment_zhurong_bx|thank_zhurong_1_bx|thank_zhurong_2_bx|thank_zhurong_3_bx|roger_zhurong_1_bx|roger_zhurong_2_bx|roger_zhurong_3_bx|assembled_zhurong_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_zhurong_1_bx|hello_zhurong_2_bx|thank_zhurong_1_bx|thank_zhurong_2_bx|thank_zhurong_3_bx"  />
 	</hero>
 	<hero heroid="1024" name="后羿" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_houyi_1#hello_houyi_2#hello_houyi_3" msgtxt="yo！你好啊！#你今天气色不错！#嗨！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_houyi" msgtxt="我的终极技能还在准备中！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_houyi" msgtxt="我的终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_houyi" msgtxt="啊！我在流血！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_houyi" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_houyi" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_houyi_1#thank_houyi_2#thank_houyi_3" msgtxt="多谢！#谢谢。#谢了" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_houyi_1#roger_houyi_2#roger_houyi_3" msgtxt="收到！#明白！#知道了，伙计！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_houyi" msgtxt="在我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_houyi_1|hello_houyi_2|hello_houyi_3|ultimateing_houyi|ultimateready_houyi|treatment_houyi|thank_houyi_1|thank_houyi_2|thank_houyi_3|roger_houyi_1|roger_houyi_2|roger_houyi_3|assembled_houyi"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_houyi_1|hello_houyi_2|hello_houyi_3|thank_houyi_1|thank_houyi_2|thank_houyi_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_houyi_1_bx#hello_houyi_2_bx#hello_houyi_3_bx" msgtxt=" E aí! Olá!# Você está bem hoje!# Oi!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_houyi_bx" msgtxt=" Minha Ult Skill ainda está carregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_houyi_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_houyi_bx" msgtxt=" Ah! Estou sangrando!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_houyi_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_houyi_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_houyi_1_bx#thank_houyi_2_bx#thank_houyi_3_bx" msgtxt=" Muito Obrigado!# Obrigado.# obrigado" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_houyi_1_bx#roger_houyi_2_bx#roger_houyi_3_bx" msgtxt=" Recebi!# Positivo!# Positivo, operante!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_houyi_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_houyi_1_bx|hello_houyi_2_bx|hello_houyi_3_bx|Ultimateing_houyi_bx|Ultimateready_houyi_bx|treatment_houyi_bx|thank_houyi_1_bx|thank_houyi_2_bx|thank_houyi_3_bx|roger_houyi_1_bx|roger_houyi_2_bx|roger_houyi_3_bx|assembled_houyi_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_houyi_1_bx|hello_houyi_2_bx|hello_houyi_3_bx|thank_houyi_1_bx|thank_houyi_2_bx|thank_houyi_3_bx"  />
 	</hero>
 	<hero heroid="1025" name="玲珑" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="0" msgtxt="" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="0" msgtxt="" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="2" sound="hello_linglong_1#hello_linglong_2" msgtxt="你好。#很荣幸见到你。" dongzuo="1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_linglong" msgtxt="我的终极技能正在充能中" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_linglong" msgtxt="我的终极技能已经充能完毕！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_linglong" msgtxt="我需要治疗。" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_linglong" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_linglong" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="2" sound="thank_linglong_1#thank_linglong_2" msgtxt="非常感谢。#谢谢。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_linglong_1#roger_linglong_2#roger_linglong_3" msgtxt="收到。#明白。#指令已接收。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="2" sound="assembled_linglong" msgtxt="到这里集合。" dongzuo="0" ico="jh"/>
-		<i id="1012" name="终极状态(传送门已布置)"     type="4" type1="0" isdo="1" sound="" msgtxt="传送门已出现，还剩{0}次使用机会！" dongzuo="0"  ico="dz"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_linglong_1|hello_linglong_2|ultimateing_linglong|ultimateready_linglong|treatment_linglong|thank_linglong_1|thank_linglong_2|roger_linglong_1|roger_linglong_2|roger_linglong_3|assembled_linglong"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_linglong_1|hello_linglong_2|thank_linglong_1|thank_linglong_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="0" msgtxt=" " dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="0" msgtxt=" " dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="2" sound="hello_linglong_1_bx#hello_linglong_2_bx" msgtxt=" Olá.# Prazer em conhecê-lo." dongzuo="1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_linglong_bx" msgtxt=" Minha Ult Skill ainda está recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_linglong_bx" msgtxt=" Minha Ult Skill terminou de carregar!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_linglong_bx" msgtxt=" Me Heal." dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_linglong_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_linglong_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="2" sound="thank_linglong_1_bx#thank_linglong_2_bx" msgtxt=" Muito obrigado.# Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_linglong_1_bx#roger_linglong_2_bx#roger_linglong_3_bx" msgtxt=" Recebi.# Positivo. # Ordem recebida." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="2" sound="assembled_linglong_bx" msgtxt=" Monte aqui por favor!" dongzuo="0" ico="jh"/>
+		<i id="1012" name="终极状态(传送门已布置)"     type="4" type1="0" isdo="1" sound="" msgtxt=" Teleport Portal aparece, pode ser usado {0} vezes!" dongzuo="0"  ico="dz"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_linglong_1_bx|hello_linglong_2_bx|Ultimateing_linglong_bx|Ultimateready_linglong_bx|treatment_linglong_bx|thank_linglong_1_bx|thank_linglong_2_bx|roger_linglong_1_bx|roger_linglong_2_bx|roger_linglong_3_bx|assembled_linglong_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_linglong_1_bx|hello_linglong_2_bx|thank_linglong_1_bx|thank_linglong_2_bx"  />
 	</hero>
 	<hero heroid="1026" name="爱德华" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_edward_1#hello_edward_2#hello_edward_3" msgtxt="你好。#很高兴见到你。#认识你是我的荣幸。" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_edward" msgtxt="我的终极技能还在充能。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_edward" msgtxt="我的终极技能已经就绪。" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_edward" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_edward" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_edward" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_edward_1#thank_edward_2#thank_edward_3" msgtxt="请接受的我的谢意。#非常感谢。#感激不尽。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_edward_1#roger_edward_2#roger_edward_3" msgtxt="收到。#我明白了。#遵命。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_edward" msgtxt="请到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_edward_1|hello_edward_2|hello_edward_3|ultimateing_edward|ultimateready_edward|treatment_edward|thank_edward_1|thank_edward_2|thank_edward_3|roger_edward_1|roger_edward_2|roger_edward_3|assembled_edward"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_edward_1|hello_edward_2|hello_edward_3|thank_edward_1|thank_edward_2|thank_edward_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_edward_1_bx#hello_edward_2_bx#hello_edward_3_bx" msgtxt=" Olá.# Prazer em conhecer.# Muito prazer." dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_edward_bx" msgtxt=" Minha Ult Skill está recarregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_edward_bx" msgtxt=" Minha Ult Skill está pronta!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_edward_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_edward_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_edward_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_edward_1_bx#thank_edward_2_bx#thank_edward_3_bx" msgtxt=" Aceite meu obrigado.# Muito Obrigado mesmo# Grato." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_edward_1_bx#roger_edward_2_bx#roger_edward_3_bx" msgtxt=" Recebido.# Positivo.# Como você diz." dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_edward_bx" msgtxt=" Monte aqui por favor!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_edward_1_bx|hello_edward_2_bx|hello_edward_3_bx|ultimateing_edward_bx|ultimateready_edward_bx|treatment_edward_bx|thank_edward_1_bx|thank_edward_2_bx|thank_edward_3_bx|roger_edward_1_bx|roger_edward_2_bx|roger_edward_3_bx|assembled_edward_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_edward_1_bx|hello_edward_2_bx|hello_edward_3_bx|thank_edward_1_bx|thank_edward_2_bx|thank_edward_3_bx"  />
 	</hero>
 	<hero heroid="1027" name="应龙" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_yinglong_1#hello_yinglong_2#hello_yinglong_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_yinglong" msgtxt="我的终极技能还没好。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_yinglong" msgtxt="我的终极技能好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_yinglong" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_yinglong" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_yinglong" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_yinglong_1#thank_yinglong_2#thank_yinglong_3" msgtxt="多谢了！#谢谢。#很感谢你" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_yinglong_1#roger_yinglong_2#roger_yinglong_3" msgtxt="遵命！#明白！#好的！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_yinglong" msgtxt="跟着我走！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_yinglong_1|hello_yinglong_2|hello_yinglong_3|ultimateing_yinglong|ultimateready_yinglong|treatment_yinglong|thank_yinglong_1|thank_yinglong_2|thank_yinglong_3|roger_yinglong_1|roger_yinglong_2|roger_yinglong_3|assembled_yinglong"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_yinglong_1|hello_yinglong_2|hello_yinglong_3|thank_yinglong_1|thank_yinglong_2|thank_yinglong_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_yinglong_1_bx#hello_yinglong_2_bx#hello_yinglong_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_yinglong_bx" msgtxt=" Minha Ult Skill ainda está recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_yinglong_bx" msgtxt=" Minha Ult Skill está pronta!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_yinglong_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_yinglong_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_yinglong_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_yinglong_1_bx#thank_yinglong_2_bx#thank_yinglong_3_bx" msgtxt=" Muito Obrigado!# Obrigado.# Muito Obrigado" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_yinglong_1_bx#roger_yinglong_2_bx#roger_yinglong_3_bx" msgtxt=" Como você diz!# Positivo operante!# Ok!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_yinglong_bx" msgtxt=" Me siga!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_yinglong_1_bx|hello_yinglong_2_bx|hello_yinglong_3_bx|ultimateing_yinglong_bx|ultimateready_yinglong_bx|treatment_yinglong_bx|thank_yinglong_1_bx|thank_yinglong_2_bx|thank_yinglong_3_bx|roger_yinglong_1_bx|roger_yinglong_2_bx|roger_yinglong_3_bx|assembled_yinglong_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_yinglong_1_bx|hello_yinglong_2_bx|hello_yinglong_3_bx|thank_yinglong_1_bx|thank_yinglong_2_bx|thank_yinglong_3_bx"  />
 	</hero>
 	<hero heroid="1028" name="洛基" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_luoji_1#hello_luoji_2#hello_luoji_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_luoji" msgtxt="我的终极技能还没准备好。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_luoji" msgtxt="我的终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_luoji" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_luoji" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_luoji" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_luoji_1#thank_luoji_2" msgtxt="非常感谢！#谢谢。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_luoji_1#roger_luoji_2#roger_luoji_3" msgtxt="知道了！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_luoji" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_luoji_1|hello_luoji_2|hello_luoji_3|ultimateing_luoji|ultimateready_luoji|treatment_luoji|thank_luoji_1|thank_luoji_2|roger_luoji_1|roger_luoji_2|roger_luoji_3|assembled_luoji"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_luoji_1|hello_luoji_2|hello_luoji_3|thank_luoji_1|thank_luoji_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_luoji_1_bx#hello_luoji_2_bx#hello_luoji_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_luoji_bx" msgtxt=" Minha Ult Skill está recarregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_luoji_bx" msgtxt=" Minha Ult Skill está pronta!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_luoji_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_luoji_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_luoji_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_luoji_1_bx#thank_luoji_2_bx" msgtxt=" Obrigado!# Muito Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_luoji_1_bx#roger_luoji_2_bx#roger_luoji_3_bx" msgtxt=" QAP!# Positivo Operante!# Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_luoji_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_luoji_1_bx|hello_luoji_2_bx|hello_luoji_3_bx|Ultimateing_luoji_bx|Ultimateready_luoji_bx|treatment_luoji_bx|thank_luoji_1_bx|thank_luoji_2_bx|roger_luoji_1_bx|roger_luoji_2_bx|roger_luoji_3_bx|assembled_luoji_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_luoji_1_bx|hello_luoji_2_bx|hello_luoji_3_bx|thank_luoji_1_bx|thank_luoji_2_bx"  />
 	</hero>
 	<hero heroid="1029" name="洛丽塔" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_luolita_1#hello_luolita_2#hello_luolita_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_luolita" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_luolita" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_luolita" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_luolita" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_luolita" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_luolita_1#thank_luolita_2#thank_luolita_3" msgtxt="太感谢了！#谢谢。#谢谢你。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_luolita_1#roger_luolita_2#roger_luolita_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_luolita" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_luolita_1|hello_luolita_2|hello_luolita_3|ultimateing_luolita|ultimateready_luolita|treatment_luolita|thank_luolita_1|thank_luolita_2|thank_luolita_3|roger_luolita_1|roger_luolita_2|roger_luolita_3|assembled_luolita"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_luolita_1|hello_luolita_2|hello_luolita_3|thank_luolita_1|thank_luolita_2|thank_luolita_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_luolita_1_bx#hello_luolita_2_bx#hello_luolita_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_luolita_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_luolita_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_luolita_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_luolita_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_luolita_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_luolita_1_bx#thank_luolita_2_bx#thank_luolita_3_bx" msgtxt=" Muito Obrigado!#Obrigado.#Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_luolita_1_bx#roger_luolita_2_bx#roger_luolita_3_bx" msgtxt=" Como voce diz!# Positivo operante!# Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_luolita_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_luolita_1_bx|hello_luolita_2_bx|hello_luolita_3_bx|ultimateing_luolita_bx|ultimateready_luolita_bx|treatment_luolita_bx|thank_luolita_1_bx|thank_luolita_2_bx|thank_luolita_3_bx|roger_luolita_1_bx|roger_luolita_2_bx|roger_luolita_3_bx|assembled_luolita_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_luolita_1_bx|hello_luolita_2_bx|hello_luolita_3_bx|thank_luolita_1_bx|thank_luolita_2_bx|thank_luolita_3_bx"  />
 	</hero>
 	<hero heroid="1030" name="荆轲" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_jingke_1#hello_jingke_2#hello_jingke_3" msgtxt="嗨！#你好啊！#你好！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_jingke" msgtxt="终极技能还没准备好。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_jingke" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_jingke" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_jingke" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_jingke" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_jingke_1#thank_jingke_2" msgtxt="谢谢！#非常感谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_jingke_1#roger_jingke_2#roger_jingke_3" msgtxt="知道了！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_jingke" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_jingke_1|hello_jingke_2|hello_jingke_3|ultimateing_jingke|ultimateready_jingke|treatment_jingke|thank_jingke_1|thank_jingke_2|roger_jingke_1|roger_jingke_2|roger_jingke_3|assembled_jingke"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_jingke_1|hello_jingke_2|hello_jingke_3|thank_jingke_1|thank_jingke_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_jingke_1_bx#hello_jingke_2_bx#hello_jingke_3_bx" msgtxt=" Oi!# Olá!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_jingke_bx" msgtxt=" Ult Skill não foi preparada." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_jingke_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_jingke_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_jingke_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_jingke_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_jingke_1_bx#thank_jingke_2_bx" msgtxt=" Obrigado!# Muito Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_jingke_1_bx#roger_jingke_2_bx#roger_jingke_3_bx" msgtxt=" QAP!# Positivo Operante!# Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_jingke_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_jingke_1_bx|hello_jingke_2_bx|hello_jingke_3_bx|ultimateing_jingke_bx|ultimateready_jingke_bx|treatment_jingke_bx|thank_jingke_1_bx|thank_jingke_2_bx|roger_jingke_1_bx|roger_jingke_2_bx|roger_jingke_3_bx|assembled_jingke_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_jingke_1_bx|hello_jingke_2_bx|hello_jingke_3_bx|thank_jingke_1_bx|thank_jingke_2_bx"  />
 	</hero>
 	<hero heroid="1031" name="兰博" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!# Muito Obrigado!# Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como você diz!# Positivo operante!# Ok!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="1032" name="妲己" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_daji_1#hello_daji_2#hello_daji_3" msgtxt="你好！#嗨！#怎么又是你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_daji" msgtxt="终极技能还在充能。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_daji" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_daji" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_daji" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_daji" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_daji_1#thank_daji_2#thank_daji_3" msgtxt="谢谢！#不用说不客气了！#谢了！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_daji_1#roger_daji_2#roger_daji_3" msgtxt="明白！#收到！#没问题！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_daji" msgtxt="快点过来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_daji_1|hello_daji_2|hello_daji_3|ultimateing_daji|ultimateready_daji|treatment_daji|thank_daji_1|thank_daji_2|thank_daji_3|roger_daji_1|roger_daji_2|roger_daji_3|assembled_daji"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_daji_1|hello_daji_2|hello_daji_3|thank_daji_1|thank_daji_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_daji_1_bx#hello_daji_2_bx#hello_daji_3_bx" msgtxt=" Olá!# Oi!# Você de novo?" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_daji_bx" msgtxt=" Ult Skill recarregando" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_daji_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_daji_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_daji_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_daji_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_daji_1_bx#thank_daji_2_bx#thank_daji_3_bx" msgtxt=" Obrigado!# Don diz, De nada!# Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_daji_1_bx#roger_daji_2_bx#roger_daji_3_bx" msgtxt=" Positivo!# Recebido# Sem problemas!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_daji_bx" msgtxt=" Vem para cá rapido!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_daji_1_bx|hello_daji_2_bx|hello_daji_3_bx|ultimateing_daji_bx|ultimateready_daji_bx|treatment_daji_bx|thank_daji_1_bx|thank_daji_2_bx|thank_daji_3_bx|roger_daji_1_bx|roger_daji_2_bx|roger_daji_3_bx|assembled_daji_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_daji_1_bx|hello_daji_2_bx|hello_daji_3_bx|thank_daji_1_bx|thank_daji_2_bx|thank_daji_3_bx"  />
 	</hero>
 	<hero heroid="1033" name="莉莉丝" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lilisi_1#hello_lilisi_2#hello_lilisi_3" msgtxt="你好！#嗨！#怎么又是你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lilisi" msgtxt="终极技能还在充能。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lilisi" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lilisi" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lilisi" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lilisi" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lilisi_1#thank_lilisi_2#thank_lilisi_3" msgtxt="谢谢！#不用说不客气了！#谢了！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lilisi_1#roger_lilisi_2#roger_lilisi_3" msgtxt="明白！#收到！#没问题！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lilisi" msgtxt="快点过来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lilisi_1|hello_lilisi_2|hello_lilisi_3|ultimateing_lilisi|ultimateready_lilisi|treatment_lilisi|thank_lilisi_1|thank_lilisi_2|thank_lilisi_3|roger_lilisi_1|roger_lilisi_2|roger_lilisi_3|assembled_lilisi"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lilisi_1|hello_lilisi_2|hello_lilisi_3|thank_lilisi_1|thank_lilisi_2|thank_lilisi_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lilisi_1_bx#hello_lilisi_2_bx#hello_lilisi_3_bx" msgtxt=" Olá!# Oi!# Você de novo?" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lilisi_bx" msgtxt=" Ult Skill recarregando" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lilisi_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lilisi_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lilisi_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lilisi_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lilisi_1_bx#thank_lilisi_2_bx#thank_lilisi_3_bx" msgtxt=" Obrigado!# Don diz, De nada!# Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lilisi_1_bx#roger_lilisi_2_bx#roger_lilisi_3_bx" msgtxt=" Positivo!# Recebido# Sem problemas!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lilisi_bx" msgtxt=" Vem para cá rapido!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lilisi_1_bx|hello_lilisi_2_bx|hello_lilisi_3_bx|ultimateing_lilisi_bx|ultimateready_lilisi_bx|treatment_lilisi_bx|thank_lilisi_1_bx|thank_lilisi_2_bx|thank_lilisi_3_bx|roger_lilisi_1_bx|roger_lilisi_2_bx|roger_lilisi_3_bx|assembled_lilisi_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lilisi_1_bx|hello_lilisi_2_bx|hello_lilisi_3_bx|thank_lilisi_1_bx|thank_lilisi_2_bx|thank_lilisi_3_bx"  />
 	</hero>
 	<hero heroid="1034" name="黄忠" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_huangzhong_1#hello_huangzhong_2#hello_huangzhong_3" msgtxt="你好！#嘿！#很高兴见到你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_huangzhong" msgtxt="终极技能还在充能中！" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_huangzhong" msgtxt="终极技能已准备就绪！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_huangzhong" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_huangzhong" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_huangzhong" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_huangzhong_1#thank_huangzhong_2#thank_huangzhong_3" msgtxt="谢谢你！#多谢了。#十分感谢。" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_huangzhong_1" msgtxt="收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_huangzhong" msgtxt="在我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_huangzhong_1|hello_huangzhong_2|hello_huangzhong_3|ultimateing_huangzhong|ultimateready_huangzhong|treatment_huangzhong|thank_huangzhong_1|thank_huangzhong_2|thank_huangzhong_3|roger_huangzhong_1|assembled_huangzhong"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_huangzhong_1|hello_huangzhong_2|hello_huangzhong_3|thank_huangzhong_1|thank_huangzhong_2|thank_huangzhong_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_huangzhong_1_bx#hello_huangzhong_2_bx#hello_huangzhong_3_bx" msgtxt=" Olá!# Hey!# Prazer em conhecê-lo!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_huangzhong_bx" msgtxt=" Ult Skill recarregando!" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_huangzhong_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_huangzhong_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_huangzhong_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_huangzhong_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_huangzhong_1_bx#thank_huangzhong_2_bx#thank_huangzhong_3_bx" msgtxt=" Obrigado!# Muito Obrigado.# Várias Vezes Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="1" sound="roger_huangzhong_1_bx" msgtxt=" Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_huangzhong_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_huangzhong_1_bx|hello_huangzhong_2_bx|hello_huangzhong_3_bx|ultimateing_huangzhong_bx|ultimateready_huangzhong_bx|treatment_huangzhong_bx|thank_huangzhong_1_bx|thank_huangzhong_2_bx|thank_huangzhong_3_bx|roger_huangzhong_1_bx|assembled_huangzhong_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_huangzhong_1_bx|hello_huangzhong_2_bx|hello_huangzhong_3_bx|thank_huangzhong_1_bx|thank_huangzhong_2_bx|thank_huangzhong_3_bx"  />
 	</hero>
 	<hero heroid="1035" name="哪吒" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_nezha_1#hello_nezha_2#hello_nezha_3" msgtxt="你好！#嗨！#怎么又是你！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_nezha" msgtxt="终极技能还在充能。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_nezha" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_nezha" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_nezha" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_nezha" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_nezha_1#thank_nezha_2#thank_nezha_3" msgtxt="谢谢！#不用说不客气了！#谢了！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_nezha_1#roger_nezha_2#roger_nezha_3" msgtxt="明白！#收到！#没问题！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_nezha" msgtxt="快点过来！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_nezha_1|hello_nezha_2|hello_nezha_3|ultimateing_nezha|ultimateready_nezha|treatment_nezha|thank_nezha_1|thank_nezha_2|thank_nezha_3|roger_nezha_1|roger_nezha_2|roger_nezha_3|assembled_nezha"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_nezha_1|hello_nezha_2|hello_nezha_3|thank_nezha_1|thank_nezha_2|thank_nezha_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_nezha_1_bx#hello_nezha_2_bx#hello_nezha_3_bx" msgtxt=" Olá!# Oi!# Você de novo?" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_nezha_bx" msgtxt=" Ult Skill recarregando" dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_nezha_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_nezha_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_nezha_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_nezha_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_nezha_1_bx#thank_nezha_2_bx#thank_nezha_3_bx" msgtxt=" Obrigado!# Don diz, De nada!# Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_nezha_1_bx#roger_nezha_2_bx#roger_nezha_3_bx" msgtxt=" Positivo!# Recebido# Sem problemas!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_nezha_bx" msgtxt=" Vem para cá rapido!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_nezha_1_bx|hello_nezha_2_bx|hello_nezha_3_bx|ultimateing_nezha_bx|ultimateready_nezha_bx|treatment_nezha_bx|thank_nezha_1_bx|thank_nezha_2_bx|thank_nezha_3_bx|roger_nezha_1_bx|roger_nezha_2_bx|roger_nezha_3_bx|assembled_nezha_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_nezha_1_bx|hello_nezha_2_bx|hello_nezha_3_bx|thank_nezha_1_bx|thank_nezha_2_bx|thank_nezha_3_bx"  />
 	</hero>
 	<hero heroid="1036" name="美杜莎" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_medusa_1#hello_medusa_2#hello_medusa_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_medusa" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_medusa" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_medusa" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_medusa" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_medusa" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_medusa_1#thank_medusa_2#thank_medusa_3" msgtxt="非常感谢！#谢谢!#谢谢你!" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_medusa_1#roger_medusa_2#roger_medusa_3" msgtxt="遵命。#明白。#收到。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_medusa" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_medusa_1|hello_medusa_2|hello_medusa_3|ultimateing_medusa|ultimateready_medusa|treatment_medusa|thank_medusa_1|thank_medusa_2|thank_medusa_3|roger_medusa_1|roger_medusa_2|roger_medusa_3|assembled_medusa"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_medusa_1|hello_medusa_2|hello_medusa_3|thank_medusa_1|thank_medusa_2|thank_medusa_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_medusa_1_bx#hello_medusa_2_bx#hello_medusa_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_medusa_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_medusa_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_medusa_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_medusa_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_medusa_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_medusa_1_bx#thank_medusa_2_bx#thank_medusa_3_bx" msgtxt=" Muito Obrigado!# Obrigado.# Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_medusa_1_bx#roger_medusa_2_bx#roger_medusa_3_bx" msgtxt=" Como voce diz!# Positivo operante!# Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_medusa_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_medusa_1_bx|hello_medusa_2_bx|hello_medusa_3_bx|ultimateing_medusa_bx|ultimateready_medusa_bx|treatment_medusa_bx|thank_medusa_1_bx|thank_medusa_2_bx|thank_medusa_3_bx|roger_medusa_1_bx|roger_medusa_2_bx|roger_medusa_3_bx|assembled_medusa_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_medusa_1_bx|hello_medusa_2_bx|hello_medusa_3_bx|thank_medusa_1_bx|thank_medusa_2_bx|thank_medusa_3_bx"  />
 	</hero>
 	<hero heroid="1037" name="大卫" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_dawei_1#hello_dawei_2#hello_dawei_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_dawei" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_dawei" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_dawei" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_dawei" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_dawei" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_dawei_1#thank_dawei_2#thank_dawei_3" msgtxt="非常感谢！#谢谢!#谢谢你!" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_dawei_1#roger_dawei_2#roger_dawei_3" msgtxt="遵命。#明白。#收到。" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_dawei" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_dawei_1|hello_dawei_2|hello_dawei_3|ultimateing_dawei|ultimateready_dawei|treatment_dawei|thank_dawei_1|thank_dawei_2|thank_dawei_3|roger_dawei_1|roger_dawei_2|roger_dawei_3|assembled_dawei"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_dawei_1|hello_dawei_2|hello_dawei_3|thank_dawei_1|thank_dawei_2|thank_dawei_3"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_dawei_1_bx#hello_dawei_2_bx#hello_dawei_3_bx" msgtxt=" Olá!# Oi!# Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="Ultimateing_dawei_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="Ultimateready_dawei_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_dawei_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_dawei_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_dawei_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_dawei_1_bx#thank_dawei_2_bx#thank_dawei_3_bx" msgtxt=" Muito Obrigado!# Obrigado.# Obrigado." dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_dawei_1_bx#roger_dawei_2_bx#roger_dawei_3_bx" msgtxt=" Como voce diz!# Positivo operante!# Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_dawei_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="zhandou_baotou|zhandou_jiaxue|hello_dawei_1_bx|hello_dawei_2_bx|hello_dawei_3_bx|Ultimateing_dawei_bx|Ultimateready_dawei_bx|treatment_dawei_bx|thank_dawei_1_bx|thank_dawei_2_bx|thank_dawei_3_bx|roger_dawei_1_bx|roger_dawei_2_bx|roger_dawei_3_bx|assembled_dawei_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_dawei_1_bx|hello_dawei_2_bx|hello_dawei_3_bx|thank_dawei_1_bx|thank_dawei_2_bx|thank_dawei_3_bx"  />
 	</hero>
 	<hero heroid="2001" name="近战杂鱼" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2002" name="盾兵" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2003" name="步枪兵" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2004" name="BOSS" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2005" name="刑日天" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2006" name="克隆瓦尔基里" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 	<hero heroid="2007" name="克隆终结者" zltype ="0">
-		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt="0" dongzuo="2#2" ico="bq" />
-		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt="0" dongzuo="0" ico="yy"/>
-		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1#hello_lanbo_2#hello_lanbo_3" msgtxt="你好！#嗨！#你好啊！" dongzuo="1#1#1" ico="nh" />
-		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo" msgtxt="终极技能还在准备中。" dongzuo="0"  ico="dz"/>
-		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo" msgtxt="终极技能准备好了！" dongzuo="0" ico="dz"/>
-		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo" msgtxt="我需要治疗！" dongzuo="0" ico="zl"/>
-		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo" msgtxt="我需要护甲。" dongzuo="0" ico="zl"/>
-		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo" msgtxt="我需要护盾。" dongzuo="0" ico="zl"/>
-		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1#thank_lanbo_2#thank_lanbo_3" msgtxt="谢谢你！#太感谢了！#谢谢！" dongzuo="0" ico="gx"/>
-		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1#roger_lanbo_2#roger_lanbo_3" msgtxt="遵命！#明白！#收到！" dongzuo="0" ico="js"/>
-		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo" msgtxt="到我这里集合！" dongzuo="0" ico="jh"/>
-		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|ultimateing_lanbo|ultimateready_lanbo|treatment_lanbo|thank_lanbo_1|thank_lanbo_2|thank_lanbo_3|roger_lanbo_1|roger_lanbo_2|roger_lanbo_3|assembled_lanbo"  />
-		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1|hello_lanbo_2|hello_lanbo_3|thank_lanbo_1|thank_lanbo_2"  />
+		<i id="1001" name="表情"		               type="1" type1="0" isdo="2" sound="" msgtxt=" 0" dongzuo="2#2" ico="bq" />
+		<i id="1002" name="语音"		               type="2" type1="0" isdo="0" sound="" msgtxt=" 0" dongzuo="0" ico="yy"/>
+		<i id="1003" name="你好"		               type="3" type1="0" isdo="3" sound="hello_lanbo_1_bx#hello_lanbo_2_bx#hello_lanbo_3_bx" msgtxt=" Olá!#Oi!#Olá!" dongzuo="1#1#1" ico="nh" />
+		<i id="1004" name="终极状态(大招能量未满)"     type="4" type1="0" isdo="1" sound="ultimateing_lanbo_bx" msgtxt=" Ult Skill ainda está carregando." dongzuo="0"  ico="dz"/>
+		<i id="1005" name="终极状态(大招能量已满)"     type="4" type1="1" isdo="1" sound="ultimateready_lanbo_bx" msgtxt=" Ult Skill está carregada!" dongzuo="0" ico="dz"/>
+		<i id="1006" name="治疗(对空气和会加血的玩家)" type="5" type1="0" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Me Heal!" dongzuo="0" ico="zl"/>
+		<i id="1007" name="治疗(对会加护甲的玩家)"	   type="5" type1="1" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de armor" dongzuo="0" ico="zl"/>
+		<i id="1008" name="治疗(对会加护盾的玩家)"	   type="5" type1="2" isdo="1" sound="treatment_lanbo_bx" msgtxt=" Eu preciso de escudo" dongzuo="0" ico="zl"/>
+		<i id="1009" name="感谢"		               type="6" type1="0" isdo="3" sound="thank_lanbo_1_bx#thank_lanbo_2_bx#thank_lanbo_3_bx" msgtxt=" Obrigado!#Muito Obrigado!#Obrigado!" dongzuo="0" ico="gx"/>
+		<i id="1010" name="收到"		               type="7" type1="0" isdo="3" sound="roger_lanbo_1_bx#roger_lanbo_2_bx#roger_lanbo_3_bx" msgtxt=" Como voce diz!#Positivo operante!#Recebido!" dongzuo="0" ico="js"/>
+		<i id="1011" name="集合"		               type="8" type1="0" isdo="1" sound="assembled_lanbo_bx" msgtxt=" Monte aqui!" dongzuo="0" ico="jh"/>
+		<r id="1" name="友方听见音效"	 yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|ultimateing_lanbo_bx|ultimateready_lanbo_bx|treatment_lanbo_bx|thank_lanbo_1_bx|thank_lanbo_2_bx|thank_lanbo_3_bx|roger_lanbo_1_bx|roger_lanbo_2_bx|roger_lanbo_3_bx|assembled_lanbo_bx"  />
+		<r id="2" name="敌方听见音效" yinxiao="hello_lanbo_1_bx|hello_lanbo_2_bx|hello_lanbo_3_bx|thank_lanbo_1_bx|thank_lanbo_2_bx"  />
 	</hero>
 </root>

@@ -1,0 +1,71 @@
+{
+  "garment": {
+    "vertices": 2908,
+    "moved": 934,
+    "maxOffset": 0.002500000258239455,
+    "topologyPreserved": true
+  },
+  "xingjilieren_tps_aurora": {
+    "objects": 1209,
+    "changed": [
+      [
+        1,
+        "AssetBundle"
+      ],
+      [
+        5244958689840648268,
+        "Mesh"
+      ],
+      [
+        2477989168246231477,
+        "Texture2D"
+      ]
+    ],
+    "cab": "CAB-7c23e140665f2a45a16da420ccdb38a8",
+    "sha256": "58312711f476a5f479c2bb4370620e058460ff89cf3797224fa68085ff6b3ae2"
+  },
+  "xingjilieren_fps_aurora": {
+    "objects": 301,
+    "changed": [
+      [
+        1,
+        "AssetBundle"
+      ]
+    ],
+    "cab": "CAB-03544be92d32788c3b7dcd1a670f11e3",
+    "sha256": "54814e2c0efb5536e5ebfd9ef3e9b3d3cbd7d08d0ca8bfc754493424633d754f"
+  },
+  "ml_qiang_pt_aurora": {
+    "objects": 6,
+    "changed": [
+      [
+        1,
+        "AssetBundle"
+      ]
+    ],
+    "cab": "CAB-02d6a2c646edfd0fea7fc72d01ce81aa",
+    "sha256": "870f0498b45a3c2a42b20b85c52c1e69f40cb7d49ca500ad53b43342a6e40fbf"
+  },
+  "ml_qiang_pt_di_aurora": {
+    "objects": 4,
+    "changed": [
+      [
+        1,
+        "AssetBundle"
+      ]
+    ],
+    "cab": "CAB-e5e832ca417491b86e92524f636b9a94",
+    "sha256": "183ef91392dba9f1f9501cd875cb69b53fb3772713a888f58d1b62304e595059"
+  },
+  "ml_qiang_pt_nog_aurora": {
+    "objects": 5,
+    "changed": [
+      [
+        1,
+        "AssetBundle"
+      ]
+    ],
+    "cab": "CAB-a8e9102b7de72374b21bb76be9454ec8",
+    "sha256": "5e0f5ce2dcb867c3032a1cd1ef2c1d904d8294bd4c47b4d1281ca6bd7d1e0790"
+  }
+}

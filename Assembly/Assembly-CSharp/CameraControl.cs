@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 // Token: 0x02000044 RID: 68
@@ -710,7 +710,9 @@ public class CameraControl : MonoBehaviour
 			this.cursorRay.direction = transform.forward;
 			for (int i = 0; i < 3; i++)
 			{
-				int num3 = Physics.RaycastNonAlloc(this.cursorRay, this.rays, num2, LayerManager.getMiaoZhunLayer(i));
+				// Each layer mask has its own nearest hit; another team's hit must not cap it.
+				num = 1000000f;
+				int num3 = TriggerunHitCollision.AimRaycast(this.cursorRay, this.rays, num2, LayerManager.getMiaoZhunLayer(i));
 				int num4 = -1;
 				bool flag2 = num3 > 0;
 				if (flag2)

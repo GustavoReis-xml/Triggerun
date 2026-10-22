@@ -1,0 +1,21 @@
+# Passagem de trabalho — SKIN-012
+
+- Responsável: Codex,08/10/2026. Estado: candidata em revisão visual; não instalada.
+- Objetivo: adaptar Scarlet ao rigCelina e validar prévias/poses sem alterar execução.
+- Base: GLB Downloads/scarlet_proxy__free_sci-fi_charchter_riged.glb; bundle candidate-assets/celina-aurora-v2/xingjilieren_tps_aurora.mo. Hashes em report.json.
+- Arquivos novos: scratch/scarlet-adapt; candidate-assets/celina-scarlet. Nenhum arquivo de execução modificado.
+- Implementação: corpo/cabelo Scarlet substituem somente a malha visual na candidata; katana omitida.93joints mapeados para62bonesCelina, dedos/twist identificados e pesos fundidos/normalizados. Rest pose reconstruída pelas inverseBindMatrices e transformações por segmentos anatômicos.
+- Extras de rosto/cabelo seguemHead; sem física própria ou expressões do rigScarlet. Não foram adicionados bones ao controladorCelina.
+- Malha17494vértices/30704triângulos:27195originais corpo/cabelo e3509faces reversas para cabelo doubleSided no shader legado. Normais calculadas antes da duplicação.
+- Materiais: dois novos materiais/texturas DXT5/mips1024. Diffuse original preservado; shader toonCelina. Normal/emissãoPBR ainda não reproduzidos. Originaisnormais/emissão permanecem em scratch/scarlet-inspection.
+- Cinco objetos existentes alterados no candidato:Mesh, trêsSkinnedMeshRenderers eAssetBundle; quatro novos: doisMaterial/doisTexture2D. Outros1204objetos byteidênticos, incluindo rig/controladores/colisores/texturas antigas.
+- Efeitos de invulnerabilidade/contorno mantêm seus materiais em ambas submeshes. Bones/bindposes/hashes de nomes permanecem idênticos.
+- Testes: build.py/verify.py passaram em08/10; índices/pesos/bounds/materialrefs/62bones/nenhum triângulo degenerado. Três poses sintéticas: p99stretch1,089/1,046/1,095; deslocamento máximo0,522m. Três hashes da execução permanecem iguais.
+- Inspeção: prévias frente/lado/costas e mira; comparação com fonte confirma máscara e botas no modelo original. ChecagemUV alternativa rejeitada porque atlas incorreto; conversão1-v mantida.
+- Cliente real: não testado. Prévia usa renderizador aproximado, não garante aparênciaUnity/clipping/arma nas mãos/desempenho.
+- Oracle: permaneceSKIN007CRC26100801; não alterada nem reiniciada. SkinScarlet ainda não cadastrada nem recurso publicado.
+- Evidências: report.json,validation.json,geometry.npz,preview.png,pose-preview.png,source-front.png,source-side.png; Celina-Scarlet.glb e xingjilieren_tps_scarlet.mo. Créditos emCREDITS.md.
+- Reproduzir: build.py,verify.py,render.py,export.py. source_preview.py compara fonte. verify.py também renderiza mira; manter renderer com deduplicação das faces para cálculo de normais.
+- Próximo: avaliação visual; após aprovação, preparar cadastro independente/ícones/FPS compatível/recursos comCAB próprio e backups antes da instalação. Conferir efeitos/seleção/corrida/mira/disparo/respawn emUnity.
+- Limites: candidata ainda usa estruturaCAB/container da baseAurora e NÃO deve ser publicada como novo bundle sem tornar sua identidade independente. Licença embutidaCC-BY-SA4.0; página anunciava condições divergentes, preservar atribuição e revisar antes de distribuição.
+- Reserva liberada para revisão.

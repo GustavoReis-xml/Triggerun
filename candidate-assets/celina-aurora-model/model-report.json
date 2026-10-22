@@ -1,0 +1,145 @@
+{
+  "newVertices": 3393,
+  "newTriangles": 5544,
+  "hiddenBodyTriangles": 909,
+  "parts": [
+    {
+      "name": "jacket_body",
+      "firstVertex": 0,
+      "vertexCount": 845
+    },
+    {
+      "name": "hem_ribbing",
+      "firstVertex": 845,
+      "vertexCount": 260
+    },
+    {
+      "name": "stand_collar",
+      "firstVertex": 1105,
+      "vertexCount": 196
+    },
+    {
+      "name": "left_sleeve",
+      "firstVertex": 1301,
+      "vertexCount": 496
+    },
+    {
+      "name": "left_shoulder_pad",
+      "firstVertex": 1797,
+      "vertexCount": 132
+    },
+    {
+      "name": "left_elbow_reinforcement",
+      "firstVertex": 1929,
+      "vertexCount": 132
+    },
+    {
+      "name": "left_cuff",
+      "firstVertex": 2061,
+      "vertexCount": 132
+    },
+    {
+      "name": "cuff_piping_-1",
+      "firstVertex": 2193,
+      "vertexCount": 66
+    },
+    {
+      "name": "right_sleeve",
+      "firstVertex": 2259,
+      "vertexCount": 496
+    },
+    {
+      "name": "right_shoulder_pad",
+      "firstVertex": 2755,
+      "vertexCount": 132
+    },
+    {
+      "name": "right_elbow_reinforcement",
+      "firstVertex": 2887,
+      "vertexCount": 132
+    },
+    {
+      "name": "right_cuff",
+      "firstVertex": 3019,
+      "vertexCount": 132
+    },
+    {
+      "name": "cuff_piping_1",
+      "firstVertex": 3151,
+      "vertexCount": 66
+    },
+    {
+      "name": "chest_pocket_-1",
+      "firstVertex": 3217,
+      "vertexCount": 10
+    },
+    {
+      "name": "pocket_flap_-1",
+      "firstVertex": 3227,
+      "vertexCount": 8
+    },
+    {
+      "name": "lower_pocket_-1",
+      "firstVertex": 3235,
+      "vertexCount": 8
+    },
+    {
+      "name": "yoke_-1",
+      "firstVertex": 3243,
+      "vertexCount": 10
+    },
+    {
+      "name": "yoke_trim_-1",
+      "firstVertex": 3253,
+      "vertexCount": 8
+    },
+    {
+      "name": "chest_pocket_1",
+      "firstVertex": 3261,
+      "vertexCount": 10
+    },
+    {
+      "name": "pocket_flap_1",
+      "firstVertex": 3271,
+      "vertexCount": 8
+    },
+    {
+      "name": "lower_pocket_1",
+      "firstVertex": 3279,
+      "vertexCount": 8
+    },
+    {
+      "name": "yoke_1",
+      "firstVertex": 3287,
+      "vertexCount": 10
+    },
+    {
+      "name": "yoke_trim_1",
+      "firstVertex": 3297,
+      "vertexCount": 8
+    },
+    {
+      "name": "zipper",
+      "firstVertex": 3305,
+      "vertexCount": 80
+    },
+    {
+      "name": "zipper_pull",
+      "firstVertex": 3385,
+      "vertexCount": 8
+    }
+  ],
+  "objectsModified": [
+    1,
+    -8205472470706242037,
+    5244958689840648268,
+    3917059602639850445,
+    2477989168246231477,
+    3620261032801300316
+  ],
+  "objectsAdded": [
+    900000000000000701,
+    900000000000000702
+  ],
+  "sha256": "f2b649629cc6e8a1b3d0001f08a02681a74ebe3cecf874b539c8c5873b623107"
+}

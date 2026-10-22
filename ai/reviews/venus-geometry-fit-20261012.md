@@ -1,0 +1,12 @@
+# Passagem de trabalho — SKIN-026
+- Responsável: Codex; 12/10/2026~22:39BRT / 13/10 01:39UTC.
+- Relato real025: ombros esticados/pescoçoestranho mesmo parada e emmovimento; cauda boa masfora do corpo. Ajustes sópesos024→025 insuficientes, não repetir como hipótese única.
+- Inspeção: fonte/adaptado no pescoçoz1,40 medianaY−0,048 contra nativo−0,010; z1,45 mediana0,014 contra nativo0,056. Pivôfonteombro aproximado e fatores de comprimento desconsideravam distância3D dos segmentos.
+- Alteração: pescoço/cabeça depth+4cm com transição no peito; clavículageométrica+2,2cm; pivôombro/alcance braços recalibrados, escala pela distância3D e blend de junção maislargo/suave.
+- Cauda: translação rígida6cm para dentro; comparação025 confirma mesmosUVs/pesos e deltageométrico[0,−0,06,0]em658v. Forma/volume/pelagem aprovados preservados.
+- Verificação: bundle/bones/pesos/índices e seisposes sintéticas. Mira p99/max1,221/1,557; pescoço1,081/1,786; ombros1,357/2,920; corrida1,302/3,875; giro1,170/2,440; cauda1,023/1,282. Não houve melhora em todos os percentis, apesar da melhora visual parado; extremos locais ainda existem.
+- Revisão visual: view-0/view-90 geradas antes de restaurar UVtail025; geometriafinal igual, texturaaprovadarestaurada depois. Não atribuir essas imagens à textura final; renderizar de novo se precisar.
+- Oracle: recursoTPS+manifestoCRC26101206/5557entradas; zero conexões ao reiniciar, PM2onlinePID700716.4HTTP hashes/TCP7777 OK; cópia local sincronizada apósbase validada.
+- Backups:backups/venus026-before025;remoto/home/ubuntu/backups/venus-jade-skin026-20261013T013927Z/runtime.tar.gz.
+- Cliente real: pendente. Original animação usa curvas compactadas (arrays Rotation/Position vazios), não reproduzida pelo teste sintético. Próximo passo observar repouso e tiro; se continuar estranho, obter referência visual do cliente e avaliar animações compactadas/pivôs, sem ciclos cegos de pesos.
+- Sem DLL/mapa/gameplay/cadastro alterados; ícone/FPS originais. Reserva liberada.

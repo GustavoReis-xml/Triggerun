@@ -1,0 +1,1 @@
+Feche o TRIG. Faça backup das DLLs atuais em TRIG_Data/Managed. Copie as duas DLLs deste pacote para essa pasta e reabra o jogo. Lamster > skin Hércules (2).

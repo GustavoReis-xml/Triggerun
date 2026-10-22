@@ -1,101 +1,12 @@
 <root>
-	<i id="1001" minlvl="5" minnum="5" tipday="3" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每2个月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="" nexttime="2017-10-1" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="999" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,100"/>
-	<lvl id="2" name="白银" minscore="1000" maxscore="1499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,200"/>
-	<lvl id="3" name="黄金" minscore="1500" maxscore="1999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,400"/>
-	<lvl id="4" name="白金" minscore="2000" maxscore="2499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,800"/>
-	<lvl id="5" name="钻石" minscore="2500" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,1200"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1640,1#1726,1#1019,1600"/>
-	<lvl id="7" name="宗师" minscore="3500" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1640,1#1726,1#1019,2000"/>
-	<lvl id="8" name="王者" minscore="4000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1640,1#1726,1#1019,3000"/>
-	</i>
-	<i id="1002" minlvl="5" minnum="5" tipday="3" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2017-10-1" nexttime="2017-11-18" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="999" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,100"/>
-	<lvl id="2" name="白银" minscore="1000" maxscore="1499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,200"/>
-	<lvl id="3" name="黄金" minscore="1500" maxscore="1999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,400"/>
-	<lvl id="4" name="白金" minscore="2000" maxscore="2499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,800"/>
-	<lvl id="5" name="钻石" minscore="2500" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1200"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3499" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1600"/>
-	<lvl id="7" name="宗师" minscore="3500" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1665,1#1751,1#1019,2000"/>
-	<lvl id="8" name="王者" minscore="4000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1665,1#1751,1#1019,3000"/>
-	</i>
-	<i id="1003" minlvl="20" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2017-11-18" nexttime="2018-1-5" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1667,1#1753,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1667,1#1753,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1667,1#1753,1#1019,3000"/>
-	</i>
-	<i id="1004" minlvl="30" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2018-1-5" nexttime="2018-2-26" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1668,1#1754,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1668,1#1754,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1668,1#1754,1#1019,3000"/>
-	</i>
-	<i id="1005" minlvl="30" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2018-2-26" nexttime="2018-4-13" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1673,1#1759,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1673,1#1759,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1673,1#1759,1#1019,3000"/>
-	</i>
-	<i id="1006" minlvl="30" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2018-4-13" nexttime="2018-5-30" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1678,1#1764,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1678,1#1764,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1678,1#1764,1#1019,3000"/>
-	</i>
-	<i id="1007" minlvl="30" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2018-5-30" nexttime="2018-7-15" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1700,1#1766,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1700,1#1766,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1700,1#1766,1#1019,3000"/>
-	</i>
-	<i id="1008" minlvl="30" minnum="5" tipday="7" lvldesc="-5场定级赛，判定竞技等级1-4000\n-胜利/战败将调整竞技等级" matchdesc="-比赛模式：争夺模式和护送模式\n-胜利可获得更多的天梯积分" seasondesc="-每1个半月为一个赛季，可获得专属奖励\n-每赛季开始都必须重新进行定级赛" btndesc="下赛季{0}月{1}日" pretime="2018-7-15" nexttime="2018-8-31" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
-	<lvl id="1" name="青铜" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,200"/>
-	<lvl id="2" name="白银" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,400"/>
-	<lvl id="3" name="黄金" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,600"/>
-	<lvl id="4" name="白金" minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,1000"/>
-	<lvl id="5" name="钻石" minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,1400"/>
-	<lvl id="6" name="大师" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1768,1#1767,1#1019,1800"/>
-	<lvl id="7" name="宗师" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1768,1#1767,1#1019,2200"/>
-	<lvl id="8" name="王者" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1768,1#1767,1#1019,3000"/>
+	<i id="1001" minlvl="30" minnum="5" tipday="7" lvldesc="&lt;size=26&gt;* 5 Partidas de Ranking&lt;/size&gt;" matchdesc="&lt;size=26&gt;* Control e Escort Mode&lt;/size&gt;" seasondesc="&lt;size=26&gt;* Por tempo determinado&lt;/size&gt;" btndesc="Pr��xima season {0}/{1}" pretime="2018-2-10" nexttime="2018-3-26" starttime="11:30:00,14:30:00,17:30:00,21:30:00">
+	<lvl id="1" name="Bronze" minscore="0" maxscore="599" nolvlmatch="1" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,200"/>
+	<lvl id="2" name="Prata" minscore="600" maxscore="1199" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,400"/>
+	<lvl id="3" name="Ouro" minscore="1200" maxscore="1799" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,600"/>
+	<lvl id="4" name="Plat." minscore="1800" maxscore="2399" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1000"/>
+	<lvl id="5" name="Diam." minscore="2400" maxscore="2999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1400"/>
+	<lvl id="6" name="Master" minscore="3000" maxscore="3999" nolvlmatch="0" saveicon="1" cutscore="0" reward="" endreward="1665,1#1751,1#1019,1800"/>
+	<lvl id="7" name="Lord" minscore="4000" maxscore="4999" nolvlmatch="0" saveicon="1" cutscore="30" reward="" endreward="1665,1#1751,1#1019,2200"/>
+	<lvl id="8" name="King" minscore="5000" maxscore="10000" nolvlmatch="0" saveicon="1" cutscore="50" reward="" endreward="1665,1#1751,1#1019,3000"/>
 	</i>
 </root>
-<!--
-	天梯赛开1.5个月休数天
-	id：序号（数据库的awardid）
-	minlvl：允许参加最小等级
-	minnum：定位赛场次数量
-	tipday：倒计时提示日期
-	lvl：段位信息配表
-	id：段位级别
-	name：段位称号
-	minscore：改段位所需积分（最小值）
-	nolvlmatch：是否可与未定级玩家匹配
-	saveicon：掉级后是否保留段位徽章
-	cutscore：不参赛每日扣除分数
-	reward：段位奖励
-	endreward：活动结束奖励
-	btndesc：主界面按钮提示文字
-	pretime：上赛季开始时间
-	nexttime：下赛季开始时间
--->

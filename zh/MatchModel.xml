@@ -4,12 +4,11 @@
 <i id="7" fbtype="-1" name="自由模式" desc="所有模式随机匹配" isopen="0" modelicon="mode_free" istuijian="1"/>
 -->
 <root>
-	<i id="0" fbtype="7" name="团队死斗" desc="比拼消灭数" isopen="1" modelicon="mode_dead" istuijian="0"/>
-	<i id="1" fbtype="3" name="争夺模式" desc="占领目标点" isopen="1" modelicon="mode_fight" istuijian="0"/>
-	<i id="2" fbtype="11" name="个人死斗" desc="击败所有人" isopen="1" modelicon="mode_dts"	istuijian="0"/>
-	<i id="3" fbtype="2" name="护送模式" desc="护送目标的攻防战斗" isopen="1" modelicon="mode_push" istuijian="0"/>
-	<i id="4" fbtype="1" name="占点模式" desc="多目标点的攻防战斗" isopen="0" modelicon="mode_divination" istuijian="0"/>
-	<i id="5" fbtype="5" name="资源战模式" desc="比拼资源点数" isopen="1" modelicon="mode_scoure" istuijian="0"/>
-	<i id="6" fbtype="4" name="竞技场模式" desc="全灭对方即可获胜" isopen="1" modelicon="mode_areane" istuijian="0"/>
-	
+	<i id="0" fbtype="7" name="Team Deadmatch" desc="&lt;size=18&gt;Kills competition&lt;/size&gt;" isopen="1" modelicon="mode_dead" istuijian="0"/>
+	<i id="1" fbtype="3" name="Control Mode" desc="&lt;size=18&gt;Capturar objetivo&lt;/size&gt;" isopen="1" modelicon="mode_fight" istuijian="0"/>
+    <i id="2" fbtype="11" name="个人死斗" desc="&lt;size=18&gt;击败所有人&lt;/size&gt;" isopen="0" modelicon="mode_dts"	istuijian="0"/>
+	<i id="3" fbtype="2" name="Escort" desc="&lt;size=18&gt;Ataque e defenda para acompanhar a carga&lt;/size&gt;" isopen="1" modelicon="mode_push" istuijian="0"/>
+	<i id="4" fbtype="1" name="Modo Capturar Objetivo" desc="&lt;size=18&gt;Ataque e defenda para capturar múltiplos objetivos&lt;/size&gt;" isopen="0" modelicon="mode_divination" istuijian="0"/>
+	<i id="5" fbtype="5" name="Capturar Recurso Mode" desc="&lt;size=18&gt;Competição de Recursos&lt;/size&gt;" isopen="1" modelicon="mode_scoure" istuijian="0"/>
+	<i id="6" fbtype="4" name="Arena" desc="&lt;size=18&gt;Mate todos os inimigos para vencer&lt;/size&gt;" isopen="1" modelicon="mode_areane" istuijian="0"/>
 </root>

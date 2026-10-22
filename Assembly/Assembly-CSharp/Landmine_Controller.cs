@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +24,15 @@ public class Landmine_Controller : Npc_Controller
 	// Token: 0x0600170D RID: 5901 RVA: 0x000D675C File Offset: 0x000D495C
 	public override void Detection()
 	{
+		if (base.Entity_Component != null && base.Entity_Component.Index == 1003)
+		{
+			bool isMain = base.Entity_Component.Main && !base.Entity_Component.Death_State && !this.Fire_State;
+			if (isMain)
+			{
+				base.StartCoroutine(this.Wait_Suicide());
+			}
+			return;
+		}
 		GameObject x = null;
 		bool flag = !base.Entity_Component.Main || base.Entity_Component.Detection_Controller_Component == null || base.Entity_Component.Death_State || base.Entity_Component.thisModel == null || this.Fire_State;
 		if (!flag)
@@ -64,8 +73,17 @@ public class Landmine_Controller : Npc_Controller
 		}
 		base.Death_Effect_Object = null;
 		yield return new WaitForSeconds(base.Entity_Component.Time);
+		bool canFire = base.Entity_Component != null && base.Entity_Component.wc != null && base.Entity_Component.UserControl != null;
+		if (canFire)
+		{
+			((CWeaponControlMe)base.Entity_Component.wc).WeaponFire(1, "0", base.Entity_Component.UserControl.transform.position, base.Entity_Component.UserControl);
+		}
+		yield return new WaitForSeconds(0.2f);
 		this.Fire_State = false;
-		base.Entity_Component.Suicide();
+		if (base.Entity_Component != null)
+		{
+			base.Entity_Component.Suicide();
+		}
 		yield break;
 	}
 
@@ -80,11 +98,6 @@ public class Landmine_Controller : Npc_Controller
 	public override void Update()
 	{
 		base.Update();
-		bool flag = this.Fire_State && fGameManager.Heroplayer != null && !fGameManager.Heroplayer.delayNet;
-		if (flag)
-		{
-			((CWeaponControlMe)base.Entity_Component.wc).WeaponFire(1, "0", base.Entity_Component.UserControl.transform.position, base.Entity_Component.UserControl);
-		}
 	}
 
 	// Token: 0x04001247 RID: 4679

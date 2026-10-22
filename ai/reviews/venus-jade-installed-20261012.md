@@ -1,0 +1,13 @@
+# Passagem de trabalho — SKIN-024 instalada
+- Responsável: Codex; 12/10/2026~22:22BRT, Oracle13/10 01:22UTC.
+- Objetivo: VenusGuardiãdeJade gratuita independente skin5, raizcauda semtexturaroupa.
+- Implementação:148UVs da raiz remapeados para pelagem no atlasoriginal, sem modificar texturaGLB original; raiz aproximada do corpo. Cauda inteira rotacionada/escalauniforme0,90, cadeiaBone001–005; orelhasBone023/024;79bonesoriginais preservados.
+- Distâncias: todos renderers/LODs corpo apontam para mesmo meshadaptado21759tri, paleta79bones; evita voltar ao original à distância. Não reduz polígonos nos LODs: otimização futura; apenas LODativo desenhado.
+- Testes: bundle/objetos/pesos/índices/bones válidos; quatro poses sintéticas (mira p99stretch2,30,max6,31; corrida1,30/3,88; giro1,19/2,84; cauda1,026/1,216). Estiramento localizado de braços pode aparecer em animação real; não tratado como testeUnity.
+- Cadastro:hero1032skin5GuardiãdeJade gratuita, TPSdaji_tps_jade/FPSdaji_fps/controlleroriginais/íconedaji_1. Outras skins e gameplay intactos; sem DLLnova.
+- Oracle:4arquivos instalados(public/baxi/herounlock.xml,zh/herounlock.xml,files_dir.xml,novoTPS),CRC26101204/5557entradas. Catálogo/preçozero/PM2PID700097online; reiníciozeroconexões.
+- Pós-instalação:6HTTPhashes iguais/manifesto/TCP7777OK;4arquivos locais sincronizados apósbase conferida.
+- Backups:backups/venus024-before runtimeXML;backups/venus024-candidate candidata;Oracle/home/ubuntu/backups/venus-jade-skin024-20261013T012229Z/runtime.tar.gz.
+- Evidências:candidate-assets/venus-jade/{report.json,validation.json,geometry.npz};scratch/venus-jade-release/http-validation.json.
+- Cliente real:não testado. Próximo passo reabrirVenus→GuardiãdeJade, verificar raiz/cauda/tiro/corrida/vista distante. Sem retratoexclusivo ouFPSnovo nesta versão.
+- Reserva liberada; diagnósticoSKIN-020/VALK-001 intactos.

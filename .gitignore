@@ -4,6 +4,14 @@ node_modules/
 # Game Client CDN Cache / Download files
 downloads/
 cdn_cache/
+GameCache/
+
+# Large binaries and archives (GitHub 100MB limit)
+*.zip
+tools/launcher_standalone/
+
+# Local agent backups
+backups/
 
 # Log files
 *.log
@@ -17,6 +25,8 @@ Thumbs.db
 .vs/
 [Bb]in/
 [Oo]bj/
+**/bin/
+**/obj/
 *.user
 *.suo
 *.userosscache
@@ -28,3 +38,11 @@ Thumbs.db
 
 # Scratch/Temporary script directories
 scratch/
+
+# Unused legacy code outside src/
+bots.js
+server_original.js
+test_parser*.js
+export-game-data.js
+server-csharp/
+*.bak_*

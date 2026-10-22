@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -187,6 +187,7 @@ public class GameRoot : MonoBehaviour
 		base.gameObject.AddComponent<CReadModel>();
 		base.gameObject.AddComponent<CCheckDelay>();
 		base.gameObject.AddComponent<CPlayerRexx>();
+		base.gameObject.AddComponent<EmotePoseHUD>();
 	}
 
 	// Token: 0x06000D22 RID: 3362 RVA: 0x0007CE80 File Offset: 0x0007B080

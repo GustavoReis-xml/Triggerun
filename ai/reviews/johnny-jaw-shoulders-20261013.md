@@ -1,0 +1,21 @@
+# Passagem de trabalho — SKIN-033
+
+- Responsável / destinatário / horário: Codex / próxima IA / 13/10/2026 13:16:06UTC (10:16BRT).
+- Objetivo: queixo e ombros/braços deformados noCampeãoSolar; usuário confirmou ambas situações, parado e emmovimento. Estado: correção instalada, novo testeUnity pendente.
+- Base: SKIN-032/CRC26101301, cópia preservada em `backups/johnny033-before/` (bundle, manifesto, geometria/report/validation ebuild/verify).
+- Arquivos: `scratch/johnny033/`, `candidate-assets/johnny-solar/refined/`, recursoTPSsolar efiles_dir.xml. Catálogo/default/FPS/arma/gameplay intactos.
+- Causa demonstrada: face/mandíbula a z~1,64 tinha média~37%Head/63%Neck emamostra frontal; faixa horizontal de pesos e difusão contaminavam oqueixo com pescoço.
+- Correção cabeça: fronteira oblíqua seguindo mandíbula/nuca (`head_metric=z−0,45*(y−0,02)`), blend1,620–1,640 e reassertHead na região facial após difusão. Pescoço mantém transição própria.
+- Ombros: transiçãoSpine2→Clavicle→UpArmTwist emvez de pular clavícula. Antebraços passam a usarForeTwist com blend até60% dentro da parcela doantebraço, antes da transição paramão.
+- Geometria original da032 preservada integralmente: vértices/normais/UV/triângulos/bindposes/world iguais. Apenasm_Skin damesh principal mudou; todos osoutros objetos docustombundle são byte-idênticos, incluindo textura/material/rig/física/IK/armas.
+- Tentativa descartada: mudança doencaixegeométrico da raiz doombro comprimiu uma aresta~22mm para5mm e alongou3,58× emtiro. Restaurada geometria032 antes de continuar; não relaxar limiar para aceitar essa regressão.
+- Medição:128v do núcleo doqueixo seguemHead100%; erro relativo aocabeçote rígido caiu de0,060407 para<1e−6 unidades demesh nos testes de rotação. ~6cm na escala domodelo, não medida deWorld noUnity.
+- Varredura:34poses sintéticas/hierarquia completa; cabeça yaw±45°/pitch±30°, braços±60°, torçãoantebraço±60° emseueixo nativo. Oitoposes de032 mantidas, cabeça/torções adicionais validam precisamente regiões afetadas.
+- Resultado: p99≤1,222/max≤3,011; queixo rígido, torçãoantebraço com movimento real verificável (>5mm). Testes antigos deForeTwist não moviam apele porque nãohavia pesos relevantes; essa ausência foi corrigida.
+- Tolerância: ranges são amostras testadas, não limite universal seguro de alteração debones. Zero transforms/pivôs movidos; deslocamento deossos não necessário nesta correção. Próximas mudanças debones exigem investigarbindposes/Avatar/IK/animações nativas.
+- Testes: build/verify/reaberturaUnityPy/estrutura/pesos/34poses/Pythoncompile aprovados; animaçõesUnity não reproduzidas. Renders usam normais deformadas pelos mesmos pesos, reduzindo facetas falsas do diagnóstico.
+- Prévia: `jaw-before-headYaw45.png`/`jaw-after-headYaw45.png`, pitch30 e previews de movimentos em `candidate-assets/johnny-solar/refined/`.
+- Oracle: recurso +manifesto, CRC26101302,5559entradas; caminho/versão iguais, semreinício. PID709544 mantido; quatro hashesHTTP1.1.1/1.3.5 +TCP7777 aprovados; cópia local sincronizada.
+- Backup remoto: `/home/ubuntu/backups/johnny-solar-skin033-20261013T131606Z/runtime.tar.gz`; evidências de instalação/hashes em `scratch/johnny033/release/`.
+- Cliente real:032 apresentou problema confirmado;033 ainda não testada. Próximo passo: reiniciar cliente e conferir parado, rotação de cabeça, mira, tiro, recarga eombros. Usarrefined como base publicada para ajustes posteriores.
+- Bloqueio: nenhum; reserva liberada.

@@ -1,0 +1,62 @@
+{
+  "images": [
+    {
+      "file": "01-frente.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "opaqueBounds": [
+        9,
+        11,
+        1014,
+        1479
+      ],
+      "transparentFraction": 0.7432072957356771
+    },
+    {
+      "file": "02-esquerda.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "opaqueBounds": [
+        349,
+        6,
+        961,
+        1473
+      ],
+      "transparentFraction": 0.7916145324707031
+    },
+    {
+      "file": "03-direita.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "opaqueBounds": [
+        68,
+        8,
+        670,
+        1474
+      ],
+      "transparentFraction": 0.7973194122314453
+    },
+    {
+      "file": "04-costas.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "opaqueBounds": [
+        10,
+        11,
+        1014,
+        1480
+      ],
+      "transparentFraction": 0.7380828857421875
+    }
+  ],
+  "visualReview": "front/rear identity and tail direction; profiles opposite-facing with foreshortened T-pose arms",
+  "limitation": "AI-generated turnarounds approximate, not renders of one real 3D mesh"
+}

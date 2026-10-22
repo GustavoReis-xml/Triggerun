@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -250,7 +250,15 @@ public class PveUICon : Window
 	// Token: 0x06001F97 RID: 8087 RVA: 0x00122870 File Offset: 0x00120A70
 	private void OnClickToggleFun(GameObject obj, bool isClick)
 	{
+		if (obj == null)
+		{
+			return;
+		}
 		int num = int.Parse(obj.name.Replace("Toggle", string.Empty));
+		if (!fGameManager.mloadConfig.AllPveFbData.ContainsKey(num))
+		{
+			return;
+		}
 		PveXmlData pveXmlData = fGameManager.mloadConfig.AllPveFbData[num];
 		bool flag = ActivityManager.GetInstance().IsOpenLimit(pveXmlData.m_nFbType) == 0;
 		if (flag)
@@ -268,8 +276,16 @@ public class PveUICon : Window
 				{
 					this.OnSelectPanel.SetActive(false);
 				}
-				this.AllPanel[this.m_nPanelType].gameObject.SetActive(true);
-				this.OnSelectPanel = this.AllPanel[this.m_nPanelType].gameObject;
+				if (this.AllPanel.ContainsKey(this.m_nPanelType))
+				{
+					this.AllPanel[this.m_nPanelType].gameObject.SetActive(true);
+					this.OnSelectPanel = this.AllPanel[this.m_nPanelType].gameObject;
+					Pve_Fb_Con fbCon = this.AllPanel[this.m_nPanelType].GetComponent<Pve_Fb_Con>();
+					if (fbCon != null)
+					{
+						fbCon.InitData(pveXmlData.nId, this.m_nPanelType);
+					}
+				}
 				bool flag4 = this.OnSelectToggleBtn != null;
 				if (flag4)
 				{
