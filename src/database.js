@@ -64,7 +64,7 @@ const MAP_CONFIG = {
     // 资源模式 (Type 4)
     5056: { name: 'jiaodouchang_3_smc_low_xiugai', type: 4 }, // 勇者竞技场
     5058: { name: 'dz_jjc', type: 4 },                        // 法老陵墓
-    5059: { name: 'bachang_baxi', type: 4 },             // 王者大厅
+    5059: { name: 'jiaodouchang_02_3', type: 4 },             // 王者大厅
     
     // 个人死斗 (Type 11)
     5301: { name: 'wudingzhengduo_baked_3_xiugai', type: 11 },
@@ -893,7 +893,12 @@ const generateFullHeroData = (id, useSkinId = 1, useWeaponId = 1, useEmoteId = 1
     const useWeaponEnc = encodeInt(Math.max(1, parseInt(useWeaponId) || 1));
     const useEmoteEnc = encodeInt(Math.max(1, parseInt(useEmoteId) || 1));
     const usePoseEnc = encodeInt(parseInt(usePoseId) || 0);
-    return `${idEnc},(${one},${zero},${openState},'${dateStr}',${zero},(),${unlockedSkin},${unlockedWeapon},${unlockedEmote},${unlockedPose},${zero},${useSkinEnc},${useWeaponEnc},${useEmoteEnc},${usePoseEnc},${zero})`;
+    const heroCareer = profile && profile.career && profile.career.heroes
+        ? (profile.career.heroes[id] || profile.career.heroes[String(id)] || null)
+        : null;
+    const heroLvlEnc = encodeInt(Math.max(1, parseInt(heroCareer && heroCareer.level, 10) || 1));
+    const heroExpEnc = encodeInt(Math.max(0, parseInt(heroCareer && heroCareer.exp, 10) || 0));
+    return `${idEnc},(${heroLvlEnc},${heroExpEnc},${openState},'${dateStr}',${zero},(),${unlockedSkin},${unlockedWeapon},${unlockedEmote},${unlockedPose},${zero},${useSkinEnc},${useWeaponEnc},${useEmoteEnc},${usePoseEnc},${zero})`;
 };
 
 function getEntityClassName(npcIndex) {

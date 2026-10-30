@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "objectsCompared": 603,
+  "newObjects": 21,
+  "bones": 71,
+  "poses": 22,
+  "nativeGameplayHierarchyPreserved": true,
+  "towelNotWeightedToArmsOrBody": true,
+  "UnityTested": false
+}

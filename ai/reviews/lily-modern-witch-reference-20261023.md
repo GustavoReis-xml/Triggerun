@@ -1,0 +1,25 @@
+# Passagem de trabalho — SKIN-045
+
+- Responsável: Codex; destinatário: usuário / próxima IA;23/10/2026.
+- Objetivo: referênciaTripo Lily1033 de bruxa moderna/gótica estilosa, usandoWanda apenas para direção de roupa/atitude, com paleta própriaLily.
+- Estado: análise/referências concluídas; aguarda GLBTripo. Sem instalação no jogo/Oracle.
+- Arquivos reservados: `scratch/lily-inspection/`, `candidate-assets/lily-modern-witch/`, documentação/passagem.
+- Base real: catálogo1033 aponta lilisi_tps/lilisi_fps; cinco bundles inspecionados (TPS/FPS/amboscontroladores/lls_wuqi_zs); hashes em `scratch/lily-inspection/inventory.json`.
+- Corpo nativo:3385v/4902tri/76bones; LODs38 e19bones; FPS43bones; conjunto armaTPS6bones;28clipsTPS/16FPS.
+- Identidade confirmada por malha/textura: mulher adulta esguia, bob loiro/bege curto, chapéu pontudo assimétrico, vestido/meias/luvas, roxo/preto/dourado.
+- Medidas: altura total comchapéu≈1,750m; pivôHead1,439/ombros1,318/Pelvis0,974m no espaço da malha.
+- Chapéu: Point004→Bone002→Bone003→Bone004 é cadeia própria; preservar na adaptação.
+- Corpo temUpArmTwist/ForeTwist e dedos completos nasduasmãos; roupa possui cadeiasBone005–010 naslaterais/frente/costas daPelvis.
+- DynamicBone encontrado somente emBone001 eBone001(mirrored), na região torácica; não afirmar física nativa do chapéu/casaco sem avaliação adicional.
+- HeroLilisiMe/It e Skill_Lilisi_shiledMe consultados: ultimate/escudo/film eobjetos de habilidades devem continuar nativos; TBCharAnimationLilisiTps herdaThirdIK.
+- Conceito: Bruxa daMeia-Noite, casaco acinturado semmangas/golaalta/abas separadas na região dosjoelhos, corpeteamethyst, shorts/meias/gluvas/botas, metaisdourados discretos; bobloiro e chapéu reinterpretados.
+- DireçãoWanda sem copiar identidade/vermelho/pose. Material limpo/sem grunge/partículas; cinco dedos/pupilas legíveis; sem arma fundida na referência.
+- Geradas quatro imagens individuais comimage_gen integrado, todasRGBA/transparência real, corpo inteiro, frente/costasT eperfiscoerentes comT em3D.
+- Artefatos: `candidate-assets/lily-modern-witch/multiview/{front,back,left,right}.png`; ZIP `lily-bruxa-da-meia-noite-tripo.zip`.
+- Prompts completos/método/hashes/dimensões/fontes emmultiview/*-prompt.txt/metadata.json; análise/landmarks/hierarquia emscratch/lily-inspection.
+- Inspeção visual: quatro vistas conferidas, paleta/roupa/cabelo/chapéu coesos, dedos/extremidades completos; transparência e margens verificadas eZIPíntegro.
+- Frente autoritativa; não são projeções calibradas de uma mesh única. Perfis podem variar ligeiramente emsalto/gola/comprimento dasabas.
+- left/right definidos pela direção visual do rosto; conferir convenção doTripo na prévia. Não trocar automaticamente por interpretação anatômica.
+- O casaco ultrapassa a saia nativa: prever movimento secundário/pesos próprios dasabas se necessário, semassumir compatibilidade automática com clothbones.
+- Implementação de skin: nenhuma. ClienteUnity: não aplicável nesta etapa. Oracle: não alterada; nenhum backup remoto/reinício necessário.
+- Próximo passo: usuário gerar modelo texturizado comasvistas e enviarGLB; inspecionar olhos/mãos/gola/chapéu/abas antes de cadastrar skinindependente.

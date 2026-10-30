@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "objectsCompared": 613,
+  "onlyMeshChanged": true,
+  "removedNativeLayerVertices": 206,
+  "removedNativeLayerTriangles": 252,
+  "newBoundaryDuplicates": 44,
+  "newSeamTriangles": 44,
+  "changedTorsoSleeveVertices": 158,
+  "maximumFittingDisplacement": 0.03707743962055707,
+  "samples": 170,
+  "maximumSeamAttachmentError": 0,
+  "maximumSeamStretch": 1.0000006376082131,
+  "faceCompletelyPreserved": true,
+  "physicsPreserved": true,
+  "UnityTested": false
+}

@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "objectsCompared": 12,
+  "changedOriginalObjects": [
+    1,
+    900000000000006207,
+    4307117815008695457
+  ],
+  "addedTextures": [
+    900000000000006401,
+    900000000000006402
+  ],
+  "albedoIncludingAlphaIdentical": true,
+  "meshBytesIdentical": true,
+  "metadataVersion": 1,
+  "shaderUnchanged": "Custom/ttcq",
+  "neutralPackedNormal": [
+    128,
+    128,
+    255,
+    128
+  ],
+  "specularMask": [
+    24,
+    24,
+    24,
+    255
+  ],
+  "reflectionPower": 0.35,
+  "maxSpecularContribution": 0.09411764705882353,
+  "maxReflectionForUnitCube": 0.03294117647058823,
+  "companionPaths": {
+    "Bone023/jian/jian_i": "polySurface4",
+    "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted ": "waerjili_wuqi_500",
+    "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri": "waerjili_wuqi_500",
+    "i": "Object02"
+  },
+  "companionsByPrefab": {
+    "waerjili_fps": [
+      "Bone023/jian/jian_i"
+    ],
+    "waerjili_fps_sz1": [
+      "Bone023/jian/jian_i"
+    ],
+    "waerjili_fps_sz2": [],
+    "waerjili_fps_hy": [
+      "Bone023/jian/jian_i"
+    ],
+    "waerjili_tps": [
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted ",
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri"
+    ],
+    "waerjili_tps_sz1": [
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted ",
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri"
+    ],
+    "waerjili_tps_sz2": [
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri",
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted "
+    ],
+    "waerjili_tps_xk": [
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri",
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted "
+    ],
+    "waerjili_tps_hy": [
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/hongwai_fri",
+      "Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bone023/honwai_silhouetted "
+    ],
+    "wrjl_wuqi_zs": [
+      "i"
+    ]
+  },
+  "clientHelperRequired": "WEAPON-004",
+  "UnityTested": false
+}

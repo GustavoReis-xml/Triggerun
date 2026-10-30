@@ -72,5 +72,6 @@
 	   <skill id="37" name="Teleport Panel" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="1203" dogun="0" energymax="10000" energyaddtime="120" energyadddamage="80" energyaddcure="1" xingtai="0" icon="daweiQTCS" continuestime="5000"/>
 	</i>
 <i id="2000" name="Lamster" type="0">
-	</i>
+<skill id="22000" name="Vanguarda Solidária" energycosttype="1" candotype="0" energycost="0" energycosttime="0" doskill="22003" dogun="0" energymax="10000" energyaddtime="30" energyadddamage="100" energyaddcure="120" xingtai="0" icon="lamster_ult" continuestime="6000"/>
+</i>
 </root>

@@ -1,6 +1,6 @@
 # Estado resumido
 
-Atualizado: 2026-10-22. Responsável pelo registro: Codex.
+Atualizado: 2026-10-23. Responsável pelo registro: Codex.
 
 ## Fontes e interpretação
 
@@ -167,3 +167,90 @@ ode tools/trace-player.cjs --player NOME`.
 - SKIN-040: usuário aprovou visual e movimento do Corvo no cliente real em22/10. Pediu considerar uma DLL universal para skins futuras; generalização ainda não implementada. Manter escopo/volumes por instância e configurações por skin ao evoluir o auxiliar.
 
 - SKIN-041 referências Tagaloa Lobo Mau entregues22/10: corpo36bones + conjunto direito/arma18 (53nomes únicos), escudo precisa ser preservado; quatroPNG/ZIP/prompts em `candidate-assets/tagaloa-wolf/multiview/`. Frente/costas transparentes, perfis cinza para pelos claros limpos; aguardaGLB, semexecução/Oracle/DLL alteradas. `ai/reviews/tagaloa-wolf-reference-20261022.md`.
+
+- SYNC-001 + SYNC-002 instaladas na Oracle em22/10 23:15BRT (Antigravity): destrava `_fillCartridge`/`Reload` via `OnFillBullet` em recarga interrompida por morte ou pacote `31203` morto/ragdoll (evitando bloqueio de socos rápidos `key="Fight"`), remove comparações estritas redundantes de `targetMapId`/`currentRoomUID` em `SLoadMapOKMsg` e relay de movimento, filtra pacotes `SP` atrasados (`spDeadFlag=1` ou abismo pós-respawn), centraliza limpeza de timers/buffs em `sceneScope.invalidate`/`clearCombatTimers`, adiciona comandos `/sync` (`/vis`) e `/fix` no chat de partida e cria `src/heroCatalog.js` (durações de recarga, aliases, barreiras/passivas e limites de invocações). Backups locais `backups/sync001-before/` e `backups/sync002-before/`; backup remoto `/home/ubuntu/backups/sync-001-002-20261023T021502Z/runtime.tar.gz`; 101/101 testes locais e Oracle OK, HTTP 200 e TCP 7777 OK (PID 890306). Validação no cliente Unity real pendente.
+
+- SKIN-042 instalada23/10 00:14BRT: TagaloaLoboMau6gratuita/28596v/21585tri/59bones, ombros/braços ajustados ecauda dinâmica5bones; auxiliarCorvo estendido poropt-in, Assemblyintacta.23poses/652objetos/48747asserçõescauda+235227Corvo/8HTTP/TCP/catálogo OK;CRC26102301/5562recursos, reiníciozero conexões/PID891337. MudançasAntigravity intactas/hashes conferidos. FPS/íconenativos;Unitypendente. `ai/reviews/tagaloa-wolf-installed-20261023.md`.
+
+- SKIN-043 instalada23/10 01:16BRT: foto042 confirmoupeito comprimido/ombros ruins; corrigidas geometria torácica e máscaras/pesos que ligavam peitoral/bíceps ao pescoço. SóMesh alterada em666objetos, cauda/rig/DLLintactos.23poses aprovadas/51clipes255amostras auditadas comlimites registrados;4HTTP/TCP/CRC26102302/semreinício/PID891337. Base `candidate-assets/tagaloa-wolf/refined/`, Unitypendente. `ai/reviews/tagaloa-chest-shoulders-20261023.md`.
+
+- SKIN-044 instalada23/10 01:26BRT: usuário aprovoupeito043, pediu braçosmaiores/manopla. Braços até30%/antebraçoL12%maisrobustos,11renderers nativos da manopla restaurados e2311faces lupinas cobertas removidas;peito/pesos/rig/cauda/DLL intactos.23poses/255amostras/666objetos/4HTTP/TCP OK, CRC26102303/semreinício/PID891337;Unitypendente. Fonte `candidate-assets/tagaloa-wolf/armed/`; `ai/reviews/tagaloa-arms-gauntlet-20261023.md`.
+
+- SKIN-044: usuário aprovou visual final doLoboMau em23/10; novo pedidoLily1033 bruxa moderna/gótica, referênciaWanda apenas conceito e paleta própriaLily. SKIN-045 em análise/referências; sem alteração do jogo.
+
+- SKIN-045 referênciasLilyBruxa daMeia-Noite concluídas23/10: cinco bundles analisados/corpo76bones/FPS43/arma6/chapéu4pivôs;quatroPNGtransparentes/T-pose+ZIP/prompts em `candidate-assets/lily-modern-witch/`. Frenteautoritativa, perfisnão calibrados;aguardaGLBTripo, semruntime/Oracle alterados. `ai/reviews/lily-modern-witch-reference-20261023.md`.
+
+- LAMSTER-006 + LOBBY-001 instaladas na Oracle em23/10 01:58BRT (Antigravity): Lamster (`ID 2000`) recebeu VFX (`.ef`) e SFX/vozes (`.sds`) nativos completos em `heroinfo.xml` (`EnterSceneSound`) e `weapon.xml` (`shootname="1"` Punho Solidário, `shootname="2"` Pulso de Inspiração e `shootname="4"` Soco de Defesa), CRC `26102304` em `files_dir.xml`, além de `buff 1004` (`skill_jiexue` + `ui_jiaxue` + `skillvoice_zhongjiezhe_cureself`) aplicado ao curar aliados/a si mesmo. Sistemas sociais e de ranking do Lobby implementados em `src/socialServer.js` + `src/dbPersistence.js` + `src/socketServer.js`: Ranking Global (`17000`: Nível `17001`, Herói `17002`, SkyLadder `17003`, PvE `17005`, DTS `17006`, Popularidade `17007`), Amigos (`60118` init, `60101`/`60102`/`60105`/`60109`/`60103`/`60104`), Esquadrão/Party (`60000`: `60001`/`60002`/`60003`/`60004`/`60005`/`60006`/`60009`/`60010`) e Clãs/Guildas (`91000`: `91020`/`91013`/`91001`/`91018`/`91003`/`91004`/`91005`/`91006`/`91007`/`91008`/`91015`/`91016`/`91017`/`91019`/`91022`/`91031`/`91036`). Backups: local `backups/lobby001-lamster006-before/`, remoto `/home/ubuntu/backups/lobby001-lamster006-20261023T045700Z/runtime.tar.gz`. 102/102 testes locais e Oracle aprovados, HTTP 200/CRC `26102304` e TCP 7777 OK (PID 893878, zero conexões no restart). Validação no cliente Unity pendente.
+
+- SKIN-046 novaLilygóticaanos2000:045muito fantasy/Tripo ruim, primeira046jaqueta-jeans rejeitada por comum. Nova frentev2Bruxa doEclipse(golaalta/casacolongo preto-roxo/cabelopreto-mechaclara) em `candidate-assets/lily-modern-witch/y2k/`, PNG+ZIP/prompt;avaliação visual pendente. Semjogo/Oracle; não misturar comvistas045. `ai/reviews/lily-y2k-reference-20261023.md`.
+
+- SKIN-047 usuário substituiu045/046 por nova referênciaautoritatíva INCLUSIVEvinho/preto/cabelopreto-mechasvermelhas/franja. Nova frenteRGBA/A-pose+ZIP/prompt em `candidate-assets/lily-modern-witch/crimson/`, QAOK/avaliaçãovisual eGLBpendentes;semjogo/Oracle. Não misturar vistas antigas. `ai/reviews/lily-crimson-reference-20261023.md`.
+
+- SKIN-048 multivistas daLilyvinho/preto047 concluídas23/10: frente original+costas+2perfisPNGtransparentes/A-pose, prompts/README/metadata e ZIP em candidate-assets/lily-modern-witch/crimson/multiview/. Frenteautoritativa;vistasnão calibradas, semjogo/Oracle;aguardaGLBTripo. ai/reviews/lily-crimson-multiview-20261023.md.
+
+
+- SKIN-04924/10 corrige costas048Lily(gola na nuca/sobretudo fechado/fendamenor);pacoteatual candidate-assets/lily-modern-witch/crimson/multiview-v2/,frente/perfis intactos e048preservada.QAOK/avaliaçãopendente,semjogo/Oracle. ai/reviews/lily-crimson-back-20261024.md.
+
+
+- SKIN-050 instalada24/10 16:51BRT: LilyBruxaCarmesim5 gratuita em candidate-assets/lily-modern-witch/adapted/,100bones/6cadeiascasaco e retocomanual localizado autorizado.22poses/solver+regressões/8HTTP/TCP OK;140amostras nativas auditadas (limitesnapassagem),Unitypendente. CRC26102401/5563/PID922269/reiníciosemjogadores/helperlocal atualizado semAssembly;FPS/íconeoriginais. ai/reviews/lily-crimson-installed-20261024.md.
+
+
+- SKIN-051 instalada24/10 17:07BRT após relato real050 de braços/unhas soltos: completada malha sob mangas, repintados pesos dasmangas; unhas agora na textura, sem156tri flutuantes. Fonte atual candidate-assets/lily-modern-witch/refined/,CRC26102402/semDLL/semreinício/PID922269.776objetos/140amostras/4HTTP/TCP OK;novoUnitypendente. ai/reviews/lily-arms-nails-20261024.md.
+
+
+- SKIN-052 instalada24/10 17:22BRT após novo defeito real051: trecho preto terminava acima da manga no pivô. Agora90v afunilados/ancorados sob painel contínuo real; unhas/física/resto preservados. Fonte atual candidate-assets/lily-modern-witch/shoulders/,CRC26102403/semDLL/semreinício/PID922269.776objetos/140amostras+21poses/contenção/4HTTP/TCP OK;novoUnitypendente. ai/reviews/lily-shoulder-fit-20261024.md.
+
+
+- SKIN-052 aprovada visualmente pelo usuário24/10 ('agora sim ficou bom'). SKIN-053 novo conceitoKhan1034 de praia entregue em candidate-assets/khan-beach/:63bones nativos analisados, identidade madura/cabelo-branco preservada,torso exposto/teal-coral/toalha fênix. Aguarda aprovação/referênciasneutras/GLB,semjogo/Oracle. ai/reviews/khan-beach-reference-20261024.md.
+
+
+- SKIN-054 referênciasTripoKhanMaréAlta prontas24/10 em candidate-assets/khan-beach/multiview/:4PNGtransparentes/A-pose+ZIP/prompts,proporções guiadas pelo nativo/assimetria preservada. Frenteautoritativa,vistasnão calibradas;aguardaGLB,semjogo/Oracle. ai/reviews/khan-beach-multiview-20261024.md.
+
+
+
+- SKIN-055 instalada24/10 18:42BRT: KhanMaréAlta6gratuita/23649v/19533tri/71bones em candidate-assets/khan-beach/adapted/,toalha com2cadeias/5volumes privados ehelperopt-in atualizado semAssembly.22poses/180amostras/solver+regressões/8HTTP/TCP OK;CRC26102404/5564/PID924530/reiníciozero conexões,FPS/íconeoriginais. Unitypendente;ai/reviews/khan-beach-installed-20261024.md.
+
+
+- SKIN-055 aprovada no cliente pelo usuário24/10: visual muito bom/semdeformações relevantes; pequena clavícula aceita, não corrigir. SKIN-056 conceitoValkyrie1016 Valquíria do Eclipse entregue em candidate-assets/valk-eclipse/,72bones/34clips analisados;aguarda aprovação/referênciasTripo,semruntime/Oracle. ai/reviews/valk-eclipse-reference-20261024.md.
+
+
+- SKIN-0574vistasTripoValk1016Valquíria doEclipse prontas24/10 em candidate-assets/valk-eclipse/multiview/:PNGtransparentes/A-pose+ZIP/prompts, cabelo alterado paraSaber porpedidoexpresso. Frenteautoritativa/proporçõesguiadasnativas,vistasnão calibradas;aguardaGLB,semruntime/Oracle. ai/reviews/valk-eclipse-multiview-20261024.md.
+
+
+- SKIN-058 instalada24/10 21:41BRT: Valk1016Eclipse6gratuita/27214v/20375tri/88bones em candidate-assets/valk-eclipse/adapted/,4cadeias/4volumes privados ehelper058semAssembly. Rostoajustado sóemgeometria/atlasoriginal;ombreirasUpperArm apósdescartarBone013.22poses/170amostras/solver+4regressões/8HTTP/TCP OK;CRC26102405/5565/PID927095/zero conexões. FPS/ícone/espadaoriginais,Unitypendente;ai/reviews/valk-eclipse-installed-20261024.md.
+
+
+- SKIN-059 instalada24/10 22:07BRT: ValkEclipse corrigida apósUnity058,206v/252tri nativos fechamjuntabráço e novotexturafacial/materialprojetado. Fonte candidate-assets/valk-eclipse/refined/,27420v/20627tri/88bones;058rig/saia/DLLintactos.611objetos/170amostras/384raios/4HTTP/TCP OK;CRC26102406/semreinício/PID927095. NovoUnitypendente;ai/reviews/valk-face-arms-20261024.md.
+
+
+- SKIN-060 instalada24/10 22:21BRT: rosto059aprovado,mantido;camadanativaexcessivaremovida. Manga4348pertenciaaotronco eprecisavapesos/encaixedobraço:158v ajustados+44tri de costuracurta,semnovo tubo. Atual candidate-assets/valk-eclipse/shoulders/,27258v/20419tri/88bones;613objetos/170amostras/uniãoerro0/4HTTP/TCP OK,CRC26102407/semreinício/PID927095. NovoUnitypendente;ai/reviews/valk-local-shoulder-seam-20261024.md.
+
+
+- SKIN-060 usuárioaprovou melhoria;WEAPON-001 direção armaValk independente de skinconfirmada. CódigooriginaltrocasóMaterial(novageometriaprecisahook);referênciaTripoespada negra/carmesim em candidate-assets/valk-eclipse/weapon/ comZIP/prompt,aguardaGLB. Semruntime/Oracle;ai/reviews/valk-weapon-design-20261024.md.
+
+
+- WEAPON-002 instalada24/10 23:05BRT: Valk1016 arma5 Espada do Eclipse gratuita independente, novo bundle genéricoXML/cinco meshes/cabo fechado/FXcarmesim. Cliente exige Assembly79DFA93D…+TriggerunWeaponCosmetics.dll855631DE… mantendohelpersanteriores.897asserções simuladas/14780métodos(2alterados)/168raios/10prefabs/8HTTP/TCP OK;CRC26102408/5566/PID928695/zero conexões. Unitypendente,íconeoriginal/LODscompletos. Fonte candidate-assets/valk-eclipse/weapon/adapted/,ZIPcliente no pai;contrato client-patches/WEAPON-COSMETICS.md. ai/reviews/valk-weapon-eclipse-20261024.md.
+
+
+- WEAPON-003 instalada24/10 23:19BRT após002invisível: albedoDXT5alpha0 confirmado/reproduzido sobCustom/ttcqCutout;corrigidoalpha255 dos10mips semalterarRGB/mesh/material/FX/DLL. Fonteatual candidate-assets/valk-eclipse/weapon/opaque/ (adapted002históricoquebrado).12objetos/sóTexture/4HTTP/TCP OK;CRC26102409/5566/PID928695/semreinício. NovoUnitypendente,fechar/abrircliente;pacoteDLL002válido. ai/reviews/valk-weapon-opacity-20261024.md.
+
+
+- WEAPON-004 instalada24/10 23:30BRT: após003branco/cascanativa,materialCustom/ttcq commapasexplícitos(_NRneutro,_M24,_RFcubemap/power0,35),albedo/alpha/meshintactos. XMLcompanionremapeiahologramaFPS/loja+contornosTPS conservandovisibilidade/material;helperF7528CE7…/Assembly79DFA…intacto.987asserçõessimuladas/10prefabs/4HTTP/TCP OK;CRC26102410/5566/PID928695/semreinício. Fonteatual candidate-assets/valk-eclipse/weapon/material-fixed/,ZIP064atual;novoUnitypendente. ai/reviews/valk-weapon-material-shell-20261024.md.
+
+
+- SKIN-065 conceitoCarmen1021GrandeIlusionista/Zatanna entregue25/10 em candidate-assets/carmen-zatanna/:nativosTPS81bones/FPS42/35clipesTPS conferidos,previewpreto-branco-violeta comcartola/fraque/cartas,prompt/metadata/refs. Aguardaaprovação/turnaroundTripo;semjogo/Oracle. ai/reviews/carmen-zatanna-concept-20261025.md.
+
+- SKIN-066 usuáriooptou25/10 porgerarTripoSÓcomfrente e dispensoumultiview. Referênciafinal front.pngRGBA1024x1536/Aposeem candidate-assets/carmen-zatanna/multiview/ conserva065;back.pngcomcapasóexperimental,nãoenviarjunto,perfisnãofeitos. AguardaGLB,semjogo/Oracle. ai/reviews/carmen-zatanna-multiview-20261025.md.
+
+- SKIN-067 instalada25/10 15:33BRT:Carmen1021GrandeIlusionista7gratuita/26983v19318tri109bones,rostoretocado semolhosmaiores/4cadeiasfraque+3cabelo. Helper957891C3…com6volumesprivados,preserva040/042/050/055/058;Assembly79DFA…intacto.22poses/175amostras/320910asserções+5regressões/19mips/8HTTP/TCP OK;CRC26102501/5567/PID941494/zero conexões. Fontecandidate-assets/carmen-zatanna/adapted/,ZIPhelperno mesmo diretório;FPS/cartas/íconeoriginais/Unitypendente. ai/reviews/carmen-illusionist-installed-20261025.md.
+
+- SKIN-068 / SKIN-PIPELINE-001 instalada em 28/10 23:18 BRT (Antigravity): (1) Criados `tools/hero_rig_profiles.json` (perfis esqueléticos/proporções dos 24 heróis), `tools/skin_rig_helper.py` (medição automática de landmarks `su/se/sw`, recentralização coaxial + ganho radial `+24%/+20%`, `tailor_bell_sleeve`, gradiente longitudinal de Twist, `Clavicle` na cápsula do ombro e ponte cilíndrica ancorada no ombro `sh`) e `ai/SKIN_GUIDE.md` (5 Regras de Ouro + guia individual dos 24 heróis para o Codex); (2) Braços e mangas da **Lily Bruxa Carmesim** (`ID 1033`, `skin 5`) reconstruídos em `candidate-assets/lily-modern-witch/arms-v2/lilisi_tps_crimson.mo` e instalados na Oracle (`CRC 26102801`, backup `/home/ubuntu/backups/lily-crimson-skin068-20261029T021833Z/runtime.tar.gz`, `4` hashes HTTP + TCP7777 OK, `PID 941494`, sem reinício e sem mudança de DLL). Teste em cliente Unity pendente. Passagem: `ai/reviews/lily-arms-v2-and-skin-guide-20261028.md`.
+
+- MODE-001 / HERO-XP-001 instalada em 29/10 00:25 BRT (Antigravity): (1) Progressão completa de XP e nível por herói (`getHeroLvlupExp`, `career.heroes[id].level/exp`, sincronização `1306 -> 12002` + cartão individual em `5026 ResultHeroList`, mantendo todos os cosméticos liberados); (2) Retorno ao Saguão (`20001`) corrigido ao encerrar a partida em todos os modos (tanto ao clicar em Fechar quanto por timeout automático); (3) Corrigido bug de imortalidade ao trocar de herói no Individual Deathmatch (`ffaDeathHandled` e `ffaRespawnAt` resetados em `switchPlayerHero`); (4) Modos Controle (`type 3`), Captura de Recursos (`type 5`), Escolta (`type 2`), Arena 3v3 (`type 4`) e Aventura PvE (`type 9/12`) habilitados e corrigidos no Quick Match e Salas Criadas (`90009` a partir do staging `5010`). `106/106` testes automatizados aprovados localmente e na Oracle; backup remoto `/home/ubuntu/backups/mode-heroxp-20261029T032439Z/runtime.tar.gz`, PM2 `triggerun` (`PID 999036`) online. Teste em cliente Unity pendente.
+
+
+- LAMSTER-GUIDE-001 entregue em 29/10 18:47 BRT (Antigravity): Criado o guia completo de arquitetura e implementação para o Codex em `ai/LAMSTER_FULL_HERO_GUIDE.md`. Cobre: (1) Diagnóstico da HUD de depuração `OnGUI` (`client-patches/CombatHud.cs`) vs. HUD nativa NGUI (`NewHeroSkillUi` + `OneSkilUI`), explicando como os slots, atalhos e contadores funcionam; (2) Kit completo com `E` (campo vital 1201), `Shift` (arrancada tática 1202), `RMB` (pulso de inspiração 1204 com badge de botão direito) e `Q` (Ultimate santuário heroico 1203 carregado com dano e cura via `dazhao.xml` e medidor central `CPlayerDazhao`); (3) Novos ícones em `src/lamsterAssets.js` e remoção da sobreposição `OnGUI`; (4) Sincronização no servidor (`src/socketServer.js`, `src/database.js`); (5) Mapeamento de animações e partículas `.ef`. Handoff pronto para o Codex executar a implementação (`LAMSTER-002`).
+
+- LAMSTER-007 instalada29/10 19:27BRT:kit completo de suporte/utilidade,semnovacuraemárea porpedido do usuário. E22001lentidão35%/6m/2,5s/CD12;Shift22002velocidade40%+DR30%/3s/CD8;Q22003DR40%/6s,limpa lentidões eacelera40%/3s,aliados+self10m. Primário/RMB existentes preservados;visualdecura nãoaplicamais500HPextra. HUDnativa3slots+anelQ/F1;energia pordano/cura efetivos.3ícones/7FX;helper70F5DF0F…local,Assembly79DFA…intacta.118/118testeslocalOracle,51HTTP/TCP,5577recursos/CRC26102901(heroinfo26102902),PM2PID1013628/reinícioszero conexões. Unitypendente. Fonte src/lamsterHero.js;recursos/ZIP/prompts candidate-assets/lamster-full/;passagem ai/reviews/lamster-full-hero-20261029.md. GuiaAntigravity originaléproposta comIDs/classes/buffs/opcodes incorretos;seguir implementação/passagem atual.
+
+- LAMSTER-008 instalada29/10 21:22BRT: ícones menores/circulares comproteçãoSetNativeSize;Qnatural30/s≈5m34;6animações novas porperspectiva/FXcurtos/5sons próprios.120testesservidorlocal+Oracle/18HUDsimulados/12clipes396poses/isolamentoXML/manifesto;35hashesHTTP+TCP7777OK.5579recursos/CRC26102903/PM2PID1015998.2DLLsinstaladascomTRIGfechado(Assembly0C807535…/helperFE749C39…),demaishelperspreservados;reinícioautorizadopelousuário.Backupremoto/home/ubuntu/backups/lamster-polish-008-20261030T002201Z/runtime.tar.gz.Pacoteoutrosclientes:http://136.248.105.85/updates/client-update-lamster008.zip,instalarasduasDLLsjuntas.ClienteUnity008pendente.ai/reviews/lamster-polish-20261029.md.

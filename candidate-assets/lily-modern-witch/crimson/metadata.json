@@ -1,0 +1,25 @@
+{
+  "task": "SKIN-047",
+  "method": "built-in image_gen",
+  "authoritativeReference": "C:/Users/Gustavo/AppData/Local/Temp/codex-clipboard-84060f87-5596-40ff-9c1f-7415ec8e0b6f.png",
+  "userOverridesPreviousPurplePalette": true,
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    254
+  ],
+  "visibleContourAlpha32": [
+    148,
+    7,
+    874,
+    1502
+  ],
+  "sha256": "55e09f1e3f09be1e50c5f416a2a6aca391f1ff2cfba08fddad7f2b6e180f7201",
+  "prompt": "front-prompt.txt",
+  "status": "front reference delivered; new user evaluation pending",
+  "gameChanged": false
+}

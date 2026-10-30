@@ -1,0 +1,25 @@
+# Passagem de trabalho — SKIN-059
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026 22:07:03BRT(25/10 01:07:03UTC).
+- Objetivo: corrigir relato real058 de rosto irregular e abertura entre braço/tronco sob a ombreira.
+- Estado: implementação/testes/instalação concluídos; novo teste Unity real pendente.
+- Base058 preservada em `backups/valk059-before/`; não sobrescrever fonte058/source-fixed como solução nova.
+- Arquivos: `scratch/valk059/`, `candidate-assets/valk-eclipse/refined/`, TPS Eclipse e CRC do próprio recurso no manifesto; catálogo/DLL/Assembly/servidor não alterados.
+- Causa confirmada do braço: componentes da malha importada deixam a junta sem superfície contínua, invisível ao teste de estiramento. Reposicionar ombreira não fecha a abertura.
+- Correção: acrescentadas206v/252tri da superfície nativa de braço/ombro/tronco sob a armadura, mantendo exatamente coordenadas/normais/pesos nativos; textura escura amostrada do atlas existente viaUV constante.
+- Superfície nativa selecionada por região anatômica e exclusão de ombreiras/peito; prolonga-se para dentro do tronco e sob o antebraço, com transição nativa de Spine/Clavicle/UpperArm/Forearm.
+- Resultado:27420v/20627tri/88bones; todos27214v/normais/pesos058 intactos, inclusive saia/cabeça/ombreiras; nenhuma nova física/colisão/estado por ator.
+- Rosto: textura facial limpa gerada com image_gen integrado a partir de close058 e frente057; novo material separado, sem repintar/rescrever atlas de cabelo/roupa.
+- Aplicação: UV frontal projetada apenas em pele/olhos/lábios,1592tri; marcos verticais alinhados a pupilas/nariz/boca/queixo da geometria. Corrigido desalinhamento inicial que duplicava sombra do nariz.
+- Arte/prompt: `refined/face-albedo-source.png`, `scratch/valk059/face-prompt.txt` e `face-metadata.json`; prévia final `refined/face-new.png`/`face-side.png`.
+- Bundle:2submeshes(body+face),2objetos adicionais(Texture2D1024DXT5/11mips eMaterial);11renderers recebem material facial ou repetem passe de contorno/efeito correspondente.
+- Estrutura:611objetos originais comparados com whitelist de Mesh/renderers/AssetBundle;2novos. Rig/binds/physics originais, atlas anterior eUVs fora do rosto preservados;reabertura/índices/submeshes/normais/pesos verificados.
+- Animação:170amostras nativas; camada nova coincide com superfície nativa até1,55e-7m, demais vértices/pesos058 exatos. Auditoria inclui extremos nativos deestiramento(≈8,78 em emote), não prova todas asposes emUnity.
+- Cobertura específica:384raios duplaface/2braços/3seções/4poses(stand,2golpes,salto) passaram de242para384acertos dentro13cm. Detecta abertura na região amostrada; não comprova contato perfeito em toda pose.
+- QAvisual: rosto frontal/perfil, stand frente/costas e golpe conferidos; ombro/saia/cabelo/armadura preservados. Sem teste Unity executado porCodex.
+- Regressão física não repetida: DLL/ossos/cadeias/pesos da saia idênticos058; os testes específicos verificam essa invariância.
+- Oracle:backup/guardas dehash antes2arquivos;CRC26102406/5565recursos,SEMreinício/mesmoPM2PID927095.4hashesHTTP1.1.1/1.3.5+TCP7777 aprovados;cópia local sincronizada.
+- Backup remoto: `/home/ubuntu/backups/valk-eclipse-skin059-20261025T010703Z/runtime.tar.gz`; códigoAntigravity intacto.
+- Evidências: `refined/validation.json`, `scratch/valk059/{coverage,native-audit-summary,face-metadata}.json`, `release/` eprévias review-*.
+- Próximo passo: usuário fechar/reabrirTRIG para baixarCRCnovo; testarcloseface de frente/perfil e junta do ombro emstand/golpe/escudo/giro/salto. Espada permanece original; considerar depoisda aprovação.
+- Limites: camada sob armadura é deliberada sobreposição, não solda de todos os vértices importados; pode haver interpenetração emposes extremas. Arte facial projetada pode exigir ajuste lateral após retorno real.

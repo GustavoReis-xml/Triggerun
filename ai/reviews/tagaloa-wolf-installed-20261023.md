@@ -1,0 +1,30 @@
+# Passagem de trabalho — SKIN-042
+
+- Responsável: Codex; destinatário: usuário / próxima IA; instalação23/10/2026 03:14UTC (00:14BRT).
+- Objetivo: adaptar GLBTripo Lobo Mau ao Tagaloa1006, skin6 gratuita independente; preservar combate/skins existentes e mudanças Antigravity.
+- Estado: implementação e instalação concluídas; validação no cliente Unity real pendente.
+- Fonte intacta: `candidate-assets/tagaloa-wolf/source-tripo.glb`, hash igual ao GLB recebido em Downloads; sem rig original.
+- Base: `xt_tps.mo` nativo SHA25629c927059a5ec45016e351d01b1d21233bb33956d51683a283911da90eef6aef.
+- Reservados/modificados: derivados `candidate-assets/tagaloa-wolf/adapted/`, `scratch/tagaloa-wolf-{inspection,adapt,release}/`, `client-patches/RavenDynamics.cs`, dois herounlock.xml, manifesto e novo xt_tps_wolf.mo.
+- Geometria:28596v/21585tri; UVs/triângulos/texturaTripo preservados, albedo derivado2048DXT5; novoCAB exclusivo.
+- Ombros: elevar tórax e braços juntos, estreitar base18%, encaixar pivôs reais; volume transversal braço84%/antebraço88%, mãos72%.
+- Pesos:54bones nativos (36corpo+18braço com53nomes únicos e ForearmR auxiliar) mais5bones próprios da cauda; paleta59.
+- Junção ombro/pescoço: difusão contínua e suavização métrica nas regiões comprimidas; cabeça/focinho rígidos, pelagem inferior acompanha Neck/Spine.
+- Causa descartada: levantar só os braços deixando tórax na alturaTripo puxava a axila; suavizar apenas por conectividade mantinha gradientes em triângulos comprimidos.
+- Cauda: uma cadeia DynamicBone nativa, script/tabela de tipos importados e verificados; cinco pivôs próprios presos ao Pelvis.
+- Auxiliar: mantém nome TriggerunRavenDynamics.dll/contrato existente; opt-in adicional TRSkin042_, volumes e força próprios; perfil TRRaven040_ preservado.
+- DLL instalada somente com TRIG fechado; Assembly-CSharp.dll NÃO alterada nesta tarefa (CDBAF1...39AFA7).
+- Hierarquia, Avatar/Animator, controladores, escudo body2_dun/huzhao, emissores, IK, colisores e lógica nativos preservados byte a byte; Transforms apenas recebem filhos cosméticos.
+- Renderers do braço robótico nativo ocultos, mantendo GameObjects/malhas/componentes originais de arma; novo corpo inclui os dois braços lupinos.
+- Catálogo:1006/skin6 Lobo Mau, xt_tps_wolf, preçozero, atributos extras vazios; FPS xt_fps e ícone xingtian_1 nativos nesta primeira versão.
+- Testes automáticos:652objetos comparados/14objetos novos/23poses sintéticas; limiteP99<1,5 e máximo<5 para arestas>6mm passou, incluindo controle nativo documentado.
+- MaiorP99=1,482 (ombros), maiorstretch=4,375 (corrida); são poses artificiais, não reprodução dos51clipsTPS reais.
+- Solver DynamicBone real sob substituto matemático Unity:30/60/120FPS,48747asserções da cauda; regressão Corvo235227asserções; isolamento de atores próximos/reset/colisão/comprimentos aprovados.
+- Dois quadros de malha com física também passam; .NET3.5compilado, serialização/reabertura/contornos e seis prévias conferidos.
+- Oracle:4arquivos instalados com guardas de hashes e backup, catálogo gratuito validado; zero conexões no reinício, PM2PID891337/TCP7777normal.
+- OitoHTTP com hashes exatos nas versões1.1.1/1.3.5 aprovados; cópia local sincronizada; CRC26102301/manifesto5562.
+- Arquivos Antigravity socketServer/gameLogic/sceneScope/heroCatalog comparados porSHA256 local/Oracle e preservados. Nenhum código de servidor alterado nesta tarefa.
+- Backups locais: `backups/tagaloa042-before/` (DLLs/fonte auxiliar/catalog/manifesto); remoto `/home/ubuntu/backups/tagaloa-wolf-skin042-20261023T031453Z/runtime.tar.gz`.
+- Evidências: `candidate-assets/tagaloa-wolf/adapted/{validation,pose-metrics,report}.json`, `review-sheet.jpg`; `scratch/tagaloa-wolf-adapt/{physics-validation,physics-mesh-validation,client-installation}.json`; `scratch/tagaloa-wolf-release/{http-validation,installation}.json`.
+- Próximo passo: usuário testar seleção/loja, andar/correr/tiro/escudo/ultimate, cauda em respawn/teleporte e dois jogadores próximos; observar posição visual dos disparos do braço direito.
+- Limites: FPS/ícone originais; LOD usa malha completa; física cosmética testada em simulação, não no Unity real. Não declarar aprovação do usuário antes do relato.

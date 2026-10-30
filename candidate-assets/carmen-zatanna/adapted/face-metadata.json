@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "face-prompt.txt",
+  "input": "scratch/carmen067/face-source-0.png",
+  "output": "face-albedo-source.png",
+  "method": "Dedicated face material/projective UV with 2859 boundary duplicates; body atlas unchanged. No manual raster painting.",
+  "eyes": "1360 eye-region vertices: source horizontal geometry unchanged; projected image registered to existing feature positions",
+  "UnityTested": false
+}

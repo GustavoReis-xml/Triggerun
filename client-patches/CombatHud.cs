@@ -80,23 +80,70 @@ public class TriggerunHudSettings : MonoBehaviour
     }
 }
 
-// Local help only: native input and server-confirmed combat remain authoritative.
+// Lamster now uses native OneSkilUI slots, F1 descriptions and the Q meter.
+// Reconcile only the new movement buffs: native buffMe overwrites buffSpeed
+// on Add and clears it on Delete, even if another speed effect remains active.
 public class TriggerunLamsterHud : MonoBehaviour
 {
-    private GUIStyle title, line;
-    private void OnGUI()
+    private void Start(){if(GetComponent<TriggerunLamsterHudLayout>()==null)gameObject.AddComponent<TriggerunLamsterHudLayout>();}
+    private HeroPlayer previous;
+    private bool ownedSpeed;
+    private readonly System.Collections.Generic.Dictionary<int,GameObject> localFx=new System.Collections.Generic.Dictionary<int,GameObject>();
+    private readonly System.Collections.Generic.Dictionary<string,GameObject> prefabs=new System.Collections.Generic.Dictionary<string,GameObject>();
+    private readonly System.Collections.Generic.Dictionary<string,bool> pending=new System.Collections.Generic.Dictionary<string,bool>();
+    private readonly System.Collections.Generic.Dictionary<string,float> retryAfter=new System.Collections.Generic.Dictionary<string,float>();
+    private static readonly int[] fxIds={22012};
+    private static readonly string[] fxNames={"lamster_sprint_buff"};
+    private void ClearFx(){foreach(GameObject fx in localFx.Values)if(fx!=null)Destroy(fx);localFx.Clear();}
+    private void LoadFx(string name){
+        if(prefabs.ContainsKey(name)||pending.ContainsKey(name))return;
+        float retry;if(retryAfter.TryGetValue(name,out retry)&&Time.time<retry)return;
+        string url="EffectRes/"+name+".ef";WWW www=GameRoot.GetResWWW(url);
+        if(www!=null){OnFxLoaded(www,name);return;}
+        pending.Add(name,true);GameRoot.LoadAsset(url,new fResourceManager.DownFinishDelegate(OnFxLoaded),name);
+    }
+    private void OnFxLoaded(WWW www,object tag){
+        string name=(string)tag;pending.Remove(name);
+        if(this==null)return;
+        if(www==null||www.error!=null||www.assetBundle==null){retryAfter[name]=Time.time+15f;return;}
+        string[] names=www.assetBundle.GetAllAssetNames();
+        if(names.Length>0)prefabs[name]=www.assetBundle.LoadAsset(names[0]) as GameObject;
+    }
+    private void LocalEffects(HeroPlayer player){
+        for(int i=0;i<fxIds.Length;i++){
+            int id=fxIds[i];bool active=player.FpsOrTps==1&&player.playerBuffMe.GetIsBuff(id);
+            if(player.playerCommon.m_nModelIndex==2000||active)LoadFx(fxNames[i]);
+            GameObject obj;localFx.TryGetValue(id,out obj);
+            if(!active){if(obj!=null)Destroy(obj);localFx.Remove(id);continue;}
+            GameObject prefab;
+            if(obj==null&&prefabs.TryGetValue(fxNames[i],out prefab)&&prefab!=null){
+                obj=(GameObject)Instantiate(prefab);localFx[id]=obj;
+                CObjectRender render=obj.GetComponent<CObjectRender>();
+                if(render!=null)render.SetEnemyFriendRenderParticle(false,false);
+            }
+            if(obj!=null&&player.userSpine!=null)obj.transform.position=player.userSpine.transform.position;
+        }
+    }
+    private void OnDestroy(){ClearFx();}
+    private void LateUpdate()
     {
         HeroPlayer player=fGameManager.Heroplayer;
-        if(player==null || player.haveDestroy || player.isDead || !player.canControl || player.playerCommon==null || player.playerCommon.m_nModelIndex!=2000 || !HeroPlayer.isPlayerControl) return;
-        if(title==null){title=new GUIStyle(GUI.skin.label);title.fontSize=16;title.fontStyle=FontStyle.Bold;title.normal.textColor=new Color(.35f,1f,.7f);line=new GUIStyle(GUI.skin.label);line.fontSize=13;line.normal.textColor=Color.white;}
-        float width=Mathf.Min(410f,Screen.width*.4f), x=Screen.width-width-18f,y=Screen.height-205f;
-        GUI.Box(new Rect(x,y,width,163f),string.Empty);
-        GUI.Label(new Rect(x+12,y+8,width-24,24),"LAMSTER  |  SUPORTE DE COMBATE",title);
-        GUI.Label(new Rect(x+12,y+38,width-24,22),"ESQUERDO  •  Soco: 120 dano / 180 cura",line);
-        GUI.Label(new Rect(x+12,y+61,width-24,22),"Alcance 2,2 m  •  Intervalo 1 s",line);
-        GUI.Label(new Rect(x+12,y+84,width-24,22),"DIREITO  •  360 cura / 250 dano: 8 m / 6 s",line);
-        GUI.Label(new Rect(x+12,y+107,width-24,22),"CORPO A CORPO  •  120 dano / 0,8 s",line);
-        GUI.Label(new Rect(x+12,y+130,width-24,22),"Direito: +25% dano para você e aliados por 5 s.",line);
+        if(player!=previous){ClearFx();previous=player;ownedSpeed=false;}
+        if(player==null || player.haveDestroy || player.isDead || !player.playerHaveCreate || player.playerCommon==null || player.playerBuffMe==null){ClearFx();return;}
+        LocalEffects(player);
+        bool custom=player.playerBuffMe.GetIsBuff(22011)||player.playerBuffMe.GetIsBuff(22012);
+        if(!custom && !ownedSpeed)return;
+        ownedSpeed=custom;
+        float positive=0f,negative=0f;
+        foreach(BuffInfo info in player.playerBuffMe.mBuffMeData.Values){
+            if(info==null || info.buffdata==null || info.buffdata.bType!=8)continue;
+            float value=info.buffdata.m_nBuffChangeValueSe*.01f;
+            positive=Mathf.Max(positive,value);negative=Mathf.Min(negative,value);
+        }
+        float speed=Mathf.Clamp(positive+negative,-.9f,2f);
+        if(Mathf.Abs(player.playerCommon.buffSpeed-speed)>.001f){
+            player.playerCommon.buffSpeed=speed;player.ChangeSpeed();
+        }
     }
 }
 

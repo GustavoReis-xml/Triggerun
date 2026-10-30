@@ -1,0 +1,24 @@
+# Passagem de trabalho — SKIN-060
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026 22:21:11BRT(25/10 01:21:11UTC).
+- Objetivo: remover o braço/cilindro excessivo059 e corrigir somente a separação perto da ombreira, mantendo rosto aprovado.
+- Estado: implementação/testes/instalação concluídos; novo teste Unity real pendente.
+- Retorno real059: rosto aprovado;206v/252tri nativos produziram camada longa e alteraram silhueta. Raio de cobertura amplo059 não controlava excesso de superfície e não era critério suficiente.
+- Base059 completa em `backups/valk060-before/`; referências geométricas058 preservadas em `backups/valk059-before/`.
+- Arquivos: `scratch/valk060/`, `candidate-assets/valk-eclipse/shoulders/`, somenteMesh doTPS e CRC do recurso no manifesto; nenhuma DLL/catálogo/material alterado.
+- Nova causa confirmada: malha4348 do tronco também contém parte da manga e suas saídas(9v por lado), mas058 a deixou presa aoSpine2 enquanto a peça do braço1117/9637(13v na borda) foi ajustada aoUpperArm.
+- Evidência: bordas estavam perto na origem(≈1–2,7cm), mas o encaixe unilateral aumentou separação para≈2,5–5cm. Não era necessário copiar o braço nativo inteiro.
+- Correção: camada206v/252tri059 completamente removida.158v da região de manga4348 recebem o mesmo encaixe do braço com transição geodésica local e pesosSpine2→UpperArm.
+- União:44tri em2pequenas costuras entre bordas9/13;44v são apenas duplicatasUV de pontos já existentes, sem forma/camada independente. Separação máxima entre bordas≈2,49cm.
+- Contorno: nenhuma geometria acrescentada ao longo do antebraço/elbow. Deslocamento máximo do ajuste da manga3,71cm; braços/luvas originais permanecem iguais fora da faixa do tronco.
+- Resultado:27258v/20419tri/88bones. Rosto059 inteiramente preservado(UVs/normais/geometria/textura/material), assim como saia/rig/colisores/skills/arma/helper.
+- Estrutura:613objetos comparados, somenteMesh alterada;submeshes/índices/88binds/pesos/normais reabertos e conferidos.
+- Teste específico:44duplicatas compartilham posições e pesos exatos com bordas correspondentes.170amostras nativas tiveram erro de união0 e estiramento máximo da costura1,00000064;nenhum tri degenerado.
+- Auditoria:34clipes/170amostras,P99máximo≈1,6389 em pouso(nativo≈2,1444),extremo5,529; não éUnityAnimator/IK em execução. Prévias stand de frente/perfil/costas e golpe conferidas.
+- Física:quadros180/187 mantêm P99≤1,0479/extremo≤2,065;cadeias/DLL/pesos de tecido intactos, sem repetição de solver/regressões que não mudaram.
+- Oracle:backup eguardas dehash antes2arquivos;CRC26102407/5565recursos,SEMreinício/PM2PID927095.4hashesHTTP1.1.1/1.3.5+TCP7777 aprovados,cópia local sincronizada.
+- Backup remoto: `/home/ubuntu/backups/valk-eclipse-skin060-20261025T012111Z/runtime.tar.gz`.
+- Evidências: `shoulders/validation.json`, `scratch/valk060/rings.json`,auditoria nativa/release eprévias review-*.
+- Próximo passo:fechar/reabrirTRIG para novoCRC, testar manga sob ombreira em repouso/movimento e mesma vista lateral059. Rosto não deve ser retrabalhado sem novo pedido.
+- Limites:união exata nas bordas não comprova ausência de toda interpenetração da armadura;inclui transição de pesos local no torso, ainda depende do retorno visual real.
+- Lição para próximas skins: verificar se o tronco importado inclui manga antes de tratar a abertura como ausência de braço; não usar camada nativa ampla apenas porque passa no teste de cobertura.

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "originalObjects": 611,
+  "newObjects": 2,
+  "originalGeometryWeightsAndPhysicsUnchanged": true,
+  "nativePatchSamples": 170,
+  "nativePatchMaximumError": 1.541108672437086e-07,
+  "coveredRaysBefore": 242,
+  "coveredRaysAfter": 384,
+  "totalRays": 384,
+  "UnityTested": false
+}

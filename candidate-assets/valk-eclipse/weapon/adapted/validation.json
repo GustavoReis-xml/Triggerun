@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "closedGripCore": true,
+  "coreVolume": 5.054388303986467e-05,
+  "gripRaysBefore": 142,
+  "gripRaysAfter": 168,
+  "gripRaysTotal": 168,
+  "variants": 5,
+  "nativePrefabsChecked": [
+    "waerjili_fps",
+    "waerjili_fps_sz1",
+    "waerjili_fps_sz2",
+    "waerjili_fps_hy",
+    "waerjili_tps",
+    "waerjili_tps_sz1",
+    "waerjili_tps_sz2",
+    "waerjili_tps_xk",
+    "waerjili_tps_hy",
+    "wrjl_wuqi_zs"
+  ],
+  "tpsLODAlignmentMaximumError": 9.831458590599022e-08,
+  "firstAssetIsMaterial": true,
+  "metadataVersion": 1,
+  "vertices": 21121,
+  "triangles": 15620,
+  "UnityTested": false
+}

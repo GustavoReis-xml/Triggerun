@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "objectsCompared": 776,
+  "nativeSamples": 140,
+  "nails": 244,
+  "floatingNailTriangles": 0,
+  "nailTreatment": "695 texels painted onto finger surface; 156 detached nail triangles removed",
+  "beforeMaxNailSurfaceDistance": 0.14154316931302932,
+  "continuousUpperArmBridges": 2,
+  "addedVertices": 90,
+  "addedTriangles": 198,
+  "allOtherObjectsAndPhysicsPreserved": true,
+  "retouchTexturePixels": 695,
+  "UnityTested": false,
+  "changedMeshAndTexture": [
+    -7280344775147488012,
+    900000000000005055
+  ]
+}

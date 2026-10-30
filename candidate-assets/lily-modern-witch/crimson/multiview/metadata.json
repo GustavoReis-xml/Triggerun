@@ -1,0 +1,93 @@
+{
+  "task": "SKIN-048",
+  "method": "built-in image_gen",
+  "authoritativeView": "front.png",
+  "pose": "A-pose",
+  "views": [
+    {
+      "file": "front.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        148,
+        7,
+        874,
+        1502
+      ],
+      "sha256": "55e09f1e3f09be1e50c5f416a2a6aca391f1ff2cfba08fddad7f2b6e180f7201"
+    },
+    {
+      "file": "back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        119,
+        11,
+        905,
+        1490
+      ],
+      "sha256": "8bcfca006cfcda2e9a08906ab46d31ecfa5189e7b7174dfed6b893422207c46f"
+    },
+    {
+      "file": "left.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        353,
+        14,
+        796,
+        1501
+      ],
+      "sha256": "2225f9f8bfeba4e1b801b7b4501bf50412c556d33cfafd594d38c91b9b8ca254"
+    },
+    {
+      "file": "right.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        196,
+        12,
+        650,
+        1487
+      ],
+      "sha256": "f00270cd6bb1e9726b60515b33fb5e22c945b90ab8299650c15ead2c2073c943"
+    }
+  ],
+  "prompts": [
+    "front-prompt.txt",
+    "back-prompt.txt",
+    "left-prompt.txt",
+    "right-prompt.txt"
+  ],
+  "sideNaming": "left/right indicate nose direction in the image; not anatomical sides",
+  "limitation": "Illustrated views, not calibrated projections of one 3D mesh; front is authoritative for minor differences",
+  "gameChanged": false
+}

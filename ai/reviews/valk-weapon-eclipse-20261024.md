@@ -1,0 +1,26 @@
+# Passagem de trabalho — WEAPON-002
+
+- Responsável / horário: Codex; instalação 25/10/2026 02:05 UTC (24/10 23:05 BRT).
+- Objetivo: fechar cabo do GLB Tripo, cadastrar arma independente e aproveitar efeitos nativos; infraestrutura reutilizável para futuras armas.
+- Estado: implementação e instalação concluídas; teste visual Unity pendente.
+- Base: Assembly instalado CDBAF1B3EBD342C059B9825E7B4481D270B647AD55D2A806D8DC3BD7F439AFA7; física317688A0BC18E0E616C4DBD9E4A3220B9E67C3C65FF479095B2ED843D9554DD3 preservada. Alterações alheias/Antigravity mantidas.
+- Fonte: `candidate-assets/valk-eclipse/weapon/source-tripo.glb`; saída atual `adapted/tr_weapon_valk_eclipse.mo` e XML/report/validation no mesmo diretório.
+- Geometria: núcleo fechado dentro das tiras do cabo,162v/240tri novos; fonte original preservada. Final21121v/15620tri,cinco perfis com pivôs locais próprios (TPS3LODs/FPS/loja).
+- Encaixe: alinhamento TPS entreLODs erro máximo9,84e-8; dez prefabs nativos disponíveis mapeados. CacheFPSxk indisponível, não validado.
+- Cadastro: Valk1016/arma5 Espada do Eclipse gratuita, sem atributos; independente de skinId. Ícone nativo por enquanto. Armas1–4 e corpo060 intactos.
+- Recursos: novo bundle universal com primeiro asset Material,5Meshes e TextAssetXML version1; shader nativo e atlas original reduzido2048/DXT5/mips.
+- Framework: `client-patches/WeaponCosmetics.cs`, `tools/patch-weapon-cosmetics.ps1`; uso/reversão em `client-patches/WEAPON-COSMETICS.md`.
+- Hook limitado a CHeroWeapon.SetHeroWeapon/LoadWeaponMatOk; restaura geometria/FX porinstância, rejeita callbacks antigos porrevisão/path, valida XMLhero/id e mapeamento completo antes aplicar.
+- Tema: paths explícitos em metadata, partículas/trails/materiais privados carmesim. Preserva tempos,alpha,intensidade,ativação e lógica nativos; efeitos de corpo/skills excluídos. Sem mudança de dano/alcance/colisores/rede.
+- TexturasFX:24 referências locais inspecionadas, retenção mínima canalvermelho46%; resultado real de brilho/cor ainda não visto.
+- Testes: `scratch/weapon062/verify-assets.py` PASS; cabo142→168/168raios, núcleo manifold/volume positivo; serialização,UVs,5meshes,normais e10prefabs conferidos.
+- Testes cliente simulados: mesma fonte C# com APIsUnity substitutas,897asserções PASS (troca/reuso/loja/A→B→A/doisatores/gradientes/fallback/futuroherói). Não é teste real em dois clientes.
+- Patch:14780métodos comparados, somente2alterados; helper compilado.NET3.5 contraDLLs reais. Evidências `scratch/weapon062/{helper,patch}-validation.json`.
+- Cliente local instalado02:05:02UTC comTRIGfechado: Assembly79DFA93D5B8C4A8C27BF21C8E1ADA3BDF90ECCE6DA4662A72587867EF0840ED1,helper855631DE938A5F42BB42BF9AAB6E2B5376D9DA21C8ABC204E91846F37643FE18; outros auxiliares intactos.
+- Distribuição: `candidate-assets/valk-eclipse/weapon/client-update-weapon062.zip`, duasDLLs+instruções+hashes; requer auxiliares anteriores do projeto. Clientes sempatch mostram sómaterial sobre armaoriginal.
+- Oracle: backup `/home/ubuntu/backups/weapon-eclipse-062-20261025T020519Z/runtime.tar.gz`;4arquivos instalados comguardas SHA256; catálogo gratuito e manifesto conferidos emdatabase.
+- Oracle: CRC26102408/5566recursos; reinício com0conexões,PM2online PID928695;8HTTP hashes em1.1.1/1.3.5 eTCP7777 aprovados. Arquivos locais sincronizados apósguardas.
+- Backups locais: `backups/weapon062-before/` (Assembly/física/catálogos/manifesto); fontes novas não sobrescrevem outrasDLLs.
+- Limites: cinco perfis usam malhacompleta15620tri (semLOD otimizado/performance medida); SMR exigebindposescompatíveis, rotaValk usaMeshFilter; efeitos/shader precisamUnityreal.
+- Próximo passo: abrir jogo, escolher arma5 comroupa clássica/Eclipse; testar loja/FPS/TPS/baixaqualidade/golpes/trilhas, troca paraarma1 e doisclientes. Informar captura se empunhadura/efeitos divergirem.
+- Reserva liberada; nenhuma edição servidorJS necessária.

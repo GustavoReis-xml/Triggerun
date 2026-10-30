@@ -1,0 +1,17 @@
+{
+  "task": "WEAPON-001",
+  "tool": "built-in image_gen",
+  "image": "front.png",
+  "prompt": "front-prompt.txt",
+  "size": [
+    1024,
+    1536
+  ],
+  "sha256": "b3e8c85dd17a4e9a9a8e6477ccefcfd63127de0bdf0aa30491eab9226ca0da26",
+  "intendedHero": 1016,
+  "intendedWeaponId": 5,
+  "intendedIndependentOfBodySkin": true,
+  "runtimeChanged": false,
+  "OracleChanged": false,
+  "referenceOnly": true
+}

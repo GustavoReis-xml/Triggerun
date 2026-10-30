@@ -11,6 +11,9 @@ const assets=Object.freeze({
   "icon/weaponicon/lamster_primary.txt": "primary.png",
   "icon/skillicon/lamster_primary.txt": "primary.png",
   "icon/skillicon/lamster_rally.txt": "rally.png",
+  "icon/skillicon/lamster_e.txt": "lamster_e.png",
+  "icon/skillicon/lamster_shift.txt": "lamster_shift.png",
+  "icon/skillicon/lamster_ult.txt": "lamster_ult.png",
   "icon/skillicon/lamster_passive.txt": "rally.png"
 });
 function resolveAsset(urlPath){

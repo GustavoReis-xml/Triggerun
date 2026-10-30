@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "objectsCompared": 678,
+  "newObjects": 67,
+  "bones": 109,
+  "poses": 22,
+  "nativeGameplayHierarchyPreserved": true,
+  "coatNotWeightedToLegsOrArms": true,
+  "UnityTested": false,
+  "opaqueMips": 19,
+  "eyesNotEnlarged": true,
+  "faceUVDuplicates": 2859,
+  "extraLODPiecesCleared": 12,
+  "hairChains": 3,
+  "clothChains": 4,
+  "faceGeometryEyeWidthError": 0.0
+}

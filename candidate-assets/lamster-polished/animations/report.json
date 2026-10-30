@@ -1,0 +1,130 @@
+[
+  {
+    "kind": "tps",
+    "bundle": "lamster_vanguard_tps_animator.mo",
+    "sha256": "db123d0d1aa3095fbaad6e7a206efc119d9ec40df41400340608f339b8a2214f",
+    "clips": [
+      {
+        "name": "LamsterJab",
+        "duration": 0.44,
+        "frames": 27,
+        "channels": 457,
+        "clipId": 900000000000008001,
+        "maxIKError": 9.74631235515383e-07,
+        "statePath": "UpperBody.LamsterJab"
+      },
+      {
+        "name": "LamsterCross",
+        "duration": 0.5,
+        "frames": 31,
+        "channels": 457,
+        "clipId": 900000000000008002,
+        "maxIKError": 4.607825946045016e-07,
+        "statePath": "UpperBody.LamsterCross"
+      },
+      {
+        "name": "LamsterPulse",
+        "duration": 0.6,
+        "frames": 37,
+        "channels": 457,
+        "clipId": 900000000000008003,
+        "maxIKError": 1.038761237299148e-06,
+        "statePath": "UpperBody.LamsterPulse"
+      },
+      {
+        "name": "LamsterContain",
+        "duration": 0.52,
+        "frames": 32,
+        "channels": 457,
+        "clipId": 900000000000008004,
+        "maxIKError": 4.100705469946897e-07,
+        "statePath": "UpperBody.LamsterContain"
+      },
+      {
+        "name": "LamsterRally",
+        "duration": 0.78,
+        "frames": 48,
+        "channels": 457,
+        "clipId": 900000000000008005,
+        "maxIKError": 9.785778321551928e-07,
+        "statePath": "UpperBody.LamsterRally"
+      },
+      {
+        "name": "LamsterSprint",
+        "duration": 0.36,
+        "frames": 23,
+        "channels": 457,
+        "clipId": 900000000000008006,
+        "maxIKError": 5.623881077415414e-07,
+        "statePath": "UpperBody.LamsterSprint"
+      }
+    ],
+    "nativeClipsUnchanged": true,
+    "objects": 25,
+    "controllerBytes": 6795
+  },
+  {
+    "kind": "fps",
+    "bundle": "lamster_vanguard_fps_animator.mo",
+    "sha256": "80ddcc2c2fe18831e8a78878d79eb52af9885ce84e0e98cdbb8dad666ed171d1",
+    "clips": [
+      {
+        "name": "LamsterJab",
+        "duration": 0.44,
+        "frames": 27,
+        "channels": 477,
+        "clipId": 900000000000008101,
+        "maxIKError": 3.8964527880175244e-07,
+        "statePath": "Base Layer.LamsterJab"
+      },
+      {
+        "name": "LamsterCross",
+        "duration": 0.5,
+        "frames": 31,
+        "channels": 477,
+        "clipId": 900000000000008102,
+        "maxIKError": 2.9986029175894897e-07,
+        "statePath": "Base Layer.LamsterCross"
+      },
+      {
+        "name": "LamsterPulse",
+        "duration": 0.6,
+        "frames": 37,
+        "channels": 477,
+        "clipId": 900000000000008103,
+        "maxIKError": 4.0648067612662845e-07,
+        "statePath": "Base Layer.LamsterPulse"
+      },
+      {
+        "name": "LamsterContain",
+        "duration": 0.52,
+        "frames": 32,
+        "channels": 477,
+        "clipId": 900000000000008104,
+        "maxIKError": 2.9986029175894897e-07,
+        "statePath": "Base Layer.LamsterContain"
+      },
+      {
+        "name": "LamsterRally",
+        "duration": 0.78,
+        "frames": 48,
+        "channels": 477,
+        "clipId": 900000000000008105,
+        "maxIKError": 5.23492537063687e-07,
+        "statePath": "Base Layer.LamsterRally"
+      },
+      {
+        "name": "LamsterSprint",
+        "duration": 0.36,
+        "frames": 23,
+        "channels": 477,
+        "clipId": 900000000000008106,
+        "maxIKError": 3.8964527880175244e-07,
+        "statePath": "Base Layer.LamsterSprint"
+      }
+    ],
+    "nativeClipsUnchanged": true,
+    "objects": 16,
+    "controllerBytes": 4559
+  }
+]

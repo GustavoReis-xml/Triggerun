@@ -1,0 +1,33 @@
+{
+  "task": "SKIN-065",
+  "hero": 1021,
+  "character": "Carmen",
+  "concept": "Grande Ilusionista — inspiração Zatanna",
+  "tool": "built-in image_gen",
+  "intent": "concept preview",
+  "image": "concept.png",
+  "size": [
+    992,
+    1586
+  ],
+  "mode": "RGB",
+  "sha256": "cf780d600dbb751cfcb9407c74e3737b215907d774c55e9bca1d78eb0ece0333",
+  "prompt": "concept-prompt.txt",
+  "references": [
+    "native-front.png",
+    "native-side.png",
+    "zatanna-reference.png"
+  ],
+  "native": {
+    "model": "jipusainvlang_tps",
+    "vertices": 3486,
+    "triangles": 4587,
+    "boneReferences": 81,
+    "height": 1.7493000257527456,
+    "FPSBoneReferences": 42,
+    "TPSClips": 35
+  },
+  "QA": "Full body/hat/shoes visible; adult Carmen-inspired face/warm complexion; black-white-violet costume; fan of cards; clean garment materials; no names or watermark. Perspective concept, not a calibrated turnaround or a game render.",
+  "gameChanged": false,
+  "OracleChanged": false
+}

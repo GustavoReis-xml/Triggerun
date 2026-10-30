@@ -1,0 +1,21 @@
+# Passagem de trabalho — WEAPON-001
+
+- Responsável / destinatário / data: Codex / usuário e próxima IA /24/10/2026.
+- Objetivo: seguir cosmético independente de armaValk1016 com espada negra/carmesim da referência enviada.
+- Estado: investigação/referência Tripo concluídas; modeloGLB e implementação pendentes.
+- Retorno anterior: usuário aprovou melhoria060(bem melhor); rosto059 segue aprovado. Não retrabalhar corpo nesta tarefa.
+- Confirmado no código original: HeroUnlockData.Init carrega listas skin/weapon separadas; WeaponUnlock.Init lê lowmat_1st/highmat_1st/commat_3rd.
+- CHeroWeapon.SetHeroWeapon seleciona materialFPS por qualidade ouTPS; LoadWeaponMatOk carrega Material e troca renderer.material. NÃO troca mesh/prefab com arma dourada.
+- PlayerCommon.GetNowModelWeaponMat pré-carrega nomes de materiais; uma geometria nova deve contemplar esse fluxo, seleção/lojaFPS/TPS e restauração ao voltar àarma original.
+- Servidor: database.generateFullHeroData tem useSkinId/useWeaponId distintos;socketServer transmite ambos nos dados de herói. Perfil/compra/categoria2 já existem.
+- Catálogo1016:armas1clássica/2dourada/3cristal/4ametista. ID5 é candidato, não cadastrado; revalidar antes implementar. Não alterar dourada nem vincular geometria àskinEclipse6.
+- Proporção nativa: waerjili_tps_wq1100v/1206tri, maior extensão≈1,5403m; outras malhas512v/486tri e248v/202tri precisam de tratamento deLOD/pivôs conforme renderer.
+- Design: espada vertical completa, cabo para duas mãos, aço negro comvioleta discreto, guarda curva e runas circulares vermelhas planas. Frente/verso pretendidos simétricos.
+- Referência: `candidate-assets/valk-eclipse/weapon/front.png`,RGBA1024x1536;prompt/image_gen integrado,metadata/README/ZIP na mesma pasta.
+- QA:arquivo decodificado,alpha≈91,47%transparente,silhueta cabe noquadro,bordas completas,semhero/luva/cenário;não é planta dimensional calibrada.
+- Pacote: `espada-eclipse-tripo.zip`,4arquivos comimagem/prompt/metadata/README. Usuário deve gerarGLBtexturizado da arma isolada.
+- Plano para geometria:helper/hook opt-in no carregamento do novo cosmético, aplicado aos renderers da arma emFPS/TPS/loja;preservar material+mesh originais porinstância e restaurar ao mudar arma,sem estado global compartilhado.
+- Verificar na implementação:callback assíncrono atrasado,mesmoherói comarmasdiferentes,LOD/qualidadeFPS,skins diferentes/pool/reentrada,grip/dimensão/trails e nãoalterar dano/alcance/hitbox.
+- Não foi decidido exigir um download separado:materialbundle pode carregar mesh adicional,mas a primeira entrada ainda deve ser Material para compatibilidade com LoadWeaponMatOk. Validar layout após existirGLB.
+- Runtime/cliente/Oracle: não alterados; nenhum teste com jogo ou instalação nesta etapa.
+- Próximo passo: receberGLB, inspecionar espessura/cabo/UV/texturas, adaptar pivôs nativos e construir integração porweaponId separado da skin. Aplicar backups e testes antes cadastrar/instalar.

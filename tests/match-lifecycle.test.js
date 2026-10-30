@@ -35,12 +35,15 @@ function harness(fastPackets = false) {
                     ...(fastPackets ? { sleep: async () => {}, sendPacket: async (s, data) => s.write(data) } : {}) };
                 if (name === './sceneScope') return scope;
                 if (name === './combatRules') return require('../src/combatRules');
+                if (name === './heroCatalog') return require('../src/heroCatalog');
                 if (name === './pveRobots.json') return require('../src/pveRobots.json');
                 if (name === './ffaMaps.json') return require('../src/ffaMaps.json');
                 if (name === './sdgProtocol') return require('../src/sdgProtocol');
                 if (name === './matchLifecycle') return shared.lifecycle;
                 if (name === './clientStream') return require('../src/clientStream');
                 if (name === './lamster') return require('../src/lamster');
+                if (name === './lamsterHero') return require('../src/lamsterHero');
+                if (name === './socialServer') return require('../src/socialServer');
                 if (name === './dbPersistence') return { loadPlayer: () => ({ level: 1, equipment: {} }), savePlayer: noop, addMatchRewards: (name, data) => { shared.rewards.push({name, ...data}); return null; } };
                 if (name === './gameLogic') return shared.game;
                 if (name === './logger') return { runId: 'test', logTelemetry: (type,data)=>shared.telemetry.push({type,...data}) };
@@ -105,6 +108,83 @@ function lamsterFight() {
     }
     return { h, a, b, enemy, foreign, pulse };
 }
+
+function configureLamsterKit(h) {
+    h.db.heroDazhaoMap[2000]=[{id:22000,maxEnergy:10000,continueTime:6000,doskill:22003,energyAddCure:120,energyAddDamage:100,energyAddTime:30}];
+    h.db.buffsMap[22011]={type:8,time:2500,value:-35,isdebuff:1};
+    h.db.buffsMap[22012]={type:8,time:3000,value:40};
+    h.db.buffsMap[22013]={type:0,time:6000,value:0};
+    h.db.buffsMap[22014]={type:0,time:600,value:0};
+    h.db.buffsMap[22015]={type:0,time:650,value:0};
+    h.db.buffsMap[22016]={type:0,time:600,value:0};
+}
+
+test('Lamster native E then Shift in one TCP chunk both execute, no lost input or extra healing',()=>{
+    const {h,a,b,enemy,foreign}=lamsterFight();configureLamsterKit(h);
+    const cmd=id=>utils.PacketBuilder.rpc(10,'SendMsgToServer',[31103,[id,[0,400,900],[]]]).trim();
+    const hp=[a.hp,b.hp,enemy.hp];
+    h.emit(a,cmd(22001)+'\n'+cmd(22002));
+    assert.ok(enemy.activeBuffs?.[22011],h.logs.join('\n'));
+    assert.ok(a.activeBuffs?.[22012]);assert.equal(b.activeBuffs?.[22011],undefined);
+    assert.deepEqual([a.hp,b.hp,enemy.hp],hp);assert.equal(foreign.writes.length,0);
+    const packets=a.writes.filter(p=>p.includes(':SkillDo,'));assert.equal(packets.length,2);
+    h.emit(a,cmd(22001));assert.equal(a.writes.filter(p=>p.includes(':SkillDo,')).length,2,'server rejects repeated E');
+    h.emit(a,cmd(1201));assert.equal(a.writes.filter(p=>p.includes(':SkillDo,')).length,2,'Lamster cannot cast David skills');
+});
+
+test('Lamster healing charges Q only for actual allied HP, without the borrowed 500 HP buff',()=>{
+    const {h,a,b,pulse}=lamsterFight();configureLamsterKit(h);b.hp=990;
+    h.db.buffsMap[1004]={type:1,time:1000,value:500};
+    pulse(1,[b]);assert.equal(b.hp,1000);assert.equal(a.hp,702);assert.equal(a.ultEnergy,6);
+    assert.ok(b.activeBuffs[22015]);assert.equal(b.activeBuffs[1004],undefined);
+    const c=h.socket('full',1000,20);c.hp=c.maxHp=1000;h.state.activeSockets.push(c);
+    pulse(1,[c]);assert.equal(a.ultEnergy,6,'full HP grants no charge');
+});
+
+test('Lamster Q consumes energy once, applies real weapon mitigation to allies, respects rooms',()=>{
+    const {h,a,b,enemy,foreign,pulse}=lamsterFight();configureLamsterKit(h);
+    const q=utils.PacketBuilder.rpc(10,'SendMsgToServer',[31208,[]]).trim();
+    a.ultEnergy=9999;h.emit(a,q);assert.equal(a.activeBuffs?.[22013],undefined);
+    a.ultEnergy=10000;h.emit(a,q);assert.equal(a.ultEnergy,0);
+    assert.ok(a.activeBuffs?.[22013]);assert.ok(b.activeBuffs?.[22013]);
+    assert.equal(enemy.activeBuffs?.[22013],undefined);assert.equal(foreign.writes.length,0);
+    const count=a.writes.filter(p=>p.includes(':SkillDo,')).length;
+    h.emit(a,q);assert.equal(a.writes.filter(p=>p.includes(':SkillDo,')).length,count);
+    enemy.activeBuffs={22013:{lamsterEndsAt:Date.now()+6000,lamsterEpoch:enemy.sceneEpoch||0}};
+    pulse(1,[enemy]);assert.equal(enemy.hp,628,'120 weapon damage reduced to72');
+    const timers=h.timers.filter(t=>t.ms===6000 && !t.cancelled);assert.ok(timers.length);
+});
+
+test('Lamster Q charges for NPC damage and caps overkill energy at actual remaining HP',()=>{
+    const {h,a,enemy,pulse}=lamsterFight();configureLamsterKit(h);
+    const npc={id:100000,playerId:'100000',index:1122,force:2,hp:1000,maxHp:1000,
+        currentRoomUID:1000,targetMapId:5204,x:0,y:400,z:900};
+    h.state.spawnedNpcs[100000]=npc;
+    pulse(2,[npc]);assert.equal(npc.hp,750,h.logs.join('\n'));assert.equal(a.ultEnergy,125);
+    a.ultEnergy=0;enemy.hp=10;pulse(1,[enemy]);assert.equal(a.ultEnergy,5,'only10 HP consumed, not120 nominal damage');
+});
+
+test('Lamster natural Q needs334 heartbeats at30/s and cannot bank a long silent interval',()=>{
+    const {h,a}=lamsterFight();configureLamsterKit(h);
+    const original=Date.now;let time=1000;Date.now=()=>time;
+    try{
+        a.lastUltTimeUpdate=time;a.ultEnergy=0;
+        const sn=utils.PacketBuilder.rpc(10,'SN',[1,1]).trim();
+        for(let sec=1;sec<=333;sec++){time+=1000;h.emit(a,sn);}
+        assert.equal(a.ultEnergy,9990,h.logs.slice(-3).join('\n'));
+        time+=1000;h.emit(a,sn);assert.equal(a.ultEnergy,10000);
+        a.ultEnergy=0;time+=60000;h.emit(a,sn);assert.equal(a.ultEnergy,60,'late heartbeat capped at2s');
+        a.isDead=true;time+=1000;h.emit(a,sn);assert.equal(a.ultEnergy,60);
+        a.isDead=false;time+=1000;h.emit(a,sn);assert.equal(a.ultEnergy,90,'no death-time charge');
+    }finally{Date.now=original;}
+});
+
+test('Lamster changes do not alter other heroes natural ultimate charging',()=>{
+    const {h,a}=lamsterFight();a.currentHeroId=1015;
+    const original=Date.now;Date.now=()=>2000;
+    try{a.lastUltTimeUpdate=1000;a.ultEnergy=0;h.emit(a,utils.PacketBuilder.rpc(10,'SN',[1,1]).trim());assert.equal(a.ultEnergy,50);}
+    finally{Date.now=original;}
+});
 
 test('Lamster native SDG heals allies, damages enemies and isolates other rooms', () => {
     const { h,a,b,enemy,foreign,pulse } = lamsterFight();
@@ -1054,3 +1134,305 @@ test('inspiration1007 boosts an allied hero attack by25 percent and expires',()=
  a.activeBuffs[1007].timeout.fn();assert.equal(a.activeBuffs[1007],undefined);
  h.emit(a,packet);assert.equal(enemy.hp,610);
 });
+
+test('reload 31203 interrupted by death or sent while dead unlocks client _fillCartridge via OnFillBullet',()=>{
+ const {h,a,enemy}=lamsterFight();a.currentHeroId=1015;
+ const reloadCmd=`e${utils.encodeInt(10)}:SendMsgToServer,(${utils.encodeInt(31203)},(1,0))`;
+ h.emit(a,reloadCmd);
+ assert.equal(a.isReloading,true);
+ assert.ok(a.reloadTimer,'reload timer started');
+ h.game.handlePlayerDeath(a,enemy);
+ assert.equal(a.isReloading,false);
+ assert.equal(a.reloadTimer,null);
+ assert.ok(a.writes.some(p=>p.includes(':OnFillBullet,')),'death while reloading must immediately send OnFillBullet to unlock quick melee');
+ a.writes.length=0;
+ h.emit(a,reloadCmd);
+ assert.equal(a.isReloading,false);
+ assert.ok(a.writes.some(p=>p.includes(':OnFillBullet,')),'reload packet arriving while dead must still send OnFillBullet to clear client _fillCartridge');
+});
+
+test('SLoadMapOKMsg and movement sync work across string/number room and map IDs',()=>{
+ const h=harness(),a=h.connect(h.socket('a','77',10)),peer=h.socket('peer',77,11);
+ const lobby=h.socket('a',77,10);lobby.socketType='LOBBY';lobby.hasConfirmedHero=true;
+ lobby.targetMapId=5204;lobby.finalMapId=5204;
+ h.state.activeSockets.push(lobby,peer);h.state.playerSessions.a={};
+ h.room(77,[lobby,peer]);
+ h.emit(a,"NGOL'SceneGroup','PlayerUser','10','1',61");
+ a.isCombatReady=false;a.currentRoomUID='77';a.targetMapId='5204';
+ peer.currentRoomUID=77;peer.targetMapId=5204;peer.isCombatReady=true;
+ h.emit(a,'SLoadMapOKMsg');
+ h.timers.filter(t=>t.ms===1500).at(-1).fn();
+ assert.equal(a.isCombatReady,true);
+ assert.ok(peer.writes.some(p=>p.includes('cGamePlayer:A,')),'peer must receive spawn packet even with string/number ID mix');
+ assert.ok(a.writes.some(p=>p.includes('cGamePlayer:B,')),'joiner must receive peer spawn packet even with string/number ID mix');
+ peer.writes.length=0;
+ h.emit(a,`e${utils.encodeInt(10)}:SP,((10,20,30),0,0)`);
+ assert.ok(peer.writes.some(p=>p.includes(':CP,((')),'peer must receive movement relay across string/number room IDs');
+});
+
+test('dead and stale in-flight SP packets do not overwrite spawn coordinates or re-trigger abyss death',()=>{
+ const {h,a,enemy}=lamsterFight();
+ a.lastX=120;a.lastY=45;a.lastZ=300;
+ h.game.handlePlayerDeath(a,enemy);
+ assert.equal(a.isDead,true);
+ const negY=utils.encodeInt(-4000);
+ h.emit(a,`e${utils.encodeInt(10)}:SP,((999,${negY},999),1,0)`);
+ assert.equal(a.lastX,120,'dead SP must not overwrite lastX');
+ assert.equal(a.lastY,45,'dead SP must not overwrite lastY');
+ h.game.respawnPlayer(a);
+ const spawnX=a.lastX,spawnY=a.lastY,spawnZ=a.lastZ;
+ enemy.writes.length=0;
+ // In-flight dead SP (flag=1) arriving right after respawn
+ h.emit(a,`e${utils.encodeInt(10)}:SP,((999,${negY},999),1,0)`);
+ assert.equal(a.isDead,false);
+ assert.equal(a.lastX,spawnX);assert.equal(a.lastY,spawnY);assert.equal(a.lastZ,spawnZ);
+ assert.equal(enemy.writes.length,0,'stale dead SP must not be relayed after respawn');
+ // In-flight abyss SP (flag=0, Y < -3500) arriving during respawn grace window
+ h.emit(a,`e${utils.encodeInt(10)}:SP,((999,${negY},999),0,0)`);
+ assert.equal(a.isDead,false,'stale abyss SP during respawn grace must not kill respawned player');
+ assert.equal(a.lastY,spawnY);
+});
+
+test('sceneScope.invalidate clears combat timers and active buffs',()=>{
+ const h=harness(),a=h.socket('timed',77,10);
+ a.reloadTimer=setTimeout(()=>{},5000);
+ a.invisibilityTimer=setTimeout(()=>{},5000);
+ a.ultimateTimer=setTimeout(()=>{},5000);
+ a.isReloading=true;a.isRagdoll=true;
+ a.activeBuffs={1007:{timeout:setTimeout(()=>{},5000)}};
+ scope.invalidate(a);
+ assert.equal(a.reloadTimer,null);
+ assert.equal(a.invisibilityTimer,null);
+ assert.equal(a.ultimateTimer,null);
+ assert.equal(a.isReloading,false);
+ assert.equal(a.isRagdoll,false);
+ assert.equal(a.activeBuffs,null);
+});
+
+test('heroCatalog centralizes reload durations, aliases, barriers and summon limits',()=>{
+ const catalog=require('../src/heroCatalog');
+ assert.equal(catalog.getReloadDuration(1015),2000);
+ assert.equal(catalog.getReloadDuration(1029),1500);
+ assert.equal(catalog.getReloadDuration(9999),1800);
+ assert.equal(catalog.resolveHeroAlias('tagaloa'),1006);
+ assert.equal(catalog.resolveHeroAlias('LAMSTER'),2000);
+ assert.equal(catalog.resolveHeroAlias('1024'),1024);
+ assert.equal(catalog.resolveHeroAlias('unknown_hero'),null);
+ assert.equal(catalog.getTagaloaShieldMaxHp(),8000);
+ assert.equal(catalog.getHeroBarrierSpec(1032).maxHp,4000);
+ assert.equal(catalog.getNpcSummonLimit(1001),3);
+ assert.equal(catalog.getNpcSummonLimit(1014),1);
+});
+
+test('/sync (/vis) and /fix chat commands resync scene entities and unlock stuck weapon/reload state',()=>{
+ const {h,a,enemy,foreign}=lamsterFight();
+ h.state.spawnedNpcs[501]={id:501,index:1001,hp:300,maxHp:300,isDead:false,spawnPacket:'cNpc:8D,("Initialize",())\n'};
+ scope.tagEntity(h.state.spawnedNpcs[501],a);
+ a.writes.length=0;
+ const syncHex=Buffer.from('/sync').toString('hex');
+ h.emit(a,`e${utils.encodeInt(10)}:SendMsgToServer,(${utils.encodeInt(1006)},(${utils.encodeInt(1)},'${syncHex}','',('','',0)))`);
+ assert.ok(a.writes.some(p=>p.includes(`cGamePlayer:${utils.encodeInt(11)},`)),'/sync must re-send ally spawn packet');
+ assert.ok(a.writes.some(p=>p.includes(`cGamePlayer:${utils.encodeInt(12)},`)),'/sync must re-send enemy spawn packet');
+ assert.ok(!a.writes.some(p=>p.includes(`cGamePlayer:${utils.encodeInt(13)},`)),'/sync must not leak players from other rooms');
+ assert.ok(a.writes.some(p=>p.includes('cNpc:8D,("Initialize"')),'/sync must re-send active scene NPCs');
+
+ a.isReloading=true;a.isRagdoll=true;a.isStunned=true;a.isFrozen=true;
+ a.reloadTimer=setTimeout(()=>{},5000);
+ a.writes.length=0;
+ const fixHex=Buffer.from('/fix').toString('hex');
+ h.emit(a,`e${utils.encodeInt(10)}:SendMsgToServer,(${utils.encodeInt(1006)},(${utils.encodeInt(1)},'${fixHex}','',('','',0)))`);
+ assert.equal(a.isReloading,false);
+ assert.equal(a.isRagdoll,false);
+ assert.equal(a.isStunned,false);
+ assert.equal(a.isFrozen,false);
+ assert.equal(a.reloadTimer,null);
+ assert.ok(a.writes.some(p=>p.includes(':OnFillBullet,')),'/fix must send OnFillBullet to unlock weapon/melee');
+ assert.ok(a.writes.some(p=>p.includes(':SuperSkillFinish')),'/fix must send SuperSkillFinish');
+ assert.ok(a.writes.some(p=>p.includes(`(${utils.encodeInt(20014)},(${utils.encodeInt(90008)},`)),'/fix must send 90008 camera/UI unlock');
+});
+
+test('socialServer handles Global Ranking (17000), Friends (60100), Party (60000) and Guilds (91000)',()=>{
+ const social=require('../src/socialServer');
+ const dbp=require('../src/dbPersistence');
+
+ // Ensure two test profiles exist
+ const pA=dbp.authenticate('SocialTestAlpha','123').player;
+ const pB=dbp.authenticate('SocialTestBeta','123').player;
+ pA.friends=[]; pA.friendRequests=[];
+ pB.friends=[]; pB.friendRequests=[];
+ dbp.savePlayer(pA.username,pA);
+ dbp.savePlayer(pB.username,pB);
+
+ const sockA={playerName:pA.username,socketType:'LOBBY',destroyed:false,writes:[],write(d){this.writes.push(d);}};
+ const sockB={playerName:pB.username,socketType:'LOBBY',destroyed:false,writes:[],write(d){this.writes.push(d);}};
+ const active=[sockA,sockB];
+
+ // 1. Global Ranking (17001, 17002, 17003)
+ social.handleRankCommand(sockA,`(${utils.encodeInt(17001)},${utils.encodeInt(pA.cid)},1,0)`);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(17000)},(${utils.encodeInt(17001)},(${utils.encodeInt(17001)},`)),'17001 user rank response');
+ sockA.writes.length=0;
+ social.handleRankCommand(sockA,`(${utils.encodeInt(17002)},${utils.encodeInt(pA.cid)},${utils.encodeInt(2000)},1,0,0)`);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(17000)},(${utils.encodeInt(17002)},(${utils.encodeInt(17002)},`)),'17002 hero rank response');
+ sockA.writes.length=0;
+ social.handleRankCommand(sockA,`(${utils.encodeInt(17003)},${utils.encodeInt(pA.cid)},0,1,10)`);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(17000)},(${utils.encodeInt(17003)},(${utils.encodeInt(17003)},`)),'17003 skyladder rank response');
+
+ // 2. Friends (60101 request -> 60105 accept -> 60103 remove)
+ sockA.writes.length=0; sockB.writes.length=0;
+ const bHex=utils.encodeHex(pB.username);
+ social.handleFriendCommand(sockA,`(${utils.encodeInt(60101)},'${bHex}')`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(60114)},`)),'sender receives 60114 confirmation');
+ assert.ok(sockB.writes.some(w=>w.includes(`(${utils.encodeInt(60102)},`)),'receiver gets 60102 live friend request');
+
+ sockA.writes.length=0; sockB.writes.length=0;
+ const aHex=utils.encodeHex(pA.username);
+ social.handleFriendCommand(sockB,`(${utils.encodeInt(60105)},(${utils.encodeInt(pA.cid)},'${aHex}'),1)`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(60109)},`)),'A receives 60109 friend added');
+ assert.ok(sockB.writes.some(w=>w.includes(`(${utils.encodeInt(60109)},`)),'B receives 60109 friend added');
+
+ // 3. Party / Squad (60005 invite -> 60002 accept -> 60003 leave)
+ sockA.writes.length=0; sockB.writes.length=0;
+ social.handleTeamCommand(sockA,`(${utils.encodeInt(60005)},'${bHex}')`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(60001)},`)),'A creates team 60001');
+ assert.ok(sockB.writes.some(w=>w.includes(`(${utils.encodeInt(60005)},`)),'B receives team invite 60005');
+ const teamInfo=social.getTeamForPlayer(pA.username);
+ assert.ok(teamInfo && teamInfo.teamId>0);
+
+ sockA.writes.length=0; sockB.writes.length=0;
+ social.handleTeamCommand(sockB,`(${utils.encodeInt(60002)},('${aHex}',${utils.encodeInt(teamInfo.teamId)}),0)`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(60002)},`)),'A notified B joined team');
+ assert.ok(sockB.writes.some(w=>w.includes(`(${utils.encodeInt(60002)},`)),'B notified joined team');
+ social.handleTeamCommand(sockB,`(${utils.encodeInt(60003)},0)`,active);
+ social.handleTeamCommand(sockA,`(${utils.encodeInt(60003)},0)`,active);
+
+ // 4. Guilds / Clans (91001 create -> 91013 list -> 91004 exit)
+ sockA.writes.length=0;
+ const gNameHex=utils.encodeHex(`Guild_${Date.now()}`);
+ const gNoticeHex=utils.encodeHex('Aviso Teste');
+ social.handleGuildCommand(sockA,`(${utils.encodeInt(91001)},'${gNameHex}',${utils.encodeInt(1001)},'${gNoticeHex}',1)`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(91001)},`)),'91001 guild created');
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(91018)},`)),'91018 guild details sent');
+
+ sockA.writes.length=0;
+ social.handleGuildCommand(sockA,`(${utils.encodeInt(91013)},1,0)`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(91013)},`)),'91013 guild list sent');
+
+ sockA.writes.length=0;
+ social.handleGuildCommand(sockA,`(${utils.encodeInt(91004)})`,active);
+ assert.ok(sockA.writes.some(w=>w.includes(`(${utils.encodeInt(91004)},`)),'91004 guild exit sent');
+
+ // Clean up temporary test files
+ for(const f of ['socialtestalpha.json','socialtestbeta.json']){
+  const fp=path.join(__dirname,'..','data','players',f);
+  if(fs.existsSync(fp)) fs.unlinkSync(fp);
+ }
+ const gp=path.join(__dirname,'..','data','guilds.json');
+ if(fs.existsSync(gp)){
+  const store=dbp.loadGuilds();
+  for(const [gid,g] of Object.entries(store.guilds||{})){
+   if(String(g.leaderName||'').startsWith('SocialTest')) delete store.guilds[gid];
+  }
+  dbp.saveGuilds(store);
+ }
+});
+
+test('FFA hero switch while dead clears ffaDeathHandled so new hero can die again at 0 HP', () => {
+    const {h, a, b} = individualFight();
+    h.game.handlePlayerDeath(b, a);
+    assert.equal(b.isDead, true);
+    assert.equal(b.ffaDeathHandled, true);
+    assert.equal(b.matchDeaths, 1);
+
+    // Player switches hero while dead in FFA
+    h.game.switchPlayerHero(b, 1024);
+    assert.equal(b.currentHeroId, 1024);
+    assert.equal(b.isDead, false);
+    assert.equal(b.ffaDeathHandled, false);
+    assert.equal(b.ffaRespawnAt, 0);
+    assert.ok(b.hp > 0);
+
+    // New hero reaches 0 HP -> must die normally and not become immortal!
+    h.game.handlePlayerDeath(b, a);
+    assert.equal(b.isDead, true);
+    assert.equal(b.hp, 0);
+    assert.equal(b.matchDeaths, 2);
+    assert.equal(a.matchKills, 2);
+});
+
+test('per-hero XP and level progression persists and encodes into 12002 and 5026 ResultHeroList', () => {
+    const dbp = require('../src/dbPersistence');
+    const db = require('../src/database');
+    assert.equal(dbp.getHeroLvlupExp(1), 100);
+    assert.equal(dbp.getHeroLvlupExp(5), 1000);
+
+    const p = dbp.authenticate('HeroXpTestUser', '123').player;
+    const res = dbp.addMatchRewards('HeroXpTestUser', {
+        exp: 350, gold: 200,
+        kills: 10, deaths: 1, assists: 5, damage: 5000, heal: 500,
+        durationSeconds: 300, goldMedals: 3, isWin: true, isMvp: true, heroId: 1033
+    });
+    assert.ok(res.heroExpGained >= 100);
+    assert.ok(res.heroNewLevel >= 2);
+    assert.ok(res.heroNumLvlUp >= 1);
+
+    const updated = dbp.loadPlayer('HeroXpTestUser');
+    assert.equal(updated.career.heroes[1033].level, res.heroNewLevel);
+    assert.equal(updated.career.heroes[1033].exp, res.heroNewExp);
+
+    const encoded = utils.parseArrayList(`(${db.generateFullHeroData(1033, 1, 1, 1, 0, updated)})`);
+    assert.equal(encoded[1][0], res.heroNewLevel);
+    assert.equal(encoded[1][1], res.heroNewExp);
+
+    const fp = path.join(__dirname, '..', 'data', 'players', 'heroxptestuser.json');
+    if (fs.existsSync(fp)) fs.unlinkSync(fp);
+});
+
+test('return to hall 20001 after match end still sends 20001 to scene socket when inMatch is already false', () => {
+    const h = harness();
+    const s = h.connect(h.socket('postmatch', 1000, 10));
+    h.emit(s, `NGOL'SceneGroup','PlayerUser','10','1',${s.playerNameEnc}`);
+    s.inMatch = false; // Match already ended
+    s.sceneRetired = false;
+    s.writes.length = 0;
+
+    h.emit(s, `e${utils.encodeInt(10)}:SendMsgToServer,(${utils.encodeInt(20001)},(0,'',0))`);
+    assert.ok(s.writes.some(w => w.includes(`SendMsgToClient,(${utils.encodeInt(20001)},(0,'',0))`)), 'must send 20001 back to client after match end');
+});
+
+test('Control (type 3), Resource Capture (type 5), Escort (type 2), and Arena (type 4) modes initialize cleanly', () => {
+    const h = harness();
+    h.db.MAP_CONFIG[5030] = { name: 'yundingtiantai', type: 3 };
+    h.db.MAP_CONFIG[5049] = { name: 'ms_gucheng_2', type: 5 };
+    h.db.MAP_CONFIG[5063] = { name: 'lundun', type: 2 };
+    h.db.MAP_CONFIG[5056] = { name: 'kedejidi_1', type: 4 };
+
+    // Control (type 3)
+    const c = h.socket('ctrl', 1000, 10); c.targetMapId = 5030;
+    h.game.startControlMatch(c);
+    assert.ok(c.writes.some(w => w.includes(`(${utils.encodeInt(5001)},`) && w.endsWith(')))\n')), '5001 balanced parens');
+    h.game.endControlMatch();
+
+    // Resource Capture (type 5)
+    const r = h.socket('res', 1001, 11); r.targetMapId = 5049;
+    h.game.startControlMatch(r);
+    assert.ok(r.writes.some(w => w.includes(`(${utils.encodeInt(110100)},(${utils.encodeInt(110101)},`)), '110101 scramble init');
+    h.game.endControlMatch();
+
+    // Escort (type 2)
+    const e = h.socket('esc', 1002, 12); e.targetMapId = 5063;
+    h.game.startEscortMatch(e);
+    assert.ok(e.writes.some(w => w.includes('cChariot_Entity:')), 'Escort spawns Chariot_Entity');
+    h.game.endEscortMatch(1);
+
+    // Arena (type 4)
+    const a1 = h.socket('ar1', 1003, 13); a1.targetMapId = 5056; a1.force = 1;
+    const a2 = h.socket('ar2', 1003, 14); a2.targetMapId = 5056; a2.force = 2;
+    h.game.startArenaMatch(a1);
+    h.game.startArenaMatch(a2);
+    assert.ok(a1.writes.some(w => w.includes(`(${utils.encodeInt(110000)},(${utils.encodeInt(110001)},`)), 'Arena opens 110001 UI');
+    h.game.endArenaMatch(h.game.getArenaMatch(a1), 1);
+});
+
+
+
+

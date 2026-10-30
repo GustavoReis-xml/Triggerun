@@ -1,0 +1,21 @@
+{
+  "task": "SKIN-056",
+  "hero": 1016,
+  "name": "Valquíria do Eclipse",
+  "tool": "built-in image_gen",
+  "image": "candidate-assets\\valk-eclipse\\concept.png",
+  "prompt": "candidate-assets\\valk-eclipse\\concept-prompt.txt",
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "sha256": "c16a1c0439a61559a1c7fbb6e76051d78188b5d96e04e01a07fdd5fa46510ea9",
+  "nativeTPS": "waerjili_tps",
+  "nativeBones": 72,
+  "nativeHeight": 1.773951,
+  "clips": 34,
+  "runtimeChanged": false,
+  "OracleChanged": false,
+  "conceptOnly": true
+}

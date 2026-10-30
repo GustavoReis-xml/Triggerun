@@ -1,0 +1,26 @@
+# Passagem de trabalho — LAMSTER-008
+
+- Responsável/destinatário: Codex → usuário/Antigravity, 29/10/2026.
+- Objetivo: corrigir tamanho dos ícones/carga passiva e dar apresentação própria aos ataques e habilidades do Lamster2000, preservando o kit de utilidade da007.
+- Estado: validada e instalada em 29/10/2026 às21:22BRT; cliente fechado e reinício com jogadores online autorizados expressamente pelo usuário.
+- Base: cliente Assembly79DFA93D… + helper70F5DF0F…; Oracle007/PID1013628; todos os25 hashes de pré-requisitos remotos conferidos. Outros trabalhos preservados.
+- Arquivos: client-patches/CombatHud.cs,LamsterHudLayout.cs,LamsterPresentation.cs;src/socketServer.js;XMLs dazhao/herounlock/weapon/buff baxi+zh;4ícones;2impactos;2controladores novos;manifesto;2testes existentes. Fontes/evidências em scratch/lamster008/ e candidate-assets/lamster-polished/.
+- Causa confirmada: sysload.loadImageOK chama RawImage.SetNativeSize após download; ícones007 de256² excediam os slots nativos76×58/Q116².
+- HUD: imagens nas dimensões nativas; máscaras circulares58px/Q96px; guarda após resize assíncrono; preserva referência RawImage/overlays; restaura ao trocar herói, inclusive Q oculta.
+- Energia: Lamster30/s em XML e SN, máximo10000, carga natural≈334s; atraso de heartbeat limitado a2s. Outros heróis50/s inalterados. Energia por dano/cura efetivos preservada.
+- Animação: controladores exclusivos lamster_vanguard_tps_animator/fps, seis clipes novos cada: Jab,Cross,Pulse,Contain,Sprint,Rally. IK analítica sobre rig original, rotações em quaternion, sem root motion/alteração de ossos/mesh/colisor/alcance.
+- Clipes nativos e27 objetos originais preservados; novos estados no UpperBodyTPS/BaseFPS, retorno ao estado padrão em.94 com fade.09s. Controladores exclusivos removem transições AttackState; instalar as duas DLLs juntas.
+- Assembly: quatro pós-chamadas cosméticas (FireReal/LauncherFire/SkillDo local e remoto), preservam retornos e autoridade nativa. Comparação de14780 métodos; só quatro alterados. Helper mantém31 métodos alheios idênticos.
+- Efeitos: rastros curtos nas mãos com camada da câmera correta, ondas6/8/10m, impactos compactos2emissores/12partículas; cinco sons sintetizados no cliente com mixer/volume/distância. Sem downloads externos necessários.
+- Isolamento: validação de todos XMLs modificados fora dos registrosLamster, manifesto só14 entradas alteradas+2novas,5579recursos/CRC26102903. Colisores/dano/cura/CD/modelos/Hércules/FPS/skins intactos.
+- Testes:120/120 node --test (lamster,lamster-hero,match-lifecycle,logging), sintaxeJS e compilaçãoUnity.NET2. 12clipes/396poses reabertas do bundle, erro máximo3,79e-6; pernas/root imóveis e segmentos válidos. 18 checagens simuladas de ciclo daHUD, incluindo resize tardio e troca com Q oculta.
+- Evidências: scratch/lamster008/{server-tests.log,animation-validation.json,assets-validation.json,helper-validation.json,client-validation.json,test-hud-layout.cs}; imagem diagnóstica de poses em candidate-assets/lamster-polished/animations/pose-review.png.
+- Cliente real: versão008 ainda não testada no Unity. Render das poses é simulação do mesh/rig, não teste do Animator em execução. Usuário confirmou falhas da007, não esta correção.
+- Oracle:008 instalada em30/10 00:22:11UTC (29/10 21:22BRT); PM2triggerun/PID1015998 online.120/120 testes remotos antesreinício;35 hashesHTTP emambasversões +TCP7777 OK depois.21arquivos instalados/3novos;pré-requisitos conferidos.
+- Backups locais: backups/lamster008-before/ (DLLs, fontes, XMLs, manifesto, ícones e impactos anteriores).
+- Pacote: candidate-assets/lamster-polished/client-update-lamster008.zip contém Assembly-CSharp.dll + TriggerunCombatHud.dll + instruções/hashes; outros auxiliares não substituídos.
+- CandidatoAssembly:0C80753570B2CCB7BF41F520A7FC7CE83024F16D4CE18A367ADE176DD180A019;helperFE749C39902D0AB5F1616050D6E6756072A798416B0F0280E0375AB19955234F.
+- Instalação cliente: duasDLLs copiadas comTRIGfechado às00:21:01UTC;hashes conferidos e auxiliaresRaven957891C3…/WeaponF7528CE7…preservados. Evidência:scratch/lamster008/client-installation.json.
+- Backup remoto válido: /home/ubuntu/backups/lamster-polish-008-20261030T002201Z/runtime.tar.gz (25arquivos). Listasdeinstalação exigemLF: tentativa inicial abortou antesalterações aoencontrarCRLF;prepare-release.py corrigido paraemitirbytesLF.
+- Próximo passo: usuário testar008 noUnity;pacote paraoutrosclientes:http://136.248.105.85/updates/client-update-lamster008.zip (duasDLLs juntas). Registros:scratch/lamster008/release/{installation.log,oracle-tests.log,http-validation.json}.
+- Teste solicitado ao usuário depois: HUD E/Shift/RMB/Q, natural sem atacar, alternância dos socos, cada habilidade em FPS/TPS, movimento/morte/renascimento/troca, outro cliente/Hércules. Ajustes artísticos finais dependem dessa observação.

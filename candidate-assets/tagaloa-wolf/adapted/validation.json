@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "objectsCompared": 652,
+  "newObjects": 14,
+  "bones": 59,
+  "poses": 23,
+  "nativeGameplayHierarchyPreserved": true,
+  "nativeRobotArmMeshesPreservedButRenderersHidden": true,
+  "DynamicBoneTypeScriptTableValid": true,
+  "originalUVTrianglesPreserved": true,
+  "UnityTested": false
+}

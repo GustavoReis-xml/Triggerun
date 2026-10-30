@@ -1,0 +1,90 @@
+{
+  "run": {
+    "p99Stretch": 1.1287329851234207,
+    "maxStretch": 2.4012703271157956
+  },
+  "turn": {
+    "p99Stretch": 1.3375167523665659,
+    "maxStretch": 2.9216104512527608
+  },
+  "shoulders": {
+    "p99Stretch": 1.2642708937103462,
+    "maxStretch": 2.0563766780030366
+  },
+  "crouch": {
+    "p99Stretch": 1.159225964114003,
+    "maxStretch": 2.974366972729255
+  },
+  "fire": {
+    "p99Stretch": 1.0978277925844775,
+    "maxStretch": 1.6790670749880687
+  },
+  "ultimate": {
+    "p99Stretch": 1.229638805872488,
+    "maxStretch": 2.974366972729255
+  },
+  "landing": {
+    "p99Stretch": 1.0200717839323887,
+    "maxStretch": 1.9765568153615518
+  },
+  "headYaw-45": {
+    "p99Stretch": 1.5973157826411606,
+    "maxStretch": 3.469034897706842
+  },
+  "headYaw-30": {
+    "p99Stretch": 1.358681502424851,
+    "maxStretch": 2.6064450162319748
+  },
+  "headYaw-15": {
+    "p99Stretch": 1.1592956715792855,
+    "maxStretch": 1.7406879167219853
+  },
+  "headYaw0": {
+    "p99Stretch": 1.0000000000000246,
+    "maxStretch": 1.0000000000000886
+  },
+  "headYaw15": {
+    "p99Stretch": 1.1648281570946466,
+    "maxStretch": 1.7079964837990735
+  },
+  "headYaw30": {
+    "p99Stretch": 1.3807067152666233,
+    "maxStretch": 2.508357954404639
+  },
+  "headYaw45": {
+    "p99Stretch": 1.6159942613002662,
+    "maxStretch": 3.3953397983972473
+  },
+  "headPitch-30": {
+    "p99Stretch": 1.2429194679335054,
+    "maxStretch": 3.8738072047835233
+  },
+  "headPitch-15": {
+    "p99Stretch": 1.0985866837817198,
+    "maxStretch": 2.1790811435202952
+  },
+  "headPitch0": {
+    "p99Stretch": 1.0000000000000246,
+    "maxStretch": 1.0000000000000886
+  },
+  "headPitch15": {
+    "p99Stretch": 1.1497144280189626,
+    "maxStretch": 2.30582661911063
+  },
+  "headPitch30": {
+    "p99Stretch": 1.3269459230924758,
+    "maxStretch": 3.859979898071013
+  },
+  "twist-45": {
+    "p99Stretch": 1.028365164940064,
+    "maxStretch": 1.5330555701597293
+  },
+  "twist0": {
+    "p99Stretch": 1.0000000000000246,
+    "maxStretch": 1.0000000000000886
+  },
+  "twist45": {
+    "p99Stretch": 1.0230920770265746,
+    "maxStretch": 1.3593036185778864
+  }
+}

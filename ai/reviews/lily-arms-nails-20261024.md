@@ -1,0 +1,25 @@
+# Passagem de trabalho — SKIN-051
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026, instalação20:07:41UTC(17:07BRT).
+- Objetivo: corrigir braços desencaixados e unhas flutuantes relatados no cliente real050, com duas capturas fornecidas pelo usuário.
+- Estado: correção e instalação concluídas; nova validação no cliente real pendente.
+- Base:050 SHA TPS `a15162fa30a01e89f1782248a742166fefc28611ef4bb5aa4eb5a0e605889702`, preservado em `backups/lily051-before/`.
+- Arquivos: novos `scratch/lily051/`, `candidate-assets/lily-modern-witch/refined/`; instalação altera somente TPScrimson e CRC da respectiva entrada do manifesto.
+- Causa braço: componentes871/10439 terminam em um contorno aberto de11vértices abaixo do ombro; faltava a malha escondida pela manga larga. Manga9070 também recebia excesso de peso do tronco.
+- Causa unha: fitting051 confirmou que os componentes pequenos das unhas não recebiam o mesmo ajuste espacial das mãos em050; depois tinham pesos rígidos independentes dos dedos. Nas140amostras o afastamento anterior chegava a14,15cm.
+- Braços:90novos vértices/198triângulos completam duas mangas pretas internas até os pivôs dos ombros; primeiro anel compartilha os vértices existentes, sem borda independente.
+- Mangas vermelhas: pesos redistribuídos para o braço correspondente, com transição no encaixe do tronco; rig/bind/animações originais preservados.
+- Unhas: projeção inicial de peças separadas ainda permitia desvios pequenos por mistura de pesos; descartada em favor do acabamento na própria superfície dos dedos.
+- Solução final unhas:156triângulos separados removidos,695pixels do albedo2k pintados nas8regiões soltas. Vértices antigos não referenciados permanecem no buffer para preservar índices das outras regiões, sem serem desenhados.
+- Preservados:corpo/rosto/cabelo/texturas fora das unhas, roupa abaixo da cintura,76bones nativos+24cosméticos, seisDynamicBone, materiais, skills/arma/IK/gameplay.
+- Testes:776objetos comparados; somenteMesh eTexture2D alterados.24726v/20475tri/100bones, índices/UV/bind/pesos/normais/hierarquia conferidos.
+- Testes específicos:0triângulos referenciam unhas soltas; anéis novos compartilham posições e pesos dos braços;140amostras de28clips nativos reconstruídas, todas finitas. Não equivale aoUnityPlayer.
+- Prévia:stand/tiro/expressionF53/expressionA50/reload/run inspecionadas, incluindo braços elevados e inclinação. Métricas completas em `scratch/lily051/native-metrics.json`.
+- Física:componentes e auxiliar preservados bit a bit; não repetir os testes do solver050 sem alteração desses componentes. Colisões perfeitas de tecido não são garantidas.
+- Oracle:backup remoto antes de mutação;guardas dehash antes/depois;CRC26102402/5563recursos;semreinício,PM2PID922269 mantido.
+- Backup remoto: `/home/ubuntu/backups/lily-crimson-skin051-20261024T200741Z/runtime.tar.gz`.
+- Instalação:4HTTP comhashesexatos em1.1.1/1.3.5+TCP7777 aprovados; cópia local sincronizada.
+- DLLs:auxiliar SHA8FD66528…AA8AC3 eAssemblyCDBAF1B3…9AFA7 continuam iguais050, nenhum arquivo do cliente instalado nesta revisão.
+- Evidências: `candidate-assets/lily-modern-witch/refined/{report,validation}.json`, previews, `scratch/lily051/release/` e backup local.
+- Próximo passo:reabrirTRIG para descarregar050 da memória, testar a mesma apresentação com braços erguidos e corpo inclinado, além de disparos/dedos; coletar imagem/log se persistir defeito.
+- Limites:novo testeUnity pendente; malhaTripo e skinning linear ainda podem apresentar atravessamentos menores em poses extremas.

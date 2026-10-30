@@ -1,0 +1,27 @@
+# Passagem de trabalho — SKIN-050
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026, instalaçãoOracle19:51:57UTC(16:51BRT).
+- Objetivo: adaptarGLBvampire àLily1033, corrigir cabelo/acessórios/unhas e acrescentar física cosmética.
+- Estado: implementação/testes/instalação concluídos; testeUnity real pendente.
+- Base: nativo `lilisi_tps.mo` SHA0403cce3…3c958, fonteGLB preservada em `candidate-assets/lily-modern-witch/source-tripo.glb`; semrig noGLB.
+- Arquivos: novos `scratch/lily050/`, `candidate-assets/lily-modern-witch/adapted/`; extensãoopt-in `client-patches/RavenDynamics.cs`; catálogo1033baxi/zh,manifesto e novoTPS.
+- Fatos:GLB24636v/20433tri/atlas8192;72componentes conectados, casaco separado do corpo/pernas; retocomanual localizado explicitamente autorizado pelo usuário.
+- Correções: cabelo claro/dourado contaminado escurecido só na superfíciecapilar; metais/gema/unhas uniformizados em máscarasUV específicas.256180/67108864pixels alterados; textura final2048DXT5/mipmaps.
+- Encaixe: ajuste contínuo de braços/altura, pesos anatômicos e dedos por amostragem nativa restrita. Erros iniciais de antebraço preso àpelve e transição dura noqueixo corrigidos antes instalar.
+- Física:24Transforms em6cadeiasverticais/100bones;DynamicBone noGOraiz e pertencimento contínuo dasabas, nunca pesos depernas no casaco.
+- Auxiliar: prefixo050 adicional, volumes de torso/quadril/coxa próprios doator, resetdepois deteleporte/rotação/pausa;colisoresdecorativos não sãoUnityCollider/Rigidbody.
+- Preservados:76bones e respectivoslocais,Avatar/Animator/IK/arma/skills/VFX/colisores/gameplay. Somente listas de filhos das âncoras ganham objetos.
+- Catálogo:skin5 gratuita“Bruxa Carmesim”,TPSindependente;FPS/íconeoriginais. Sem buff/atributos adicionais.
+- Estrutura:original/reaberto comparados com whitelist exata de alterações/56objetos novos;UV e faces originaisTripo preservados,binds/hierarquia/AABB/normais verificados.
+- Poses sintéticas:22aprovadas, maiorP99estiramento1,1783/extremo4,5935(ultimate); não mede volume corporal ou contato real do tecido.
+- Animação nativa:28clips/140amostras reconstruídas,auditadas contra nativo; piorP99≈1,8428(max5,23),extremoaté7,45 emcorridas; nativo também tem deformações altas. ReconstruçãoEuler/genérica não éUnityPlayer nem aprovação integral de todasasposes.
+- Solver:235227asserçõesLily a30/60/120FPS, balanço máximo14,8–16,1cm; resets,colisão e trêsinstâncias próximas independentes.235227Corvo+48747Lobo regressão aprovados com auxiliar novo.
+- Malha sobsolver:quadros180/187P99≤1,1078/extremo≤2,2364; prévias de stand/tiro/corrida/skillE/agachar/física conferidas.
+- DLLcliente: somentehelper substituído comTRIGfechado, SHA8FD66528E83B23EF4981BE2396F006145346D5F1EABA9158D82C997B70AA8AC3. AssemblyCDBAF1…9AFA7 intacto.
+- Oracle:backup remoto antes mutações;catálogos locais/remotos coincidentes na base, guardas dehash na instalação. CRC26102401/5563recursos;reiníciozero conexões,PM2PID922269.
+- HTTP:8hashesexatos nasversões1.1.1/1.3.5+TCP7777 aprovados; cópia local sincronizada após validação.
+- Antigravity:hashesOracle/local de socketServer/gameLogic/socialServer/heroinfo/weapon conferidos iguais; arquivos não editados nesta tarefa.
+- Evidências/backups: `backups/lily050-before/`, `scratch/lily050/{retouch-report,physics-validation,native-audit-summary,client-installation}.json`, `release/`;backupOracle `/home/ubuntu/backups/lily-crimson-skin050-20261024T195157Z/runtime.tar.gz`.
+- Cliente real: não testado nesta tarefa. Próximo passo: reiniciarTRIG, equiparBruxaCarmesim e testar tiros/skills/corrida/agachar/morte/respawn e aproximação de outrojogador; recolherlog seartefatos.
+- Outros computadores: receberhelper atualizado junto aoAssembly jáhookado;pacote `client-update-lily050.zip` inclui somentehelper e instruções, não substituiAssembly.
+- Limites:tecido linear/cosmético, sem colisão perfeita de toda superfície; clipes extremos podem atravessar roupa. Fonte/nativos/042/040 preservados.

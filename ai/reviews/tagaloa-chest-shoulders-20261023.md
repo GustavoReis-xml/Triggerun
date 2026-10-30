@@ -1,0 +1,29 @@
+# Passagem de trabalho — SKIN-043
+
+- Responsável: Codex; destinatário: usuário/próxima IA;23/10/2026 04:16UTC (01:16BRT).
+- Objetivo: corrigir peito comprimido/axilas pinçadas/proporção de tronco e braços do Tagaloa Lobo Mau6 após screenshot042.
+- Estado: implementação/validação local/instalação concluídas; nova avaliação Unity pendente.
+- Base042 preservada em `backups/tagaloa043-before/`: bundle em execução, manifesto e derivados completos.
+- Relato real042: skin carrega/é exibida; screenshot mostra tórax e ombros artificiais. Não tratar042 como aprovada visualmente.
+- Causa confirmada: altura ajustada sem uniformidade comprimiu peitoral; máscaras de pescoço/focinho baseadas na altura já deformada atingiam peito e braços.
+- Núcleo peitoral anterior tinha influência indevida de Neck/Head; repintado para Spine2, pescoço/focinho classificados na geometria originalTripo.
+- Arm weight gradients recalculados no espaço já encaixado, com projeção nos segmentos nativos; remoção direta de Neck→UpperArm foi descartada por agravar gradientes na axila comprimida.
+- Transições do pescoço/clavícula e início da região editada suavizadas; corrigido degrau inicial entre Spine1 e Spine2.
+- Geometria: largura torácica até14% adicional com queda gradual, parte inferior do peito até7,2cm mais baixa, profundidade até1,2cm; braço até7% mais espesso localmente.
+-10396v modificados/deslocamento máximo7,83cm; ornamentos separados apenas transladados para preservar forma rígida. Não alterar silhueta da cabeça, mãos e pernas principais.
+- Único objeto binário diferente de042: Mesh−8612445080646183882 em666objetos comparados. AABB/Transforms/renderers,59bones/bind/hashes/UV/triângulos/texturas/material/scripts preservados.
+- Cauda: mesmos2399v/posições/pesos/bones, DynamicBone e DLL042 intactos; não exigiu recompilar ou repetir solver sem mudança.
+- Animações: `scratch/tagaloa043/native-animation.py` decodifica curvas stream/dense/constant e bindings do controlador xingtian_tps_animator.
+- Euler importadoXYZ validado pela postura/altura dos pés; ZXY produzia pose errada e foi descartado. Estrutura de curvas conferida com código primário AssetStudio (link abaixo).
+-51clipes/255amostras reconstruídas; algumas curvas auxiliares de escudo apontam para dois caminhos ausentes do prefab base e são ignoradas. Blends do Animator/root-motion/IK/física não são reproduzidos nessa reconstrução.
+-23poses sintéticas passaram nos mesmos critérios042: P99<1,5/máximo<5 em arestas>6mm. OmbrosP99:1,482→1,308; máximo2,954→2,832.
+-255amostras nativas finitas;251v centrais do peito preservam área relativa com erro≤1,02e−6. Comparação foi evidência adicional, não declaração de aprovação de todas as dobras.
+- Métricas nativas completas registradas: P99 médio relativo042≈1,0095/pior1,0746; máximo relativo até1,2178. Regiões pequenas ainda podem esticar sobposes fortes, incluindo partes não editadas da calça.
+- Seis prévias reconstruídas conferidas: stand/Hello/winpose300/expression_B200_stand/stand_fire/dun_stand; foto do usuário próxima de winpose300, câmera/instante não calibrados.
+- Oracle: somente xt_tps_wolf.mo/manifesto; CRC26102302,5562recursos; backup remoto e guardas de hashes antes substituir.
+- Sem reinício, PM2PID891337 preservado; quatroHTTP com hashes exatos nas versões1.1.1/1.3.5 eTCP7777 aprovados; cópia local sincronizada.
+- Backup remoto: `/home/ubuntu/backups/tagaloa-wolf-skin043-20261023T041604Z/runtime.tar.gz`. Código do servidor/Antigravity não tocado.
+- Evidências: `candidate-assets/tagaloa-wolf/refined/{geometry.npz,report.json,validation.json,revision-validation.json,pose-metrics.json}`; `scratch/tagaloa043/{native-poses.npz,native-pose-metrics.json,native043-review.jpg}`; `release/{http-validation,installation}.json`.
+- Próximo passo: usuário reabrir jogo e comparar peito/axilas/ombros na seleção e em tiro/escudo/ultimate; solicitar screenshot se ainda deformar para comparar o instante.
+- Limites: cliente real043 ainda não testado; FPS/ícone nativos, LOD completo mantidos. Melhorar não equivale a garantir acabamento perfeito.
+- Referência de formato: https://github.com/Perfare/AssetStudio/blob/master/AssetStudioUtility/ModelConverter.cs (ReadCurveData/ConvertAnimations) e Classes/AnimationClip.cs.

@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "objectsCompared": 776,
+  "changedOnlyMesh": [
+    -7280344775147488012
+  ],
+  "changedVertices": 1897,
+  "anchors": 46,
+  "nativeSamples": 140,
+  "maxRootOutsideGarment": -0.006984028668758444,
+  "maxRootInsideGarment": 0.00848542099460394,
+  "armThicknessStats": {
+    "L": {
+      "modifiedVertices": 522,
+      "upperRadialScale": 1.24,
+      "forearmRadialScale": 1.2,
+      "recenterStrength": 0.95
+    },
+    "R": {
+      "modifiedVertices": 456,
+      "upperRadialScale": 1.24,
+      "forearmRadialScale": 1.2,
+      "recenterStrength": 0.95
+    }
+  },
+  "physicsNailsTextureRigUnchanged": true,
+  "UnityTested": false
+}

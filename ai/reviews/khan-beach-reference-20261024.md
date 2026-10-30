@@ -1,0 +1,21 @@
+# Passagem de trabalho — SKIN-053
+
+- Responsável / destinatário / data:Codex / usuário e próxima IA /24/10/2026.
+- Objetivo:analisar o modelo doKhan e criar imagem de proposta de skin de praia, enfatizando sua presença masculina madura.
+- Estado:análise e conceito entregues; avaliação do usuário e modelo3D pendentes.
+- Base:hero1034, aliasheroinfo/loja“huangzhong_tps”, skinpadrão efetiva“hz_tps”/“hz_fps”; arma“hz_wuqi_zs”. Manifesto confirma os recursos usados.
+- Reservados/modificados:novos `scratch/khan-inspection/`, `candidate-assets/khan-beach/`; somente documentação e derivados visuais.
+- Análise:5bundles nativos(TPS/FPS/controladores/arma) lidos, hashes/inventário em `scratch/khan-inspection/inventory.json`.
+- Corpo:Mesh−5673288980677215480,3736v/5427tri/63bones;LODs33/27bones,FPS46bones;36clipsTPS/19FPS.
+- Proporções:altura1,865m, Head1,652m, ombros1,512m/pivôs±0,208m. Poses nativas de repouso renderizadas de frente/perfil/costas e rosto ampliado conferidos.
+- Identidade visual:homem maduro, olhosazuis, rostoanguloso, cabelo branco alto penteado para trás, sobrancelhas brancas, costeletas finas/longas, bigode e pequena barba de queixo. Manto vermelho com ave dourada.
+- Cadeias de acessórios:piaodai_Bone001/002 e jianjia existem; não houve auditoria de solver/física nesta tarefa e não se garante que animação de toalha seja automática.
+- Conceito:“Khan — Maré Alta”, torso descoberto/porte forte natural e pelos discretos, bermuda teal/coral comfolhagem simples, sandálias marinhas, óculos na cabeça e relógio; toalha vermelha comfênix remete ao manto original.
+- Gerada1imagem1024×1536 pela ferramenta integrada image_gen, comfrente e rosto nativos como referências explícitas. Imagem em `candidate-assets/khan-beach/concept.png`;prompt e metadata ao lado.
+- Inspeção:corpo inteiro/rosto reconhecível, cabelo/bigode brancos, corpo adulto maduro, beachwear claro, paleta coesa, mãos/solas completas; pose com uma mão no bolso adequada ao conceito, não a uma referência técnica final.
+- Limite:é um conceito ilustrado comcenário, não imagem de modelagem/T-pose/multivista. Seaprovado, gerar referências neutras antesTripo; camisa e armadura nativas não contêm necessariamente o torso nu completo para reaproveitamento direto.
+- Testes:imagem aberta e conferida visualmente, dimensões e SHA256 registrados. Sem testes de rig/deformação/cliente nesta etapa.
+- Cliente real:nenhuma implementação. Oracle:não alterada;semregistro de skin/DLL/runtime/manifesto.
+- Evidências: `scratch/khan-inspection/{analysis,inventory}.json`, rendersnative e `candidate-assets/khan-beach/{concept-prompt.txt,metadata.json}`.
+- Próximo passo:usuário aprovar/ajustar o conceito; sódepois preparar referências de modelagem e receberGLB para adaptação.
+- Bloqueio:nenhum para entrega.

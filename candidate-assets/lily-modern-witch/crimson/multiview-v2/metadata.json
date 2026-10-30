@@ -1,0 +1,88 @@
+{
+  "task": "SKIN-049",
+  "date": "2026-10-24",
+  "method": "built-in image_gen",
+  "editedView": "back.png",
+  "authoritativeView": "front.png",
+  "unchangedViews": [
+    "front.png",
+    "left.png",
+    "right.png"
+  ],
+  "views": [
+    {
+      "file": "front.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        148,
+        7,
+        874,
+        1502
+      ],
+      "sha256": "55e09f1e3f09be1e50c5f416a2a6aca391f1ff2cfba08fddad7f2b6e180f7201"
+    },
+    {
+      "file": "back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        127,
+        13,
+        898,
+        1490
+      ],
+      "sha256": "bf8deef43a64b55d89b005ffa61c5c1b6ce3c93e478679d6465104c4a027a60a"
+    },
+    {
+      "file": "left.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        353,
+        14,
+        796,
+        1501
+      ],
+      "sha256": "2225f9f8bfeba4e1b801b7b4501bf50412c556d33cfafd594d38c91b9b8ca254"
+    },
+    {
+      "file": "right.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        196,
+        12,
+        650,
+        1487
+      ],
+      "sha256": "f00270cd6bb1e9726b60515b33fb5e22c945b90ab8299650c15ead2c2073c943"
+    }
+  ],
+  "gameChanged": false,
+  "limitation": "Illustrated non-calibrated views; final back vent begins at thigh rather than knee requested in prompt"
+}

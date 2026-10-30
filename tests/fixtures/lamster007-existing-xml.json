@@ -1,0 +1,16 @@
+{
+  "public/baxi/heroinfo.xml": "090207a417e08bae422a0647ec82ac841e480f4bc25b1a69f438f37d2dc61726",
+  "public/baxi/playerskill.xml": "940960e0a9443e589bad73909c6ee0c15749efd36894371ba0bbc6f3c365d48c",
+  "public/baxi/buff.xml": "78c81a77ff88fb8ffaadb4d0f690e264ed80ef2418f37e6284c4adb5db831f5e",
+  "public/baxi/dazhao.xml": "cb7e5cb5b1df5e7a7fd1be9c5f67296da440ceb836c412fbf4d45027dc00aee6",
+  "public/baxi/heroskill.xml": "90fd0a5a580e476a2bf5a2fd0102a89afe35683e4921612d56ce3d6f93687411",
+  "public/baxi/heroskillinfo.xml": "e7c0f55874c61e4e2bba531268e72dc4be5e271ade901ad8b6dd97ac4947d125",
+  "public/baxi/weapon.xml": "163a3d99e8b3efc9f8da54bb8470882860a73737c19be09a595f918f7d879b1a",
+  "zh/heroinfo.xml": "090207a417e08bae422a0647ec82ac841e480f4bc25b1a69f438f37d2dc61726",
+  "zh/playerskill.xml": "940960e0a9443e589bad73909c6ee0c15749efd36894371ba0bbc6f3c365d48c",
+  "zh/buff.xml": "78c81a77ff88fb8ffaadb4d0f690e264ed80ef2418f37e6284c4adb5db831f5e",
+  "zh/dazhao.xml": "cb7e5cb5b1df5e7a7fd1be9c5f67296da440ceb836c412fbf4d45027dc00aee6",
+  "zh/heroskill.xml": "90fd0a5a580e476a2bf5a2fd0102a89afe35683e4921612d56ce3d6f93687411",
+  "zh/heroskillinfo.xml": "e7c0f55874c61e4e2bba531268e72dc4be5e271ade901ad8b6dd97ac4947d125",
+  "zh/weapon.xml": "5118c7fabcba3db9b6ed60450db151065cdd28858fccaa17bebc2b7148474f19"
+}

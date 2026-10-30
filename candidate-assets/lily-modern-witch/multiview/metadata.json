@@ -1,0 +1,96 @@
+{
+  "concept": "Lily — Bruxa da Meia-Noite",
+  "hero": 1033,
+  "method": "built-in image_gen",
+  "generatedAtUTC": "2026-10-23T04:45:44.764010+00:00",
+  "frontAuthoritative": true,
+  "calibrated3DProjections": false,
+  "promptFiles": {
+    "front": "front-prompt.txt",
+    "back": "back-prompt.txt",
+    "left": "left-prompt.txt",
+    "right": "right-prompt.txt"
+  },
+  "files": [
+    {
+      "file": "front.png",
+      "size": [
+        992,
+        1586
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBoundingBox": [
+        15,
+        23,
+        982,
+        1522
+      ],
+      "bytes": 632637,
+      "sha256": "ceda62c95f5df1e0694d108aa2fffa4e32c4315aac27f9f0842c440c6902c352"
+    },
+    {
+      "file": "back.png",
+      "size": [
+        992,
+        1585
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBoundingBox": [
+        16,
+        21,
+        976,
+        1503
+      ],
+      "bytes": 600250,
+      "sha256": "2247d9488224cd2572acab8add5a6afe590f6fdd4f1ea3f80e6ed72ee3057485"
+    },
+    {
+      "file": "left.png",
+      "size": [
+        992,
+        1585
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBoundingBox": [
+        33,
+        22,
+        892,
+        1521
+      ],
+      "bytes": 496008,
+      "sha256": "e4944f82bbd82e47918901259d1f91a47c735dfeb0222a6a1421446928b91c37"
+    },
+    {
+      "file": "right.png",
+      "size": [
+        992,
+        1585
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBoundingBox": [
+        41,
+        14,
+        968,
+        1545
+      ],
+      "bytes": 492445,
+      "sha256": "7688c122f06c79bb6e84ea27aa022adb327b7b758426002ca53064438c0f7aa9"
+    }
+  ]
+}

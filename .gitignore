@@ -46,3 +46,8 @@ test_parser*.js
 export-game-data.js
 server-csharp/
 *.bak_*
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo

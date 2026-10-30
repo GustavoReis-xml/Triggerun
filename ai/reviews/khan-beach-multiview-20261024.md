@@ -1,0 +1,22 @@
+# Passagem de trabalho — SKIN-054
+
+- Responsável / destinatário / data:Codex / usuário e próxima IA /24/10/2026.
+- Objetivo:converter conceito053 aprovado em quatro referênciasTripo com proporções próximas do Khan nativo.
+- Estado:referências geradas e verificadas; modelo/skin/cliente ainda pendentes.
+- Base: `candidate-assets/khan-beach/concept.png` e análise `scratch/khan-inspection/analysis.json`.
+- Reservados/modificados:novos `candidate-assets/khan-beach/multiview/` e esta passagem; originais053 preservados.
+- Direção nativa:hero1034/hz_tps, altura1,865m/pelve0,997m/ombros1,512m/cabeça1,652m;63bones nativos.
+- Implementação:frente autoritativa gerada com conceito+modelo nativo; costas guiadas pela frente; perfis guiados pelas vistas anteriores.
+- Identidade:homem maduro forte,cabelo/bigode/barba brancos,olhosazuis;torso exposto,bermuda teal/coral,toalha vermelha/fênix,sandáliasnavy,óculos sobrecabelo,relógio preto.
+- Pose:A-pose neutra/mãos abertas/joelhos retos/pés separados. Ombros e braços visíveis, toalha junto ao tronco.
+- Assimetria:toalha/painel coral na direita anatômica;relógio na esquerda. Frenteviewerleft=toalha;costasviewerright=toalha. Perfilleft.png mostra relógio;right.png mostra toalha.
+- Artefatos:4PNG1024×1536,4prompts,README,metadata eZIP `khan-mare-alta-tripo.zip`.
+- Ferramenta:image_gen integrada. Todos os arquivos selecionados copiados paraworkspace, originais gerados preservados.
+- Inspeção visual:rosto/paleta/proporções/apoiodatoalha/assimetria/mãos e pés conferidos nas quatro vistas. Sem props,cenas ou texto.
+- Testes:PIL confirmou4RGBA/alpha0–254,contornoalpha≥32 dentro dasmargens,dimensões eSHA256;ZIPCRC/conteúdo conferidos.
+- Limites:ilustrações coerentes, não projeções calibradas; pequenas diferenças de dobras/óculos/sandálias e escala de enquadramento. Frente prevalece; números nativos orientam prompts sem provar escala exata.
+- Cliente real:não aplicável, nenhuma adaptação de malha/rig ou física validada nesta etapa.
+- Oracle:não alterada;semcadastro/manifesto/DLL/runtime.
+- Evidências:prompts/metadata/README no pacote; relatório053 e inventário nativo preservados para futura adaptação.
+- Próximo passo:usuário gerar GLB texturizado usando as quatro vistas, enviar e conferir anatomia sobtoalha/pés/dedos/acessórios antes de encaixar no Khan.
+- Bloqueio:nenhum para entrega.

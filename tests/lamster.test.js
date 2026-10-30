@@ -56,7 +56,7 @@ function block(dir, file) {
         .match(/<i\s+(?:id|heroid)="2000"[\s\S]*?(?:\/>|<\/i>)/)[0];
 }
 
-test('Lamster XMLs use native model and controller, distinct heals, no phantom ultimate and fresh cache keys', () => {
+test('Lamster XMLs use native model/controller, distinct heals and an exclusive native ultimate', () => {
     const root = path.join(__dirname,'..');
     const manifest = fs.readFileSync(path.join(root,'files_dir.xml'),'utf8');
     const readBlock = (dir,file) => {
@@ -65,12 +65,15 @@ test('Lamster XMLs use native model and controller, distinct heals, no phantom u
     };
     for(const file of ['heroinfo.xml','weapon.xml','heroskill.xml','heroskillinfo.xml','dazhao.xml']) {
         assert.equal(readBlock('public/baxi',file),readBlock('zh',file));
-        for(const dir of ['baxi','zh']) assert.ok(manifest.includes(`path="${dir}/${file}" crc="${file==='dazhao.xml'?'26091201':file==='buff.xml'?'26100704':'26100705'}"`));
+        const expectedCrc = file==='heroinfo.xml' ? '26102902' : ['weapon.xml','dazhao.xml'].includes(file) ? '26102903' : '26102901';
+        for(const dir of ['baxi','zh']) assert.ok(manifest.includes(`path="${dir}/${file}" crc="${expectedCrc}"`));
     }
     const hero=readBlock('public/baxi','heroinfo.xml');
-    assert.match(hero,/heroclass="LuoMo"/); assert.match(hero,/career="4"/);
+    assert.match(hero,/heroclass="LuoMo"/); assert.match(hero,/career="4"/); assert.match(hero,/secskill="0"/);
     assert.match(hero,/fps_model="male_fps"/);
-    assert.doesNotMatch(readBlock('public/baxi','dazhao.xml'),/<skill /);
+    assert.match(hero,/EnterSceneSound="load_dawei_1_bx\|load_dawei_2_bx\|load_dawei_3_bx"/);
+    assert.match(readBlock('public/baxi','dazhao.xml'),/doskill="22003"/);
+    assert.match(hero,/showskill="22001,22002,22004,22003\|\|"/);
     const weapons=readBlock('public/baxi','weapon.xml');
     const entries=[...weapons.matchAll(/<weapon\s[\s\S]*?<\/weapon>/g)].map(m=>m[0]);
     assert.equal(entries.length,3);
@@ -78,6 +81,11 @@ test('Lamster XMLs use native model and controller, distinct heals, no phantom u
         assert.match(entries[i],new RegExp(`shootname="${id}"`));
         assert.match(entries[i],/muzzlename="m1"/); assert.match(entries[i],/bullet_type="2"/);
         assert.match(entries[i],/keygroup="0"/);
+        assert.match(entries[i],/firemodelname_fps="0"/); // Successful-shot callback owns the new trails.
+        assert.match(entries[i],/firemodelname_tps="0"/);
+        assert.doesNotMatch(entries[i],/firesoundname="0"/);
+        assert.doesNotMatch(entries[i],/bulletboommodel="0"/);
+        assert.doesNotMatch(entries[i],/bulletboomsound="0"/);
         const heal=lamster.SUPPORT[id];
         if(heal) {
             assert.match(entries[i],new RegExp(`damageparamfriend="${heal.heal}"`));
@@ -93,7 +101,7 @@ test('Lamster selection has native skin, weapon and neutral emote in both langua
  for(const dir of ['public/baxi','zh']){
   const unlock=fs.readFileSync(path.join(__dirname,'..',dir,'herounlock.xml'),'utf8').match(/<i heroid="2000"[\s\S]*?<\/i>/)[0];
   assert.match(unlock,/default="1"/);assert.match(unlock,/isshow="1"/);
-  assert.match(unlock,/<skin id="1"[^>]*skinname="male_tps"[^>]*controller="male_tps_animator"[^>]*skinname1="male_fps"[^>]*controller1="male_fps_animator"/);
+  assert.match(unlock,/<skin id="1"[^>]*skinname="male_tps"[^>]*controller="lamster_vanguard_tps_animator"[^>]*skinname1="male_fps"[^>]*controller1="lamster_vanguard_fps_animator"/);
   assert.match(unlock,/<weapon id="1"[^>]*default="1"/);assert.match(unlock,/<emotion id="1"[^>]*animparm="0"/);
   const xml=fs.readFileSync(path.join(__dirname,'..',dir,'weapon.xml'),'utf8').match(/<i id="2000"[\s\S]*?<\/i>/)[0];
   const weapons=[...xml.matchAll(/<weapon\s[\s\S]*?<\/weapon>/g)].map(m=>m[0]);

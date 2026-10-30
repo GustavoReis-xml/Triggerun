@@ -1,0 +1,25 @@
+# Passagem de trabalho — SKIN-052
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026, instalação20:22:33UTC(17:22BRT).
+- Objetivo: corrigir o topo do braço que atravessa a manga na foto de teste real051.
+- Estado: implementação, testes e instalação concluídos; nova validaçãoUnity pendente.
+- Relato real:051 não resolveu o encaixe; seu tubo preto ficava exposto acima da manga junto ao pescoço. Unhas/física não foram alvo desta revisão.
+- Base:051 preservada em `backups/lily052-before/`; novos derivados em `candidate-assets/lily-modern-witch/shoulders/`, scripts em `scratch/lily052/`.
+- Causa confirmada:051 terminou o tubo no pivôUpperArm, acima do painel real da manga; pesos do tubo eram diferentes dos da superfície que o deveria cobrir.
+- Limite dos testes anteriores: continuidade da borda e vértices finitos não demonstram contenção pela roupa. Nesta revisão, medir superfícies/âncoras, não só esticamento.
+- Decisão: ajustar somente os90vértices adicionados051. Extremidade afunilada termina sob um painel contínuo da manga, com paleta interpolada desse mesmo painel.
+- Tentativa052 descartada antes instalar: projeção de cada vértice em painéis diferentes. Mesmo com vértices individualmente cobertos, as faces cruzavam a abertura do decote; diagnóstico colorido comprovou exposição.
+- Solução final:46âncoras de extremidade confinadas ao interior de um único triângulo por ombro, oito milímetros abaixo da superfície de repouso; trecho inferior faz transição contínua ao contorno existente.
+- Preservados bit a bit:todos os outros vértices/pesos/normais, unhas na textura051, UV/triângulos/bind/rig, rosto/cabelo, roupa baixa, materiais/texturas e física.
+- Estrutura:776objetos comparados, somenteMesh alterada;24726v/20475tri/100bones. Novas faces sem área nula; coordenadas de âncoras dentro do painel e somando1.
+- Contenção:140amostras de28clips nativos reconstruídos +21poses sintéticas com braços girados e cotovelos a100°. Maior distância assinada das âncoras à superfície =−1,80mm (interior); profundidade máxima10,00mm. Baseline051 nas mesmas correspondências chegou a+69,51mm.
+- Escopo da medição:extremidade superior e painel correspondente, não certificação de ausência de qualquer colisão em toda a roupa. Não substitui Unity/IK em execução real.
+- Inspeção visual:expressionD200 com braço dobrado, C51 perto do rosto, A50 com braços erguidos e R_fire; ponta preta exposta desapareceu nas prévias reconstruídas.
+- Diagnóstico colorido:turquesa identifica o trecho novo, magenta os braços originais e vermelho o casaco. Tentativa descartada em `scratch/lily052/point-projection-diagnostic.png`.
+- Referências locais:TBCharAnimationLilisiTps herdaTBCharAnimationThirdIK; IK é preservado. Não modificar animações/Assembly para contornar defeito de malha.
+- Oracle:TPS no mesmo caminho/version1.1.1 e entrada do manifesto CRC26102403/5563recursos;guardas dehash e backup antes de substituir.
+- Backup remoto: `/home/ubuntu/backups/lily-crimson-skin052-20261024T202233Z/runtime.tar.gz`.
+- Instalação:4HTTP comhashesexatos em1.1.1/1.3.5+TCP7777 aprovados, cópia local sincronizada. Semreinício,PM2PID922269 mantido; nenhumaDLL alterada.
+- Evidências: `candidate-assets/lily-modern-witch/shoulders/{report,validation}.json`, previews, `scratch/lily052/containment-metrics.json` e `release/`.
+- Cliente real:pendente desta revisão. Próximo passo:reabrirTRIG e repetir a pose da imagem enviada, além de braços erguidos/tiro; observar ombro e borda da manga.
+- Bloqueio:nenhum para instalação; não afirmar resolução no cliente antes do retorno real.

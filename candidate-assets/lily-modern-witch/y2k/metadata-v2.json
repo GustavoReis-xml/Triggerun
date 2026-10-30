@@ -1,0 +1,29 @@
+{
+  "task": "SKIN-046",
+  "concept": "Lily — Bruxa do Eclipse, gótica anos2000",
+  "revision": "front-v2",
+  "method": "built-in image_gen",
+  "size": [
+    992,
+    1586
+  ],
+  "mode": "RGBA",
+  "silhouetteBoundsAlpha16": [
+    166,
+    11,
+    819,
+    1543
+  ],
+  "rawAlphaBounds": [
+    0,
+    0,
+    924,
+    1554
+  ],
+  "sha256": "2d4c9256b54309aac2513c128bc84c615cef2d6d382b15cd948162a472b92727",
+  "prompt": "front-v2-prompt.txt",
+  "status": "new front proposal; user evaluation pending",
+  "casualJacketJeansAttemptRejected": true,
+  "TripoFailureCauseUnverified": true,
+  "runtimeChanged": false
+}

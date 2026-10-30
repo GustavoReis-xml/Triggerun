@@ -1,0 +1,27 @@
+# Passagem de trabalho — SKIN-044
+
+- Responsável: Codex; destinatário: usuário/próxima IA;23/10/2026 04:26UTC (01:26BRT).
+- Objetivo: peito043 aprovado no cliente; braços percebidos pequenos e manopla original ausente. Corrigir esses dois pontos preservando o peito.
+- Estado: implementada/validada em simulação/instalada; avaliação Unity044 pendente.
+- Base043 em `backups/tagaloa044-before/` (bundle em execução/manifesto/derivados completos); demais alterações não tocadas.
+- Fato: manopla é conjunto braço-arma original com18bones e trêsLODs;042 ocultou11renderers para exibir os dois braçosTripo.
+- Decisão: restaurar conjunto original completo, mantendo sua articulação/material carregado por CHeroWeapon.LoadWeaponMatOk e posições de ataque; evitar reesculpir arma funcional.
+- Braços: expansão radial até30% no braço/deltoide e12% no antebraço esquerdo, com transições;4452v alterados/deslocamento≤6,64cm.
+- Geometria central do peito043, cabeça, pernas e cauda idênticas; todos os pesos043/UV/59bones/bind preservados.
+- Manopla:11SkinnedMeshRenderer restaurados byte a byte para estado nativo; três meshes originais/UV/18bones/materiais/effects sem alteração.
+-2311triângulos do antebraço/mão/braçadeira lupinos direitos retirados sob a armadura, mantendo IDs dos vértices e tecido superior para encaixe.
+- Corpo resultante:28596v (inclui vértices cobertos não referenciados)/19274tri; manopla1641v/1452tri noLODprincipal nativo.
+- Objeto diferentes de043:1Meshcorpo+11renderers da arma; mesmos666objetos, sem adição ou exclusão de GameObjects.
+- Rig/Transform/Animator/Avatar/arma/emissores/escudo/colisores/cauda/DynamicBone/DLL permanecem intactos; nada no servidor/gameplay alterado.
+- Validação:666objetos comparados; mesmos23testes de poses sintéticas passam (P99<1,5/máximo<5 emarestas>6mm).
+-51clipes/255amostras nativas auditadas usando decodificador043; peito central preserva área com erro≈1e−6 e pesos/forma intactos.
+- Métricas completas em `scratch/tagaloa044/native-pose-metrics.json`; comparação043 usa os mesmos triângulos corporais remanescentes. Blends doAnimator/root-motion/IK/física não são reproduzidos.
+- Quatro prévias conferidas: bind, seleção(winpose300), tiro(stand_fire/amostra1) e escudo(dun_stand), com textura real da manopla separada.
+- Cuidado reprodução: renderizador antigo aplicava textura do corpo também à arma, produzindo falsa aparência de faces humanas na manopla;044usa weapon-xingttian_wuqi_tt01_d.png na prévia.
+- Oracle:xt_tps_wolf.mo/manifestoCRC26102303; somente2arquivos, backup e guardas de hashes antes substituir. Semreinício/PID891337 preservado.
+-4HTTP com hashes exatos1.1.1/1.3.5 eTCP7777 aprovados; cópia local sincronizada; sem instalaçãoDLL.
+- Backup remoto: `/home/ubuntu/backups/tagaloa-wolf-skin044-20261023T042601Z/runtime.tar.gz`.
+- Fonte atual: `candidate-assets/tagaloa-wolf/armed/`; scripts `scratch/tagaloa044/{build,verify,render,audit-native,prepare-release}.py`.
+- Evidências: `armed/{validation,report,pose-metrics}.json`, `review-sheet.jpg`; `scratch/tagaloa044/{native-audit-summary,native-pose-metrics}.json`; `release/{http-validation,installation}.json`.
+- Próximo passo: usuário reabrir cliente, conferir braços/manopla na seleção, tiro/escudo/ultimate e escolha de materiais da arma.
+- Limites:044não testada no Unity real; acabamento não garantido perfeito. FPS/ícone originais eLODcorporal completo mantidos.

@@ -1,0 +1,5372 @@
+{
+  "1003": {
+    "heroId": 1003,
+    "name": "Alice",
+    "internalName": "dianna",
+    "heroClass": "Jvjishou",
+    "career": 2,
+    "tpsBundle": "jvjishou_tps.mo",
+    "fpsBundle": "jvjishou_fps.mo",
+    "tpsController": "jvjishou_tps_animator.mo",
+    "fpsController": "jvjishou_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "gao_zhengchang",
+        "meshPathId": -2156204517402758518,
+        "vertices": 2973,
+        "triangles": 4020,
+        "boneCount": 72
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -5531228231095352660,
+        "vertices": 2214,
+        "triangles": 1841,
+        "boneCount": 28
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2156204517402758518,
+        "vertices": 2973,
+        "triangles": 4020,
+        "boneCount": 72
+      },
+      {
+        "name": "di_zhengchang",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "kakuxi_1",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -5531228231095352660,
+        "vertices": 2214,
+        "triangles": 1841,
+        "boneCount": 28
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "jjs_mod_1",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "zhong_zhengchang",
+        "meshPathId": -5531228231095352660,
+        "vertices": 2214,
+        "triangles": 1841,
+        "boneCount": 28
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "kakuxi_2",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "jjs_yinsheng",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "jjs_yinsheng2",
+        "meshPathId": 2305910227543358753,
+        "vertices": 622,
+        "triangles": 564,
+        "boneCount": 22
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2156204517402758518,
+        "vertices": 2973,
+        "triangles": 4020,
+        "boneCount": 72
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "gao_zhengchang",
+      "meshPathId": -2156204517402758518,
+      "boneCount": 72,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone003",
+        "Bone006",
+        "Bone007",
+        "Bone005",
+        "Bone004",
+        "Bone011",
+        "Bone012",
+        "Bone013",
+        "Bone009",
+        "Bone010",
+        "Bone016",
+        "Bone017",
+        "Bone015",
+        "Bone019",
+        "Bone018",
+        "Point003",
+        "Bone001",
+        "Bone001(mirrored)"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0004,
+          1.067
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0118,
+          1.15
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0181,
+          1.2505
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0053,
+          1.3695
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0572,
+          1.4755
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0491,
+          1.5264
+        ],
+        "Bip001 L Clavicle": [
+          -0.0179,
+          0.039,
+          1.4379
+        ],
+        "Bip001 L UpperArm": [
+          -0.126,
+          0.0496,
+          1.4158
+        ],
+        "Bip001 L Forearm": [
+          -0.2607,
+          0.0429,
+          1.2435
+        ],
+        "Bip001 L Hand": [
+          -0.3827,
+          -0.0369,
+          1.0938
+        ],
+        "Bip001 R Clavicle": [
+          0.0179,
+          0.039,
+          1.4379
+        ],
+        "Bip001 R UpperArm": [
+          0.126,
+          0.0496,
+          1.4158
+        ],
+        "Bip001 R Forearm": [
+          0.2607,
+          0.0429,
+          1.2435
+        ],
+        "Bip001 R Hand": [
+          0.3827,
+          -0.0369,
+          1.0938
+        ],
+        "Bip001 L Thigh": [
+          -0.0872,
+          -0.0004,
+          1.067
+        ],
+        "Bip001 L Calf": [
+          -0.0795,
+          0.0336,
+          0.641
+        ],
+        "Bip001 L Foot": [
+          -0.0711,
+          0.0813,
+          0.1834
+        ],
+        "Bip001 R Thigh": [
+          0.0872,
+          -0.0004,
+          1.067
+        ],
+        "Bip001 R Calf": [
+          0.0795,
+          0.0336,
+          0.641
+        ],
+        "Bip001 R Foot": [
+          0.0711,
+          0.0813,
+          0.1834
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2188,
+        "forearmLength": 0.209,
+        "shoulderSpan": 0.252,
+        "pelvisHeight": 1.067,
+        "shoulderHeight": 1.4158,
+        "headPivotHeight": 1.5264
+      }
+    }
+  },
+  "1006": {
+    "heroId": 1006,
+    "name": "Tagaloa",
+    "internalName": "xingtian",
+    "heroClass": "XingTian",
+    "career": 3,
+    "tpsBundle": "xt_tps.mo",
+    "fpsBundle": "xt_fps.mo",
+    "tpsController": "xingtian_tps_animator.mo",
+    "fpsController": "xingtian_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 4948551417530887962,
+        "vertices": 439,
+        "triangles": 506,
+        "boneCount": 16
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -9152136482510348210,
+        "vertices": 1180,
+        "triangles": 1565,
+        "boneCount": 21
+      },
+      {
+        "name": "xingtian_shenti_2500",
+        "meshPathId": -9152136482510348210,
+        "vertices": 1180,
+        "triangles": 1565,
+        "boneCount": 21
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 4149678304044407739,
+        "vertices": 1641,
+        "triangles": 1452,
+        "boneCount": 18
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 4948551417530887962,
+        "vertices": 439,
+        "triangles": 506,
+        "boneCount": 16
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 1243117303247619976,
+        "vertices": 369,
+        "triangles": 282,
+        "boneCount": 3
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 4149678304044407739,
+        "vertices": 1641,
+        "triangles": 1452,
+        "boneCount": 18
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -9007774870831191786,
+        "vertices": 999,
+        "triangles": 883,
+        "boneCount": 7
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -9152136482510348210,
+        "vertices": 1180,
+        "triangles": 1565,
+        "boneCount": 21
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -9007774870831191786,
+        "vertices": 999,
+        "triangles": 883,
+        "boneCount": 7
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -8612445080646183882,
+        "vertices": 3333,
+        "triangles": 3425,
+        "boneCount": 36
+      },
+      {
+        "name": "xingtian_wuqi_200",
+        "meshPathId": 1243117303247619976,
+        "vertices": 369,
+        "triangles": 282,
+        "boneCount": 3
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 4948551417530887962,
+        "vertices": 439,
+        "triangles": 506,
+        "boneCount": 16
+      },
+      {
+        "name": "xingtian_wuqi_2500",
+        "meshPathId": 4149678304044407739,
+        "vertices": 1641,
+        "triangles": 1452,
+        "boneCount": 18
+      },
+      {
+        "name": "xingtian_body",
+        "meshPathId": -8612445080646183882,
+        "vertices": 3333,
+        "triangles": 3425,
+        "boneCount": 36
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 1243117303247619976,
+        "vertices": 369,
+        "triangles": 282,
+        "boneCount": 3
+      },
+      {
+        "name": "xingtian_shenti_500",
+        "meshPathId": 4948551417530887962,
+        "vertices": 439,
+        "triangles": 506,
+        "boneCount": 16
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -8612445080646183882,
+        "vertices": 3333,
+        "triangles": 3425,
+        "boneCount": 36
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 1243117303247619976,
+        "vertices": 369,
+        "triangles": 282,
+        "boneCount": 3
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 1243117303247619976,
+        "vertices": 369,
+        "triangles": 282,
+        "boneCount": 3
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 4948551417530887962,
+        "vertices": 439,
+        "triangles": 506,
+        "boneCount": 16
+      },
+      {
+        "name": "xingtian_wuqi_500",
+        "meshPathId": -9007774870831191786,
+        "vertices": 999,
+        "triangles": 883,
+        "boneCount": 7
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": -8612445080646183882,
+      "boneCount": 36,
+      "twistBones": [
+        "Bip001 L ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0092,
+          1.1856
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0091,
+          1.3089
+        ],
+        "Bip001 Spine1": [
+          0.0,
+          -0.0091,
+          1.4946
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0068,
+          1.6797
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0572,
+          1.9114
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0215,
+          1.9834
+        ],
+        "Bip001 L Clavicle": [
+          -0.0947,
+          0.081,
+          1.8764
+        ],
+        "Bip001 L UpperArm": [
+          -0.2511,
+          0.049,
+          1.8511
+        ],
+        "Bip001 L Forearm": [
+          -0.4622,
+          0.0556,
+          1.6512
+        ],
+        "Bip001 L Hand": [
+          -0.7104,
+          -0.0656,
+          1.4865
+        ],
+        "Bip001 R Clavicle": [
+          0.0947,
+          0.081,
+          1.8764
+        ],
+        "Bip001 R UpperArm": [
+          0.2511,
+          0.049,
+          1.8511
+        ],
+        "Bip001 L Thigh": [
+          -0.1072,
+          -0.0092,
+          1.1856
+        ],
+        "Bip001 L Calf": [
+          -0.179,
+          -0.0082,
+          0.6545
+        ],
+        "Bip001 L Foot": [
+          -0.2333,
+          0.0776,
+          0.1473
+        ],
+        "Bip001 R Thigh": [
+          0.1072,
+          -0.0092,
+          1.1856
+        ],
+        "Bip001 R Calf": [
+          0.179,
+          -0.0082,
+          0.6545
+        ],
+        "Bip001 R Foot": [
+          0.2333,
+          0.0776,
+          0.1473
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2908,
+        "forearmLength": 0.3216,
+        "shoulderSpan": 0.5022,
+        "pelvisHeight": 1.1856,
+        "shoulderHeight": 1.8511,
+        "headPivotHeight": 1.9834
+      }
+    }
+  },
+  "1015": {
+    "heroId": 1015,
+    "name": "Lars",
+    "internalName": "zhongjiezhe",
+    "heroClass": "Terminator",
+    "career": 1,
+    "tpsBundle": "76_tps.mo",
+    "fpsBundle": "76_fps.mo",
+    "tpsController": "zhongjiezhe_tps_animator.mo",
+    "fpsController": "zhongjiezhe_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "zhong",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "500_shenti",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "jiatelin",
+        "meshPathId": 3314971309117747277,
+        "vertices": 1370,
+        "triangles": 882,
+        "boneCount": 8
+      },
+      {
+        "name": "di",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "zhong",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "2500_shenti",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "gao_hongxian",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "gao_fuhuo_wudi",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "zhongjiezhe_gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "gao",
+      "meshPathId": 8583054048263222505,
+      "boneCount": 54,
+      "twistBones": [
+        "Bip001 R ForeTwist1",
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist1"
+      ],
+      "extraClothOrWeaponBones": [],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0438,
+          1.1046
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0372,
+          1.2255
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0528,
+          1.3474
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0712,
+          1.5507
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0588,
+          1.6156
+        ],
+        "Bip001 L Clavicle": [
+          -0.0638,
+          0.0694,
+          1.4692
+        ],
+        "Bip001 L UpperArm": [
+          -0.2161,
+          0.0871,
+          1.456
+        ],
+        "Bip001 L Forearm": [
+          -0.3818,
+          0.1047,
+          1.2132
+        ],
+        "Bip001 L Hand": [
+          -0.521,
+          0.0738,
+          1.0053
+        ],
+        "Bip001 R Clavicle": [
+          0.0638,
+          0.0694,
+          1.4692
+        ],
+        "Bip001 R UpperArm": [
+          0.2161,
+          0.0871,
+          1.456
+        ],
+        "Bip001 R Hand": [
+          0.521,
+          0.0738,
+          1.0053
+        ],
+        "Bip001 L Thigh": [
+          -0.1172,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 L Calf": [
+          -0.163,
+          0.0505,
+          0.5753
+        ],
+        "Bip001 L Foot": [
+          -0.1998,
+          0.1391,
+          0.1246
+        ],
+        "Bip001 R Thigh": [
+          0.1172,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 R Calf": [
+          0.163,
+          0.0505,
+          0.5753
+        ],
+        "Bip001 R Foot": [
+          0.1998,
+          0.1391,
+          0.1246
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2945,
+        "forearmLength": 0.2521,
+        "shoulderSpan": 0.4322,
+        "pelvisHeight": 1.0038,
+        "shoulderHeight": 1.456,
+        "headPivotHeight": 1.6156
+      }
+    }
+  },
+  "1017": {
+    "heroId": 1017,
+    "name": "Celina",
+    "internalName": "mulan",
+    "heroClass": "XingJiLieRen",
+    "career": 1,
+    "tpsBundle": "xingjilieren_tps.mo",
+    "fpsBundle": "xingjilieren_fps.mo",
+    "tpsController": "xingjilieren_tps_animator.mo",
+    "fpsController": "xingjilieren_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "mulan_tps_R_qiang",
+        "meshPathId": -2325301838246981905,
+        "vertices": 2352,
+        "triangles": 1568,
+        "boneCount": 7
+      },
+      {
+        "name": "shenti",
+        "meshPathId": 5244958689840648268,
+        "vertices": 2908,
+        "triangles": 3627,
+        "boneCount": 62
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "jian_mulan_tps_500",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "shanxian",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "mulan_tps_L_qiang",
+        "meshPathId": 3914492861029957340,
+        "vertices": 2352,
+        "triangles": 1568,
+        "boneCount": 7
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "jian_mulan_tps_2500",
+        "meshPathId": -4581174727534456284,
+        "vertices": 1412,
+        "triangles": 1687,
+        "boneCount": 29
+      },
+      {
+        "name": "jian_mulan_tps_500",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -4581174727534456284,
+        "vertices": 1412,
+        "triangles": 1687,
+        "boneCount": 29
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 3483829446691016553,
+        "vertices": 570,
+        "triangles": 595,
+        "boneCount": 23
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 5244958689840648268,
+        "vertices": 2908,
+        "triangles": 3627,
+        "boneCount": 62
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 5244958689840648268,
+        "vertices": 2908,
+        "triangles": 3627,
+        "boneCount": 62
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -4581174727534456284,
+        "vertices": 1412,
+        "triangles": 1687,
+        "boneCount": 29
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "shenti",
+      "meshPathId": 5244958689840648268,
+      "boneCount": 62,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone019",
+        "Bone013",
+        "Bone009",
+        "Bone017",
+        "Bone015",
+        "Bone001",
+        "Bone004",
+        "Bone003",
+        "Bone006",
+        "Bone007"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          -0.0369,
+          1.034
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0628,
+          1.1123
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0821,
+          1.2033
+        ],
+        "Bip001 Spine2": [
+          -0.0,
+          -0.0728,
+          1.3211
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0145,
+          1.5008
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0033,
+          1.5547
+        ],
+        "Bip001 L Clavicle": [
+          -0.0435,
+          0.0258,
+          1.4642
+        ],
+        "Bip001 L UpperArm": [
+          -0.1354,
+          0.01,
+          1.4254
+        ],
+        "Bip001 L Hand": [
+          -0.3824,
+          -0.1609,
+          1.098
+        ],
+        "Bip001 R Clavicle": [
+          0.0436,
+          0.0258,
+          1.4642
+        ],
+        "Bip001 R UpperArm": [
+          0.1354,
+          0.01,
+          1.4254
+        ],
+        "Bip001 R Hand": [
+          0.3824,
+          -0.1609,
+          1.098
+        ],
+        "Bip001 L Thigh": [
+          -0.0852,
+          -0.0369,
+          1.034
+        ],
+        "Bip001 L Calf": [
+          -0.0714,
+          -0.0214,
+          0.5963
+        ],
+        "Bip001 L Foot": [
+          -0.0567,
+          0.0045,
+          0.1312
+        ],
+        "Bip001 R Thigh": [
+          0.0852,
+          -0.0369,
+          1.034
+        ],
+        "Bip001 R Calf": [
+          0.0714,
+          -0.0214,
+          0.5963
+        ],
+        "Bip001 R Foot": [
+          0.0567,
+          0.0045,
+          0.1312
+        ]
+      },
+      "proportions": {
+        "shoulderSpan": 0.2708,
+        "pelvisHeight": 1.034,
+        "shoulderHeight": 1.4254,
+        "headPivotHeight": 1.5547
+      }
+    }
+  },
+  "1021": {
+    "heroId": 1021,
+    "name": "Carmen",
+    "internalName": "taliya",
+    "heroClass": "Jipusai",
+    "career": 4,
+    "tpsBundle": "jipusainvlang_tps.mo",
+    "fpsBundle": "jipusainvlang_fps.mo",
+    "tpsController": "jipusai_tps_animator.mo",
+    "fpsController": "jipusai_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "st_zhong",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "st_di_fuhuo_wudi",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "st_zhong_fuhuo_wudi",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "t_zhong",
+        "meshPathId": -3594988218547543398,
+        "vertices": 160,
+        "triangles": 196,
+        "boneCount": 2
+      },
+      {
+        "name": "jian_taliya_tps",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "t_di",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_di_hongxian",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_di",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_zhong",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "st_zhong_hongxian",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "tf_zhong_hongxian",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "st_di_hongxian",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "tf_di_fuhuo_wudi",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "st_di",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "tf_zhong_fuhuo_wudi",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": 2843771506193642324,
+      "boneCount": 81,
+      "twistBones": [
+        "Bip001 L ForeTwist1",
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist1",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone033",
+        "Bone034",
+        "Bone038",
+        "Bone035",
+        "Bone030",
+        "Bone041",
+        "Bone029",
+        "Bone040",
+        "Bone037",
+        "Bone039",
+        "Bone011",
+        "Bone028",
+        "Bone031",
+        "Bone042",
+        "Bone043",
+        "Bone045",
+        "Bone036",
+        "Bone013",
+        "Bone012",
+        "Bone013(mirrored)",
+        "Bone012(mirrored)",
+        "Bone001(mirrored)",
+        "Bone001",
+        "Bone024",
+        "Bone025",
+        "Bone026",
+        "Bone023"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0174,
+          1.1135
+        ],
+        "Bip001 Spine1": [
+          0.0,
+          -0.0249,
+          1.2381
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0004,
+          1.3535
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0293,
+          1.4838
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0109,
+          1.5378
+        ],
+        "Bip001 L Clavicle": [
+          -0.031,
+          0.0368,
+          1.4466
+        ],
+        "Bip001 L UpperArm": [
+          -0.1218,
+          0.048,
+          1.4262
+        ],
+        "Bip001 L Hand": [
+          -0.4712,
+          -0.0108,
+          1.0944
+        ],
+        "Bip001 R Clavicle": [
+          0.031,
+          0.0368,
+          1.4466
+        ],
+        "Bip001 R UpperArm": [
+          0.1218,
+          0.048,
+          1.4262
+        ],
+        "Bip001 R Hand": [
+          0.4712,
+          -0.0108,
+          1.0944
+        ],
+        "Bip001 L Thigh": [
+          -0.0822,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 L Calf": [
+          -0.0826,
+          -0.011,
+          0.6477
+        ],
+        "Bip001 L Foot": [
+          -0.0834,
+          0.0255,
+          0.1788
+        ],
+        "Bip001 R Thigh": [
+          0.0822,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 R Calf": [
+          0.0788,
+          -0.0104,
+          0.6478
+        ],
+        "Bip001 R Foot": [
+          0.0747,
+          0.0268,
+          0.1789
+        ]
+      },
+      "proportions": {
+        "shoulderSpan": 0.2436,
+        "pelvisHeight": 1.019,
+        "shoulderHeight": 1.4262,
+        "headPivotHeight": 1.5378
+      }
+    }
+  },
+  "1023": {
+    "heroId": 1023,
+    "name": "Brigit",
+    "internalName": "zhurong",
+    "heroClass": "Zhurong",
+    "career": 2,
+    "tpsBundle": "zhurong_tps.mo",
+    "fpsBundle": "zhurong_fps.mo",
+    "tpsController": "zhurong_tps_animator.mo",
+    "fpsController": "zhurong_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "zr_shenti_2500",
+        "meshPathId": 677933975846846559,
+        "vertices": 1673,
+        "triangles": 1724,
+        "boneCount": 28
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 2850531138092633242,
+        "vertices": 3751,
+        "triangles": 4467,
+        "boneCount": 71
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 2850531138092633242,
+        "vertices": 3751,
+        "triangles": 4467,
+        "boneCount": 71
+      },
+      {
+        "name": "zhurong_shenti",
+        "meshPathId": 2850531138092633242,
+        "vertices": 3751,
+        "triangles": 4467,
+        "boneCount": 71
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -3553445517087851969,
+        "vertices": 521,
+        "triangles": 465,
+        "boneCount": 19
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 677933975846846559,
+        "vertices": 1673,
+        "triangles": 1724,
+        "boneCount": 28
+      },
+      {
+        "name": "zhurong_zhizhu",
+        "meshPathId": -2847706574302678231,
+        "vertices": 984,
+        "triangles": 550,
+        "boneCount": 14
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -3553445517087851969,
+        "vertices": 521,
+        "triangles": 465,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 677933975846846559,
+        "vertices": 1673,
+        "triangles": 1724,
+        "boneCount": 28
+      },
+      {
+        "name": "zr_shenti_500",
+        "meshPathId": -3553445517087851969,
+        "vertices": 521,
+        "triangles": 465,
+        "boneCount": 19
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": -3553445517087851969,
+        "vertices": 521,
+        "triangles": 465,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": -3553445517087851969,
+        "vertices": 521,
+        "triangles": 465,
+        "boneCount": 19
+      },
+      {
+        "name": "zhurong_wuqi",
+        "meshPathId": 5467413472038155031,
+        "vertices": 1592,
+        "triangles": 1153,
+        "boneCount": 17
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "hongxian",
+      "meshPathId": 2850531138092633242,
+      "boneCount": 71,
+      "twistBones": [
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone006",
+        "Bone021",
+        "Bone009",
+        "Bone008",
+        "Bone023",
+        "Bone022",
+        "Bone019",
+        "Bone020",
+        "Bone018",
+        "Bone017",
+        "Bone011",
+        "Bone016",
+        "Bone014",
+        "Bone013",
+        "Bone012",
+        "Bone015",
+        "Bone010",
+        "Bone002",
+        "Bone003"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.018,
+          0.9603
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.018,
+          1.0795
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0114,
+          1.1758
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0305,
+          1.3036
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0696,
+          1.4222
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0581,
+          1.4823
+        ],
+        "Bip001 L Clavicle": [
+          -0.0329,
+          0.0695,
+          1.3994
+        ],
+        "Bip001 L UpperArm": [
+          -0.1497,
+          0.0786,
+          1.3383
+        ],
+        "Bip001 L Hand": [
+          -0.4477,
+          0.0489,
+          1.0417
+        ],
+        "Bip001 R Clavicle": [
+          0.0329,
+          0.0695,
+          1.3994
+        ],
+        "Bip001 R UpperArm": [
+          0.1497,
+          0.0786,
+          1.3383
+        ],
+        "Bip001 R Hand": [
+          0.4477,
+          0.0489,
+          1.0417
+        ],
+        "Bip001 L Thigh": [
+          -0.0976,
+          0.018,
+          0.9603
+        ],
+        "Bip001 L Calf": [
+          -0.1498,
+          0.0184,
+          0.5417
+        ],
+        "Bip001 L Foot": [
+          -0.1995,
+          0.0774,
+          0.1133
+        ],
+        "Bip001 R Thigh": [
+          0.0976,
+          0.018,
+          0.9603
+        ],
+        "Bip001 R Calf": [
+          0.1498,
+          0.0184,
+          0.5417
+        ],
+        "Bip001 R Foot": [
+          0.1995,
+          0.0774,
+          0.1133
+        ]
+      },
+      "proportions": {
+        "shoulderSpan": 0.2994,
+        "pelvisHeight": 0.9603,
+        "shoulderHeight": 1.3383,
+        "headPivotHeight": 1.4823
+      }
+    }
+  },
+  "1016": {
+    "heroId": 1016,
+    "name": "Valkyrie",
+    "internalName": "waerjili",
+    "heroClass": "Valkyries",
+    "career": 3,
+    "tpsBundle": "waerjili_tps.mo",
+    "fpsBundle": "waerjili_fps.mo",
+    "tpsController": "waerjili_tps_animator.mo",
+    "fpsController": "waerjili_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "hongxian",
+        "meshPathId": 8740939414059929440,
+        "vertices": 2633,
+        "triangles": 3473,
+        "boneCount": 72
+      },
+      {
+        "name": "waerjili_shenti_2500",
+        "meshPathId": -8482005214222911495,
+        "vertices": 1710,
+        "triangles": 1968,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -8482005214222911495,
+        "vertices": 1710,
+        "triangles": 1968,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -8482005214222911495,
+        "vertices": 1710,
+        "triangles": 1968,
+        "boneCount": 25
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 5102470105445538803,
+        "vertices": 587,
+        "triangles": 518,
+        "boneCount": 19
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 5102470105445538803,
+        "vertices": 587,
+        "triangles": 518,
+        "boneCount": 19
+      },
+      {
+        "name": "waerjili_shenti_500",
+        "meshPathId": 5102470105445538803,
+        "vertices": 587,
+        "triangles": 518,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 8740939414059929440,
+        "vertices": 2633,
+        "triangles": 3473,
+        "boneCount": 72
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 5102470105445538803,
+        "vertices": 587,
+        "triangles": 518,
+        "boneCount": 19
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 5102470105445538803,
+        "vertices": 587,
+        "triangles": 518,
+        "boneCount": 19
+      },
+      {
+        "name": "waerjili_tps",
+        "meshPathId": 8740939414059929440,
+        "vertices": 2633,
+        "triangles": 3473,
+        "boneCount": 72
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "hongxian",
+      "meshPathId": 8740939414059929440,
+      "boneCount": 72,
+      "twistBones": [
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone014",
+        "Bone018",
+        "Bone013",
+        "Bone014(mirrored)",
+        "Bone018(mirrored)",
+        "Bone013(mirrored)",
+        "Bone015",
+        "Bone015(mirrored)",
+        "Bone012",
+        "Bone009",
+        "Bone001",
+        "Bone002",
+        "Bone003",
+        "Bone007",
+        "Bone004",
+        "Bone006",
+        "Bone010",
+        "Bone011"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0303,
+          1.0439
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.051,
+          1.1238
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0666,
+          1.2199
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0461,
+          1.3374
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0269,
+          1.5201
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0194,
+          1.5641
+        ],
+        "Bip001 L Clavicle": [
+          -0.0299,
+          0.0322,
+          1.4749
+        ],
+        "Bip001 L UpperArm": [
+          -0.1215,
+          0.0376,
+          1.4431
+        ],
+        "Bip001 L Forearm": [
+          -0.2896,
+          0.0439,
+          1.2946
+        ],
+        "Bip001 L Hand": [
+          -0.48,
+          -0.001,
+          1.1284
+        ],
+        "Bip001 R Clavicle": [
+          0.0299,
+          0.0322,
+          1.4749
+        ],
+        "Bip001 R UpperArm": [
+          0.1215,
+          0.0376,
+          1.4431
+        ],
+        "Bip001 R Forearm": [
+          0.2896,
+          0.0439,
+          1.2946
+        ],
+        "Bip001 R Hand": [
+          0.48,
+          -0.001,
+          1.1284
+        ],
+        "Bip001 L Thigh": [
+          -0.0856,
+          -0.0303,
+          1.0439
+        ],
+        "Bip001 L Calf": [
+          -0.1089,
+          0.0,
+          0.6708
+        ],
+        "Bip001 L Foot": [
+          -0.1374,
+          0.0428,
+          0.215
+        ],
+        "Bip001 R Thigh": [
+          0.0856,
+          -0.0303,
+          1.0439
+        ],
+        "Bip001 R Calf": [
+          0.1089,
+          0.0,
+          0.6708
+        ],
+        "Bip001 R Foot": [
+          0.1374,
+          0.0428,
+          0.215
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2244,
+        "forearmLength": 0.2567,
+        "shoulderSpan": 0.243,
+        "pelvisHeight": 1.0439,
+        "shoulderHeight": 1.4431,
+        "headPivotHeight": 1.5641
+      }
+    }
+  },
+  "1005": {
+    "heroId": 1005,
+    "name": "Glider",
+    "internalName": "leizhenzi",
+    "heroClass": "LeiZhenZi",
+    "career": 1,
+    "tpsBundle": "leizhenzi_tps.mo",
+    "fpsBundle": "leizhenzi_fps.mo",
+    "tpsController": "leizhenzi_tps_animator.mo",
+    "fpsController": "leizhenzi_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "dazhaohon4",
+        "meshPathId": -3720819294990169310,
+        "vertices": 1367,
+        "triangles": 2278,
+        "boneCount": 2
+      },
+      {
+        "name": "shenti_500",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "di",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": -2678317731008639354,
+        "vertices": 1999,
+        "triangles": 2125,
+        "boneCount": 27
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -812111660441857929,
+        "vertices": 3036,
+        "triangles": 3118,
+        "boneCount": 57
+      },
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": -2678317731008639354,
+        "vertices": 1999,
+        "triangles": 2125,
+        "boneCount": 27
+      },
+      {
+        "name": "shenti_2500",
+        "meshPathId": -2678317731008639354,
+        "vertices": 1999,
+        "triangles": 2125,
+        "boneCount": 27
+      },
+      {
+        "name": "gao",
+        "meshPathId": -812111660441857929,
+        "vertices": 3036,
+        "triangles": 3118,
+        "boneCount": 57
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "dazhaohon",
+        "meshPathId": 3169982718253439877,
+        "vertices": 11716,
+        "triangles": 16282,
+        "boneCount": 54
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -812111660441857929,
+        "vertices": 3036,
+        "triangles": 3118,
+        "boneCount": 57
+      },
+      {
+        "name": "mod_leizhenzi",
+        "meshPathId": -812111660441857929,
+        "vertices": 3036,
+        "triangles": 3118,
+        "boneCount": 57
+      },
+      {
+        "name": "zhong",
+        "meshPathId": -2678317731008639354,
+        "vertices": 1999,
+        "triangles": 2125,
+        "boneCount": 27
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 3826980825347068173,
+        "vertices": 686,
+        "triangles": 587,
+        "boneCount": 21
+      },
+      {
+        "name": "dazhaohon5",
+        "meshPathId": 6196672261159250364,
+        "vertices": 4598,
+        "triangles": 5192,
+        "boneCount": 10
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "dazhaohon",
+      "meshPathId": 3169982718253439877,
+      "boneCount": 54,
+      "twistBones": [],
+      "extraClothOrWeaponBones": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "keyJoints": {},
+      "proportions": {}
+    }
+  },
+  "1022": {
+    "heroId": 1022,
+    "name": "Scarlett",
+    "internalName": "xuenv",
+    "heroClass": "YukiOnna",
+    "career": 2,
+    "tpsBundle": "xuenv_tps.mo",
+    "fpsBundle": "xuenv_fps.mo",
+    "tpsController": "xuenv_tps_animator.mo",
+    "fpsController": "xuenv_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -3778504882761922069,
+        "vertices": 569,
+        "triangles": 502,
+        "boneCount": 24
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": -3778504882761922069,
+        "vertices": 569,
+        "triangles": 502,
+        "boneCount": 24
+      },
+      {
+        "name": "qiangshen",
+        "meshPathId": 8892121545115576622,
+        "vertices": 1901,
+        "triangles": 1559,
+        "boneCount": 4
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 3871185905290990773,
+        "vertices": 3057,
+        "triangles": 3709,
+        "boneCount": 84
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -3809769049413947693,
+        "vertices": 1282,
+        "triangles": 1290,
+        "boneCount": 40
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -3778504882761922069,
+        "vertices": 569,
+        "triangles": 502,
+        "boneCount": 24
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -3809769049413947693,
+        "vertices": 1282,
+        "triangles": 1290,
+        "boneCount": 40
+      },
+      {
+        "name": "xuenv_tps",
+        "meshPathId": 3871185905290990773,
+        "vertices": 3057,
+        "triangles": 3709,
+        "boneCount": 84
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": -3778504882761922069,
+        "vertices": 569,
+        "triangles": 502,
+        "boneCount": 24
+      },
+      {
+        "name": "xuenv_tps_2500",
+        "meshPathId": -3809769049413947693,
+        "vertices": 1282,
+        "triangles": 1290,
+        "boneCount": 40
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 3871185905290990773,
+        "vertices": 3057,
+        "triangles": 3709,
+        "boneCount": 84
+      },
+      {
+        "name": "xuenv_tps_500",
+        "meshPathId": -3778504882761922069,
+        "vertices": 569,
+        "triangles": 502,
+        "boneCount": 24
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": 3871185905290990773,
+      "boneCount": 84,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone012",
+        "Bone027",
+        "Bone014",
+        "Bone015",
+        "Bone006",
+        "Bone007",
+        "Bone008",
+        "Bone006(mirrored)",
+        "Bone007(mirrored)",
+        "Bone008(mirrored)",
+        "Bone026(mirrored)",
+        "Bone026",
+        "Bone001(mirrored)",
+        "Bone002(mirrored)",
+        "Bone003(mirrored)",
+        "Bone004(mirrored)",
+        "Bone001",
+        "Bone002",
+        "Bone003",
+        "Bone004",
+        "Bone017",
+        "Bone021",
+        "Bone019",
+        "Bone020",
+        "Bone018",
+        "Bone032(mirrored)",
+        "Bone030(mirrored)",
+        "Bone032",
+        "Bone030",
+        "Bone010",
+        "Bone023",
+        "Bone024"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.026,
+          0.9869
+        ],
+        "Bip001 Spine": [
+          -0.0,
+          -0.0259,
+          1.0933
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0259,
+          1.2021
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0128,
+          1.3195
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0123,
+          1.4222
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0064,
+          1.4827
+        ],
+        "Bip001 L Clavicle": [
+          -0.0273,
+          0.0329,
+          1.3869
+        ],
+        "Bip001 L UpperArm": [
+          -0.0851,
+          0.0329,
+          1.3868
+        ],
+        "Bip001 L Forearm": [
+          -0.3288,
+          0.0325,
+          1.2322
+        ],
+        "Bip001 L Hand": [
+          -0.5257,
+          -0.0014,
+          1.104
+        ],
+        "Bip001 R Clavicle": [
+          0.0273,
+          0.0329,
+          1.3868
+        ],
+        "Bip001 R UpperArm": [
+          0.0851,
+          0.0329,
+          1.3868
+        ],
+        "Bip001 R Forearm": [
+          0.3288,
+          0.0325,
+          1.2322
+        ],
+        "Bip001 R Hand": [
+          0.5257,
+          -0.0014,
+          1.104
+        ],
+        "Bip001 L Thigh": [
+          -0.081,
+          -0.026,
+          0.9869
+        ],
+        "Bip001 L Calf": [
+          -0.0981,
+          -0.0206,
+          0.6344
+        ],
+        "Bip001 L Foot": [
+          -0.1198,
+          0.0635,
+          0.1962
+        ],
+        "Bip001 R Thigh": [
+          0.081,
+          -0.026,
+          0.9869
+        ],
+        "Bip001 R Calf": [
+          0.0981,
+          -0.0206,
+          0.6344
+        ],
+        "Bip001 R Foot": [
+          0.1198,
+          0.0635,
+          0.1962
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2886,
+        "forearmLength": 0.2374,
+        "shoulderSpan": 0.1702,
+        "pelvisHeight": 0.9869,
+        "shoulderHeight": 1.3868,
+        "headPivotHeight": 1.4827
+      }
+    }
+  },
+  "1024": {
+    "heroId": 1024,
+    "name": "Shogun",
+    "internalName": "houyi",
+    "heroClass": "HouYi",
+    "career": 2,
+    "tpsBundle": "houyi_tps.mo",
+    "fpsBundle": "houyi_fps.mo",
+    "tpsController": "houyi_tps_animator.mo",
+    "fpsController": "houyi_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "hongxian",
+        "meshPathId": -4379871602250762842,
+        "vertices": 6090,
+        "triangles": 8520,
+        "boneCount": 56
+      },
+      {
+        "name": "gong_mod",
+        "meshPathId": 7877495169409509238,
+        "vertices": 5885,
+        "triangles": 4024,
+        "boneCount": 6
+      },
+      {
+        "name": "2500_hongxian",
+        "meshPathId": -6582764892968356270,
+        "vertices": 1270,
+        "triangles": 1434,
+        "boneCount": 25
+      },
+      {
+        "name": "gongjianshou_mod",
+        "meshPathId": -4379871602250762842,
+        "vertices": 6090,
+        "triangles": 8520,
+        "boneCount": 56
+      },
+      {
+        "name": "170301hyjc_shenti_500",
+        "meshPathId": 6359143567409260530,
+        "vertices": 483,
+        "triangles": 483,
+        "boneCount": 25
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -4379871602250762842,
+        "vertices": 6090,
+        "triangles": 8520,
+        "boneCount": 56
+      },
+      {
+        "name": "170301hyjc_shenti_2500",
+        "meshPathId": -6582764892968356270,
+        "vertices": 1270,
+        "triangles": 1434,
+        "boneCount": 25
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 6359143567409260530,
+        "vertices": 483,
+        "triangles": 483,
+        "boneCount": 25
+      },
+      {
+        "name": "500_hongxian",
+        "meshPathId": 6359143567409260530,
+        "vertices": 483,
+        "triangles": 483,
+        "boneCount": 25
+      },
+      {
+        "name": "2500_fuhuo_wudi",
+        "meshPathId": -6582764892968356270,
+        "vertices": 1270,
+        "triangles": 1434,
+        "boneCount": 25
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 6359143567409260530,
+        "vertices": 483,
+        "triangles": 483,
+        "boneCount": 25
+      },
+      {
+        "name": "500_fuhuo_wudi",
+        "meshPathId": 6359143567409260530,
+        "vertices": 483,
+        "triangles": 483,
+        "boneCount": 25
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "hongxian",
+      "meshPathId": -4379871602250762842,
+      "boneCount": 56,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone005",
+        "Bone006"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          -0.0259,
+          1.0194
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0369,
+          1.0924
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0567,
+          1.244
+        ],
+        "Bip001 Spine2": [
+          -0.0,
+          -0.0406,
+          1.3961
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0237,
+          1.5631
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0066,
+          1.6213
+        ],
+        "Bip001 L Clavicle": [
+          -0.0534,
+          0.0327,
+          1.5449
+        ],
+        "Bip001 L UpperArm": [
+          -0.1632,
+          0.0369,
+          1.5121
+        ],
+        "Bip001 L Forearm": [
+          -0.2883,
+          0.0132,
+          1.28
+        ],
+        "Bip001 L Hand": [
+          -0.3939,
+          -0.0475,
+          1.0899
+        ],
+        "Bip001 R Clavicle": [
+          0.0534,
+          0.0327,
+          1.5449
+        ],
+        "Bip001 R UpperArm": [
+          0.1632,
+          0.0369,
+          1.5121
+        ],
+        "Bip001 R Forearm": [
+          0.2883,
+          0.0132,
+          1.28
+        ],
+        "Bip001 R Hand": [
+          0.3939,
+          -0.0475,
+          1.0899
+        ],
+        "Bip001 L Thigh": [
+          -0.0882,
+          -0.0259,
+          1.0194
+        ],
+        "Bip001 L Calf": [
+          -0.1245,
+          0.0284,
+          0.6621
+        ],
+        "Bip001 L Foot": [
+          -0.1809,
+          0.0808,
+          0.1071
+        ],
+        "Bip001 R Thigh": [
+          0.0882,
+          -0.0259,
+          1.0194
+        ],
+        "Bip001 R Calf": [
+          0.1245,
+          0.0284,
+          0.6621
+        ],
+        "Bip001 R Foot": [
+          0.1809,
+          0.0808,
+          0.1071
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2647,
+        "forearmLength": 0.2258,
+        "shoulderSpan": 0.3264,
+        "pelvisHeight": 1.0194,
+        "shoulderHeight": 1.5121,
+        "headPivotHeight": 1.6213
+      }
+    }
+  },
+  "1025": {
+    "heroId": 1025,
+    "name": "Eva",
+    "internalName": "linglong",
+    "heroClass": "LingLong",
+    "career": 4,
+    "tpsBundle": "linglong_tps.mo",
+    "fpsBundle": "linglong_fps.mo",
+    "tpsController": "zhumeng_tps_animator.mo",
+    "fpsController": "zhumeng_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "LOD_2500_shenti",
+        "meshPathId": -120489982989183397,
+        "vertices": 2004,
+        "triangles": 2026,
+        "boneCount": 19
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": -3129833646021474542,
+        "vertices": 523,
+        "triangles": 504,
+        "boneCount": 20
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -3129833646021474542,
+        "vertices": 523,
+        "triangles": 504,
+        "boneCount": 20
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -120489982989183397,
+        "vertices": 2004,
+        "triangles": 2026,
+        "boneCount": 19
+      },
+      {
+        "name": "LOD_0_shenti",
+        "meshPathId": 4263895525124096782,
+        "vertices": 3972,
+        "triangles": 4462,
+        "boneCount": 54
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": -3129833646021474542,
+        "vertices": 523,
+        "triangles": 504,
+        "boneCount": 20
+      },
+      {
+        "name": "LOD_500_shenti",
+        "meshPathId": -3129833646021474542,
+        "vertices": 523,
+        "triangles": 504,
+        "boneCount": 20
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 4263895525124096782,
+        "vertices": 3972,
+        "triangles": 4462,
+        "boneCount": 54
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 4263895525124096782,
+        "vertices": 3972,
+        "triangles": 4462,
+        "boneCount": 54
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -120489982989183397,
+        "vertices": 2004,
+        "triangles": 2026,
+        "boneCount": 19
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -3129833646021474542,
+        "vertices": 523,
+        "triangles": 504,
+        "boneCount": 20
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "LOD_0_shenti",
+      "meshPathId": 4263895525124096782,
+      "boneCount": 54,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone001(mirrored)",
+        "Bone001"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          -0.0812,
+          0.9994
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0811,
+          1.0881
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0905,
+          1.193
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0773,
+          1.3192
+        ],
+        "Bip001 Neck": [
+          0.0,
+          -0.0331,
+          1.4445
+        ],
+        "Bip001 Head": [
+          0.0,
+          -0.047,
+          1.5028
+        ],
+        "Bip001 L Clavicle": [
+          -0.0208,
+          -0.0237,
+          1.4218
+        ],
+        "Bip001 L UpperArm": [
+          -0.1115,
+          -0.0177,
+          1.3899
+        ],
+        "Bip001 L Hand": [
+          -0.3141,
+          -0.0411,
+          0.9942
+        ],
+        "Bip001 R Clavicle": [
+          0.0208,
+          -0.0237,
+          1.4218
+        ],
+        "Bip001 R UpperArm": [
+          0.1115,
+          -0.0177,
+          1.3899
+        ],
+        "Bip001 R Hand": [
+          0.3141,
+          -0.0411,
+          0.9942
+        ],
+        "Bip001 L Thigh": [
+          -0.0788,
+          -0.0812,
+          0.9994
+        ],
+        "Bip001 L Calf": [
+          -0.1179,
+          -0.0339,
+          0.5964
+        ],
+        "Bip001 L Foot": [
+          -0.1544,
+          0.0155,
+          0.2149
+        ],
+        "Bip001 R Thigh": [
+          0.0788,
+          -0.0812,
+          0.9994
+        ],
+        "Bip001 R Calf": [
+          0.1179,
+          -0.0339,
+          0.5964
+        ],
+        "Bip001 R Foot": [
+          0.1544,
+          0.0155,
+          0.2149
+        ]
+      },
+      "proportions": {
+        "shoulderSpan": 0.223,
+        "pelvisHeight": 0.9994,
+        "shoulderHeight": 1.3899,
+        "headPivotHeight": 1.5028
+      }
+    }
+  },
+  "1026": {
+    "heroId": 1026,
+    "name": "Dragos",
+    "internalName": "aidehua",
+    "heroClass": "Vampire",
+    "career": 1,
+    "tpsBundle": "vampire_tps.mo",
+    "fpsBundle": "vampire_fps.mo",
+    "tpsController": "vampire_tps_animator.mo",
+    "fpsController": "vampire_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "Bat_Skin",
+        "meshPathId": -2101445641561532781,
+        "vertices": 3844,
+        "triangles": 6220,
+        "boneCount": 29
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2101445641561532781,
+        "vertices": 3844,
+        "triangles": 6220,
+        "boneCount": 29
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -7609149127213735202,
+        "vertices": 2913,
+        "triangles": 4299,
+        "boneCount": 90
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 6385994820080081972,
+        "vertices": 623,
+        "triangles": 647,
+        "boneCount": 29
+      },
+      {
+        "name": "honwai_silhouetted",
+        "meshPathId": 6385994820080081972,
+        "vertices": 623,
+        "triangles": 647,
+        "boneCount": 29
+      },
+      {
+        "name": "aidehua001_jian",
+        "meshPathId": -7609149127213735202,
+        "vertices": 2913,
+        "triangles": 4299,
+        "boneCount": 90
+      },
+      {
+        "name": "zhijia001_jian",
+        "meshPathId": 8754695059675118386,
+        "vertices": 1464,
+        "triangles": 1710,
+        "boneCount": 28
+      },
+      {
+        "name": "500_shenti_jian",
+        "meshPathId": 6385994820080081972,
+        "vertices": 623,
+        "triangles": 647,
+        "boneCount": 29
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -2101445641561532781,
+        "vertices": 3844,
+        "triangles": 6220,
+        "boneCount": 29
+      },
+      {
+        "name": "qiang_jian",
+        "meshPathId": 3513555318929187474,
+        "vertices": 2422,
+        "triangles": 2288,
+        "boneCount": 7
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 6385994820080081972,
+        "vertices": 623,
+        "triangles": 647,
+        "boneCount": 29
+      },
+      {
+        "name": "honwai_silhouetted",
+        "meshPathId": -2101445641561532781,
+        "vertices": 3844,
+        "triangles": 6220,
+        "boneCount": 29
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 6385994820080081972,
+        "vertices": 623,
+        "triangles": 647,
+        "boneCount": 29
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -3466324183742432669,
+        "vertices": 886,
+        "triangles": 1015,
+        "boneCount": 47
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -7609149127213735202,
+        "vertices": 2913,
+        "triangles": 4299,
+        "boneCount": 90
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -3466324183742432669,
+        "vertices": 886,
+        "triangles": 1015,
+        "boneCount": 47
+      },
+      {
+        "name": "2500_shenti_jian",
+        "meshPathId": -3466324183742432669,
+        "vertices": 886,
+        "triangles": 1015,
+        "boneCount": 47
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "Bat_Skin",
+      "meshPathId": -2101445641561532781,
+      "boneCount": 29,
+      "twistBones": [],
+      "extraClothOrWeaponBones": [
+        "Bone005",
+        "Bone007",
+        "Bone004",
+        "Bone017(mirrored)",
+        "Bone003",
+        "Bone018",
+        "Bone002",
+        "Bone009(mirrored)",
+        "Bone009",
+        "Bone010(mirrored)",
+        "Bone010",
+        "Bone017",
+        "Bone024",
+        "Bone019",
+        "Bone022",
+        "Bone020",
+        "Bone024(mirrored)",
+        "Bone011",
+        "Bone014",
+        "Bone012",
+        "Bone015",
+        "Bone018(mirrored)",
+        "Bone019(mirrored)",
+        "Bone022(mirrored)",
+        "Bone020(mirrored)",
+        "Bone011(mirrored)",
+        "Bone014(mirrored)",
+        "Bone012(mirrored)",
+        "Bone015(mirrored)"
+      ],
+      "keyJoints": {},
+      "proportions": {}
+    }
+  },
+  "1027": {
+    "heroId": 1027,
+    "name": "Jack",
+    "internalName": "shawang",
+    "heroClass": "Shawang",
+    "career": 1,
+    "tpsBundle": "shawang_tps.mo",
+    "fpsBundle": "shawang_fps.mo",
+    "tpsController": "shawang_tps_animator.mo",
+    "fpsController": "shawang_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -2048669288817816991,
+        "vertices": 828,
+        "triangles": 850,
+        "boneCount": 20
+      },
+      {
+        "name": "sw_shenti_500",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "sw_shenti_2500",
+        "meshPathId": -2048669288817816991,
+        "vertices": 828,
+        "triangles": 850,
+        "boneCount": 20
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -4964938224233599180,
+        "vertices": 4128,
+        "triangles": 4752,
+        "boneCount": 58
+      },
+      {
+        "name": "di",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "zhong",
+        "meshPathId": -2048669288817816991,
+        "vertices": 828,
+        "triangles": 850,
+        "boneCount": 20
+      },
+      {
+        "name": "honwai_silhouetted",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "sw_jichu_shenti002",
+        "meshPathId": -4964938224233599180,
+        "vertices": 4128,
+        "triangles": 4752,
+        "boneCount": 58
+      },
+      {
+        "name": "gao",
+        "meshPathId": -4964938224233599180,
+        "vertices": 4128,
+        "triangles": 4752,
+        "boneCount": 58
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -2048669288817816991,
+        "vertices": 828,
+        "triangles": 850,
+        "boneCount": 20
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -4964938224233599180,
+        "vertices": 4128,
+        "triangles": 4752,
+        "boneCount": 58
+      },
+      {
+        "name": "di",
+        "meshPathId": 7753821235379253286,
+        "vertices": 798,
+        "triangles": 810,
+        "boneCount": 20
+      },
+      {
+        "name": "zhong",
+        "meshPathId": -2048669288817816991,
+        "vertices": 828,
+        "triangles": 850,
+        "boneCount": 20
+      },
+      {
+        "name": "gao",
+        "meshPathId": -4964938224233599180,
+        "vertices": 4128,
+        "triangles": 4752,
+        "boneCount": 58
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": -4964938224233599180,
+      "boneCount": 58,
+      "twistBones": [
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "jianjia_001",
+        "Bone_zui",
+        "R_yanpi",
+        "L_yanpi"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          -0.0114,
+          1.0293
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0113,
+          1.1446
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0133,
+          1.2652
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.002,
+          1.4226
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0565,
+          1.672
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0272,
+          1.752
+        ],
+        "Bip001 L Clavicle": [
+          -0.0738,
+          0.0526,
+          1.6355
+        ],
+        "Bip001 L UpperArm": [
+          -0.2803,
+          0.072,
+          1.5754
+        ],
+        "Bip001 L Forearm": [
+          -0.436,
+          0.0884,
+          1.3128
+        ],
+        "Bip001 L Hand": [
+          -0.5523,
+          0.0091,
+          1.1282
+        ],
+        "Bip001 R Clavicle": [
+          0.0738,
+          0.0526,
+          1.6355
+        ],
+        "Bip001 R UpperArm": [
+          0.2803,
+          0.072,
+          1.5754
+        ],
+        "Bip001 R Forearm": [
+          0.436,
+          0.0884,
+          1.3128
+        ],
+        "Bip001 R Hand": [
+          0.5523,
+          0.0091,
+          1.1282
+        ],
+        "Bip001 L Thigh": [
+          -0.1274,
+          -0.0114,
+          1.0293
+        ],
+        "Bip001 L Calf": [
+          -0.1689,
+          0.0016,
+          0.5677
+        ],
+        "Bip001 L Foot": [
+          -0.2096,
+          0.0657,
+          0.1103
+        ],
+        "Bip001 R Thigh": [
+          0.1274,
+          -0.0114,
+          1.0293
+        ],
+        "Bip001 R Calf": [
+          0.1689,
+          0.0016,
+          0.5677
+        ],
+        "Bip001 R Foot": [
+          0.2096,
+          0.0657,
+          0.1103
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.3057,
+        "forearmLength": 0.2321,
+        "shoulderSpan": 0.5606,
+        "pelvisHeight": 1.0293,
+        "shoulderHeight": 1.5754,
+        "headPivotHeight": 1.752
+      }
+    }
+  },
+  "1028": {
+    "heroId": 1028,
+    "name": "Loki",
+    "internalName": "luoji",
+    "heroClass": "LuoJi",
+    "career": 2,
+    "tpsBundle": "luoji_tps.mo",
+    "fpsBundle": "luoji_fps.mo",
+    "tpsController": "luoji_tps_animator.mo",
+    "fpsController": "luoji_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "500_luoji_body",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "2500_luoj_shou",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "500_luoj_shou",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "2500_luoji_body",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "luoji_shou",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "luoji_body",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": -2969532686483608554,
+      "boneCount": 48,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone004(mirrored)",
+        "Bone004",
+        "Bone006",
+        "Bone002(mirrored)",
+        "Bone002",
+        "Bone003",
+        "Bone003(mirrored)",
+        "Bone008",
+        "Bone008(mirrored)",
+        "Bone010"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0,
+          0.8498
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0489,
+          1.0103
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0423,
+          1.2341
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.06,
+          1.4573
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.1112,
+          1.757
+        ],
+        "Bip001 L Clavicle": [
+          -0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 L UpperArm": [
+          -0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 L Forearm": [
+          -0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 L Hand": [
+          -0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 R Clavicle": [
+          0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 R UpperArm": [
+          0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 R Forearm": [
+          0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 R Hand": [
+          0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 L Thigh": [
+          -0.2497,
+          0.0,
+          0.8498
+        ],
+        "Bip001 L Calf": [
+          -0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 L Foot": [
+          -0.2371,
+          0.1658,
+          0.1317
+        ],
+        "Bip001 R Thigh": [
+          0.2497,
+          -0.0,
+          0.8498
+        ],
+        "Bip001 R Calf": [
+          0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 R Foot": [
+          0.2371,
+          0.1658,
+          0.1317
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.4098,
+        "forearmLength": 0.3177,
+        "shoulderSpan": 0.6892,
+        "pelvisHeight": 0.8498,
+        "shoulderHeight": 1.5828,
+        "headPivotHeight": 1.757
+      }
+    }
+  },
+  "1029": {
+    "heroId": 1029,
+    "name": "Angel",
+    "internalName": "luolita",
+    "heroClass": "LuoLi",
+    "career": 4,
+    "tpsBundle": "luoji_tps.mo",
+    "fpsBundle": "luoji_fps.mo",
+    "tpsController": "luolita_tps_animator.mo",
+    "fpsController": "luolita_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "500_luoji_body",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "2500_luoj_shou",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "500_luoj_shou",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "2500_luoji_body",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "luoji_shou",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "luoji_body",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": -2969532686483608554,
+      "boneCount": 48,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone004(mirrored)",
+        "Bone004",
+        "Bone006",
+        "Bone002(mirrored)",
+        "Bone002",
+        "Bone003",
+        "Bone003(mirrored)",
+        "Bone008",
+        "Bone008(mirrored)",
+        "Bone010"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0,
+          0.8498
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0489,
+          1.0103
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0423,
+          1.2341
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.06,
+          1.4573
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.1112,
+          1.757
+        ],
+        "Bip001 L Clavicle": [
+          -0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 L UpperArm": [
+          -0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 L Forearm": [
+          -0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 L Hand": [
+          -0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 R Clavicle": [
+          0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 R UpperArm": [
+          0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 R Forearm": [
+          0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 R Hand": [
+          0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 L Thigh": [
+          -0.2497,
+          0.0,
+          0.8498
+        ],
+        "Bip001 L Calf": [
+          -0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 L Foot": [
+          -0.2371,
+          0.1658,
+          0.1317
+        ],
+        "Bip001 R Thigh": [
+          0.2497,
+          -0.0,
+          0.8498
+        ],
+        "Bip001 R Calf": [
+          0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 R Foot": [
+          0.2371,
+          0.1658,
+          0.1317
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.4098,
+        "forearmLength": 0.3177,
+        "shoulderSpan": 0.6892,
+        "pelvisHeight": 0.8498,
+        "shoulderHeight": 1.5828,
+        "headPivotHeight": 1.757
+      }
+    }
+  },
+  "1030": {
+    "heroId": 1030,
+    "name": "Vincent",
+    "internalName": "jingke",
+    "heroClass": "JingKe",
+    "career": 1,
+    "tpsBundle": "luoji_tps.mo",
+    "fpsBundle": "luoji_fps.mo",
+    "tpsController": "jingke_tps_animator.mo",
+    "fpsController": "jingke_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "500_luoji_body",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "2500_luoj_shou",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "500_luoj_shou",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "2500_luoji_body",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 3675193943887156995,
+        "vertices": 406,
+        "triangles": 560,
+        "boneCount": 6
+      },
+      {
+        "name": "luoji_shou",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "luoji_body",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2969532686483608554,
+        "vertices": 3138,
+        "triangles": 4199,
+        "boneCount": 48
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -6253671820892971597,
+        "vertices": 770,
+        "triangles": 945,
+        "boneCount": 19
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 8438130373633644003,
+        "vertices": 231,
+        "triangles": 264,
+        "boneCount": 1
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": 8294473766367524794,
+        "vertices": 1693,
+        "triangles": 2245,
+        "boneCount": 24
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -2329130734746905305,
+        "vertices": 527,
+        "triangles": 740,
+        "boneCount": 16
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": -2969532686483608554,
+      "boneCount": 48,
+      "twistBones": [
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone004(mirrored)",
+        "Bone004",
+        "Bone006",
+        "Bone002(mirrored)",
+        "Bone002",
+        "Bone003",
+        "Bone003(mirrored)",
+        "Bone008",
+        "Bone008(mirrored)",
+        "Bone010"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0,
+          0.8498
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0489,
+          1.0103
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0423,
+          1.2341
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.06,
+          1.4573
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.1112,
+          1.757
+        ],
+        "Bip001 L Clavicle": [
+          -0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 L UpperArm": [
+          -0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 L Forearm": [
+          -0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 L Hand": [
+          -0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 R Clavicle": [
+          0.1111,
+          0.1047,
+          1.6806
+        ],
+        "Bip001 R UpperArm": [
+          0.3446,
+          0.1314,
+          1.5828
+        ],
+        "Bip001 R Forearm": [
+          0.6137,
+          0.1064,
+          1.2748
+        ],
+        "Bip001 R Hand": [
+          0.8217,
+          0.0739,
+          1.0368
+        ],
+        "Bip001 L Thigh": [
+          -0.2497,
+          0.0,
+          0.8498
+        ],
+        "Bip001 L Calf": [
+          -0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 L Foot": [
+          -0.2371,
+          0.1658,
+          0.1317
+        ],
+        "Bip001 R Thigh": [
+          0.2497,
+          -0.0,
+          0.8498
+        ],
+        "Bip001 R Calf": [
+          0.247,
+          0.0635,
+          0.3993
+        ],
+        "Bip001 R Foot": [
+          0.2371,
+          0.1658,
+          0.1317
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.4098,
+        "forearmLength": 0.3177,
+        "shoulderSpan": 0.6892,
+        "pelvisHeight": 0.8498,
+        "shoulderHeight": 1.5828,
+        "headPivotHeight": 1.757
+      }
+    }
+  },
+  "1031": {
+    "heroId": 1031,
+    "name": "Johnny",
+    "internalName": "lanbo",
+    "heroClass": "_Rambo_",
+    "career": 1,
+    "tpsBundle": "76_tps.mo",
+    "fpsBundle": "76_fps.mo",
+    "tpsController": "rambo_tps_animator.mo",
+    "fpsController": "rambo_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "zhong",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "500_shenti",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "jiatelin",
+        "meshPathId": 3314971309117747277,
+        "vertices": 1370,
+        "triangles": 882,
+        "boneCount": 8
+      },
+      {
+        "name": "di",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "zhong",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "2500_shenti",
+        "meshPathId": 8897686108552446754,
+        "vertices": 1255,
+        "triangles": 1518,
+        "boneCount": 25
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "di",
+        "meshPathId": -4373225545098368539,
+        "vertices": 649,
+        "triangles": 730,
+        "boneCount": 19
+      },
+      {
+        "name": "gao_hongxian",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "gao_fuhuo_wudi",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      },
+      {
+        "name": "zhongjiezhe_gao",
+        "meshPathId": 8583054048263222505,
+        "vertices": 2610,
+        "triangles": 3469,
+        "boneCount": 54
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "gao",
+      "meshPathId": 8583054048263222505,
+      "boneCount": 54,
+      "twistBones": [
+        "Bip001 R ForeTwist1",
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist1"
+      ],
+      "extraClothOrWeaponBones": [],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0438,
+          1.1046
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          0.0372,
+          1.2255
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0528,
+          1.3474
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0712,
+          1.5507
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0588,
+          1.6156
+        ],
+        "Bip001 L Clavicle": [
+          -0.0638,
+          0.0694,
+          1.4692
+        ],
+        "Bip001 L UpperArm": [
+          -0.2161,
+          0.0871,
+          1.456
+        ],
+        "Bip001 L Forearm": [
+          -0.3818,
+          0.1047,
+          1.2132
+        ],
+        "Bip001 L Hand": [
+          -0.521,
+          0.0738,
+          1.0053
+        ],
+        "Bip001 R Clavicle": [
+          0.0638,
+          0.0694,
+          1.4692
+        ],
+        "Bip001 R UpperArm": [
+          0.2161,
+          0.0871,
+          1.456
+        ],
+        "Bip001 R Hand": [
+          0.521,
+          0.0738,
+          1.0053
+        ],
+        "Bip001 L Thigh": [
+          -0.1172,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 L Calf": [
+          -0.163,
+          0.0505,
+          0.5753
+        ],
+        "Bip001 L Foot": [
+          -0.1998,
+          0.1391,
+          0.1246
+        ],
+        "Bip001 R Thigh": [
+          0.1172,
+          0.0437,
+          1.0038
+        ],
+        "Bip001 R Calf": [
+          0.163,
+          0.0505,
+          0.5753
+        ],
+        "Bip001 R Foot": [
+          0.1998,
+          0.1391,
+          0.1246
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2945,
+        "forearmLength": 0.2521,
+        "shoulderSpan": 0.4322,
+        "pelvisHeight": 1.0038,
+        "shoulderHeight": 1.456,
+        "headPivotHeight": 1.6156
+      }
+    }
+  },
+  "1032": {
+    "heroId": 1032,
+    "name": "Venus (DaJi)",
+    "internalName": "daji",
+    "heroClass": "DaJi",
+    "career": 4,
+    "tpsBundle": "jipusainvlang_tps.mo",
+    "fpsBundle": "jipusainvlang_fps.mo",
+    "tpsController": "daji_tps_animator.mo",
+    "fpsController": "daji_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "st_zhong",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "st_di_fuhuo_wudi",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "st_zhong_fuhuo_wudi",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "t_zhong",
+        "meshPathId": -3594988218547543398,
+        "vertices": 160,
+        "triangles": 196,
+        "boneCount": 2
+      },
+      {
+        "name": "jian_taliya_tps",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "t_di",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_di_hongxian",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_di",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -2149597444537230604,
+        "vertices": 78,
+        "triangles": 78,
+        "boneCount": 2
+      },
+      {
+        "name": "tf_zhong",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "st_zhong_hongxian",
+        "meshPathId": 4866008246306770827,
+        "vertices": 1439,
+        "triangles": 1712,
+        "boneCount": 44
+      },
+      {
+        "name": "tf_zhong_hongxian",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 2843771506193642324,
+        "vertices": 3486,
+        "triangles": 4587,
+        "boneCount": 81
+      },
+      {
+        "name": "st_di_hongxian",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "tf_di_fuhuo_wudi",
+        "meshPathId": 8248768182824305329,
+        "vertices": 57,
+        "triangles": 64,
+        "boneCount": 2
+      },
+      {
+        "name": "st_di",
+        "meshPathId": 1647511339973746218,
+        "vertices": 487,
+        "triangles": 450,
+        "boneCount": 18
+      },
+      {
+        "name": "tf_zhong_fuhuo_wudi",
+        "meshPathId": 3159968483740021123,
+        "vertices": 334,
+        "triangles": 420,
+        "boneCount": 6
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "fuhuo_wudi",
+      "meshPathId": 2843771506193642324,
+      "boneCount": 81,
+      "twistBones": [
+        "Bip001 L ForeTwist1",
+        "Bip001 L ForeTwist",
+        "Bip001 R ForeTwist1",
+        "Bip001 R ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone033",
+        "Bone034",
+        "Bone038",
+        "Bone035",
+        "Bone030",
+        "Bone041",
+        "Bone029",
+        "Bone040",
+        "Bone037",
+        "Bone039",
+        "Bone011",
+        "Bone028",
+        "Bone031",
+        "Bone042",
+        "Bone043",
+        "Bone045",
+        "Bone036",
+        "Bone013",
+        "Bone012",
+        "Bone013(mirrored)",
+        "Bone012(mirrored)",
+        "Bone001(mirrored)",
+        "Bone001",
+        "Bone024",
+        "Bone025",
+        "Bone026",
+        "Bone023"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0174,
+          1.1135
+        ],
+        "Bip001 Spine1": [
+          0.0,
+          -0.0249,
+          1.2381
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0004,
+          1.3535
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0293,
+          1.4838
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0109,
+          1.5378
+        ],
+        "Bip001 L Clavicle": [
+          -0.031,
+          0.0368,
+          1.4466
+        ],
+        "Bip001 L UpperArm": [
+          -0.1218,
+          0.048,
+          1.4262
+        ],
+        "Bip001 L Hand": [
+          -0.4712,
+          -0.0108,
+          1.0944
+        ],
+        "Bip001 R Clavicle": [
+          0.031,
+          0.0368,
+          1.4466
+        ],
+        "Bip001 R UpperArm": [
+          0.1218,
+          0.048,
+          1.4262
+        ],
+        "Bip001 R Hand": [
+          0.4712,
+          -0.0108,
+          1.0944
+        ],
+        "Bip001 L Thigh": [
+          -0.0822,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 L Calf": [
+          -0.0826,
+          -0.011,
+          0.6477
+        ],
+        "Bip001 L Foot": [
+          -0.0834,
+          0.0255,
+          0.1788
+        ],
+        "Bip001 R Thigh": [
+          0.0822,
+          -0.0175,
+          1.019
+        ],
+        "Bip001 R Calf": [
+          0.0788,
+          -0.0104,
+          0.6478
+        ],
+        "Bip001 R Foot": [
+          0.0747,
+          0.0268,
+          0.1789
+        ]
+      },
+      "proportions": {
+        "shoulderSpan": 0.2436,
+        "pelvisHeight": 1.019,
+        "shoulderHeight": 1.4262,
+        "headPivotHeight": 1.5378
+      }
+    }
+  },
+  "1033": {
+    "heroId": 1033,
+    "name": "Lily (Lilith)",
+    "internalName": "lilisi",
+    "heroClass": "Lilisi",
+    "career": 4,
+    "tpsBundle": "lilisi_tps.mo",
+    "fpsBundle": "lilisi_fps.mo",
+    "tpsController": "lilisi_tps_animator.mo",
+    "fpsController": "lilisi_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 4739482402592737565,
+        "vertices": 1025,
+        "triangles": 1141,
+        "boneCount": 19
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 4739482402592737565,
+        "vertices": 1025,
+        "triangles": 1141,
+        "boneCount": 19
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": -7280344775147488012,
+        "vertices": 3385,
+        "triangles": 4902,
+        "boneCount": 76
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 4739482402592737565,
+        "vertices": 1025,
+        "triangles": 1141,
+        "boneCount": 19
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -6825634022250907522,
+        "vertices": 1863,
+        "triangles": 2371,
+        "boneCount": 38
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 4739482402592737565,
+        "vertices": 1025,
+        "triangles": 1141,
+        "boneCount": 19
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -6825634022250907522,
+        "vertices": 1863,
+        "triangles": 2371,
+        "boneCount": 38
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": -7280344775147488012,
+        "vertices": 3385,
+        "triangles": 4902,
+        "boneCount": 76
+      },
+      {
+        "name": "lilisi_tps",
+        "meshPathId": -7280344775147488012,
+        "vertices": 3385,
+        "triangles": 4902,
+        "boneCount": 76
+      },
+      {
+        "name": "lilisi_tps_lod_1000",
+        "meshPathId": 4739482402592737565,
+        "vertices": 1025,
+        "triangles": 1141,
+        "boneCount": 19
+      },
+      {
+        "name": "lilisi_tps_lod_2500",
+        "meshPathId": -6825634022250907522,
+        "vertices": 1863,
+        "triangles": 2371,
+        "boneCount": 38
+      },
+      {
+        "name": "5000",
+        "meshPathId": -1940474050236128156,
+        "vertices": 2231,
+        "triangles": 2282,
+        "boneCount": 6
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "hongxian",
+      "meshPathId": -7280344775147488012,
+      "boneCount": 76,
+      "twistBones": [
+        "Bip001 RUpArmTwist",
+        "Bip001 R ForeTwist",
+        "Bip001 LUpArmTwist",
+        "Bip001 L ForeTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone011",
+        "Bone011(mirrored)",
+        "Bone001(mirrored)",
+        "Bone001",
+        "Bone005(mirrored)",
+        "Bone005",
+        "Bone009",
+        "Bone009(mirrored)",
+        "Bone007",
+        "Bone006",
+        "Bone010",
+        "Bone010(mirrored)",
+        "Bone006(mirrored)",
+        "Bone007(mirrored)",
+        "Bone008(mirrored)",
+        "Bone008",
+        "Point004",
+        "Bone002",
+        "Bone003",
+        "Bone004"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          -0.0,
+          -0.0073,
+          0.9737
+        ],
+        "Bip001 Spine": [
+          -0.0,
+          -0.0154,
+          1.0484
+        ],
+        "Bip001 Spine1": [
+          -0.0,
+          -0.0288,
+          1.1148
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0272,
+          1.2063
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0469,
+          1.3831
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0278,
+          1.4387
+        ],
+        "Bip001 L Clavicle": [
+          -0.0244,
+          0.039,
+          1.3556
+        ],
+        "Bip001 L UpperArm": [
+          -0.1288,
+          0.0646,
+          1.3176
+        ],
+        "Bip001 L Forearm": [
+          -0.2302,
+          0.0657,
+          1.0948
+        ],
+        "Bip001 L Hand": [
+          -0.3173,
+          0.0363,
+          0.9243
+        ],
+        "Bip001 R Clavicle": [
+          0.0244,
+          0.039,
+          1.3556
+        ],
+        "Bip001 R UpperArm": [
+          0.1288,
+          0.0646,
+          1.3176
+        ],
+        "Bip001 R Forearm": [
+          0.2302,
+          0.0657,
+          1.0948
+        ],
+        "Bip001 R Hand": [
+          0.3173,
+          0.0363,
+          0.9243
+        ],
+        "Bip001 L Thigh": [
+          -0.0733,
+          -0.0073,
+          0.9737
+        ],
+        "Bip001 L Calf": [
+          -0.1159,
+          0.038,
+          0.5439
+        ],
+        "Bip001 L Foot": [
+          -0.1537,
+          0.0828,
+          0.1624
+        ],
+        "Bip001 R Thigh": [
+          0.0733,
+          -0.0073,
+          0.9737
+        ],
+        "Bip001 R Calf": [
+          0.1159,
+          0.038,
+          0.5439
+        ],
+        "Bip001 R Foot": [
+          0.1537,
+          0.0828,
+          0.1624
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2448,
+        "forearmLength": 0.1937,
+        "shoulderSpan": 0.2576,
+        "pelvisHeight": 0.9737,
+        "shoulderHeight": 1.3176,
+        "headPivotHeight": 1.4387
+      }
+    }
+  },
+  "1034": {
+    "heroId": 1034,
+    "name": "Khan (HuangZhong)",
+    "internalName": "huangzhong",
+    "heroClass": "HuangZhong",
+    "career": 3,
+    "tpsBundle": "huangzhong_tps.mo",
+    "fpsBundle": "huangzhong_fps.mo",
+    "tpsController": "hz_tps_animator.mo",
+    "fpsController": "hz_fps_animator.mo",
+    "exists": false
+  },
+  "1035": {
+    "heroId": 1035,
+    "name": "NeZha",
+    "internalName": "nezha",
+    "heroClass": "NeZha",
+    "career": 1,
+    "tpsBundle": "nezha_tps.mo",
+    "fpsBundle": "nezha_fps.mo",
+    "tpsController": "nezha_tps_animator.mo",
+    "fpsController": "nezha_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "fuhuo_wudi_di",
+        "meshPathId": -724283937033435013,
+        "vertices": 702,
+        "triangles": 708,
+        "boneCount": 20
+      },
+      {
+        "name": "polySurface10",
+        "meshPathId": 7060996215422688193,
+        "vertices": 951,
+        "triangles": 1376,
+        "boneCount": 8
+      },
+      {
+        "name": "polySurface10",
+        "meshPathId": 3783654109525315982,
+        "vertices": 3397,
+        "triangles": 4724,
+        "boneCount": 62
+      },
+      {
+        "name": "polySurface10",
+        "meshPathId": 7060996215422688193,
+        "vertices": 951,
+        "triangles": 1376,
+        "boneCount": 8
+      },
+      {
+        "name": "hongxian_zhong",
+        "meshPathId": -2044725380077455383,
+        "vertices": 1743,
+        "triangles": 2067,
+        "boneCount": 31
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 3783654109525315982,
+        "vertices": 3397,
+        "triangles": 4724,
+        "boneCount": 62
+      },
+      {
+        "name": "nezha_tps_2500",
+        "meshPathId": -2044725380077455383,
+        "vertices": 1743,
+        "triangles": 2067,
+        "boneCount": 31
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 3783654109525315982,
+        "vertices": 3397,
+        "triangles": 4724,
+        "boneCount": 62
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": -724283937033435013,
+        "vertices": 702,
+        "triangles": 708,
+        "boneCount": 20
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": -724283937033435013,
+        "vertices": 702,
+        "triangles": 708,
+        "boneCount": 20
+      },
+      {
+        "name": "fuhuo_wudi_zhong",
+        "meshPathId": -2044725380077455383,
+        "vertices": 1743,
+        "triangles": 2067,
+        "boneCount": 31
+      },
+      {
+        "name": "nezha_tps_500",
+        "meshPathId": -724283937033435013,
+        "vertices": 702,
+        "triangles": 708,
+        "boneCount": 20
+      },
+      {
+        "name": "hongxian_di",
+        "meshPathId": -724283937033435013,
+        "vertices": 702,
+        "triangles": 708,
+        "boneCount": 20
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "polySurface10",
+      "meshPathId": 3783654109525315982,
+      "boneCount": 62,
+      "twistBones": [
+        "Bip001 R ForeTwist",
+        "Bip001 L ForeTwist",
+        "Bip001 RUpArmTwist",
+        "Bip001 LUpArmTwist"
+      ],
+      "extraClothOrWeaponBones": [
+        "Bone002",
+        "Bone003",
+        "Bone004",
+        "Bone005",
+        "Bone006",
+        "Bone007"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          -0.0,
+          0.9319
+        ],
+        "Bip001 Spine": [
+          0.0,
+          -0.0114,
+          1.0089
+        ],
+        "Bip001 Spine1": [
+          0.0,
+          -0.016,
+          1.1535
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          -0.0206,
+          1.2982
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0241,
+          1.4713
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.022,
+          1.5341
+        ],
+        "Bip001 L Clavicle": [
+          -0.0344,
+          0.0285,
+          1.4345
+        ],
+        "Bip001 L UpperArm": [
+          -0.1775,
+          0.0258,
+          1.3752
+        ],
+        "Bip001 L Forearm": [
+          -0.2844,
+          0.0098,
+          1.1753
+        ],
+        "Bip001 L Hand": [
+          -0.4056,
+          -0.0722,
+          0.9711
+        ],
+        "Bip001 R Clavicle": [
+          0.0344,
+          0.0285,
+          1.4345
+        ],
+        "Bip001 R UpperArm": [
+          0.1775,
+          0.0258,
+          1.3752
+        ],
+        "Bip001 R Forearm": [
+          0.2844,
+          0.0098,
+          1.1753
+        ],
+        "Bip001 R Hand": [
+          0.4056,
+          -0.0722,
+          0.9711
+        ],
+        "Bip001 L Thigh": [
+          -0.0837,
+          0.0,
+          0.9319
+        ],
+        "Bip001 L Calf": [
+          -0.1318,
+          0.008,
+          0.516
+        ],
+        "Bip001 L Foot": [
+          -0.1729,
+          0.0538,
+          0.1019
+        ],
+        "Bip001 R Thigh": [
+          0.0837,
+          -0.0,
+          0.9319
+        ],
+        "Bip001 R Calf": [
+          0.1318,
+          0.008,
+          0.516
+        ],
+        "Bip001 R Foot": [
+          0.1729,
+          0.0538,
+          0.1019
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.2273,
+        "forearmLength": 0.2512,
+        "shoulderSpan": 0.355,
+        "pelvisHeight": 0.9319,
+        "shoulderHeight": 1.3752,
+        "headPivotHeight": 1.5341
+      }
+    }
+  },
+  "1036": {
+    "heroId": 1036,
+    "name": "Gaya (Medusa)",
+    "internalName": "Medusa",
+    "heroClass": "Medusa",
+    "career": 1,
+    "tpsBundle": "Medusa_tps.mo",
+    "fpsBundle": "Medusa_fps.mo",
+    "tpsController": "medusa_tps_animator.mo",
+    "fpsController": "medusa_fps_animator.mo",
+    "exists": false
+  },
+  "1037": {
+    "heroId": 1037,
+    "name": "David (DaWei)",
+    "internalName": "dawei",
+    "heroClass": "DaWei",
+    "career": 3,
+    "tpsBundle": "dawei_tps.mo",
+    "fpsBundle": "dawei_fps.mo",
+    "tpsController": "dawei_tps_animator.mo",
+    "fpsController": "dawei_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "dawei_tps",
+        "meshPathId": 7974980097542005084,
+        "vertices": 7100,
+        "triangles": 7960,
+        "boneCount": 62
+      },
+      {
+        "name": "hongxian",
+        "meshPathId": 7974980097542005084,
+        "vertices": 7100,
+        "triangles": 7960,
+        "boneCount": 62
+      },
+      {
+        "name": "daweiwuqi_4500",
+        "meshPathId": 2221897446212992416,
+        "vertices": 2769,
+        "triangles": 1994,
+        "boneCount": 20
+      },
+      {
+        "name": "fuhuo_wudi",
+        "meshPathId": 7974980097542005084,
+        "vertices": 7100,
+        "triangles": 7960,
+        "boneCount": 62
+      },
+      {
+        "name": "daweiwuqi_2500",
+        "meshPathId": 9117325694907160839,
+        "vertices": 1641,
+        "triangles": 1030,
+        "boneCount": 8
+      },
+      {
+        "name": "zhong_hongxian",
+        "meshPathId": -7410381753614986528,
+        "vertices": 3458,
+        "triangles": 2883,
+        "boneCount": 37
+      },
+      {
+        "name": "dawei_tps_2500",
+        "meshPathId": -7410381753614986528,
+        "vertices": 3458,
+        "triangles": 2883,
+        "boneCount": 37
+      },
+      {
+        "name": "hongwai_fri",
+        "meshPathId": 7907065188024655747,
+        "vertices": 1454,
+        "triangles": 1094,
+        "boneCount": 20
+      },
+      {
+        "name": "di_hongxian",
+        "meshPathId": 7907065188024655747,
+        "vertices": 1454,
+        "triangles": 1094,
+        "boneCount": 20
+      },
+      {
+        "name": "honwai_silhouetted ",
+        "meshPathId": 7907065188024655747,
+        "vertices": 1454,
+        "triangles": 1094,
+        "boneCount": 20
+      },
+      {
+        "name": "dawei_tps_500",
+        "meshPathId": 7907065188024655747,
+        "vertices": 1454,
+        "triangles": 1094,
+        "boneCount": 20
+      },
+      {
+        "name": "di_fuhuo_wudi",
+        "meshPathId": 7907065188024655747,
+        "vertices": 1454,
+        "triangles": 1094,
+        "boneCount": 20
+      },
+      {
+        "name": "zhong_fuhuo_wudi",
+        "meshPathId": -7410381753614986528,
+        "vertices": 3458,
+        "triangles": 2883,
+        "boneCount": 37
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "dawei_tps",
+      "meshPathId": 7974980097542005084,
+      "boneCount": 62,
+      "twistBones": [],
+      "extraClothOrWeaponBones": [
+        "Bone008",
+        "Bone008(mirrored)",
+        "Bone001(mirrored)",
+        "Bone003(mirrored)",
+        "Bone001",
+        "Bone003",
+        "Bone007(mirrored)",
+        "Bone005(mirrored)",
+        "Bone007",
+        "Bone005"
+      ],
+      "keyJoints": {
+        "Bip001 Pelvis": [
+          0.0,
+          0.0029,
+          1.1001
+        ],
+        "Bip001 Spine": [
+          0.0,
+          0.0031,
+          1.2427
+        ],
+        "Bip001 Spine1": [
+          0.0,
+          0.0031,
+          1.4086
+        ],
+        "Bip001 Spine2": [
+          0.0,
+          0.0031,
+          1.5745
+        ],
+        "Bip001 Neck": [
+          -0.0,
+          0.0236,
+          1.6809
+        ],
+        "Bip001 Head": [
+          -0.0,
+          0.0236,
+          1.7527
+        ],
+        "Bip001 L Clavicle": [
+          -0.2037,
+          0.0029,
+          1.6154
+        ],
+        "Bip001 L UpperArm": [
+          -0.3282,
+          0.0029,
+          1.6154
+        ],
+        "Bip001 L Forearm": [
+          -0.4775,
+          0.0359,
+          1.3318
+        ],
+        "Bip001 L Hand": [
+          -0.6084,
+          -0.0751,
+          1.0794
+        ],
+        "Bip001 R Clavicle": [
+          0.2037,
+          0.0029,
+          1.6154
+        ],
+        "Bip001 R UpperArm": [
+          0.3282,
+          0.0029,
+          1.6154
+        ],
+        "Bip001 R Forearm": [
+          0.4775,
+          0.0359,
+          1.3318
+        ],
+        "Bip001 R Hand": [
+          0.6084,
+          -0.0751,
+          1.0794
+        ],
+        "Bip001 L Thigh": [
+          -0.1943,
+          0.0029,
+          1.1001
+        ],
+        "Bip001 L Calf": [
+          -0.2553,
+          -0.0274,
+          0.6264
+        ],
+        "Bip001 L Foot": [
+          -0.2992,
+          0.1106,
+          0.1463
+        ],
+        "Bip001 R Thigh": [
+          0.1943,
+          0.0029,
+          1.1001
+        ],
+        "Bip001 R Calf": [
+          0.2553,
+          -0.0274,
+          0.6264
+        ],
+        "Bip001 R Foot": [
+          0.2992,
+          0.1106,
+          0.1463
+        ]
+      },
+      "proportions": {
+        "upperArmLength": 0.3222,
+        "forearmLength": 0.3052,
+        "shoulderSpan": 0.6564,
+        "pelvisHeight": 1.1001,
+        "shoulderHeight": 1.6154,
+        "headPivotHeight": 1.7527
+      }
+    }
+  },
+  "2000": {
+    "heroId": 2000,
+    "name": "Lamster",
+    "internalName": "lamster",
+    "heroClass": "LuoMo",
+    "career": 4,
+    "tpsBundle": "male_tps.mo",
+    "fpsBundle": "male_fps.mo",
+    "tpsController": "male_tps_animator.mo",
+    "fpsController": "male_fps_animator.mo",
+    "exists": true,
+    "skinnedRenderers": [
+      {
+        "name": "male_body000",
+        "meshPathId": 4264983615067625941,
+        "vertices": 667,
+        "triangles": 1084,
+        "boneCount": 14
+      },
+      {
+        "name": "male_leg000",
+        "meshPathId": -7155198427025677249,
+        "vertices": 822,
+        "triangles": 1242,
+        "boneCount": 6
+      },
+      {
+        "name": "male_foot000",
+        "meshPathId": -1642157611226703421,
+        "vertices": 293,
+        "triangles": 418,
+        "boneCount": 6
+      },
+      {
+        "name": "male_head000",
+        "meshPathId": 5954130870577656471,
+        "vertices": 1707,
+        "triangles": 2306,
+        "boneCount": 3
+      },
+      {
+        "name": "male_hand000",
+        "meshPathId": 7170271499033216896,
+        "vertices": 616,
+        "triangles": 820,
+        "boneCount": 22
+      }
+    ],
+    "mainMesh": {
+      "rendererName": "male_head000",
+      "meshPathId": 5954130870577656471,
+      "boneCount": 3,
+      "twistBones": [],
+      "extraClothOrWeaponBones": [],
+      "keyJoints": {
+        "Bip001 Spine2": [
+          0.0,
+          0.0002,
+          1.2756
+        ],
+        "Bip001 Neck": [
+          0.0,
+          0.0263,
+          1.4797
+        ],
+        "Bip001 Head": [
+          0.0,
+          0.0087,
+          1.5276
+        ]
+      },
+      "proportions": {}
+    }
+  }
+}

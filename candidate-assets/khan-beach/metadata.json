@@ -1,0 +1,20 @@
+{
+  "task": "SKIN-053",
+  "hero": 1034,
+  "concept": "Khan - Mare Alta",
+  "method": "built-in image_gen",
+  "image": "concept.png",
+  "prompt": "concept-prompt.txt",
+  "references": [
+    "scratch/khan-inspection/native-0.png",
+    "scratch/khan-inspection/native-face.png"
+  ],
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "sha256": "89b09fee7a949bac091c79f9366c233747f1fccd26c5fe3d6ce300af2b4d71da",
+  "status": "concept delivered; user approval and GLB pending",
+  "gameChanged": false
+}

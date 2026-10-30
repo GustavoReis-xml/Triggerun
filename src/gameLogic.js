@@ -9,6 +9,7 @@ const logger = require('./logger');
 const sceneScope = require('./sceneScope');
 const lifecycle = require('./matchLifecycle');
 const combat = require('./combatRules');
+const heroCatalog = require('./heroCatalog');
 const ffaMaps = require('./ffaMaps.json');
 
 function getFreeForAllMatch(socket) {
@@ -611,10 +612,7 @@ function sendGlobalSystemChat(text, roomUID = null) {
 
 function getSafeMapId(mapId) {
     const id = parseInt(mapId);
-    if (id === 5260) return 5202; 
-    if (id === 5063) return 5022; 
-    if (id === 5208) return 5030; 
-    return id;
+    return id || 5202;
 }
 
 function getSpawnCoordinates(mapId, force) {
@@ -622,7 +620,6 @@ function getSpawnCoordinates(mapId, force) {
     let targetMapId = Number(mapId);
     if (!targetMapId) return defaultCoords;
     
-    if (targetMapId === 5260) targetMapId = 5049; 
     if (targetMapId === 5301) targetMapId = 5030;
     if (targetMapId === 5302) targetMapId = 5074;
     if (targetMapId === 5303) targetMapId = 5068;
@@ -800,12 +797,14 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     }
 
     console.log(`[💀 PLAYER DEAD] O jogador ${socket.playerName || 'Jogador'} morreu! (${isEnvironmentalKill ? 'Atribuição Ambiental/Abismo' : (attackerSocket ? 'Morto por Inimigo' : 'Suicídio')}) Entrando em estado de morte por 10 segundos...\n`);
+    const wasReloading = Boolean(socket.isReloading || socket.reloadTimer);
+    sceneScope.clearCombatTimers(socket);
     socket.isDead = true;
     if (combat.isFreeForAll(socket)) socket.ffaDeathHandled = true;
     socket.hp = 0;
     socket.shield = 0;
     socket.maxShield = 0;
-    socket.tagaloaShieldHp = 8000;
+    socket.tagaloaShieldHp = heroCatalog.getTagaloaShieldMaxHp();
     socket.venusBarrierHp = 0;
     socket.venusBarrierMaxHp = 0;
     socket.venusBarrierActive = false;
@@ -814,6 +813,14 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     socket.lilyBarrierActive = false;
     socket.isInvincible = false;
     socket.godMode = false;
+
+    if (wasReloading && !socket.destroyed) {
+        const reloadWeapon = db.weaponsMap[socket.currentHeroId || 1015];
+        const reloadMaxAmmo = reloadWeapon?.cartridgePublic ?? 30;
+        const reloadTargetEnc = encodeInt(Number(socket.playerId || socket.playerIndex || 1));
+        const reloadShootName = socket.lastReloadShootName ?? 0;
+        socket.write(`e${reloadTargetEnc}:OnFillBullet,((${reloadShootName},0,${encodeInt(reloadMaxAmmo)},${encodeInt(reloadMaxAmmo)}))\n`);
+    }
 
     // Limpa a marca de cura e beacon da Carmen caso a própria Carmen morra
     if (socket.carmenHealTargetId) {
@@ -953,6 +960,13 @@ function handlePlayerDeath(socket, attackerSocket = null) {
     socket.lastAttackerSocket = null;
     socket.lastAttackerTime = 0;
 
+    const arenaMatch = getArenaMatch(socket);
+    if (arenaMatch && arenaMatch.state === 'fight') {
+        sendArenaFightData(arenaMatch);
+        checkArenaRoundState(arenaMatch);
+        return;
+    }
+
     const ffa = getFreeForAllMatch(socket);
     if (ffa) {
         tickFreeForAll(ffa);
@@ -975,17 +989,15 @@ function respawnPlayer(socket) {
     if (!socket || socket.destroyed || socket.sceneRetired) return;
     if (combat.isFreeForAll(socket) && (!socket.isDead || !socket.isCombatReady || getFreeForAllMatch(socket)?.state !== 'fight' || Date.now() < (socket.ffaRespawnAt || 0))) return;
     
+    sceneScope.clearCombatTimers(socket);
     socket.isDead = false;
     socket.ffaDeathHandled = false;
-    if (socket.respawnTimeout) {
-        clearTimeout(socket.respawnTimeout);
-        socket.respawnTimeout = null;
-    }
+    socket.lastRespawnTime = Date.now();
     
     socket.hp = socket.maxHp || 2000;
     socket.shield = 0;
     socket.maxShield = 0;
-    socket.tagaloaShieldHp = 8000;
+    socket.tagaloaShieldHp = heroCatalog.getTagaloaShieldMaxHp();
     socket.venusBarrierHp = 0;
     socket.venusBarrierMaxHp = 0;
     socket.venusBarrierActive = false;
@@ -1183,6 +1195,8 @@ function getPlayerSpawnPacket(s, receiverSocket) {
 
 function switchPlayerHero(socket, selectedHeroId) {
     if (!socket || socket.destroyed || socket.sceneRetired) return;
+    if (Number(socket.currentHeroId) === 2000 || Number(selectedHeroId) === 2000) socket.ultEnergy = 0;
+    if (Number(socket.currentHeroId) === 2000 || Number(selectedHeroId) === 2000) socket.ultEnergy = 0;
     socket.visualHeroId = null;
     if (socket.carmenHealTargetId) {
         cleanupBuff(null, socket.carmenHealTargetId, 1021, true);
@@ -1230,20 +1244,25 @@ function switchPlayerHero(socket, selectedHeroId) {
             socket.maxHp = maxHp;
             socket.hp = maxHp;
             socket.shield = socket.godMode ? 50000 : 0;
+            socket.maxShield = socket.godMode ? 50000 : 0;
             socket.isInvincible = socket.godMode || false;
+            socket.isDead = false;
+            socket.ffaDeathHandled = false;
+            socket.ffaRespawnAt = 0;
             if (selectedHeroId === 1006) {
-                socket.tagaloaShieldHp = 8000;
+                socket.tagaloaShieldHp = heroCatalog.getTagaloaShieldMaxHp();
             }
             
-            // Envia o pacote de loading screen (s90004) antes de iniciar a transição de mapa
+            // Envia o pacote de loading screen (s90004 ou 90009) antes de iniciar a transição de mapa
             const p20014 = encodeInt(20014);
             const s90004 = encodeInt(90004);
             const destination = Number(socket.finalMapId || socket.targetMapId);
-            if (ffaMaps[destination] || [9,12].includes(db.MAP_CONFIG[destination]?.type)) {
+            const destMapConfig = db.MAP_CONFIG[destination];
+            if (destMapConfig && (ffaMaps[destination] || [2, 3, 4, 5, 9, 11, 12].includes(destMapConfig.type))) {
                 // 90004 only opens the loading UI; CLoadScene only swaps assets.
                 // 90009 updates MatchManager.m_pFbData from staging to the destination mode
-                // before GamePlayer.setHeroForce chooses collision layers.
-                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${encodeInt(90009)},(${encodeInt(destination)},'${db.MAP_CONFIG[destination].name}')))\n`);
+                // before GamePlayer.setHeroForce chooses collision layers and mode HUDs.
+                socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${encodeInt(90009)},(${encodeInt(destination)},'${destMapConfig.name}')))\n`);
             } else {
                 socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90004}))\n`);
             }
@@ -1305,15 +1324,24 @@ function switchPlayerHero(socket, selectedHeroId) {
         socket.maxHp = maxHp;
         socket.hp = maxHp;
         socket.shield = socket.godMode ? 50000 : 0;
+        socket.maxShield = socket.godMode ? 50000 : 0;
         socket.isInvincible = socket.godMode || false;
         socket.isDead = false;
+        socket.ffaDeathHandled = false;
+        socket.ffaRespawnAt = 0;
+        socket.venusBarrierHp = 0;
+        socket.venusBarrierMaxHp = 0;
+        socket.venusBarrierActive = false;
+        socket.lilyBarrierHp = 0;
+        socket.lilyBarrierMaxHp = 0;
+        socket.lilyBarrierActive = false;
+        socket.lastAttackerSocket = null;
+        socket.lastAttackerTime = 0;
+        socket.lastRespawnTime = Date.now();
         if (selectedHeroId === 1006) {
-            socket.tagaloaShieldHp = 8000;
+            socket.tagaloaShieldHp = heroCatalog.getTagaloaShieldMaxHp();
         }
-        if (socket.respawnTimeout) {
-            clearTimeout(socket.respawnTimeout);
-            socket.respawnTimeout = null;
-        }
+        sceneScope.clearCombatTimers(socket);
 
         // Ao trocar de herói em jogo, resetar coordenadas para a base de spawn correspondente
         const resetMapId = socket.targetMapId || state.getLastMapId() || 5202;
@@ -1835,7 +1863,25 @@ function sendGameResult(players, winnerForce, individualWinner = undefined) {
                 p.lastLvlUp       = res.numLvlUp;
                 p.lastOriginalExp = res.originalExp;
 
-                // Roteamento direcionado: envia 21002 (EXP/Level) e 10025 (Saldo de Ouro) para o Lobby específico deste jogador
+                p.lastHeroExpGained   = res.heroExpGained;
+                p.lastHeroLvlUp       = res.heroNumLvlUp;
+                p.lastHeroOriginalExp = res.heroOriginalExp;
+
+                const updatedProfile = dbPersistence.loadPlayer(p.playerName);
+                const hIdNum = p.currentHeroId || 1015;
+                const playerEq = (updatedProfile && updatedProfile.equipment) || {};
+                const eq = playerEq[hIdNum] || { skin: p.currentSkinId || 1, weapon: p.currentWeaponId || 1, emote: 1, pose: 0 };
+                const heroFullInfo = db.generateFullHeroData(hIdNum, eq.skin || p.currentSkinId || 1, eq.weapon || p.currentWeaponId || 1, eq.emote || 1, eq.pose || 0, updatedProfile);
+                const p1306 = encodeInt(1306);
+                const p12002 = encodeInt(12002);
+                const hIdEnc = encodeInt(hIdNum);
+                const heroTail = heroFullInfo.split(',').slice(1).join(',');
+
+                if (!p.destroyed) {
+                    p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p1306},(${p12002},(${hIdEnc},${heroTail})))\n`);
+                }
+
+                // Roteamento direcionado: envia 21002 (EXP/Level), 12002 (Hero Level/EXP) e 10025 (Saldo de Ouro) para o Lobby específico deste jogador
                 const targetLobbySocket = state.activeSockets.find(s => 
                     s.socketType === "LOBBY" && 
                     ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && 
@@ -1844,13 +1890,14 @@ function sendGameResult(players, winnerForce, individualWinner = undefined) {
 
                 if (targetLobbySocket) {
                     targetLobbySocket.write(`e1:SendMsgToHallClient,(${encodeInt(21002)},(0,0,${encodeInt(res.newExp)},${encodeInt(res.newLevel)},0))\n`);
+                    targetLobbySocket.write(`e1:SendMsgToHallClient,(${p1306},(${p12002},(${hIdEnc},${heroTail})))\n`);
 
                     // Atualiza saldo em tempo real na UI do Saguão (10025: SetMoneyData)
                     const goldEnc = encodeInt(res.newGold);
                     const diaEnc = encodeInt(res.diamonds !== undefined ? res.diamonds : 999999);
                     const szMoney = `(${goldEnc},${goldEnc},${diaEnc},0,${encodeInt(10)},0,${goldEnc},${goldEnc},${goldEnc},0,${goldEnc},0,0,0)`;
                     targetLobbySocket.write(`e1:SendMsgToHallClient,(${encodeInt(10025)},(0,${szMoney}))\n`);
-                    console.log(`[💰 SYNC LOBBY] Atualização enviada ao Lobby de ${p.playerName}: Nível ${res.newLevel}, +${res.expGained} EXP, Saldo ${res.newGold} Ouro.`);
+                    console.log(`[💰 SYNC LOBBY] Atualização enviada ao Lobby de ${p.playerName}: Conta Nv.${res.newLevel} (+${res.expGained} EXP), Herói ${hIdNum} Nv.${res.heroNewLevel} (+${res.heroExpGained} EXP), Saldo ${res.newGold} Ouro.`);
                 }
             }
         }
@@ -1871,24 +1918,19 @@ function sendGameResult(players, winnerForce, individualWinner = undefined) {
     // ResultUserList: pares intercalados [nameHex, userData, nameHex, userData, ...]
     const resultUserList = `(${userListParts.join(',')})`;
 
-    // ResultHeroList: lista de cartões dos heróis jogados (conforme OneResultHeroCon.cs)
-    const heroListParts = players.map(p => {
-        const hId    = encodeInt(p.currentHeroId || 1015);
-        const k      = encodeInt(p.matchKills || 0);
-        const d      = encodeInt(p.matchDeaths || 0);
-        const a      = encodeInt(p.matchAssists || 0);
-        const dmg    = encodeInt(p.matchDamage || 0);
-        const addExp = encodeInt(p.lastExpGained || 150);
-        const addLvl = encodeInt(p.lastLvlUp || 0);
-        const oldExp = encodeInt(p.lastOriginalExp || 0);
-        return `(${zero},${hId},${k},${d},${a},${dmg},${addExp},${addLvl},${oldExp})`;
-    });
-    const resultHeroList = `(${heroListParts.join(',')})`;
-
-    const szNetMsg = `(${resultUserList},${resultHeroList})`;
-
+    // ResultHeroList: GameResultUICon.GetHeroData espera apenas os cartões dos heróis jogados pelo PRÓPRIO jogador!
     players.forEach(p => {
         if (!p.destroyed) {
+            const hId    = encodeInt(p.currentHeroId || 1015);
+            const k      = encodeInt(p.matchKills || 0);
+            const d      = encodeInt(p.matchDeaths || 0);
+            const a      = encodeInt(p.matchAssists || 0);
+            const dmg    = encodeInt(p.matchDamage || 0);
+            const addExp = encodeInt(p.lastHeroExpGained !== undefined ? p.lastHeroExpGained : (p.lastExpGained || 150));
+            const addLvl = encodeInt(p.lastHeroLvlUp !== undefined ? p.lastHeroLvlUp : 0);
+            const oldExp = encodeInt(p.lastHeroOriginalExp !== undefined ? p.lastHeroOriginalExp : 0);
+            const myHeroCard = `(${zero},${hId},${k},${d},${a},${dmg},${addExp},${addLvl},${oldExp})`;
+            const szNetMsg = `(${resultUserList},(${myHeroCard}))`;
             p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${p5026},${szNetMsg}))\n`);
         }
     });
@@ -2003,7 +2045,9 @@ function endTdmMatch(source = null) {
         match.players.forEach(p => {
             if (p && !p.destroyed) {
                 try {
-                    p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110300},(${p110304},()))\n`);
+                    const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                    p.write(`e${pIdxEnc}:SendMsgToClient,(${p110300},(${p110304},()))\n`);
+                    p.write(`e${pIdxEnc}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
                 } catch (err) {
                     // Socket já desconectado/fechado pelo jogador
                 }
@@ -2069,7 +2113,9 @@ const CONTROL_POINTS = {
     5068: { id: 215, x: 14760, y: 26140, z: 1140 },   // Desert Royal Palace
     5102: { id: 215, x: 14760, y: 26140, z: 1140 },   // Robot Desert
     5050: { id: 228, x: 50011, y: 40127, z: 18283 },  // Dracula's Castle
-    5055: { id: 231, x: 117150, y: 115175, z: 78675 } // Underground Palace
+    5055: { id: 231, x: 117150, y: 115175, z: 78675 }, // Underground Palace
+    5049: { id: 109, x: 18130, y: 18200, z: 15233 },  // Lost Ancient City (Resource Capture)
+    5260: { id: 116, x: 10000, y: 8000, z: 5300 }     // Angel's Manor (Resource Capture)
 };
 
 function spawnControlPoint(socket, mapId) {
@@ -2142,6 +2188,32 @@ function handleControlZonePlayers5007(socket, mapEffectId, playerNetIds) {
     console.log(`[🏆 CONTROL 5007] MapEffect: ${mapEffectId} | Blue in zone: ${blueInZone} | Red in zone: ${redInZone} | Userlist (Consolidada): ${consolidatedList.join(',')}`);
 }
 
+function buildScrambleUserData(match) {
+    const entries = [];
+    match.players.forEach(p => {
+        if (!p.destroyed) {
+            const pId = Number(p.playerIndex || p.playerId || 1);
+            const hId = Number(p.currentHeroId || 1015);
+            const stateInt = p.isDead ? 0 : 1;
+            const forceInt = Number(p.force || 1);
+            entries.push(`'${pId}-${hId}-${stateInt}-${forceInt}'`);
+        }
+    });
+    if (state.activeBots) {
+        for (const botId in state.activeBots) {
+            const bot = state.activeBots[botId];
+            if (bot && !bot.destroyed && !bot.isPracticeDummy && !bot.isPveMonster) {
+                const bId = Number(bot.playerIndex || bot.playerId || 800);
+                const hId = Number(bot.currentHeroId || 1015);
+                const stateInt = bot.hp > 0 ? 1 : 0;
+                const forceInt = Number(bot.force || 1);
+                entries.push(`'${bId}-${hId}-${stateInt}-${forceInt}'`);
+            }
+        }
+    }
+    return `(${entries.join(',')})`;
+}
+
 function initializeControlClient(socket) {
     if (socket.controlInitialized) return;
     
@@ -2150,42 +2222,63 @@ function initializeControlClient(socket) {
 
     socket.controlInitialized = true;
     const currentMapId = socket.targetMapId || state.getLastMapId() || 5202;
-
-    const p110100 = encodeInt(110100);
-    const p110101 = encodeInt(110101); 
-    const p110104 = encodeInt(110104); 
-    const p110106 = encodeInt(110106); 
-
-    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110101},()))\n`);
-    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110106},()))\n`);
-    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110104},(${encodeInt(match.blueScore)},${encodeInt(match.redScore)})))\n`);
+    const mapType = db.MAP_CONFIG[currentMapId] ? db.MAP_CONFIG[currentMapId].type : 3;
+    match.mapType = mapType;
 
     spawnTdmBases(socket, currentMapId);
     spawnControlPoint(socket, currentMapId);
 
-    // Inicializa a janela ZhanDian (HUD) do modo Control no cliente
+    const pIdxEnc = encodeInt(socket.playerIndex || 1);
+
+    if (mapType === 5) {
+        // Resource Capture Mode (Scramble_Message_Handle: 110101..110109)
+        const p110100 = encodeInt(110100);
+        const p110101 = encodeInt(110101); 
+        const p110103 = encodeInt(110103);
+        const p110104 = encodeInt(110104); 
+        const p110105 = encodeInt(110105);
+        const p110106 = encodeInt(110106); 
+
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110101},()))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110103},${buildScrambleUserData(match)}))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110106},()))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110104},(${encodeInt(Math.floor(match.blueScore / 50))},${encodeInt(Math.floor(match.redScore / 50))})))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110105},('1-1-0-0-0-1-0-210-0-0-')))\n`);
+
+        if (match.state === 'fight') {
+            const p110107 = encodeInt(110107); 
+            const p1030000 = encodeInt(1030000);
+            socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
+            socket.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+        }
+        return;
+    }
+
+    // Control Mode (ZhanDianCon: 5000 -> 5001, 5028, 5002, 5008, 5022, 5006)
     const p5000 = encodeInt(5000);
     const subCmd5001 = encodeInt(5001);
     const stateVal = match.state === 'warmup' ? 0 : 1;
+    const bluePercentage = Math.floor(match.blueScore / 50);
+    const redPercentage = Math.floor(match.redScore / 50);
     const arrayList = [
         encodeInt(stateVal),                    // 0: m_nGameState
         encodeInt(match.warmupSeconds),         // 1: warmup time
         encodeInt(match.fightSeconds),          // 2: fight time
         encodeInt(0),                           // 3
         encodeInt(0),                           // 4
-        encodeInt(0),                           // 5: owningForce
-        encodeInt(0),                           // 6: occupyForce
-        encodeInt(0),                           // 7: bluePercentage
-        encodeInt(0),                           // 8: redPercentage
+        encodeInt(match.owningForce || 0),      // 5: owningForce
+        encodeInt(match.occupyForce || 0),      // 6: occupyForce
+        encodeInt(bluePercentage),              // 7: bluePercentage
+        encodeInt(redPercentage),               // 8: redPercentage
         encodeInt(0),                           // 9: blue rounds won
         encodeInt(0),                           // 10: red rounds won
-        encodeInt(0),                           // 11: attnum (InitScrollRob blue percentage)
-        encodeInt(0),                           // 12: defnum (InitScrollRob red percentage)
+        encodeInt(bluePercentage),              // 11: attnum (InitScrollRob blue percentage)
+        encodeInt(redPercentage),               // 12: defnum (InitScrollRob red percentage)
         encodeInt(0),                           // 13: m_nLockTime
         encodeInt(0),                           // 14: att wins
         encodeInt(0),                           // 15: def wins
-        encodeInt(0),                           // 16: blueInZone
-        encodeInt(0),                           // 17: redInZone
+        encodeInt(match.blueInZone || 0),       // 16: blueInZone
+        encodeInt(match.redInZone || 0),        // 17: redInZone
         encodeInt(1),                           // 18: nIsPlaySound
         encodeInt(1),                           // 19: nIsChangeHero
         `'${Fun.GetServerDate()}'`,             // 20: sStartChangeTime
@@ -2193,23 +2286,24 @@ function initializeControlClient(socket) {
         encodeInt(0),                           // 22
         encodeInt(0)                            // 23: general door handle
     ];
-    socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p5000},(${subCmd5001},((${arrayList.join(',')}),0,0))))\n`);
+    socket.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5001},((${arrayList.join(',')}),0,0)))\n`);
     console.log(`[🏆 CONTROL HUD INIT] Enviado subcomando 5001 para inicializar o HUD ZhanDian do jogador ${socket.playerIndex}`);
 
     if (match.state === 'fight') {
-        const p110107 = encodeInt(110107); 
         const p1030000 = encodeInt(1030000);
-        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
-        socket.write(`e${encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
     }
 }
 
 function startControlMatch(socket) {
     const currentMapId = socket.targetMapId || state.getLastMapId() || 5202;
-    console.log(`[🏆 CONTROL] startControlMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId}`);
+    const mapType = db.MAP_CONFIG[currentMapId] ? db.MAP_CONFIG[currentMapId].type : 3;
+    console.log(`[🏆 CONTROL] startControlMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId} (tipo ${mapType})`);
 
     if (!global.activeControlMatch) {
         global.activeControlMatch = {
+            mapId: currentMapId,
+            mapType: mapType,
             state: 'warmup',
             warmupSeconds: 15,
             fightSeconds: 600, 
@@ -2293,6 +2387,9 @@ function tickControlMatch() {
 
     const p110100 = encodeInt(110100);
     const p110102 = encodeInt(110102); 
+    const p5000 = encodeInt(5000);
+    const subCmd5028 = encodeInt(5028);
+    const isScramble = (match.mapType === 5);
 
     match.players = match.players.filter(p => !p.destroyed);
     if (match.players.length === 0) {
@@ -2306,7 +2403,12 @@ function tickControlMatch() {
         match.warmupSeconds--;
         
         match.players.forEach(p => {
-            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
+            const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+            if (isScramble) {
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(0)},'')))\n`);
+            } else {
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5028},(0,${encodeInt(match.warmupSeconds)},${encodeInt(1)})))\n`);
+            }
         });
 
         if (match.warmupSeconds <= 0) {
@@ -2316,43 +2418,47 @@ function tickControlMatch() {
             const p110107 = encodeInt(110107); 
             const p1030000 = encodeInt(1030000);
             match.players.forEach(p => {
-                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
-                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                if (isScramble) {
+                    p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110107},()))\n`);
+                }
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
             });
 
-            // Transiciona o HUD ZhanDian para o estado de luta (subcomando 5002)
-            const p5000 = encodeInt(5000);
-            const subCmd5002 = encodeInt(5002);
-            const startArray = [
-                encodeInt(1),                           // 0: m_nGameState = 1 (fight)
-                encodeInt(match.warmupSeconds),         // 1
-                encodeInt(match.fightSeconds),          // 2: fightSeconds = 600
-                encodeInt(0),                           // 3
-                encodeInt(0),                           // 4
-                encodeInt(0),                           // 5: owningForce
-                encodeInt(0),                           // 6: occupyForce
-                encodeInt(0),                           // 7: bluePercentage
-                encodeInt(0),                           // 8: redPercentage
-                encodeInt(0),                           // 9
-                encodeInt(0),                           // 10
-                encodeInt(0),                           // 11
-                encodeInt(0),                           // 12: defnum (int)
-                encodeInt(0),                           // 13: m_nLockTime = 0
-                encodeInt(0),                           // 14
-                encodeInt(0),                           // 15
-                encodeInt(0),                           // 16
-                encodeInt(0),                           // 17
-                encodeInt(1),                           // 18
-                encodeInt(1),                           // 19
-                `'${Fun.GetServerDate()}'`,             // 20
-                encodeInt(0),                           // 21
-                encodeInt(0),                           // 22
-                encodeInt(0)                            // 23
-            ];
-            match.players.forEach(p => {
-                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5002},(${startArray.join(',')}))))\n`);
-            });
-            console.log(`[🏆 CONTROL HUD START] Enviado subcomando 5002 para transição para o modo combate.`);
+            if (!isScramble) {
+                // Transiciona o HUD ZhanDian para o estado de luta (subcomando 5002)
+                const subCmd5002 = encodeInt(5002);
+                const startArray = [
+                    encodeInt(1),                           // 0: m_nGameState = 1 (fight)
+                    encodeInt(match.warmupSeconds),         // 1
+                    encodeInt(match.fightSeconds),          // 2: fightSeconds = 600
+                    encodeInt(0),                           // 3
+                    encodeInt(0),                           // 4
+                    encodeInt(0),                           // 5: owningForce
+                    encodeInt(0),                           // 6: occupyForce
+                    encodeInt(0),                           // 7: bluePercentage
+                    encodeInt(0),                           // 8: redPercentage
+                    encodeInt(0),                           // 9
+                    encodeInt(0),                           // 10
+                    encodeInt(0),                           // 11
+                    encodeInt(0),                           // 12: defnum (int)
+                    encodeInt(0),                           // 13: m_nLockTime = 0
+                    encodeInt(0),                           // 14
+                    encodeInt(0),                           // 15
+                    encodeInt(0),                           // 16
+                    encodeInt(0),                           // 17
+                    encodeInt(1),                           // 18
+                    encodeInt(1),                           // 19
+                    `'${Fun.GetServerDate()}'`,             // 20
+                    encodeInt(0),                           // 21
+                    encodeInt(0),                           // 22
+                    encodeInt(0)                            // 23
+                ];
+                match.players.forEach(p => {
+                    p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5002},(${startArray.join(',')})))\n`);
+                });
+                console.log(`[🏆 CONTROL HUD START] Enviado subcomando 5002 para transição para o modo combate.`);
+            }
             
             sendGlobalSystemChat("🟢 [CONTROL] A PARTIDA COMEÇOU! AS PORTAS DA BASE FORAM ABERTAS!");
         }
@@ -2364,15 +2470,12 @@ function tickControlMatch() {
             match.botInterval = true;
         }
 
-        // Baseado em blueInZone/redInZone de match.players, precisamos também contar bots que estão na zona.
-        // Vamos atualizar blueInZone/redInZone para incluir os bots que estão na zona de controle (x: 4400 a 7200, z: 4100 a 6500)
         let botBlueInZone = 0;
         let botRedInZone = 0;
         if (state.activeBots) {
             for (const botId in state.activeBots) {
                 const bot = state.activeBots[botId];
                 if (bot && !bot.destroyed && bot.hp > 0) {
-                    // Verifica se o bot está dentro do retângulo da zona (mesmos limites aproximados)
                     if (bot.lastX >= 4400 && bot.lastX <= 7200 && bot.lastZ >= 4100 && bot.lastZ <= 6500) {
                         if (bot.force === 1) botBlueInZone++;
                         else if (bot.force === 2) botRedInZone++;
@@ -2381,7 +2484,6 @@ function tickControlMatch() {
             }
         }
         
-        // Atualiza a barra de progresso do ponto de controle
         const blueInZone = (match.blueInZone || 0) + botBlueInZone;
         const redInZone = (match.redInZone || 0) + botRedInZone;
 
@@ -2408,12 +2510,12 @@ function tickControlMatch() {
                         nSpeed = 0;
                         sendGlobalSystemChat("🏆 [CONTROL] O Ponto de Controle foi capturado pela Equipe Azul!");
 
-                        // Envia 5019 para exibir visual de captura e tocar som
-                        const p5000 = encodeInt(5000);
-                        const subCmd5019 = encodeInt(5019);
-                        match.players.forEach(p => {
-                            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(1)})))\n`);
-                        });
+                        if (!isScramble) {
+                            const subCmd5019 = encodeInt(5019);
+                            match.players.forEach(p => {
+                                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(1)})))\n`);
+                            });
+                        }
                     }
                 }
             } else {
@@ -2439,23 +2541,21 @@ function tickControlMatch() {
                         nSpeed = 0;
                         sendGlobalSystemChat("🏆 [CONTROL] O Ponto de Controle foi capturado pela Equipe Vermelha!");
 
-                        // Envia 5019 para exibir visual de captura e tocar som
-                        const p5000 = encodeInt(5000);
-                        const subCmd5019 = encodeInt(5019);
-                        match.players.forEach(p => {
-                            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(2)})))\n`);
-                        });
+                        if (!isScramble) {
+                            const subCmd5019 = encodeInt(5019);
+                            match.players.forEach(p => {
+                                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5019},(${encodeInt(2)})))\n`);
+                            });
+                        }
                     }
                 }
             } else {
                 match.progress = 210;
             }
         } else if (blueInZone > 0 && redInZone > 0) {
-            // Contestado: Para o progresso
             ntype = 0;
             nSpeed = 0;
         } else {
-            // Ninguém na zona: Drena o progresso se não estiver totalmente capturado
             if (match.progress > 0 && match.occupyForce > 0) {
                 match.progress = Math.max(0, match.progress - 15);
                 ntype = 2; // Draining progress
@@ -2473,15 +2573,6 @@ function tickControlMatch() {
             match.redScore = Math.min(5000, match.redScore + 50);
         }
 
-        // Envia atualização de timer/countdown
-        match.players.forEach(p => {
-            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
-        });
-
-        // Envia os placares e progresso atualizados via subcomando 5008
-        const p5000 = encodeInt(5000);
-        const subCmd5008 = encodeInt(5008);
-        
         let occupyState = 0;
         if (blueInZone > 0 && redInZone > 0) {
             occupyState = 3; // Contested / ZhengDuo
@@ -2494,63 +2585,82 @@ function tickControlMatch() {
         const bluePercentage = Math.floor(match.blueScore / 50);
         const redPercentage = Math.floor(match.redScore / 50);
 
-        const userListStr = match.userList && match.userList.length > 0 
-            ? `(${match.userList.map(encodeInt).join(',')})` 
-            : '()';
+        if (isScramble) {
+            // Resource Capture Mode (Scramble_Message_Handle: 110102, 110103, 110104, 110105)
+            const p110103 = encodeInt(110103);
+            const p110104 = encodeInt(110104);
+            const p110105 = encodeInt(110105);
+            const occA = match.occupyForce === 1 ? match.progress : (match.owningForce === 1 ? 210 : 0);
+            const occB = match.occupyForce === 2 ? match.progress : (match.owningForce === 2 ? 210 : 0);
+            const scrambleState = occupyState === 3 ? 3 : (match.owningForce > 0 ? 4 : (occupyState > 0 ? 2 : 1));
+            const userIdsStr = (match.userList || []).join(':');
+            const fightDataEntry = `'1-1-${match.occupyForce || match.owningForce || 0}-${blueInZone}-${redInZone}-${scrambleState}-${match.owningForce || 0}-210-${occA}-${occB}-${userIdsStr}'`;
+            const userDataList = buildScrambleUserData(match);
 
-        const updateArray = [
-            encodeInt(1),                           // 0: m_nGameState = 1 (fight)
-            encodeInt(occupyState),                 // 1: occupyForce/occupyState
-            encodeInt(0),                           // 2
-            encodeInt(blueInZone),                  // 3: blue players in zone
-            encodeInt(redInZone),                   // 4: red players in zone
-            userListStr,                            // 5: userList (ArrayList of NetIDs)
-            encodeInt(0),                           // 6
-            encodeInt(bluePercentage),              // 7: bluePercentage
-            encodeInt(redPercentage),               // 8: redPercentage
-            encodeInt(0),                           // 9: blue rounds won
-            encodeInt(0),                           // 10: red rounds won
-            encodeInt(match.owningForce),           // 11: owningForce
-            encodeInt(0),                           // 12
-            encodeInt(0)                            // 13
-        ];
-        
-        match.players.forEach(p => {
-            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5008},(${updateArray.join(',')}))))\n`);
-        });
-
-        // Envia sincronização de captura (case 5022) se houver progresso ativo (ou drenando/parado)
-        const subCmd5022 = encodeInt(5022);
-        const natt = match.occupyForce === 1 ? 1 : 0;
-        const ndef = match.occupyForce === 2 ? 1 : 0;
-        const nstate = match.occupyForce || match.owningForce || 0;
-        
-        const syncProgressArray = [
-            encodeInt(natt),                        // 0
-            encodeInt(ndef),                        // 1
-            encodeInt(nstate),                      // 2
-            encodeInt(0),                           // 3
-            encodeInt(ntype),                       // 4: 1 = fill, 2 = drain, 0 = stop
-            encodeInt(nSpeed)                       // 5: speed
-        ];
-        
-        match.players.forEach(p => {
-            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5022},(${syncProgressArray.join(',')}))))\n`);
-        });
-
-        // Toca som de contagem regressiva se atingir 85% de porcentagem de vitória de qualquer time
-        if ((bluePercentage > 85 && match.owningForce === 1) || (redPercentage > 85 && match.owningForce === 2)) {
-            const subCmd5027 = encodeInt(5027);
-            const countdownArray = [
-                encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0),
-                encodeInt(bluePercentage),              // 7
-                encodeInt(redPercentage),               // 8
-                encodeInt(0), encodeInt(0),
-                encodeInt(match.owningForce)            // 11
-            ];
             match.players.forEach(p => {
-                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5027},(${countdownArray.join(',')}))))\n`);
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110102},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(0)},'')))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110104},(${encodeInt(bluePercentage)},${encodeInt(redPercentage)})))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110105},(${fightDataEntry})))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110103},${userDataList}))\n`);
             });
+        } else {
+            // Control Mode (ZhanDianCon: 5008, 5022, 5027, 5028)
+            const subCmd5008 = encodeInt(5008);
+            const userListStr = match.userList && match.userList.length > 0 
+                ? `(${match.userList.map(encodeInt).join(',')})` 
+                : '()';
+
+            const updateArray = [
+                encodeInt(1),                           // 0: m_nGameState = 1 (fight)
+                encodeInt(occupyState),                 // 1: occupyForce/occupyState
+                encodeInt(0),                           // 2
+                encodeInt(blueInZone),                  // 3: blue players in zone
+                encodeInt(redInZone),                   // 4: red players in zone
+                userListStr,                            // 5: userList (ArrayList of NetIDs)
+                encodeInt(0),                           // 6
+                encodeInt(bluePercentage),              // 7: bluePercentage
+                encodeInt(redPercentage),               // 8: redPercentage
+                encodeInt(0),                           // 9: blue rounds won
+                encodeInt(0),                           // 10: red rounds won
+                encodeInt(match.owningForce),           // 11: owningForce
+                encodeInt(0),                           // 12
+                encodeInt(0)                            // 13
+            ];
+            
+            const subCmd5022 = encodeInt(5022);
+            const natt = match.occupyForce === 1 ? 1 : 0;
+            const ndef = match.occupyForce === 2 ? 1 : 0;
+            const nstate = match.occupyForce || match.owningForce || 0;
+            const syncProgressArray = [
+                encodeInt(natt),                        // 0
+                encodeInt(ndef),                        // 1
+                encodeInt(nstate),                      // 2
+                encodeInt(0),                           // 3
+                encodeInt(ntype),                       // 4: 1 = fill, 2 = drain, 0 = stop
+                encodeInt(nSpeed)                       // 5: speed
+            ];
+
+            match.players.forEach(p => {
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5028},(0,${encodeInt(match.fightSeconds)},${encodeInt(3)})))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5008},(${updateArray.join(',')})))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5022},(${syncProgressArray.join(',')})))\n`);
+            });
+
+            if ((bluePercentage > 85 && match.owningForce === 1) || (redPercentage > 85 && match.owningForce === 2)) {
+                const subCmd5027 = encodeInt(5027);
+                const countdownArray = [
+                    encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0), encodeInt(0),
+                    encodeInt(bluePercentage),              // 7
+                    encodeInt(redPercentage),               // 8
+                    encodeInt(0), encodeInt(0),
+                    encodeInt(match.owningForce)            // 11
+                ];
+                match.players.forEach(p => {
+                    p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5027},(${countdownArray.join(',')})))\n`);
+                });
+            }
         }
 
         if (match.blueScore >= 5000 || match.redScore >= 5000 || match.fightSeconds <= 0) {
@@ -2618,44 +2728,47 @@ function endControlMatch() {
     const p110100 = encodeInt(110100);
     const p110108 = encodeInt(110108);
     const p110109 = encodeInt(110109); 
+    const isScramble = (match.mapType === 5);
 
-    match.players.forEach(p => {
-        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110108},(${encodeInt(winnerForce)})))\n`);
-    });
-
-    // Transiciona o HUD ZhanDian para o estado final de GameOver (subcomando 5006)
-    const p5000 = encodeInt(5000);
-    const subCmd5006 = encodeInt(5006);
-    const endArray = [
-        encodeInt(3),                           // 0: m_nGameState = 3 (GameOver)
-        encodeInt(0),                           // 1
-        encodeInt(0),                           // 2
-        encodeInt(0),                           // 3
-        encodeInt(0),                           // 4
-        encodeInt(0),                           // 5
-        encodeInt(0),                           // 6
-        encodeInt(0),                           // 7
-        encodeInt(0),                           // 8
-        encodeInt(0),                           // 9
-        encodeInt(0),                           // 10
-        encodeInt(0),                           // 11
-        "''",                                   // 12
-        encodeInt(0),                           // 13
-        encodeInt(winnerForce === 1 ? 2 : 0),   // 14: m_nAttVinnerNum
-        encodeInt(winnerForce === 2 ? 2 : 0),   // 15: m_nDefVinnerNum
-        encodeInt(0),                           // 16
-        encodeInt(0),                           // 17
-        encodeInt(1),                           // 18
-        encodeInt(1),                           // 19
-        `'${Fun.GetServerDate()}'`,             // 20
-        "()",                                   // 21: szResult
-        encodeInt(winnerForce),                 // 22: m_nNowWin
-        encodeInt(0)                            // 23
-    ];
-    match.players.forEach(p => {
-        p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5006},(${endArray.join(',')}))))\n`);
-    });
-    console.log(`[🏆 CONTROL HUD END] Enviado subcomando 5006 para encerrar o HUD ZhanDian.`);
+    if (isScramble) {
+        match.players.forEach(p => {
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110108},(${encodeInt(winnerForce)})))\n`);
+        });
+    } else {
+        // Transiciona o HUD ZhanDian para o estado final de GameOver (subcomando 5006)
+        const p5000 = encodeInt(5000);
+        const subCmd5006 = encodeInt(5006);
+        const endArray = [
+            encodeInt(3),                           // 0: m_nGameState = 3 (GameOver)
+            encodeInt(0),                           // 1
+            encodeInt(0),                           // 2
+            encodeInt(0),                           // 3
+            encodeInt(0),                           // 4
+            encodeInt(0),                           // 5
+            encodeInt(0),                           // 6
+            encodeInt(0),                           // 7
+            encodeInt(0),                           // 8
+            encodeInt(0),                           // 9
+            encodeInt(0),                           // 10
+            encodeInt(0),                           // 11
+            encodeInt(0),                           // 12
+            encodeInt(0),                           // 13
+            encodeInt(winnerForce === 1 ? 2 : 0),   // 14: m_nAttVinnerNum
+            encodeInt(winnerForce === 2 ? 2 : 0),   // 15: m_nDefVinnerNum
+            encodeInt(0),                           // 16
+            encodeInt(0),                           // 17
+            encodeInt(1),                           // 18
+            encodeInt(1),                           // 19
+            `'${Fun.GetServerDate()}'`,             // 20
+            `(${encodeInt(0)},${encodeInt(0)},${encodeInt(0)})`, // 21: szResult
+            encodeInt(winnerForce),                 // 22: m_nNowWin
+            encodeInt(0)                            // 23
+        ];
+        match.players.forEach(p => {
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5006},(${endArray.join(',')})))\n`);
+        });
+        console.log(`[🏆 CONTROL HUD END] Enviado subcomando 5006 para encerrar o HUD ZhanDian.`);
+    }
 
     // Envia tela de resultado (5026) após 3s
     setTimeout(() => sendGameResult(match.players, winnerForce), 3000);
@@ -2663,12 +2776,499 @@ function endControlMatch() {
     setTimeout(() => {
         match.players.forEach(p => {
             if (!p.destroyed) {
-                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110100},(${p110109},()))\n`);
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                if (isScramble) {
+                    p.write(`e${pIdxEnc}:SendMsgToClient,(${p110100},(${p110109},()))\n`);
+                }
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
             }
         });
         global.activeControlMatch = null;
         console.log(`[🏆 CONTROL] Partida limpa com sucesso.`);
-    }, 10000);
+    }, 35000);
+}
+
+// =========================================================================
+// MODO ESCOLTA / PUSH CAR (type === 2: maps 5063, 5022)
+// =========================================================================
+const ESCORT_CARS = {
+    5063: { npcId: 1004, x: 10297, y: 9850, z: 16039, rx: 0, ry: 0, rz: 0 },
+    5022: { npcId: 1020, x: 24481, y: 10050, z: 20700, rx: 0, ry: 18000, rz: 0 }
+};
+
+function spawnEscortPayload(socket, match) {
+    const carCfg = ESCORT_CARS[match.mapId] || ESCORT_CARS[5063];
+    const netIdEnc = encodeInt(match.carNetId);
+    const npcIdEnc = encodeInt(carCfg.npcId);
+    const masterId = match.players[0] ? Number(match.players[0].playerIndex || 1) : Number(socket.playerIndex || 1);
+    const masterEnc = encodeInt(masterId);
+    const xEnc = encodeInt(carCfg.x);
+    const yEnc = encodeInt(carCfg.y);
+    const zEnc = encodeInt(carCfg.z);
+    const rxEnc = encodeInt(carCfg.rx || 0);
+    const ryEnc = encodeInt(carCfg.ry || 0);
+    const rzEnc = encodeInt(carCfg.rz || 0);
+    const s100 = encodeInt(100);
+    const zero = encodeInt(0);
+    const one = encodeInt(1);
+    const hpEnc = encodeInt(10000);
+
+    const packet = `cChariot_Entity:${netIdEnc},("Initialize",(${one},${netIdEnc},${npcIdEnc},${one},(${xEnc},${yEnc},${zEnc}),(${rxEnc},${ryEnc},${rzEnc}),(${s100},${s100},${s100}),(${zero},${zero},${zero}),${masterEnc},${hpEnc},${zero},${one},${zero},""),((),()),0)\n`;
+    socket.write(packet);
+    console.log(`[🚛 ESCORT PAYLOAD] Spawnado Chariot_Entity #${match.carNetId} (NPC ${carCfg.npcId}, Master ${masterId}) para ${socket.playerName}`);
+}
+
+function initializeEscortClient(socket) {
+    const match = global.activeEscortMatch;
+    if (!match || socket.escortInitialized) return;
+    socket.escortInitialized = true;
+
+    const currentMapId = match.mapId;
+    spawnTdmBases(socket, currentMapId);
+    spawnEscortPayload(socket, match);
+
+    const p5000 = encodeInt(5000);
+    const subCmd5001 = encodeInt(5001);
+    const stateVal = match.state === 'warmup' ? 0 : 1;
+    const arrayList = [
+        encodeInt(stateVal),                    // 0: m_nGameState (0=warmup, 1=fight)
+        encodeInt(match.warmupSeconds),         // 1: warmupSeconds
+        encodeInt(match.fightSeconds),          // 2: fightSeconds
+        encodeInt(0),                           // 3
+        encodeInt(0),                           // 4
+        encodeInt(0),                           // 5
+        encodeInt(0),                           // 6
+        encodeInt(0),                           // 7
+        encodeInt(match.carNetId),              // 8: m_nCarID
+        encodeInt(0),                           // 9: nPoint (current checkpoint)
+        encodeInt(1),                           // 10: nIsPlaySound
+        encodeInt(1),                           // 11: nIsChangeHero
+        `'${Fun.GetServerDate()}'`,             // 12: sStartChangeTime
+        encodeInt(0),                           // 13
+        encodeInt(0)                            // 14: door handle
+    ];
+    const pIdxEnc = encodeInt(Number(socket.playerIndex || 1));
+    socket.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5001},((${arrayList.join(',')}),0,0)))\n`);
+
+    if (match.state === 'fight') {
+        const p1030000 = encodeInt(1030000);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+    }
+}
+
+function startEscortMatch(socket) {
+    const currentMapId = Number(socket.targetMapId || state.getLastMapId() || 5063);
+    console.log(`[🚛 ESCORT] startEscortMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId}`);
+
+    if (!global.activeEscortMatch || global.activeEscortMatch.state === 'ended') {
+        global.activeEscortMatch = {
+            mapId: currentMapId,
+            state: 'warmup',
+            warmupSeconds: 15,
+            fightSeconds: 480,
+            carNetId: 8002,
+            carDis: 0,
+            carAllDis: 100,
+            players: [],
+            timer: null
+        };
+    }
+
+    const match = global.activeEscortMatch;
+    if (!match.players.includes(socket)) {
+        match.players.push(socket);
+    }
+
+    initializeEscortClient(socket);
+
+    if (!match.timer) {
+        match.timer = setInterval(() => {
+            tickEscortMatch();
+        }, 1000);
+    }
+}
+
+function tickEscortMatch() {
+    const match = global.activeEscortMatch;
+    if (!match) return;
+
+    match.players = match.players.filter(p => !p.destroyed);
+    if (match.players.length === 0) {
+        if (match.timer) clearInterval(match.timer);
+        global.activeEscortMatch = null;
+        return;
+    }
+
+    const p5000 = encodeInt(5000);
+    const subCmd5028 = encodeInt(5028);
+
+    if (match.state === 'warmup') {
+        match.warmupSeconds--;
+        match.players.forEach(p => {
+            const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+            p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5028},(0,${encodeInt(match.warmupSeconds)},${encodeInt(1)})))\n`);
+        });
+
+        if (match.warmupSeconds <= 0) {
+            match.state = 'fight';
+            const subCmd5002 = encodeInt(5002);
+            const p1030000 = encodeInt(1030000);
+            const startArray = [
+                encodeInt(1),
+                encodeInt(0),
+                encodeInt(match.fightSeconds),
+                encodeInt(0),
+                encodeInt(0),
+                encodeInt(0),
+                encodeInt(0),
+                encodeInt(0),
+                encodeInt(match.carNetId),
+                encodeInt(0),
+                encodeInt(1),
+                encodeInt(1),
+                `'${Fun.GetServerDate()}'`,
+                encodeInt(0),
+                encodeInt(0)
+            ];
+            match.players.forEach(p => {
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5002},(${startArray.join(',')})))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+            });
+            sendGlobalSystemChat("🟢 [ESCOLTA] A PARTIDA COMEÇOU! ESCOLTE A CARGA ATÉ O DESTINO!");
+        }
+    } else if (match.state === 'fight') {
+        match.fightSeconds--;
+        match.players.forEach(p => {
+            const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+            p.write(`e${pIdxEnc}:SendMsgToClient,(${p5000},(${subCmd5028},(0,${encodeInt(match.fightSeconds)},${encodeInt(3)})))\n`);
+        });
+
+        if (match.fightSeconds <= 0) {
+            endEscortMatch(2); // Defenders win when time runs out
+        }
+    }
+}
+
+function handleEscortCarPacket(socket, subCmd, parsed) {
+    const match = global.activeEscortMatch;
+    if (!match || match.state !== 'fight') return;
+    if (subCmd === 5013 && Array.isArray(parsed) && parsed.length >= 3) {
+        const nDis = Number(parsed[1] || 0);
+        const nAllDis = Number(parsed[2] || 0);
+        match.carDis = nDis;
+        if (nAllDis > 0) match.carAllDis = nAllDis;
+        if (nAllDis > 0 && nDis >= nAllDis - 2) {
+            console.log(`[🚛 ESCORT] Carga chegou ao destino (${nDis}/${nAllDis})! Vitória dos Atacantes!`);
+            endEscortMatch(1);
+        }
+    }
+}
+
+function endEscortMatch(winnerForce = 1) {
+    const match = global.activeEscortMatch;
+    if (!match || match.state === 'ended') return;
+    match.state = 'ended';
+    if (match.timer) {
+        clearInterval(match.timer);
+        match.timer = null;
+    }
+
+    match.players.forEach(p => {
+        p.inMatch = false;
+        p.escortInitialized = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+        if (p.playerName && state.playerSessions[p.playerName]) {
+            state.playerSessions[p.playerName].inMatch = false;
+            state.playerSessions[p.playerName].finalMapId = null;
+            state.playerSessions[p.playerName].targetMapId = 5202;
+            state.playerSessions[p.playerName].targetMapName = 'bachang_baxi';
+        }
+        const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && !s.destroyed);
+        if (lobbyMatch) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.finalMapId = null;
+        }
+    });
+
+    sendGlobalSystemChat(`🏆 [ESCOLTA] FIM DE PARTIDA! A EQUIPE ${winnerForce === 1 ? 'AZUL (ATACANTES)' : 'VERMELHA (DEFENSORES)'} VENCEU!`);
+
+    const p5000 = encodeInt(5000);
+    const subCmd5006 = encodeInt(5006);
+    const endStateVal = winnerForce === 1 ? 2 : 1; // PushGameOver: 2 => WinForce=1, 1 => WinForce=2
+    const endArray = [
+        encodeInt(endStateVal),
+        encodeInt(0),
+        encodeInt(0),
+        encodeInt(0),
+        encodeInt(0),
+        encodeInt(winnerForce),
+        encodeInt(0),
+        encodeInt(0),
+        encodeInt(match.carNetId),
+        encodeInt(2),
+        encodeInt(1),
+        encodeInt(1),
+        `'${Fun.GetServerDate()}'`,
+        encodeInt(0),
+        encodeInt(0)
+    ];
+    match.players.forEach(p => {
+        if (!p.destroyed) {
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p5000},(${subCmd5006},(${endArray.join(',')})))\n`);
+        }
+    });
+
+    setTimeout(() => sendGameResult(match.players, winnerForce), 3000);
+
+    setTimeout(() => {
+        match.players.forEach(p => {
+            if (!p.destroyed) {
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
+            }
+        });
+        global.activeEscortMatch = null;
+    }, 35000);
+}
+
+// =========================================================================
+// MODO ARENA ELIMINAÇÃO 3v3 (type === 4: maps 5056, 5058, 5059)
+// =========================================================================
+function getArenaMatch(socket) {
+    const match = global.activeArenaMatch;
+    if (!match || match.state === 'ended') return null;
+    if (!socket) return match;
+    if (match.players.includes(socket)) return match;
+    return null;
+}
+
+function sendArenaFightData(match) {
+    if (!match) return;
+    const p110000 = encodeInt(110000);
+    const p110002 = encodeInt(110002);
+    const userEntries = match.players.filter(p => !p.destroyed).map(p => {
+        const id = Number(p.playerIndex || p.playerId || 1);
+        const k = Number(p.matchKills || 0);
+        const a = Number(p.matchAssists || 0);
+        const d = Number(p.matchDeaths || 0);
+        const hId = Number(p.currentHeroId || 1015);
+        const st = p.isDead ? 0 : 1;
+        const f = Number(p.force || 1);
+        return `'${id}-${k}-${a}-${d}-${hId}-${st}-${f}'`;
+    });
+    const payload = `((${userEntries.join(',')}),${encodeInt(match.round)},${encodeInt(match.blueRounds)},${encodeInt(match.redRounds)})`;
+    match.players.forEach(p => {
+        if (!p.destroyed) {
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110000},(${p110002},${payload}))\n`);
+        }
+    });
+}
+
+function startArenaMatch(socket) {
+    const currentMapId = Number(socket.targetMapId || state.getLastMapId() || 5056);
+    console.log(`[⚔️ ARENA] startArenaMatch chamado para ${socket.playerName || 'Jogador'} no mapa ${currentMapId}`);
+
+    if (!global.activeArenaMatch || global.activeArenaMatch.state === 'ended') {
+        global.activeArenaMatch = {
+            mapId: currentMapId,
+            state: 'warmup',
+            warmupSeconds: 12,
+            fightSeconds: 120,
+            round: 1,
+            blueRounds: 0,
+            redRounds: 0,
+            players: [],
+            timer: null
+        };
+    }
+
+    const match = global.activeArenaMatch;
+    if (!match.players.includes(socket)) {
+        match.players.push(socket);
+    }
+
+    spawnTdmBases(socket, currentMapId);
+
+    const p110000 = encodeInt(110000);
+    const p110001 = encodeInt(110001);
+    const p110009 = encodeInt(110009);
+    const pIdxEnc = encodeInt(Number(socket.playerIndex || 1));
+    socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110001},()))\n`);
+    socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110009},()))\n`);
+    sendArenaFightData(match);
+
+    if (match.state === 'fight') {
+        const p110004 = encodeInt(110004);
+        const p1030000 = encodeInt(1030000);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110004},()))\n`);
+        socket.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+    }
+
+    if (!match.timer) {
+        match.timer = setInterval(() => {
+            tickArenaMatch();
+        }, 1000);
+    }
+}
+
+function checkArenaRoundState(match) {
+    if (!match || match.state !== 'fight') return;
+    const activePlayers = match.players.filter(p => !p.destroyed);
+    const bluePlayers = activePlayers.filter(p => Number(p.force) === 1);
+    const redPlayers = activePlayers.filter(p => Number(p.force) === 2);
+
+    // Se houver jogadores nos dois lados, verifica se um time inteiro foi eliminado
+    if (bluePlayers.length > 0 && redPlayers.length > 0) {
+        const blueAlive = bluePlayers.filter(p => !p.isDead).length;
+        const redAlive = redPlayers.filter(p => !p.isDead).length;
+        if (blueAlive === 0 || redAlive === 0) {
+            const roundWinner = blueAlive > 0 ? 1 : (redAlive > 0 ? 2 : 0);
+            finishArenaRound(match, roundWinner);
+        }
+    } else if (activePlayers.length > 0 && activePlayers.every(p => p.isDead)) {
+        // Caso de teste solo (1 jogador na sala que se matou)
+        const soloForce = Number(activePlayers[0].force) === 1 ? 2 : 1;
+        finishArenaRound(match, soloForce);
+    }
+}
+
+function finishArenaRound(match, roundWinner) {
+    if (!match || match.state !== 'fight') return;
+    match.state = 'round_end';
+
+    if (roundWinner === 1) match.blueRounds++;
+    else if (roundWinner === 2) match.redRounds++;
+
+    sendArenaFightData(match);
+
+    const p110000 = encodeInt(110000);
+    const p110010 = encodeInt(110010);
+    match.players.forEach(p => {
+        if (!p.destroyed) {
+            p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${p110000},(${p110010},(${encodeInt(roundWinner)})))\n`);
+        }
+    });
+
+    if (match.blueRounds >= 3 || match.redRounds >= 3) {
+        const matchWinner = match.blueRounds > match.redRounds ? 1 : 2;
+        setTimeout(() => endArenaMatch(match, matchWinner), 3000);
+        return;
+    }
+
+    setTimeout(() => {
+        if (!global.activeArenaMatch || match.state === 'ended') return;
+        match.round++;
+        match.state = 'warmup';
+        match.warmupSeconds = 8;
+        match.fightSeconds = 120;
+
+        const p110009 = encodeInt(110009);
+        const p1030000 = encodeInt(1030000);
+        match.players.forEach(p => {
+            if (!p.destroyed) {
+                respawnPlayer(p);
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110009},()))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'open_close'))\n`);
+            }
+        });
+        sendArenaFightData(match);
+    }, 5000);
+}
+
+function tickArenaMatch() {
+    const match = global.activeArenaMatch;
+    if (!match || match.state === 'ended') return;
+
+    match.players = match.players.filter(p => !p.destroyed);
+    if (match.players.length === 0) {
+        if (match.timer) clearInterval(match.timer);
+        global.activeArenaMatch = null;
+        return;
+    }
+
+    const p110000 = encodeInt(110000);
+    const p110006 = encodeInt(110006);
+
+    if (match.state === 'warmup') {
+        match.warmupSeconds--;
+        match.players.forEach(p => {
+            const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+            p.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110006},(${encodeInt(match.warmupSeconds)},${encodeInt(0)},${encodeInt(1)},'')))\n`);
+        });
+
+        if (match.warmupSeconds <= 0) {
+            match.state = 'fight';
+            const p110004 = encodeInt(110004);
+            const p1030000 = encodeInt(1030000);
+            match.players.forEach(p => {
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110004},()))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p1030000},(${encodeInt(1)},'close_open'))\n`);
+            });
+            sendArenaFightData(match);
+            sendGlobalSystemChat(`⚔️ [ARENA] RODADA ${match.round} INICIADA!`);
+        }
+    } else if (match.state === 'fight') {
+        match.fightSeconds--;
+        match.players.forEach(p => {
+            const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+            p.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110006},(${encodeInt(match.fightSeconds)},${encodeInt(1)},${encodeInt(1)},'')))\n`);
+        });
+
+        if (match.fightSeconds <= 0) {
+            const blueAlive = match.players.filter(p => Number(p.force) === 1 && !p.isDead).length;
+            const redAlive = match.players.filter(p => Number(p.force) === 2 && !p.isDead).length;
+            const winner = blueAlive > redAlive ? 1 : (redAlive > blueAlive ? 2 : 1);
+            finishArenaRound(match, winner);
+        }
+    }
+}
+
+function endArenaMatch(match, winnerForce = 1) {
+    if (!match || match.state === 'ended') return;
+    match.state = 'ended';
+    if (match.timer) {
+        clearInterval(match.timer);
+        match.timer = null;
+    }
+
+    match.players.forEach(p => {
+        p.inMatch = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+        if (p.playerName && state.playerSessions[p.playerName]) {
+            state.playerSessions[p.playerName].inMatch = false;
+            state.playerSessions[p.playerName].finalMapId = null;
+            state.playerSessions[p.playerName].targetMapId = 5202;
+            state.playerSessions[p.playerName].targetMapName = 'bachang_baxi';
+        }
+        const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && !s.destroyed);
+        if (lobbyMatch) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.finalMapId = null;
+        }
+    });
+
+    sendGlobalSystemChat(`🏆 [ARENA] FIM DE PARTIDA! A EQUIPE ${winnerForce === 1 ? 'AZUL' : 'VERMELHA'} VENCEU!`);
+
+    setTimeout(() => sendGameResult(match.players, winnerForce), 2000);
+
+    const p110000 = encodeInt(110000);
+    const p110005 = encodeInt(110005);
+    setTimeout(() => {
+        match.players.forEach(p => {
+            if (!p.destroyed) {
+                const pIdxEnc = encodeInt(Number(p.playerIndex || 1));
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${p110000},(${p110005},()))\n`);
+                p.write(`e${pIdxEnc}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
+            }
+        });
+        if (global.activeArenaMatch === match) global.activeArenaMatch = null;
+    }, 35000);
 }
 
 function getPlayerNameFromNgol(texto) {
@@ -2986,6 +3586,25 @@ function finishPveMatch(match, won) {
     clearTimeout(match.timer);
     clearInterval(match.tickInterval);
     pveBroadcast(match,19002,[0,won?1:0]);
+    const peers = pvePeers(match);
+    peers.forEach(p => {
+        p.inMatch = false;
+        p.waitingForHeroLock = false;
+        p.hasConfirmedHero = false;
+        p.finalMapId = null;
+        if (p.playerName && state.playerSessions[p.playerName]) {
+            state.playerSessions[p.playerName].inMatch = false;
+            state.playerSessions[p.playerName].finalMapId = null;
+            state.playerSessions[p.playerName].targetMapId = 5202;
+            state.playerSessions[p.playerName].targetMapName = 'bachang_baxi';
+        }
+        const lobbyMatch = state.activeSockets.find(s => s.socketType === "LOBBY" && ((p.playerName && s.playerName === p.playerName) || s.remoteAddress === p.remoteAddress) && !s.destroyed);
+        if (lobbyMatch) {
+            lobbyMatch.inMatch = false;
+            lobbyMatch.finalMapId = null;
+        }
+    });
+    setTimeout(() => sendGameResult(peers, won ? 1 : 2), 3000);
     match.timer=setTimeout(()=>endPveMatch(match),8000);
 }
 function sendPveVictory(match) { finishPveMatch(match,true); }
@@ -3091,14 +3710,23 @@ function startPveMatch(socket,mapId) {
 }
 function endPveMatch(match) {
     if(!match) { [...pveMatches].forEach(endPveMatch); return; }
+    const finishedMatch = (match.state === 'victory' || match.state === 'defeat');
+    const peers = pvePeers(match);
     clearTimeout(match.timer); clearInterval(match.tickInterval);
     for(const bot of Object.values(match.monsters)) {
-        pvePeers(match).forEach(p=>p.write(PacketBuilder.destroy(bot.playerIndex)));
+        peers.forEach(p=>p.write(PacketBuilder.destroy(bot.playerIndex)));
         delete state.activeBots[bot.playerIndex];
     }
     if(match.crystal) {
-        pvePeers(match).forEach(p=>p.write(PacketBuilder.destroy(match.crystal.id)));
+        peers.forEach(p=>p.write(PacketBuilder.destroy(match.crystal.id)));
         delete state.spawnedNpcs[match.crystal.id];
+    }
+    if (finishedMatch) {
+        peers.forEach(p => {
+            if (!p.destroyed) {
+                p.write(`e${encodeInt(Number(p.playerIndex || 1))}:SendMsgToClient,(${encodeInt(20001)},(0,'',0))\n`);
+            }
+        });
     }
     match.state='ended'; match.monsters={}; match.players=[];
     pveMatches.delete(match);
@@ -3155,6 +3783,15 @@ module.exports = {
     startControlMatch,
     tickControlMatch,
     endControlMatch,
+    startEscortMatch,
+    tickEscortMatch,
+    endEscortMatch,
+    handleEscortCarPacket,
+    getArenaMatch,
+    startArenaMatch,
+    tickArenaMatch,
+    checkArenaRoundState,
+    endArenaMatch,
     getPlayerNameFromNgol,
     spawnBot,
     spawnPracticeNpcs,

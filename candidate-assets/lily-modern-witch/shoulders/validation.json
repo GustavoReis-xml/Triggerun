@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "objectsCompared": 776,
+  "changedOnlyMesh": [
+    -7280344775147488012
+  ],
+  "changedVertices": 90,
+  "anchors": 46,
+  "nativeSamples": 140,
+  "syntheticSamples": 21,
+  "maxRootOutsideGarment": -0.0017999374762160342,
+  "maxRootInsideGarment": 0.010002048479237954,
+  "beforeMaxOutside": 0.06951446855369853,
+  "physicsNailsTextureRigUnchanged": true,
+  "UnityTested": false
+}

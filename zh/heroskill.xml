@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <root>
 <i heroid="2000" name="Lamster" ico="lamster">
-<s id="4" name="Socorro Imediato" icon="youjian" skillindex="0" isopen="1"/>
+<s id="1" name="Pulso de Contenção" icon="e" skillindex="22001" isopen="1"/>
+<s id="2" name="Arrancada Tática" icon="shift" skillindex="22002" isopen="1"/>
+<s id="3" name="Vanguarda Solidária" icon="q" skillindex="22003" isopen="1"/>
+<s id="4" name="Pulso de Inspiração" icon="youjian" skillindex="22004" isopen="1"/>
 <s id="5" name="Cuidado Compartilhado" icon="beidong" skillindex="0" isopen="1"/>
-	</i>
+</i>
 	<i heroid="1003" name="Alice" ico="dianna_1">
 		<s id="1" name="Teleporte" icon="e" skillindex="1007" isopen="0"/>
 		<s id="2" name="Camuflagem Óptica" icon="shift" skillindex="1009" isopen="0"/>

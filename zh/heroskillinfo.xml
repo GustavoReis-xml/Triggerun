@@ -153,10 +153,12 @@
 		<s id="3" name="Matrix Defensiva" icon="daweiFYJZ" col="2" type="" key="Key_Skill_1" desc="Resista as balas logo em frente" pos="329,-187,0"/>
 		<s id="4" name="Teleport em Grupo" icon="daweiQTCS" col="3" type="&lt;color=#ff8a00&gt;&lt;size=26&gt;Ultra Skill&lt;/size&gt;&lt;/color&gt;" key="Key_Skill_3" desc="Construa um portal, permitindo companheiros se teleportarem" pos="0,382,0"/>
 	</i>
-<i heroid="2000" star="1">
-		<s id="1" name="Punho Solidário" icon="lamster_primary" col="1" type="" key="Key_Use_Weapon_1" desc="Causa 120 de dano em inimigos ou recupera 180 de vida de aliados próximos. Alcance de 2,2 metros; intervalo de 1 segundo. Bloqueado por obstáculos." pos="-329,197,0"/>
-		<s id="2" name="Pulso de Inspiração" icon="lamster_rally" col="2" type="" key="Key_Use_Weapon_2" desc="Em 8 metros: cura aliados em 360, inspira você e aliados (+25% dano por 5 segundos) e causa 250 de dano em inimigos. Recarga de 6 segundos. Não ressuscita." pos="329,197,0"/>
-		<s id="3" name="Cuidado Compartilhado" icon="lamster_passive" col="4" type="Skill Passiva" key="" desc="Ao curar um aliado, recupera 25% da cura efetiva em si mesmo, até 45 por aliado. Aliados com vida cheia não geram cura. Não possui ultimate ativa." pos="0,-220,0"/>
-		<s id="4" name="Soco de Defesa" icon="lamster_primary" col="1" type="" key="Corpo a corpo (F padrão)" desc="Soco de 120 de dano, a cada 0,8 segundo. Alcance de 2,2 metros. O botão direito também inspira aliados e atinge inimigos." pos="0,382,0"/>
-	</i>
+<i heroid="2000" star="2">
+<s id="1" name="Punho Solidário" icon="lamster_primary" col="1" type="" key="Key_Use_Weapon_1" desc="120 de dano em inimigos ou 180 de cura em aliados. Alcance 2,2 m; intervalo 1 s. Curas efetivas em aliados carregam a ultimate." pos="-329,197,0"/>
+<s id="2" name="Pulso de Inspiração" icon="lamster_rally" col="2" type="" key="Key_Use_Weapon_2" desc="Raio 8 m: cura 360 nos aliados, causa 250 de dano nos inimigos e inspira você e aliados (+25% de dano por 5 s). Recarga 6 s." pos="329,197,0"/>
+<s id="3" name="Pulso de Contenção" icon="lamster_e" col="2" type="" key="Key_Skill_1" desc="Desacelera inimigos em 35% por 2,5 s num raio de 6 m. Não causa dano nem cura. Recarga 12 s." pos="-329,-187,0"/>
+<s id="4" name="Arrancada Tática" icon="lamster_shift" col="2" type="" key="Key_Skill_2" desc="+40% de velocidade e 30% de redução do dano de armas por 3 s. Mantém ataques disponíveis. Recarga 8 s." pos="329,-187,0"/>
+<s id="5" name="Vanguarda Solidária" icon="lamster_ult" col="3" type="" key="Key_Skill_3" desc="Você e aliados em 10 m recebem 40% de redução do dano de armas por 6 s, removem lentidões e ganham +40% de velocidade por 3 s. Não acumula redução com Shift; vale o maior bônus." pos="0,382,0"/>
+<s id="6" name="Cuidado Compartilhado" icon="lamster_passive" col="4" type="Skill Passiva" key="" desc="Curar um aliado recupera em você 25% da cura efetiva, limitado a 45 por aliado. Vida cheia e autocura não carregam a ultimate." pos="0,-260,0"/>
+</i>
 </root>

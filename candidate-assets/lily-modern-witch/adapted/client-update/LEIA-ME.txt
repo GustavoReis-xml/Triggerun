@@ -1,0 +1,4 @@
+Atualizacao de fisica cosmetica Lily050 / preserva Corvo040 e Lobo042.
+Feche o TRIG. Preserve uma copia do auxiliar anterior e substitua TriggerunRavenDynamics.dll em TRIG_Data/Managed.
+Requer o Assembly-CSharp ja modificado com o hook de DynamicBone. O Assembly deste computador permaneceu intacto (SHA256 CDBAF1B3EBD342C059B9825E7B4481D270B647AD55D2A806D8DC3BD7F439AFA7).
+Este pacote nao inclui nem substitui o Assembly. Reabra o jogo e selecione Lily / Bruxa Carmesim.

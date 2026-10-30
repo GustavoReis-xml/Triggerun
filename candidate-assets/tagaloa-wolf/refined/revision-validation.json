@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "objectsCompared": 666,
+  "changed": [
+    -8612445080646183882
+  ],
+  "UVTrianglesRigTailPhysicsMaterialsScriptsPreserved": true,
+  "headAndLegGeometryPreserved": true,
+  "syntheticPoses": 23,
+  "nativeClipSamples": 255,
+  "nativeClips": 51,
+  "nativeControllerBlendsRootMotionIKNotSimulated": true,
+  "coreChestAreaMaxError": 1.0132789611816406e-06,
+  "nativeP99MaxRelativeTo042": 1.0745952569847035,
+  "nativeMaxEdgeRatioRelativeTo042": 1.2178175146574153,
+  "realUnityTested": false
+}

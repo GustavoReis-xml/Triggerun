@@ -1,0 +1,25 @@
+# Passagem de trabalho — SKIN-055
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026, Oracle21:42:38UTC(18:42BRT).
+- Objetivo: adaptar o GLB muscular man figure ao Khan1034/Maré Alta, com balanço cosmético da toalha.
+- Estado: implementação, testes automatizados e instalação concluídos; aprovação no cliente Unity real pendente.
+- Fonte preservada: `candidate-assets/khan-beach/source-tripo.glb`;23649v/19533tri, sem rig; atlas4096 convertido para2048DXT5/mipmaps, sem repintura artística.
+- Base: `hz_tps.mo`, SHA406de9f6b854bb97629509c4b2831a7bcd142e39626fce6d4d461e4f3d31d614. Preservados63bones nativos, binds, Avatar/Animator/arma/IK/colisores/skills.
+- Arquivos: `scratch/khan055/`, `candidate-assets/khan-beach/adapted/`, extensão opt-in em `client-patches/RavenDynamics.cs`, catálogo baxi/zh, manifesto e novo `hz_tps_beach.mo`.
+- Encaixe: braços/mãos e tornozelos ajustados aos pivôs nativos; cabeça/barba/acessórios faciais rígidos ao Head; relógio e sandálias com domínio anatômico próprio.
+- Correções anteriores à instalação: remover influência de tronco do antebraço sem contaminar laterais do abdômen; suavizar transferência dos dedos pela conectividade, pois vizinho espacial confundia polegar/indicador.
+- Toalha: componente topológico1717 separado do corpo;2346v, duas cadeias de4ossos,71bones finais. Âncora Bip001 L Clavicle (x negativo), sem pesos de braços/pernas no tecido.
+- Física: DynamicBone nativo, parâmetros .42/.10/.93/.25/.012;5volumes cosméticos privados por ator, incluindo ombro. Sem UnityCollider/Rigidbody ou estado compartilhado entre jogadores.
+- Auxiliar reconhece TRSkin055_, mantém040/042/050 e reinicializa em teleporte/pausa/rotação brusca. Importação serializada inclui tipo DynamicBone e entrada de script na tabela local.
+- Estrutura: objetos originais comparados com whitelist exata;21novos objetos,11renderers de corpo;faces/UV Tripo intactos, hierarquia/local dos ossos nativos preservados.
+- Poses sintéticas:22aprovadas, maiorP99≈1,4044/extremo4,6825; não representam validação visual integral no Unity.
+- Animações:36clipes nativos/180amostras reconstruídas, auditadas contra malha nativa. PiorP99≈2,0124 em expression_B200_end (nativo≈2,2215), extremos locais até≈7,09; reconstrução não inclui Animator/IK em execução real.
+- Solver:87387asserções a30/60/120FPS, balanço máximo12,7–14,4cm; colisão, resets e3instâncias próximas. Regressões Corvo235227/Lobo48747/Lily235227 aprovadas.
+- Malha sob solver:quadros180/187 P99≤1,0708/extremo≤2,161; prévias stand/tiro/recarga/hello/ultimate/física geradas, stand/hello/física conferidas visualmente.
+- Catálogo:skin6 gratuita Maré Alta, sem atributos adicionais;FPS hz_fps e ícone huangzhong_1 originais. Outras skins preservadas.
+- Cliente:TRIG fechado; somentehelper atualizado, SHAF6259DC1B28BA06824330D0F45CB544B062A1630F418B53FF4DD880B71951DF1. AssemblyCDBAF1…9AFA7 intacto.
+- Oracle:backup e guardas dehash antes substituir;CRC26102404/5564recursos, reinício com zero conexões, PM2PID924530.8hashesHTTP1.1.1/1.3.5+TCP7777 aprovados; cópia local sincronizada.
+- Backups: `backups/khan055-before/`; remoto `/home/ubuntu/backups/khan-beach-skin055-20261024T214238Z/runtime.tar.gz`. Código do servidor/alterações Antigravity não editados.
+- Evidências: `scratch/khan055/{physics-validation,native-audit-summary,client-installation}.json`, regressões e `release/`; `adapted/{validation,pose-metrics,report}.json` e prévias.
+- Distribuição: `client-update-khan055.zip` contém apenashelper/instruções e requer Assembly já preparado para física das skins anteriores.
+- Próximo passo: abrirTRIG, equiparMaréAlta e testar tiro/recarga/skills/corrida/morte/respawn e dois jogadores próximos. Conferir dedos, ombros e contato da toalha; tecido linear pode atravessar em poses extremas.

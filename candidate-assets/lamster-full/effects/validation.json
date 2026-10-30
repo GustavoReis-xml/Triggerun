@@ -1,0 +1,65 @@
+[
+  {
+    "name": "lamster_containment_buff",
+    "source": "jiasu_buff",
+    "particles": 4,
+    "objects": 25,
+    "changed": 4,
+    "sha256": "98565705b435cc057024e59d0c3f78827cb3b3977b678e5480e7b9ba666ebcaf",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_sprint_buff",
+    "source": "jiasu_buff",
+    "particles": 4,
+    "objects": 25,
+    "changed": 4,
+    "sha256": "d47c8efdc6938ecdf5d544b18a8f11eb4b97c5cb1f6607e61e6712e8a093fc8a",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_guard_buff",
+    "source": "hudun",
+    "particles": 10,
+    "objects": 82,
+    "changed": 10,
+    "sha256": "7ccb3ccf471a16a7564cf70e450ef6e03f9673a8ce154ebe7661ce374e9c2639",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_containment_wave",
+    "source": "skill_dawei_ddfw",
+    "particles": 2,
+    "objects": 19,
+    "changed": 3,
+    "sha256": "cc3e69450c4789d5019dce1bf1ec4d91d0d77f5802610da2037b556b71e983d1",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_inspiration_wave",
+    "source": "skill_dawei_ddfw",
+    "particles": 2,
+    "objects": 19,
+    "changed": 3,
+    "sha256": "573c9f3321483408df5b424013625748b7aa3ef7820af7c113dd8fc9f37c46ce",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_punch_impact",
+    "source": "jipusai_fankui",
+    "particles": 7,
+    "objects": 43,
+    "changed": 7,
+    "sha256": "385fad5a84dcad270c77abe7c96c072faf93025f4068b6a98efc6e583446dfa4",
+    "unityTested": false
+  },
+  {
+    "name": "lamster_pulse_cast",
+    "source": "jipusai_fankui",
+    "particles": 7,
+    "objects": 43,
+    "changed": 7,
+    "sha256": "9c6137f6948d21919cee3f9b52b5286a50d8fb55094eb4a0771a8a7d06b6fe66",
+    "unityTested": false
+  }
+]

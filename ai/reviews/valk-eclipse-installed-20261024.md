@@ -1,0 +1,28 @@
+# Passagem de trabalho — SKIN-058
+
+- Responsável / destinatário / horário: Codex / usuário e próxima IA /24/10/2026 21:41:51BRT(25/10 00:41:51UTC).
+- Objetivo: adaptar GLB fantasy armor àValk1016, melhorar rosto e acrescentar movimento nas abas; espada nova somente após avaliar corpo.
+- Estado: implementação, testes automatizados e instalação concluídos; teste no cliente Unity real pendente.
+- Fonte: `candidate-assets/valk-eclipse/source-tripo.glb`,27214v/20375tri/atlas4096,semrig;original preservado.
+- Base:waerjili_tps.mo SHA6f1b251250b03d462c6a9894755b6bfac9d27f3daf64a718765ba0cc2a63b4eb;72bones/binds/Animator/Avatar/skills/colisores/arma originais preservados.
+- Arquivos: `scratch/valk058/`, `candidate-assets/valk-eclipse/adapted/`, extensãoopt-in emRavenDynamics.cs,catálogo1016baxi/zh,manifesto e novoTPSwaerjili_tps_eclipse.mo.
+- Rosto: só geometria aceita,nariz até2,42mm menos projetado e cantos dos lábios até1,2mm elevados;atlas/UV originais preservados. Não afirmar textura facial inteiramente corrigida.
+- Duas tentativas de UV simétrico descartadas integralmente por emendas de ilhas e iluminação já pintada. Evidência `face-uv-repair.json`;source-fixed.npz atual NÃO contém remendoUV.
+- Corpo:altura1,79m,peso/encaixe guiado pelos72pivôs nativos;deslocamentoY por altura para corpo/cabeça/pés,braços emduastransformações e mão encurtada longitudinalmente20% para pivô nativo.
+- Ombreiras: reposicionadas como placas rígidas para não entrarem no torso;ligadas aUpperArm. Bone013 original teve correção de animação incompatível com a placa importada,descartada antes instalar.
+- Toalhas/saia: componente8998 continha pernas e tecido; corte topológico abaixo.98m separou2pernas/2abas, classificação geodésica estendida atécintura.1336v de tecido sem pesos de braços/pernas.
+- Física:4cadeias de4ossos(88bones finais),2bordas poraba;âncoraPelvis e parâmetros .40/.11/.91/.25/.008. DynamicBone nativo já existe no bundle,semimportação deMonoScript externo.
+- Auxiliar058:4volumes cosméticos privados porator(torso/quadril/coxas),semUnityCollider/Rigidbody. Preserva040/042/050/055 e resets por teleporte/pausa/rotação.
+- Estrutura:objetos originais comparados comwhitelist exata,38novos;faces/UV Tripo intactos e ossos nativos mantêm transformações locais. Rosto/cabelo rígidosHead.
+- Poses sintéticas:22aprovadas,P99máximo≈1,3028/extremo2,3349; teste deestiramento não comprova ausência de interpenetração ou todas asposes reais.
+- Animação:34clipes/170amostras reconstruídas;P99máximo≈1,5664 em pouso(nativo≈2,1444),extremo5,529. Prévias neutra/stand/golpe/giro geradas e conferidas;sem Animator/IK executado emUnity.
+- Solver:157947asserçõesValk a30/60/120FPS,balanço máximo10,2–11,6cm;3atores próximos,reset/colisão/comprimentos. RegressõesCorvo235227/Lobo48747/Lily235227/Khan87387 aprovadas.
+- Malha sobsolver:quadros180/187 P99≤1,048/extremo≤2,065. Ajuste de geometria/pesos posterior só em ombreiras,não mudou cadeias/helper.
+- Catálogo:skin6 gratuita Valquíria do Eclipse,sematributosadicionais;FPS/íconenativoswaerjili_fps/waerjili_1 e espada original nesta etapa. NomeUTF8 conferido após corrigir título herdado do preparador.
+- Cliente:TRIG fechado;somentehelper substituído,SHA317688A0BC18E0E616C4DBD9E4A3220B9E67C3C65FF479095B2ED843D9554DD3;AssemblyCDBAF1…9AFA7 intacta.
+- Oracle:backup/guardas dehash antes alterações;CRC26102405/5565recursos,reiníciozero conexões/PM2PID927095.8hashesHTTP1.1.1/1.3.5+TCP7777 aprovados,cópia local sincronizada. Código do servidor/Antigravity não editado.
+- Backups: `backups/valk058-before/`;remoto `/home/ubuntu/backups/valk-eclipse-skin058-20261025T004151Z/runtime.tar.gz`.
+- Evidências: `scratch/valk058/{physics-validation,native-audit-summary,client-installation}.json`,regressões/release;adapted/{validation,pose-metrics,report}.json eprévias atuais *-current.png.
+- Distribuição: `client-update-valk058.zip` contémhelper/instruções;requerAssembly já preparado para físicas anteriores.
+- Próximo passo:abrirTRIG,equiparEclipse,testar ataques/escudo/giro/salto/pouso/respawn e2atores próximos. Avaliar rosto/ombreiras/luvas/saia;após aprovação considerar espada separada.
+- Limites:tecido linear pode atravessar pernas emposes extremas;rosto teve ajuste sutil,semretoque artístico completo do atlas;testeUnityreal não executado nesta tarefa.

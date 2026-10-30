@@ -1,0 +1,90 @@
+{
+  "task": "SKIN-057",
+  "hero": 1016,
+  "name": "Valquíria do Eclipse",
+  "tool": "built-in image_gen",
+  "hair": "Saber blonde bangs/low braided bun/black bow",
+  "authoritativeView": "front.png",
+  "viewsIllustratedNotCalibrated": true,
+  "pose": "neutral A-pose guided by native Valk proportions",
+  "runtimeChanged": false,
+  "OracleChanged": false,
+  "files": {
+    "front": {
+      "file": "front.png",
+      "sha256": "b26e78b962dbb4e5be7234e82f92c1d7b793548deba8748f9c9afb0a57e387af",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.6775035858154297,
+      "silhouetteBounds": [
+        72,
+        27,
+        954,
+        1503
+      ]
+    },
+    "back": {
+      "file": "back.png",
+      "sha256": "af7052e49aeb17b13e88e7957b10ead9f6346825dc89b729fb320b650a373599",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.6619224548339844,
+      "silhouetteBounds": [
+        57,
+        21,
+        966,
+        1496
+      ]
+    },
+    "left": {
+      "file": "left.png",
+      "sha256": "f6897baaf54ba60c10e6541b2c4c412e6bc85defe06720fea6c634d027d4f130",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7945054372151693,
+      "silhouetteBounds": [
+        322,
+        14,
+        783,
+        1489
+      ]
+    },
+    "right": {
+      "file": "right.png",
+      "sha256": "ac45a50999b18400a16674f9cececc7f9097c4f1378d9f0730dd38a3f8e0c31f",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7918701171875,
+      "silhouetteBounds": [
+        233,
+        14,
+        695,
+        1486
+      ]
+    }
+  }
+}

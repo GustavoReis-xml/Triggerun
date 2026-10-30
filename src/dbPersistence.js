@@ -31,6 +31,17 @@ const PLAYABLE_HEROES = [
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const PLAYERS_DIR = path.join(DATA_DIR, 'players');
+const GUILDS_FILE = path.join(DATA_DIR, 'guilds.json');
+
+function computeDeterministicCid(username) {
+    const clean = String(username || 'player').trim().toLowerCase();
+    let hash = 5381;
+    for (let i = 0; i < clean.length; i++) {
+        hash = ((hash << 5) + hash) + clean.charCodeAt(i);
+        hash = hash & 0x7fffffff;
+    }
+    return 10000 + (hash % 9000000);
+}
 
 // Ensure directories exist
 function ensureDirs() {
@@ -45,6 +56,7 @@ function ensureDirs() {
 // Default profile for new accounts
 function createDefaultProfile(username, password) {
     return {
+        cid: computeDeterministicCid(username),
         username: username,
         password: password, // Store password in plain text for admin convenience (private server)
         createdAt: new Date().toISOString(),
@@ -55,6 +67,13 @@ function createDefaultProfile(username, password) {
         exp: 0,
         face: 2009,         // Default equipped avatar/face
         paint: 1019,        // Default equipped spray/paint
+        popularity: 0,
+        skyTier: 1,
+        friends: [],
+        friendRequests: [],
+        lately: [],
+        guildId: 0,
+        guildRank: 0,
         runes: { step: 0, star: 0 }, // Default gene tree progress
         parts: {            // Default weapon parts levels/exp
             "1": { lvl: 1, exp: 0 },
@@ -111,6 +130,7 @@ function loadPlayer(username) {
             const content = fs.readFileSync(filePath, 'utf8');
             const data = JSON.parse(content);
             // Auto-fill missing fields if version updates
+            if (!data.cid) data.cid = computeDeterministicCid(data.username || cleanName);
             if (!data.equipment) data.equipment = {};
             if (!data.settings || !Array.isArray(data.settings)) data.settings = ["", "", "", "", ""];
             if (!data.items) data.items = {};
@@ -118,6 +138,13 @@ function loadPlayer(username) {
             if (data.diamonds === undefined) data.diamonds = 999999;
             if (data.face === undefined) data.face = 2009;
             if (data.paint === undefined) data.paint = 1019;
+            if (data.popularity === undefined) data.popularity = 0;
+            if (data.skyTier === undefined) data.skyTier = 1;
+            if (!Array.isArray(data.friends)) data.friends = [];
+            if (!Array.isArray(data.friendRequests)) data.friendRequests = [];
+            if (!Array.isArray(data.lately)) data.lately = [];
+            if (data.guildId === undefined) data.guildId = 0;
+            if (data.guildRank === undefined) data.guildRank = 0;
             if (!data.runes) data.runes = { step: 0, star: 0 };
             if (!data.unlockedHeroes) data.unlockedHeroes = [1015];
             if (!data.unlockedFaces) data.unlockedFaces = [2009];
@@ -213,6 +240,12 @@ function getUserLvlupExp(nlvl) {
     return Math.min(Math.floor(lvl / 5) * 1250 + lvl * 250, 50000);
 }
 
+// Calculate required EXP for a hero to level up from level nlvl (matches Fun.GetHeroLvlupExp in C# client)
+function getHeroLvlupExp(nlvl) {
+    const lvl = Math.max(1, parseInt(nlvl, 10) || 1);
+    return Math.min(Math.floor(lvl / 5) * 500 + lvl * 100, 20000);
+}
+
 // Add match rewards (EXP, Gold, Diamonds) and update career statistics
 function addMatchRewards(username, rewards = {}) {
     ensureDirs();
@@ -290,11 +323,20 @@ function addMatchRewards(username, rewards = {}) {
     profile.career.silverMedals = (profile.career.silverMedals || 0) + (rewards.silverMedals || 0);
     profile.career.bronzeMedals = (profile.career.bronzeMedals || 0) + (rewards.bronzeMedals || 0);
 
+    let heroOldLevel = 1;
+    let heroOriginalExp = 0;
+    let heroNewLevel = 1;
+    let heroNewExp = 0;
+    let heroNumLvlUp = 0;
+    const heroExpGained = Math.max(0, rewards.heroExp !== undefined ? rewards.heroExp : expGained);
+
     if (rewards.heroId) {
         if (!profile.career.heroes) profile.career.heroes = {};
         const hId = String(rewards.heroId);
         if (!profile.career.heroes[hId]) {
             profile.career.heroes[hId] = {
+                level: 1,
+                exp: 0,
                 matches: 0,
                 wins: 0,
                 kills: 0,
@@ -314,6 +356,18 @@ function addMatchRewards(username, rewards = {}) {
             };
         }
         const hStats = profile.career.heroes[hId];
+        heroOldLevel = Math.max(1, parseInt(hStats.level, 10) || 1);
+        heroOriginalExp = Math.max(0, parseInt(hStats.exp, 10) || 0);
+        heroNewLevel = heroOldLevel;
+        heroNewExp = heroOriginalExp + heroExpGained;
+        while (heroNewLevel < 100 && heroNewExp >= getHeroLvlupExp(heroNewLevel)) {
+            heroNewExp -= getHeroLvlupExp(heroNewLevel);
+            heroNewLevel++;
+            heroNumLvlUp++;
+        }
+        hStats.level = heroNewLevel;
+        hStats.exp = heroNewExp;
+
         hStats.matches = (hStats.matches || 0) + 1;
         if (rewards.isWin) hStats.wins = (hStats.wins || 0) + 1;
         hStats.kills = (hStats.kills || 0) + (rewards.kills || 0);
@@ -335,7 +389,7 @@ function addMatchRewards(username, rewards = {}) {
     }
 
     savePlayer(cleanName, profile);
-    console.log(`[🏆 RECOMPENSAS] Jogador ${username}: +${expGained} EXP, +${goldGained} Ouro. Nível: ${originalLevel} -> ${currentLevel} (Subiu ${numLvlUp}x, EXP: ${currentExp}/${getUserLvlupExp(currentLevel)})`);
+    console.log(`[🏆 RECOMPENSAS] Jogador ${username}: +${expGained} EXP, +${goldGained} Ouro. Nível: ${originalLevel} -> ${currentLevel} (Subiu ${numLvlUp}x, EXP: ${currentExp}/${getUserLvlupExp(currentLevel)}) | Herói ${rewards.heroId || '-'}: Nível ${heroOldLevel} -> ${heroNewLevel} (+${heroExpGained} EXP)`);
 
     return {
         originalLevel,
@@ -345,7 +399,13 @@ function addMatchRewards(username, rewards = {}) {
         numLvlUp,
         expGained,
         goldGained,
-        newGold: profile.gold
+        newGold: profile.gold,
+        heroExpGained,
+        heroOldLevel,
+        heroOriginalExp,
+        heroNewLevel,
+        heroNewExp,
+        heroNumLvlUp
     };
 }
 
@@ -439,13 +499,75 @@ function buildCareerDataPacket(username) {
     return `e1:SendMsgToHallClient,(${encodeInt(100001)},(${szUserCareerData},${szHeroCareerData},${szHeroCareerHighData}))\n`;
 }
 
+function getAllPlayers() {
+    ensureDirs();
+    try {
+        const files = fs.readdirSync(PLAYERS_DIR).filter(f => f.endsWith('.json'));
+        const players = [];
+        for (const file of files) {
+            const name = file.slice(0, -5);
+            const p = loadPlayer(name);
+            if (p) players.push(p);
+        }
+        return players;
+    } catch (e) {
+        console.error('[⚠️ DB persistence error] Failed listing players:', e);
+        return [];
+    }
+}
+
+function getPlayerByCid(cid) {
+    const targetCid = Number(cid);
+    if (!Number.isFinite(targetCid)) return null;
+    const all = getAllPlayers();
+    return all.find(p => Number(p.cid) === targetCid) || null;
+}
+
+function loadGuilds() {
+    ensureDirs();
+    if (fs.existsSync(GUILDS_FILE)) {
+        try {
+            const raw = fs.readFileSync(GUILDS_FILE, 'utf8');
+            const parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === 'object' && parsed.guilds) {
+                return parsed;
+            }
+        } catch (e) {
+            console.error('[⚠️ DB persistence error] Failed reading guilds.json:', e);
+        }
+    }
+    const initial = {
+        nextGuildId: 1001,
+        guilds: {}
+    };
+    saveGuilds(initial);
+    return initial;
+}
+
+function saveGuilds(guildStore) {
+    ensureDirs();
+    try {
+        fs.writeFileSync(GUILDS_FILE, JSON.stringify(guildStore, null, 4), 'utf8');
+        return true;
+    } catch (e) {
+        console.error('[⚠️ DB persistence error] Failed saving guilds.json:', e);
+        return false;
+    }
+}
+
 module.exports = {
     loadPlayer,
     savePlayer,
     authenticate,
     getUserLvlupExp,
+    getHeroLvlupExp,
     addMatchRewards,
     buildCareerDataPacket,
+    computeDeterministicCid,
+    getAllPlayers,
+    getPlayerByCid,
+    loadGuilds,
+    saveGuilds,
     PLAYABLE_HEROES
 };
 

@@ -3,10 +3,11 @@
 // ⚡ GERENCIADOR DINÂMICO DE ENERGIA DE ULTIMATE (DAZHAO)
 // ══════════════════════════════════════════════════════════════
 function addPlayerUltEnergy(socket, amount) {
+    if (!Number.isFinite(amount)) return;
     if (!socket || socket.destroyed || socket.socketType !== "SCENE" || socket.isDead || !socket.isCombatReady || socket.sceneRetired || socket.inMatch === false) return;
     if (socket.ultimateTimer) return; // Não ganha energia enquanto a Ultimate estiver ativa
     const currentHero = socket.currentHeroId || 1015;
-    if (Number(currentHero) === 2000) return; // Lamster usa uma passiva, sem ultimate ativa.
+    if (Number(currentHero) === 2000 && Date.now() < (socket.lamsterKit?.ultimateUntil || 0)) return;
     const dzList = db.heroDazhaoMap[currentHero] || [];
     const maxEnergy = (dzList.length > 0 && dzList[0].maxEnergy) ? dzList[0].maxEnergy : 10000;
     
@@ -36,15 +37,19 @@ const PLAYER_NAME_ENC = "41646d696e";
 const state = require('./state');
 const db = require('./database');
 const lamster = require('./lamster');
+const lamsterHero = require('./lamsterHero');
 const utils = require('./utils');
 const gameLogic = require('./gameLogic');
 const dbPersistence = require('./dbPersistence');
 const packetSniffer = require('./packetSniffer');
 const sceneScope = require('./sceneScope');
 const combat = require('./combatRules');
+const heroCatalog = require('./heroCatalog');
 const lifecycle = require('./matchLifecycle');
 const clientStream = require('./clientStream');
 const { decodeDamageEnvelope } = require('./sdgProtocol');
+const socialServer = require('./socialServer');
+const lamsterKit = lamsterHero.createKit({ state, game: gameLogic, db, later: setTimeout, cancel: clearTimeout });
 
 // Desestruturação das referências globais mutáveis do estado
 const { activeSockets, spawnedNpcs, ipNames, ipIndexes, playerSessions, playerInventory, playerEquipment } = state;
@@ -130,14 +135,7 @@ const {
 
 const getHeroIdsList = () => {
     const fromDb = Object.keys(db.heroUnlockPrices).map(Number);
-    const hardcoded = [
-        1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010,
-        1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020,
-        1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029, 1030,
-        1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040,
-        1041, 1042, 1043, 1044, 1045, 2000
-    ];
-    const combined = Array.from(new Set([...fromDb, ...hardcoded])).filter(id => id > 0);
+    const combined = Array.from(new Set([...fromDb, ...heroCatalog.HERO_IDS_LIST])).filter(id => id > 0);
     return combined.sort((a, b) => a - b);
 };
 
@@ -295,14 +293,16 @@ function cleanPlayerMatchState(socket, playerName, returnToHall = false) {
     matchmakingQueue = matchmakingQueue.filter(entry => !related.includes(entry.socket));
     for (const s of related) {
         if (s.socketType === 'SCENE') {
-            if (!s.sceneRetired && s.inMatch !== false) {
+            if (!s.sceneRetired) {
                 const id = utils.encodeInt(s.playerIndex || Number(s.playerId) || 1);
-                activeSockets.forEach(peer => {
-                    if (peer !== s && sceneScope.canReceive(s, peer) && String(peer.playerIndex) !== String(s.playerIndex)) {
-                        peer.write(`d${id}\n`);
-                    }
-                });
-                // Hall can report departure before the scene request arrives.
+                if (s.inMatch !== false) {
+                    activeSockets.forEach(peer => {
+                        if (peer !== s && sceneScope.canReceive(s, peer) && String(peer.playerIndex) !== String(s.playerIndex)) {
+                            peer.write(`d${id}\n`);
+                        }
+                    });
+                }
+                // Hall or end-of-match UI can request departure even after match state set inMatch = false.
                 if (returnToHall && !s.destroyed) {
                     s.write(`e${id}:SendMsgToClient,(${utils.encodeInt(20001)},(0,'',0))\n`);
                 }
@@ -581,8 +581,16 @@ let matchmakingQueue = [];
 let matchmakingTimer = null;
 
 function matchmakingKey(entry) {
-    return entry.isPve ? `pve:${entry.pveType}:${entry.pveLv}:${entry.pveId}` : (entry.nType === 11 ? 'individual' : 'team');
+    return entry.isPve ? `pve:${entry.pveType}:${entry.pveLv}:${entry.pveId}` : (entry.nType === 11 ? 'individual' : `mode:${entry.nType || 7}`);
 }
+
+const MODE_MAP_POOLS = {
+    7: [5204, 5010, 5024, 5210, 5212],
+    3: [5030, 5074, 5068, 5050, 5055, 5208],
+    2: [5063, 5022],
+    5: [5049, 5260],
+    4: [5056, 5058, 5059]
+};
 
 function processMatchmakingQueue() {
     if (matchmakingTimer) {
@@ -607,9 +615,9 @@ function processMatchmakingQueue() {
     const pveLv = firstEntry.pveLv;
     const pveId = firstEntry.pveId;
     
-    const PVP_MAP_POOL = firstEntry.nType === 11 ? combat.mapIds : [5204, 5010, 5024, 5210, 5212];
+    const PVP_MAP_POOL = firstEntry.nType === 11 ? combat.mapIds : (MODE_MAP_POOLS[firstEntry.nType] || MODE_MAP_POOLS[7]);
     const sharedMapId = isPve ? pveId : PVP_MAP_POOL[Math.floor(Math.random() * PVP_MAP_POOL.length)];
-    const mapConf = MAP_CONFIG[sharedMapId] || (isPve ? { name: (pveType === 12 ? 'hasd_qingshen' : 'shuijingkuangdong'), type: pveType } : { name: 'jiaodouchang_02_3', type: 7 });
+    const mapConf = MAP_CONFIG[sharedMapId] || (isPve ? { name: (pveType === 12 ? 'hasd_qingshen' : 'shuijingkuangdong'), type: pveType } : { name: 'jiaodouchang_02_3', type: firstEntry.nType || 7 });
     
     state.setLastMapId(sharedMapId);
     lastMapName = mapConf.name;
@@ -649,6 +657,7 @@ function processMatchmakingQueue() {
     const p1304 = utils.encodeInt(1304);
     
     // Configura cada jogador na fila: alterna equipes (1=Azul, 2=Vermelho)
+    socialServer.recordRecentPlayers(queuedEntries.map(e => e.socket && e.socket.playerName).filter(Boolean));
     queuedEntries.forEach((entry, idx) => {
         const s = entry.socket;
         const assignedForce = isPve ? 1 : (idx % 2 === 0 ? 1 : 2);
@@ -1075,8 +1084,9 @@ const tcpServer = net.createServer((socket) => {
                 const levelEnc = utils.encodeInt(profile.level || 1);
                 const expEnc = utils.encodeInt(profile.exp || 0);
                 const regDate = profile.createdAt ? profile.createdAt.replace('T', ' ').substring(0, 19).replace(/-/g, '/') : '2024/01/01 12:00:00';
-                const userCid = (global.userIndexes && socket.playerName && global.userIndexes[socket.playerName]) ? global.userIndexes[socket.playerName] : (socket.playerIndex || 1);
-                const arr0 = `(${userCid},'${socket.playerNameEnc}',1,${faceIdEnc},1,1,${levelEnc},${expEnc},1,0,0,0,0,0,'${regDate}',0,0,0,0,0,0,0,0,-1,(),0,0,0,0,0,0)`;
+                const userCid = profile.cid || ((global.userIndexes && socket.playerName && global.userIndexes[socket.playerName]) ? global.userIndexes[socket.playerName] : (socket.playerIndex || 1));
+                socket.cid = userCid;
+                const arr0 = `(${utils.encodeInt(userCid)},'${socket.playerNameEnc}',1,${faceIdEnc},1,1,${levelEnc},${expEnc},1,0,0,0,0,0,'${regDate}',0,0,0,0,0,0,0,0,-1,(),0,0,0,0,0,0)`;
                 // Saldo real vindo do banco do jogador:
                 const inv = state.playerInventory[socket.playerName];
                 const goldEnc = utils.encodeInt(inv.gold);
@@ -1231,6 +1241,13 @@ const tcpServer = net.createServer((socket) => {
                 await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p19500},(${utils.encodeInt(19515)},(${utils.encodeInt(1)})))\n`, 100);
                 // 19511: Vigor / Stamina inicial (100)
                 await utils.sendPacket(socket, `e1:SendMsgToHallClient,(${p19500},(${utils.encodeInt(19511)},(${utils.encodeInt(100)})))\n`, 100);
+
+                // PACOTE 8: Inicialização de Amigos (60118) e Clãs/Guildas (91020)
+                const friendsPacket = socialServer.buildFriendsInitPacket(socket.playerName || "Gustavo", activeSockets);
+                await utils.sendPacket(socket, friendsPacket, 100);
+                const guildPacket = socialServer.buildGuildLoginPacket(socket.playerName || "Gustavo");
+                await utils.sendPacket(socket, guildPacket, 100);
+                socialServer.notifyFriendsState(socket.playerName, activeSockets);
 
                 console.log(`[✅ LOBBY] Todos os pacotes de inicialização enviados!`);
             };
@@ -1478,82 +1495,26 @@ const tcpServer = net.createServer((socket) => {
                     return;
                 }
 
+                // ==========================================
+                // 🏆 RANKING GLOBAL (17000)
+                // 👥 AMIGOS (60100)
+                // 🛡️ ESQUADRÃO / PARTY (60000)
+                // 🏰 CLÃS / GUILDAS (91000)
+                // ==========================================
+                if (cmdId === 17000) {
+                    socialServer.handleRankCommand(socket, args);
+                    return;
+                }
                 if (cmdId === 60100) {
-                    console.log(`[🎮 MATCHMAKING] Jogador solicitou partida! Agrupando todos os jogadores conectados no LOBBY...`);
-                    
-                    const lobbySockets = activeSockets.filter(s => s.socketType === "LOBBY" && !s.destroyed);
-                    if (lobbySockets.length === 0) return;
-                    
-                    inMatch = true;
-                    
-                    const one = utils.encodeInt(1);
-                    const zero = utils.encodeInt(0);
-                    const dateStr = utils.Fun.GetServerDate();
-                    
-                    // Mapeia e prepara cada jogador com ID único e Equipes alternadas (TDM Blue vs Red)
-                    lobbySockets.forEach((s, idx) => {
-                        const playerIndex = (global.userIndexes && s.playerName && global.userIndexes[s.playerName]) ? global.userIndexes[s.playerName] : (idx + 1);
-                        s.playerIndex = playerIndex;
-                        s.playerId = String(playerIndex);
-                        s.force = (idx % 2 === 0) ? 1 : 2; // Team 1 (Blue) vs Team 2 (Red)
-                        s.targetMapId = 5204;
-                        s.targetMapName = 'bachang_baxi';
-                        s.inMatch = true;
-                        
-                        const heroId = s.currentHeroId || 1015;
-                        const heroIdEnc = utils.encodeInt(heroId);
-                        const profile = dbPersistence.loadPlayer(s.playerName);
-                        const playerEq = state.playerEquipment[s.playerName] || (profile && profile.equipment) || {};
-                        const eq = playerEq[heroId] || { skin: 1, weapon: 1, emote: 1, pose: 0 };
-                        
-                        const cust = getPlayerCustomizationData(s.playerName, heroId);
-                        const userDataHeroInfo = `(${heroIdEnc},${utils.encodeInt(cust.skinId)},${utils.encodeInt(cust.emoteId)},${one},${utils.encodeInt(cust.weaponId)})`;
-                        const isCap = idx === 0 ? 1 : 0;
-                        const isCapEnc = utils.encodeInt(isCap);
-                        const prerogativeLobby = `(${isCapEnc},${isCapEnc},${isCapEnc},${isCapEnc},'${s.playerNameEnc}',${zero},'',${zero})`;
-                        const playerLevel = profile && profile.level ? profile.level : (s.level || 1);
-                        
-                        s.hasConfirmedHero = false;
-                        const isChsOkEnc = zero;
-                        const netIdEnc = utils.encodeInt(playerIndex);
-                        s.userData = `('${s.playerNameEnc}',${utils.encodeInt(playerLevel)},${one},${utils.encodeInt(s.force)},${one},${one},${heroIdEnc},${one},${one},${isChsOkEnc},${utils.encodeInt(cust.faceId)},'Local',${zero},${userDataHeroInfo},${netIdEnc},${zero},${zero},${isCapEnc},${prerogativeLobby},())`;
-                    });
-                    
-                    let userListElements2 = lobbySockets.map(s => `'${s.playerNameEnc}',${s.userData}`);
-                    global.currentMatchBots = [];
-                    const userList = userListElements2.join(',');
-                    
-                    const mapId = 5204; // bachang_baxi (loadmap ID real)
-                    const mapIdEnc = utils.encodeInt(mapId);
-                    const mapConf = MAP_CONFIG[mapId];
-                    state.setLastMapId(mapId);
-                    lastMapName = mapConf.name;
-                    
-                    const mapTypeEnc = utils.encodeInt(mapConf.type);
-                    const startTime = utils.Fun.GetServerDate();
-                    
-                    const p80001 = utils.encodeInt(80001);
-                    const s90001 = utils.encodeInt(90001);
-                    const s90002 = utils.encodeInt(90002);
-                    const s90004 = utils.encodeInt(90004);
-                    const p1304 = utils.encodeInt(1304);
-                    
-                    const isChangeHeroEnc = utils.encodeInt(1);
-                    const matchMsg = `(${s90001},(${userList}),${mapIdEnc},${mapTypeEnc},'${mapConf.name}',${utils.encodeInt(60)},${isChangeHeroEnc},'${startTime}',${zero},${zero})`;
-                    
-                    // Envia os pacotes de transição para cada um dos sockets do Lobby
-                    lobbySockets.forEach(s => {
-                        (async () => {
-                            await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},${matchMsg})\n`, 400);
-                            await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},(${s90002},'${s.playerNameEnc}',${s.userData}))\n`, 400);
-                            await utils.sendPacket(s, `e1:SendMsgToHallClient,(${p80001},(${s90004}))\n`, 400);
-                            
-                            setTimeout(() => {
-                                s.write(`e1:SendMsgToHallClient,(${p1304},(${utils.encodeInt(s.playerIndex || 1)},'${s.playerNameEnc}','${SERVER_IP}',${utils.encodeInt(7777)},'SceneGroup',${utils.encodeInt(1)}))\n`);
-                            }, 1500);
-                        })().catch(err => console.error('[❌ ERRO no envio do Lobby Match]', err));
-                    });
-                    
+                    socialServer.handleFriendCommand(socket, args, activeSockets);
+                    return;
+                }
+                if (cmdId === 60000) {
+                    socialServer.handleTeamCommand(socket, args, activeSockets);
+                    return;
+                }
+                if (cmdId === 91000) {
+                    socialServer.handleGuildCommand(socket, args, activeSockets);
                     return;
                 }
 
@@ -3337,7 +3298,7 @@ const tcpServer = net.createServer((socket) => {
             // 3. Envia o pacote 90005 (Início da Partida) via 20014
             const scnId = gameLogic.getSafeMapId(socket.targetMapId || state.getLastMapId() || 5202);
             const mapConf = MAP_CONFIG[scnId];
-            const isChangeHero = (mapConf && (mapConf.type === 6 || mapConf.type === 7)) ? 1 : 0;
+            const isChangeHero = (mapConf && [2, 3, 5, 6, 7, 11].includes(mapConf.type)) ? 1 : 0;
             const isChangeHeroEnc = utils.encodeInt(isChangeHero);
             const startTime = utils.Fun.GetServerDate();
             const p20014 = utils.encodeInt(20014);
@@ -3378,7 +3339,7 @@ const tcpServer = net.createServer((socket) => {
             const currentMapId = gameLogic.getSafeMapId(originalMapId);
             if ([9,12].includes(MAP_CONFIG[originalMapId]?.type)) socket.force = 1;
             const mapConf = MAP_CONFIG[currentMapId];
-            const isChangeHero = (mapConf && (mapConf.type === 6 || mapConf.type === 7)) ? 1 : 0;
+            const isChangeHero = (mapConf && [2, 3, 5, 6, 7, 11].includes(mapConf.type)) ? 1 : 0;
             const isChangeHeroEnc = utils.encodeInt(isChangeHero);
 
             // SE AINDA ESTIVERMOS AGUARDANDO O LOCK DO HERÓI (Fase de Staging/Seleção 5010), APENAS ABRA A UI (80005) E SUSPENDA O RESTO!
@@ -3455,10 +3416,11 @@ const tcpServer = net.createServer((socket) => {
                 socket.write(matchUserInfoPacket);
                 socket.write(spawnPacketMe);
                 socket.bypassInterceptor = false;
+                lifecycle.transition(socket, 'playing', 'spawn-complete'); // Ready before peer handshake
 
                 // Broadcast do spawn para todos os outros jogadores na cena (verão como oponente index 2)
                 activeSockets.forEach(s => {
-                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
+                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && !s.waitingForHeroLock) {
                         s.bypassInterceptor = true; // Protege o pacote
                         s.write(gameLogic.getPlayerSpawnPacket(socket, s));
                         s.bypassInterceptor = false; // Liga novamente
@@ -3467,7 +3429,7 @@ const tcpServer = net.createServer((socket) => {
 
                 // Proativamente envia os spawns de todos os outros jogadores conectados para o novo jogador
                 activeSockets.forEach(s => {
-                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && s.targetMapId === socket.targetMapId && !s.waitingForHeroLock && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
+                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && !s.waitingForHeroLock) {
                         socket.bypassInterceptor = true; // Protege o pacote
                         socket.write(gameLogic.getPlayerSpawnPacket(s, socket));
                         socket.bypassInterceptor = false; // Liga novamente
@@ -3487,7 +3449,6 @@ const tcpServer = net.createServer((socket) => {
 
                 // 4. Destrava tudo (90008) - Fecha telas de seleção e loading no cliente
                 socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${p20014},(${s90008},(),${one}))\n`);
-                lifecycle.transition(socket, 'playing', 'spawn-complete'); // Ready after initial snapshot
                 console.log(`[🚀 SCENE] Spawn concluído com delay de 1500ms para o jogador ${socket.playerName} (NetID: ${socket.playerIndex})`);
                 if (originalMapId === 5202 || currentMapId === 5202) {
                     gameLogic.spawnPracticeNpcs(socket, true);
@@ -3496,14 +3457,19 @@ const tcpServer = net.createServer((socket) => {
                 // Inicializa as barreiras e bases no mapa de forma genérica
                 if (!combat.isFreeForAll(socket) && ![9,12].includes(MAP_CONFIG[originalMapId]?.type)) gameLogic.spawnTdmBases(socket, originalMapId);
 
-                // Inicializa a partida TDM, Control ou PVE garantindo que o jogador já recebeu seu spawn e time (m_nShili)
-                if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 7) {
+                // Inicializa a partida TDM, Control, Escort, Resource Capture, Arena ou PVE garantindo que o jogador já recebeu seu spawn e time (m_nShili)
+                const destType = MAP_CONFIG[originalMapId] ? MAP_CONFIG[originalMapId].type : 0;
+                if (!socket.waitingForHeroLock && destType === 7) {
                     gameLogic.startTdmMatch(socket);
                 } else if (combat.isFreeForAll(socket)) {
                     gameLogic.startFreeForAll(socket);
-                } else if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && MAP_CONFIG[originalMapId].type === 3) {
+                } else if (!socket.waitingForHeroLock && (destType === 3 || destType === 5)) {
                     gameLogic.startControlMatch(socket);
-                } else if (!socket.waitingForHeroLock && MAP_CONFIG[originalMapId] && (MAP_CONFIG[originalMapId].type === 9 || MAP_CONFIG[originalMapId].type === 12)) {
+                } else if (!socket.waitingForHeroLock && destType === 2) {
+                    gameLogic.startEscortMatch(socket);
+                } else if (!socket.waitingForHeroLock && destType === 4) {
+                    gameLogic.startArenaMatch(socket);
+                } else if (!socket.waitingForHeroLock && (destType === 9 || destType === 12)) {
                     gameLogic.startPveMatch(socket, originalMapId);
                 } else {
                     // Para todos os outros modos/mapas, abre a porta da base após um delay seguro de 5 segundos
@@ -3545,21 +3511,30 @@ const tcpServer = net.createServer((socket) => {
 
                     // Mantém as coordenadas do jogador atualizadas em tempo real para spawnar os bots à sua frente!
                     if (syncType === 'SP' || syncType === 'NSP') {
+                        let dropStaleSp = false;
                         try {
-                            const coordMatch = syncArgs.match(/\(([^)]+)\)/);
+                            const coordMatch = syncArgs.match(/\(([^)]+)\)(?:,([^,]+))?/);
                             if (coordMatch) {
+                                const spDeadFlag = coordMatch[2] !== undefined ? utils.decodeInt(coordMatch[2]) : 0;
                                 const parts = coordMatch[1].split(',');
                                 if (parts.length >= 3) {
                                     const rawX = utils.decodeInt(parts[0]);
                                     const rawY = utils.decodeInt(parts[1]);
                                     const rawZ = utils.decodeInt(parts[2]);
-                                    if (rawX !== undefined && rawY !== undefined && rawZ !== undefined) {
+                                    const inRespawnGrace = socket.lastRespawnTime && (Date.now() - socket.lastRespawnTime < 1000);
+                                    if (!socket.isDead && !socket.isRagdoll && spDeadFlag === 1) {
+                                        // Pacote SP em trânsito enviado pelo cliente enquanto estava morto antes de processar OnRevive
+                                        dropStaleSp = true;
+                                    } else if (inRespawnGrace && rawY !== undefined && rawY < -3500) {
+                                        // Ignora coordenadas de abismo em trânsito logo após o respawn
+                                        dropStaleSp = true;
+                                    } else if (rawX !== undefined && rawY !== undefined && rawZ !== undefined && !socket.isDead && !socket.isRagdoll && spDeadFlag !== 1) {
                                         socket.lastX = rawX;
                                         socket.lastY = rawY;
                                         socket.lastZ = rawZ;
 
                                         // Detecção de queda no abismo / fora do mapa
-                                        if (rawY < -3500 && !socket.isDead && !socket.isRagdoll) {
+                                        if (rawY < -3500) {
                                             console.log(`[☠️ QUEDA NO ABISMO] Jogador ${socket.playerName || socket.playerId} caiu para fora do mapa (Y=${rawY})!`);
                                             gameLogic.handlePlayerDeath(socket, null);
                                         }
@@ -3569,6 +3544,7 @@ const tcpServer = net.createServer((socket) => {
                         } catch (e) {
                             // Silently ignore
                         }
+                        if (dropStaleSp) continue;
                     }
 
                     // FAIL-SAFE: Se o jogador estiver em partida ativa mas não foi inicializado (devido a loading lento)
@@ -3599,8 +3575,11 @@ const tcpServer = net.createServer((socket) => {
                                 socket.lastUltTimeUpdate = now;
                                 const currentHero = socket.currentHeroId || 1015;
                                 const dzList = db.heroDazhaoMap[currentHero] || [];
-                                const energyPerSec = 50; // 50 pontos por segundo (0.5%/s)
-                                const addAmount = Math.round((elapsedMs / 1000) * energyPerSec);
+                                const energyPerSec = Number(currentHero) === 2000 ? (dzList[0]?.energyAddTime ?? 30) : 50;
+                                // A delayed heartbeat must not instantly award all time
+                                // spent disconnected, loading or paused in the background.
+                                const chargeMs = Number(currentHero) === 2000 ? Math.min(elapsedMs, 2000) : elapsedMs;
+                                const addAmount = Math.round((chargeMs / 1000) * energyPerSec);
                                 addPlayerUltEnergy(socket, addAmount);
                             }
                         } catch (e) {
@@ -3618,7 +3597,10 @@ const tcpServer = net.createServer((socket) => {
                             if (!shotBot && Number(socket.currentHeroId)===2000) {
                                 let shot=utils.parseArrayList(syncArgs);
                                 while(Array.isArray(shot) && shot.length===1 && Array.isArray(shot[0]))shot=shot[0];
-                                if(Number(shot[0])===2 && lamster.healAlly(socket,socket,2)) gameLogic.applyBuffToEntity(socket,socket.playerId,1007);
+                                if(Number(shot[0])===2) {
+                                    lamsterKit.pulseFired(socket);
+                                    if(lamster.healAlly(socket,socket,2)) gameLogic.applyBuffToEntity(socket,socket.playerId,1007);
+                                }
                             }
                             const fixedArgs = utils.fixSbToCbArgs(syncArgs, shotBot?.loadId || socket.loadId || socket.playerId || 1);
                             packet = `e${packetPlayerId}:CB,(${fixedArgs})\n`;
@@ -3628,7 +3610,7 @@ const tcpServer = net.createServer((socket) => {
                             packet = `e${utils.encodeInt(Number(playerId))}:${clientType},((${syncArgs}))\n`;
                         }
                         activeSockets.forEach(s => {
-                            if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && !s.waitingForHeroLock && s.isCombatReady && (!socket.currentRoomUID || !s.currentRoomUID || s.currentRoomUID === socket.currentRoomUID)) {
+                            if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed && !s.waitingForHeroLock && s.isCombatReady) {
                                 s.write(packet);
                             }
                         });
@@ -3705,7 +3687,7 @@ const tcpServer = net.createServer((socket) => {
                                 const subCmd = parsed[0];
                                 console.log(`[🚩 CONTROL/ESCORT 5016] SubCmd: ${subCmd} | argsStr: ${argsStr}`);
                                 
-                                // Processa atualizações de Control Point se houver partida ativa
+                                // Processa atualizações de Control Point / Escolta se houver partida ativa
                                 if (global.activeControlMatch) {
                                     if (subCmd === 5017) {
                                         gameLogic.handleControlZonePlayersUpdate(socket, parsed);
@@ -3713,17 +3695,20 @@ const tcpServer = net.createServer((socket) => {
                                         gameLogic.handleControlZoneCaptureUpdate(socket, parsed);
                                     }
                                 }
+                                if (global.activeEscortMatch) {
+                                    gameLogic.handleEscortCarPacket(socket, subCmd, parsed);
+                                }
 
-                                // Sincroniza/retransmite para todos os outros SCENE sockets na sala
+                                // Sincroniza/retransmite para todos os SCENE sockets na sala (incluindo o próprio cliente, pois ZhanDianCon.UpdateCarDis espera o subCmd como arr[0])
                                 const subCmdEnc = utils.encodeInt(subCmd);
-                                const argsListEnc = parsed.slice(1).map(val => {
+                                const fullListEnc = parsed.map(val => {
                                     if (typeof val === 'number') return utils.encodeInt(val);
                                     if (Array.isArray(val)) return `(${val.map(v => typeof v === 'number' ? utils.encodeInt(v) : v).join(',')})`;
                                     return val;
                                 });
                                 activeSockets.forEach(s => {
-                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
-                                        s.write(`e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(5000)},(${subCmdEnc},(${argsListEnc.join(',')})))\n`);
+                                    if ((s === socket || sceneScope.canReceive(socket, s)) && !s.destroyed) {
+                                        s.write(`e${utils.encodeInt(s.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(5000)},(${subCmdEnc},(${fullListEnc.join(',')})))\n`);
                                     }
                                 });
                             } catch (e) {
@@ -3793,33 +3778,8 @@ const tcpServer = net.createServer((socket) => {
                             return;
                         }
 
-                        // Tabela oficial de durações de recarga por herói (em ms) para sincronizar com a animação
-                        const HERO_RELOAD_DURATIONS = {
-                            1015: 2000, // Lars
-                            1027: 1800, // Jack
-                            1030: 1500, // Vincent
-                            1017: 1500, // Mulan
-                            1021: 1500, // Carmen
-                            1022: 1500, // Yuki Onna
-                            1023: 2500, // Zhu Rong
-                            1025: 1500, // Linglong
-                            1026: 2000, // Edward
-                            1028: 1500, // Loki
-                            1029: 1500, // Angel
-                            1031: 2000, // Rambo
-                            1032: 2200, // Daji
-                            1033: 1500, // Lilith
-                            1034: 2500, // Huangzhong
-                            1036: 1800, // Medusa
-                            1037: 1800  // David
-                        };
-
                         // Se for 31203 (Reload / Fill Cartridge)
                         if (cmdId === 31203) {
-                            if (socket.isDead || socket.isRagdoll) {
-                                console.log(`[🚫 RELOAD BLOCKED] Jogador ${playerId} está morto e não pode recarregar!`);
-                                return;
-                            }
                             const argParts = argsStr.replace(/\(/g, "").replace(/\)/g, "").split(",");
                             const shootName = argParts[0] || 1;
                             const currentHeroId = socket.currentHeroId || 1015;
@@ -3830,18 +3790,28 @@ const tcpServer = net.createServer((socket) => {
                                 clearTimeout(socket.reloadTimer);
                                 socket.reloadTimer = null;
                             }
+
+                            if (socket.isDead || socket.isRagdoll) {
+                                socket.isReloading = false;
+                                const unblockPacket = `e${utils.encodeInt(Number(playerId))}:OnFillBullet,((${shootName},0,${utils.encodeInt(maxAmmo)},${utils.encodeInt(maxAmmo)}))\n`;
+                                socket.write(unblockPacket);
+                                console.log(`[🚫 RELOAD UNBLOCKED] Jogador ${playerId} está morto/ragdoll; enviando OnFillBullet imediato para destravar _fillCartridge.`);
+                                return;
+                            }
                             
-                            const reloadDuration = HERO_RELOAD_DURATIONS[currentHeroId] || 1800;
+                            const reloadDuration = heroCatalog.getReloadDuration(currentHeroId);
                             console.log(`[🔄 RELOAD STARTED] Jogador ${playerId} (Herói ${currentHeroId}) iniciou recarga (${reloadDuration}ms)...`);
                             socket.isReloading = true;
+                            socket.lastReloadShootName = shootName;
+                            const reloadIsCurrent = sceneScope.capture(socket);
                             socket.reloadTimer = setTimeout(() => {
-                                if (!socket.destroyed && !socket.isDead) {
+                                socket.isReloading = false;
+                                socket.reloadTimer = null;
+                                if (reloadIsCurrent()) {
                                     const fillBulletPacket = `e${utils.encodeInt(Number(playerId))}:OnFillBullet,((${shootName},0,${utils.encodeInt(maxAmmo)},${utils.encodeInt(maxAmmo)}))\n`;
                                     socket.write(fillBulletPacket);
                                     console.log(`[✅ RELOAD FINISHED]: ${fillBulletPacket.trim()}`);
                                 }
-                                socket.isReloading = false;
-                                socket.reloadTimer = null;
                             }, reloadDuration);
                         }
 
@@ -4043,6 +4013,12 @@ const tcpServer = net.createServer((socket) => {
                                 
                                 // NÃO decodificamos mais aqui, pois utils.parseArrayList já realiza a decodificação de Base62 para inteiros automaticamente!
                                 const skillId = skillArgs[0];
+                                // Own IDs and cooldown authority are exclusive to Lamster.
+                                // Never pass a foreign skill through the generic legacy path.
+                                if (Number(socket.currentHeroId) === 2000 || lamsterHero.SKILL_IDS.has(Number(skillId))) {
+                                    lamsterKit.cast(socket, Number(skillId));
+                                    continue;
+                                }
                                 const vec = skillArgs[1] || [0, 0, 0];
                                 let targets = skillArgs[2] || [];
                                  
@@ -4078,29 +4054,30 @@ const tcpServer = net.createServer((socket) => {
                                     const veCreartPos = socket.pendingSkillParms.veCreartPos || [0, 0, 0];
                                     const quapos = socket.pendingSkillParms.quapos || [0, 0, 0];
                                     
-                                    if (skId === 1163 || skillId === 1163) {
-                                        const shieldId = 20000 + Number(playerId);
-                                        const hp = 1000;
-                                        const maxHp = 1000;
-                                        const dateStr = "'2026-05-18 12:00:00'"; // C# expects a valid DateTime format
-                                        const creatorId = Number(playerId);
+                                     if (skId === 1163 || skillId === 1163) {
+                                         const lilyBarrier = heroCatalog.getHeroBarrierSpec(1033);
+                                         const shieldId = 20000 + Number(playerId);
+                                         const hp = lilyBarrier.maxHp;
+                                         const maxHp = lilyBarrier.maxHp;
+                                         const dateStr = "'2026-05-18 12:00:00'"; // C# expects a valid DateTime format
+                                         const creatorId = Number(playerId);
 
-                                        const shieldIdEnc = utils.encodeInt(shieldId);
-                                        const hpEnc = utils.encodeInt(hp);
-                                        const maxHpEnc = utils.encodeInt(maxHp);
-                                        const creatorIdEnc = utils.encodeInt(creatorId);
-                                        const veCreartPosEnc = `(${utils.encodeInt(veCreartPos[0])},${utils.encodeInt(veCreartPos[1])},${utils.encodeInt(veCreartPos[2])})`;
-                                        const quaposEnc = `(${utils.encodeInt(quapos[0])},${utils.encodeInt(quapos[1])},${utils.encodeInt(quapos[2])})`;
-                                        
-                                        targetsStr = `${shieldIdEnc},${hpEnc},${maxHpEnc},${dateStr},${creatorIdEnc},${veCreartPosEnc},${quaposEnc}`;
-                                        
-                                        // Inicializa o shield de Lily no socket
-                                        socket.lilyBarrierHp = 1000;
-                                        socket.lilyBarrierMaxHp = 1000;
-                                        socket.lilyBarrierActive = true;
-                                        socket.lilyBarrierPos = veCreartPos;
-                                        socket.lilyBarrierRot = quapos;
-                                        console.log(`[🍃 LILY BARREIRA ATIVADA] Player ${playerId} - HP da barreira: 1000 | Pos: ${veCreartPos} | Rot: ${quapos}`);
+                                         const shieldIdEnc = utils.encodeInt(shieldId);
+                                         const hpEnc = utils.encodeInt(hp);
+                                         const maxHpEnc = utils.encodeInt(maxHp);
+                                         const creatorIdEnc = utils.encodeInt(creatorId);
+                                         const veCreartPosEnc = `(${utils.encodeInt(veCreartPos[0])},${utils.encodeInt(veCreartPos[1])},${utils.encodeInt(veCreartPos[2])})`;
+                                         const quaposEnc = `(${utils.encodeInt(quapos[0])},${utils.encodeInt(quapos[1])},${utils.encodeInt(quapos[2])})`;
+                                         
+                                         targetsStr = `${shieldIdEnc},${hpEnc},${maxHpEnc},${dateStr},${creatorIdEnc},${veCreartPosEnc},${quaposEnc}`;
+                                         
+                                         // Inicializa o shield de Lily no socket
+                                         socket.lilyBarrierHp = hp;
+                                         socket.lilyBarrierMaxHp = maxHp;
+                                         socket.lilyBarrierActive = true;
+                                         socket.lilyBarrierPos = veCreartPos;
+                                         socket.lilyBarrierRot = quapos;
+                                         console.log(`[🍃 LILY BARREIRA ATIVADA] Player ${playerId} - HP da barreira: ${maxHp} | Pos: ${veCreartPos} | Rot: ${quapos}`);
                                     } else {
                                         const netIdEnc = utils.encodeInt(netId);
                                         const skIdEnc = utils.encodeInt(skId);
@@ -4130,64 +4107,66 @@ const tcpServer = net.createServer((socket) => {
                                      console.log(`[🚀 GLIDER ULTIMATE START] Registrado início da ult para o jogador ${playerId}`);
                                  }
 
-                                 // 🛡️ LOKI (1028) — ESCUDO DE RETALIAÇÃO / REVERSÃO DE DANO (Skill 1112)
-                                 if (skillId === 1112) {
-                                     socket.lokiShieldActive = true;
-                                     socket.lokiAbsorbedDamage = 0;
-                                     socket.lokiShieldEnd = Date.now() + 2500;
-                                     console.log(`[🛡️ LOKI SHIELD ACTIVATED] Jogador ${playerId} ativou Escudo de Retaliação (1112) por 2500ms!`);
-                                 }
+                                  // 🛡️ LOKI (1028) — ESCUDO DE RETALIAÇÃO / REVERSÃO DE DANO (Skill 1112)
+                                  if (skillId === 1112) {
+                                      const lokiSpec = heroCatalog.getHeroSpec(1028);
+                                      socket.lokiShieldActive = true;
+                                      socket.lokiAbsorbedDamage = 0;
+                                      socket.lokiShieldEnd = Date.now() + lokiSpec.retaliationDurationMs;
+                                      console.log(`[🛡️ LOKI SHIELD ACTIVATED] Jogador ${playerId} ativou Escudo de Retaliação (1112) por ${lokiSpec.retaliationDurationMs}ms!`);
+                                  }
 
-                                 // 👼 ANGEL (1029) — SYLPH'S WIND (Skill 1122: Buff 1035 Speed Boost estritamente para si e aliados dentro da área de cura ~12m)
-                                 if (skillId === 1122) {
-                                     const angelForce = Number(socket.force !== undefined ? socket.force : (playerSessions[socket.playerName]?.force || 1));
-                                     const aX = socket.lastX || 0;
-                                     const aY = socket.lastY || 0;
-                                     const aZ = socket.lastZ || 0;
-                                     
-                                     // 1. Aplica em si mesma (6s de speed boost)
-                                     gameLogic.applyBuffToEntity(socket, playerId, 1035, 6000);
-                                     console.log(`[👼 ANGEL SPEED BOOST] Angel ${playerId} (Força ${angelForce}) ativou Sylph's Wind (1122) em si mesma!`);
+                                  // 👼 ANGEL (1029) — SYLPH'S WIND (Skill 1122: Buff 1035 Speed Boost estritamente para si e aliados dentro da área de cura ~12m)
+                                  if (skillId === 1122) {
+                                      const angelSpec = heroCatalog.getHeroSpec(1029);
+                                      const angelForce = Number(socket.force !== undefined ? socket.force : (playerSessions[socket.playerName]?.force || 1));
+                                      const aX = socket.lastX || 0;
+                                      const aY = socket.lastY || 0;
+                                      const aZ = socket.lastZ || 0;
+                                      
+                                      // 1. Aplica em si mesma (6s de speed boost)
+                                      gameLogic.applyBuffToEntity(socket, playerId, angelSpec.sylphWindBuffId, angelSpec.sylphWindDurationMs);
+                                      console.log(`[👼 ANGEL SPEED BOOST] Angel ${playerId} (Força ${angelForce}) ativou Sylph's Wind (1122) em si mesma!`);
 
-                                     // 2. Aplica estritamente nos aliados humanos presentes dentro do raio de 12 metros (1200 unidades)
-                                     activeSockets.forEach(s => {
-                                         if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== socket && !s.isDead && (s.hp === undefined || s.hp > 0)) {
-                                             const sForce = Number(s.force !== undefined ? s.force : (playerSessions[s.playerName]?.force || 1));
-                                             // Trava de segurança absoluta: apenas membros da mesma equipe (aliados)
-                                             if (combat.sameSide(socket, s, sForce === angelForce)) {
-                                                 const sX = s.lastX || 0;
-                                                 const sY = s.lastY || 0;
-                                                 const sZ = s.lastZ || 0;
-                                                 const dist = Math.hypot(sX - aX, sY - aY, sZ - aZ);
-                                                 // Estritamente dentro de 12 metros (1200 unidades) e posições válidas
-                                                 if (dist <= 1200 && (aX !== 0 || aZ !== 0) && (sX !== 0 || sZ !== 0)) {
-                                                     gameLogic.applyBuffToEntity(socket, s.playerId, 1035, 6000);
-                                                     console.log(`[👼 ANGEL SPEED BOOST] Aliado ${s.playerId} (Força ${sForce}) recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
-                                                 } else {
-                                                     console.log(`[👼 ANGEL SPEED BOOST IGNORED] Aliado ${s.playerId} FORA da área de cura (${(dist/100).toFixed(1)}m > 12.0m). Não recebeu buff.`);
-                                                 }
-                                             }
-                                         }
-                                     });
+                                      // 2. Aplica estritamente nos aliados humanos presentes dentro do raio de 12 metros (1200 unidades)
+                                      activeSockets.forEach(s => {
+                                          if (sceneScope.canReceive(socket, s) && !s.destroyed && s !== socket && !s.isDead && (s.hp === undefined || s.hp > 0)) {
+                                              const sForce = Number(s.force !== undefined ? s.force : (playerSessions[s.playerName]?.force || 1));
+                                              // Trava de segurança absoluta: apenas membros da mesma equipe (aliados)
+                                              if (combat.sameSide(socket, s, sForce === angelForce)) {
+                                                  const sX = s.lastX || 0;
+                                                  const sY = s.lastY || 0;
+                                                  const sZ = s.lastZ || 0;
+                                                  const dist = Math.hypot(sX - aX, sY - aY, sZ - aZ);
+                                                  // Estritamente dentro de 12 metros (1200 unidades) e posições válidas
+                                                  if (dist <= angelSpec.sylphWindRadius && (aX !== 0 || aZ !== 0) && (sX !== 0 || sZ !== 0)) {
+                                                      gameLogic.applyBuffToEntity(socket, s.playerId, angelSpec.sylphWindBuffId, angelSpec.sylphWindDurationMs);
+                                                      console.log(`[👼 ANGEL SPEED BOOST] Aliado ${s.playerId} (Força ${sForce}) recebeu Buff ${angelSpec.sylphWindBuffId} (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
+                                                  } else {
+                                                      console.log(`[👼 ANGEL SPEED BOOST IGNORED] Aliado ${s.playerId} FORA da área de cura (${(dist/100).toFixed(1)}m > 12.0m). Não recebeu buff.`);
+                                                  }
+                                              }
+                                          }
+                                      });
 
-                                     // 3. Aplica estritamente nos bots aliados dentro do raio de 12 metros (1200 unidades)
-                                     if (state.activeBots) {
-                                         Object.keys(state.activeBots).forEach(botId => {
-                                             const bot = state.activeBots[botId];
-                                             const botForce = Number(bot && bot.force !== undefined ? bot.force : (bot && bot.team !== undefined ? bot.team : 2));
-                                             if (bot && !bot.isDead && combat.sameSide(socket, bot, botForce === angelForce)) {
-                                                 const bX = (bot.lastX !== undefined) ? bot.lastX : 0;
-                                                 const bY = (bot.lastY !== undefined) ? bot.lastY : 0;
-                                                 const bZ = (bot.lastZ !== undefined) ? bot.lastZ : 0;
-                                                 const dist = Math.hypot(bX - aX, bY - aY, bZ - aZ);
-                                                 if (dist <= 1200 && (aX !== 0 || aZ !== 0) && (bX !== 0 || bZ !== 0)) {
-                                                     gameLogic.applyBuffToEntity(socket, botId, 1035, 6000);
-                                                     console.log(`[👼 ANGEL SPEED BOOST] Bot aliado ${botId} (Força ${botForce}) recebeu Buff 1035 (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
-                                                 }
-                                             }
-                                         });
-                                     }
-                                 }
+                                      // 3. Aplica estritamente nos bots aliados dentro do raio de 12 metros (1200 unidades)
+                                      if (state.activeBots) {
+                                          Object.keys(state.activeBots).forEach(botId => {
+                                              const bot = state.activeBots[botId];
+                                              const botForce = Number(bot && bot.force !== undefined ? bot.force : (bot && bot.team !== undefined ? bot.team : 2));
+                                              if (bot && !bot.isDead && combat.sameSide(socket, bot, botForce === angelForce)) {
+                                                  const bX = (bot.lastX !== undefined) ? bot.lastX : 0;
+                                                  const bY = (bot.lastY !== undefined) ? bot.lastY : 0;
+                                                  const bZ = (bot.lastZ !== undefined) ? bot.lastZ : 0;
+                                                  const dist = Math.hypot(bX - aX, bY - aY, bZ - aZ);
+                                                  if (dist <= angelSpec.sylphWindRadius && (aX !== 0 || aZ !== 0) && (bX !== 0 || bZ !== 0)) {
+                                                      gameLogic.applyBuffToEntity(socket, botId, angelSpec.sylphWindBuffId, angelSpec.sylphWindDurationMs);
+                                                      console.log(`[👼 ANGEL SPEED BOOST] Bot aliado ${botId} (Força ${botForce}) recebeu Buff ${angelSpec.sylphWindBuffId} (Sylph's Wind)! Dist: ${(dist/100).toFixed(1)}m <= 12.0m`);
+                                                  }
+                                              }
+                                          });
+                                      }
+                                  }
 
 
                                  // ==========================================
@@ -4364,6 +4343,10 @@ const tcpServer = net.createServer((socket) => {
                             try {
                                 const cdArgs = utils.parseArrayList(argsStr);
                                 const skillId = cdArgs[0];
+                                if (Number(socket.currentHeroId) === 2000 || lamsterHero.SKILL_IDS.has(Number(skillId))) {
+                                    if (Number(socket.currentHeroId) === 2000) lamsterKit.skillData(socket, Number(skillId));
+                                    continue;
+                                }
                                 const skillConfig = playerSkillsMap[skillId];
                                 const maxCharges = (skillConfig && skillConfig.maxSkillNumber > 1) ? skillConfig.maxSkillNumber : 1;
                                 socket.skillCharges = socket.skillCharges || {};
@@ -4410,6 +4393,10 @@ const tcpServer = net.createServer((socket) => {
 
                         // Se for 31208 (MSG_PLAYERSKILL_SUPPERSKILL - Ativação da Ultimate Q)
                         if (cmdId === 31208) {
+                            if (Number(socket.currentHeroId) === 2000) {
+                                lamsterKit.ultimate(socket);
+                                continue;
+                            }
                             if (socket.isDead || socket.isRagdoll) {
                                 console.log(`[🚫 ULT CAST BLOCKED] Jogador ${playerId} está morto e não pode usar a Ultimate!`);
                                 gameLogic.sendSystemChat(socket, "⚠️ Você está morto!");
@@ -4910,6 +4897,12 @@ const tcpServer = net.createServer((socket) => {
 
                         // Se for 31211 (MSG_PLAYERSKILL_SUPPERSKILLEND - Fim da Ultimate)
                         if (cmdId === 31211) {
+                            if (Number(socket.currentHeroId) === 2000) {
+                                // Cosmetic interruptions may end the Q ring early, but
+                                // they cannot reset its charge or grant another Q.
+                                lamsterKit.endUltimate(socket);
+                                continue;
+                            }
                             try {
                                 console.log(`[💀 ULTIMATE END] Ultimate terminou! Desativando CDazhao flag...`);
                                 socket.isKhanUltActive = false;
@@ -5539,32 +5532,33 @@ const tcpServer = net.createServer((socket) => {
                                     }
                                 }
 
-                                // Track the spawned NPC on the server
-                                spawnedNpcs[npcId] = {
-                                    id: npcId,
-                                    index: npcIndex,
-                                    hp: maxHp,
-                                    maxHp: maxHp,
-                                    x: x,
-                                    y: y,
-                                    z: z,
-                                    masterId: masterNetId,
-                                    force: npcForce,
-                                    weaponIndex: npcConf.weaponIndex || 0
-                                };
-                                sceneScope.tagEntity(spawnedNpcs[npcId], socket);
+                        // Track the spawned NPC on the server
+                        spawnedNpcs[npcId] = {
+                            id: npcId,
+                            index: npcIndex,
+                            hp: maxHp,
+                            maxHp: maxHp,
+                            x: x,
+                            y: y,
+                            z: z,
+                            masterId: masterNetId,
+                            force: npcForce,
+                            weaponIndex: npcConf.weaponIndex || 0
+                        };
+                        sceneScope.tagEntity(spawnedNpcs[npcId], socket);
 
-                                global.npcHistory = global.npcHistory || {};
-                                global.npcHistory[npcId] = spawnedNpcs[npcId];
+                        global.npcHistory = global.npcHistory || {};
+                        global.npcHistory[npcId] = spawnedNpcs[npcId];
 
-                                // Envia a inicialização da entidade diretamente para todos os clientes ativos
-                                const className = getEntityClassName(npcIndex);
-                                activeSockets.forEach(s => {
-                                    if (sceneScope.canReceive(socket, s) && !s.destroyed) {
-                                        const spawnPacket = `c${className}:${utils.encodeInt(npcId)},("Initialize",(${utils.encodeInt(masterNetId)},${utils.encodeInt(npcId)},${utils.encodeInt(npcIndex)},${utils.encodeInt(npcForce)},(${utils.encodeInt(x)},${utils.encodeInt(y)},${utils.encodeInt(z)}),(${utils.encodeInt(rx)},${utils.encodeInt(ry)},${utils.encodeInt(rz)}),(${utils.encodeInt(sx)},${utils.encodeInt(sy)},${utils.encodeInt(sz)}),(${utils.encodeInt(fx)},${utils.encodeInt(fy)},${utils.encodeInt(fz)}),${utils.encodeInt(targetId)},${utils.encodeInt(maxHp)},${utils.encodeInt(npcTime)},${utils.encodeInt(1)},${utils.encodeInt(momType)},'${colliderName}'),((),()),0)\n`;
-                                        s.write(spawnPacket);
-                                    }
-                                });
+                        // Envia a inicialização da entidade diretamente para todos os clientes ativos
+                        const className = getEntityClassName(npcIndex);
+                        const spawnPacket = `c${className}:${utils.encodeInt(npcId)},("Initialize",(${utils.encodeInt(masterNetId)},${utils.encodeInt(npcId)},${utils.encodeInt(npcIndex)},${utils.encodeInt(npcForce)},(${utils.encodeInt(x)},${utils.encodeInt(y)},${utils.encodeInt(z)}),(${utils.encodeInt(rx)},${utils.encodeInt(ry)},${utils.encodeInt(rz)}),(${utils.encodeInt(sx)},${utils.encodeInt(sy)},${utils.encodeInt(sz)}),(${utils.encodeInt(fx)},${utils.encodeInt(fy)},${utils.encodeInt(fz)}),${utils.encodeInt(targetId)},${utils.encodeInt(maxHp)},${utils.encodeInt(npcTime)},${utils.encodeInt(1)},${utils.encodeInt(momType)},'${colliderName}'),((),()),0)\n`;
+                        spawnedNpcs[npcId].spawnPacket = spawnPacket;
+                        activeSockets.forEach(s => {
+                            if (sceneScope.canReceive(socket, s) && !s.destroyed) {
+                                s.write(spawnPacket);
+                            }
+                        });
                                 console.log(`[🤖 ENTITY SPAWNED GLOBAL] Class: ${className}, Index: ${npcIndex}, ID: ${npcId}, Master: ${masterNetId}`);
 
                                 // 🌀 EVA ULTIMATE: Quando o portal de saída 1016 é colocado, cria automaticamente o portal de entrada 1017 na base aliada!
@@ -5913,9 +5907,10 @@ const tcpServer = net.createServer((socket) => {
                                         }
                                     } else {
                                         if (!socket.waitingForHeroLock && !socket.isCombatReady) return;
-                                        socket.hasConfirmedHero = false;
-                                        // Apenas atualiza a visualização/preview do herói na tela
-                                        socket.currentHeroId = selectedHeroId;
+                                        if (socket.waitingForHeroLock) {
+                                            socket.hasConfirmedHero = false;
+                                            socket.currentHeroId = selectedHeroId;
+                                        }
                                         
                                         const p20014 = utils.encodeInt(20014);
                                         const s90002 = utils.encodeInt(90002);
@@ -6069,37 +6064,15 @@ const tcpServer = net.createServer((socket) => {
                                         console.log(`[🛠️ COMANDO DETECTADO] Nome: "${cmdName}" | Arg: "${cmdArg}"`);
 
                                         if (cmdName === 'bot' || cmdName === 'spawn' || cmdName === 'dummy' || cmdName === 'alvo' || cmdName === 'boneco') {
-                                            const HERO_NAME_MAP = {
-                                                'lars': 1015, 'terminator': 1015,
-                                                'diana': 1003, 'sniper': 1003,
-                                                'reinhardt': 1020, 'lobo': 1020,
-                                                'xingtian': 1001, 'xing': 1001,
-                                                'mulan': 1004,
-                                                'houyi': 1005, 'hou': 1005,
-                                                'daji': 1002, 'd.va': 1002, 'dva': 1002,
-                                                'leizhenzi': 1006, 'lei': 1006,
-                                                'medusa': 1007,
-                                                'talia': 1008,
-                                                'rambo': 1009,
-                                                'guanyin': 1011,
-                                                'pharaoh': 1012, 'farao': 1012,
-                                                'nezha': 1013,
-                                                'jingke': 1014,
-                                                'dawei': 1017,
-                                                'zhurong': 1021,
-                                                'brigit': 1023, 'fenix': 1023
-                                            };
-
                                             let heroId = 1015;
                                             let mode = 'static';
                                             let hpOption = 'normal';
 
                                             for (let i = 1; i < commandParts.length; i++) {
                                                 const arg = commandParts[i].toLowerCase();
-                                                if (HERO_NAME_MAP[arg]) {
-                                                    heroId = HERO_NAME_MAP[arg];
-                                                } else if (!isNaN(parseInt(arg)) && parseInt(arg) >= 1000 && parseInt(arg) <= 1030) {
-                                                    heroId = parseInt(arg);
+                                                const resolvedHeroId = heroCatalog.resolveHeroAlias(arg);
+                                                if (resolvedHeroId) {
+                                                    heroId = resolvedHeroId;
                                                 } else if (arg === 'strafe' || arg === 'mover' || arg === 'move') {
                                                     mode = 'strafe';
                                                 } else if (arg === 'follow' || arg === 'seguir' || arg === 'segue') {
@@ -6126,7 +6099,7 @@ const tcpServer = net.createServer((socket) => {
                                                 gameLogic.sendSystemChat(socket, `⚠️ [Treino] Não foi possível spawnar o boneco de treino.`);
                                             }
                                         } else if (cmdName === 'hero' || cmdName === 'heroi' || cmdName === 'char') {
-                                             const selectedHeroId = parseInt(cmdArg);
+                                             const selectedHeroId = heroCatalog.resolveHeroAlias(cmdArg) || parseInt(cmdArg);
                                              if (selectedHeroId) {
                                                  gameLogic.switchPlayerHero(socket, selectedHeroId);
                                                  
@@ -6135,6 +6108,67 @@ const tcpServer = net.createServer((socket) => {
                                                  const sysBroadcast = `e1:SendMsgToClient,(${p1006},${sysNetMsg})\n`;
                                                  socket.write(sysBroadcast);
                                              }
+                                         } else if (cmdName === 'sync' || cmdName === 'vis') {
+                                             let playersSynced = 0;
+                                             let botsSynced = 0;
+                                             let npcsSynced = 0;
+
+                                             activeSockets.forEach(s => {
+                                                 if (s !== socket && !s.destroyed && !s.waitingForHeroLock && sceneScope.canReceive(s, socket)) {
+                                                     const spawnPkt = gameLogic.getPlayerSpawnPacket(s, socket);
+                                                     if (spawnPkt) {
+                                                         socket.bypassInterceptor = true;
+                                                         socket.write(spawnPkt);
+                                                         socket.bypassInterceptor = false;
+                                                         gameLogic.sendEntityHpUpdate(socket, s.playerId || s.playerIndex || 1, s, true);
+                                                         playersSynced++;
+                                                     }
+                                                 }
+                                             });
+
+                                             if (state.activeBots) {
+                                                 for (const botId in state.activeBots) {
+                                                     const bot = state.activeBots[botId];
+                                                     if (!bot || bot.isDead || !sceneScope.sameScene(socket, bot)) continue;
+                                                     const botPkt = gameLogic.getPlayerSpawnPacket(bot, null);
+                                                     if (botPkt) {
+                                                         socket.bypassInterceptor = true;
+                                                         socket.write(botPkt);
+                                                         socket.bypassInterceptor = false;
+                                                         botsSynced++;
+                                                     }
+                                                 }
+                                             }
+
+                                             for (const npcId in spawnedNpcs) {
+                                                 const npc = spawnedNpcs[npcId];
+                                                 if (!npc || npc.isDead || !sceneScope.sameScene(socket, npc)) continue;
+                                                 if (npc.spawnPacket) {
+                                                     socket.write(`d${utils.encodeInt(npc.id)}\n`);
+                                                     socket.write(npc.spawnPacket);
+                                                     npcsSynced++;
+                                                 }
+                                             }
+
+                                             gameLogic.sendSystemChat(socket, `🔄 [Sync] Visibilidade ressincronizada (${playersSynced} jogadores, ${botsSynced} bots, ${npcsSynced} entidades)!`);
+                                         } else if (cmdName === 'fix') {
+                                             sceneScope.clearCombatTimers(socket);
+                                             socket.isStunned = false;
+                                             socket.isFrozen = false;
+                                             const fixHeroId = socket.currentHeroId || 1015;
+                                             const fixWeapon = weaponsMap[fixHeroId];
+                                             const fixMaxAmmo = fixWeapon && fixWeapon.cartridgePublic !== undefined ? fixWeapon.cartridgePublic : 30;
+                                             const targetPlayerIdEnc = utils.encodeInt(Number(socket.playerId || socket.playerIndex || 1));
+                                             const shootName = socket.lastReloadShootName ?? 0;
+
+                                             socket.write(`e${targetPlayerIdEnc}:OnFillBullet,((${shootName},0,${utils.encodeInt(fixMaxAmmo)},${utils.encodeInt(fixMaxAmmo)}))\n`);
+                                             socket.write(`e${targetPlayerIdEnc}:SuperSkillFinish\n`);
+                                             socket.write(`e${utils.encodeInt(socket.playerIndex || 1)}:SendMsgToClient,(${utils.encodeInt(20014)},(${utils.encodeInt(90008)},(),${utils.encodeInt(1)}))\n`);
+
+                                             if (!socket.isDead) {
+                                                 gameLogic.sendEntityHpUpdate(socket, playerId, socket, true);
+                                             }
+                                             gameLogic.sendSystemChat(socket, "🔧 [Fix] Arma, recarga, animações, timers e câmera destravados!");
                                          } else if (cmdName === 'god') {
                                              socket.godMode = !socket.godMode;
                                              if (socket.godMode) {
@@ -6333,6 +6367,8 @@ const tcpServer = net.createServer((socket) => {
                                              gameLogic.sendSystemChat(socket, `• /speed      - Super Velocidade (Buff 1023) [Status: ${speedState}]`);
                                              gameLogic.sendSystemChat(socket, `• /invisible  - Invisibilidade (Buff 1012)   [Status: ${invisState}]`);
                                              gameLogic.sendSystemChat(socket, "• /heal       - Recupera Vida e Escudo ao Máximo");
+                                             gameLogic.sendSystemChat(socket, "• /sync (/vis)- Ressincroniza todos os jogadores/bots da sala");
+                                             gameLogic.sendSystemChat(socket, "• /fix        - Destrava arma, recarga, animações e câmera");
                                              gameLogic.sendSystemChat(socket, "• /bot [ID]   - Spawna Bot de Treino na sua frente");
                                              gameLogic.sendSystemChat(socket, "• /hero [ID]  - Troca de Herói instantaneamente");
                                              gameLogic.sendSystemChat(socket, "• /kill /clear - Remove/Elimina todos os Bots spawnados");
@@ -6685,8 +6721,16 @@ const tcpServer = net.createServer((socket) => {
                                             if (result && String(loopShootname)==='2') gameLogic.applyBuffToEntity(attackerSocket, targetId, 1007);
                                             if (result && result.healed > 0) {
                                                 gameLogic.sendEntityHpUpdate(target, targetId, target, true);
-                                                if (result.selfHealed > 0) gameLogic.sendEntityHpUpdate(attackerSocket, attackerId, attackerSocket, true);
+                                                gameLogic.applyBuffToEntity(attackerSocket, targetId, lamsterHero.BUFFS.heal);
+                                                if (result.selfHealed > 0) {
+                                                    gameLogic.sendEntityHpUpdate(attackerSocket, attackerId, attackerSocket, true);
+                                                    gameLogic.applyBuffToEntity(attackerSocket, attackerId, lamsterHero.BUFFS.heal);
+                                                }
                                                 attackerSocket.matchHeal = (attackerSocket.matchHeal || 0) + result.healed + result.selfHealed;
+                                                // Charge only actual allied HP restored; missing HP
+                                                // and shared self-healing cannot farm the Q meter.
+                                                const cureRate = db.heroDazhaoMap[2000]?.[0]?.energyAddCure || 120;
+                                                addPlayerUltEnergy(attackerSocket, result.healed * cureRate / 200);
                                                 gameLogic.sendTabScoreboard(attackerSocket);
                                             }
                                             continue; // Aliados recebem cura; secundário também aplica inspiração.
@@ -6787,6 +6831,7 @@ const tcpServer = net.createServer((socket) => {
                                     }
 
                                     // Inspiração1007: bônus ofensivo nativo; pulso simbólico mantém250.
+                                    damageAmount = lamsterHero.reduceDamage(target, damageAmount);
                                     if(attackerSocket?.activeBuffs?.[1007] && !(Number(loopWeaponId)===2000 && String(loopShootname)==='2')) damageAmount=Math.round(damageAmount*1.25);
 
                                     // 🔮 Multiplicador de Debuff do Beacon da Carmen (Buff 1010 ou 1005: +20% dano no alvo marcado)
@@ -6997,6 +7042,7 @@ const tcpServer = net.createServer((socket) => {
                                                console.log(`[⚡ EVA CAGE ATTACK REDUCTION] Atacante ${attackerId} DENTRO da Jaula da Eva! Dano reduzido: ${prevDmg} -> ${damageAmount} (-25%)`);
                                            }
                                           let originalDamage = damageAmount;
+                                          const lamsterDamageCapacity = Math.max(0, target.hp || 0) + Math.max(0, target.shield || 0);
                                           let shieldAbsorbed = 0;
                                           // Registrar último momento em que sofreu danos para regeneração do Tagaloa
                                           target.lastDamageTime = Date.now();
@@ -7009,37 +7055,25 @@ const tcpServer = net.createServer((socket) => {
                                           
                                           if (isBarrierHit) {
                                               const heroId = Number(target.currentHeroId);
+                                              const barrierSpec = heroCatalog.getHeroBarrierSpec(heroId);
                                               let barrierHp = 0;
-                                              let barrierMaxHp = 0;
-                                              let barrierName = "";
+                                              let barrierMaxHp = barrierSpec ? barrierSpec.maxHp : 0;
+                                              let barrierName = barrierSpec ? barrierSpec.name : "";
                                               
                                               // Determina qual barreira foi atingida
-                                              if (heroId === 1006) {
-                                                  // Tagaloa - Barreira direcional (8000 HP max)
-                                                  barrierHp = (target.tagaloaShieldHp !== undefined) ? target.tagaloaShieldHp : 8000;
-                                                  barrierMaxHp = 8000;
-                                                  barrierName = "TAGALOA";
-                                              } else if (heroId === 1032) {
-                                                  // Venus - Barreira implantada (Orisa-like)
+                                              if (heroId === 1006 && barrierSpec) {
+                                                  barrierHp = (target.tagaloaShieldHp !== undefined) ? target.tagaloaShieldHp : barrierSpec.maxHp;
+                                              } else if (heroId === 1032 && barrierSpec) {
                                                   barrierHp = (target.venusBarrierHp !== undefined) ? target.venusBarrierHp : 0;
-                                                  barrierMaxHp = target.venusBarrierMaxHp || 4000;
-                                                  barrierName = "VENUS";
-                                              } else if (heroId === 1033) {
-                                                   // Lily - Barreira projetada (Symmetra-like) - HP infinito
-                                                   barrierHp = 1000;
-                                                   barrierMaxHp = 1000;
-                                                   barrierName = "LILY";
-                                               } else if (heroId === 1037) {
-                                                   // David - Matrix Defensiva (D.Va Defense Matrix) - Absorve 100% dos projéteis frontais
-                                                   barrierHp = 10000;
-                                                   barrierMaxHp = 10000;
-                                                   barrierName = "DAVID";
-                                               }
+                                                  barrierMaxHp = target.venusBarrierMaxHp || barrierSpec.maxHp;
+                                              } else if ((heroId === 1033 || heroId === 1037) && barrierSpec) {
+                                                  barrierHp = barrierSpec.maxHp;
+                                              }
                                               
                                               if (barrierHp > 0) {
                                                   // Aplica dano NA BARREIRA (não no jogador!)
                                                   const barrierDmg = Math.min(barrierHp, damageAmount);
-                                                  if (heroId !== 1033 && heroId !== 1037) {
+                                                  if (barrierSpec && barrierSpec.destructible) {
                                                       barrierHp -= barrierDmg;
                                                   }
                                                   
@@ -7293,7 +7327,8 @@ const tcpServer = net.createServer((socket) => {
                                                 const attHero = attackerSocket.currentHeroId || 1015;
                                                 const dzList = db.heroDazhaoMap[attHero] || [];
                                                 const dmgMult = (dzList.length > 0 && dzList[0].energyAddDamage) ? dzList[0].energyAddDamage : 150;
-                                                const gainedEnergy = Math.round((originalDamage * dmgMult) / 200);
+                                                const chargeDamage = Number(attHero) === 2000 ? Math.min(originalDamage, lamsterDamageCapacity) : originalDamage;
+                                                const gainedEnergy = Math.round((chargeDamage * dmgMult) / 200);
                                                 addPlayerUltEnergy(attackerSocket, gainedEnergy);
                                             }
                                            
@@ -7305,7 +7340,13 @@ const tcpServer = net.createServer((socket) => {
                                           if (boomHead === 1 && canHeadshot) {
                                               place = 1;
                                           } 
+                                          const beforeHp = Math.max(0, target.hp || 0), beforeShield = Math.max(0, target.shield || 0);
                                           gameLogic.handleNpcHurt(target, targetId, damageAmount, attackerId, place, weaponId);
+                                          if (Number(attackerSocket?.currentHeroId) === 2000) {
+                                              const dealt = Math.max(0, beforeHp - (target.hp || 0)) + Math.max(0, beforeShield - (target.shield || 0));
+                                              const rate = db.heroDazhaoMap[2000]?.[0]?.energyAddDamage || 100;
+                                              addPlayerUltEnergy(attackerSocket, dealt * rate / 200);
+                                          }
                                       }
                                 }
                             }
@@ -7495,6 +7536,34 @@ const tcpServer = net.createServer((socket) => {
                     } catch (e) {
                         console.error("[⚠️ ERRO ao processar SA_Npc]:", e);
                     }
+                } else if (line.includes(":NCD,")) {
+                    // Sincronização do Carro de Escolta (Chariot_Controller.SendNetData -> Chariot_Entity.NCD)
+                    try {
+                        const ncdMatch = line.match(/^e(\w+):(?:.*?:)?NCD,\((.+)\)/);
+                        if (ncdMatch) {
+                            let d = utils.parseArrayList(`(${ncdMatch[2]})`);
+                            while (Array.isArray(d) && d.length === 1 && Array.isArray(d[0])) {
+                                d = d[0];
+                            }
+                            if (Array.isArray(d) && d.length >= 6) {
+                                const pos = d[0];
+                                const rot = d[1];
+                                const vel = d[2];
+                                const angVel = d[3];
+                                const speed = Number(d[4] || 0);
+                                const carNetId = Number(d[5] || 8002);
+                                const fmtVec = v => Array.isArray(v) ? `(${v.map(n => utils.encodeInt(Number(n || 0))).join(',')})` : `(0,0,0)`;
+                                const ncdPacket = `e${utils.encodeInt(carNetId)}:NCD,((${fmtVec(pos)},${fmtVec(rot)},${fmtVec(vel)},${fmtVec(angVel)},${utils.encodeInt(speed)}))\n`;
+                                activeSockets.forEach(s => {
+                                    if (sceneScope.canReceive(socket, s) && s !== socket && !s.destroyed) {
+                                        s.write(ncdPacket);
+                                    }
+                                });
+                            }
+                        }
+                    } catch (e) {
+                        console.error("[⚠️ ERRO ao processar NCD]:", e);
+                    }
                 } else if (!line.includes("SN,")) {
                     // Loga qualquer outro pacote recebido que não seja PING/PONG (Ex: pacotes de movimento 'ST')
                     console.log(`[📡 RECEBIDO DO CLIENTE] ` + line);
@@ -7517,6 +7586,10 @@ const tcpServer = net.createServer((socket) => {
 
         // Remove da fila de matchmaking se desconectar
         matchmakingQueue = matchmakingQueue.filter(entry => entry.socket !== socket);
+        if (socketType === 'LOBBY' && socket.playerName) {
+            socialServer.removePlayerFromTeam(socket.playerName, activeSockets);
+            socialServer.notifyFriendsState(socket.playerName, activeSockets);
+        }
 
         // Remove do container de sala se desconectar
         const currentContainerRoom = !socket.sceneRetired ? getSocketRoom(socket) : null;
@@ -7631,24 +7704,24 @@ setInterval(() => {
 
         // 1. Regeneração de Escudo do Tagaloa (1006)
         if (socket.currentHeroId === 1006 || String(socket.currentHeroId) === "1006") {
+            const tagaloaBarrier = heroCatalog.getHeroBarrierSpec(1006);
             const lastDamage = socket.lastDamageTime || 0;
-            // Regenera 350 HP/s quando não está sofrendo dano por pelo menos 3 segundos
-            if (now - lastDamage >= 3000) {
-                const healAmount = 350;
-                // A barreira do Tagaloa é uma entidade separada - regenera tagaloaShieldHp (max 8000 HP)
-                const currentBarrierHp = (socket.tagaloaShieldHp !== undefined) ? socket.tagaloaShieldHp : 8000;
-                if (currentBarrierHp < 8000) {
-                    socket.tagaloaShieldHp = Math.min(8000, currentBarrierHp + healAmount);
+            // Regenera quando não está sofrendo dano por pelo menos regenDelayMs
+            if (now - lastDamage >= tagaloaBarrier.regenDelayMs) {
+                const healAmount = tagaloaBarrier.regenPerSec;
+                const currentBarrierHp = (socket.tagaloaShieldHp !== undefined) ? socket.tagaloaShieldHp : tagaloaBarrier.maxHp;
+                if (currentBarrierHp < tagaloaBarrier.maxHp) {
+                    socket.tagaloaShieldHp = Math.min(tagaloaBarrier.maxHp, currentBarrierHp + healAmount);
                     
                     // Broadcast visual da regeneração (2010000 -> 2010002)
                     const p2010000 = utils.encodeInt(2010000);
                     const p2010002 = utils.encodeInt(2010002);
                     const stEnc = utils.encodeInt(socket.tagaloaShieldActive ? 1 : 0);
                     const enEnc = utils.encodeInt(socket.tagaloaShieldHp);
-                    const mxEnc = utils.encodeInt(8000);
+                    const mxEnc = utils.encodeInt(tagaloaBarrier.maxHp);
                     const regenResp = `e${utils.encodeInt(Number(socket.playerId))}:SendMsgToClient,(${p2010000},(${p2010002},(${stEnc},${enEnc},${mxEnc})))\n`;
                     socket.write(regenResp);
-                    console.log(`[🛡️ TAGALOA BARREIRA REGEN] HP da barreira: ${socket.tagaloaShieldHp}/8000 (+350 HP/s)`);
+                    console.log(`[🛡️ TAGALOA BARREIRA REGEN] HP da barreira: ${socket.tagaloaShieldHp}/${tagaloaBarrier.maxHp} (+${healAmount} HP/s)`);
                 }
             }
         }
@@ -7656,6 +7729,7 @@ setInterval(() => {
         // 2. Cura passiva da Angel (1029)
         if (socket.currentHeroId === 1029 || String(socket.currentHeroId) === "1029") {
             if (socket.angelAuraTargets && socket.angelAuraTargets.length > 0) {
+                const angelSpec = heroCatalog.getHeroSpec(1029);
                 const angelForce = Number(socket.force !== undefined ? socket.force : (playerSessions[socket.playerName]?.force || 1));
                 socket.angelAuraTargets.forEach(targetId => {
                     let target = null;
@@ -7675,7 +7749,7 @@ setInterval(() => {
                         if (!combat.sameSide(socket, target, targetForce === angelForce)) {
                             return;
                         }
-                        const healAmount = 40;
+                        const healAmount = angelSpec.circleHealPerSec;
                         target.hp = Math.min(target.maxHp || 2000, target.hp + healAmount);
                         gameLogic.sendEntityHpUpdate(target, targetId, target, isPlayerTarget);
                         console.log(`[💖 ANGEL CIRCLE HEAL] Angel ${socket.playerId} curou Alvo: ${targetId} em +${healAmount} HP. Novo HP: ${target.hp}`);
@@ -7688,8 +7762,8 @@ setInterval(() => {
         if (!socket.isDead && socket.hp !== undefined && socket.hp > 0) {
             const lastDamage = socket.lastDamageTime || 0;
             const maxHp = socket.maxHp || 2000;
-            if (socket.hp < maxHp && (now - lastDamage >= 6000)) {
-                const regenHpAmount = Math.max(1, Math.round(maxHp * 0.05)); // 5% do HP Máximo por segundo
+            if (socket.hp < maxHp && (now - lastDamage >= heroCatalog.COMBAT_DEFAULTS.outOfCombatRegenDelayMs)) {
+                const regenHpAmount = Math.max(1, Math.round(maxHp * heroCatalog.COMBAT_DEFAULTS.outOfCombatRegenPctPerSec)); // 5% do HP Máximo por segundo
                 const oldHp = socket.hp;
                 socket.hp = Math.min(maxHp, socket.hp + regenHpAmount);
                 if (socket.hp !== oldHp) {

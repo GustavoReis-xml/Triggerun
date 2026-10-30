@@ -1,0 +1,26 @@
+# Passagem de trabalho — SKIN-067
+
+- Responsável/horário: Codex;Oracle25/10/2026 18:33:11UTC (15:33BRT).
+- Objetivo: instalar CarmenGrandeIlusionista/GLBstage magician, corrigirrosto semolhos grandes, adaptarossos/pesos e acrescentarfísica nofraque e cabelo (pedido adicionalexpresso).
+- Estado: implementação/testesautomatizados/instalação concluídos; testeUnityrealpendente.
+- Fonte preservada: candidate-assets/carmen-zatanna/source-tripo.glb,24124v/19318tri/atlas4096,semrig. Referênciausada pelo usuário foi sófrente066; capaexperimental nãoadotada.
+- Base:jipusainvlang_tps.mo,81referências deossos. Avatar/Animator/IK/arma-cartas/skills/colisores/ossostransformados nativos preservados;109bones finais com28cosméticos.
+- Fonte atual: candidate-assets/carmen-zatanna/adapted/;scripts/evidências emscratch/carmen067/. Final26983v/19318tri,2859duplicatas exclusivamente parasepararUVfacial,semnovasfaces.
+- Rosto:imagegen integrado retocouíris/nariz/boca comregistro daprojeçãooriginal;materialfacial separado1024 eatlasroupa2048RGBA/DXT5. 1360v naregiãoolhos preservamXexatamente,alturarelativa nãoaumentada. Prompt/metadata/arteface na saída.
+- Ajustes: pivôs dos braços/mãos e altura/largura daspernas guiados pelonativo;pesosdosdedos amostrados sóda mãocorreta e suavizados pelaconectividade. Fivelas dosapatos recebem encaixe eFootcorrespondente (nãoPelvis).
+- Contatos cabelo/roupa compartilham superfície noTripo: classificação porcomponentes/geodésica/cor/envelope e transição por distância superficial,evitando saltoHead→Spine nasjunções. Raiz/cartola/rosto estáveis;mechaslongas móveis.
+- Física:4cadeias×4ossos nasabas (Pelvis,.42/.10/.93/.22/.008) e3×4 nocabelo (Head,.50/.10/.96/.12/.006). Haircontactrim fica na superfície adjacente,semarrastar o tecido.
+- Auxiliar:RavenDynamics.cs opt-inTRSkin067_,6volumesprivados (torso/quadril/coxas/pescoço/cabeça),forçaociosa menor nocabelo. SemUnityCollider/Rigidbody/rede/estado compartilhado;040/042/050/055/058preservados.
+- LODs:11rendererscorpo/visibilidade recebemmalhacompleta;12rendererscomplementaresde cabeça/cabelo antigos ficamsemMesh paraimpedirpeçasfantasmas. Referências/componentes/ativação nativos conservados. LODnãootimizado.
+- Estrutura:678objetos-basecomparados,67novos;whitelistexata,81bindposes/hash/hierarquianativos intactos,2submeshes e19mipscomalpha255 reabertos/decodificados.
+- Poses:22sintéticasPASS,maiorP99≈1,616/girocabeça45°,extremo≈3,874. Auditoria35clipes/175amostras:maiorP99≈2,192 skill_2 (nativo≈2,693),extremo≈5,844. Algunswinposes têmP99maiorquenativo; nãoconfirma todasinterpenetrações/IKUnity.
+- Solveroriginal+matemáticasubstituta:320910asserções a30/60/120FPS,3atorespróximos,comprimentos/colisão/teleporte/pausa/reset. Balanço8,2–9,2cmtecido/4,1–4,7cmcabelo. Malhasobquadros180/187 P99≤1,187/extremo≤2,390.
+- RegressõesCorvo235227/Lobo48747/Lily235227/Khan87387/Valk157947PASS. Préviastiro/stand/skills/emote/solver conferidas;teste nãoexecutaAnimator/IKUnityreal.
+- Cliente:TRIGfechado;helperlocal957891C358166D4201197427D3B9507465445D588628270E1855B882FC06C918 instalado18:32:58UTC. Assembly79DFA93D…eWeaponCosmeticsF7528CE7…intactos.
+- Catálogo:Carmen1021/skin7 GrandeIlusionista gratuita/sematributos,novoTPSjipusainvlang_tps_illusionist.mo. FPSjipusainvlang_fps,cartas eíconetaliya_1 originais;outroscadastrossemalteração semântica.
+- Oracle:4arquivosinstaladoscomguardasSHA/backupremoto,CRC26102501/5567recursos;reiníciozero conexões,PM2onlinePID941494.8HTTP hashes1.1.1/1.3.5 eTCP7777PASS,cópialocalsincronizada.
+- Backups:backups/carmen067-before/;remoto /home/ubuntu/backups/carmen-illusionist-skin067-20261025T183311Z/runtime.tar.gz. Antigravity/servidorJSnãoeditados.
+- Distribuição:adapted/client-update-carmen067.zip,auxiliarde físicacomLEIA-ME/hashes,ZIP3entradasconferido. RequerAssemblycompatchfísicoprévio,conservartodosoutrosauxiliares.
+- Limites:FPS/íconeoriginais,malhacompleta nosLODs;cabelofundido exigecontactosparcialmentepresos àroupa;física linear podeatravessarem posesextremas. Nãoafirmar encaixeperfeito/Unityvalidado antesretornodousuário.
+- Próximo passo:abrirTRIG,equiparGrandeIlusionista e testar cartas/skills/corrida/virarcabeça/salto/respawn/doisatores. Conferirolhos,luvas,ombros,fivelas ebalançomechas/fraque.
+- Reserva liberada.

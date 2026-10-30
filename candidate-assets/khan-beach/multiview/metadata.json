@@ -1,0 +1,139 @@
+{
+  "task": "SKIN-054",
+  "date": "2026-10-24",
+  "hero": 1034,
+  "name": "Khan - Mare Alta",
+  "method": "built-in image_gen",
+  "authoritativeView": "front.png",
+  "references": [
+    "../concept.png",
+    "scratch/khan-inspection/native-0.png"
+  ],
+  "pose": "A-pose; lateral arm spread foreshortened in profile",
+  "views": [
+    {
+      "file": "front.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        136,
+        18,
+        875,
+        1486
+      ],
+      "sha256": "e4127e5fa38e2fdf8116ccaa4e0b8bf78139bbe3ddb740850527ad3ac2eb60b0"
+    },
+    {
+      "file": "back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        134,
+        17,
+        891,
+        1455
+      ],
+      "sha256": "bff6d65c81b450d86000c635f789aa16cc1a93b67cb4ecff34da7294e5a04e60"
+    },
+    {
+      "file": "left.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        346,
+        17,
+        711,
+        1482
+      ],
+      "sha256": "af1444e72b635a4db99215b9b900ed1af3f0e29624a988d291156eafa0b1e97a"
+    },
+    {
+      "file": "right.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleContourAlpha32": [
+        288,
+        21,
+        667,
+        1472
+      ],
+      "sha256": "79a0e8e1f48611e0a27ad453eb3b1ad8aaf2fe4149e9c439da9e10ab679dde74"
+    }
+  ],
+  "sideNaming": "left/right indicate direction of nose on image, not arbitrary anatomical names",
+  "asymmetry": "towel+coral shorts panel on anatomical RIGHT; watch on anatomical LEFT",
+  "nativeTarget": {
+    "hero": 1034,
+    "effectiveDefaultTPS": "hz_tps",
+    "catalogAliases": [
+      "huangzhong_tps"
+    ],
+    "bodyMesh": -5673288980677215480,
+    "vertices": 3736,
+    "triangles": 5427,
+    "bodyBones": 63,
+    "FPSBones": 46,
+    "height": 1.8654820919036865,
+    "landmarks": {
+      "Bip001 Pelvis": [
+        -1.376756977731466e-06,
+        -0.0492933410108692,
+        0.9968482836356837
+      ],
+      "Bip001 L UpperArm": [
+        -0.20833393469864778,
+        0.023718378387427397,
+        1.5123437290211843
+      ],
+      "Bip001 R UpperArm": [
+        0.20832999919666362,
+        0.023717635062733458,
+        1.512344271526709
+      ],
+      "Bip001 Head": [
+        -2.198644021693263e-06,
+        -0.010836674764455706,
+        1.651504316110886
+      ],
+      "Bip001 Neck": [
+        -2.076500080307436e-06,
+        0.010346693015326916,
+        1.5895651924563456
+      ]
+    },
+    "TPSClips": 36,
+    "FPSClips": 19,
+    "conceptOnly": true,
+    "nativeAccessoryBones": [
+      "piaodai_Bone001",
+      "piaodai_Bone002",
+      "jianjia"
+    ]
+  },
+  "limitation": "Illustrated multiview references, not calibrated projections; native measurements guide prompts rather than proving exact pixel-to-metre calibration",
+  "gameChanged": false
+}

@@ -1,0 +1,22 @@
+{
+  "changed": [
+    "baxi/dazhao.xml",
+    "baxi/herounlock.xml",
+    "baxi/weapon.xml",
+    "baxi/buff.xml",
+    "zh/dazhao.xml",
+    "zh/herounlock.xml",
+    "zh/weapon.xml",
+    "zh/buff.xml",
+    "EffectRes/lamster_punch_impact.ef",
+    "EffectRes/lamster_pulse_cast.ef",
+    "Icon/skillicon/lamster_e.txt",
+    "Icon/skillicon/lamster_shift.txt",
+    "Icon/skillicon/lamster_ult.txt",
+    "Icon/skillicon/lamster_rally.txt"
+  ],
+  "newControllers": 2,
+  "resources": 5579,
+  "crc": "26102903",
+  "UnityTested": false
+}

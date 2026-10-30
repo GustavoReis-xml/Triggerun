@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "comparedObjects": 666,
+  "changedObjects": [
+    -8612445080646183882,
+    -6809528154582728255,
+    -5623818625462766137,
+    -4654328892180031010,
+    -3821293814417082825,
+    -1496409417634920827,
+    -1125580295906317440,
+    1448609928584666197,
+    3072855115150695067,
+    6292170744854676432,
+    6902249195973278242,
+    8845447628558464293
+  ],
+  "nativeGauntletMeshesAndRenderersRestoredExactly": true,
+  "bodyWeightsRigUVUnchanged": true,
+  "approvedChestGeometryUnchanged": true,
+  "headTailLegGeometryUnchanged": true,
+  "poses": 23,
+  "UnityTested": false
+}

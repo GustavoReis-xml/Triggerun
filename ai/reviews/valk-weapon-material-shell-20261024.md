@@ -1,0 +1,23 @@
+# Passagem de trabalho — WEAPON-004
+
+- Responsável / horário: Codex; cliente25/10/2026 02:29:12UTC,Oracle02:30:12UTC (24/10 23:30BRT).
+- Objetivo: corrigir saturação branca daespada003 e silhueta transparente daarmanativa, mantendoefeitos e infraestrutura genérica.
+- Estado: implementada/testada/instalada; novo teste visualUnitypendente.
+- Base: revisão003 (CRC26102409),Assembly79DFA93D…;helper855631DE…; backups completos dos arquivos afetados embackups/weapon064-before/.
+- FatoUnity: captura do usuário confirma alpha003 resolveu desaparecimento, mas material ficou branco e camada antiga permaneceu.
+- Material:002havia nulificado `_M/_NR/_RF`; defaults não equivalem a desativar recursos. ShaderCustom/ttcq compilado analisado viaD3DDisassemble (`scratch/weapon064/fragment.asm`): normalpackedalpha/verde, máscara de especular/reflexo e cubemap na composição final.
+- Correção: normalneutraRGBA128/128/255/128, máscara24/24/24/255 e cubemap nativo restaurado; `_RFpowe`2→0,35. Albedo completo/alpha255,geometria/efeitos idênticos003. Semnovaemissão/shader personalizado.
+- Fonte atual: candidate-assets/valk-eclipse/weapon/material-fixed/; construção e validação scratch/weapon064/fix-assets.py.
+- Causa contorno: MeshRenderers extra fora deWeaponTransform: FPSjian_i/lojai e doiscontornosTPS (hongwai_fri/honwai_silhouetted). Inventário scratch/weapon064/all-weapon-renderers.json.
+- Framework: XML `meshes/companion path/source`, opt-in e sem nomes deherói hardcoded. Remapeia apenasgeometria,conserva material/ativação/visibilidade nativos,restaura originais na troca/disable. Paths ausentes admitidos entreperfis;meshpresentediferente causa fallback.
+- Implementação:client-patches/WeaponCosmetics.cs;mesmasAPIs/hooks002. Assembly/DLLsdefísica/HUD/colisão intactos;semservidorJS/combate/roupas.
+- Testeshelper:987asserções comAPIsUnitysimuladas PASS, incluindo90novas (camada fora deWeaponTransform,duplicatas,skip outroperfil,erro/fallback,disable/troca/repetição e exclusão de corpo não listado). Compilação.NET3.5 contraUnityrealPASS; não é testeUnity.
+- Testesbundle:12objetos-basecomparados,sóMaterial/TextAsset/AssetBundle alterados+2Texture2Dneutras. Bytes deMeshes ealbedo intocados,4paths opcionais conferidos em10prefabs. FPSsz2semcasca,permitido. Shader/alpha/texturas neutras/referências/primeiroMaterial validados.
+- Instalaçãocliente:TRIGfechado confirmado emprocesso e usuário;helper F7528CE7BEAFC32C1C241D1DE45DFE033B187D1E3064E2570A7DCFECF10CDDEB. Assembly79DFA93D…preservado.
+- Distribuição:candidate-assets/valk-eclipse/weapon/client-update-weapon064.zip (Assembly002+helper004),ZIP4entradas/hashes verificados;062 é histórico.
+- Oracle:2arquivos(bundle/manifesto),CRC26102410/5566,mesmoPID928695,semreinício. Backup `/home/ubuntu/backups/weapon-eclipse-064-20261025T023012Z/runtime.tar.gz`.
+- Publicação:4HTTP hashes(1.1.1/1.3.5) eTCP7777PASS;recursoslocaissincronizados comguardas. Catálogoarma5/roupas intactos.
+- Instalação: primeira tentativa abortou antes de modificar porinstalador apontando stage063;corrigido para064 apósconferir hashes remotos iguais a003. Guardas evitaram sobrescrita com pacoteerrado; nenhuma alteração concorrente encontrada.
+- Limites:aparência real debrilho/cor/contorno004aindapendente;LODscompletos15620tri ecacheFPSxkindisponível continuamlimites002.
+- Próximo passo: usuárioabrirjogo e testar loja/FPS/TPS+troca5→1,conferir efeitosvermelhos eausência decontorno antigo. Não repetir ajuste dealpha para saturação deiluminação.
+- Reserva liberada.

@@ -1,0 +1,26 @@
+# Passagem — LAMSTER-007
+
+- Responsável: Codex; destinatários usuário/Antigravity; instalação final 29/10/2026 22:27:30 UTC (19:27 BRT).
+- Objetivo: Lamster2000 como suporte completo, HUD nativa, utilidade/mobilidade; usuário rejeitou nova área de cura durante a implementação.
+- Estado: implementado/testado/instalado local+Oracle; avaliação no cliente Unity real pendente; reserva liberada.
+- Base: commit80bb4e84ce4f223d45533e6b884a83bb341581f9 com alterações Antigravity preservadas; backups locais `backups/lamster007-before/`, `lamster007-rmb-before/`, `lamster007-actors-before/`.
+- Guia original é proposta:1201–1203 são do David; SkillTreatmentMe faz cast para HeroTerminatorMe; SkillSpeedUp inexistente; buff1003 cura375,1008 invencibilidade,1010 vulnerabilidade. Não copiar esses exemplos como implementação.
+- IDs reais:skills22001(E)/22002(Shift)/22003(Q)/22004(RMB);buffs22011–22016;dazhao22000 noherói2000. Classes0→SkillBaseMe/It,sem modificar Assembly/rig/controladores.
+- E Contenção:inimigos vivos em6m,-35% velocidade por2,5s/CD12s; sem dano/cura. Seleção autoritativa por distância, atravessa obstáculos; somente atoresSCENE/bots móveis, excluiLOBBY/objetos estáticos.
+- Shift Arrancada:+40% velocidade e30% redução de dano de armas/3s/CD8s; aceleração,semteleporte. Q Vanguarda:aliados+self10m,40% redução/6s,remove lentidões,+40%velocidade/3s;maior redução prevalece,sem acumular,não cura.
+- Q é proteção instantânea por destinatário, não aura sustentada; benefícios dos aliados duram até expirar mesmo se o Lamster se afastar/morrer. Não remove atordoamento/congelamento nem protege de Slay/perigos ambientais.
+- Primário120dano/180cura/2,2m/1s e RMB360cura/250dano/8m/CD6s/buff1007(+25%dano5s) preservados; passiva25%curaefetiva até45 por aliado. Buffvisual22015 tipo0 substitui1004,que adicionava500HP indevidos.
+- Energia10000:80/s passivos,100/200 por dano efetivo(inclusiveNPC,excesso de dano limitado),120/200 por cura efetiva em aliados;sem carga por autocura/vida cheia/durante própriaQ;troca envolvendo2000 zeraenergia.
+- Protocolo confirmado:CPlayerSkill31103/31104,ultimate31208,energia50001→50004,flag50005;31210 é XingTaiGroup, não energia. SkillDo direto para Q evita segundo cast/SuperSkillUpdate/bloqueio de armas. Interceptações usamcontinue para não perder linhasTCP agrupadas.
+- HUD:3slotsE/Shift/RMB, Qcentral eF1comdescrições. showskill="22001,22002,22004,22003||";skillQicon0 evita slotduplicado;secskill0 porque CWeaponInput já chama WeaponSec,inclusive badge nativo semsecskill. CampoGUI removido somenteLamster.
+- Cliente auxiliar também reconcilia buffSpeed quando lentidão/aceleração se sobrepõem e exibe FXcosméticosFPS comcache/retry/limpeza porator;não altera outros heróis sem os novos buffs.
+- Recursos:3íconesimage_gen(fontes+`candidate-assets/lamster-full/prompts.json`),7bundlesFX independentes derivados dos nativos, cores esmeralda/dourado, semcolisores;poses/ataques continuam nativos, sem novos clipes de habilidade.
+- Execução alterada:src/{lamsterHero,socketServer,gameLogic,sceneScope,lamsterAssets}.js,7XMLsbaxi/zh,manifesto,3PNG,7EF,helperCombatHud. src/database.js e src/lamster.js intactos; carregadores genéricos já suportam novos dados.
+- Testes locais/Oracle:118/118 (`node --test tests/lamster.test.js tests/lamster-hero.test.js tests/match-lifecycle.test.js tests/logging.test.js`),sintaxe,paridadeLamster/whitelist outrosXMLs,classes/sons/ícones/bundles ecompilação contraDLLsreais.31métodosalheios dohelper idênticos, runtime.NET2.
+- Cliente:instalado29/10 22:21:38UTC comTRIGfechado;somenteTriggerunCombatHud.dll SHA70F5DF0FC2D9A4CB458DFFCD69BAA95285B294293F9C1FA8037401B948D4FCC6. Assembly79DFA…/Raven957891…/WeaponF7528…intactos;Unitynãoexecutado.
+- Oracle:PM2triggerun PID1013628,reinícios comzero conexões;118testespré-restart,51hashesHTTP eTCP7777.5577recursos,CRC26102901 nosnovosdados/recursos e26102902 emheroinfoapósajusteRMB. XMLzh viaHTTP resolvebaxi porroteamento existente.
+- Backupsremotos:/home/ubuntu/backups/lamster-full-007-20261029T222009Z/runtime.tar.gz;ajusteRMB lamster007-rmb-20261029T222337Z;isolamento lamster007-actors-20261029T222723Z.
+- Evidências:scratch/lamster007/{tests-all.log,assets-validation.json,client-validation.json,client-installation.json,release/};`release/final.sha256` é o estado final combinado,`new.sha256` é a instalação inicial.
+- Distribuição:`candidate-assets/lamster-full/client-update-lamster007.zip`,também `/updates/client-update-lamster007.zip` naOracle. Apenashelper+LEIA-ME+hash;clientes precisam da Assemblyatualdoproj e demaishelpers preservados.
+- Limites:simulação/checagem de contrato não confirmam visual noUnity, sensação de movimento, clareza dosFX ou balanço emPvP; novosE/Q não têmclipes próprios. Não declarar kit validado por jogadores.
+- Próximo passo:reabrir cliente,selecionarLamster/default eHércules;F1/HUD3slots/Q;E contra inimigo,Shiftmovimento,primário/RMB com aliados feridos;Qcheia em2clientes(timeeFFA),expiração/morte/saída,troca e ausência de partículas persistentes.
